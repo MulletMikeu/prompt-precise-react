@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BUSINESS_INFO } from '@/lib/constants';
 import { Menu, X } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,16 +26,12 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3 text-red-600 hover:text-red-500 transition-colors">
-            <span className="text-4xl">🌲</span>
-            <div>
-              <div className="text-xl sm:text-2xl font-bold">
-                {BUSINESS_INFO.name}
-              </div>
-              <div className="text-xs text-gray-400">
-                {BUSINESS_INFO.location.city}, {BUSINESS_INFO.location.state}
-              </div>
-            </div>
+          <a href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+            <img 
+              src={logo} 
+              alt="Godhans Tree Company Logo" 
+              className="h-16 w-auto sm:h-20"
+            />
           </a>
 
           {/* Mobile Menu Toggle */}
