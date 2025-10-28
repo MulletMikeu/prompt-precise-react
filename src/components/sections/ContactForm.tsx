@@ -60,7 +60,7 @@ export function ContactForm() {
               src={`https://link.arcaffiliates.com/widget/form/${BUSINESS_INFO.integrations.arcFormId}`}
               style={{
                 width: '100%',
-                height: '890px',
+                height: '1064px',
                 border: 'none',
                 display: scriptLoaded ? 'block' : 'none'
               }}
@@ -70,9 +70,9 @@ export function ContactForm() {
               data-activation-type="alwaysActivated"
               data-deactivation-type="neverDeactivate"
               data-form-name="GODHANS"
-              data-height="890"
+              data-height="1064"
               data-form-id={BUSINESS_INFO.integrations.arcFormId}
-              title="GODHANS Contact Form"
+              title="GODHANS"
             />
           </div>
 
