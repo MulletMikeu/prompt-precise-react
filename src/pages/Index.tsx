@@ -13,6 +13,7 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { Contact } from '@/components/sections/Contact';
 import { BUSINESS_INFO } from '@/lib/constants';
 
+// Main landing page component
 export default function Index() {
   return (
     <>
