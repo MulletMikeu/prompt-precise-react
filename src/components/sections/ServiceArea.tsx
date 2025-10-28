@@ -15,8 +15,8 @@ export function ServiceArea() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-          {SERVICE_AREAS.map((city) => (
-            <CityBadge key={city} city={city} />
+          {SERVICE_AREAS.map((area) => (
+            <CityBadge key={area.name} city={area.name} />
           ))}
         </div>
 

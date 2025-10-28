@@ -20,6 +20,11 @@ export const BUSINESS_INFO = {
   social: {
     facebook: "https://www.facebook.com/godhans",
     instagram: "https://www.instagram.com/godhans"
+  },
+  integrations: {
+    googleCalendarId: "78t5y8tdI24kiutiDwFo",
+    arcFormId: "a7qpym2HhpkGKUa6tyMI",
+    chatWidgetId: "68f52e2b5a611a4c03e83200"
   }
 };
 
@@ -103,18 +108,18 @@ export const TRUST_ITEMS = [
 ];
 
 export const SERVICE_AREAS = [
-  "Jacksonville",
-  "Camp Lejeune",
-  "Swansboro",
-  "Richlands",
-  "Sneads Ferry",
-  "Holly Ridge",
-  "Hubert",
-  "Maysville",
-  "Pumpkin Center",
-  "Dixon",
-  "Stella",
-  "Cape Carteret"
+  { name: "Jacksonville", priority: 0.9 },
+  { name: "Camp Lejeune", priority: 0.9 },
+  { name: "Swansboro", priority: 0.8 },
+  { name: "Richlands", priority: 0.8 },
+  { name: "Sneads Ferry", priority: 0.8 },
+  { name: "Holly Ridge", priority: 0.8 },
+  { name: "Hubert", priority: 0.7 },
+  { name: "Maysville", priority: 0.7 },
+  { name: "Pumpkin Center", priority: 0.7 },
+  { name: "Dixon", priority: 0.7 },
+  { name: "Stella", priority: 0.7 },
+  { name: "Cape Carteret", priority: 0.7 }
 ];
 
 export const TESTIMONIALS = [
