@@ -55,14 +55,14 @@ export function BookingCalendar() {
             )}
             
             <iframe
-              src={`https://calendar.google.com/calendar/appointments/schedules/AcZssZ${BUSINESS_INFO.integrations.googleCalendarId}?gv=true`}
+              src={`https://link.arcaffiliates.com/widget/booking/${BUSINESS_INFO.integrations.arcBookingId}`}
               style={{ 
                 border: 0,
                 width: '100%',
                 height: '600px',
                 display: isLoading ? 'none' : 'block'
               }}
-              title="Book Appointment with Godhans Tree Company"
+              title="Book Appointment with Godhans"
               onLoad={() => setIsLoading(false)}
             />
           </div>
