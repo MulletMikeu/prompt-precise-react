@@ -52,16 +52,16 @@ export function Header() {
               Services
             </button>
             <button
-              onClick={() => scrollToSection('why-choose')}
+              onClick={() => scrollToSection('contact-form')}
               className="text-white hover:text-red-600 font-medium transition-colors"
             >
-              About
+              Get Quote
             </button>
             <button
-              onClick={() => scrollToSection('service-area')}
+              onClick={() => scrollToSection('booking')}
               className="text-white hover:text-red-600 font-medium transition-colors"
             >
-              Service Area
+              Book Now
             </button>
             <button
               onClick={() => scrollToSection('testimonials')}
@@ -89,16 +89,16 @@ export function Header() {
               Services
             </button>
             <button
-              onClick={() => scrollToSection('why-choose')}
+              onClick={() => scrollToSection('contact-form')}
               className="block w-full text-left px-4 py-3 text-white hover:bg-gray-900 hover:text-red-600 transition-colors border-b border-gray-800"
             >
-              About
+              Get Quote
             </button>
             <button
-              onClick={() => scrollToSection('service-area')}
+              onClick={() => scrollToSection('booking')}
               className="block w-full text-left px-4 py-3 text-white hover:bg-gray-900 hover:text-red-600 transition-colors border-b border-gray-800"
             >
-              Service Area
+              Book Now
             </button>
             <button
               onClick={() => scrollToSection('testimonials')}

@@ -10,5 +10,20 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+# robots.txt for treetrimmersnc.online
 User-agent: *
 Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://treetrimmersnc.online/sitemap.xml

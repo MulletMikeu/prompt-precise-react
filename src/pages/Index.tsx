@@ -74,6 +74,8 @@ export default function Index() {
         </script>
       </Helmet>
 
+      <ChatWidget />
+
       <div className="min-h-screen flex flex-col">
         <EmergencyBanner />
         <Header />
@@ -82,6 +84,8 @@ export default function Index() {
           <Hero />
           <Services />
           <WhyChoose />
+          <ContactForm />
+          <BookingCalendar />
           <ServiceArea />
           <Testimonials />
           <Contact />
