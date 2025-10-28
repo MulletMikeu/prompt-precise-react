@@ -28,6 +28,17 @@ export function Footer() {
               Professional tree service serving Jacksonville, NC and surrounding areas since {BUSINESS_INFO.yearEstablished}.
             </p>
             <div className="space-y-2 text-sm">
+              <p className="font-semibold text-white mb-2">{BUSINESS_INFO.name}</p>
+              <p className="text-gray-300">
+                <a 
+                  href={BUSINESS_INFO.location.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-red-600 transition-colors"
+                >
+                  {BUSINESS_INFO.location.full}
+                </a>
+              </p>
               <p>
                 <strong>Phone:</strong>{' '}
                 <a 
@@ -135,9 +146,10 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm space-y-2">
           <p>
-            &copy; {new Date().getFullYear()} {BUSINESS_INFO.name}. All rights reserved. | Licensed & Insured | Jacksonville, NC
+            &copy; {new Date().getFullYear()} {BUSINESS_INFO.name}. All rights reserved. | Licensed & Insured
           </p>
-          <p>Professional Tree Service | Emergency Storm Damage | Free Estimates</p>
+          <p>{BUSINESS_INFO.location.full}</p>
+          <p>Professional Tree Service | 24/7 Emergency Service | Free Estimates</p>
         </div>
       </div>
     </footer>

@@ -29,7 +29,7 @@ export function Header() {
           <a href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
             <img 
               src={logo} 
-              alt="Godhans Tree Company Logo" 
+              alt="Godhans Logo" 
               className="h-16 w-auto sm:h-20"
             />
           </a>

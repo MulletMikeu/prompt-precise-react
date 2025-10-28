@@ -1,5 +1,5 @@
 export const BUSINESS_INFO = {
-  name: "Godhans Tree Company",
+  name: "Godhans",
   phone: {
     display: "(618) 704-4861",
     tel: "+16187044861",
@@ -7,14 +7,22 @@ export const BUSINESS_INFO = {
   },
   email: "godhanstree@gmail.com",
   location: {
+    street: "4445 Gum Branch Rd",
     city: "Jacksonville",
     state: "NC",
-    zip: "28540"
+    zip: "28540",
+    full: "4445 Gum Branch Rd, Jacksonville, NC 28540",
+    coordinates: {
+      latitude: 34.7540,
+      longitude: -77.4305
+    },
+    mapUrl: "https://www.google.com/maps/place/Godhans/@34.754,-77.4305,17z/data=!3m1!4b1!4m6!3m5!1s0x0:0x6af5edd22ef362ab"
   },
   hours: {
-    weekday: "Monday - Friday: 8:00 AM - 5:00 PM",
-    saturday: "Saturday: 9:00 AM - 3:00 PM",
-    sunday: "Sunday: Emergency Service Only"
+    weekday: "Open 24 Hours",
+    saturday: "Open 24 Hours",
+    sunday: "Open 24 Hours",
+    emergency: "24/7 Emergency Service Available"
   },
   yearEstablished: 2010,
   social: {

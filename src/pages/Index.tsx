@@ -18,7 +18,7 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>Tree Service Jacksonville NC | Godhans Tree Company | Licensed & Insured</title>
+        <title>Tree Service Jacksonville NC | Godhans | Licensed & Insured</title>
         <meta 
           name="description" 
           content="Professional tree service in Jacksonville, NC. Expert tree trimming, removal, stump grinding & emergency storm damage. Licensed, insured & locally owned. Free estimates! Call (618) 704-4861" 
@@ -29,9 +29,9 @@ export default function Index() {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://treetrimmersnc.online/" />
-        <meta property="og:title" content="Tree Service Jacksonville NC | Godhans Tree Company" />
+        <meta property="og:title" content="Tree Service Jacksonville NC | Godhans" />
         <meta property="og:description" content="Professional tree trimming, removal & stump grinding in Jacksonville, NC. Licensed & insured. 24/7 emergency service available." />
-        <meta property="og:site_name" content="Godhans Tree Company" />
+        <meta property="og:site_name" content="Godhans" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -46,6 +46,7 @@ export default function Index() {
             "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
+              "streetAddress": BUSINESS_INFO.location.street,
               "addressLocality": BUSINESS_INFO.location.city,
               "addressRegion": BUSINESS_INFO.location.state,
               "postalCode": BUSINESS_INFO.location.zip,
@@ -53,23 +54,15 @@ export default function Index() {
             },
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": 34.7540,
-              "longitude": -77.4305
+              "latitude": BUSINESS_INFO.location.coordinates.latitude,
+              "longitude": BUSINESS_INFO.location.coordinates.longitude
             },
-            "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "08:00",
-                "closes": "17:00"
-              },
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": "Saturday",
-                "opens": "09:00",
-                "closes": "15:00"
-              }
-            ],
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            },
             "sameAs": [
               BUSINESS_INFO.social.facebook,
               BUSINESS_INFO.social.instagram
