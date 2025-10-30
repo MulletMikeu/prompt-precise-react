@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
 import { Header } from '@/components/layout/Header';
@@ -6,12 +7,21 @@ import { ChatWidget } from '@/components/layout/ChatWidget';
 import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { WhyChoose } from '@/components/sections/WhyChoose';
-import { ServiceArea } from '@/components/sections/ServiceArea';
-import { ContactForm } from '@/components/sections/ContactForm';
-import { BookingCalendar } from '@/components/sections/BookingCalendar';
-import { Testimonials } from '@/components/sections/Testimonials';
-import { Contact } from '@/components/sections/Contact';
 import { BUSINESS_INFO } from '@/lib/constants';
+
+// Lazy load below-the-fold sections to reduce initial bundle size
+const ServiceArea = lazy(() => import('@/components/sections/ServiceArea').then(m => ({ default: m.ServiceArea })));
+const ContactForm = lazy(() => import('@/components/sections/ContactForm').then(m => ({ default: m.ContactForm })));
+const BookingCalendar = lazy(() => import('@/components/sections/BookingCalendar').then(m => ({ default: m.BookingCalendar })));
+const Testimonials = lazy(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })));
+const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
+
+// Loading fallback component
+const SectionLoader = () => (
+  <div className="py-20 flex items-center justify-center">
+    <div className="animate-pulse text-gray-400">Loading...</div>
+  </div>
+);
 
 // Main landing page component
 export default function Index() {
@@ -81,11 +91,21 @@ export default function Index() {
           <Hero />
           <Services />
           <WhyChoose />
-          <ContactForm />
-          <BookingCalendar />
-          <ServiceArea />
-          <Testimonials />
-          <Contact />
+          <Suspense fallback={<SectionLoader />}>
+            <ContactForm />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <BookingCalendar />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <ServiceArea />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <Testimonials />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <Contact />
+          </Suspense>
         </main>
         
         <Footer />

@@ -5,14 +5,20 @@ export function ContactForm() {
   const [scriptLoaded, setScriptLoaded] = useState(false);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://link.arcaffiliates.com/js/form_embed.js';
-    script.async = true;
-    script.onload = () => setScriptLoaded(true);
-    document.body.appendChild(script);
+    // Defer script loading to improve initial page load
+    const timer = setTimeout(() => {
+      const script = document.createElement('script');
+      script.src = 'https://link.arcaffiliates.com/js/form_embed.js';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => setScriptLoaded(true);
+      document.body.appendChild(script);
+    }, 100);
 
     return () => {
-      if (document.body.contains(script)) {
+      clearTimeout(timer);
+      const script = document.querySelector('script[src="https://link.arcaffiliates.com/js/form_embed.js"]');
+      if (script && document.body.contains(script)) {
         document.body.removeChild(script);
       }
     };
