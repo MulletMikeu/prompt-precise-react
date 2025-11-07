@@ -64,6 +64,7 @@ export function BookingCalendar() {
               }}
               title="Book Appointment with Godhans"
               onLoad={() => setIsLoading(false)}
+              loading="lazy"
             />
           </div>
         </div>

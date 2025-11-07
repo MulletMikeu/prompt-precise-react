@@ -79,6 +79,7 @@ export function ContactForm() {
               data-height="1064"
               data-form-id={BUSINESS_INFO.integrations.arcFormId}
               title="GODHANS"
+              loading="lazy"
             />
           </div>
 
