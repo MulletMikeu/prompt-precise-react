@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { ChatWidget } from '@/components/layout/ChatWidget';
 import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { WhyChoose } from '@/components/sections/WhyChoose';
@@ -80,8 +79,6 @@ export default function Index() {
           })}
         </script>
       </Helmet>
-
-      <ChatWidget />
 
       <div className="min-h-screen flex flex-col">
         <EmergencyBanner />

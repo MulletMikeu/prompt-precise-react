@@ -104,58 +104,11 @@ All colors MUST be HSL.
   }
 }
 
-/* Chat Widget Styling */
-[data-widget-id="68f52e2b5a611a4c03e83200"] {
-  z-index: 9999 !important;
-  animation: slideInFromBottom 0.5s ease-out;
-}
-
-[data-widget-id="68f52e2b5a611a4c03e83200"] button {
-  cursor: pointer;
-}
-
-/* Accessibility: Chat widget button label */
-.lc_text-widget--bubble,
-#lc_text-widget--btn {
-  position: relative;
-}
-
-.lc_text-widget--bubble::before,
-#lc_text-widget--btn::before {
-  content: attr(aria-label);
-  position: absolute;
-  left: -9999px;
-}
-
 /* Lovable badge close button accessibility */
 #lovable-badge-close::before {
   content: "Close";
   position: absolute;
   left: -9999px;
-}
-
-@keyframes slideInFromBottom {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-[data-widget-id="68f52e2b5a611a4c03e83200"] iframe {
-  border-radius: 12px !important;
-  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3) !important;
-}
-
-/* Chat Widget Mobile */
-@media (max-width: 768px) {
-  [data-widget-id="68f52e2b5a611a4c03e83200"] {
-    bottom: 80px !important;
-    right: 15px !important;
-  }
 }
 
 /* Form & Calendar iframes responsive */

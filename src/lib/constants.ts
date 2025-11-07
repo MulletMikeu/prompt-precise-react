@@ -31,8 +31,7 @@ export const BUSINESS_INFO = {
   },
   integrations: {
     arcBookingId: "78t5y8tdI24kiutiDwFo",
-    arcFormId: "a7qpym2HhpkGKUa6tyMI",
-    chatWidgetId: "68f52e2b5a611a4c03e83200"
+    arcFormId: "a7qpym2HhpkGKUa6tyMI"
   }
 };
 
