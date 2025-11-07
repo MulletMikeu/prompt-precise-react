@@ -110,6 +110,30 @@ All colors MUST be HSL.
   animation: slideInFromBottom 0.5s ease-out;
 }
 
+[data-widget-id="68f52e2b5a611a4c03e83200"] button {
+  cursor: pointer;
+}
+
+/* Accessibility: Chat widget button label */
+.lc_text-widget--bubble,
+#lc_text-widget--btn {
+  position: relative;
+}
+
+.lc_text-widget--bubble::before,
+#lc_text-widget--btn::before {
+  content: attr(aria-label);
+  position: absolute;
+  left: -9999px;
+}
+
+/* Lovable badge close button accessibility */
+#lovable-badge-close::before {
+  content: "Close";
+  position: absolute;
+  left: -9999px;
+}
+
 @keyframes slideInFromBottom {
   from {
     transform: translateY(100px);

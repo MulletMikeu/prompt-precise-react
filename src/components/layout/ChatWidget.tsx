@@ -9,6 +9,7 @@ export function ChatWidget() {
       script.src = 'https://widgets.leadconnectorhq.com/loader.js';
       script.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
       script.setAttribute('data-widget-id', BUSINESS_INFO.integrations.chatWidgetId);
+      script.setAttribute('aria-label', 'Open chat to book tree service');
       script.async = true;
       script.defer = true;
       

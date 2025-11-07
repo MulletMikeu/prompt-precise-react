@@ -43,7 +43,7 @@ export function Footer() {
                 <strong>Phone:</strong>{' '}
                 <a 
                   href={`tel:${BUSINESS_INFO.phone.tel}`}
-                  className="text-gray-300 hover:text-red-600 transition-colors"
+                  className="text-gray-200 hover:text-red-500 transition-colors font-medium"
                 >
                   {BUSINESS_INFO.phone.display}
                 </a>
