@@ -6,12 +6,16 @@ import { BUSINESS_INFO } from '@/lib/constants';
 
 interface ServicePageProps {
   title: string;
+  subtitle?: string;
   slug: string;
   description: string;
+  ctaText?: string;
+  sections: { heading: string; text: string }[];
+}
   sections: { heading: string; text: string }[];
 }
 
-export default function ServicePage({ title, slug, description, sections }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, sections }: ServicePageProps) {
   return (
     <>
       <Helmet>
@@ -36,6 +40,9 @@ export default function ServicePage({ title, slug, description, sections }: Serv
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                 {title}
               </h1>
+              {subtitle && (
+                <p className="text-red-500 font-semibold text-lg sm:text-xl mb-2">{subtitle}</p>
+              )}
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
                 {description}
               </p>
@@ -44,7 +51,7 @@ export default function ServicePage({ title, slug, description, sections }: Serv
                   href={`tel:${BUSINESS_INFO.phone.tel}`}
                   className="bg-red-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-lg inline-flex items-center gap-2 text-lg"
                 >
-                  📞 Call {BUSINESS_INFO.phone.display}
+                  📞 {ctaText || `Call ${BUSINESS_INFO.phone.display}`}
                 </a>
               </div>
             </div>

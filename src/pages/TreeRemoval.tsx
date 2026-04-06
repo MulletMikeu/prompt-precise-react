@@ -3,9 +3,11 @@ import ServicePage from './ServicePage';
 export default function TreeRemoval() {
   return (
     <ServicePage
-      title="Tree Removal Jacksonville NC"
+      title="Tree Removal in Jacksonville, NC"
+      subtitle="Safe, Affordable & Licensed Tree Removal Services — Free Estimates Available"
       slug="tree-removal-jacksonville-nc"
       description="Professional tree removal services in Jacksonville, NC. Safe, efficient, and fully insured. Call Godhans Tree Company for a free estimate."
+      ctaText="Call Now for a Free Estimate"
       sections={[
         {
           heading: "Professional Tree Removal Services",
