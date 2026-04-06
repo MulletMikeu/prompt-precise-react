@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/CustomButton';
 import { BUSINESS_INFO } from '@/lib/constants';
 
 export function Contact() {
