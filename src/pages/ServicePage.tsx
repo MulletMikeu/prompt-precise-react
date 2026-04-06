@@ -12,8 +12,6 @@ interface ServicePageProps {
   ctaText?: string;
   sections: { heading: string; text: string }[];
 }
-  sections: { heading: string; text: string }[];
-}
 
 export default function ServicePage({ title, subtitle, slug, description, ctaText, sections }: ServicePageProps) {
   return (
