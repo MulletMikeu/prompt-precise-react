@@ -33,6 +33,7 @@ const App = () => (
             <Route path="/emergency-tree-service-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><EmergencyTreeService /></Suspense>} />
             <Route path="/tree-service-richlands-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceRichlands /></Suspense>} />
             <Route path="/tree-service-hubert-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceHubert /></Suspense>} />
+            <Route path="/tree-removal-cost-north-carolina" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalCost /></Suspense>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
