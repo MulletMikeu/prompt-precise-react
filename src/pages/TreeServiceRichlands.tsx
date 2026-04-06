@@ -4,24 +4,29 @@ export default function TreeServiceRichlands() {
   return (
     <ServicePage
       title="Tree Service in Richlands, NC"
-      subtitle="Trusted Tree Care for Richlands Homeowners & Businesses"
+      subtitle="Professional Tree Removal, Trimming & Stump Grinding in Richlands"
       slug="tree-service-richlands-nc"
       description="Professional tree service in Richlands, NC. Tree removal, trimming, stump grinding, and emergency response. Free estimates from Godhans Tree Company."
       ctaText="Call Now for a Free Estimate"
-      quickAnswer="Looking for reliable tree service in Richlands, NC? Our team provides professional tree removal, trimming, stump grinding, and emergency tree care for residential and commercial properties throughout the Richlands area."
+      quickAnswer="Tree service in Richlands, NC includes tree removal, tree trimming, and stump grinding to keep your property safe and well-maintained. Our team provides reliable, affordable service with free estimates for homeowners and businesses in the Richlands area."
       sections={[
         {
-          heading: "Full-Service Tree Care in Richlands, NC",
-          text: "From routine trimming to emergency storm response, our crew serves Richlands and the surrounding Onslow County area with safe, professional tree care.\n\nWhether you need a hazardous tree removed, branches trimmed back from your roof, or an old stump ground down, we have the equipment and experience to get it done right."
+          heading: "Reliable Tree Services in Richlands, NC",
+          text: "We proudly provide professional tree services to homeowners and property owners in Richlands, NC. Whether you need a tree removed, trimmed, or a stump ground down, our team delivers safe and efficient solutions.\n\nWe understand the local environment and common tree issues in the Richlands area, allowing us to provide services that are both effective and long-lasting."
         },
         {
-          heading: "Our Services in Richlands",
-          text: "• Tree removal – safe takedown of any size tree\n• Tree trimming & pruning – maintain health and appearance\n• Stump grinding – reclaim your yard space\n• Emergency tree service – fast response after storms\n• Lot clearing – prepare land for building or landscaping"
+          heading: "Our Tree Services in Richlands",
+          text: "We offer a full range of tree services, including:\n\n• Tree Removal\n• Tree Trimming & Pruning\n• Stump Grinding\n• Emergency Tree Service"
         },
         {
-          heading: "Why Richlands Residents Choose Us",
-          text: "We're a local team that understands the trees and weather conditions in Onslow County. Richlands homeowners trust us because we show up on time, communicate clearly, and leave properties clean.\n\n✔ Licensed & insured\n✔ Free on-site estimates\n✔ Military discounts available\n✔ Same-week scheduling for most jobs"
+          heading: "Why Choose Us for Tree Service in Richlands, NC",
+          text: "✔ Licensed & insured\n✔ Experienced professionals\n✔ Safe, modern equipment\n✔ Fast and reliable service\n✔ Free estimates\n\nWe are committed to providing high-quality tree services with a focus on safety and customer satisfaction."
         }
+      ]}
+      faqs={[
+        { question: "Do you provide tree service in Richlands NC?", answer: "Yes, we proudly serve Richlands and surrounding areas with professional tree removal, trimming, and stump grinding." },
+        { question: "How much does tree service cost in Richlands NC?", answer: "Costs vary depending on the job, but we offer free estimates to provide accurate pricing." },
+        { question: "Do you offer emergency tree service in Richlands?", answer: "Yes, we respond quickly to storm damage and urgent tree situations." }
       ]}
       relatedServices={[
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
@@ -30,8 +35,8 @@ export default function TreeServiceRichlands() {
         { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
       ]}
       finalCta={{
-        heading: "Need Tree Service in Richlands?",
-        text: "Contact Godhans Tree Company today for a free estimate. We're proud to serve Richlands, NC and the surrounding communities.",
+        heading: "Get Tree Service in Richlands, NC Today",
+        text: "If you need professional tree service in Richlands, NC, contact us today for a free estimate. Our team is ready to help with safe, reliable service.",
         buttonText: "Call Now"
       }}
     />
