@@ -21,8 +21,27 @@ export default function TreeTrimming() {
         {
           heading: "When Should You Trim Your Trees?",
           text: "Trees should be trimmed regularly to maintain their health and structure. You may need trimming if branches are overgrown, blocking sunlight, or becoming a safety concern.\n\nSeasonal trimming is also recommended to prepare for storms and reduce the risk of damage during high winds."
+        },
+        {
+          heading: "Our Tree Trimming Process",
+          text: "We follow a careful process to ensure safe and effective trimming:\n\n• Inspection of tree health and structure\n• Identification of branches to remove\n• Precision trimming using proper techniques\n• Cleanup of all debris"
+        },
+        {
+          heading: "Affordable Tree Trimming You Can Trust",
+          text: "Tree trimming costs depend on the size of the tree and the amount of work required. We offer free estimates and transparent pricing so you know exactly what to expect.\n\n✔ Licensed & insured\n✔ Experienced crew\n✔ Safe, professional equipment\n✔ Honest pricing"
         }
       ]}
+      faqs={[
+        { question: "How often should trees be trimmed?", answer: "Most trees should be trimmed every 1–3 years depending on the species and growth rate." },
+        { question: "What is the best time of year to trim trees?", answer: "Late winter or early spring is often ideal, but trimming can be done year-round depending on the situation." },
+        { question: "Is tree trimming necessary?", answer: "Yes, regular trimming helps maintain tree health, prevent hazards, and improve appearance." },
+        { question: "Can trimming damage a tree?", answer: "Improper trimming can harm a tree, which is why it's best handled by trained professionals." }
+      ]}
+      finalCta={{
+        heading: "Schedule Your Tree Trimming Service Today",
+        text: "Keep your trees healthy, safe, and looking their best with professional tree trimming services in Jacksonville, NC. Contact us today for a free estimate.",
+        buttonText: "Call Now"
+      }}
     />
   );
 }
