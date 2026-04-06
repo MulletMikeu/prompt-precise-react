@@ -14,6 +14,7 @@ const StumpGrinding = lazy(() => import("./pages/StumpGrinding"));
 const EmergencyTreeService = lazy(() => import("./pages/EmergencyTreeService"));
 const TreeServiceRichlands = lazy(() => import("./pages/TreeServiceRichlands"));
 const TreeServiceHubert = lazy(() => import("./pages/TreeServiceHubert"));
+const TreeRemovalCost = lazy(() => import("./pages/TreeRemovalCost"));
 
 const queryClient = new QueryClient();
 
