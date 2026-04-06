@@ -16,6 +16,7 @@ const TreeServiceRichlands = lazy(() => import("./pages/TreeServiceRichlands"));
 const TreeServiceHubert = lazy(() => import("./pages/TreeServiceHubert"));
 const TreeRemovalCost = lazy(() => import("./pages/TreeRemovalCost"));
 const StormDamageGuide = lazy(() => import("./pages/StormDamageGuide"));
+const TreeTrimmingVsPruning = lazy(() => import("./pages/TreeTrimmingVsPruning"));
 
 const queryClient = new QueryClient();
 
