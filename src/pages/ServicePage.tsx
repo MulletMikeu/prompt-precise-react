@@ -4,6 +4,11 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BUSINESS_INFO } from '@/lib/constants';
 
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 interface ServicePageProps {
   title: string;
   subtitle?: string;
@@ -12,9 +17,11 @@ interface ServicePageProps {
   ctaText?: string;
   quickAnswer?: string;
   sections: { heading: string; text: string }[];
+  faqs?: FaqItem[];
+  finalCta?: { heading: string; text: string; buttonText?: string };
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, faqs, finalCta }: ServicePageProps) {
   return (
     <>
       <Helmet>
@@ -26,7 +33,22 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
         <meta property="og:description" content={description} />
         <meta property="og:url" content={`https://treetrimmersnc.online/${slug}`} />
         <meta property="og:type" content="website" />
-      </Helmet>
+        {faqs && faqs.length > 0 && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqs.map(faq => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.answer
+                }
+              }))
+            })}
+          </script>
+        )}
 
       <div className="min-h-screen flex flex-col">
         <EmergencyBanner />
