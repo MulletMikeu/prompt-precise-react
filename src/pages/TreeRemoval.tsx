@@ -8,6 +8,7 @@ export default function TreeRemoval() {
       slug="tree-removal-jacksonville-nc"
       description="Professional tree removal services in Jacksonville, NC. Safe, efficient, and fully insured. Call Godhans Tree Company for a free estimate."
       ctaText="Call Now for a Free Estimate"
+      quickAnswer="Tree removal in Jacksonville, NC typically costs between $800 and $3000 depending on the size, location, and condition of the tree. Our team provides fast, safe, and fully insured tree removal services with free on-site estimates."
       sections={[
         {
           heading: "Professional Tree Removal Services",

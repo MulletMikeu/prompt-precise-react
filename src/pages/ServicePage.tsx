@@ -10,10 +10,11 @@ interface ServicePageProps {
   slug: string;
   description: string;
   ctaText?: string;
+  quickAnswer?: string;
   sections: { heading: string; text: string }[];
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, sections }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections }: ServicePageProps) {
   return (
     <>
       <Helmet>
@@ -53,7 +54,18 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                 </a>
               </div>
             </div>
-          </section>
+           </section>
+
+          {/* Quick Answer */}
+          {quickAnswer && (
+            <section className="bg-gray-950 py-10 border-b border-gray-800">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+                <p className="text-gray-300 text-lg leading-relaxed italic">
+                  {quickAnswer}
+                </p>
+              </div>
+            </section>
+          )}
 
           {/* Content Sections */}
           {sections.map((section, index) => (
