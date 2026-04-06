@@ -77,9 +77,9 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                 <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
                   {section.heading}
                 </h2>
-                <p className="text-gray-300 leading-relaxed text-lg">
+                <div className="text-gray-300 leading-relaxed text-lg whitespace-pre-line">
                   {section.text}
-                </p>
+                </div>
               </div>
             </section>
           ))}
