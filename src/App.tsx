@@ -12,6 +12,8 @@ const TreeRemoval = lazy(() => import("./pages/TreeRemoval"));
 const TreeTrimming = lazy(() => import("./pages/TreeTrimming"));
 const StumpGrinding = lazy(() => import("./pages/StumpGrinding"));
 const EmergencyTreeService = lazy(() => import("./pages/EmergencyTreeService"));
+const TreeServiceRichlands = lazy(() => import("./pages/TreeServiceRichlands"));
+const TreeServiceHubert = lazy(() => import("./pages/TreeServiceHubert"));
 
 const queryClient = new QueryClient();
 
@@ -28,6 +30,8 @@ const App = () => (
             <Route path="/tree-trimming-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeTrimming /></Suspense>} />
             <Route path="/stump-grinding-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><StumpGrinding /></Suspense>} />
             <Route path="/emergency-tree-service-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><EmergencyTreeService /></Suspense>} />
+            <Route path="/tree-service-richlands-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceRichlands /></Suspense>} />
+            <Route path="/tree-service-hubert-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceHubert /></Suspense>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
