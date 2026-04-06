@@ -49,6 +49,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
             })}
           </script>
         )}
+      </Helmet>
 
       <div className="min-h-screen flex flex-col">
         <EmergencyBanner />
