@@ -19,6 +19,14 @@ export default function TreeRemoval() {
           text: "You may need tree removal if:\n\n• The tree is dead or dying\n• Storm damage has weakened the structure\n• The tree is leaning dangerously toward your home\n• Roots are damaging your foundation or driveway\n• Branches are falling or pose a safety risk\n• The tree is overcrowding your yard or blocking sunlight\n\nIf you're unsure, we can inspect your tree and recommend the best solution."
         },
         {
+          heading: "Our Tree Removal Process",
+          text: "We follow a safe and efficient process to ensure your property is protected:\n\n1. Free Estimate & Inspection – We assess the tree and surrounding area\n2. Planning & Safety Setup – We prepare the site and equipment\n3. Careful Tree Removal – Sections are cut and removed safely\n4. Cleanup – We remove debris and leave your property clean"
+        },
+        {
+          heading: "Affordable Tree Removal with No Surprises",
+          text: "Tree removal costs vary based on tree size, location, and complexity. We provide transparent pricing and free estimates so you know exactly what to expect.\n\n✔ Licensed & insured\n✔ Experienced professionals\n✔ Safe and efficient equipment\n✔ Honest, upfront pricing"
+        },
+        {
           heading: "Service Areas for Tree Removal",
           text: "Content coming soon. This section will list all the areas we serve including Jacksonville, Camp Lejeune, Swansboro, Richlands, Sneads Ferry, and surrounding communities."
         }
