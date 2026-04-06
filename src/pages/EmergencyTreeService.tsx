@@ -33,6 +33,11 @@ export default function EmergencyTreeService() {
         { question: "What should I do if a tree falls on my house?", answer: "Stay safe, avoid the area, and call a professional immediately. We can safely remove the tree and assess the situation." },
         { question: "Is emergency tree service more expensive?", answer: "Emergency services may cost more due to urgency and conditions, but we provide clear pricing before work begins." }
       ]}
+      relatedServices={[
+        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
+        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
+        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
+      ]}
       finalCta={{
         heading: "Call Now for Emergency Tree Service",
         text: "If you have a tree emergency in Jacksonville, NC, don't wait. Call now for fast, professional assistance and protect your property from further damage.",

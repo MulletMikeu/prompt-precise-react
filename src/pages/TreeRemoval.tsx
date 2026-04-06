@@ -49,6 +49,11 @@ export default function TreeRemoval() {
           answer: "Yes, tree removal can be hazardous without proper equipment and experience. That's why it's best handled by trained professionals."
         }
       ]}
+      relatedServices={[
+        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
+        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
+        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
+      ]}
       finalCta={{
         heading: "Get a Free Tree Removal Estimate Today",
         text: "If you need professional tree removal in Jacksonville, NC, we're here to help. Contact us today for a fast, free estimate and let our team handle the job safely and efficiently.",

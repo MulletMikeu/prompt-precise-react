@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -7,6 +8,11 @@ import { BUSINESS_INFO } from '@/lib/constants';
 interface FaqItem {
   question: string;
   answer: string;
+}
+
+interface RelatedService {
+  label: string;
+  href: string;
 }
 
 interface ServicePageProps {
@@ -19,9 +25,10 @@ interface ServicePageProps {
   sections: { heading: string; text: string }[];
   faqs?: FaqItem[];
   finalCta?: { heading: string; text: string; buttonText?: string };
+  relatedServices?: RelatedService[];
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, faqs, finalCta }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, faqs, finalCta, relatedServices }: ServicePageProps) {
   return (
     <>
       <Helmet>
@@ -106,6 +113,27 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
               </div>
             </section>
           ))}
+
+          {/* Related Services (Internal Linking) */}
+          {relatedServices && relatedServices.length > 0 && (
+            <section className="bg-gray-950 py-12 border-t border-gray-800">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+                <h2 className="text-2xl font-bold text-white mb-4">Other Services We Offer</h2>
+                <p className="text-gray-300 text-lg mb-6">
+                  We also provide professional{' '}
+                  {relatedServices.map((service, i) => (
+                    <span key={service.href}>
+                      {i > 0 && (i === relatedServices.length - 1 ? ' and ' : ', ')}
+                      <Link to={service.href} className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors">
+                        {service.label.toLowerCase()}
+                      </Link>
+                    </span>
+                  ))}
+                  {' '}services in Jacksonville, NC and surrounding areas.
+                </p>
+              </div>
+            </section>
+          )}
 
           {/* FAQ Section */}
           {faqs && faqs.length > 0 && (
