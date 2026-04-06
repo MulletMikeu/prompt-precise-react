@@ -107,20 +107,39 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
             </section>
           ))}
 
-          {/* CTA */}
+          {/* FAQ Section */}
+          {faqs && faqs.length > 0 && (
+            <section className="bg-black py-16">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
+                  Frequently Asked Questions
+                </h2>
+                <div className="space-y-6">
+                  {faqs.map((faq, index) => (
+                    <div key={index} className="border-b border-gray-800 pb-6">
+                      <h3 className="text-white font-semibold text-lg mb-2">{faq.question}</h3>
+                      <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Final CTA */}
           <section className="bg-red-600 py-12">
             <div className="container mx-auto px-4 text-center">
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                Ready to Get Started?
+                {finalCta?.heading || "Ready to Get Started?"}
               </h2>
               <p className="text-white/90 mb-6 text-lg">
-                Contact Godhans Tree Company today for a free estimate.
+                {finalCta?.text || "Contact Godhans Tree Company today for a free estimate."}
               </p>
               <a
                 href={`tel:${BUSINESS_INFO.phone.tel}`}
                 className="bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors inline-flex items-center gap-2 text-lg"
               >
-                📞 {BUSINESS_INFO.phone.display}
+                📞 {finalCta?.buttonText || `Call ${BUSINESS_INFO.phone.display}`}
               </a>
             </div>
           </section>
