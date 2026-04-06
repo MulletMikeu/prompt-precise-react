@@ -31,6 +31,29 @@ export default function TreeRemoval() {
           text: "Content coming soon. This section will list all the areas we serve including Jacksonville, Camp Lejeune, Swansboro, Richlands, Sneads Ferry, and surrounding communities."
         }
       ]}
+      faqs={[
+        {
+          question: "How much does tree removal cost in Jacksonville NC?",
+          answer: "Most tree removals range from $800 to $3,000 depending on the size and difficulty of the job. We provide free estimates to give you an exact price."
+        },
+        {
+          question: "Do I need a permit to remove a tree in Jacksonville NC?",
+          answer: "Permit requirements can vary depending on location and tree type. We can help guide you through any local requirements if needed."
+        },
+        {
+          question: "How long does tree removal take?",
+          answer: "Most residential tree removals can be completed in a few hours to one day depending on the size and complexity."
+        },
+        {
+          question: "Is tree removal dangerous?",
+          answer: "Yes, tree removal can be hazardous without proper equipment and experience. That's why it's best handled by trained professionals."
+        }
+      ]}
+      finalCta={{
+        heading: "Get a Free Tree Removal Estimate Today",
+        text: "If you need professional tree removal in Jacksonville, NC, we're here to help. Contact us today for a fast, free estimate and let our team handle the job safely and efficiently.",
+        buttonText: "Call Now"
+      }}
     />
   );
 }
