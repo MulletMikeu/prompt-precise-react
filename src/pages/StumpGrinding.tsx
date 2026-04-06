@@ -33,6 +33,11 @@ export default function StumpGrinding() {
         { question: "Will the tree grow back after grinding?", answer: "No, stump grinding prevents regrowth in most cases." },
         { question: "How long does stump grinding take?", answer: "Most stump grinding jobs can be completed in under an hour depending on size." }
       ]}
+      relatedServices={[
+        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
+        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
+        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
+      ]}
       finalCta={{
         heading: "Remove That Stump Today",
         text: "Don't let an old tree stump take up space in your yard. Our stump grinding service in Jacksonville, NC is fast, affordable, and effective. Contact us today for a free estimate.",

@@ -37,6 +37,11 @@ export default function TreeTrimming() {
         { question: "Is tree trimming necessary?", answer: "Yes, regular trimming helps maintain tree health, prevent hazards, and improve appearance." },
         { question: "Can trimming damage a tree?", answer: "Improper trimming can harm a tree, which is why it's best handled by trained professionals." }
       ]}
+      relatedServices={[
+        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
+        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
+        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
+      ]}
       finalCta={{
         heading: "Schedule Your Tree Trimming Service Today",
         text: "Keep your trees healthy, safe, and looking their best with professional tree trimming services in Jacksonville, NC. Contact us today for a free estimate.",
