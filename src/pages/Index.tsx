@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
 import { Header } from '@/components/layout/Header';
@@ -86,6 +87,25 @@ export default function Index() {
         
         <main className="flex-grow">
           <Hero />
+
+          {/* Jacksonville NC Primary Hub */}
+          <section className="bg-gray-950 py-10 border-b border-gray-800">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                Proudly Serving Jacksonville, NC
+              </h2>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                We are Jacksonville's trusted tree service company, providing expert tree removal, trimming, stump grinding, and emergency storm cleanup throughout Onslow County. As local tree experts in Jacksonville, we understand the unique challenges coastal North Carolina trees face.
+              </p>
+              <Link
+                to="/tree-service-jacksonville-nc"
+                className="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-all duration-300 inline-flex items-center gap-2 text-lg"
+              >
+                Learn More About Our Jacksonville Tree Services →
+              </Link>
+            </div>
+          </section>
+
           <Services />
           <WhyChoose />
           <Suspense fallback={<SectionLoader />}>
