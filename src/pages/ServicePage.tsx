@@ -114,9 +114,29 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
             </section>
           ))}
 
+          {/* Jacksonville NC Hub Link */}
+          {slug !== 'tree-service-jacksonville-nc' && (
+            <section className="bg-gray-950 py-12 border-t border-gray-800">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  {slug.startsWith('tree-service-') ? 'Serving Jacksonville and Surrounding Areas' : 'Tree Service in Jacksonville, NC'}
+                </h2>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  {slug.startsWith('tree-service-')
+                    ? 'We are proud to serve the greater Jacksonville, NC area with professional tree care. Our team provides fast, reliable service across Onslow County. Learn more about our '
+                    : 'Looking for local tree experts in Jacksonville? We provide professional tree care throughout Jacksonville, NC and surrounding communities. Visit our '}
+                  <Link to="/tree-service-jacksonville-nc" className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold">
+                    {slug.startsWith('tree-service-') ? 'Jacksonville tree service' : 'tree service in Jacksonville NC'}
+                  </Link>
+                  {' '}page for more details on the services we offer in your area.
+                </p>
+              </div>
+            </section>
+          )}
+
           {/* Related Services (Internal Linking) */}
           {relatedServices && relatedServices.length > 0 && (
-            <section className="bg-gray-950 py-12 border-t border-gray-800">
+            <section className="bg-black py-12 border-t border-gray-800">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
                 <h2 className="text-2xl font-bold text-white mb-4">Other Services We Offer</h2>
                 <p className="text-gray-300 text-lg mb-6">
