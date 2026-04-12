@@ -18,6 +18,7 @@ const TreeRemovalCost = lazy(() => import("./pages/TreeRemovalCost"));
 const StormDamageGuide = lazy(() => import("./pages/StormDamageGuide"));
 const TreeTrimmingVsPruning = lazy(() => import("./pages/TreeTrimmingVsPruning"));
 const TreeRemovalPermitNC = lazy(() => import("./pages/TreeRemovalPermitNC"));
+const TreeServiceJacksonvilleNC = lazy(() => import("./pages/TreeServiceJacksonvilleNC"));
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/storm-damage-trees-guide" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><StormDamageGuide /></Suspense>} />
             <Route path="/tree-trimming-vs-pruning" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeTrimmingVsPruning /></Suspense>} />
             <Route path="/do-you-need-a-permit-to-remove-a-tree-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalPermitNC /></Suspense>} />
+            <Route path="/tree-service-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceJacksonvilleNC /></Suspense>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
