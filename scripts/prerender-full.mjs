@@ -166,7 +166,7 @@ async function prerender() {
       // We keep scripts so the page becomes interactive after load
       
       // Ensure correct meta tags (override any Helmet-injected ones with our canonical values)
-      const canonical = `${BUSINESS.url}/${slug}`;
+      const canonical = slug ? `${BUSINESS.url}/${slug}` : `${BUSINESS.url}/`;
       
       // Fix canonical if Helmet set it wrong
       html = html.replace(
