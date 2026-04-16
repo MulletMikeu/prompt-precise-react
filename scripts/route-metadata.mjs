@@ -6,8 +6,8 @@
 
 const BUSINESS = {
   name: "Godhans Tree Company",
-  phone: "(910) 455-0970",
-  phoneTel: "+19104550970",
+  phone: "(618) 704-4861",
+  phoneTel: "+16187044861",
   email: "godhanstree@gmail.com",
   address: "4445 Gum Branch Rd, Jacksonville, NC 28540",
   url: "https://treetrimmersnc.online",
