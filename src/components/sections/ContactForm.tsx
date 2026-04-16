@@ -3,6 +3,7 @@ import { BUSINESS_INFO } from '@/lib/constants';
 
 export function ContactForm() {
   const [scriptLoaded, setScriptLoaded] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
 
   useEffect(() => {
     // Defer script loading to improve initial page load
