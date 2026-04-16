@@ -34,18 +34,84 @@ interface ServicePageProps {
   relatedServices?: RelatedService[];
 }
 
+function getBreadcrumbCategory(slug: string): { name: string; slug: string } | null {
+  if (slug.startsWith('tree-service-') && slug !== 'tree-service-jacksonville-nc') {
+    return { name: 'Locations', slug: 'tree-service-jacksonville-nc' };
+  }
+  if (slug.includes('removal') || slug.includes('trimming') || slug.includes('grinding') || slug.includes('emergency')) {
+    return { name: 'Services', slug: 'tree-service-jacksonville-nc' };
+  }
+  return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
+}
+
 export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, finalCta, relatedServices }: ServicePageProps) {
+  const canonical = `https://treetrimmersnc.online/${slug}`;
+  const breadcrumbCategory = getBreadcrumbCategory(slug);
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://treetrimmersnc.online/" },
+      ...(breadcrumbCategory ? [{ "@type": "ListItem", "position": 2, "name": breadcrumbCategory.name, "item": `https://treetrimmersnc.online/${breadcrumbCategory.slug}` }] : []),
+      { "@type": "ListItem", "position": breadcrumbCategory ? 3 : 2, "name": title }
+    ]
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": BUSINESS_INFO.name,
+    "@id": "https://treetrimmersnc.online",
+    "url": canonical,
+    "telephone": BUSINESS_INFO.phone.tel,
+    "email": BUSINESS_INFO.email,
+    "priceRange": "$$",
+    "image": "https://treetrimmersnc.online/og-image.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": BUSINESS_INFO.location.street,
+      "addressLocality": BUSINESS_INFO.location.city,
+      "addressRegion": BUSINESS_INFO.location.state,
+      "postalCode": BUSINESS_INFO.location.zip,
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": BUSINESS_INFO.location.coordinates.latitude,
+      "longitude": BUSINESS_INFO.location.coordinates.longitude
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  };
+
   return (
     <>
       <Helmet>
         <title>{title} | {BUSINESS_INFO.name}</title>
         <meta name="description" content={description} />
-        <link rel="canonical" href={`https://treetrimmersnc.online/${slug}`} />
+        <link rel="canonical" href={canonical} />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={`${title} | ${BUSINESS_INFO.name}`} />
         <meta property="og:description" content={description} />
-        <meta property="og:url" content={`https://treetrimmersnc.online/${slug}`} />
+        <meta property="og:url" content={canonical} />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://treetrimmersnc.online/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://treetrimmersnc.online/og-image.jpg" />
+
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessSchema)}
+        </script>
         {faqs && faqs.length > 0 && (
           <script type="application/ld+json">
             {JSON.stringify({

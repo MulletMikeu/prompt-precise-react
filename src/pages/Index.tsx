@@ -28,10 +28,10 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>Tree Service Jacksonville NC | Godhans | Licensed & Insured</title>
+        <title>Tree Service Jacksonville NC | Godhans Tree Company</title>
         <meta 
           name="description" 
-          content="Professional tree service in Jacksonville, NC. Expert tree trimming, removal, stump grinding & emergency storm damage. Licensed, insured & locally owned. Free estimates! Call (618) 704-4861" 
+          content="Professional tree service in Jacksonville, NC. Expert tree trimming, removal, stump grinding & emergency storm damage. Licensed, insured & locally owned. Free estimates! Call (910) 455-0970" 
         />
         <link rel="canonical" href="https://treetrimmersnc.online/" />
         <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -39,9 +39,14 @@ export default function Index() {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://treetrimmersnc.online/" />
-        <meta property="og:title" content="Tree Service Jacksonville NC | Godhans" />
+        <meta property="og:title" content="Tree Service Jacksonville NC | Godhans Tree Company" />
         <meta property="og:description" content="Professional tree trimming, removal & stump grinding in Jacksonville, NC. Licensed & insured. 24/7 emergency service available." />
-        <meta property="og:site_name" content="Godhans" />
+        <meta property="og:site_name" content="Godhans Tree Company" />
+        <meta property="og:image" content="https://treetrimmersnc.online/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://treetrimmersnc.online/og-image.jpg" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -54,6 +59,7 @@ export default function Index() {
             "telephone": BUSINESS_INFO.phone.tel,
             "email": BUSINESS_INFO.email,
             "priceRange": "$$",
+            "image": "https://treetrimmersnc.online/og-image.jpg",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": BUSINESS_INFO.location.street,

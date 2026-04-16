@@ -19,6 +19,12 @@ import { createServer } from 'http';
 import { routes, BUSINESS } from './route-metadata.mjs';
 import puppeteer from 'puppeteer-core';
 
+// Include homepage for prerendering
+const allRoutes = [
+  { path: '/', title: 'Tree Service Jacksonville NC | Godhans Tree Company', description: 'Professional tree service in Jacksonville, NC.' },
+  ...routes,
+];
+
 const DIST = join(dirname(new URL(import.meta.url).pathname), '..', 'dist');
 const PORT = 4173;
 
@@ -83,7 +89,7 @@ function startStaticServer() {
 }
 
 async function prerender() {
-  console.log(`\n🚀 Full-content prerendering for ${routes.length} routes...\n`);
+  console.log(`\n🚀 Full-content prerendering for ${allRoutes.length} routes...\n`);
 
   const server = await startStaticServer();
 
@@ -127,8 +133,8 @@ async function prerender() {
   let successCount = 0;
   let errorCount = 0;
 
-  for (const route of routes) {
-    const slug = route.path.replace(/^\//, '');
+  for (const route of allRoutes) {
+    const slug = route.path === '/' ? '' : route.path.replace(/^\//, '');
     const url = `http://localhost:${PORT}${route.path}`;
 
     try {
@@ -160,7 +166,7 @@ async function prerender() {
       // We keep scripts so the page becomes interactive after load
       
       // Ensure correct meta tags (override any Helmet-injected ones with our canonical values)
-      const canonical = `${BUSINESS.url}/${slug}`;
+      const canonical = slug ? `${BUSINESS.url}/${slug}` : `${BUSINESS.url}/`;
       
       // Fix canonical if Helmet set it wrong
       html = html.replace(
