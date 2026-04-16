@@ -89,7 +89,7 @@ function startStaticServer() {
 }
 
 async function prerender() {
-  console.log(`\n🚀 Full-content prerendering for ${routes.length} routes...\n`);
+  console.log(`\n🚀 Full-content prerendering for ${allRoutes.length} routes...\n`);
 
   const server = await startStaticServer();
 
