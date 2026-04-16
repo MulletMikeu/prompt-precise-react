@@ -1,17 +1,21 @@
+import { Link, useLocation } from 'react-router-dom';
 import { BUSINESS_INFO } from '@/lib/constants';
 
 export function Footer() {
-  const scrollToSection = (sectionId: string) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  const handleScrollOrNavigate = (sectionId: string) => {
+    if (!isHomePage) {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
     const element = document.getElementById(sectionId);
     if (element) {
       const headerOffset = 150;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
@@ -60,39 +64,34 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Services — real links for SEO */}
           <div>
             <h3 className="text-red-600 text-xl font-bold mb-4">Services</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <button onClick={() => scrollToSection('services')} className="hover:text-red-600 transition-colors">
+                <Link to="/tree-trimming-jacksonville-nc" className="hover:text-red-600 transition-colors">
                   Tree Trimming & Pruning
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="hover:text-red-600 transition-colors">
+                <Link to="/tree-removal-jacksonville-nc" className="hover:text-red-600 transition-colors">
                   Tree Removal
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="hover:text-red-600 transition-colors">
+                <Link to="/stump-grinding-jacksonville-nc" className="hover:text-red-600 transition-colors">
                   Stump Grinding
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="hover:text-red-600 transition-colors">
+                <Link to="/emergency-tree-service-jacksonville-nc" className="hover:text-red-600 transition-colors">
                   Emergency Storm Damage
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="hover:text-red-600 transition-colors">
-                  Land Clearing
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('services')} className="hover:text-red-600 transition-colors">
-                  Lot Cleanup
-                </button>
+                <Link to="/tree-service-jacksonville-nc" className="hover:text-red-600 transition-colors font-semibold">
+                  All Jacksonville Services
+                </Link>
               </li>
             </ul>
           </div>
@@ -102,22 +101,27 @@ export function Footer() {
             <h3 className="text-red-600 text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <button onClick={() => scrollToSection('why-choose')} className="hover:text-red-600 transition-colors">
+                <button onClick={() => handleScrollOrNavigate('why-choose')} className="hover:text-red-600 transition-colors">
                   About Us
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('service-area')} className="hover:text-red-600 transition-colors">
-                  Service Areas
-                </button>
+                <Link to="/tree-service-richlands-nc" className="hover:text-red-600 transition-colors">
+                  Richlands NC
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('testimonials')} className="hover:text-red-600 transition-colors">
+                <Link to="/tree-service-hubert-nc" className="hover:text-red-600 transition-colors">
+                  Hubert NC
+                </Link>
+              </li>
+              <li>
+                <button onClick={() => handleScrollOrNavigate('testimonials')} className="hover:text-red-600 transition-colors">
                   Customer Reviews
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('contact')} className="hover:text-red-600 transition-colors">
+                <button onClick={() => handleScrollOrNavigate('contact')} className="hover:text-red-600 transition-colors">
                   Get Free Estimate
                 </button>
               </li>
@@ -129,16 +133,35 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Service Area */}
+          {/* Resources & Service Area */}
           <div>
-            <h3 className="text-red-600 text-xl font-bold mb-4">Service Area</h3>
+            <h3 className="text-red-600 text-xl font-bold mb-4">Resources</h3>
             <ul className="space-y-2 text-gray-300 text-sm">
-              <li>Jacksonville, NC</li>
-              <li>Camp Lejeune</li>
-              <li>Swansboro</li>
-              <li>Richlands</li>
-              <li>Sneads Ferry</li>
-              <li>& Surrounding Areas</li>
+              <li>
+                <Link to="/tree-removal-cost-north-carolina" className="hover:text-red-600 transition-colors">
+                  Tree Removal Cost Guide
+                </Link>
+              </li>
+              <li>
+                <Link to="/storm-damage-trees-guide" className="hover:text-red-600 transition-colors">
+                  Storm Damage Guide
+                </Link>
+              </li>
+              <li>
+                <Link to="/tree-trimming-vs-pruning" className="hover:text-red-600 transition-colors">
+                  Trimming vs Pruning
+                </Link>
+              </li>
+              <li>
+                <Link to="/do-you-need-a-permit-to-remove-a-tree-nc" className="hover:text-red-600 transition-colors">
+                  Tree Removal Permits NC
+                </Link>
+              </li>
+              <li>
+                <Link to="/leaning-tree-dangerous-after-storm" className="hover:text-red-600 transition-colors">
+                  Leaning Tree Safety
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

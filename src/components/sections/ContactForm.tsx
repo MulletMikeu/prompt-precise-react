@@ -54,7 +54,7 @@ export function ContactForm() {
 
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-lg shadow-2xl overflow-hidden border-2 border-gray-200">
-            {!scriptLoaded && (
+            {!iframeLoaded && (
               <div className="flex items-center justify-center h-96 bg-gray-50">
                 <div className="text-center">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
@@ -69,8 +69,9 @@ export function ContactForm() {
                 width: '100%',
                 height: '1064px',
                 border: 'none',
-                display: scriptLoaded ? 'block' : 'none'
+                display: iframeLoaded ? 'block' : 'none'
               }}
+              onLoad={() => setIframeLoaded(true)}
               id={`inline-${BUSINESS_INFO.integrations.arcFormId}`}
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
