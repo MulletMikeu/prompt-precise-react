@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 
 export default function TreeServiceJacksonvilleNC() {
@@ -16,19 +17,19 @@ export default function TreeServiceJacksonvilleNC() {
         },
         {
           heading: "Tree Removal in Jacksonville, NC",
-          text: "Need a tree removed safely? Our tree removal team handles everything from small yard trees to large, hazardous removals near structures and power lines. We assess every job carefully to ensure safety and efficiency.\n\n→ Learn more about our tree removal services"
+          text: "Need a tree removed safely? Our tree removal team handles everything from small yard trees to large, hazardous removals near structures and power lines. We assess every job carefully to ensure safety and efficiency."
         },
         {
           heading: "Tree Trimming in Jacksonville, NC",
-          text: "Regular tree trimming keeps your property looking great and prevents overgrown branches from becoming safety hazards. Our team provides expert trimming that maintains tree health while improving curb appeal.\n\n→ Learn more about our tree trimming services"
+          text: "Regular tree trimming keeps your property looking great and prevents overgrown branches from becoming safety hazards. Our team provides expert trimming that maintains tree health while improving curb appeal."
         },
         {
           heading: "Stump Grinding in Jacksonville, NC",
-          text: "After a tree is removed, the stump doesn't have to stay. Our stump grinding service removes unsightly stumps quickly and efficiently, giving you back usable yard space.\n\n→ Learn more about our stump grinding services"
+          text: "After a tree is removed, the stump doesn't have to stay. Our stump grinding service removes unsightly stumps quickly and efficiently, giving you back usable yard space."
         },
         {
           heading: "Emergency Tree Service in Jacksonville, NC",
-          text: "Storms and severe weather can cause dangerous tree damage at any time. Our emergency tree service team is ready to respond quickly to fallen trees, broken limbs, and hazardous situations throughout Jacksonville and surrounding areas.\n\n→ Learn more about our emergency tree services"
+          text: "Storms and severe weather can cause dangerous tree damage at any time. Our emergency tree service team is ready to respond quickly to fallen trees, broken limbs, and hazardous situations throughout Jacksonville and surrounding areas."
         },
         {
           heading: "Why Choose Godhans Tree Company in Jacksonville?",
@@ -40,9 +41,22 @@ export default function TreeServiceJacksonvilleNC() {
         },
         {
           heading: "Storm Damage & Tree Safety Resources",
-          text: "Living in coastal North Carolina means dealing with storms. We've put together helpful guides to keep you informed:\n\n→ What to Do After Storm Damage to Trees\n→ How Much Does Tree Removal Cost in NC?\n→ Do You Need a Permit to Remove a Tree in NC?\n→ Tree Trimming vs Pruning: What's the Difference?"
+          text: "Living in coastal North Carolina means dealing with storms. We've put together helpful guides to keep you informed."
         }
       ]}
+      sectionLinks={{
+        1: { href: "/tree-removal-jacksonville-nc", label: "Learn more about our tree removal services →" },
+        2: { href: "/tree-trimming-jacksonville-nc", label: "Learn more about our tree trimming services →" },
+        3: { href: "/stump-grinding-jacksonville-nc", label: "Learn more about our stump grinding services →" },
+        4: { href: "/emergency-tree-service-jacksonville-nc", label: "Learn more about our emergency tree services →" },
+        7: [
+          { href: "/storm-damage-trees-guide", label: "What to Do After Storm Damage to Trees" },
+          { href: "/tree-removal-cost-north-carolina", label: "How Much Does Tree Removal Cost in NC?" },
+          { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Do You Need a Permit to Remove a Tree in NC?" },
+          { href: "/tree-trimming-vs-pruning", label: "Tree Trimming vs Pruning: What's the Difference?" },
+          { href: "/leaning-tree-dangerous-after-storm", label: "Is a Leaning Tree Dangerous After a Storm?" }
+        ]
+      }}
       faqs={[
         {
           question: "How much does tree service cost in Jacksonville, NC?",

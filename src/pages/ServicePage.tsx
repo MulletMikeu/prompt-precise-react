@@ -15,6 +15,11 @@ interface RelatedService {
   href: string;
 }
 
+interface SectionLink {
+  href: string;
+  label: string;
+}
+
 interface ServicePageProps {
   title: string;
   subtitle?: string;
@@ -23,12 +28,13 @@ interface ServicePageProps {
   ctaText?: string;
   quickAnswer?: string;
   sections: { heading: string; text: string }[];
+  sectionLinks?: Record<number, SectionLink | SectionLink[]>;
   faqs?: FaqItem[];
   finalCta?: { heading: string; text: string; buttonText?: string };
   relatedServices?: RelatedService[];
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, faqs, finalCta, relatedServices }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, finalCta, relatedServices }: ServicePageProps) {
   return (
     <>
       <Helmet>
@@ -110,6 +116,19 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                 <div className="text-gray-300 leading-relaxed text-lg whitespace-pre-line">
                   {section.text}
                 </div>
+                {sectionLinks && sectionLinks[index] && (
+                  <div className="mt-4 space-y-2">
+                    {(Array.isArray(sectionLinks[index]) ? sectionLinks[index] as SectionLink[] : [sectionLinks[index] as SectionLink]).map((link) => (
+                      <Link
+                        key={link.href}
+                        to={link.href}
+                        className="block text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             </section>
           ))}
