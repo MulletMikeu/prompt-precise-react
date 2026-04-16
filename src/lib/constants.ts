@@ -1,9 +1,9 @@
 export const BUSINESS_INFO = {
-  name: "Godhans",
+  name: "Godhans Tree Company",
   phone: {
-    display: "(618) 704-4861",
-    tel: "+16187044861",
-    raw: "618-704-4861"
+    display: "(910) 455-0970",
+    tel: "+19104550970",
+    raw: "910-455-0970"
   },
   email: "godhanstree@gmail.com",
   location: {
