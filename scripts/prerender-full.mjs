@@ -19,6 +19,12 @@ import { createServer } from 'http';
 import { routes, BUSINESS } from './route-metadata.mjs';
 import puppeteer from 'puppeteer-core';
 
+// Include homepage for prerendering
+const allRoutes = [
+  { path: '/', title: 'Tree Service Jacksonville NC | Godhans Tree Company', description: 'Professional tree service in Jacksonville, NC.' },
+  ...routes,
+];
+
 const DIST = join(dirname(new URL(import.meta.url).pathname), '..', 'dist');
 const PORT = 4173;
 
