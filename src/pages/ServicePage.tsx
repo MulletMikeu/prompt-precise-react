@@ -15,6 +15,11 @@ interface RelatedService {
   href: string;
 }
 
+interface SectionLink {
+  href: string;
+  label: string;
+}
+
 interface ServicePageProps {
   title: string;
   subtitle?: string;
@@ -23,12 +28,13 @@ interface ServicePageProps {
   ctaText?: string;
   quickAnswer?: string;
   sections: { heading: string; text: string }[];
+  sectionLinks?: Record<number, SectionLink | SectionLink[]>;
   faqs?: FaqItem[];
   finalCta?: { heading: string; text: string; buttonText?: string };
   relatedServices?: RelatedService[];
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, faqs, finalCta, relatedServices }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, finalCta, relatedServices }: ServicePageProps) {
   return (
     <>
       <Helmet>
