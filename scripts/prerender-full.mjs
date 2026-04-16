@@ -133,8 +133,8 @@ async function prerender() {
   let successCount = 0;
   let errorCount = 0;
 
-  for (const route of routes) {
-    const slug = route.path.replace(/^\//, '');
+  for (const route of allRoutes) {
+    const slug = route.path === '/' ? '' : route.path.replace(/^\//, '');
     const url = `http://localhost:${PORT}${route.path}`;
 
     try {
