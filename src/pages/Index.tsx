@@ -31,7 +31,7 @@ export default function Index() {
         <title>Tree Service Jacksonville NC | Godhans Tree Company</title>
         <meta 
           name="description" 
-          content="Professional tree service in Jacksonville, NC. Expert tree trimming, removal, stump grinding & emergency storm damage. Licensed, insured & locally owned. Free estimates! Call (910) 455-0970" 
+          content="Professional tree service in Jacksonville, NC. Expert tree trimming, removal, stump grinding & emergency storm damage. Licensed, insured & locally owned. Free estimates! Call (618) 704-4861" 
         />
         <link rel="canonical" href="https://treetrimmersnc.online/" />
         <meta name="robots" content="index, follow, max-image-preview:large" />
