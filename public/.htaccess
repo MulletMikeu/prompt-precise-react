@@ -1,3 +1,15 @@
+# 301 Redirect old domain to new primary domain (preserves SEO authority)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^(www\.)?treetrimmersnc\.online$ [NC]
+  RewriteRule ^(.*)$ https://godhans.com/$1 [R=301,L]
+
+  # Force HTTPS + non-www canonical
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.godhans\.com$ [NC]
+  RewriteRule ^(.*)$ https://godhans.com/$1 [R=301,L]
+</IfModule>
+
 # IONOS Cache Control Headers for Performance Optimization
 <IfModule mod_headers.c>
   # Cache static assets for 1 year (immutable)
