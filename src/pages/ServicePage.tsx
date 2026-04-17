@@ -45,15 +45,15 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
 }
 
 export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, finalCta, relatedServices }: ServicePageProps) {
-  const canonical = `https://treetrimmersnc.online/${slug}`;
+  const canonical = `https://godhans.com/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://treetrimmersnc.online/" },
-      ...(breadcrumbCategory ? [{ "@type": "ListItem", "position": 2, "name": breadcrumbCategory.name, "item": `https://treetrimmersnc.online/${breadcrumbCategory.slug}` }] : []),
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://godhans.com/" },
+      ...(breadcrumbCategory ? [{ "@type": "ListItem", "position": 2, "name": breadcrumbCategory.name, "item": `https://godhans.com/${breadcrumbCategory.slug}` }] : []),
       { "@type": "ListItem", "position": breadcrumbCategory ? 3 : 2, "name": title }
     ]
   };
@@ -62,12 +62,12 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": BUSINESS_INFO.name,
-    "@id": "https://treetrimmersnc.online",
+    "@id": "https://godhans.com",
     "url": canonical,
     "telephone": BUSINESS_INFO.phone.tel,
     "email": BUSINESS_INFO.email,
     "priceRange": "$$",
-    "image": "https://treetrimmersnc.online/og-image.jpg",
+    "image": "https://godhans.com/og-image.jpg",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": BUSINESS_INFO.location.street,
@@ -100,11 +100,11 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://treetrimmersnc.online/og-image.jpg" />
+        <meta property="og:image" content="https://godhans.com/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://treetrimmersnc.online/og-image.jpg" />
+        <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
 
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbSchema)}

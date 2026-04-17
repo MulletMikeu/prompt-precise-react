@@ -1,4 +1,4 @@
-# robots.txt for treetrimmersnc.online
+# robots.txt for godhans.com
 User-agent: *
 Allow: /
 
@@ -20,4 +20,4 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://treetrimmersnc.online/sitemap.xml
+Sitemap: https://godhans.com/sitemap.xml

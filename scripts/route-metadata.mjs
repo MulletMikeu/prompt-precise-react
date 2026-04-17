@@ -10,8 +10,8 @@ const BUSINESS = {
   phoneTel: "+16187044861",
   email: "godhanstree@gmail.com",
   address: "4445 Gum Branch Rd, Jacksonville, NC 28540",
-  url: "https://treetrimmersnc.online",
-  ogImage: "https://treetrimmersnc.online/og-image.jpg",
+  url: "https://godhans.com",
+  ogImage: "https://godhans.com/og-image.jpg",
 };
 
 export const routes = [
