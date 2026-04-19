@@ -166,6 +166,9 @@ export default function Index() {
             <ServiceArea />
           </Suspense>
           <Suspense fallback={<SectionLoader />}>
+            <CitiesWeServe />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
             <Testimonials />
           </Suspense>
           <FAQ />
