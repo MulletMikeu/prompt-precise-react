@@ -224,6 +224,38 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
             </section>
           ))}
 
+          {/* Photo Gallery */}
+          {gallery && gallery.images.length > 0 && (
+            <section className="bg-gray-950 py-16 border-t border-gray-800">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                {gallery.heading && (
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">
+                    {gallery.heading}
+                  </h2>
+                )}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {gallery.images.map((img, i) => (
+                    <figure key={i} className="rounded-lg overflow-hidden border-2 border-gray-800 bg-black shadow-xl">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        loading="lazy"
+                        width={800}
+                        height={600}
+                        className="w-full h-56 object-cover"
+                      />
+                      {img.caption && (
+                        <figcaption className="text-gray-400 text-sm p-3 text-center">
+                          {img.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* Jacksonville NC Hub Link */}
           {slug !== 'tree-service-jacksonville-nc' && (
             <section className="bg-gray-950 py-12 border-t border-gray-800">
