@@ -14,6 +14,9 @@ const StumpGrinding = lazy(() => import("./pages/StumpGrinding"));
 const EmergencyTreeService = lazy(() => import("./pages/EmergencyTreeService"));
 const TreeServiceRichlands = lazy(() => import("./pages/TreeServiceRichlands"));
 const TreeServiceHubert = lazy(() => import("./pages/TreeServiceHubert"));
+const TreeServiceSneadsFerry = lazy(() => import("./pages/TreeServiceSneadsFerry"));
+const TreeServiceSwansboro = lazy(() => import("./pages/TreeServiceSwansboro"));
+const TreeServiceCampLejeune = lazy(() => import("./pages/TreeServiceCampLejeune"));
 const TreeRemovalCost = lazy(() => import("./pages/TreeRemovalCost"));
 const StormDamageGuide = lazy(() => import("./pages/StormDamageGuide"));
 const TreeTrimmingVsPruning = lazy(() => import("./pages/TreeTrimmingVsPruning"));
@@ -38,6 +41,9 @@ const App = () => (
             <Route path="/emergency-tree-service-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><EmergencyTreeService /></Suspense>} />
             <Route path="/tree-service-richlands-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceRichlands /></Suspense>} />
             <Route path="/tree-service-hubert-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceHubert /></Suspense>} />
+            <Route path="/tree-service-sneads-ferry-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceSneadsFerry /></Suspense>} />
+            <Route path="/tree-service-swansboro-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceSwansboro /></Suspense>} />
+            <Route path="/tree-service-camp-lejeune-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceCampLejeune /></Suspense>} />
             <Route path="/tree-removal-cost-north-carolina" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalCost /></Suspense>} />
             <Route path="/storm-damage-trees-guide" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><StormDamageGuide /></Suspense>} />
             <Route path="/tree-trimming-vs-pruning" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeTrimmingVsPruning /></Suspense>} />
