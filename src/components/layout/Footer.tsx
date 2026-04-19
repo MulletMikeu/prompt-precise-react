@@ -116,6 +116,21 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/tree-service-sneads-ferry-nc" className="hover:text-red-600 transition-colors">
+                  Sneads Ferry NC
+                </Link>
+              </li>
+              <li>
+                <Link to="/tree-service-swansboro-nc" className="hover:text-red-600 transition-colors">
+                  Swansboro NC
+                </Link>
+              </li>
+              <li>
+                <Link to="/tree-service-camp-lejeune-nc" className="hover:text-red-600 transition-colors">
+                  Camp Lejeune NC
+                </Link>
+              </li>
+              <li>
                 <button onClick={() => handleScrollOrNavigate('testimonials')} className="hover:text-red-600 transition-colors">
                   Customer Reviews
                 </button>
