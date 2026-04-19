@@ -165,20 +165,22 @@ async function prerender() {
       // Clean up: remove scripts that re-hydrate (optional, keeps them for interactivity)
       // We keep scripts so the page becomes interactive after load
       
-      // Ensure correct meta tags (override any Helmet-injected ones with our canonical values)
+      // Ensure correct meta tags — strip ALL existing then inject exactly ONE per route
       const canonical = slug ? `${BUSINESS.url}/${slug}` : `${BUSINESS.url}/`;
-      
-      // Fix canonical if Helmet set it wrong
-      html = html.replace(
-        /<link[^>]*rel="canonical"[^>]*>/g,
-        `<link rel="canonical" href="${canonical}" data-rh="true" />`
-      );
-      
-      // Ensure og:url is correct
-      html = html.replace(
-        /<meta[^>]*property="og:url"[^>]*>/g,
-        `<meta property="og:url" content="${canonical}" data-rh="true" />`
-      );
+
+      // Remove ALL canonical, og:url, and meta description tags (whether from index.html or Helmet)
+      html = html.replace(/<link[^>]*rel=["']canonical["'][^>]*>\s*/gi, '');
+      html = html.replace(/<meta[^>]*property=["']og:url["'][^>]*>\s*/gi, '');
+      html = html.replace(/<meta[^>]*name=["']description["'][^>]*>\s*/gi, '');
+
+      // Inject exactly one canonical, one og:url, and one description right before </head>
+      const desc = (route.description || '').replace(/"/g, '&quot;');
+      const injection =
+        `    <link rel="canonical" href="${canonical}" />\n` +
+        `    <meta name="description" content="${desc}" />\n` +
+        `    <meta property="og:url" content="${canonical}" />\n` +
+        `  </head>`;
+      html = html.replace('</head>', injection);
 
       // Remove any lovable-tagger dev attributes
       html = html.replace(/\s*data-lov-id="[^"]*"/g, '');
