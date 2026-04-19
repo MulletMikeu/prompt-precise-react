@@ -8,6 +8,7 @@ import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { WhyChoose } from '@/components/sections/WhyChoose';
 import { BUSINESS_INFO, TESTIMONIALS } from '@/lib/constants';
+import { FAQ, FAQ_ITEMS } from '@/components/sections/FAQ';
 
 // Lazy load below-the-fold sections to reduce initial bundle size
 const ServiceArea = lazy(() => import('@/components/sections/ServiceArea').then(m => ({ default: m.ServiceArea })));
