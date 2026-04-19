@@ -48,40 +48,58 @@ export default function Index() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
         
-        {/* Structured Data */}
+        {/* Structured Data — LocalBusiness (TreeService) */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": BUSINESS_INFO.name,
+            "@type": "TreeService",
+            "name": "Godhans Tree Company",
             "@id": "https://godhans.com",
             "url": "https://godhans.com",
-            "telephone": BUSINESS_INFO.phone.tel,
-            "email": BUSINESS_INFO.email,
+            "telephone": "+16187044861",
+            "email": "godhanstree@gmail.com",
             "priceRange": "$$",
             "image": "https://godhans.com/og-image.jpg",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": BUSINESS_INFO.location.street,
-              "addressLocality": BUSINESS_INFO.location.city,
-              "addressRegion": BUSINESS_INFO.location.state,
-              "postalCode": BUSINESS_INFO.location.zip,
+              "streetAddress": "4445 Gum Branch Rd",
+              "addressLocality": "Jacksonville",
+              "addressRegion": "NC",
+              "postalCode": "28540",
               "addressCountry": "US"
             },
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": BUSINESS_INFO.location.coordinates.latitude,
-              "longitude": BUSINESS_INFO.location.coordinates.longitude
+              "latitude": 34.754,
+              "longitude": -77.4305
             },
-            "openingHoursSpecification": {
+            "openingHoursSpecification": [{
               "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+              "dayOfWeek": [
+                "Monday","Tuesday","Wednesday",
+                "Thursday","Friday","Saturday","Sunday"
+              ],
               "opens": "00:00",
               "closes": "23:59"
-            },
+            }],
+            "areaServed": [
+              { "@type": "City", "name": "Jacksonville, NC" },
+              { "@type": "City", "name": "Richlands, NC" },
+              { "@type": "City", "name": "Hubert, NC" },
+              { "@type": "City", "name": "Sneads Ferry, NC" },
+              { "@type": "City", "name": "Swansboro, NC" },
+              { "@type": "City", "name": "Camp Lejeune, NC" }
+            ],
+            "serviceType": [
+              "Tree Removal",
+              "Tree Trimming",
+              "Stump Grinding",
+              "Emergency Tree Service",
+              "Land Clearing"
+            ],
             "sameAs": [
-              BUSINESS_INFO.social.facebook,
-              BUSINESS_INFO.social.instagram
+              "https://www.facebook.com/godhans",
+              "https://www.instagram.com/godhans"
             ]
           })}
         </script>
