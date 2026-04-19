@@ -3,7 +3,17 @@ import { Link } from 'react-router-dom';
 import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { OtherCitiesWeServe } from '@/components/sections/OtherCitiesWeServe';
 import { BUSINESS_INFO } from '@/lib/constants';
+
+const LOCATION_SLUGS = new Set([
+  'tree-service-jacksonville-nc',
+  'tree-service-camp-lejeune-nc',
+  'tree-service-swansboro-nc',
+  'tree-service-sneads-ferry-nc',
+  'tree-service-richlands-nc',
+  'tree-service-hubert-nc',
+]);
 
 interface FaqItem {
   question: string;
@@ -314,6 +324,11 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                 </div>
               </div>
             </section>
+          )}
+
+          {/* Other Cities We Serve (location pages only) */}
+          {LOCATION_SLUGS.has(slug) && (
+            <OtherCitiesWeServe currentSlug={slug} />
           )}
 
           {/* Final CTA */}
