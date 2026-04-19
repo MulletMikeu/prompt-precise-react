@@ -167,6 +167,7 @@ export default function Index() {
           <Suspense fallback={<SectionLoader />}>
             <Testimonials />
           </Suspense>
+          <FAQ />
           <Suspense fallback={<SectionLoader />}>
             <Contact />
           </Suspense>
