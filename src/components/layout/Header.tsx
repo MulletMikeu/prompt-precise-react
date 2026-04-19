@@ -165,6 +165,19 @@ export function Header() {
                     {link.label}
                   </Link>
                 ))}
+                <div className="px-4 pt-3 pb-2 text-xs uppercase tracking-wider text-gray-500 font-semibold">
+                  Specialty Equipment
+                </div>
+                {specialtyEquipmentLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3 text-gray-300 hover:bg-gray-900 hover:text-red-600 transition-colors text-sm border-b border-gray-800"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             )}
 
