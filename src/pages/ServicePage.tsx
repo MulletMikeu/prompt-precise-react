@@ -20,6 +20,12 @@ interface SectionLink {
   label: string;
 }
 
+interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 interface ServicePageProps {
   title: string;
   subtitle?: string;
@@ -32,6 +38,8 @@ interface ServicePageProps {
   faqs?: FaqItem[];
   finalCta?: { heading: string; text: string; buttonText?: string };
   relatedServices?: RelatedService[];
+  heroImage?: { src: string; alt: string };
+  gallery?: { heading?: string; images: GalleryImage[] };
 }
 
 function getBreadcrumbCategory(slug: string): { name: string; slug: string } | null {
