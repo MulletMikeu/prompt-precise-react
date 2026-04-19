@@ -17,6 +17,7 @@ const ContactForm = lazy(() => import('@/components/sections/ContactForm').then(
 const BookingCalendar = lazy(() => import('@/components/sections/BookingCalendar').then(m => ({ default: m.BookingCalendar })));
 const Testimonials = lazy(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })));
 const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
+const PrecisionRemoval = lazy(() => import('@/components/sections/PrecisionRemoval').then(m => ({ default: m.PrecisionRemoval })));
 
 // Loading fallback component
 const SectionLoader = () => (
@@ -156,6 +157,9 @@ export default function Index() {
 
           <Services />
           <WhyChoose />
+          <Suspense fallback={<SectionLoader />}>
+            <PrecisionRemoval variant="light" />
+          </Suspense>
           <Suspense fallback={<SectionLoader />}>
             <ContactForm />
           </Suspense>
