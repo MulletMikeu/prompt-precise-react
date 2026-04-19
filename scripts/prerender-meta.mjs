@@ -36,23 +36,12 @@ for (const route of routes) {
     `<title>${escapeHtml(route.title)}</title>`
   );
 
-  // Replace meta description
-  html = html.replace(
-    /<meta name="description" content="[^"]*"\s*\/?>/,
-    `<meta name="description" content="${escapeAttr(route.description)}" />`
-  );
+  // Strip ALL existing canonical, og:url, and meta description tags first
+  html = html.replace(/<link[^>]*rel=["']canonical["'][^>]*>\s*/gi, '');
+  html = html.replace(/<meta[^>]*property=["']og:url["'][^>]*>\s*/gi, '');
+  html = html.replace(/<meta[^>]*name=["']description["'][^>]*>\s*/gi, '');
 
-  // Add canonical link (replace existing or add before </head>)
-  if (html.includes('<link rel="canonical"')) {
-    html = html.replace(
-      /<link rel="canonical" href="[^"]*"\s*\/?>/,
-      `<link rel="canonical" href="${canonical}" />`
-    );
-  } else {
-    html = html.replace('</head>', `    <link rel="canonical" href="${canonical}" />\n  </head>`);
-  }
-
-  // Replace OG tags
+  // Replace OG title/description (these can stay one-per-page in index.html)
   html = html.replace(
     /<meta property="og:title" content="[^"]*"\s*\/?>/,
     `<meta property="og:title" content="${escapeAttr(route.title)}" />`
@@ -62,18 +51,13 @@ for (const route of routes) {
     `<meta property="og:description" content="${escapeAttr(route.description)}" />`
   );
 
-  // Add og:url (replace or insert)
-  if (html.includes('og:url')) {
-    html = html.replace(
-      /<meta property="og:url" content="[^"]*"\s*\/?>/,
-      `<meta property="og:url" content="${canonical}" />`
-    );
-  } else {
-    html = html.replace(
-      /<meta property="og:type"/,
-      `<meta property="og:url" content="${canonical}" />\n    <meta property="og:type"`
-    );
-  }
+  // Inject exactly one canonical, one description, one og:url before </head>
+  const headInjection =
+    `    <link rel="canonical" href="${canonical}" />\n` +
+    `    <meta name="description" content="${escapeAttr(route.description)}" />\n` +
+    `    <meta property="og:url" content="${canonical}" />\n` +
+    `  </head>`;
+  html = html.replace('</head>', headInjection);
 
   // Add structured data schema if present
   if (route.schema) {
