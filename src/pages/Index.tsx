@@ -7,7 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { WhyChoose } from '@/components/sections/WhyChoose';
-import { BUSINESS_INFO } from '@/lib/constants';
+import { BUSINESS_INFO, TESTIMONIALS } from '@/lib/constants';
 
 // Lazy load below-the-fold sections to reduce initial bundle size
 const ServiceArea = lazy(() => import('@/components/sections/ServiceArea').then(m => ({ default: m.ServiceArea })));
@@ -100,7 +100,13 @@ export default function Index() {
             "sameAs": [
               "https://www.facebook.com/godhans",
               "https://www.instagram.com/godhans"
-            ]
+            ],
+            "review": TESTIMONIALS.map(t => ({
+              "@type": "Review",
+              "author": { "@type": "Person", "name": t.author },
+              "reviewRating": { "@type": "Rating", "ratingValue": t.rating, "bestRating": 5 },
+              "reviewBody": t.text
+            }))
           })}
         </script>
       </Helmet>

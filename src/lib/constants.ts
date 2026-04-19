@@ -133,22 +133,85 @@ export const TESTIMONIALS = [
   {
     id: 1,
     rating: 5,
-    text: "Godhans Tree Company did an amazing job removing three large oak trees from our property. Professional, efficient, and left everything spotless. Highly recommend!",
-    author: "Sarah M.",
-    location: "Jacksonville"
+    text: "These guys are the absolute best! They are very reasonably priced for the quality and professionalism they bring with them. They are fast and do clean work. I highly recommend Godhans!",
+    author: "Robert H.",
+    location: "Jacksonville, NC"
   },
   {
     id: 2,
     rating: 5,
-    text: "Called them for emergency service after the storm. They responded within hours and safely removed a fallen tree from our roof. Fair pricing and excellent work!",
-    author: "Mike R.",
-    location: "Camp Lejeune"
+    text: "Amazing job by Michael and his crew. Took a huge 70ft pine down with no issues in an extremely tight space. Cut 3 other small ones down and trimmed the front tree. If you are looking for great service and really good prices, definitely check them out. You will not be disappointed.",
+    author: "James T.",
+    location: "Jacksonville, NC"
   },
   {
     id: 3,
     rating: 5,
-    text: "Best tree service in Jacksonville! They trimmed our trees beautifully and ground out three old stumps. The crew was courteous and cleaned up perfectly. Will use again!",
-    author: "Jennifer L.",
-    location: "Swansboro"
+    text: "Great company! Very respectful of your home, very polite and friendly. Took plenty of time to discuss removal of a 70' oak and maple. Professional, safety-focused, and excellent cleanup.",
+    author: "M V.",
+    location: "Jacksonville, NC"
+  },
+  {
+    id: 4,
+    rating: 5,
+    text: "Kind, helpful and fair. Will do business again. 10/10.",
+    author: "Bingo B.",
+    location: "Jacksonville, NC"
+  },
+  {
+    id: 5,
+    rating: 5,
+    text: "By far the best around. Has the proper equipment to make sure the job is done right and quickly.",
+    author: "Forit F.",
+    location: "Jacksonville, NC"
+  },
+  {
+    id: 6,
+    rating: 5,
+    text: "Mike was a great guy. Had two massive trees that had to go down — he took care of it and cleared a good bunch of overgrowth while he was at it. Great price too.",
+    author: "Bart L.",
+    location: "Jacksonville, NC"
+  },
+  {
+    id: 7,
+    rating: 5,
+    text: "I've used Mike for my tree work and for my customers. Always excellent work at reasonable prices.",
+    author: "Thomas N.",
+    location: "Jacksonville, NC"
+  },
+  {
+    id: 8,
+    rating: 5,
+    text: "I have been utilizing Godhans for years. Every job I have paid them for has been done with the utmost professionalism and courtesy. They are timely, safety oriented, and always leave a clean site. Their dedication to customer service shows through with every job they do.",
+    author: "William C.",
+    location: "Jacksonville, NC"
+  },
+  {
+    id: 9,
+    rating: 5,
+    text: "Mike and his crew did an excellent job for me. He cut down a huge pine tree, ground the stump, and removed another tree back behind my privacy fence. I would highly recommend him!",
+    author: "A M.",
+    location: "Jacksonville, NC"
+  },
+  {
+    id: 10,
+    rating: 5,
+    text: "Mike and his crew went above and beyond. I had major storm damage to some properties and he was a Godsend.",
+    author: "Diane L.",
+    location: "Jacksonville, NC"
+  },
+  {
+    id: 11,
+    rating: 5,
+    text: "Mike and the Godhans team has gone above and beyond for us. Their quality and attention to detail is second to none.",
+    author: "Patriot P.",
+    location: "Jacksonville, NC"
+  },
+  {
+    id: 12,
+    rating: 5,
+    text: "Great company to work with. Their attention to detail on protecting property and job site cleanup shows they really care about their customers. I strongly recommend this company.",
+    author: "Michael H.",
+    location: "Jacksonville, NC"
   }
 ];
