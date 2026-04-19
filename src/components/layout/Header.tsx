@@ -11,6 +11,12 @@ const serviceLinks = [
   { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
 ];
 
+const specialtyEquipmentLinks = [
+  { label: 'Spider Lift Tree Removal', href: '/spider-lift-tree-removal-jacksonville-nc' },
+  { label: 'Tree Removal Near House', href: '/tree-removal-near-house-jacksonville-nc' },
+  { label: 'Tree Removal in Tight Spaces', href: '/tree-removal-tight-spaces-jacksonville-nc' },
+];
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
