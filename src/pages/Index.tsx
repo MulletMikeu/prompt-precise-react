@@ -110,6 +110,22 @@ export default function Index() {
             }))
           })}
         </script>
+
+        {/* Structured Data — FAQPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": FAQ_ITEMS.map(item => ({
+              "@type": "Question",
+              "name": item.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+              }
+            }))
+          })}
+        </script>
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
