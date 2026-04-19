@@ -8,6 +8,7 @@ import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { WhyChoose } from '@/components/sections/WhyChoose';
 import { BUSINESS_INFO, TESTIMONIALS } from '@/lib/constants';
+import { FAQ, FAQ_ITEMS } from '@/components/sections/FAQ';
 
 // Lazy load below-the-fold sections to reduce initial bundle size
 const ServiceArea = lazy(() => import('@/components/sections/ServiceArea').then(m => ({ default: m.ServiceArea })));
@@ -109,6 +110,22 @@ export default function Index() {
             }))
           })}
         </script>
+
+        {/* Structured Data — FAQPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": FAQ_ITEMS.map(item => ({
+              "@type": "Question",
+              "name": item.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+              }
+            }))
+          })}
+        </script>
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
@@ -150,6 +167,7 @@ export default function Index() {
           <Suspense fallback={<SectionLoader />}>
             <Testimonials />
           </Suspense>
+          <FAQ />
           <Suspense fallback={<SectionLoader />}>
             <Contact />
           </Suspense>
