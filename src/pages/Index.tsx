@@ -12,6 +12,7 @@ import { FAQ, FAQ_ITEMS } from '@/components/sections/FAQ';
 
 // Lazy load below-the-fold sections to reduce initial bundle size
 const ServiceArea = lazy(() => import('@/components/sections/ServiceArea').then(m => ({ default: m.ServiceArea })));
+const CitiesWeServe = lazy(() => import('@/components/sections/CitiesWeServe').then(m => ({ default: m.CitiesWeServe })));
 const ContactForm = lazy(() => import('@/components/sections/ContactForm').then(m => ({ default: m.ContactForm })));
 const BookingCalendar = lazy(() => import('@/components/sections/BookingCalendar').then(m => ({ default: m.BookingCalendar })));
 const Testimonials = lazy(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })));
