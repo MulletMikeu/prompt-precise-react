@@ -91,11 +91,12 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
 
   return (
     <>
-      <Helmet>
-        <title>{title} | {BUSINESS_INFO.name}</title>
+      <Helmet prioritizeSeoTags>
+        <title>{`${title} | ${BUSINESS_INFO.name}`}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
         <meta name="robots" content="index, follow" />
+        <meta name="build-marker" content="helmet-v2-2026-04-19" />
         <meta property="og:title" content={`${title} | ${BUSINESS_INFO.name}`} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
