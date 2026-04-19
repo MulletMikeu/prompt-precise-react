@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { MapPin } from 'lucide-react';
 
 const CITIES = [
   {
@@ -60,7 +61,8 @@ export function OtherCitiesWeServe({ currentSlug }: OtherCitiesWeServeProps) {
               className="group bg-black border-2 border-gray-800 rounded-lg p-5 transition-all duration-300 hover:border-red-600 hover:shadow-lg hover:-translate-y-1"
             >
               <div className="flex items-start justify-between mb-2">
-                <h3 className="text-lg font-bold text-white group-hover:text-red-500 transition-colors">
+                <h3 className="text-lg font-bold text-white group-hover:text-red-500 transition-colors flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" aria-hidden="true" />
                   {city.name}
                 </h3>
                 <span className="text-red-500 text-xl font-bold transform transition-transform group-hover:translate-x-1">
