@@ -61,8 +61,8 @@ export const routes = [
   },
   {
     path: "/emergency-tree-service-jacksonville-nc",
-    title: "Emergency Tree Service Jacksonville NC | 24/7 | Godhans",
-    description: "24/7 emergency tree service in Jacksonville, NC. Fast response for fallen trees, storm damage, and hazardous limbs. Call Godhans Tree Company now.",
+    title: "Emergency Tree Service Jacksonville NC | 24/7 Storm Damage & Tree Removal",
+    description: "Fast emergency tree service in Jacksonville NC. We handle storm damage, leaning trees, and hazardous removals. Call now for rapid response.",
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",

@@ -1,37 +1,80 @@
 import ServicePage from './ServicePage';
+import heroCrane from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine.jpg';
+import sitePrep from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing.jpg';
+import yardRestored from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc.jpg';
 
 export default function EmergencyTreeService() {
   return (
     <ServicePage
       title="Emergency Tree Service in Jacksonville, NC"
-      subtitle="24/7 Fast Response for Fallen, Damaged, or Dangerous Trees"
+      subtitle="24/7 Storm Damage & Tree Removal — Same-Day & Next-Day Availability"
       slug="emergency-tree-service-jacksonville-nc"
-      description="24/7 emergency tree service in Jacksonville, NC. Fast response for fallen trees, storm damage, and hazardous limbs. Call Godhans Tree Company now."
-      ctaText="Call Now — Immediate Assistance"
-      quickAnswer="If you have a fallen or dangerous tree in Jacksonville, NC, you need immediate professional help. Our emergency tree service provides fast response to remove hazardous trees, prevent further damage, and restore safety to your property."
+      description="Fast emergency tree service in Jacksonville NC. We handle storm damage, leaning trees, and hazardous removals. Call now for rapid response."
+      ctaText="Call Now — Rapid Response"
+      heroImage={{
+        src: heroCrane,
+        alt: "Emergency tree removal crew in Jacksonville NC using a green crane to safely cut down a damaged pine tree near a home"
+      }}
+      quickAnswer="When a storm hits Jacksonville, Richlands, or anywhere in Onslow County, you don't have time to wait. Godhans Tree Company provides 24/7 emergency tree service for fallen trees, storm damage, leaning trunks, and dangerous limbs — with same-day and next-day availability. Call us now and we'll dispatch a fully insured crew to make your property safe again."
       sections={[
         {
-          heading: "When You Need Emergency Tree Service",
-          text: "Call us immediately if:\n\n• A tree has fallen on your home, driveway, or vehicle\n• A tree is leaning dangerously after a storm\n• Large branches have broken and are at risk of falling\n• Storm damage has weakened a tree's structure\n• A tree is blocking access to your property"
+          heading: "Our Emergency Tree Services in Jacksonville, NC",
+          text: "Storms move fast — so do we. We respond across Jacksonville, Richlands, Hubert, and the rest of Onslow County to handle every type of tree emergency:\n\n• Emergency Tree Removal — fallen trees on homes, vehicles, fences, and driveways\n• Storm Cleanup — full debris removal, broken limbs, and downed branches\n• Leaning & Dangerous Tree Removal — trees that have shifted, cracked, or partially uprooted\n• Tree Risk Assessment — fast on-site evaluation to determine which trees pose immediate danger\n\nEvery job is handled by experienced crews with the right equipment to work safely around houses, power lines, and tight residential lots."
         },
         {
-          heading: "Our Emergency Response Process",
-          text: "We act quickly to secure your property and remove hazards:\n\n• Immediate call response and dispatch\n• On-site assessment of the situation\n• Safe removal of dangerous trees or limbs\n• Cleanup and debris removal\n\nOur team is equipped to handle urgent situations safely and efficiently."
+          heading: "When to Call Us Immediately",
+          text: "If you see any of these warning signs, do not wait — call us right away:\n\n⚠ A tree has fallen on your home, garage, vehicle, or fence\n⚠ A tree is leaning at a new angle after a storm\n⚠ Visible cracks or splits in the trunk or major limbs\n⚠ Soil heaving or exposed roots near the base of a tree\n⚠ Large broken limbs hanging in the canopy (\"widow makers\")\n⚠ Branches resting on or near power lines\n⚠ A tree blocking your driveway, road, or emergency access\n\nThese situations can get worse quickly — especially with rain, wind, or saturated soil. Faster response means less property damage."
         },
         {
-          heading: "Trusted Emergency Tree Service in Jacksonville, NC",
-          text: "When you're dealing with a tree emergency, you need a team you can trust to respond quickly and work safely.\n\n✔ Fast response times\n✔ Licensed & insured professionals\n✔ Experienced with storm damage\n✔ Safe and efficient equipment"
+          heading: "Veteran-Owned, Family-Operated — 20+ Years Serving Onslow County",
+          text: "Godhans Tree Company isn't a national call center. We're your neighbors in Jacksonville, NC, and we've spent over two decades clearing storm damage across Onslow County.\n\n✔ Veteran-owned and proudly serving the local community\n✔ Family-operated — you talk to the people doing the work\n✔ 20+ years of hands-on tree experience\n✔ Fully licensed and insured for your protection\n✔ Trusted by homeowners across Jacksonville, Richlands, Hubert, Sneads Ferry, and Swansboro\n\nWhen you call, you get a real local crew that knows the terrain, the tree species, and the storm patterns of coastal North Carolina."
         },
         {
-          heading: "Emergency Service Pricing",
-          text: "Emergency tree service costs can vary depending on the situation, time, and complexity. We provide clear communication and upfront pricing so you know what to expect."
+          heading: "Same-Day & Next-Day Availability",
+          text: "We prioritize emergencies. Most calls are scheduled for the same day or the next morning, and active hazards (trees on homes, blocking access, or near power lines) get moved to the front of the line.\n\nCall us first — before the damage spreads, before water gets inside, and before a leaning tree decides to fall on its own."
+        },
+        {
+          heading: "Will Insurance Cover Storm-Damaged Trees?",
+          text: "In most cases, homeowners insurance covers tree removal when a tree damages a covered structure (home, garage, fence). Coverage typically includes the cost to remove the tree from the structure — not always the full yard cleanup.\n\nWe document the damage with photos before we start work, provide itemized invoices, and can speak with your adjuster if needed. If you're unsure, snap a few photos, save them, and call us — we'll help you understand what's typically covered and get the hazard removed right away."
         }
       ]}
+      gallery={{
+        heading: "Recent Emergency & Tree Removal Jobs in Jacksonville, NC",
+        images: [
+          {
+            src: heroCrane,
+            alt: "Bucket crane removing a large pine tree in a Jacksonville NC backyard after storm damage",
+            caption: "Crane removal of a damaged pine — Jacksonville, NC"
+          },
+          {
+            src: sitePrep,
+            alt: "Compact track loader clearing trees and prepping a residential lot in Jacksonville NC",
+            caption: "Property clearing & site prep — Onslow County"
+          },
+          {
+            src: yardRestored,
+            alt: "Cleaned and restored yard after emergency tree removal in Jacksonville NC",
+            caption: "Cleanup complete — yard restored after removal"
+          }
+        ]
+      }}
       faqs={[
-        { question: "Do you offer 24/7 emergency tree service?", answer: "Yes, we are available for emergency situations and respond as quickly as possible." },
-        { question: "How fast can you arrive?", answer: "Response times vary, but we prioritize urgent calls and aim to arrive as quickly as possible." },
-        { question: "What should I do if a tree falls on my house?", answer: "Stay safe, avoid the area, and call a professional immediately. We can safely remove the tree and assess the situation." },
-        { question: "Is emergency tree service more expensive?", answer: "Emergency services may cost more due to urgency and conditions, but we provide clear pricing before work begins." }
+        {
+          question: "Who do I call for emergency tree removal in Jacksonville NC?",
+          answer: "Call Godhans Tree Company at (618) 704-4861. We're a veteran-owned, family-operated, fully insured tree service based in Jacksonville, NC, with 24/7 emergency response across Onslow County including Richlands, Hubert, Sneads Ferry, and Swansboro."
+        },
+        {
+          question: "Will insurance cover storm-damaged trees?",
+          answer: "Most homeowners insurance policies cover tree removal when a tree damages a covered structure like your home, garage, or fence. The policy usually pays to remove the tree off the structure. We document damage with photos, provide itemized invoices, and can coordinate with your adjuster to make the claim process easier."
+        },
+        {
+          question: "How fast can you respond to an emergency call?",
+          answer: "We prioritize active hazards — trees on homes, blocking driveways, or near power lines move to the front of the schedule. Most emergency calls in Jacksonville and surrounding areas are handled the same day or the next morning."
+        },
+        {
+          question: "What should I do if a tree falls on my house?",
+          answer: "Get everyone out of the affected area, shut off power to that part of the house if it's safe to do so, and avoid going near downed power lines. Take photos for insurance, then call us immediately. We'll safely stabilize and remove the tree to prevent further damage."
+        }
       ]}
       relatedServices={[
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
@@ -39,9 +82,9 @@ export default function EmergencyTreeService() {
         { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
       ]}
       finalCta={{
-        heading: "Call Now for Emergency Tree Service",
-        text: "If you have a tree emergency in Jacksonville, NC, don't wait. Call now for fast, professional assistance and protect your property from further damage.",
-        buttonText: "Call Now — We're Ready to Help"
+        heading: "Tree Emergency Right Now? Call Us Immediately.",
+        text: "Don't wait for the damage to get worse. Call Godhans Tree Company now for fast, professional emergency tree service in Jacksonville, NC and across Onslow County.",
+        buttonText: "Call (618) 704-4861 Now"
       }}
     />
   );

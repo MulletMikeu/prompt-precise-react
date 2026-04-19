@@ -20,6 +20,12 @@ interface SectionLink {
   label: string;
 }
 
+interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 interface ServicePageProps {
   title: string;
   subtitle?: string;
@@ -32,6 +38,8 @@ interface ServicePageProps {
   faqs?: FaqItem[];
   finalCta?: { heading: string; text: string; buttonText?: string };
   relatedServices?: RelatedService[];
+  heroImage?: { src: string; alt: string };
+  gallery?: { heading?: string; images: GalleryImage[] };
 }
 
 function getBreadcrumbCategory(slug: string): { name: string; slug: string } | null {
@@ -44,7 +52,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, finalCta, relatedServices }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, finalCta, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `https://godhans.com/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
 
@@ -159,6 +167,22 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
             </div>
            </section>
 
+          {/* Hero Image */}
+          {heroImage && (
+            <section className="bg-black pb-12">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                <img
+                  src={heroImage.src}
+                  alt={heroImage.alt}
+                  loading="eager"
+                  width={1600}
+                  height={900}
+                  className="w-full h-auto rounded-lg shadow-2xl border-2 border-gray-800"
+                />
+              </div>
+            </section>
+          )}
+
           {/* Quick Answer */}
           {quickAnswer && (
             <section className="bg-gray-950 py-10 border-b border-gray-800">
@@ -199,6 +223,38 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
               </div>
             </section>
           ))}
+
+          {/* Photo Gallery */}
+          {gallery && gallery.images.length > 0 && (
+            <section className="bg-gray-950 py-16 border-t border-gray-800">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                {gallery.heading && (
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">
+                    {gallery.heading}
+                  </h2>
+                )}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {gallery.images.map((img, i) => (
+                    <figure key={i} className="rounded-lg overflow-hidden border-2 border-gray-800 bg-black shadow-xl">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        loading="lazy"
+                        width={800}
+                        height={600}
+                        className="w-full h-56 object-cover"
+                      />
+                      {img.caption && (
+                        <figcaption className="text-gray-400 text-sm p-3 text-center">
+                          {img.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
 
           {/* Jacksonville NC Hub Link */}
           {slug !== 'tree-service-jacksonville-nc' && (
