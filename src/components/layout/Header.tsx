@@ -86,8 +86,22 @@ export function Header() {
                 Services <ChevronDown size={16} className={`transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
               </button>
               {servicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-gray-950 border border-gray-800 rounded-lg shadow-xl py-2 z-50">
+                <div className="absolute top-full left-0 mt-2 w-64 bg-gray-950 border border-gray-800 rounded-lg shadow-xl py-2 z-50">
                   {serviceLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      onClick={() => setServicesOpen(false)}
+                      className="block px-4 py-3 text-white hover:bg-gray-900 hover:text-red-600 transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  <div className="my-2 border-t border-gray-800" />
+                  <div className="px-4 pt-1 pb-2 text-xs uppercase tracking-wider text-gray-500 font-semibold">
+                    Specialty Equipment
+                  </div>
+                  {specialtyEquipmentLinks.map((link) => (
                     <Link
                       key={link.href}
                       to={link.href}
