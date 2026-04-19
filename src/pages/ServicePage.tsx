@@ -52,7 +52,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, finalCta, relatedServices }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, finalCta, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `https://godhans.com/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
 
@@ -166,6 +166,22 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
               </div>
             </div>
            </section>
+
+          {/* Hero Image */}
+          {heroImage && (
+            <section className="bg-black pb-12">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                <img
+                  src={heroImage.src}
+                  alt={heroImage.alt}
+                  loading="eager"
+                  width={1600}
+                  height={900}
+                  className="w-full h-auto rounded-lg shadow-2xl border-2 border-gray-800"
+                />
+              </div>
+            </section>
+          )}
 
           {/* Quick Answer */}
           {quickAnswer && (
