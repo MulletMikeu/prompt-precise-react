@@ -3,7 +3,7 @@ import { BUSINESS_INFO } from '@/lib/constants';
 
 export function Hero() {
   const scrollToContact = () => {
-    const element = document.getElementById('contact');
+    const element = document.getElementById('contact-form');
     if (element) {
       const headerOffset = 150;
       const elementPosition = element.getBoundingClientRect().top;
@@ -63,24 +63,24 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              variant="phone" 
+            <Button
+              variant="phone"
               size="lg"
               href={`tel:${BUSINESS_INFO.phone.tel}`}
               className="w-full sm:w-auto"
             >
-              📞 Call {BUSINESS_INFO.phone.display}
+              📞 Call Now {BUSINESS_INFO.phone.display}
             </Button>
-            <Button 
-              variant="primary" 
+            <Button
+              variant="primary"
               size="lg"
               onClick={scrollToContact}
               className="w-full sm:w-auto"
             >
-              Get Free Estimate
+              Get a Fast Quote
             </Button>
-            <Button 
-              variant="secondary" 
+            <Button
+              variant="secondary"
               size="lg"
               onClick={scrollToServices}
               className="w-full sm:w-auto"

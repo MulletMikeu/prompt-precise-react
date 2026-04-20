@@ -7,6 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import { StickyCallButton } from "./components/layout/StickyCallButton";
 
 const TreeRemoval = lazy(() => import("./pages/TreeRemoval"));
 const TreeTrimming = lazy(() => import("./pages/TreeTrimming"));
@@ -58,6 +59,7 @@ const App = () => (
             <Route path="/tree-removal-tight-spaces-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalTightSpaces /></Suspense>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <StickyCallButton />
         </BrowserRouter>
       </TooltipProvider>
     </HelmetProvider>

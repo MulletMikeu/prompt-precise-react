@@ -164,9 +164,6 @@ export default function Index() {
             <ContactForm />
           </Suspense>
           <Suspense fallback={<SectionLoader />}>
-            <BookingCalendar />
-          </Suspense>
-          <Suspense fallback={<SectionLoader />}>
             <ServiceArea />
           </Suspense>
           <Suspense fallback={<SectionLoader />}>
