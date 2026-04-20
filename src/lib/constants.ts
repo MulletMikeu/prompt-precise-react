@@ -28,10 +28,6 @@ export const BUSINESS_INFO = {
   social: {
     facebook: "https://www.facebook.com/godhans",
     instagram: "https://www.instagram.com/godhans"
-  },
-  integrations: {
-    arcBookingId: "78t5y8tdI24kiutiDwFo",
-    arcFormId: "a7qpym2HhpkGKUa6tyMI"
   }
 };
 
