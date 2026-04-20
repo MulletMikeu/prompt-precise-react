@@ -14,7 +14,7 @@ import { FAQ, FAQ_ITEMS } from '@/components/sections/FAQ';
 const ServiceArea = lazy(() => import('@/components/sections/ServiceArea').then(m => ({ default: m.ServiceArea })));
 const CitiesWeServe = lazy(() => import('@/components/sections/CitiesWeServe').then(m => ({ default: m.CitiesWeServe })));
 const ContactForm = lazy(() => import('@/components/sections/ContactForm').then(m => ({ default: m.ContactForm })));
-const BookingCalendar = lazy(() => import('@/components/sections/BookingCalendar').then(m => ({ default: m.BookingCalendar })));
+
 const Testimonials = lazy(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })));
 const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
 const PrecisionRemoval = lazy(() => import('@/components/sections/PrecisionRemoval').then(m => ({ default: m.PrecisionRemoval })));

@@ -137,11 +137,12 @@ export function ContactForm() {
                   <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-600 text-sm mt-1" />
                 </div>
 
-                {state.errors && Object.keys(state.errors).length === 0 && (state.errors as { getFormErrors?: () => unknown[] }).getFormErrors?.().length ? (
-                  <div className="bg-red-50 border border-red-200 text-red-700 p-3 rounded-lg text-sm">
-                    Something went wrong. Please call us directly at {BUSINESS_INFO.phone.display}.
-                  </div>
-                ) : null}
+                {state.errors && typeof (state.errors as { getFormErrors?: () => readonly unknown[] }).getFormErrors === 'function' &&
+                  ((state.errors as { getFormErrors: () => readonly unknown[] }).getFormErrors().length > 0) && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 p-3 rounded-lg text-sm">
+                      Something went wrong. Please call us directly at {BUSINESS_INFO.phone.display}.
+                    </div>
+                  )}
 
                 <button
                   type="submit"
