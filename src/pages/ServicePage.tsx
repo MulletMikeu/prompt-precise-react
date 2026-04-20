@@ -4,6 +4,7 @@ import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { OtherCitiesWeServe } from '@/components/sections/OtherCitiesWeServe';
+import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { BUSINESS_INFO } from '@/lib/constants';
 
 const LOCATION_SLUGS = new Set([
@@ -330,6 +331,9 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
           {LOCATION_SLUGS.has(slug) && (
             <OtherCitiesWeServe currentSlug={slug} />
           )}
+
+          {/* Quick Quote Form (Formspree) */}
+          <QuickQuoteForm source={slug} variant="dark" />
 
           {/* Final CTA */}
           <section className="bg-red-600 py-12">
