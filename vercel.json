@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://godhans.com/$1",
+      "permanent": true
+    }
+  ]
+}
