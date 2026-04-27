@@ -6,7 +6,7 @@ export default function TreeRemovalCost() {
     <ServicePage
       title="How Much Does Tree Removal Cost in North Carolina? (2026 Guide)"
       slug="tree-removal-cost-north-carolina"
-      description="Tree removal in North Carolina typically costs between $800 and $3,500 depending on the size of the tree, location, and difficulty of the job. Smaller trees may cost less, while large or hazardous trees can cost significantly more."
+      description="Tree removal in NC typically costs $800–$3,500 depending on tree size, location, and job difficulty. See full price ranges and what affects cost."
       quickAnswer="Tree removal in North Carolina typically costs between $800 and $3,500 depending on the size of the tree, location, and difficulty of the job. Smaller trees may cost less, while large or hazardous trees can cost significantly more."
       sections={[
         {
