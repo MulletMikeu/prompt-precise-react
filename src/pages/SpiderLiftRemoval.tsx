@@ -8,7 +8,7 @@ export default function SpiderLiftRemoval() {
         title="Spider Lift Tree Removal in Jacksonville, NC"
         subtitle="Reach 50+ Feet Without Damaging Your Lawn or Hardscape"
         slug="spider-lift-tree-removal-jacksonville-nc"
-        description="Spider lift tree removal in Jacksonville, NC. Reach high limbs in tight spaces near power lines, pools, and structures without bucket trucks or cranes. Free estimates from Godhans Tree Company."
+        description="Spider lift tree removal in Jacksonville, NC. Reach high limbs in tight spots near power lines, pools, and homes — no bucket truck needed."
         ctaText="Call Now for a Free Estimate"
         quickAnswer="A spider lift is a tracked, lightweight aerial platform that fits through standard gates, distributes weight to protect lawns, and reaches 50+ feet up. We use it on Jacksonville properties where bucket trucks or cranes can't go — backyards, near pools, over fences, and right up against structures and power lines."
         sections={[
