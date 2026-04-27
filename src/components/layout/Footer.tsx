@@ -150,7 +150,7 @@ export function Footer() {
 
           {/* Resources & Service Area */}
           <div>
-            <h3 className="text-red-600 text-xl font-bold mb-4">Resources</h3>
+            <h2 className="text-red-600 text-xl font-bold mb-4">Resources</h2>
             <ul className="space-y-2 text-gray-300 text-sm">
               <li>
                 <Link to="/tree-removal-cost-north-carolina" className="hover:text-red-600 transition-colors">
