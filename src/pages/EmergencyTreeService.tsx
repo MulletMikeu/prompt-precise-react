@@ -1,7 +1,7 @@
 import ServicePage from './ServicePage';
-import heroCrane from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine.jpg';
-import sitePrep from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing.jpg';
-import yardRestored from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc.jpg';
+import heroCrane from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine.webp';
+import sitePrep from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing.webp';
+import yardRestored from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc.webp';
 
 export default function EmergencyTreeService() {
   return (
