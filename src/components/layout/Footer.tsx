@@ -66,7 +66,7 @@ export function Footer() {
 
           {/* Services — real links for SEO */}
           <div>
-            <h3 className="text-red-600 text-xl font-bold mb-4">Services</h3>
+            <h2 className="text-red-600 text-xl font-bold mb-4">Services</h2>
             <ul className="space-y-2 text-gray-300">
               <li>
                 <Link to="/tree-trimming-jacksonville-nc" className="hover:text-red-600 transition-colors">
