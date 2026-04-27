@@ -25,9 +25,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-red-600 text-xl font-bold mb-4">
+            <h2 className="text-red-600 text-xl font-bold mb-4">
               {BUSINESS_INFO.name}
-            </h3>
+            </h2>
             <p className="text-gray-400 mb-4 leading-relaxed">
               Professional tree service serving Jacksonville, NC and surrounding areas since {BUSINESS_INFO.yearEstablished}.
             </p>
@@ -66,7 +66,7 @@ export function Footer() {
 
           {/* Services — real links for SEO */}
           <div>
-            <h3 className="text-red-600 text-xl font-bold mb-4">Services</h3>
+            <h2 className="text-red-600 text-xl font-bold mb-4">Services</h2>
             <ul className="space-y-2 text-gray-300">
               <li>
                 <Link to="/tree-trimming-jacksonville-nc" className="hover:text-red-600 transition-colors">
@@ -98,7 +98,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-red-600 text-xl font-bold mb-4">Quick Links</h3>
+            <h2 className="text-red-600 text-xl font-bold mb-4">Quick Links</h2>
             <ul className="space-y-2 text-gray-300">
               <li>
                 <button onClick={() => handleScrollOrNavigate('why-choose')} className="hover:text-red-600 transition-colors">
@@ -150,7 +150,7 @@ export function Footer() {
 
           {/* Resources & Service Area */}
           <div>
-            <h3 className="text-red-600 text-xl font-bold mb-4">Resources</h3>
+            <h2 className="text-red-600 text-xl font-bold mb-4">Resources</h2>
             <ul className="space-y-2 text-gray-300 text-sm">
               <li>
                 <Link to="/tree-removal-cost-north-carolina" className="hover:text-red-600 transition-colors">
