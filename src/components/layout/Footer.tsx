@@ -25,9 +25,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-red-600 text-xl font-bold mb-4">
+            <h2 className="text-red-600 text-xl font-bold mb-4">
               {BUSINESS_INFO.name}
-            </h3>
+            </h2>
             <p className="text-gray-400 mb-4 leading-relaxed">
               Professional tree service serving Jacksonville, NC and surrounding areas since {BUSINESS_INFO.yearEstablished}.
             </p>
