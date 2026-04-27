@@ -8,7 +8,7 @@ export default function TreeRemovalNearHouse() {
         title="Tree Removal Near House in Jacksonville, NC"
         subtitle="Safe Removal of Trees Close to Your Home, Roof, and Power Lines"
         slug="tree-removal-near-house-jacksonville-nc"
-        description="Professional tree removal near houses in Jacksonville, NC. Safe rigging, spider lift access, and full insurance for trees over roofs, power lines, and structures. Free estimates from Godhans Tree Company."
+        description="Tree removal near houses in Jacksonville, NC. Safe rigging, spider lift access, and full insurance for trees over roofs and power lines."
         ctaText="Call Now for a Free Estimate"
         quickAnswer="Trees within 20 feet of a house cannot be free-dropped. Every limb has to be rigged down by rope or lowered by lift. Godhans Tree Company specializes in tight, near-structure removals in Jacksonville using spider lifts, proper rigging, and full liability insurance — protecting your roof, gutters, deck, and landscaping."
         sections={[

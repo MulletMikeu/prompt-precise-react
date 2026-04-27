@@ -6,7 +6,7 @@ export default function TreeServiceCampLejeune() {
       title="Tree Service in Camp Lejeune, NC"
       subtitle="Military-Friendly Tree Removal, Trimming & Stump Grinding"
       slug="tree-service-camp-lejeune-nc"
-      description="Professional tree service for Camp Lejeune military families. Tree removal, trimming, stump grinding, and 24/7 emergency storm cleanup. Military discounts and free estimates from Godhans Tree Company."
+      description="Tree service for Camp Lejeune families: removal, trimming, stump grinding, and 24/7 storm cleanup. Military discounts and free estimates."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Godhans Tree Company proudly serves Camp Lejeune military families and surrounding base housing communities with expert tree removal, trimming, stump grinding, and 24/7 emergency response. We offer military discounts, fast turnaround for PCS moves, and fully insured work that meets base property standards."
       sections={[

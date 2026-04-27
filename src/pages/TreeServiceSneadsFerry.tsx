@@ -6,7 +6,7 @@ export default function TreeServiceSneadsFerry() {
       title="Tree Service in Sneads Ferry, NC"
       subtitle="Trusted Tree Removal, Trimming & Stump Grinding in Sneads Ferry"
       slug="tree-service-sneads-ferry-nc"
-      description="Professional tree service in Sneads Ferry, NC. Expert tree removal, trimming, stump grinding, and 24/7 storm cleanup along the coast. Free estimates from Godhans Tree Company."
+      description="Tree service in Sneads Ferry, NC: removal, trimming, stump grinding, and 24/7 coastal storm cleanup. Free estimates from Godhans."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Sneads Ferry homeowners face unique coastal challenges — high winds, salt air, and storm-prone trees. Godhans Tree Company provides expert tree removal, trimming, stump grinding, and emergency storm cleanup throughout Sneads Ferry and the Topsail area, with fast response times and free estimates."
       sections={[

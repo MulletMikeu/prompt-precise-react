@@ -5,7 +5,7 @@ export default function TreeRemovalPermitNC() {
     <ServicePage
       title="Do You Need a Permit to Remove a Tree in North Carolina?"
       slug="do-you-need-a-permit-to-remove-a-tree-nc"
-      description="In most cases, you do not need a permit to remove a tree on private property in North Carolina. However, local city or county regulations may apply, especially for protected trees or certain areas, so it's important to check local guidelines before removing a tree."
+      description="Most NC homeowners do not need a permit to remove a tree on private property, but city or county rules may apply. Check local guidelines first."
       quickAnswer="In most cases, you do not need a permit to remove a tree on private property in North Carolina. However, local city or county regulations may apply, especially for protected trees or certain areas, so it's important to check local guidelines before removing a tree."
       sections={[
         {
