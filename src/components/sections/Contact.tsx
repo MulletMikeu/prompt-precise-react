@@ -1,125 +1,152 @@
 import { Button } from '@/components/ui/CustomButton';
 import { BUSINESS_INFO } from '@/lib/constants';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Shield, Award } from 'lucide-react';
 
 export function Contact() {
-  const { latitude, longitude } = BUSINESS_INFO.location.coordinates;
   const mapQuery = encodeURIComponent(BUSINESS_INFO.location.full);
-  // Reliable, key-less Google Maps embed
-  const mapEmbedSrc = `https://maps.google.com/maps?q=${mapQuery}&ll=${latitude},${longitude}&z=15&output=embed`;
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
+
+  const contactItems = [
+    {
+      icon: Phone,
+      label: 'Call 24/7',
+      value: BUSINESS_INFO.phone.display,
+      href: `tel:${BUSINESS_INFO.phone.tel}`,
+      highlight: true,
+    },
+    {
+      icon: Mail,
+      label: 'Email Us',
+      value: BUSINESS_INFO.email,
+      href: `mailto:${BUSINESS_INFO.email}`,
+    },
+    {
+      icon: MapPin,
+      label: 'Visit Us',
+      value: BUSINESS_INFO.location.full,
+      href: directionsUrl,
+      external: true,
+    },
+    {
+      icon: Clock,
+      label: 'Hours',
+      value: BUSINESS_INFO.hours.emergency,
+    },
+  ];
 
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-br from-black to-gray-900 text-white"
+      className="py-20 bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+      {/* Decorative glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <span className="inline-block bg-red-600/20 text-red-400 text-sm font-bold px-4 py-1.5 rounded-full mb-4 border border-red-600/30">
+            GET IN TOUCH
+          </span>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h2>
-          <p className="text-xl md:text-2xl text-gray-300">
-            Ready to get started? Call now for your free estimate.
+          <p className="text-xl text-gray-300">
+            Free estimates. Fast response. Available 24/7 for emergencies.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
-          {/* Contact Info */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-xl flex flex-col">
-            <h3 className="text-2xl font-bold text-red-500 mb-6">
-              {BUSINESS_INFO.name}
+        <div className="max-w-5xl mx-auto">
+          {/* Contact info grid */}
+          <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            {contactItems.map((item) => {
+              const Icon = item.icon;
+              const content = (
+                <>
+                  <div
+                    className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${
+                      item.highlight
+                        ? 'bg-red-600 text-white'
+                        : 'bg-white/10 text-red-400'
+                    }`}
+                  >
+                    <Icon className="w-6 h-6" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm text-gray-400 font-medium">
+                      {item.label}
+                    </p>
+                    <p
+                      className={`font-bold truncate ${
+                        item.highlight ? 'text-red-400 text-lg' : 'text-white'
+                      }`}
+                    >
+                      {item.value}
+                    </p>
+                  </div>
+                </>
+              );
+
+              const baseClasses =
+                'flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all';
+
+              return item.href ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  {...(item.external
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
+                  className={`${baseClasses} hover:bg-white/10 hover:border-red-600/40 hover:-translate-y-0.5`}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={item.label} className={baseClasses}>
+                  {content}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Primary CTA card */}
+          <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-3xl p-8 md:p-10 shadow-2xl text-center">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3">
+              Ready for Your Free Estimate?
             </h3>
-
-            <ul className="space-y-5 text-gray-200 flex-grow">
-              <li className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-red-600/15 text-red-500 flex items-center justify-center">
-                  <MapPin className="w-5 h-5" aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="font-semibold text-white">Address</p>
-                  <a
-                    href={BUSINESS_INFO.location.mapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-red-400 transition-colors"
-                  >
-                    {BUSINESS_INFO.location.full}
-                  </a>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-red-600/15 text-red-500 flex items-center justify-center">
-                  <Phone className="w-5 h-5" aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="font-semibold text-white">Phone</p>
-                  <a
-                    href={`tel:${BUSINESS_INFO.phone.tel}`}
-                    className="text-lg hover:text-red-400 transition-colors"
-                  >
-                    {BUSINESS_INFO.phone.display}
-                  </a>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-red-600/15 text-red-500 flex items-center justify-center">
-                  <Mail className="w-5 h-5" aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="font-semibold text-white">Email</p>
-                  <a
-                    href={`mailto:${BUSINESS_INFO.email}`}
-                    className="hover:text-red-400 transition-colors break-all"
-                  >
-                    {BUSINESS_INFO.email}
-                  </a>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-red-600/15 text-red-500 flex items-center justify-center">
-                  <Clock className="w-5 h-5" aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="font-semibold text-white">Hours</p>
-                  <p className="text-red-500 font-bold">
-                    {BUSINESS_INFO.hours.emergency}
-                  </p>
-                </div>
-              </li>
-            </ul>
-
-            <div className="mt-8 pt-6 border-t border-white/10 space-y-3">
+            <p className="text-white/90 mb-6 text-lg max-w-xl mx-auto">
+              Talk to a real arborist in under 60 seconds. No obligation, no
+              pressure — just honest answers.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
                 variant="phone"
                 size="lg"
                 href={`tel:${BUSINESS_INFO.phone.tel}`}
-                className="w-full"
+                className="bg-white !text-red-600 hover:bg-gray-100 shadow-lg"
               >
-                📞 Call Now for Free Estimate
+                📞 Call {BUSINESS_INFO.phone.display}
               </Button>
               <a
-                href={directionsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center bg-white/10 hover:bg-white/15 text-white py-3 px-6 rounded-lg font-semibold transition-colors border border-white/15"
+                href="#contact-form"
+                className="inline-flex items-center justify-center bg-black/30 hover:bg-black/40 text-white py-3 px-6 rounded-lg font-semibold transition-colors border border-white/20"
               >
-                Get Directions →
+                Request a Quote Online →
               </a>
             </div>
-          </div>
 
-          {/* Map */}
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-gray-800 min-h-[420px] lg:min-h-0">
-            <iframe
-              src={mapEmbedSrc}
-              title={`Map showing ${BUSINESS_INFO.name} at ${BUSINESS_INFO.location.full}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full min-h-[420px] block border-0"
-              allowFullScreen
-            />
+            {/* Trust badges */}
+            <div className="flex flex-wrap justify-center gap-6 mt-8 pt-6 border-t border-white/20 text-sm">
+              <div className="flex items-center gap-2 text-white/90">
+                <Shield className="w-4 h-4" aria-hidden="true" />
+                <span className="font-semibold">Licensed & Insured</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/90">
+                <Award className="w-4 h-4" aria-hidden="true" />
+                <span className="font-semibold">15+ Years Experience</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/90">
+                <Clock className="w-4 h-4" aria-hidden="true" />
+                <span className="font-semibold">24/7 Emergency Response</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
