@@ -98,7 +98,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-red-600 text-xl font-bold mb-4">Quick Links</h3>
+            <h2 className="text-red-600 text-xl font-bold mb-4">Quick Links</h2>
             <ul className="space-y-2 text-gray-300">
               <li>
                 <button onClick={() => handleScrollOrNavigate('why-choose')} className="hover:text-red-600 transition-colors">
