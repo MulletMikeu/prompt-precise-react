@@ -1,45 +1,118 @@
-import { lazy, Suspense } from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { Hero } from '@/components/sections/Hero';
-import { Services } from '@/components/sections/Services';
-import { WhyChoose } from '@/components/sections/WhyChoose';
-import { BUSINESS_INFO, TESTIMONIALS } from '@/lib/constants';
-import { FAQ, FAQ_ITEMS } from '@/components/sections/FAQ';
+import { lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/sections/Hero";
+import { Services } from "@/components/sections/Services";
+import { WhyChoose } from "@/components/sections/WhyChoose";
+import { BUSINESS_INFO, TESTIMONIALS } from "@/lib/constants";
+import { FAQ, FAQ_ITEMS } from "@/components/sections/FAQ";
+import { SchemaInjector } from "@/components/SchemaInjector";
 
-// Lazy load below-the-fold sections to reduce initial bundle size
+// Lazy-loaded sections
 const ServiceArea = lazy(() =>
-  import('@/components/sections/ServiceArea').then(m => ({ default: m.ServiceArea }))
+  import("@/components/sections/ServiceArea").then((m) => ({
+    default: m.ServiceArea,
+  }))
 );
+
 const CitiesWeServe = lazy(() =>
-  import('@/components/sections/CitiesWeServe').then(m => ({ default: m.CitiesWeServe }))
+  import("@/components/sections/CitiesWeServe").then((m) => ({
+    default: m.CitiesWeServe,
+  }))
 );
+
 const ContactForm = lazy(() =>
-  import('@/components/sections/ContactForm').then(m => ({ default: m.ContactForm }))
+  import("@/components/sections/ContactForm").then((m) => ({
+    default: m.ContactForm,
+  }))
 );
 
 const Testimonials = lazy(() =>
-  import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials }))
-);
-const Contact = lazy(() =>
-  import('@/components/sections/Contact').then(m => ({ default: m.Contact }))
-);
-const PrecisionRemoval = lazy(() =>
-  import('@/components/sections/PrecisionRemoval').then(m => ({ default: m.PrecisionRemoval }))
+  import("@/components/sections/Testimonials").then((m) => ({
+    default: m.Testimonials,
+  }))
 );
 
-// Loading fallback component
+const Contact = lazy(() =>
+  import("@/components/sections/Contact").then((m) => ({
+    default: m.Contact,
+  }))
+);
+
+const PrecisionRemoval = lazy(() =>
+  import("@/components/sections/PrecisionRemoval").then((m) => ({
+    default: m.PrecisionRemoval,
+  }))
+);
+
+// Loading placeholder
 const SectionLoader = () => (
   <div className="py-20 flex items-center justify-center">
     <div className="animate-pulse text-gray-400">Loading...</div>
   </div>
 );
 
-// Main landing page component
 export default function Index() {
+  // New schema object for SchemaInjector
+  const treeServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "TreeService",
+    "@id": "https://godhans.com/#treeservice",
+    name: "Godhans Tree Company",
+    url: "https://godhans.com/",
+    telephone: BUSINESS_INFO.phone || "+16187044861",
+    email: BUSINESS_INFO.email || "godhanstree@gmail.com",
+    priceRange: "$$",
+    image: "https://godhans.com/og-image.jpg",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "4445 Gum Branch Rd",
+      addressLocality: "Jacksonville",
+      addressRegion: "NC",
+      postalCode: "28540",
+      addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 34.754,
+      longitude: -77.4305,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "https://schema.org/Monday",
+          "https://schema.org/Tuesday",
+          "https://schema.org/Wednesday",
+          "https://schema.org/Thursday",
+          "https://schema.org/Friday",
+          "https://schema.org/Saturday",
+          "https://schema.org/Sunday",
+        ],
+        opens: "00:00",
+        closes: "23:59",
+      },
+    ],
+    areaServed: [
+      { "@type": "Place", name: "Jacksonville, NC" },
+      { "@type": "Place", name: "Richlands, NC" },
+      { "@type": "Place", name: "Hubert, NC" },
+      { "@type": "Place", name: "Sneads Ferry, NC" },
+      { "@type": "Place", name: "Swansboro, NC" },
+      { "@type": "Place", name: "Camp Lejeune, NC" },
+    ],
+    serviceType: [
+      "Tree Removal",
+      "Tree Trimming",
+      "Stump Grinding",
+      "Emergency Tree Service",
+      "Land Clearing",
+    ],
+  };
+
   return (
     <>
       <Helmet>
@@ -69,82 +142,80 @@ export default function Index() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
 
-        {/* Structured Data — LocalBusiness (TreeService) */}
+        {/* Existing JSON-LD — TreeService */}
         <script type="application/ld+json">
           {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'TreeService',
-            '@id': 'https://godhans.com/#treeservice',
-            name: 'Godhans Tree Company',
-            url: 'https://godhans.com/',
-            telephone: BUSINESS_INFO.phone || '+16187044861',
-            email: BUSINESS_INFO.email || 'godhanstree@gmail.com',
-            priceRange: '$$',
-            image: 'https://godhans.com/og-image.jpg',
+            "@context": "https://schema.org",
+            "@type": "TreeService",
+            "@id": "https://godhans.com/#treeservice",
+            name: "Godhans Tree Company",
+            url: "https://godhans.com/",
+            telephone: BUSINESS_INFO.phone || "+16187044861",
+            email: BUSINESS_INFO.email || "godhanstree@gmail.com",
+            priceRange: "$$",
+            image: "https://godhans.com/og-image.jpg",
             address: {
-              '@type': 'PostalAddress',
-              streetAddress: '4445 Gum Branch Rd',
-              addressLocality: 'Jacksonville',
-              addressRegion: 'NC',
-              postalCode: '28540',
-              addressCountry: 'US',
+              "@type": "PostalAddress",
+              streetAddress: "4445 Gum Branch Rd",
+              addressLocality: "Jacksonville",
+              addressRegion: "NC",
+              postalCode: "28540",
+              addressCountry: "US",
             },
             geo: {
-              '@type': 'GeoCoordinates',
+              "@type": "GeoCoordinates",
               latitude: 34.754,
               longitude: -77.4305,
             },
             openingHoursSpecification: [
               {
-                '@type': 'OpeningHoursSpecification',
+                "@type": "OpeningHoursSpecification",
                 dayOfWeek: [
-                  'https://schema.org/Monday',
-                  'https://schema.org/Tuesday',
-                  'https://schema.org/Wednesday',
-                  'https://schema.org/Thursday',
-                  'https://schema.org/Friday',
-                  'https://schema.org/Saturday',
-                  'https://schema.org/Sunday',
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday",
+                  "https://schema.org/Saturday",
+                  "https://schema.org/Sunday",
                 ],
-                opens: '00:00',
-                closes: '23:59',
+                opens: "00:00",
+                closes: "23:59",
               },
             ],
             areaServed: [
-              { '@type': 'Place', name: 'Jacksonville, NC' },
-              { '@type': 'Place', name: 'Richlands, NC' },
-              { '@type': 'Place', name: 'Hubert, NC' },
-              { '@type': 'Place', name: 'Sneads Ferry, NC' },
-              { '@type': 'Place', name: 'Swansboro, NC' },
-              { '@type': 'Place', name: 'Camp Lejeune, NC' },
+              { "@type": "Place", name: "Jacksonville, NC" },
+              { "@type": "Place", name: "Richlands, NC" },
+              { "@type": "Place", name: "Hubert, NC" },
+              { "@type": "Place", name: "Sneads Ferry, NC" },
+              { "@type": "Place", name: "Swansboro, NC" },
+              { "@type": "Place", name: "Camp Lejeune, NC" },
             ],
             serviceType: [
-              'Tree Removal',
-              'Tree Trimming',
-              'Stump Grinding',
-              'Emergency Tree Service',
-              'Land Clearing',
-            ],
-            sameAs: [
-              'https://www.facebook.com/godhans',
-              'https://www.instagram.com/godhans',
+              "Tree Removal",
+              "Tree Trimming",
+              "Stump Grinding",
+              "Emergency Tree Service",
+              "Land Clearing",
             ],
             aggregateRating: {
-              '@type': 'AggregateRating',
+              "@type": "AggregateRating",
               ratingValue:
                 TESTIMONIALS.length > 0
                   ? (
-                      TESTIMONIALS.reduce((sum, t) => sum + t.rating, 0) /
-                      TESTIMONIALS.length
+                      TESTIMONIALS.reduce(
+                        (sum, t) => sum + t.rating,
+                        0
+                      ) / TESTIMONIALS.length
                     ).toFixed(1)
-                  : '5',
+                  : "5",
               reviewCount: TESTIMONIALS.length,
             },
-            review: TESTIMONIALS.map(t => ({
-              '@type': 'Review',
-              author: { '@type': 'Person', name: t.author },
+            review: TESTIMONIALS.map((t) => ({
+              "@type": "Review",
+              author: { "@type": "Person", name: t.author },
               reviewRating: {
-                '@type': 'Rating',
+                "@type": "Rating",
                 ratingValue: t.rating,
                 bestRating: 5,
               },
@@ -153,22 +224,25 @@ export default function Index() {
           })}
         </script>
 
-        {/* Structured Data — FAQPage */}
+        {/* Existing JSON-LD — FAQPage */}
         <script type="application/ld+json">
           {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: FAQ_ITEMS.map(item => ({
-              '@type': 'Question',
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQ_ITEMS.map((item) => ({
+              "@type": "Question",
               name: item.question,
               acceptedAnswer: {
-                '@type': 'Answer',
+                "@type": "Answer",
                 text: item.answer,
               },
             })),
           })}
         </script>
       </Helmet>
+
+      {/* New SchemaInjector placement */}
+      <SchemaInjector schema={treeServiceSchema} />
 
       <div className="min-h-screen flex flex-col">
         <EmergencyBanner />
@@ -177,7 +251,7 @@ export default function Index() {
         <main className="flex-grow">
           <Hero />
 
-          {/* Jacksonville NC Primary Hub */}
+          {/* Jacksonville NC Hub Section */}
           <section className="bg-gray-950 py-10 border-b border-gray-800">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
