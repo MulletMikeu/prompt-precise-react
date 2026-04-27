@@ -5,7 +5,7 @@ export default function LeaningTreeDangerous() {
     <ServicePage
       title="Is a Leaning Tree Dangerous After a Storm?"
       slug="leaning-tree-dangerous-after-storm"
-      description="Learn how to tell if a leaning tree is dangerous after a storm, when to call a professional, and what steps to take to protect your property. Expert advice from Godhans Tree Company."
+      description="How to tell if a leaning tree is dangerous after a storm, when to call a pro, and steps to protect your home. Expert guide from Godhans."
       ctaText="Call Now — Emergency Tree Service"
       quickAnswer="Yes, a leaning tree after a storm can be extremely dangerous. A tree that suddenly shifts or leans following high winds or heavy rain may have compromised roots or structural damage. It could fall without warning, putting your home, family, and property at serious risk. Contact a professional tree service immediately for an assessment."
       sections={[
