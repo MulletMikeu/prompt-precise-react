@@ -8,7 +8,7 @@ export default function TreeRemovalTightSpaces() {
         title="Tree Removal in Tight Spaces — Jacksonville, NC"
         subtitle="Backyard Trees, Narrow Lots, Pool Areas, and Fenced Properties"
         slug="tree-removal-tight-spaces-jacksonville-nc"
-        description="Tight-space tree removal in Jacksonville, NC. Backyards, fenced lots, near pools and septic fields. Spider lift access, no lawn damage. Free estimates from Godhans Tree Company."
+        description="Tight-space tree removal in Jacksonville, NC: backyards, fenced lots, near pools and septic. Spider lift access, no lawn damage."
         ctaText="Call Now for a Free Estimate"
         quickAnswer="If a bucket truck or crane can't reach your tree, we can. Godhans Tree Company specializes in tight-space tree removal across Jacksonville — backyards, narrow side yards, pool decks, septic fields, and fully fenced lots — using a tracked spider lift and proper rigging instead of heavy equipment on your lawn."
         sections={[
