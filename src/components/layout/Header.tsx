@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { BUSINESS_INFO } from '@/lib/constants';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo.webp';
 
 const serviceLinks = [
   { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },

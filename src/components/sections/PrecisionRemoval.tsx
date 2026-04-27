@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Shield, Wrench, TreePine } from 'lucide-react';
-import spiderLiftImage from '@/assets/spider-lift-tree-removal-jacksonville-nc.jpg';
+import spiderLiftImage from '@/assets/spider-lift-tree-removal-jacksonville-nc.webp';
 import { BUSINESS_INFO } from '@/lib/constants';
 
 interface PrecisionRemovalProps {
