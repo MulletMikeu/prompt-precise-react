@@ -27,14 +27,18 @@ export function PrecisionRemoval({ variant = 'light', heading }: PrecisionRemova
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Image */}
         <div className="mb-10 rounded-lg overflow-hidden shadow-2xl border-2 border-gray-800 bg-black">
-          <LazyImage
-            src={spiderLiftImage}
-            alt="Spider lift removing large pine tree in tight space near power lines in Jacksonville NC with minimal property damage"
-            fetchPriority="low"
-            width={1600}
-            height={1200}
-            className="w-full h-auto object-cover bg-gray-900"
-          />
+          <div className="relative w-full bg-gray-900" style={{ aspectRatio: '1600 / 1200' }}>
+            <LazyImage
+              src={spiderLiftImage}
+              srcSet={spiderLiftSrcSet}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+              alt="Spider lift removing large pine tree in tight space near power lines in Jacksonville NC with minimal property damage"
+              fetchPriority="low"
+              width={1600}
+              height={1200}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
         </div>
 
         {/* Heading */}
