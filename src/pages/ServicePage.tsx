@@ -57,6 +57,9 @@ interface ServicePageProps {
     height?: number;
     geo?: string;
     showCta?: boolean;
+    webpSrcSet?: string;
+    jpgSrcSet?: string;
+    sizes?: string;
   };
   gallery?: { heading?: string; images: GalleryImage[] };
 }
