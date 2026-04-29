@@ -49,7 +49,15 @@ interface ServicePageProps {
   faqs?: FaqItem[];
   finalCta?: { heading: string; text: string; buttonText?: string };
   relatedServices?: RelatedService[];
-  heroImage?: { src: string; alt: string };
+  heroImage?: {
+    src: string;
+    alt: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    geo?: string;
+    showCta?: boolean;
+  };
   gallery?: { heading?: string; images: GalleryImage[] };
 }
 
@@ -178,18 +186,51 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
             </div>
            </section>
 
-          {/* Hero Image */}
+          {/* Hero Image - placed directly under H1, above first paragraph */}
           {heroImage && (
             <section className="bg-black pb-12">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                <img
-                  src={heroImage.src}
-                  alt={heroImage.alt}
-                  loading="eager"
-                  width={1600}
-                  height={900}
-                  className="w-full h-auto rounded-lg shadow-2xl border-2 border-gray-800"
-                />
+                <figure className="m-0">
+                  <div
+                    className="relative w-full overflow-hidden rounded-lg shadow-2xl border-2 border-gray-800 bg-gray-900"
+                    style={{ aspectRatio: `${heroImage.width || 1600} / ${heroImage.height || 900}` }}
+                  >
+                    <img
+                      src={heroImage.src}
+                      alt={heroImage.alt}
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                      width={heroImage.width || 1600}
+                      height={heroImage.height || 900}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
+                  {(heroImage.caption || heroImage.geo) && (
+                    <figcaption className="mt-3 text-center text-gray-400 text-sm">
+                      {heroImage.caption}
+                      {heroImage.geo && (
+                        <span className="block text-gray-500 text-xs mt-1">📍 {heroImage.geo}</span>
+                      )}
+                    </figcaption>
+                  )}
+                </figure>
+                {heroImage.showCta !== false && (
+                  <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center items-center">
+                    <Link
+                      to="/#contact"
+                      className="w-full sm:w-auto bg-red-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-lg text-lg text-center"
+                    >
+                      Get a Free Estimate
+                    </Link>
+                    <a
+                      href={`tel:${BUSINESS_INFO.phone.tel}`}
+                      className="w-full sm:w-auto bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors text-lg text-center inline-flex items-center justify-center gap-2"
+                    >
+                      📞 Call {BUSINESS_INFO.phone.display}
+                    </a>
+                  </div>
+                )}
               </div>
             </section>
           )}
