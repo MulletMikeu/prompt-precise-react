@@ -150,6 +150,45 @@ export default function MeetTheOwners() {
               )}
             </section>
 
+            {/* Michael — Owner Photo */}
+            <section aria-labelledby="michael-photo-heading" className="mb-8">
+              <h2 id="michael-photo-heading" className="sr-only">Photo of Michael</h2>
+              <figure className="m-0">
+                <div
+                  className="relative w-full overflow-hidden rounded-lg bg-gray-900"
+                  style={{ aspectRatio: `${MICHAEL_PHOTO_WIDTH} / ${MICHAEL_PHOTO_HEIGHT}` }}
+                >
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcSet={`${michaelPhoto600Webp} 600w, ${michaelPhoto1200Webp} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 768px"
+                    />
+                    <img
+                      src={michaelPhoto1200}
+                      srcSet={`${michaelPhoto600} 600w, ${michaelPhoto1200} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 768px"
+                      width={MICHAEL_PHOTO_WIDTH}
+                      height={MICHAEL_PHOTO_HEIGHT}
+                      alt={MICHAEL_PHOTO_ALT}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </picture>
+                </div>
+                {MICHAEL_PHOTO_CAPTION && (
+                  <figcaption className="mt-2 text-sm text-gray-400">
+                    {MICHAEL_PHOTO_CAPTION}
+                  </figcaption>
+                )}
+                {MICHAEL_PHOTO_EXIF && (
+                  <p className="mt-1 text-xs text-gray-500">{MICHAEL_PHOTO_EXIF}</p>
+                )}
+              </figure>
+            </section>
+
             {/* Owner: Michael */}
             <section aria-labelledby="owner-michael" className="mb-10">
               <h2 id="owner-michael" className="text-2xl font-bold mb-2">
