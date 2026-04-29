@@ -1,5 +1,12 @@
 import ServicePage from './ServicePage';
-import treeTrimmingPhoto from '@/assets/tree-trimming-jacksonville-nc-godhans.jpg';
+import treeTrimmingPhoto from '@/assets/tree-trimming-jacksonville-nc-godhans-1200.jpg';
+import treeTrimmingPhoto480 from '@/assets/tree-trimming-jacksonville-nc-godhans-480.jpg';
+import treeTrimmingPhoto800 from '@/assets/tree-trimming-jacksonville-nc-godhans-800.jpg';
+import treeTrimmingPhoto1600 from '@/assets/tree-trimming-jacksonville-nc-godhans-1600.jpg';
+import treeTrimmingPhotoWebp480 from '@/assets/tree-trimming-jacksonville-nc-godhans-480.webp';
+import treeTrimmingPhotoWebp800 from '@/assets/tree-trimming-jacksonville-nc-godhans-800.webp';
+import treeTrimmingPhotoWebp1200 from '@/assets/tree-trimming-jacksonville-nc-godhans-1200.webp';
+import treeTrimmingPhotoWebp1600 from '@/assets/tree-trimming-jacksonville-nc-godhans-1600.webp';
 
 export default function TreeTrimming() {
   return (
