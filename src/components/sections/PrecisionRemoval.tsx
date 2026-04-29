@@ -26,6 +26,7 @@ export function PrecisionRemoval({ variant = 'light', heading }: PrecisionRemova
             alt="Spider lift removing large pine tree in tight space near power lines in Jacksonville NC with minimal property damage"
             loading="lazy"
             decoding="async"
+            fetchPriority="low"
             width={1600}
             height={1200}
             className="w-full h-auto object-cover"
