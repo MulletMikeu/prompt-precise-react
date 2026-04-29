@@ -43,7 +43,7 @@ export default function SpiderLiftRemoval() {
         }}
       />
       <div className="bg-black">
-        <PrecisionRemoval variant="dark" />
+        <PrecisionRemoval variant="dark" showImage={false} />
       </div>
     </>
   );
