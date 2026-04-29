@@ -36,6 +36,10 @@ interface GalleryImage {
   src: string;
   alt: string;
   caption?: string;
+  srcSet?: string;
+  sizes?: string;
+  width?: number;
+  height?: number;
 }
 
 interface ServicePageProps {
@@ -310,10 +314,12 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                     <figure key={i} className="rounded-lg overflow-hidden border-2 border-gray-800 bg-black shadow-xl">
                       <LazyImage
                         src={img.src}
+                        srcSet={img.srcSet}
+                        sizes={img.sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
                         alt={img.alt}
                         fetchPriority="low"
-                        width={800}
-                        height={600}
+                        width={img.width || 800}
+                        height={img.height || 600}
                         className="w-full h-56 object-cover bg-gray-900"
                       />
                       {img.caption && (

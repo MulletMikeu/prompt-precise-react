@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Shield, Wrench, TreePine } from 'lucide-react';
 import spiderLiftImage from '@/assets/spider-lift-tree-removal-jacksonville-nc.webp';
+import spiderLift480 from '@/assets/spider-lift-tree-removal-jacksonville-nc-480.webp';
+import spiderLift800 from '@/assets/spider-lift-tree-removal-jacksonville-nc-800.webp';
+import spiderLift1200 from '@/assets/spider-lift-tree-removal-jacksonville-nc-1200.webp';
 import { LazyImage } from '@/components/ui/LazyImage';
 import { BUSINESS_INFO } from '@/lib/constants';
+
+const spiderLiftSrcSet = `${spiderLift480} 480w, ${spiderLift800} 800w, ${spiderLift1200} 1200w`;
 
 interface PrecisionRemovalProps {
   /** Light variant uses white bg + black text (homepage). Dark variant uses gray-950 bg + white text (service pages). */
@@ -22,14 +27,18 @@ export function PrecisionRemoval({ variant = 'light', heading }: PrecisionRemova
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Image */}
         <div className="mb-10 rounded-lg overflow-hidden shadow-2xl border-2 border-gray-800 bg-black">
-          <LazyImage
-            src={spiderLiftImage}
-            alt="Spider lift removing large pine tree in tight space near power lines in Jacksonville NC with minimal property damage"
-            fetchPriority="low"
-            width={1600}
-            height={1200}
-            className="w-full h-auto object-cover bg-gray-900"
-          />
+          <div className="relative w-full bg-gray-900" style={{ aspectRatio: '1600 / 1200' }}>
+            <LazyImage
+              src={spiderLiftImage}
+              srcSet={spiderLiftSrcSet}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+              alt="Spider lift removing large pine tree in tight space near power lines in Jacksonville NC with minimal property damage"
+              fetchPriority="low"
+              width={1600}
+              height={1200}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
         </div>
 
         {/* Heading */}
