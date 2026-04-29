@@ -1,5 +1,23 @@
 import ServicePage from './ServicePage';
 import { PrecisionRemoval } from '@/components/sections/PrecisionRemoval';
+import tightHero from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans.jpg';
+import tight600Jpg from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-600.jpg';
+import tight1200Jpg from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-1200.jpg';
+import tight600Webp from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-600.webp';
+import tight1200Webp from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-1200.webp';
+
+// Job-site photo placeholder — edit these three fields when swapping the image:
+//   (1) alt:     SEO-optimized alt text (template — DO NOT rewrite)
+//   (2) caption: Editable caption shown under the image
+//   (3) geo:     Optional EXIF/GEO data string (omit if unavailable)
+const HERO_PHOTO = {
+  alt: 'Tree removal in tight spaces in Jacksonville NC – real job-site photo by Godhans Tree Service.',
+  caption: 'Tight-space tree removal job site — Jacksonville, NC',
+  geo: undefined as string | undefined,
+};
+
+const tightWebpSrcSet = `${tight600Webp} 600w, ${tight1200Webp} 1200w`;
+const tightJpgSrcSet = `${tight600Jpg} 600w, ${tight1200Jpg} 1200w`;
 
 export default function TreeRemovalTightSpaces() {
   return (
@@ -10,6 +28,18 @@ export default function TreeRemovalTightSpaces() {
         slug="tree-removal-tight-spaces-jacksonville-nc"
         description="Tight-space tree removal in Jacksonville, NC: backyards, fenced lots, near pools and septic. Spider lift access, no lawn damage."
         ctaText="Call Now for a Free Estimate"
+        heroImage={{
+          src: tightHero,
+          webpSrcSet: tightWebpSrcSet,
+          jpgSrcSet: tightJpgSrcSet,
+          sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
+          width: 1125,
+          height: 900,
+          alt: HERO_PHOTO.alt,
+          caption: HERO_PHOTO.caption,
+          geo: HERO_PHOTO.geo,
+          showCta: true,
+        }}
         quickAnswer="If a bucket truck or crane can't reach your tree, we can. Godhans Tree Company specializes in tight-space tree removal across Jacksonville — backyards, narrow side yards, pool decks, septic fields, and fully fenced lots — using a tracked spider lift and proper rigging instead of heavy equipment on your lawn."
         sections={[
           {
