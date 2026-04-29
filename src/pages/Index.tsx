@@ -284,7 +284,7 @@ export default function Index() {
           <WhyChoose />
 
           <Suspense fallback={<SectionLoader />}>
-            <PrecisionRemoval variant="light" />
+            <PrecisionRemoval variant="light" showImage={false} />
           </Suspense>
 
           <Suspense fallback={<SectionLoader />}>
