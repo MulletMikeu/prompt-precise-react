@@ -5,6 +5,7 @@ import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
+import { HomeJobsitePhoto } from "@/components/sections/HomeJobsitePhoto";
 import { Services } from "@/components/sections/Services";
 import { WhyChoose } from "@/components/sections/WhyChoose";
 import { BUSINESS_INFO, TESTIMONIALS } from "@/lib/constants";
@@ -250,6 +251,8 @@ export default function Index() {
 
         <main className="flex-grow">
           <Hero />
+
+          <HomeJobsitePhoto />
 
           {/* Jacksonville NC Hub Section */}
           <section className="bg-gray-950 py-10 border-b border-gray-800">
