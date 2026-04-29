@@ -10,18 +10,20 @@ const OG_IMAGE = 'https://godhans.com/og-image.jpg';
 
 // === EDITABLE CONTENT FIELDS ===
 // Replace the placeholder strings below with the final copy.
-const INTRO_TEXT = ''; // TODO: Add short introduction paragraph here.
+const INTRO_TEXT = 'Godhans Tree Service is a veteran-owned, family-operated company built on safety, precision, and a commitment to leaving every property better than we arrived. As brothers and co-owners, Michael and James bring complementary skill sets that allow us to handle everything from routine tree care to the most complex and hazardous removals.';
+
+const MISSION_STATEMENT = 'Our mission is to leave every property better than we arrived.';
 
 const OWNER_MICHAEL = {
   name: 'Michael',
-  role: '', // TODO: e.g. "Co-Owner & Lead Arborist"
-  bio: '',  // TODO: Add Michael's short bio here.
+  role: 'Co-Owner',
+  bio: 'Michael is a USMC Veteran with a passion for tree health and high-risk technical removals. He specializes in assisting clients and other tree companies with complicated and hazardous tree operations. Michael enjoys spending his days 80 feet in the air — an office with great views and fresh air — and takes pride in delivering safe, precise, and professional work on every job.',
 };
 
 const OWNER_BROTHER = {
-  name: '', // TODO: Add brother's first name.
-  role: '', // TODO: e.g. "Co-Owner & Operations"
-  bio: '',  // TODO: Add brother's short bio here.
+  name: 'James',
+  role: 'Co-Owner',
+  bio: 'James is a heavy equipment expert and the head of ground operations. He ensures every job is completed safely, efficiently, and with full respect for the client\u2019s property. James prioritizes the preservation of landscaping, structures, and surrounding areas while maintaining smooth, coordinated operations from the ground up.',
 };
 // === END EDITABLE CONTENT FIELDS ===
 
