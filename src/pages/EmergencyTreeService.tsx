@@ -1,7 +1,20 @@
 import ServicePage from './ServicePage';
 import heroCrane from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine.webp';
+import heroCrane480 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-480.webp';
+import heroCrane800 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-800.webp';
+import heroCrane1200 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-1200.webp';
 import sitePrep from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing.webp';
+import sitePrep480 from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing-480.webp';
+import sitePrep800 from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing-800.webp';
+import sitePrep1200 from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing-1200.webp';
 import yardRestored from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc.webp';
+import yardRestored480 from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc-480.webp';
+import yardRestored800 from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc-800.webp';
+import yardRestored1200 from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc-1200.webp';
+
+const craneSrcSet = `${heroCrane480} 480w, ${heroCrane800} 800w, ${heroCrane1200} 1200w`;
+const sitePrepSrcSet = `${sitePrep480} 480w, ${sitePrep800} 800w, ${sitePrep1200} 1200w`;
+const yardSrcSet = `${yardRestored480} 480w, ${yardRestored800} 800w, ${yardRestored1200} 1200w`;
 
 export default function EmergencyTreeService() {
   return (
@@ -13,6 +26,8 @@ export default function EmergencyTreeService() {
       ctaText="Call Now — Rapid Response"
       heroImage={{
         src: heroCrane,
+        srcSet: craneSrcSet,
+        sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
         alt: "Emergency tree removal crew in Jacksonville NC using a green crane to safely cut down a damaged pine tree near a home"
       }}
       quickAnswer="When a storm hits Jacksonville, Richlands, or anywhere in Onslow County, you don't have time to wait. Godhans Tree Company provides 24/7 emergency tree service for fallen trees, storm damage, leaning trunks, and dangerous limbs — with same-day and next-day availability. Call us now and we'll dispatch a fully insured crew to make your property safe again."
