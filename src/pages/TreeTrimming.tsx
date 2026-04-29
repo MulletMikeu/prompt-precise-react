@@ -1,4 +1,5 @@
 import ServicePage from './ServicePage';
+import treeTrimmingPhoto from '@/assets/tree-trimming-jacksonville-nc-godhans.jpg';
 
 export default function TreeTrimming() {
   return (
@@ -8,6 +9,15 @@ export default function TreeTrimming() {
       slug="tree-trimming-jacksonville-nc"
       description="Expert tree trimming and pruning in Jacksonville, NC. Healthy growth, safer canopies, clean cleanup. Licensed, insured, free estimates."
       ctaText="Call Now for a Free Estimate"
+      heroImage={{
+        src: treeTrimmingPhoto,
+        alt: "Tree trimming in Jacksonville NC – real job-site photo by Godhans Tree Service.",
+        caption: "Real job-site photo: Godhans crew trimming a large waterfront oak in Jacksonville, NC using a spider lift for precision pruning.",
+        width: 1824,
+        height: 1616,
+        geo: "Jacksonville, NC",
+        showCta: true,
+      }}
       quickAnswer="Tree trimming in Jacksonville, NC helps improve tree health, safety, and appearance. Regular trimming removes dead or overgrown branches, reduces storm risk, and keeps your property looking its best. We provide safe, affordable trimming with free estimates."
       sections={[
         {
