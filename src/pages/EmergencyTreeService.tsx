@@ -26,7 +26,7 @@ export default function EmergencyTreeService() {
       ctaText="Call Now — Rapid Response"
       heroImage={{
         src: heroCrane,
-        srcSet: craneSrcSet,
+        webpSrcSet: craneSrcSet,
         sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
         alt: "Emergency tree removal crew in Jacksonville NC using a green crane to safely cut down a damaged pine tree near a home"
       }}
