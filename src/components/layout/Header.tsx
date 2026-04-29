@@ -115,6 +115,13 @@ export function Header() {
               )}
             </div>
 
+            <Link
+              to="/meet-the-owners"
+              className="text-white hover:text-red-600 font-medium transition-colors"
+            >
+              Meet the Owners
+            </Link>
+
             <button
               onClick={() => scrollToSection('contact-form')}
               className="text-white hover:text-red-600 font-medium transition-colors"
@@ -180,6 +187,14 @@ export function Header() {
                 ))}
               </div>
             )}
+
+            <Link
+              to="/meet-the-owners"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-3 text-white hover:bg-gray-900 hover:text-red-600 transition-colors border-b border-gray-800"
+            >
+              Meet the Owners
+            </Link>
 
             <button
               onClick={() => scrollToSection('contact-form')}

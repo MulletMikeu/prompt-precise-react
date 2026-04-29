@@ -27,6 +27,7 @@ const LeaningTreeDangerous = lazy(() => import("./pages/LeaningTreeDangerous"));
 const SpiderLiftRemoval = lazy(() => import("./pages/SpiderLiftRemoval"));
 const TreeRemovalNearHouse = lazy(() => import("./pages/TreeRemovalNearHouse"));
 const TreeRemovalTightSpaces = lazy(() => import("./pages/TreeRemovalTightSpaces"));
+const MeetTheOwners = lazy(() => import("./pages/MeetTheOwners"));
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,7 @@ const App = () => (
             <Route path="/spider-lift-tree-removal-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><SpiderLiftRemoval /></Suspense>} />
             <Route path="/tree-removal-near-house-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalNearHouse /></Suspense>} />
             <Route path="/tree-removal-tight-spaces-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalTightSpaces /></Suspense>} />
+            <Route path="/meet-the-owners" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><MeetTheOwners /></Suspense>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <StickyCallButton />

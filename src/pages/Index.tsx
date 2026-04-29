@@ -272,6 +272,11 @@ export default function Index() {
               >
                 Learn More About Our Jacksonville Tree Services →
               </Link>
+              <p className="mt-4 text-gray-400 text-sm">
+                <Link to="/meet-the-owners" className="hover:text-red-600 transition-colors underline">
+                  Meet the owners behind Godhans Tree Service →
+                </Link>
+              </p>
             </div>
           </section>
 
