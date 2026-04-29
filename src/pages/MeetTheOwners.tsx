@@ -8,6 +8,10 @@ import michaelPhoto1200 from '@/assets/owner-michael-godhans-jacksonville-nc-120
 import michaelPhoto600 from '@/assets/owner-michael-godhans-jacksonville-nc-600.jpg';
 import michaelPhoto1200Webp from '@/assets/owner-michael-godhans-jacksonville-nc-1200.webp';
 import michaelPhoto600Webp from '@/assets/owner-michael-godhans-jacksonville-nc-600.webp';
+import jamesPhoto1200 from '@/assets/owner-james-godhans-jacksonville-nc-1200.jpg';
+import jamesPhoto600 from '@/assets/owner-james-godhans-jacksonville-nc-600.jpg';
+import jamesPhoto1200Webp from '@/assets/owner-james-godhans-jacksonville-nc-1200.webp';
+import jamesPhoto600Webp from '@/assets/owner-james-godhans-jacksonville-nc-600.webp';
 
 // === EDITABLE PHOTO FIELDS (Michael) ===
 // Pre-filled SEO alt text — do not change template.
@@ -19,6 +23,18 @@ const MICHAEL_PHOTO_EXIF = '';
 // Intrinsic dimensions (used to reserve aspect ratio and prevent CLS)
 const MICHAEL_PHOTO_WIDTH = 1200;
 const MICHAEL_PHOTO_HEIGHT = 1408;
+// === END EDITABLE PHOTO FIELDS ===
+
+// === EDITABLE PHOTO FIELDS (James) ===
+// Pre-filled SEO alt text — do not change template.
+const JAMES_PHOTO_ALT = 'James, owner of Godhans Tree Service in Jacksonville NC.';
+// Editable caption — leave empty to hide.
+const JAMES_PHOTO_CAPTION = '';
+// Optional EXIF / GEO data — leave empty to hide.
+const JAMES_PHOTO_EXIF = '';
+// Intrinsic dimensions (used to reserve aspect ratio and prevent CLS)
+const JAMES_PHOTO_WIDTH = 1200;
+const JAMES_PHOTO_HEIGHT = 1800;
 // === END EDITABLE PHOTO FIELDS ===
 
 const PAGE_URL = 'https://godhans.com/meet-the-owners';
