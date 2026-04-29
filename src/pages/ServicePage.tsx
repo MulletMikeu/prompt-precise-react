@@ -311,6 +311,8 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                         src={img.src}
                         alt={img.alt}
                         loading="lazy"
+                        decoding="async"
+                        fetchPriority="low"
                         width={800}
                         height={600}
                         className="w-full h-56 object-cover"
