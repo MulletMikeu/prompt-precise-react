@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Shield, Wrench, TreePine } from 'lucide-react';
 import spiderLiftImage from '@/assets/spider-lift-tree-removal-jacksonville-nc.webp';
+import spiderLift480 from '@/assets/spider-lift-tree-removal-jacksonville-nc-480.webp';
+import spiderLift800 from '@/assets/spider-lift-tree-removal-jacksonville-nc-800.webp';
+import spiderLift1200 from '@/assets/spider-lift-tree-removal-jacksonville-nc-1200.webp';
 import { LazyImage } from '@/components/ui/LazyImage';
 import { BUSINESS_INFO } from '@/lib/constants';
+
+const spiderLiftSrcSet = `${spiderLift480} 480w, ${spiderLift800} 800w, ${spiderLift1200} 1200w`;
 
 interface PrecisionRemovalProps {
   /** Light variant uses white bg + black text (homepage). Dark variant uses gray-950 bg + white text (service pages). */
