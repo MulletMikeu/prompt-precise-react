@@ -1,4 +1,12 @@
 import ServicePage from './ServicePage';
+import stumpHero from '@/assets/stump-grinding-jacksonville-nc-godhans.jpg';
+import stumpHero600Webp from '@/assets/stump-grinding-jacksonville-nc-godhans-600.webp';
+import stumpHero1200Webp from '@/assets/stump-grinding-jacksonville-nc-godhans-1200.webp';
+import stumpHero600Jpg from '@/assets/stump-grinding-jacksonville-nc-godhans-600.jpg';
+import stumpHero1200Jpg from '@/assets/stump-grinding-jacksonville-nc-godhans-1200.jpg';
+
+const stumpWebpSrcSet = `${stumpHero600Webp} 600w, ${stumpHero1200Webp} 1200w`;
+const stumpJpgSrcSet = `${stumpHero600Jpg} 600w, ${stumpHero1200Jpg} 1200w`;
 
 export default function StumpGrinding() {
   return (
@@ -8,6 +16,17 @@ export default function StumpGrinding() {
       slug="stump-grinding-jacksonville-nc"
       description="Fast, affordable stump grinding services in Jacksonville, NC. Professional equipment, clean results, and free estimates from Godhans Tree Company."
       ctaText="Call Now for a Free Estimate"
+      heroImage={{
+        src: stumpHero,
+        webpSrcSet: stumpWebpSrcSet,
+        jpgSrcSet: stumpJpgSrcSet,
+        sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
+        width: 1200,
+        height: 828,
+        alt: 'Stump Grinding in Jacksonville NC – real job-site photo by Godhans Tree Service.',
+        caption: 'Stump grinding job-site — Jacksonville, NC',
+        showCta: true,
+      }}
       quickAnswer="Stump grinding in Jacksonville, NC is the fastest way to remove unwanted tree stumps and improve the appearance and safety of your yard. Our team uses professional equipment to grind stumps below ground level, allowing you to reclaim your space quickly."
       sections={[
         {
