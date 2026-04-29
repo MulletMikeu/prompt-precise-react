@@ -222,6 +222,45 @@ export default function MeetTheOwners() {
               )}
             </section>
 
+            {/* James — Owner Photo */}
+            <section aria-labelledby="james-photo-heading" className="mb-8">
+              <h2 id="james-photo-heading" className="sr-only">Photo of James</h2>
+              <figure className="m-0">
+                <div
+                  className="relative w-full overflow-hidden rounded-lg bg-gray-900"
+                  style={{ aspectRatio: `${JAMES_PHOTO_WIDTH} / ${JAMES_PHOTO_HEIGHT}` }}
+                >
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcSet={`${jamesPhoto600Webp} 600w, ${jamesPhoto1200Webp} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 768px"
+                    />
+                    <img
+                      src={jamesPhoto1200}
+                      srcSet={`${jamesPhoto600} 600w, ${jamesPhoto1200} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 768px"
+                      width={JAMES_PHOTO_WIDTH}
+                      height={JAMES_PHOTO_HEIGHT}
+                      alt={JAMES_PHOTO_ALT}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </picture>
+                </div>
+                {JAMES_PHOTO_CAPTION && (
+                  <figcaption className="mt-2 text-sm text-gray-400">
+                    {JAMES_PHOTO_CAPTION}
+                  </figcaption>
+                )}
+                {JAMES_PHOTO_EXIF && (
+                  <p className="mt-1 text-xs text-gray-500">{JAMES_PHOTO_EXIF}</p>
+                )}
+              </figure>
+            </section>
+
             {/* Owner: Brother */}
             <section aria-labelledby="owner-brother" className="mb-10">
               <h2 id="owner-brother" className="text-2xl font-bold mb-2">
