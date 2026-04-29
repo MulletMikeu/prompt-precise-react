@@ -8,6 +8,10 @@ import michaelPhoto1200 from '@/assets/owner-michael-godhans-jacksonville-nc-120
 import michaelPhoto600 from '@/assets/owner-michael-godhans-jacksonville-nc-600.jpg';
 import michaelPhoto1200Webp from '@/assets/owner-michael-godhans-jacksonville-nc-1200.webp';
 import michaelPhoto600Webp from '@/assets/owner-michael-godhans-jacksonville-nc-600.webp';
+import jamesPhoto1200 from '@/assets/owner-james-godhans-jacksonville-nc-1200.jpg';
+import jamesPhoto600 from '@/assets/owner-james-godhans-jacksonville-nc-600.jpg';
+import jamesPhoto1200Webp from '@/assets/owner-james-godhans-jacksonville-nc-1200.webp';
+import jamesPhoto600Webp from '@/assets/owner-james-godhans-jacksonville-nc-600.webp';
 
 // === EDITABLE PHOTO FIELDS (Michael) ===
 // Pre-filled SEO alt text — do not change template.
@@ -19,6 +23,18 @@ const MICHAEL_PHOTO_EXIF = '';
 // Intrinsic dimensions (used to reserve aspect ratio and prevent CLS)
 const MICHAEL_PHOTO_WIDTH = 1200;
 const MICHAEL_PHOTO_HEIGHT = 1408;
+// === END EDITABLE PHOTO FIELDS ===
+
+// === EDITABLE PHOTO FIELDS (James) ===
+// Pre-filled SEO alt text — do not change template.
+const JAMES_PHOTO_ALT = 'James, owner of Godhans Tree Service in Jacksonville NC.';
+// Editable caption — leave empty to hide.
+const JAMES_PHOTO_CAPTION = '';
+// Optional EXIF / GEO data — leave empty to hide.
+const JAMES_PHOTO_EXIF = '';
+// Intrinsic dimensions (used to reserve aspect ratio and prevent CLS)
+const JAMES_PHOTO_WIDTH = 1200;
+const JAMES_PHOTO_HEIGHT = 1800;
 // === END EDITABLE PHOTO FIELDS ===
 
 const PAGE_URL = 'https://godhans.com/meet-the-owners';
@@ -204,6 +220,45 @@ export default function MeetTheOwners() {
               ) : (
                 <p className="text-gray-500 italic">[Bio — add via OWNER_MICHAEL.bio]</p>
               )}
+            </section>
+
+            {/* James — Owner Photo */}
+            <section aria-labelledby="james-photo-heading" className="mb-8">
+              <h2 id="james-photo-heading" className="sr-only">Photo of James</h2>
+              <figure className="m-0">
+                <div
+                  className="relative w-full overflow-hidden rounded-lg bg-gray-900"
+                  style={{ aspectRatio: `${JAMES_PHOTO_WIDTH} / ${JAMES_PHOTO_HEIGHT}` }}
+                >
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcSet={`${jamesPhoto600Webp} 600w, ${jamesPhoto1200Webp} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 768px"
+                    />
+                    <img
+                      src={jamesPhoto1200}
+                      srcSet={`${jamesPhoto600} 600w, ${jamesPhoto1200} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 768px"
+                      width={JAMES_PHOTO_WIDTH}
+                      height={JAMES_PHOTO_HEIGHT}
+                      alt={JAMES_PHOTO_ALT}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </picture>
+                </div>
+                {JAMES_PHOTO_CAPTION && (
+                  <figcaption className="mt-2 text-sm text-gray-400">
+                    {JAMES_PHOTO_CAPTION}
+                  </figcaption>
+                )}
+                {JAMES_PHOTO_EXIF && (
+                  <p className="mt-1 text-xs text-gray-500">{JAMES_PHOTO_EXIF}</p>
+                )}
+              </figure>
             </section>
 
             {/* Owner: Brother */}
