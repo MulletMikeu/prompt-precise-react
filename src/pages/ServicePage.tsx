@@ -198,16 +198,32 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                     className="relative w-full overflow-hidden rounded-lg shadow-2xl border-2 border-gray-800 bg-gray-900"
                     style={{ aspectRatio: `${heroImage.width || 1600} / ${heroImage.height || 900}` }}
                   >
-                    <img
-                      src={heroImage.src}
-                      alt={heroImage.alt}
-                      loading="eager"
-                      fetchPriority="high"
-                      decoding="async"
-                      width={heroImage.width || 1600}
-                      height={heroImage.height || 900}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
+                    <picture>
+                      {heroImage.webpSrcSet && (
+                        <source
+                          type="image/webp"
+                          srcSet={heroImage.webpSrcSet}
+                          sizes={heroImage.sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px'}
+                        />
+                      )}
+                      {heroImage.jpgSrcSet && (
+                        <source
+                          type="image/jpeg"
+                          srcSet={heroImage.jpgSrcSet}
+                          sizes={heroImage.sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px'}
+                        />
+                      )}
+                      <img
+                        src={heroImage.src}
+                        alt={heroImage.alt}
+                        loading="eager"
+                        fetchPriority="high"
+                        decoding="async"
+                        width={heroImage.width || 1600}
+                        height={heroImage.height || 900}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    </picture>
                   </div>
                   {(heroImage.caption || heroImage.geo) && (
                     <figcaption className="mt-3 text-center text-gray-400 text-sm">
