@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { OtherCitiesWeServe } from '@/components/sections/OtherCitiesWeServe';
 import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
+import { LazyImage } from '@/components/ui/LazyImage';
 import { BUSINESS_INFO } from '@/lib/constants';
 
 const LOCATION_SLUGS = new Set([
@@ -307,15 +308,13 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {gallery.images.map((img, i) => (
                     <figure key={i} className="rounded-lg overflow-hidden border-2 border-gray-800 bg-black shadow-xl">
-                      <img
+                      <LazyImage
                         src={img.src}
                         alt={img.alt}
-                        loading="lazy"
-                        decoding="async"
                         fetchPriority="low"
                         width={800}
                         height={600}
-                        className="w-full h-56 object-cover"
+                        className="w-full h-56 object-cover bg-gray-900"
                       />
                       {img.caption && (
                         <figcaption className="text-gray-400 text-sm p-3 text-center">
