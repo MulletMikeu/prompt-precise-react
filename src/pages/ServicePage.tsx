@@ -36,6 +36,10 @@ interface GalleryImage {
   src: string;
   alt: string;
   caption?: string;
+  srcSet?: string;
+  sizes?: string;
+  width?: number;
+  height?: number;
 }
 
 interface ServicePageProps {
