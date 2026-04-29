@@ -106,6 +106,11 @@ export function Footer() {
                 </button>
               </li>
               <li>
+                <Link to="/meet-the-owners" className="hover:text-red-600 transition-colors">
+                  Meet the Owners
+                </Link>
+              </li>
+              <li>
                 <Link to="/tree-service-richlands-nc" className="hover:text-red-600 transition-colors">
                   Richlands NC
                 </Link>
