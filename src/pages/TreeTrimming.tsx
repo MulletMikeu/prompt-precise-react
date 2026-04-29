@@ -18,6 +18,9 @@ export default function TreeTrimming() {
       ctaText="Call Now for a Free Estimate"
       heroImage={{
         src: treeTrimmingPhoto,
+        webpSrcSet: `${treeTrimmingPhotoWebp480} 480w, ${treeTrimmingPhotoWebp800} 800w, ${treeTrimmingPhotoWebp1200} 1200w, ${treeTrimmingPhotoWebp1600} 1600w`,
+        jpgSrcSet: `${treeTrimmingPhoto480} 480w, ${treeTrimmingPhoto800} 800w, ${treeTrimmingPhoto} 1200w, ${treeTrimmingPhoto1600} 1600w`,
+        sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
         alt: "Tree trimming in Jacksonville NC – real job-site photo by Godhans Tree Service.",
         caption: "Real job-site photo: Godhans crew trimming a large waterfront oak in Jacksonville, NC using a spider lift for precision pruning.",
         width: 1824,
