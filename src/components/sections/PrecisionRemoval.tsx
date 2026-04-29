@@ -14,9 +14,11 @@ interface PrecisionRemovalProps {
   variant?: 'light' | 'dark';
   /** Override the heading if needed for a specific page context. */
   heading?: string;
+  /** Show the spider-lift job-site image. Defaults to true. */
+  showImage?: boolean;
 }
 
-export function PrecisionRemoval({ variant = 'light', heading }: PrecisionRemovalProps) {
+export function PrecisionRemoval({ variant = 'light', heading, showImage = true }: PrecisionRemovalProps) {
   const isDark = variant === 'dark';
 
   return (
@@ -26,20 +28,22 @@ export function PrecisionRemoval({ variant = 'light', heading }: PrecisionRemova
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Image */}
-        <div className="mb-10 rounded-lg overflow-hidden shadow-2xl border-2 border-gray-800 bg-black">
-          <div className="relative w-full bg-gray-900" style={{ aspectRatio: '1600 / 1200' }}>
-            <LazyImage
-              src={spiderLiftImage}
-              srcSet={spiderLiftSrcSet}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
-              alt="Spider lift removing large pine tree in tight space near power lines in Jacksonville NC with minimal property damage"
-              fetchPriority="low"
-              width={1600}
-              height={1200}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+        {showImage && (
+          <div className="mb-10 rounded-lg overflow-hidden shadow-2xl border-2 border-gray-800 bg-black">
+            <div className="relative w-full bg-gray-900" style={{ aspectRatio: '1600 / 1200' }}>
+              <LazyImage
+                src={spiderLiftImage}
+                srcSet={spiderLiftSrcSet}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+                alt="Spider lift removing large pine tree in tight space near power lines in Jacksonville NC with minimal property damage"
+                fetchPriority="low"
+                width={1600}
+                height={1200}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Heading */}
         <div className="max-w-3xl mx-auto text-center mb-10">
