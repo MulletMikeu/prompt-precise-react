@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Shield, Wrench, TreePine } from 'lucide-react';
 import spiderLiftImage from '@/assets/spider-lift-tree-removal-jacksonville-nc.webp';
+import { LazyImage } from '@/components/ui/LazyImage';
 import { BUSINESS_INFO } from '@/lib/constants';
 
 interface PrecisionRemovalProps {
@@ -21,15 +22,13 @@ export function PrecisionRemoval({ variant = 'light', heading }: PrecisionRemova
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Image */}
         <div className="mb-10 rounded-lg overflow-hidden shadow-2xl border-2 border-gray-800 bg-black">
-          <img
+          <LazyImage
             src={spiderLiftImage}
             alt="Spider lift removing large pine tree in tight space near power lines in Jacksonville NC with minimal property damage"
-            loading="lazy"
-            decoding="async"
             fetchPriority="low"
             width={1600}
             height={1200}
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover bg-gray-900"
           />
         </div>
 
