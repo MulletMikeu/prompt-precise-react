@@ -4,6 +4,22 @@ import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BUSINESS_INFO } from '@/lib/constants';
+import michaelPhoto1200 from '@/assets/owner-michael-godhans-jacksonville-nc-1200.jpg';
+import michaelPhoto600 from '@/assets/owner-michael-godhans-jacksonville-nc-600.jpg';
+import michaelPhoto1200Webp from '@/assets/owner-michael-godhans-jacksonville-nc-1200.webp';
+import michaelPhoto600Webp from '@/assets/owner-michael-godhans-jacksonville-nc-600.webp';
+
+// === EDITABLE PHOTO FIELDS (Michael) ===
+// Pre-filled SEO alt text — do not change template.
+const MICHAEL_PHOTO_ALT = 'Michael, owner of Godhans Tree Service in Jacksonville NC.';
+// Editable caption — leave empty to hide.
+const MICHAEL_PHOTO_CAPTION = '';
+// Optional EXIF / GEO data — leave empty to hide.
+const MICHAEL_PHOTO_EXIF = '';
+// Intrinsic dimensions (used to reserve aspect ratio and prevent CLS)
+const MICHAEL_PHOTO_WIDTH = 1200;
+const MICHAEL_PHOTO_HEIGHT = 1408;
+// === END EDITABLE PHOTO FIELDS ===
 
 const PAGE_URL = 'https://godhans.com/meet-the-owners';
 const OG_IMAGE = 'https://godhans.com/og-image.jpg';
@@ -132,6 +148,45 @@ export default function MeetTheOwners() {
               ) : (
                 <p className="text-gray-500 italic">[Introduction text — add via INTRO_TEXT]</p>
               )}
+            </section>
+
+            {/* Michael — Owner Photo */}
+            <section aria-labelledby="michael-photo-heading" className="mb-8">
+              <h2 id="michael-photo-heading" className="sr-only">Photo of Michael</h2>
+              <figure className="m-0">
+                <div
+                  className="relative w-full overflow-hidden rounded-lg bg-gray-900"
+                  style={{ aspectRatio: `${MICHAEL_PHOTO_WIDTH} / ${MICHAEL_PHOTO_HEIGHT}` }}
+                >
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcSet={`${michaelPhoto600Webp} 600w, ${michaelPhoto1200Webp} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 768px"
+                    />
+                    <img
+                      src={michaelPhoto1200}
+                      srcSet={`${michaelPhoto600} 600w, ${michaelPhoto1200} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 768px"
+                      width={MICHAEL_PHOTO_WIDTH}
+                      height={MICHAEL_PHOTO_HEIGHT}
+                      alt={MICHAEL_PHOTO_ALT}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </picture>
+                </div>
+                {MICHAEL_PHOTO_CAPTION && (
+                  <figcaption className="mt-2 text-sm text-gray-400">
+                    {MICHAEL_PHOTO_CAPTION}
+                  </figcaption>
+                )}
+                {MICHAEL_PHOTO_EXIF && (
+                  <p className="mt-1 text-xs text-gray-500">{MICHAEL_PHOTO_EXIF}</p>
+                )}
+              </figure>
             </section>
 
             {/* Owner: Michael */}
