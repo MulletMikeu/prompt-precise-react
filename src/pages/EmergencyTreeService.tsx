@@ -58,16 +58,19 @@ export default function EmergencyTreeService() {
         images: [
           {
             src: heroCrane,
+            srcSet: craneSrcSet,
             alt: "Bucket crane removing a large pine tree in a Jacksonville NC backyard after storm damage",
             caption: "Crane removal of a damaged pine — Jacksonville, NC"
           },
           {
             src: sitePrep,
+            srcSet: sitePrepSrcSet,
             alt: "Compact track loader clearing trees and prepping a residential lot in Jacksonville NC",
             caption: "Property clearing & site prep — Onslow County"
           },
           {
             src: yardRestored,
+            srcSet: yardSrcSet,
             alt: "Cleaned and restored yard after emergency tree removal in Jacksonville NC",
             caption: "Cleanup complete — yard restored after removal"
           }
