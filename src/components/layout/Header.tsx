@@ -152,7 +152,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="lg:hidden bg-black border-t border-gray-800 py-4 space-y-2 animate-fadeIn">
+          <nav aria-label="Mobile Navigation" className="lg:hidden bg-black border-t border-gray-800 py-4 space-y-2 animate-fadeIn">
             {/* Mobile Services Accordion */}
             <button
               onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
@@ -197,16 +197,16 @@ export function Header() {
             </Link>
 
             <button
-              onClick={() => scrollToSection('contact-form')}
-              className="block w-full text-left px-4 py-3 text-white hover:bg-gray-900 hover:text-red-600 transition-colors border-b border-gray-800"
-            >
-              Get Quote
-            </button>
-            <button
               onClick={() => scrollToSection('testimonials')}
               className="block w-full text-left px-4 py-3 text-white hover:bg-gray-900 hover:text-red-600 transition-colors border-b border-gray-800"
             >
               Reviews
+            </button>
+            <button
+              onClick={() => scrollToSection('contact-form')}
+              className="block w-full text-left px-4 py-3 text-white font-bold hover:bg-gray-900 hover:text-red-600 transition-colors border-b border-gray-800"
+            >
+              Get Quote
             </button>
             
             <a
