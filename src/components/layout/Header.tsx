@@ -129,12 +129,6 @@ export function Header() {
               Get Quote
             </button>
             <button
-              onClick={() => scrollToSection('booking')}
-              className="text-white hover:text-red-600 font-medium transition-colors"
-            >
-              Book Now
-            </button>
-            <button
               onClick={() => scrollToSection('testimonials')}
               className="text-white hover:text-red-600 font-medium transition-colors"
             >
@@ -201,12 +195,6 @@ export function Header() {
               className="block w-full text-left px-4 py-3 text-white hover:bg-gray-900 hover:text-red-600 transition-colors border-b border-gray-800"
             >
               Get Quote
-            </button>
-            <button
-              onClick={() => scrollToSection('booking')}
-              className="block w-full text-left px-4 py-3 text-white hover:bg-gray-900 hover:text-red-600 transition-colors border-b border-gray-800"
-            >
-              Book Now
             </button>
             <button
               onClick={() => scrollToSection('testimonials')}
