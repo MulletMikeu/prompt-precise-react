@@ -10,17 +10,6 @@
       ],
       "destination": "https://godhans.com/$1",
       "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "godhans.com"
-        }
-      ],
-      "destination": "/$1",
-      "permanent": false
     }
   ]
 }
