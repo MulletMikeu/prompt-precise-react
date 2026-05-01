@@ -162,18 +162,16 @@ export function ContactForm() {
             )}
           </div>
 
-          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { icon: '🛡️', text: 'Licensed & Insured' },
-              { icon: '💰', text: 'Free Estimates' },
-              { icon: '⚡', text: '24/7 Emergency' },
-              { icon: '🎖️', text: 'Military Discounts' }
-            ].map((item, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg border-2 border-gray-200 text-center hover:border-red-600 transition-colors">
-                <div className="text-3xl mb-2">{item.icon}</div>
-                <p className="text-sm font-semibold text-gray-700">{item.text}</p>
-              </div>
-            ))}
+          <div className="mt-6 border-t border-gray-200 pt-5">
+            <p className="text-sm text-gray-700 text-center sm:text-left flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-center gap-y-1.5 sm:gap-x-3">
+              <span className="font-semibold">Licensed &amp; Insured</span>
+              <span className="hidden sm:inline text-gray-300" aria-hidden="true">|</span>
+              <span>Free Estimates</span>
+              <span className="hidden sm:inline text-gray-300" aria-hidden="true">|</span>
+              <span>24/7 Emergency Service</span>
+              <span className="hidden sm:inline text-gray-300" aria-hidden="true">|</span>
+              <span>Military Discounts <span className="text-gray-500">(Camp Lejeune friendly)</span></span>
+            </p>
           </div>
         </div>
       </div>
