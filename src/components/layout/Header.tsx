@@ -76,7 +76,7 @@ export function Header() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-8">
             {/* Services Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
@@ -123,24 +123,30 @@ export function Header() {
             </Link>
 
             <button
-              onClick={() => scrollToSection('contact-form')}
-              className="text-white hover:text-red-600 font-medium transition-colors"
-            >
-              Get Quote
-            </button>
-            <button
               onClick={() => scrollToSection('testimonials')}
               className="text-white hover:text-red-600 font-medium transition-colors"
             >
               Reviews
             </button>
-            
-            <a
-              href={`tel:${BUSINESS_INFO.phone.tel}`}
-              className="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-xl hover:-translate-y-0.5 inline-flex items-center gap-2"
+
+            <button
+              onClick={() => scrollToSection('contact-form')}
+              className="text-white hover:text-red-600 font-bold underline-offset-4 hover:underline transition-colors"
             >
-              📞 {BUSINESS_INFO.phone.display}
-            </a>
+              Get Quote
+            </button>
+
+            <div className="flex flex-col items-end leading-tight">
+              <a
+                href={`tel:${BUSINESS_INFO.phone.tel}`}
+                className="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-xl hover:-translate-y-0.5 inline-flex items-center gap-2"
+              >
+                📞 {BUSINESS_INFO.phone.display}
+              </a>
+              <span className="mt-1 text-[11px] text-gray-400">
+                Licensed &amp; Insured • Veteran-Owned
+              </span>
+            </div>
           </nav>
         </div>
 
