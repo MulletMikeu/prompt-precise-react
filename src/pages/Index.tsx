@@ -57,10 +57,7 @@ const SectionLoader = () => (
 );
 
 export default function Index() {
-  // New schema object for SchemaInjector
-  const treeServiceSchema = {
-    "@context": "https://schema.org",
-    "@type": "TreeService",
+
     "@id": "https://godhans.com/#treeservice",
     name: "Godhans Tree Company",
     url: "https://godhans.com/",
@@ -243,7 +240,7 @@ export default function Index() {
       </Helmet>
 
       {/* New SchemaInjector placement */}
-      <SchemaInjector schema={treeServiceSchema} />
+   
 
       <div className="min-h-screen flex flex-col">
         <EmergencyBanner />
