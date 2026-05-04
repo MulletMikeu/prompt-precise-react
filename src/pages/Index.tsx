@@ -23,7 +23,7 @@ const PrecisionRemoval = lazy(() => import("@/components/sections/PrecisionRemov
 
 const SectionLoader = () => (
   <div className="py-20 flex items-center justify-center">
-    <div className="animate-pulse text-gray-400">Loading...</div>
+    <div className="animate-pulse text-gray-300">Loading...</div>
   </div>
 );
 
@@ -171,7 +171,7 @@ export default function Index() {
               >
                 Learn More About Our Jacksonville Tree Services →
               </Link>
-              <p className="mt-4 text-gray-400 text-sm">
+              <p className="mt-4 text-gray-300 text-sm">
                 <Link
                   to="/meet-the-owners"
                   className="hover:text-red-600 transition-colors underline"

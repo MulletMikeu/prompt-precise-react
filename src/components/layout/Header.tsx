@@ -143,7 +143,7 @@ export function Header() {
               >
                 📞 {BUSINESS_INFO.phone.display}
               </a>
-              <span className="mt-1 text-[11px] text-gray-400">
+              <span className="mt-1 text-[11px] text-gray-300">
                 Licensed &amp; Insured • Veteran-Owned
               </span>
             </div>
