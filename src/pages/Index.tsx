@@ -125,21 +125,21 @@ export default function Index() {
           name="description"
           content="Tree service in Jacksonville, NC: removal, trimming, stump grinding, and 24/7 storm response. Licensed, insured, free estimates. Call (618) 704-4861."
         />
-        <link rel="canonical" href="[godhans.com](https://godhans.com/)" />
+        <link rel="canonical" href="https://godhans.com/" />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="[godhans.com](https://godhans.com/)" />
+        <meta property="og:url" content="https://godhans.com/" />
         <meta property="og:title" content="Tree Service Jacksonville NC | Godhans Tree Company" />
         <meta
           property="og:description"
           content="Professional tree trimming, removal & stump grinding in Jacksonville, NC. Licensed & insured. 24/7 emergency service available."
         />
         <meta property="og:site_name" content="Godhans Tree Company" />
-        <meta property="og:image" content="[godhans.com](https://godhans.com/og-image.jpg)" />
+        <meta property="og:image" content="https://godhans.com/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="[godhans.com](https://godhans.com/og-image.jpg)" />
+        <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
         <script type="application/ld+json">{JSON.stringify(treeServiceSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
