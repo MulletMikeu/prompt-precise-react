@@ -108,7 +108,7 @@ export default function Index() {
   };
 
   const faqSchema = {
-    "@context": "[schema.org](https://schema.org)",
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: FAQ_ITEMS.map((item) => ({
       "@type": "Question",
