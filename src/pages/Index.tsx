@@ -36,15 +36,15 @@ export default function Index() {
       : "5";
 
   const treeServiceSchema = {
-    "@context": "[schema.org](https://schema.org)",
+    "@context": "https://schema.org",
     "@type": "TreeService",
-    "@id": "[godhans.com](https://godhans.com/#treeservice)",
+    "@id": "https://godhans.com/#treeservice",
     name: "Godhans Tree Company",
-    url: "[godhans.com](https://godhans.com/)",
+    url: "https://godhans.com/",
     telephone: BUSINESS_INFO.phone || "+16187044861",
     email: BUSINESS_INFO.email || "godhanstree@gmail.com",
     priceRange: "$$",
-    image: "[godhans.com](https://godhans.com/og-image.jpg)",
+    image: "https://godhans.com/og-image.jpg",
     address: {
       "@type": "PostalAddress",
       streetAddress: "4445 Gum Branch Rd",
