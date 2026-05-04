@@ -231,7 +231,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                     </picture>
                   </div>
                   {(heroImage.caption || heroImage.geo) && (
-                    <figcaption className="mt-3 text-center text-gray-400 text-sm">
+                    <figcaption className="mt-3 text-center text-gray-300 text-sm">
                       {heroImage.caption}
                       {heroImage.geo && (
                         <span className="block text-gray-500 text-xs mt-1">📍 {heroImage.geo}</span>
@@ -323,7 +323,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                         className="w-full h-56 object-cover bg-gray-900"
                       />
                       {img.caption && (
-                        <figcaption className="text-gray-400 text-sm p-3 text-center">
+                        <figcaption className="text-gray-300 text-sm p-3 text-center">
                           {img.caption}
                         </figcaption>
                       )}

@@ -23,7 +23,7 @@ const PrecisionRemoval = lazy(() => import("@/components/sections/PrecisionRemov
 
 const SectionLoader = () => (
   <div className="py-20 flex items-center justify-center">
-    <div className="animate-pulse text-gray-400">Loading...</div>
+    <div className="animate-pulse text-gray-300">Loading...</div>
   </div>
 );
 
@@ -36,15 +36,15 @@ export default function Index() {
       : "5";
 
   const treeServiceSchema = {
-    "@context": "[schema.org](https://schema.org)",
+    "@context": "https://schema.org",
     "@type": "TreeService",
-    "@id": "[godhans.com](https://godhans.com/#treeservice)",
+    "@id": "https://godhans.com/#treeservice",
     name: "Godhans Tree Company",
-    url: "[godhans.com](https://godhans.com/)",
+    url: "https://godhans.com/",
     telephone: BUSINESS_INFO.phone || "+16187044861",
     email: BUSINESS_INFO.email || "godhanstree@gmail.com",
     priceRange: "$$",
-    image: "[godhans.com](https://godhans.com/og-image.jpg)",
+    image: "https://godhans.com/og-image.jpg",
     address: {
       "@type": "PostalAddress",
       streetAddress: "4445 Gum Branch Rd",
@@ -108,7 +108,7 @@ export default function Index() {
   };
 
   const faqSchema = {
-    "@context": "[schema.org](https://schema.org)",
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: FAQ_ITEMS.map((item) => ({
       "@type": "Question",
@@ -125,21 +125,21 @@ export default function Index() {
           name="description"
           content="Tree service in Jacksonville, NC: removal, trimming, stump grinding, and 24/7 storm response. Licensed, insured, free estimates. Call (618) 704-4861."
         />
-        <link rel="canonical" href="[godhans.com](https://godhans.com/)" />
+        <link rel="canonical" href="https://godhans.com/" />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="[godhans.com](https://godhans.com/)" />
+        <meta property="og:url" content="https://godhans.com/" />
         <meta property="og:title" content="Tree Service Jacksonville NC | Godhans Tree Company" />
         <meta
           property="og:description"
           content="Professional tree trimming, removal & stump grinding in Jacksonville, NC. Licensed & insured. 24/7 emergency service available."
         />
         <meta property="og:site_name" content="Godhans Tree Company" />
-        <meta property="og:image" content="[godhans.com](https://godhans.com/og-image.jpg)" />
+        <meta property="og:image" content="https://godhans.com/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="[godhans.com](https://godhans.com/og-image.jpg)" />
+        <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
         <script type="application/ld+json">{JSON.stringify(treeServiceSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
@@ -171,7 +171,7 @@ export default function Index() {
               >
                 Learn More About Our Jacksonville Tree Services →
               </Link>
-              <p className="mt-4 text-gray-400 text-sm">
+              <p className="mt-4 text-gray-300 text-sm">
                 <Link
                   to="/meet-the-owners"
                   className="hover:text-red-600 transition-colors underline"

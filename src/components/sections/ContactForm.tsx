@@ -21,7 +21,7 @@ export function ContactForm() {
             >
               📞 Call Now: {BUSINESS_INFO.phone.display}
             </a>
-            <span className="hidden sm:block text-gray-400">|</span>
+            <span className="hidden sm:block text-gray-300">|</span>
             <a
               href={`mailto:${BUSINESS_INFO.email}`}
               className="text-red-600 font-semibold hover:text-red-700 transition-colors inline-flex items-center gap-2"
@@ -124,7 +124,7 @@ export function ContactForm() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-2">
-                    Message <span className="text-gray-400 font-normal">(optional)</span>
+                    Message <span className="text-gray-300 font-normal">(optional)</span>
                   </label>
                   <textarea
                     id="message"

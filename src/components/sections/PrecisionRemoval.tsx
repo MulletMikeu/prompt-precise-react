@@ -62,7 +62,7 @@ export function PrecisionRemoval({ variant = 'light', heading, showImage = true 
             <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
               Why Tight Spaces Are Dangerous
             </h3>
-            <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
               Limbs near power lines, structures, or fences cannot be free-dropped. One wrong cut can damage the roof, pull a service line, or land on a vehicle. Proper rigging and lift access are non-negotiable.
             </p>
           </div>
@@ -71,7 +71,7 @@ export function PrecisionRemoval({ variant = 'light', heading, showImage = true 
             <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
               Spider Lift Advantage
             </h3>
-            <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
               Tracked, lightweight, and able to fit through a standard gate. We reach 50+ feet up without parking a crane in your driveway or rutting up the lawn the way bucket trucks do.
             </p>
           </div>
@@ -80,7 +80,7 @@ export function PrecisionRemoval({ variant = 'light', heading, showImage = true 
             <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
               Lawn & Property Protected
             </h3>
-            <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
               Rubber tracks distribute weight, plywood mats protect soft ground, and every limb is rigged down — not dropped. We leave the yard the way we found it.
             </p>
           </div>
@@ -94,7 +94,7 @@ export function PrecisionRemoval({ variant = 'light', heading, showImage = true 
           >
             📞 Free Estimate — Call {BUSINESS_INFO.phone.display}
           </a>
-          <p className={`text-sm mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className={`text-sm mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
             Licensed, fully insured, and experienced with tight-access removals. No-pressure on-site quote.
           </p>
           <div className={`flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold ${isDark ? 'text-red-400' : 'text-red-600'}`}>

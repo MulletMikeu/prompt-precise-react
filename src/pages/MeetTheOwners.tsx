@@ -144,7 +144,7 @@ export default function MeetTheOwners() {
         <main className="flex-grow">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl py-10 sm:py-14">
             {/* Breadcrumbs */}
-            <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-400">
+            <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-300">
               <ol className="flex flex-wrap items-center gap-2">
                 <li>
                   <Link to="/" className="hover:text-red-600 transition-colors">Home</Link>
@@ -195,7 +195,7 @@ export default function MeetTheOwners() {
                   </picture>
                 </div>
                 {MICHAEL_PHOTO_CAPTION && (
-                  <figcaption className="mt-2 text-sm text-gray-400">
+                  <figcaption className="mt-2 text-sm text-gray-300">
                     {MICHAEL_PHOTO_CAPTION}
                   </figcaption>
                 )}
@@ -251,7 +251,7 @@ export default function MeetTheOwners() {
                   </picture>
                 </div>
                 {JAMES_PHOTO_CAPTION && (
-                  <figcaption className="mt-2 text-sm text-gray-400">
+                  <figcaption className="mt-2 text-sm text-gray-300">
                     {JAMES_PHOTO_CAPTION}
                   </figcaption>
                 )}

@@ -69,7 +69,7 @@ export function OtherCitiesWeServe({ currentSlug }: OtherCitiesWeServeProps) {
                   →
                 </span>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed">{city.description}</p>
+              <p className="text-gray-300 text-sm leading-relaxed">{city.description}</p>
             </Link>
           ))}
         </div>

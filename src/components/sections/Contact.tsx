@@ -70,7 +70,7 @@ export function Contact() {
                     <Icon className="w-6 h-6" aria-hidden="true" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm text-gray-400 font-medium">
+                    <p className="text-sm text-gray-300 font-medium">
                       {item.label}
                     </p>
                     <p
