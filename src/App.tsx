@@ -1,71 +1,76 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from 'react-helmet-async';
-import { lazy, Suspense } from "react";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import { StickyCallButton } from "./components/layout/StickyCallButton";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { useEffect } from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
 
-const TreeRemoval = lazy(() => import("./pages/TreeRemoval"));
-const TreeTrimming = lazy(() => import("./pages/TreeTrimming"));
-const StumpGrinding = lazy(() => import("./pages/StumpGrinding"));
-const EmergencyTreeService = lazy(() => import("./pages/EmergencyTreeService"));
-const TreeServiceRichlands = lazy(() => import("./pages/TreeServiceRichlands"));
-const TreeServiceHubert = lazy(() => import("./pages/TreeServiceHubert"));
-const TreeServiceSneadsFerry = lazy(() => import("./pages/TreeServiceSneadsFerry"));
-const TreeServiceSwansboro = lazy(() => import("./pages/TreeServiceSwansboro"));
-const TreeServiceCampLejeune = lazy(() => import("./pages/TreeServiceCampLejeune"));
-const TreeRemovalCost = lazy(() => import("./pages/TreeRemovalCost"));
-const StormDamageGuide = lazy(() => import("./pages/StormDamageGuide"));
-const TreeTrimmingVsPruning = lazy(() => import("./pages/TreeTrimmingVsPruning"));
-const TreeRemovalPermitNC = lazy(() => import("./pages/TreeRemovalPermitNC"));
-const TreeServiceJacksonvilleNC = lazy(() => import("./pages/TreeServiceJacksonvilleNC"));
-const LeaningTreeDangerous = lazy(() => import("./pages/LeaningTreeDangerous"));
-const SpiderLiftRemoval = lazy(() => import("./pages/SpiderLiftRemoval"));
-const TreeRemovalNearHouse = lazy(() => import("./pages/TreeRemovalNearHouse"));
-const TreeRemovalTightSpaces = lazy(() => import("./pages/TreeRemovalTightSpaces"));
-const MeetTheOwners = lazy(() => import("./pages/MeetTheOwners"));
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
+  return null;
+}
 
-const queryClient = new QueryClient();
+function AnimateOnScroll() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    const targets = document.querySelectorAll(".animate-on-scroll");
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  });
+  return null;
+}
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen flex flex-col" style={{ background: "#0A0A0A" }}>
+      
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold"
+      >
+        Skip to main content
+      </a>
+      <Navbar />
+      <div className="flex-1">{children}</div>
+      <Footer />
+    </div>
+  );
+}
+
+export default function App() {
+  return (
     <HelmetProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
+      <BrowserRouter>
+        <ScrollToTop />
+        <AnimateOnScroll />
+        <Layout>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/tree-removal-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemoval /></Suspense>} />
-            <Route path="/tree-trimming-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeTrimming /></Suspense>} />
-            <Route path="/stump-grinding-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><StumpGrinding /></Suspense>} />
-            <Route path="/emergency-tree-service-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><EmergencyTreeService /></Suspense>} />
-            <Route path="/tree-service-richlands-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceRichlands /></Suspense>} />
-            <Route path="/tree-service-hubert-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceHubert /></Suspense>} />
-            <Route path="/tree-service-sneads-ferry-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceSneadsFerry /></Suspense>} />
-            <Route path="/tree-service-swansboro-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceSwansboro /></Suspense>} />
-            <Route path="/tree-service-camp-lejeune-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceCampLejeune /></Suspense>} />
-            <Route path="/tree-removal-cost-north-carolina" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalCost /></Suspense>} />
-            <Route path="/storm-damage-trees-guide" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><StormDamageGuide /></Suspense>} />
-            <Route path="/tree-trimming-vs-pruning" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeTrimmingVsPruning /></Suspense>} />
-            <Route path="/do-you-need-a-permit-to-remove-a-tree-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalPermitNC /></Suspense>} />
-            <Route path="/tree-service-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeServiceJacksonvilleNC /></Suspense>} />
-            <Route path="/leaning-tree-dangerous-after-storm" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><LeaningTreeDangerous /></Suspense>} />
-            <Route path="/spider-lift-tree-removal-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><SpiderLiftRemoval /></Suspense>} />
-            <Route path="/tree-removal-near-house-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalNearHouse /></Suspense>} />
-            <Route path="/tree-removal-tight-spaces-jacksonville-nc" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><TreeRemovalTightSpaces /></Suspense>} />
-            <Route path="/meet-the-owners" element={<Suspense fallback={<div className="min-h-screen bg-black" />}><MeetTheOwners /></Suspense>} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<HomePage />} />
+            <Route path="/services/:slug" element={<HomePage />} />
+            <Route path="/locations/:slug" element={<HomePage />} />
+            <Route path="/about" element={<HomePage />} />
+            <Route path="/contact" element={<HomePage />} />
+            <Route path="/service-area" element={<HomePage />} />
+            <Route path="/reviews" element={<HomePage />} />
+            <Route path="/blog" element={<HomePage />} />
+            <Route path="/privacy-policy" element={<HomePage />} />
+            <Route path="*" element={<HomePage />} />
           </Routes>
-          <StickyCallButton />
-        </BrowserRouter>
-      </TooltipProvider>
+        </Layout>
+      </BrowserRouter>
     </HelmetProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+  );
+}
