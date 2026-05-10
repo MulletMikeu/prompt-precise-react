@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -8,7 +8,7 @@ import HomePage from "./pages/HomePage";
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [pathname]);
   return null;
 }
@@ -33,15 +33,9 @@ function AnimateOnScroll() {
   return null;
 }
 
-function Layout({ children }: { children: React.ReactNode }) {
+function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0A0A0A" }}>
-      
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold"
-      >
-        Skip to main content
-      </a>
       <Navbar />
       <div className="flex-1">{children}</div>
       <Footer />
