@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { useEffect, ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -64,6 +65,7 @@ export default function App() {
             <Route path="*" element={<HomePage />} />
           </Routes>
         </Layout>
+        <Analytics />
       </BrowserRouter>
     </HelmetProvider>
   );
