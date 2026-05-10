@@ -89,7 +89,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2 — Services */}
+          {/* Col 2 - Services */}
           <div>
             <h3
               className="font-display font-700 uppercase text-white mb-6"
@@ -114,7 +114,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3 — Service Area */}
+          {/* Col 3 - Service Area */}
           <div>
             <h3
               className="font-display font-700 uppercase text-white mb-6"
