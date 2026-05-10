@@ -24,9 +24,8 @@ export default function Navbar() {
         borderBottom: scrolled ? "1px solid #2A2A2A" : "1px solid transparent",
       }}
     >
-      {/* Top bar */}
       <div style={{ background: "#C41230" }} className="hidden md:block text-white text-center py-1.5">
-        <p className="text-sm font-body font-600 tracking-wide">
+        <p className="text-sm tracking-wide">
           24/7 Emergency Service Available —{" "}
           <a href={BUSINESS.phoneHref} className="font-bold underline underline-offset-2">
             {BUSINESS.phone}
@@ -34,42 +33,33 @@ export default function Navbar() {
         </p>
       </div>
 
-      {/* Main nav */}
       <nav className="container-brand" aria-label="Main navigation">
-        <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="flex items-center justify-between h-16">
 
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="Godhans Tree Company — Home">
+          <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="Godhans Tree Company">
             <div
-              className="w-9 h-9 flex items-center justify-center font-display font-800 text-white text-lg"
+              className="w-9 h-9 flex items-center justify-center text-white text-lg font-bold"
               style={{ background: "#C41230" }}
-              aria-hidden="true"
             >
               G
             </div>
             <div className="leading-none">
-              <span className="block font-display font-800 text-white uppercase tracking-tight" style={{ fontSize: "1.25rem" }}>
+              <span className="block font-bold text-white uppercase" style={{ fontSize: "1.25rem" }}>
                 Godhans
               </span>
-              <span className="block text-xs font-body tracking-widest uppercase" style={{ color: "#888888" }}>
+              <span className="block text-xs tracking-widest uppercase" style={{ color: "#888888" }}>
                 Tree Company
               </span>
             </div>
           </Link>
 
-          {/* Desktop links */}
           <ul className="hidden lg:flex items-center gap-6 list-none m-0 p-0">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   to={link.href}
-                  className="font-body text-sm font-600 tracking-wide uppercase transition-colors"
-                  style={{
-                    color: pathname === link.href ? "#C41230" : "#E8E8E2",
-                    letterSpacing: "0.08em",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#C41230")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = pathname === link.href ? "#C41230" : "#E8E8E2")}
+                  className="text-sm font-semibold tracking-wide uppercase transition-colors"
+                  style={{ color: pathname === link.href ? "#C41230" : "#E8E8E2" }}
                 >
                   {link.label}
                 </Link>
@@ -77,36 +67,31 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            
-              href={BUSINESS.phoneHref}
-              className="font-display font-700 text-sm uppercase tracking-wider text-white transition-colors"
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#C41230")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
-            >
+            <a href={BUSINESS.phoneHref} className="text-sm font-bold uppercase tracking-wider text-white">
               {BUSINESS.phone}
             </a>
-            <Link to="/contact" className="btn-primary text-sm" style={{ padding: "0.6rem 1.25rem" }}>
+            <Link to="/contact" className="btn-primary" style={{ padding: "0.6rem 1.25rem", fontSize: "0.875rem" }}>
               Free Estimate
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
           >
-            <span className="block w-6 h-0.5 bg-white transition-all duration-300" style={{ transform: open ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
-            <span className="block w-6 h-0.5 bg-white transition-all duration-300" style={{ opacity: open ? 0 : 1 }} />
-            <span className="block w-6 h-0.5 bg-white transition-all duration-300" style={{ transform: open ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
+            <span className="block w-6 h-0.5 bg-white transition-all duration-300"
+              style={{ transform: open ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
+            <span className="block w-6 h-0.5 bg-white transition-all duration-300"
+              style={{ opacity: open ? 0 : 1 }} />
+            <span className="block w-6 h-0.5 bg-white transition-all duration-300"
+              style={{ transform: open ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
           </button>
         </div>
       </nav>
 
-      {/* Mobile menu */}
       <div
         className="lg:hidden overflow-hidden transition-all duration-300"
         style={{
@@ -114,15 +99,14 @@ export default function Navbar() {
           background: "#0A0A0A",
           borderTop: open ? "1px solid #2A2A2A" : "none",
         }}
-        aria-hidden={!open}
       >
-        <nav className="container-brand py-6" aria-label="Mobile navigation">
+        <div className="container-brand py-6">
           <ul className="list-none m-0 p-0 flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   to={link.href}
-                  className="block font-display font-700 uppercase py-3 border-b transition-colors"
+                  className="block font-bold uppercase py-3 border-b transition-colors"
                   style={{
                     fontSize: "1.1rem",
                     letterSpacing: "0.06em",
@@ -136,14 +120,14 @@ export default function Navbar() {
             ))}
           </ul>
           <div className="mt-6 flex flex-col gap-3">
-            <a href={BUSINESS.phoneHref} className="btn-primary justify-center text-base">
+            <a href={BUSINESS.phoneHref} className="btn-primary justify-center">
               Call {BUSINESS.phone}
             </a>
-            <Link to="/contact" className="btn-outline justify-center text-base">
+            <Link to="/contact" className="btn-outline justify-center">
               Get Free Estimate
             </Link>
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   );
