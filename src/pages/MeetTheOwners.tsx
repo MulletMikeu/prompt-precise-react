@@ -72,7 +72,7 @@ export default function MeetTheOwners() {
   const webPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${PAGE_URL}#webpage`,
+   '@id': PAGE_URL + '#webpage',
     url: PAGE_URL,
     name: 'Meet the Owners | Godhans Tree Service | Jacksonville NC',
     description:
