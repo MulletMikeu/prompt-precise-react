@@ -64,7 +64,7 @@ export default function CTABanner() {
             >
               Request Free Estimate
             </Link>
-            
+            <a
               href={BUSINESS.phoneHref}
               className="font-display font-700 uppercase text-base tracking-wider px-8 py-4 text-center transition-all duration-200"
               style={{

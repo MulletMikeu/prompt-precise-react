@@ -115,7 +115,7 @@ export default function ReviewsSection() {
 
         {/* All reviews CTA */}
         <div className="mt-10 text-center">
-          
+          <a
             href={BUSINESS.gbpUrl}
             target="_blank"
             rel="noopener noreferrer"

@@ -147,7 +147,7 @@ export default function VideoSection() {
 
         {/* YouTube link */}
         <div className="mt-8 text-center">
-          
+          <a
             href="https://www.youtube.com/@godhans7945/"
             target="_blank"
             rel="noopener noreferrer"

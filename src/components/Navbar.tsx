@@ -79,7 +79,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            
+            <a
               href={BUSINESS.phoneHref}
               className="font-display font-700 text-sm uppercase tracking-wider text-white transition-colors"
               onMouseEnter={(e) => (e.currentTarget.style.color = "#C41230")}

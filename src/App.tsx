@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { useEffect } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -36,7 +37,7 @@ function AnimateOnScroll() {
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0A0A0A" }}>
-      
+      <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold"
       >
@@ -70,6 +71,7 @@ export default function App() {
             <Route path="*" element={<HomePage />} />
           </Routes>
         </Layout>
+        <SpeedInsights />
       </BrowserRouter>
     </HelmetProvider>
   );

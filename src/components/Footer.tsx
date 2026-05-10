@@ -40,7 +40,7 @@ export default function Footer() {
               <p className="font-body text-sm mb-1" style={{ color: "#888888" }}>
                 {BUSINESS.address.full}
               </p>
-              
+              <a
                 href={BUSINESS.phoneHref}
                 className="font-display font-700 block mt-2 transition-colors"
                 style={{ color: "#C41230", fontSize: "1.05rem" }}
@@ -49,7 +49,7 @@ export default function Footer() {
               >
                 {BUSINESS.phone}
               </a>
-              
+              <a
                 href={BUSINESS.emailHref}
                 className="font-body text-sm block mt-1 transition-colors"
                 style={{ color: "#555555" }}
@@ -62,7 +62,7 @@ export default function Footer() {
 
             {/* Social */}
             <div className="flex gap-4">
-              
+              <a
                 href={BUSINESS.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -74,7 +74,7 @@ export default function Footer() {
               >
                 Facebook
               </a>
-              
+              <a
                 href={BUSINESS.social.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -122,4 +122,58 @@ export default function Footer() {
             >
               Service Area
             </h3>
-            <ul className="list-none m-0 p-0 flex flex-col
+            <ul className="list-none m-0 p-0 flex flex-col gap-2.5">
+              {SERVICE_CITIES.filter((c) => c.primary || c.highlight).map((city) => (
+                <li key={city.slug}>
+                  <Link
+                    to={`/locations/${city.slug}`}
+                    className="font-body text-sm transition-colors"
+                    style={{ color: "#555555" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#C41230")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#555555")}
+                  >
+                    {city.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4 — Links */}
+          <div>
+            <h3
+              className="font-display font-700 uppercase text-white mb-6"
+              style={{ fontSize: "0.8rem", letterSpacing: "0.12em" }}
+            >
+              Company
+            </h3>
+            <ul className="list-none m-0 p-0 flex flex-col gap-2.5">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="font-body text-sm transition-colors"
+                    style={{ color: "#555555" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#C41230")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#555555")}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div style={{ background: "#000000", borderTop: "1px solid #1A1A1A" }}>
+        <div className="container-brand py-6">
+          <p className="text-center font-body text-xs" style={{ color: "#555555" }}>
+            &copy; {year} {BUSINESS.name}. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

@@ -101,4 +101,22 @@ export default function ServiceAreaSection() {
             <div className="mt-4 p-5" style={{ background: "#111111", border: "1px solid #1A1A1A" }}>
               <address className="not-italic">
                 <p
-                  className="font-display font-700 u
+                  className="font-display font-700 uppercase text-white mb-2"
+                  style={{ fontSize: "0.875rem", letterSpacing: "0.08em" }}
+                >
+                  {BUSINESS.name}
+                </p>
+                <p className="font-body text-sm" style={{ color: "#888888" }}>
+                  {BUSINESS.address}
+                </p>
+                <p className="font-body text-sm mt-1" style={{ color: "#888888" }}>
+                  {BUSINESS.cityState}
+                </p>
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
