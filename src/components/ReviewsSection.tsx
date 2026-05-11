@@ -62,6 +62,10 @@ export default function ReviewsSection() {
               itemScope
               itemType="https://schema.org/Review"
             >
+              <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" style={{ display: "none" }}>
+                <span itemProp="name" content="Godhans Tree Company" />
+              </span>
+
               {/* Quote mark */}
               <span
                 className="font-display font-800 mb-4 block"
@@ -95,8 +99,10 @@ export default function ReviewsSection() {
                     className="font-display font-700 uppercase text-white"
                     style={{ fontSize: "0.95rem", letterSpacing: "0.04em" }}
                     itemProp="author"
+                    itemScope
+                    itemType="https://schema.org/Person"
                   >
-                    {review.name}
+                    <span itemProp="name">{review.name}</span>
                   </p>
                   <p className="font-body text-xs mt-0.5" style={{ color: "#888888" }}>
                     {review.date}
