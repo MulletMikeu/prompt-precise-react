@@ -72,9 +72,7 @@ export default function Hero() {
             <Link to="/contact" className="btn-primary text-base sm:text-lg">
               Get Your Free Estimate
             </Link>
-            <a href={BUSINESS.phoneHref} className="btn-outline text-base sm:text-lg">
-              Call {BUSINESS.phone}
-            </a>
+            <a href={BUSINESS.phoneHref} className="btn-outline text-base sm:text-lg">Call {BUSINESS.phone}</a>
           </div>
 
           {/* Trust bar */}

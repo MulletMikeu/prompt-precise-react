@@ -242,7 +242,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
                 {heroImage.showCta !== false && (
                   <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center items-center">
                     <Link
-                      to="/#contact"
+                      to="/contact"
                       className="w-full sm:w-auto bg-red-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-lg text-lg text-center"
                     >
                       Get a Free Estimate

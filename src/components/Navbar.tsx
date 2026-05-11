@@ -27,9 +27,7 @@ export default function Navbar() {
       <div style={{ background: "#C41230" }} className="hidden md:block text-white text-center py-1.5">
         <p className="text-sm tracking-wide">
           24/7 Emergency Service Available —{" "}
-          <a href={BUSINESS.phoneHref} className="font-bold underline underline-offset-2">
-            {BUSINESS.phone}
-          </a>
+          <a href={BUSINESS.phoneHref} className="font-bold underline underline-offset-2">{BUSINESS.phone}</a>
         </p>
       </div>
 
@@ -68,9 +66,7 @@ export default function Navbar() {
           </ul>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href={BUSINESS.phoneHref} className="text-sm font-bold uppercase tracking-wider text-white">
-              {BUSINESS.phone}
-            </a>
+            <a href={BUSINESS.phoneHref} className="text-sm font-bold uppercase tracking-wider text-white">{BUSINESS.phone}</a>
             <Link to="/contact" className="btn-primary" style={{ padding: "0.6rem 1.25rem", fontSize: "0.875rem" }}>
               Free Estimate
             </Link>
@@ -120,9 +116,7 @@ export default function Navbar() {
             ))}
           </ul>
           <div className="mt-6 flex flex-col gap-3">
-            <a href={BUSINESS.phoneHref} className="btn-primary justify-center">
-              Call {BUSINESS.phone}
-            </a>
+            <a href={BUSINESS.phoneHref} className="btn-primary justify-center">Call {BUSINESS.phone}</a>
             <Link to="/contact" className="btn-outline justify-center">
               Get Free Estimate
             </Link>

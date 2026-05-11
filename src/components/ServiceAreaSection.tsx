@@ -53,9 +53,7 @@ export default function ServiceAreaSection() {
               ))}
             </div>
 
-            <a href={BUSINESS.phoneHref} className="btn-primary">
-              Check Your Area — Call {BUSINESS.phone}
-            </a>
+            <a href={BUSINESS.phoneHref} className="btn-primary">Check Your Area — Call {BUSINESS.phone}</a>
           </div>
 
           {/* Right — map placeholder */}
@@ -100,5 +98,16 @@ export default function ServiceAreaSection() {
             {/* Address block */}
             <div className="mt-4 p-5" style={{ background: "#111111", border: "1px solid #1A1A1A" }}>
               <address className="not-italic">
-                <p
-                  className="font-display font-700 u
+                <p className="font-display font-700 uppercase text-white mb-2" style={{ fontSize: "0.9rem", letterSpacing: "0.06em" }}>{BUSINESS.name}</p>
+                <p className="font-body text-sm mb-3" style={{ color: "#555555" }}>{BUSINESS.address.full}</p>
+                <a href={BUSINESS.phoneHref} className="font-bold block" style={{ color: "#C41230" }}>{BUSINESS.phone}</a>
+                <a href={BUSINESS.emailHref} className="text-sm block mt-1" style={{ color: "#555555" }}>{BUSINESS.email}</a>
+              </address>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}

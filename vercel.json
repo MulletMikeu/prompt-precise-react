@@ -20,7 +20,22 @@
       "has": [{ "type": "host", "value": "prompt-precise-react.vercel.app" }],
       "destination": "https://godhans.com/$1",
       "permanent": true
-    }
+    },
+    { "source": "/services/tree-removal", "destination": "/tree-removal-jacksonville-nc", "permanent": true },
+    { "source": "/services/tree-trimming", "destination": "/tree-trimming-jacksonville-nc", "permanent": true },
+    { "source": "/services/stump-grinding", "destination": "/stump-grinding-jacksonville-nc", "permanent": true },
+    { "source": "/services/emergency-tree-service", "destination": "/emergency-tree-service-jacksonville-nc", "permanent": true },
+    { "source": "/services/land-clearing", "destination": "/tree-service-jacksonville-nc", "permanent": true },
+    { "source": "/services/storm-cleanup", "destination": "/storm-damage-trees-guide", "permanent": true },
+    { "source": "/locations/jacksonville-nc", "destination": "/tree-service-jacksonville-nc", "permanent": true },
+    { "source": "/locations/hubert-nc", "destination": "/tree-service-hubert-nc", "permanent": true },
+    { "source": "/locations/richlands-nc", "destination": "/tree-service-richlands-nc", "permanent": true },
+    { "source": "/locations/swansboro-nc", "destination": "/tree-service-swansboro-nc", "permanent": true },
+    { "source": "/locations/sneads-ferry-nc", "destination": "/tree-service-sneads-ferry-nc", "permanent": true },
+    { "source": "/locations/camp-lejeune-nc", "destination": "/tree-service-camp-lejeune-nc", "permanent": true },
+    { "source": "/locations/maysville-nc", "destination": "/tree-service-jacksonville-nc", "permanent": true },
+    { "source": "/locations/beulaville-nc", "destination": "/tree-service-jacksonville-nc", "permanent": true },
+    { "source": "/locations/holly-ridge-nc", "destination": "/tree-service-jacksonville-nc", "permanent": true }
   ],
   "headers": [
     {

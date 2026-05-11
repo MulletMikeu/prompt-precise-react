@@ -115,17 +115,7 @@ export default function ReviewsSection() {
 
         {/* All reviews CTA */}
         <div className="mt-10 text-center">
-          
-            href={BUSINESS.gbpUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-display font-700 text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors"
-            style={{ color: "#888888", letterSpacing: "0.1em" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#C41230")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}
-          >
-            Read All {BUSINESS.reviewCount} Reviews on Google →
-          </a>
+          <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="font-display font-700 text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#C41230")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Read All {BUSINESS.reviewCount} Reviews on Google →</a>
         </div>
       </div>
     </section>

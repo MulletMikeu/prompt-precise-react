@@ -64,26 +64,7 @@ export default function CTABanner() {
             >
               Request Free Estimate
             </Link>
-            
-              href={BUSINESS.phoneHref}
-              className="font-display font-700 uppercase text-base tracking-wider px-8 py-4 text-center transition-all duration-200"
-              style={{
-                background: "transparent",
-                color: "white",
-                letterSpacing: "0.06em",
-                border: "2px solid rgba(255,255,255,0.6)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "white";
-                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.1)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.6)";
-                (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
-              }}
-            >
-              Call {BUSINESS.phone}
-            </a>
+            <a href={BUSINESS.phoneHref} className="font-display font-700 uppercase text-base tracking-wider px-8 py-4 text-center transition-all duration-200" style={{ background: "transparent", color: "white", letterSpacing: "0.06em", border: "2px solid rgba(255,255,255,0.6)" }} onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "white"; (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.1)"; }} onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.6)"; (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}>Call {BUSINESS.phone}</a>
           </div>
         </div>
       </div>
