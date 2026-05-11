@@ -32,6 +32,7 @@ import TreeRemovalTightSpaces from "./pages/TreeRemovalTightSpaces";
 import TreeTrimmingVsPruning from "./pages/TreeTrimmingVsPruning";
 import LeaningTreeDangerous from "./pages/LeaningTreeDangerous";
 import MeetTheOwners from "./pages/MeetTheOwners";
+import LocationPage from "./pages/LocationPage";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -99,6 +100,10 @@ export default function App() {
           <Route path="/tree-service-swansboro-nc" element={<Layout><TreeServiceSwansboro /></Layout>} />
           <Route path="/tree-service-sneads-ferry-nc" element={<Layout><TreeServiceSneadsFerry /></Layout>} />
           <Route path="/tree-service-camp-lejeune-nc" element={<Layout><TreeServiceCampLejeune /></Layout>} />
+          <Route path="/tree-service-maysville-nc" element={<Layout><LocationPage city="Maysville" /></Layout>} />
+          <Route path="/tree-service-beulaville-nc" element={<Layout><LocationPage city="Beulaville" /></Layout>} />
+          <Route path="/tree-service-holly-ridge-nc" element={<Layout><LocationPage city="Holly Ridge" /></Layout>} />
+          <Route path="/tree-service-surf-city-nc" element={<Layout><LocationPage city="Surf City" /></Layout>} />
           <Route path="/storm-damage-trees-guide" element={<Layout><StormDamageGuide /></Layout>} />
           <Route path="/tree-removal-cost-north-carolina" element={<Layout><TreeRemovalCost /></Layout>} />
           <Route path="/tree-removal-near-house-jacksonville-nc" element={<Layout><TreeRemovalNearHouse /></Layout>} />

@@ -13,6 +13,10 @@ const CITY_PAGE_MAP: Record<string, string> = {
   "swansboro-nc": "/tree-service-swansboro-nc",
   "sneads-ferry-nc": "/tree-service-sneads-ferry-nc",
   "camp-lejeune-nc": "/tree-service-camp-lejeune-nc",
+  "maysville-nc": "/tree-service-maysville-nc",
+  "beulaville-nc": "/tree-service-beulaville-nc",
+  "holly-ridge-nc": "/tree-service-holly-ridge-nc",
+  "surf-city-nc": "/tree-service-surf-city-nc",
 };
 
 export default function ServiceAreaPage() {
