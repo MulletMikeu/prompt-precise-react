@@ -106,7 +106,7 @@ export default function TrustSection() {
         {/* Full-width job photo */}
         <div className="mt-px relative overflow-hidden" style={{ aspectRatio: "16/6", background: "#111111" }}>
           <img
-            src="/images/large-tree-removal-jacksonville-nc-godhans.jpg"
+            src="/images/yard-restoration-after-tree-removal-godhans.jpg"
             alt="Godhans Tree Company large tree removal job in Jacksonville NC"
             className="absolute inset-0 w-full h-full object-cover"
             loading="lazy"

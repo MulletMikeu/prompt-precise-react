@@ -80,7 +80,7 @@ export default function ServicesSection() {
         {/* Job photo gallery */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-px mt-px" style={{ background: "#1A1A1A" }}>
           {[
-            { src: "/images/tree-removal-jacksonville-nc-godhans.jpg", alt: "Tree removal in Jacksonville NC by Godhans Tree Company" },
+            { src: "/images/multiple-pine-tree-removal-jacksonville-nc.jpg", alt: "Tree removal in Jacksonville NC by Godhans Tree Company" },
             { src: "/images/stump-grinding-jacksonville-nc-godhans.jpg", alt: "Stump grinding in Jacksonville NC by Godhans Tree Company" },
             { src: "/images/tree-trimming-jacksonville-nc-godhans.jpg", alt: "Tree trimming in Jacksonville NC by Godhans Tree Company" },
           ].map((photo) => (
