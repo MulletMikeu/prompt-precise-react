@@ -90,8 +90,8 @@ export default function ServicesSection() {
                 alt={photo.alt}
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="lazy"
-                width="800"
-                height="600"
+                width="400"
+                height="300"
               />
             </div>
           ))}

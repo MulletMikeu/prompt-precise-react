@@ -13,7 +13,7 @@ export default function Hero() {
         <img
           src="/images/hero-godhans-tree-removal-jacksonville-nc.webp"
           alt="Godhans Tree Company spider lift tree removal in Jacksonville NC"
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-top"
           loading="eager"
           fetchPriority="high"
           width="1920"

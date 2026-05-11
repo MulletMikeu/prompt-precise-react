@@ -25,8 +25,8 @@
     { "source": "/services/tree-trimming", "destination": "/tree-trimming-jacksonville-nc", "permanent": true },
     { "source": "/services/stump-grinding", "destination": "/stump-grinding-jacksonville-nc", "permanent": true },
     { "source": "/services/emergency-tree-service", "destination": "/emergency-tree-service-jacksonville-nc", "permanent": true },
-    { "source": "/services/land-clearing", "destination": "/tree-service-jacksonville-nc", "permanent": true },
-    { "source": "/services/storm-cleanup", "destination": "/storm-damage-trees-guide", "permanent": true },
+    { "source": "/services/land-clearing", "destination": "/land-clearing-jacksonville-nc", "permanent": true },
+    { "source": "/services/storm-cleanup", "destination": "/storm-cleanup-jacksonville-nc", "permanent": true },
     { "source": "/locations/jacksonville-nc", "destination": "/tree-service-jacksonville-nc", "permanent": true },
     { "source": "/locations/hubert-nc", "destination": "/tree-service-hubert-nc", "permanent": true },
     { "source": "/locations/richlands-nc", "destination": "/tree-service-richlands-nc", "permanent": true },
@@ -57,7 +57,7 @@
     {
       "source": "/(.*).webp",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800" }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]
