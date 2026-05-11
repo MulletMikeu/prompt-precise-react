@@ -98,7 +98,7 @@ export default function ReviewsSection() {
                   >
                     {review.name}
                   </p>
-                  <p className="font-body text-xs mt-0.5" style={{ color: "#555555" }}>
+                  <p className="font-body text-xs mt-0.5" style={{ color: "#888888" }}>
                     {review.date}
                   </p>
                 </div>

@@ -70,7 +70,7 @@ export default function ReviewsPage() {
                   <footer className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid #2A2A2A" }}>
                     <div>
                       <p className="font-bold uppercase text-white text-sm" itemProp="author">{review.name}</p>
-                      <p className="text-xs mt-0.5" style={{ color: "#555555" }}>{review.date}</p>
+                      <p className="text-xs mt-0.5" style={{ color: "#888888" }}>{review.date}</p>
                     </div>
                     <span className="text-xs uppercase tracking-widest px-3 py-1.5" style={{ color: "#888888", border: "1px solid #2A2A2A" }}>{review.source}</span>
                   </footer>

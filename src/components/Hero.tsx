@@ -15,6 +15,7 @@ export default function Hero() {
           alt="Godhans Tree Company spider lift tree removal in Jacksonville NC"
           className="w-full h-full object-cover object-center"
           loading="eager"
+          fetchPriority="high"
           width="1920"
           height="1080"
         />

@@ -12,7 +12,7 @@ import ReviewsPage from "./pages/ReviewsPage";
 import BlogPage from "./pages/BlogPage";
 import NotFound from "./pages/NotFound";
 
-// Standalone pages — each renders its own Header/Footer via ServicePage template
+// Standalone service and location pages
 import TreeServiceJacksonvilleNC from "./pages/TreeServiceJacksonvilleNC";
 import TreeRemoval from "./pages/TreeRemoval";
 import TreeTrimming from "./pages/TreeTrimming";

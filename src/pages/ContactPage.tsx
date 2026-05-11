@@ -46,7 +46,7 @@ export default function ContactPage() {
                     <dt className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#888888" }}>Phone</dt>
                     <dd>
                       <a href={BUSINESS.phoneHref} className="text-lg font-bold" style={{ color: "#C41230" }}>{BUSINESS.phone}</a>
-                      <p className="text-sm mt-0.5" style={{ color: "#555555" }}>Available 24/7 for emergencies</p>
+                      <p className="text-sm mt-0.5" style={{ color: "#888888" }}>Available 24/7 for emergencies</p>
                     </dd>
                   </div>
                   <div>

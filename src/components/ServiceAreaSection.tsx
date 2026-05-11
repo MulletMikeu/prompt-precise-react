@@ -107,9 +107,9 @@ export default function ServiceAreaSection() {
             <div className="mt-4 p-5" style={{ background: "#111111", border: "1px solid #1A1A1A" }}>
               <address className="not-italic">
                 <p className="font-display font-700 uppercase text-white mb-2" style={{ fontSize: "0.9rem", letterSpacing: "0.06em" }}>{BUSINESS.name}</p>
-                <p className="font-body text-sm mb-3" style={{ color: "#555555" }}>{BUSINESS.address.full}</p>
+                <p className="font-body text-sm mb-3" style={{ color: "#888888" }}>{BUSINESS.address.full}</p>
                 <a href={BUSINESS.phoneHref} className="font-bold block" style={{ color: "#C41230" }}>{BUSINESS.phone}</a>
-                <a href={BUSINESS.emailHref} className="text-sm block mt-1" style={{ color: "#555555" }}>{BUSINESS.email}</a>
+                <a href={BUSINESS.emailHref} className="text-sm block mt-1" style={{ color: "#888888" }}>{BUSINESS.email}</a>
               </address>
             </div>
           </div>

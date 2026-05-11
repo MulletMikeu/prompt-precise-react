@@ -164,9 +164,8 @@ export default function MeetTheOwners() {
                     width={MICHAEL_PHOTO_WIDTH}
                     height={MICHAEL_PHOTO_HEIGHT}
                     alt={MICHAEL_PHOTO_ALT}
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
-                    fetchPriority="high"
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
@@ -211,9 +210,8 @@ export default function MeetTheOwners() {
                     width={JAMES_PHOTO_WIDTH}
                     height={JAMES_PHOTO_HEIGHT}
                     alt={JAMES_PHOTO_ALT}
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
-                    fetchPriority="high"
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
