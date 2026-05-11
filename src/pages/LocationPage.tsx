@@ -17,7 +17,7 @@ export default function LocationPage({ city }: LocationPageProps) {
   const slug = city.toLowerCase().replace(/\s+/g, "-");
   const canonical = `https://godhans.com/tree-service-${slug}-nc`;
   const title = `Tree Service in ${city}, NC | Godhans Tree Company`;
-  const description = `Godhans Tree Company provides professional tree removal, trimming, stump grinding, and 24/7 emergency tree service in ${city}, NC. Veteran-owned, fully insured. Call for a free estimate.`;
+  const description = `Tree removal, trimming, stump grinding & 24/7 emergency tree service in ${city}, NC. Veteran-owned, insured — Godhans Tree Company. Free estimates.`;
 
   return (
     <>
@@ -35,6 +35,8 @@ export default function LocationPage({ city }: LocationPageProps) {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
       </Helmet>
 
       <main id="main-content" className="pt-20">
@@ -71,6 +73,21 @@ export default function LocationPage({ city }: LocationPageProps) {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="py-16" style={{ background: "#111111" }}>
+          <div className="max-w-4xl mx-auto px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-white mb-4">Why {city} Homeowners Choose Godhans</h2>
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
+              Godhans Tree Company is a veteran-owned, family-operated business based in Jacksonville, NC. We've been serving Onslow County communities since 2013 — and that means we know the terrain, the tree species, and the storm patterns of coastal North Carolina better than anyone.
+            </p>
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
+              Our crew carries full liability insurance and workers' compensation coverage on every job. No subcontractors — every person on your property is part of the Godhans team. We show up on time, communicate clearly, and leave your property cleaner than we found it.
+            </p>
+            <p className="text-base leading-relaxed" style={{ color: "#C8C8C2" }}>
+              From routine tree trimming to high-risk removals in tight spaces, we handle jobs other companies won't take on. If you're in {city} and need a tree service you can trust, call us for a free on-site estimate with no obligation.
+            </p>
           </div>
         </section>
 

@@ -1,8 +1,9 @@
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
 
 const TITLE = "Contact Godhans Tree Company | Free Estimates in Jacksonville, NC";
-const DESC = "Get a free estimate from Godhans Tree Company. Call (618) 704-4861, email us, or fill out a request. We serve Jacksonville, NC and all of Onslow County — 24/7 emergency service available.";
+const DESC = "Request a free estimate from Godhans Tree Company in Jacksonville, NC. Call (618) 704-4861 or email us — 24/7 emergency tree service available.";
 const CANONICAL = "https://godhans.com/contact";
 
 export default function ContactPage() {
@@ -22,6 +23,8 @@ export default function ContactPage() {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
       </Helmet>
 
       <main id="main-content" className="pt-20">
@@ -75,6 +78,9 @@ export default function ContactPage() {
                   You can also reach us by email at <a href={BUSINESS.emailHref} className="font-bold" style={{ color: "#C41230" }}>{BUSINESS.email}</a> and we'll respond within a few hours.
                 </p>
                 <a href={BUSINESS.phoneHref} className="btn-primary inline-flex">Call Now — {BUSINESS.phone}</a>
+                <p className="text-sm mt-5">
+                  <Link to="/services" className="font-bold uppercase tracking-widest" style={{ color: "#888888" }}>View All Services →</Link>
+                </p>
               </div>
 
             </div>

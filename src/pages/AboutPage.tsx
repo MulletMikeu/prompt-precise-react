@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
 
 const TITLE = "About Godhans Tree Company | Veteran-Owned Tree Service Jacksonville, NC";
-const DESC = `Godhans Tree Company is a veteran-owned, family-operated tree service in Jacksonville, NC. Licensed, insured, and serving Onslow County since ${BUSINESS.founded}. Free estimates available 24/7.`;
+const DESC = `Veteran-owned tree service in Jacksonville, NC since ${BUSINESS.founded}. Licensed & insured. Meet the team behind Godhans Tree Company.`;
 const CANONICAL = "https://godhans.com/about";
 
 export default function AboutPage() {
@@ -23,6 +23,8 @@ export default function AboutPage() {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
       </Helmet>
 
       <main id="main-content" className="pt-20">

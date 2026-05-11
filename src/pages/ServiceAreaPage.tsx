@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BUSINESS, SERVICE_CITIES } from "../data/siteData";
 
 const TITLE = "Tree Service Area | Onslow County, NC | Godhans Tree Company";
-const DESC = "Godhans Tree Company provides tree removal, trimming, and emergency services throughout Jacksonville, NC and all of Onslow County. See all cities and communities we serve.";
+const DESC = "Godhans Tree Company serves Jacksonville, NC and Onslow County with tree removal, trimming & emergency service. See all cities we cover.";
 const CANONICAL = "https://godhans.com/service-area";
 
 const CITY_PAGE_MAP: Record<string, string> = {
@@ -36,6 +36,8 @@ export default function ServiceAreaPage() {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
       </Helmet>
 
       <main id="main-content" className="pt-20">

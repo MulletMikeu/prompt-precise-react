@@ -6,7 +6,7 @@ export default function StormCleanup() {
       title="Storm Cleanup Jacksonville NC"
       subtitle="Fast Debris Removal & Downed Tree Extraction — Same-Day Response Available"
       slug="storm-cleanup-jacksonville-nc"
-      description="Storm cleanup in Jacksonville, NC. Fast response for downed trees, debris removal, and hazardous limb clearing across Onslow County. Call 24/7 — Godhans Tree Company."
+      description="Storm cleanup in Jacksonville, NC. Fast response for downed trees, debris removal & hazardous limbs across Onslow County. Call 24/7 — Godhans Tree Company."
       ctaText="Call Now — 24/7 Response"
       quickAnswer="When a storm hits Onslow County, Godhans Tree Company is ready to move. We handle downed trees, scattered debris, hanging limbs, and structural damage — with same-day and next-day availability. Call us anytime and we'll dispatch an insured crew to clear the hazard and get your property safe again."
       sections={[

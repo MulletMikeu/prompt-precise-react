@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
 
 const TITLE = "Tree Care Blog | Tips & Resources | Godhans Tree Company";
-const DESC = "Tree care guides and resources from Godhans Tree Company in Jacksonville, NC. Learn about tree removal costs, storm damage, permits, trimming, and more from local experts.";
+const DESC = "Tree care guides from Godhans Tree Company in Jacksonville, NC. Learn about removal costs, storm damage, permits, trimming, and more.";
 const CANONICAL = "https://godhans.com/blog";
 
 const GUIDES = [
@@ -66,6 +66,8 @@ export default function BlogPage() {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
       </Helmet>
 
       <main id="main-content" className="pt-20">

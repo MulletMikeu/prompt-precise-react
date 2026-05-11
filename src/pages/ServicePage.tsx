@@ -138,6 +138,8 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
+        <meta name="twitter:title" content={`${title} | ${BUSINESS_INFO.name}`} />
+        <meta name="twitter:description" content={description} />
 
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbSchema)}

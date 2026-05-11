@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
 
 const TITLE = "Tree Services in Jacksonville, NC | Godhans Tree Company";
-const DESC = "Full-service tree care in Jacksonville, NC: removal, trimming, stump grinding, emergency response, land clearing, and storm cleanup. Veteran-owned. Free estimates — (618) 704-4861.";
+const DESC = "Tree removal, trimming, stump grinding, land clearing & storm cleanup in Jacksonville, NC. Veteran-owned. Free estimates — call (618) 704-4861.";
 const CANONICAL = "https://godhans.com/services";
 
 const SERVICES = [
@@ -29,12 +29,12 @@ const SERVICES = [
   },
   {
     name: "Land Clearing",
-    href: "/tree-service-jacksonville-nc",
+    href: "/land-clearing-jacksonville-nc",
     desc: "Residential and commercial lot clearing, rough grading, brush removal, and full site prep.",
   },
   {
     name: "Storm Cleanup",
-    href: "/storm-damage-trees-guide",
+    href: "/storm-cleanup-jacksonville-nc",
     desc: "Fast debris removal after storms. Downed tree extraction, limb and brush cleanup, same or next day.",
   },
 ];
@@ -56,6 +56,8 @@ export default function ServicesPage() {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
       </Helmet>
 
       <main id="main-content" className="pt-20">

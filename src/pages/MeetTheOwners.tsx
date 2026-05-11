@@ -120,6 +120,8 @@ export default function MeetTheOwners() {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:title" content="Meet the Owners | Godhans Tree Service | Jacksonville NC" />
+        <meta name="twitter:description" content="Meet the owners of Godhans Tree Service in Jacksonville, NC — a family-run team delivering safe, professional tree care across Onslow County." />
 
         <script type="application/ld+json">{JSON.stringify(webPageSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>

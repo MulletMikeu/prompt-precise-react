@@ -6,7 +6,7 @@ export default function LandClearing() {
       title="Land Clearing Jacksonville NC"
       subtitle="Lot Clearing, Rough Grading & Full Site Prep — Free Estimates"
       slug="land-clearing-jacksonville-nc"
-      description="Land clearing and lot prep in Jacksonville, NC. Veteran-owned crew with heavy equipment handles residential and commercial clearing, grading, and debris removal. Free estimates — call Godhans Tree Company."
+      description="Land clearing in Jacksonville, NC — lot prep, grading & debris removal. Veteran-owned crew with heavy equipment. Free estimates — Godhans Tree Company."
       ctaText="Call for a Free Estimate"
       quickAnswer="Godhans Tree Company provides full land clearing services in Jacksonville, NC and across Onslow County. Whether you need a residential lot cleared for construction or a commercial site prepped for development, our veteran-owned crew brings the heavy equipment and the experience to take it down to bare earth fast."
       sections={[
