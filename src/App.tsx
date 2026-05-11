@@ -32,6 +32,8 @@ import TreeRemovalTightSpaces from "./pages/TreeRemovalTightSpaces";
 import TreeTrimmingVsPruning from "./pages/TreeTrimmingVsPruning";
 import LeaningTreeDangerous from "./pages/LeaningTreeDangerous";
 import MeetTheOwners from "./pages/MeetTheOwners";
+import LandClearing from "./pages/LandClearing";
+import StormCleanup from "./pages/StormCleanup";
 import LocationPage from "./pages/LocationPage";
 
 function ScrollToTop() {
@@ -104,6 +106,8 @@ export default function App() {
           <Route path="/tree-service-beulaville-nc" element={<Layout><LocationPage city="Beulaville" /></Layout>} />
           <Route path="/tree-service-holly-ridge-nc" element={<Layout><LocationPage city="Holly Ridge" /></Layout>} />
           <Route path="/tree-service-surf-city-nc" element={<Layout><LocationPage city="Surf City" /></Layout>} />
+          <Route path="/land-clearing-jacksonville-nc" element={<Layout><LandClearing /></Layout>} />
+          <Route path="/storm-cleanup-jacksonville-nc" element={<Layout><StormCleanup /></Layout>} />
           <Route path="/storm-damage-trees-guide" element={<Layout><StormDamageGuide /></Layout>} />
           <Route path="/tree-removal-cost-north-carolina" element={<Layout><TreeRemovalCost /></Layout>} />
           <Route path="/tree-removal-near-house-jacksonville-nc" element={<Layout><TreeRemovalNearHouse /></Layout>} />

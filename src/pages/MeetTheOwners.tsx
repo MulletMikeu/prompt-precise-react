@@ -160,7 +160,7 @@ export default function MeetTheOwners() {
                   style={{ aspectRatio: `${MICHAEL_PHOTO_WIDTH} / ${MICHAEL_PHOTO_HEIGHT}` }}
                 >
                   <img
-                    src="/images/owner-michael-godhans-jacksonville-nc.jpg"
+                    src="/images/owner-michael-godhans-jacksonville-nc.webp"
                     width={MICHAEL_PHOTO_WIDTH}
                     height={MICHAEL_PHOTO_HEIGHT}
                     alt={MICHAEL_PHOTO_ALT}

@@ -41,7 +41,7 @@ export default function ServicesSection() {
               {/* Number */}
               <span
                 className="block font-display font-800 mb-4"
-                style={{ fontSize: "3rem", lineHeight: 1, color: "#1A1A1A" }}
+                style={{ fontSize: "3rem", lineHeight: 1, color: "#333333" }}
               >
                 0{i + 1}
               </span>
@@ -80,9 +80,9 @@ export default function ServicesSection() {
         {/* Job photo gallery */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-px mt-px" style={{ background: "#1A1A1A" }}>
           {[
-            { src: "/images/multiple-pine-tree-removal-jacksonville-nc.jpg", alt: "Tree removal in Jacksonville NC by Godhans Tree Company" },
-            { src: "/images/stump-grinding-jacksonville-nc-godhans.jpg", alt: "Stump grinding in Jacksonville NC by Godhans Tree Company" },
-            { src: "/images/tree-trimming-jacksonville-nc-godhans.jpg", alt: "Tree trimming in Jacksonville NC by Godhans Tree Company" },
+            { src: "/images/multiple-pine-tree-removal-jacksonville-nc.webp", alt: "Tree removal in Jacksonville NC by Godhans Tree Company" },
+            { src: "/images/stump-grinding-jacksonville-nc-godhans.webp", alt: "Stump grinding in Jacksonville NC by Godhans Tree Company" },
+            { src: "/images/tree-trimming-jacksonville-nc-godhans.webp", alt: "Tree trimming in Jacksonville NC by Godhans Tree Company" },
           ].map((photo) => (
             <div key={photo.src} className="relative overflow-hidden" style={{ aspectRatio: "4/3", background: "#111111" }}>
               <img

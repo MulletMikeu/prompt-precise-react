@@ -129,7 +129,7 @@ export const SERVICES = [
     id: "land-clearing",
     name: "Land Clearing",
     slug: "land-clearing",
-    href: "/tree-service-jacksonville-nc",
+    href: "/land-clearing-jacksonville-nc",
     headline: "Lot Clearing, Rough Grading, Full Site Prep.",
     description:
       "From residential lot prep to commercial development clearing. Excavation, demolition, grading — we take it down to bare earth and hand it back ready.",
@@ -148,7 +148,7 @@ export const SERVICES = [
     id: "storm-cleanup",
     name: "Storm Cleanup",
     slug: "storm-cleanup",
-    href: "/storm-damage-trees-guide",
+    href: "/storm-cleanup-jacksonville-nc",
     headline: "After the Storm, We Clean Up Fast.",
     description:
       "Eastern NC storms hit hard. We move faster. Downed trees, scattered debris, hanging limbs — full cleanup, same or next day.",
