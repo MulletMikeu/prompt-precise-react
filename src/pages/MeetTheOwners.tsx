@@ -1,8 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
 import { BUSINESS_INFO } from '@/lib/constants';
 import michaelPhoto1200 from '@/assets/owner-michael-godhans-jacksonville-nc-1200.jpg';
 import michaelPhoto600 from '@/assets/owner-michael-godhans-jacksonville-nc-600.jpg';
@@ -137,11 +134,7 @@ export default function MeetTheOwners() {
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
-      <div className="min-h-screen flex flex-col bg-black text-white">
-        <EmergencyBanner />
-        <Header />
-
-        <main className="flex-grow">
+      <main className="flex-grow pt-20 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl py-10 sm:py-14">
             {/* Breadcrumbs */}
             <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-300">
@@ -289,9 +282,6 @@ export default function MeetTheOwners() {
             </div>
           </div>
         </main>
-
-        <Footer />
-      </div>
     </>
   );
 }

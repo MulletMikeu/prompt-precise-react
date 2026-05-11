@@ -3,7 +3,8 @@
     "allow": [
       "PowerShell($content = Get-Content \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\src\\\\components\\\\ServiceAreaSection.tsx\" -Raw; $content.Length; $content[-200..-1] -join '')",
       "PowerShell($lines = Get-Content \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\public\\\\sitemap.xml\"; $lines.Count; $lines[-15..-1])",
-      "PowerShell($xml = Get-Content \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\public\\\\sitemap.xml\" -Raw; \\([xml]$xml\\).urlset.url.Count; \"Valid XML: $?\")"
+      "PowerShell($xml = Get-Content \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\public\\\\sitemap.xml\" -Raw; \\([xml]$xml\\).urlset.url.Count; \"Valid XML: $?\")",
+      "PowerShell(Get-Command npm -ErrorAction SilentlyContinue)"
     ]
   }
 }

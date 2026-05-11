@@ -53,7 +53,7 @@ export const SERVICES = [
     id: "tree-removal",
     name: "Tree Removal",
     slug: "tree-removal",
-    href: "/services/tree-removal",
+    href: "/tree-removal-jacksonville-nc",
     headline: "Safe, Controlled Removal — Any Size Tree",
     description:
       "Large-format boom trucks, strict safety protocols, and a crew that doesn't leave until your yard is cleaner than we found it. No job too big, no property too complex.",
@@ -72,7 +72,7 @@ export const SERVICES = [
     id: "tree-trimming",
     name: "Tree Trimming",
     slug: "tree-trimming",
-    href: "/services/tree-trimming",
+    href: "/tree-trimming-jacksonville-nc",
     headline: "Arborist-Led Crown Work. Done Right.",
     description:
       "Precision thinning, pruning, raising, shaping, and dead branch removal. Our ISA-certified arborists read every tree before touching it.",
@@ -91,7 +91,7 @@ export const SERVICES = [
     id: "stump-grinding",
     name: "Stump Grinding",
     slug: "stump-grinding",
-    href: "/services/stump-grinding",
+    href: "/stump-grinding-jacksonville-nc",
     headline: "Gone to Ground Level. No Regrowth.",
     description:
       "Full reclamation of your yard. We grind to ground level, haul all debris away, and leave you a flat, usable surface.",
@@ -110,7 +110,7 @@ export const SERVICES = [
     id: "emergency-tree-service",
     name: "Emergency Tree Service",
     slug: "emergency-tree-service",
-    href: "/services/emergency-tree-service",
+    href: "/emergency-tree-service-jacksonville-nc",
     headline: "24/7 Emergency Response. We Answer.",
     description:
       "Fallen tree on your roof? Blocking your driveway? Hanging over your power lines? We respond around the clock — no voicemail, no delay.",
@@ -129,7 +129,7 @@ export const SERVICES = [
     id: "land-clearing",
     name: "Land Clearing",
     slug: "land-clearing",
-    href: "/services/land-clearing",
+    href: "/tree-service-jacksonville-nc",
     headline: "Lot Clearing, Rough Grading, Full Site Prep.",
     description:
       "From residential lot prep to commercial development clearing. Excavation, demolition, grading — we take it down to bare earth and hand it back ready.",
@@ -148,7 +148,7 @@ export const SERVICES = [
     id: "storm-cleanup",
     name: "Storm Cleanup",
     slug: "storm-cleanup",
-    href: "/services/storm-cleanup",
+    href: "/storm-damage-trees-guide",
     headline: "After the Storm, We Clean Up Fast.",
     description:
       "Eastern NC storms hit hard. We move faster. Downed trees, scattered debris, hanging limbs — full cleanup, same or next day.",
@@ -237,7 +237,7 @@ export const VIDEOS = [
 ] as const;
 
 export const TRUST_STATS = [
-  { value: "12+", label: "Years in Business" },
+  { value: "13+", label: "Years in Business" },
   { value: "500+", label: "Jobs Completed" },
   { value: "5.0", label: "Google Rating" },
   { value: "24/7", label: "Emergency Response" },

@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import { BUSINESS, SERVICES, SERVICE_CITIES, NAV_LINKS } from "../data/siteData";
 
+const CITY_PAGE_MAP: Record<string, string> = {
+  "jacksonville-nc": "/tree-service-jacksonville-nc",
+  "hubert-nc": "/tree-service-hubert-nc",
+  "richlands-nc": "/tree-service-richlands-nc",
+  "swansboro-nc": "/tree-service-swansboro-nc",
+  "sneads-ferry-nc": "/tree-service-sneads-ferry-nc",
+  "camp-lejeune-nc": "/tree-service-camp-lejeune-nc",
+};
+
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -42,13 +51,20 @@ export default function Footer() {
           <div>
             <h3 className="font-bold uppercase text-white mb-6" style={{ fontSize: "0.8rem", letterSpacing: "0.12em" }}>Service Area</h3>
             <ul className="list-none m-0 p-0 flex flex-col gap-2.5">
-              {SERVICE_CITIES.map((city) => (
-                <li key={city.slug}>
-                  <Link to={`/locations/${city.slug}`} className="text-sm" style={{ color: city.primary ? "#888888" : "#555555" }}>
-                    {city.name}, {city.state}
-                  </Link>
-                </li>
-              ))}
+              {SERVICE_CITIES.map((city) => {
+                const pagePath = CITY_PAGE_MAP[city.slug];
+                return pagePath ? (
+                  <li key={city.slug}>
+                    <Link to={pagePath} className="text-sm" style={{ color: city.primary ? "#888888" : "#555555" }}>
+                      {city.name}, {city.state}
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={city.slug}>
+                    <span className="text-sm" style={{ color: "#555555" }}>{city.name}, {city.state}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -75,7 +91,7 @@ export default function Footer() {
       </div>
       <div style={{ borderTop: "1px solid #141414" }}>
         <div className="container-brand py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs" style={{ color: "#3A3A3A" }}>{year} Godhans Tree Company. All Rights Reserved.</p>
+          <p className="text-xs" style={{ color: "#3A3A3A" }}>© {year} Godhans Tree Company. All Rights Reserved.</p>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="text-xs" style={{ color: "#3A3A3A" }}>Privacy Policy</Link>
             <Link to="/sitemap" className="text-xs" style={{ color: "#3A3A3A" }}>Sitemap</Link>

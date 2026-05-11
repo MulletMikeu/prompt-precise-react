@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import { SERVICE_CITIES, BUSINESS } from "../data/siteData";
 
+const CITY_PAGE_MAP: Record<string, string> = {
+  "jacksonville-nc": "/tree-service-jacksonville-nc",
+  "hubert-nc": "/tree-service-hubert-nc",
+  "richlands-nc": "/tree-service-richlands-nc",
+  "swansboro-nc": "/tree-service-swansboro-nc",
+  "sneads-ferry-nc": "/tree-service-sneads-ferry-nc",
+  "camp-lejeune-nc": "/tree-service-camp-lejeune-nc",
+};
+
 export default function ServiceAreaSection() {
   return (
     <section
@@ -28,29 +37,45 @@ export default function ServiceAreaSection() {
 
             {/* City tags */}
             <div className="flex flex-wrap gap-3 mb-10" role="list" aria-label="Cities we serve">
-              {SERVICE_CITIES.map((city) => (
-                <Link
-                  key={city.slug}
-                  to={`/locations/${city.slug}`}
-                  role="listitem"
-                  className="font-body text-sm font-500 uppercase tracking-wider px-4 py-2 transition-all duration-200"
-                  style={{
-                    border: city.primary ? "1px solid #C41230" : "1px solid #2A2A2A",
-                    color: city.primary ? "#C41230" : "#888888",
-                    letterSpacing: "0.08em",
-                  }}
-                  onMouseEnter={(e) => {
+              {SERVICE_CITIES.map((city) => {
+                const pagePath = CITY_PAGE_MAP[city.slug];
+                const sharedStyle = {
+                  border: city.primary ? "1px solid #C41230" : "1px solid #2A2A2A",
+                  color: city.primary ? "#C41230" : "#888888",
+                  letterSpacing: "0.08em",
+                };
+                const hoverHandlers = pagePath ? {
+                  onMouseEnter: (e: React.MouseEvent<HTMLAnchorElement>) => {
                     e.currentTarget.style.borderColor = "#C41230";
                     e.currentTarget.style.color = "#C41230";
-                  }}
-                  onMouseLeave={(e) => {
+                  },
+                  onMouseLeave: (e: React.MouseEvent<HTMLAnchorElement>) => {
                     e.currentTarget.style.borderColor = city.primary ? "#C41230" : "#2A2A2A";
                     e.currentTarget.style.color = city.primary ? "#C41230" : "#888888";
-                  }}
-                >
-                  {city.name}, {city.state}
-                </Link>
-              ))}
+                  },
+                } : {};
+                return pagePath ? (
+                  <Link
+                    key={city.slug}
+                    to={pagePath}
+                    role="listitem"
+                    className="font-body text-sm font-500 uppercase tracking-wider px-4 py-2 transition-all duration-200"
+                    style={sharedStyle}
+                    {...hoverHandlers}
+                  >
+                    {city.name}, {city.state}
+                  </Link>
+                ) : (
+                  <span
+                    key={city.slug}
+                    role="listitem"
+                    className="font-body text-sm font-500 uppercase tracking-wider px-4 py-2"
+                    style={sharedStyle}
+                  >
+                    {city.name}, {city.state}
+                  </span>
+                );
+              })}
             </div>
 
             <a href={BUSINESS.phoneHref} className="btn-primary">Check Your Area — Call {BUSINESS.phone}</a>
@@ -62,37 +87,16 @@ export default function ServiceAreaSection() {
               className="relative w-full overflow-hidden"
               style={{ aspectRatio: "4/3", background: "#111111", border: "1px solid #2A2A2A" }}
             >
-              {/*
-                MANUAL STEP — replace this block with your Google Maps embed:
-                1. Go to maps.google.com
-                2. Search "Godhans Tree Company Jacksonville NC"
-                3. Click Share → Embed a map → Copy HTML
-                4. Paste the iframe here, set width="100%" height="100%" style="border:0;"
-              */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center">
-                <p
-                  className="font-display font-700 uppercase text-white"
-                  style={{ fontSize: "1rem", letterSpacing: "0.06em" }}
-                >
-                  Google Map
-                </p>
-                <p className="font-body text-sm" style={{ color: "#555555" }}>
-                  Replace this block with Google Maps embed code
-                </p>
-                <p
-                  className="font-body text-xs px-4 py-2"
-                  style={{
-                    color: "#C41230",
-                    border: "1px solid #C41230",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    fontFamily: "var(--font-display)",
-                    fontWeight: 700,
-                  }}
-                >
-                  4445 Gum Branch Rd, Jacksonville, NC 28540
-                </p>
-              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.8!2d-77.458531!3d34.8202161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89a911ae104ece11%3A0x6af5edd22ef362ab!2sGodhans!5e0!3m2!1sen!2sus!4v1715000000000"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Godhans Tree Company - 4445 Gum Branch Rd Jacksonville NC"
+              />
             </div>
 
             {/* Address block */}

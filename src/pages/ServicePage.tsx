@@ -1,8 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { EmergencyBanner } from '@/components/layout/EmergencyBanner';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
 import { OtherCitiesWeServe } from '@/components/sections/OtherCitiesWeServe';
 import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { LazyImage } from '@/components/ui/LazyImage';
@@ -166,11 +163,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
         )}
       </Helmet>
 
-      <div className="min-h-screen flex flex-col">
-        <EmergencyBanner />
-        <Header />
-
-        <main className="flex-grow">
+      <main className="flex-grow pt-20">
           {/* Hero */}
           <section className="bg-black py-16 sm:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -420,9 +413,6 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
             </div>
           </section>
         </main>
-
-        <Footer />
-      </div>
     </>
   );
 }

@@ -9,7 +9,7 @@ export default function Hero() {
       style={{ paddingTop: "5rem" }}
     >
       {/* Background image — replace src with your real hero photo */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" style={{ background: "#111111" }}>
         <img
           src="/images/hero-godhans-tree-removal-jacksonville-nc.jpg"
           alt="Godhans Tree Company crew removing a large tree in Jacksonville NC"

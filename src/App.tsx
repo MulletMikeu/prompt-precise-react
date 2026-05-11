@@ -78,28 +78,7 @@ export default function App() {
         <ScrollToTop />
         <AnimateOnScroll />
         <Routes>
-          {/* Standalone pages — have their own EmergencyBanner + Header + Footer */}
-          <Route path="/tree-service-jacksonville-nc" element={<TreeServiceJacksonvilleNC />} />
-          <Route path="/tree-removal-jacksonville-nc" element={<TreeRemoval />} />
-          <Route path="/tree-trimming-jacksonville-nc" element={<TreeTrimming />} />
-          <Route path="/stump-grinding-jacksonville-nc" element={<StumpGrinding />} />
-          <Route path="/emergency-tree-service-jacksonville-nc" element={<EmergencyTreeService />} />
-          <Route path="/spider-lift-tree-removal-jacksonville-nc" element={<SpiderLiftRemoval />} />
-          <Route path="/tree-service-hubert-nc" element={<TreeServiceHubert />} />
-          <Route path="/tree-service-richlands-nc" element={<TreeServiceRichlands />} />
-          <Route path="/tree-service-swansboro-nc" element={<TreeServiceSwansboro />} />
-          <Route path="/tree-service-sneads-ferry-nc" element={<TreeServiceSneadsFerry />} />
-          <Route path="/tree-service-camp-lejeune-nc" element={<TreeServiceCampLejeune />} />
-          <Route path="/storm-damage-trees-guide" element={<StormDamageGuide />} />
-          <Route path="/tree-removal-cost-north-carolina" element={<TreeRemovalCost />} />
-          <Route path="/tree-removal-near-house-jacksonville-nc" element={<TreeRemovalNearHouse />} />
-          <Route path="/do-you-need-a-permit-to-remove-a-tree-nc" element={<TreeRemovalPermitNC />} />
-          <Route path="/tree-removal-tight-spaces-jacksonville-nc" element={<TreeRemovalTightSpaces />} />
-          <Route path="/tree-trimming-vs-pruning" element={<TreeTrimmingVsPruning />} />
-          <Route path="/leaning-tree-dangerous-after-storm" element={<LeaningTreeDangerous />} />
-          <Route path="/meet-the-owners" element={<MeetTheOwners />} />
-
-          {/* Pages using shared Navbar/Footer Layout */}
+          {/* All routes use the shared Layout (new Navbar + Footer) */}
           <Route path="/" element={<Layout><HomePage /></Layout>} />
           <Route path="/services" element={<Layout><ServicesPage /></Layout>} />
           <Route path="/about" element={<Layout><AboutPage /></Layout>} />
@@ -108,8 +87,25 @@ export default function App() {
           <Route path="/reviews" element={<Layout><ReviewsPage /></Layout>} />
           <Route path="/blog" element={<Layout><BlogPage /></Layout>} />
           <Route path="/privacy-policy" element={<Layout><HomePage /></Layout>} />
-
-          {/* 404 */}
+          <Route path="/meet-the-owners" element={<Layout><MeetTheOwners /></Layout>} />
+          <Route path="/tree-service-jacksonville-nc" element={<Layout><TreeServiceJacksonvilleNC /></Layout>} />
+          <Route path="/tree-removal-jacksonville-nc" element={<Layout><TreeRemoval /></Layout>} />
+          <Route path="/tree-trimming-jacksonville-nc" element={<Layout><TreeTrimming /></Layout>} />
+          <Route path="/stump-grinding-jacksonville-nc" element={<Layout><StumpGrinding /></Layout>} />
+          <Route path="/emergency-tree-service-jacksonville-nc" element={<Layout><EmergencyTreeService /></Layout>} />
+          <Route path="/spider-lift-tree-removal-jacksonville-nc" element={<Layout><SpiderLiftRemoval /></Layout>} />
+          <Route path="/tree-service-hubert-nc" element={<Layout><TreeServiceHubert /></Layout>} />
+          <Route path="/tree-service-richlands-nc" element={<Layout><TreeServiceRichlands /></Layout>} />
+          <Route path="/tree-service-swansboro-nc" element={<Layout><TreeServiceSwansboro /></Layout>} />
+          <Route path="/tree-service-sneads-ferry-nc" element={<Layout><TreeServiceSneadsFerry /></Layout>} />
+          <Route path="/tree-service-camp-lejeune-nc" element={<Layout><TreeServiceCampLejeune /></Layout>} />
+          <Route path="/storm-damage-trees-guide" element={<Layout><StormDamageGuide /></Layout>} />
+          <Route path="/tree-removal-cost-north-carolina" element={<Layout><TreeRemovalCost /></Layout>} />
+          <Route path="/tree-removal-near-house-jacksonville-nc" element={<Layout><TreeRemovalNearHouse /></Layout>} />
+          <Route path="/do-you-need-a-permit-to-remove-a-tree-nc" element={<Layout><TreeRemovalPermitNC /></Layout>} />
+          <Route path="/tree-removal-tight-spaces-jacksonville-nc" element={<Layout><TreeRemovalTightSpaces /></Layout>} />
+          <Route path="/tree-trimming-vs-pruning" element={<Layout><TreeTrimmingVsPruning /></Layout>} />
+          <Route path="/leaning-tree-dangerous-after-storm" element={<Layout><LeaningTreeDangerous /></Layout>} />
           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
       </BrowserRouter>
