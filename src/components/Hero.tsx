@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0" style={{ background: "#111111" }}>
         <img
           src="/images/hero-godhans-tree-removal-jacksonville-nc.jpg"
-          alt="Godhans Tree Company crew removing a large tree in Jacksonville NC"
+          alt="Godhans Tree Company spider lift tree removal in Jacksonville NC"
           className="w-full h-full object-cover object-center"
           loading="eager"
           width="1920"

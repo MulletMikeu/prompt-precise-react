@@ -1,14 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { BUSINESS_INFO } from '@/lib/constants';
-import michaelPhoto1200 from '@/assets/owner-michael-godhans-jacksonville-nc-1200.jpg';
-import michaelPhoto600 from '@/assets/owner-michael-godhans-jacksonville-nc-600.jpg';
-import michaelPhoto1200Webp from '@/assets/owner-michael-godhans-jacksonville-nc-1200.webp';
-import michaelPhoto600Webp from '@/assets/owner-michael-godhans-jacksonville-nc-600.webp';
-import jamesPhoto1200 from '@/assets/owner-james-godhans-jacksonville-nc-1200.jpg';
-import jamesPhoto600 from '@/assets/owner-james-godhans-jacksonville-nc-600.jpg';
-import jamesPhoto1200Webp from '@/assets/owner-james-godhans-jacksonville-nc-1200.webp';
-import jamesPhoto600Webp from '@/assets/owner-james-godhans-jacksonville-nc-600.webp';
 
 // === EDITABLE PHOTO FIELDS (Michael) ===
 // Pre-filled SEO alt text — do not change template.
@@ -167,25 +159,16 @@ export default function MeetTheOwners() {
                   className="relative w-full overflow-hidden rounded-lg bg-gray-900"
                   style={{ aspectRatio: `${MICHAEL_PHOTO_WIDTH} / ${MICHAEL_PHOTO_HEIGHT}` }}
                 >
-                  <picture>
-                    <source
-                      type="image/webp"
-                      srcSet={`${michaelPhoto600Webp} 600w, ${michaelPhoto1200Webp} 1200w`}
-                      sizes="(max-width: 768px) 100vw, 768px"
-                    />
-                    <img
-                      src={michaelPhoto1200}
-                      srcSet={`${michaelPhoto600} 600w, ${michaelPhoto1200} 1200w`}
-                      sizes="(max-width: 768px) 100vw, 768px"
-                      width={MICHAEL_PHOTO_WIDTH}
-                      height={MICHAEL_PHOTO_HEIGHT}
-                      alt={MICHAEL_PHOTO_ALT}
-                      loading="eager"
-                      decoding="async"
-                      fetchPriority="high"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-                  </picture>
+                  <img
+                    src="/images/owner-michael-godhans-tree-service-jacksonville-nc.jpg"
+                    width={MICHAEL_PHOTO_WIDTH}
+                    height={MICHAEL_PHOTO_HEIGHT}
+                    alt={MICHAEL_PHOTO_ALT}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
                 </div>
                 {MICHAEL_PHOTO_CAPTION && (
                   <figcaption className="mt-2 text-sm text-gray-300">
@@ -223,25 +206,16 @@ export default function MeetTheOwners() {
                   className="relative w-full overflow-hidden rounded-lg bg-gray-900"
                   style={{ aspectRatio: `${JAMES_PHOTO_WIDTH} / ${JAMES_PHOTO_HEIGHT}` }}
                 >
-                  <picture>
-                    <source
-                      type="image/webp"
-                      srcSet={`${jamesPhoto600Webp} 600w, ${jamesPhoto1200Webp} 1200w`}
-                      sizes="(max-width: 768px) 100vw, 768px"
-                    />
-                    <img
-                      src={jamesPhoto1200}
-                      srcSet={`${jamesPhoto600} 600w, ${jamesPhoto1200} 1200w`}
-                      sizes="(max-width: 768px) 100vw, 768px"
-                      width={JAMES_PHOTO_WIDTH}
-                      height={JAMES_PHOTO_HEIGHT}
-                      alt={JAMES_PHOTO_ALT}
-                      loading="eager"
-                      decoding="async"
-                      fetchPriority="high"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-                  </picture>
+                  <img
+                    src="/images/owner-james-godhans-tree-service-jacksonville-nc.jpg"
+                    width={JAMES_PHOTO_WIDTH}
+                    height={JAMES_PHOTO_HEIGHT}
+                    alt={JAMES_PHOTO_ALT}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
                 </div>
                 {JAMES_PHOTO_CAPTION && (
                   <figcaption className="mt-2 text-sm text-gray-300">

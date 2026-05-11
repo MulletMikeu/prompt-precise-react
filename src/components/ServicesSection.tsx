@@ -77,6 +77,26 @@ export default function ServicesSection() {
           ))}
         </div>
 
+        {/* Job photo gallery */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px mt-px" style={{ background: "#1A1A1A" }}>
+          {[
+            { src: "/images/tree-removal-jacksonville-nc-godhans.jpg", alt: "Tree removal in Jacksonville NC by Godhans Tree Company" },
+            { src: "/images/stump-grinding-jacksonville-nc-godhans.jpg", alt: "Stump grinding in Jacksonville NC by Godhans Tree Company" },
+            { src: "/images/tree-trimming-jacksonville-nc-godhans.jpg", alt: "Tree trimming in Jacksonville NC by Godhans Tree Company" },
+          ].map((photo) => (
+            <div key={photo.src} className="relative overflow-hidden" style={{ aspectRatio: "4/3", background: "#111111" }}>
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+                width="800"
+                height="600"
+              />
+            </div>
+          ))}
+        </div>
+
         {/* Bottom CTA */}
         <div className="mt-12 text-center">
           <Link to="/services" className="btn-outline">
