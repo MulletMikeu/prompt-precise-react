@@ -44,7 +44,8 @@
     { "source": "/spider-lift-removal", "destination": "/spider-lift-tree-removal-jacksonville-nc", "statusCode": 301 },
     { "source": "/stump-grinding", "destination": "/stump-grinding-jacksonville-nc", "statusCode": 301 },
     { "source": "/tree-trimming", "destination": "/tree-trimming-jacksonville-nc", "statusCode": 301 },
-    { "source": "/get-quote", "destination": "/contact", "statusCode": 301 }
+    { "source": "/get-quote", "destination": "/contact", "statusCode": 301 },
+    { "source": "/meet-the-owners", "destination": "/about", "statusCode": 301 }
   ],
   "headers": [
     {
