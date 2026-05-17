@@ -95,10 +95,10 @@ export default function Footer() {
       </div>
       <div style={{ borderTop: "1px solid #141414" }}>
         <div className="container-brand py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs" style={{ color: "#777777" }}>© {year} Godhans Tree Company. All Rights Reserved.</p>
+          <p className="text-xs" style={{ color: "#888888" }}>© {year} Godhans Tree Company. All Rights Reserved.</p>
           <div className="flex gap-6">
-            <Link to="/privacy-policy" className="text-xs" style={{ color: "#777777" }}>Privacy Policy</Link>
-            <Link to="/sitemap" className="text-xs" style={{ color: "#777777" }}>Sitemap</Link>
+            <Link to="/privacy-policy" className="text-xs" style={{ color: "#888888" }}>Privacy Policy</Link>
+            <Link to="/sitemap" className="text-xs" style={{ color: "#888888" }}>Sitemap</Link>
           </div>
         </div>
       </div>

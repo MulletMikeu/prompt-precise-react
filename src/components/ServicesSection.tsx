@@ -41,7 +41,7 @@ export default function ServicesSection() {
               {/* Number */}
               <span
                 className="block font-display font-800 mb-4"
-                style={{ fontSize: "3rem", lineHeight: 1, color: "#333333" }}
+                style={{ fontSize: "3rem", lineHeight: 1, color: "#888888" }}
               >
                 0{i + 1}
               </span>
