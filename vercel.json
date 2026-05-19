@@ -21,6 +21,7 @@
       "destination": "https://godhans.com/$1",
       "statusCode": 301
     },
+    { "source": "//", "destination": "/", "statusCode": 301 },
     { "source": "/services/tree-removal", "destination": "/tree-removal-jacksonville-nc", "statusCode": 301 },
     { "source": "/services/tree-trimming", "destination": "/tree-trimming-jacksonville-nc", "statusCode": 301 },
     { "source": "/services/stump-grinding", "destination": "/stump-grinding-jacksonville-nc", "statusCode": 301 },
