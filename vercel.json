@@ -5,13 +5,19 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "treetrimmersnc.online" }],
+      "has": [{ "type": "host", "value": "www.godhans.com" }],
       "destination": "https://godhans.com/$1",
       "statusCode": 301
     },
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.treetrimmersnc.online" }],
+      "destination": "https://godhans.com/$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "treetrimmersnc.online" }],
       "destination": "https://godhans.com/$1",
       "statusCode": 301
     },
