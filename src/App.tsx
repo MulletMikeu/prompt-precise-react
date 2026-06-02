@@ -4,7 +4,6 @@ import { useEffect, ReactNode } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import ServicesPage from "./pages/ServicesPage";
 import ServiceAreaPage from "./pages/ServiceAreaPage";
@@ -84,13 +83,12 @@ export default function App() {
           {/* All routes use the shared Layout (new Navbar + Footer) */}
           <Route path="/" element={<Layout><HomePage /></Layout>} />
           <Route path="/services" element={<Layout><ServicesPage /></Layout>} />
-          <Route path="/about" element={<Layout><AboutPage /></Layout>} />
+          <Route path="/about" element={<Layout><MeetTheOwners /></Layout>} />
           <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
           <Route path="/service-area" element={<Layout><ServiceAreaPage /></Layout>} />
           <Route path="/reviews" element={<Layout><ReviewsPage /></Layout>} />
           <Route path="/blog" element={<Layout><BlogPage /></Layout>} />
           <Route path="/privacy-policy" element={<Layout><HomePage /></Layout>} />
-          <Route path="/meet-the-owners" element={<Layout><MeetTheOwners /></Layout>} />
           <Route path="/tree-service-jacksonville-nc" element={<Layout><TreeServiceJacksonvilleNC /></Layout>} />
           <Route path="/tree-removal-jacksonville-nc" element={<Layout><TreeRemoval /></Layout>} />
           <Route path="/tree-trimming-jacksonville-nc" element={<Layout><TreeTrimming /></Layout>} />

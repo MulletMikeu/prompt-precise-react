@@ -26,7 +26,7 @@ const JAMES_PHOTO_WIDTH = 1200;
 const JAMES_PHOTO_HEIGHT = 1800;
 // === END EDITABLE PHOTO FIELDS ===
 
-const PAGE_URL = 'https://godhans.com/meet-the-owners';
+const PAGE_URL = 'https://godhans.com/about';
 const OG_IMAGE = 'https://godhans.com/og-image.jpg';
 
 // === EDITABLE CONTENT FIELDS ===
@@ -54,7 +54,7 @@ export default function MeetTheOwners() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://godhans.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Meet the Owners', item: PAGE_URL },
+      { '@type': 'ListItem', position: 2, name: 'About', item: PAGE_URL },
     ],
   };
 
@@ -63,9 +63,9 @@ export default function MeetTheOwners() {
     '@type': 'WebPage',
    '@id': PAGE_URL + '#webpage',
     url: PAGE_URL,
-    name: 'Meet the Owners | Godhans Tree Service | Jacksonville NC',
+    name: 'About Godhans Tree Company | Veteran-Owned Tree Service Jacksonville, NC',
     description:
-      'Meet the owners of Godhans Tree Service in Jacksonville, NC — a family-run team delivering safe, professional tree care across Onslow County.',
+      'Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County.',
     isPartOf: { '@id': 'https://godhans.com/#website' },
     about: { '@id': 'https://godhans.com/#localbusiness' },
   };
@@ -98,10 +98,10 @@ export default function MeetTheOwners() {
   return (
     <>
       <Helmet>
-        <title>Meet the Owners | Godhans Tree Service | Jacksonville NC</title>
+        <title>About Godhans Tree Company | Veteran-Owned Tree Service Jacksonville, NC</title>
         <meta
           name="description"
-          content="Meet the owners of Godhans Tree Service in Jacksonville, NC — a family-run team delivering safe, professional tree care across Onslow County."
+          content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County."
         />
         <link rel="canonical" href={PAGE_URL} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -109,10 +109,10 @@ export default function MeetTheOwners() {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content={PAGE_URL} />
-        <meta property="og:title" content="Meet the Owners | Godhans Tree Service | Jacksonville NC" />
+        <meta property="og:title" content="About Godhans Tree Company | Veteran-Owned Tree Service Jacksonville, NC" />
         <meta
           property="og:description"
-          content="Meet the owners of Godhans Tree Service in Jacksonville, NC — a family-run team delivering safe, professional tree care across Onslow County."
+          content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County."
         />
         <meta property="og:site_name" content="Godhans Tree Company" />
         <meta property="og:image" content={OG_IMAGE} />
@@ -120,8 +120,8 @@ export default function MeetTheOwners() {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={OG_IMAGE} />
-        <meta name="twitter:title" content="Meet the Owners | Godhans Tree Service | Jacksonville NC" />
-        <meta name="twitter:description" content="Meet the owners of Godhans Tree Service in Jacksonville, NC — a family-run team delivering safe, professional tree care across Onslow County." />
+        <meta name="twitter:title" content="About Godhans Tree Company | Veteran-Owned Tree Service Jacksonville, NC" />
+        <meta name="twitter:description" content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County." />
 
         <script type="application/ld+json">{JSON.stringify(webPageSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
@@ -137,11 +137,11 @@ export default function MeetTheOwners() {
                   <Link to="/" className="hover:text-red-600 transition-colors">Home</Link>
                 </li>
                 <li aria-hidden="true">/</li>
-                <li className="text-gray-200" aria-current="page">Meet the Owners</li>
+                <li className="text-gray-200" aria-current="page">About</li>
               </ol>
             </nav>
 
-            <h1 className="text-3xl sm:text-4xl font-bold mb-6">Meet the Owners</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-6">About Godhans Tree Company</h1>
 
             {/* Intro */}
             <section aria-labelledby="intro-heading" className="mb-10">
