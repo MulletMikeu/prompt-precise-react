@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
-import { useEffect, ReactNode } from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import type { RouteRecord } from "vite-react-ssg";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -31,6 +31,7 @@ import TreeRemovalTightSpaces from "./pages/TreeRemovalTightSpaces";
 import TreeTrimmingVsPruning from "./pages/TreeTrimmingVsPruning";
 import LeaningTreeDangerous from "./pages/LeaningTreeDangerous";
 import MeetTheOwners from "./pages/MeetTheOwners";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import LandClearing from "./pages/LandClearing";
 import StormCleanup from "./pages/StormCleanup";
 import LocationPage from "./pages/LocationPage";
@@ -63,59 +64,63 @@ function AnimateOnScroll() {
   return null;
 }
 
-function Layout({ children }: { children: ReactNode }) {
+function RootLayout() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0A0A0A" }}>
+      <ScrollToTop />
+      <AnimateOnScroll />
       <Navbar />
-      <div className="flex-1">{children}</div>
+      <div className="flex-1">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
 }
 
-export default function App() {
-  return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <AnimateOnScroll />
-        <Routes>
-          {/* All routes use the shared Layout (new Navbar + Footer) */}
-          <Route path="/" element={<Layout><HomePage /></Layout>} />
-          <Route path="/services" element={<Layout><ServicesPage /></Layout>} />
-          <Route path="/about" element={<Layout><MeetTheOwners /></Layout>} />
-          <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
-          <Route path="/service-area" element={<Layout><ServiceAreaPage /></Layout>} />
-          <Route path="/reviews" element={<Layout><ReviewsPage /></Layout>} />
-          <Route path="/blog" element={<Layout><BlogPage /></Layout>} />
-          <Route path="/privacy-policy" element={<Layout><HomePage /></Layout>} />
-          <Route path="/tree-service-jacksonville-nc" element={<Layout><TreeServiceJacksonvilleNC /></Layout>} />
-          <Route path="/tree-removal-jacksonville-nc" element={<Layout><TreeRemoval /></Layout>} />
-          <Route path="/tree-trimming-jacksonville-nc" element={<Layout><TreeTrimming /></Layout>} />
-          <Route path="/stump-grinding-jacksonville-nc" element={<Layout><StumpGrinding /></Layout>} />
-          <Route path="/emergency-tree-service-jacksonville-nc" element={<Layout><EmergencyTreeService /></Layout>} />
-          <Route path="/spider-lift-tree-removal-jacksonville-nc" element={<Layout><SpiderLiftRemoval /></Layout>} />
-          <Route path="/tree-service-hubert-nc" element={<Layout><TreeServiceHubert /></Layout>} />
-          <Route path="/tree-service-richlands-nc" element={<Layout><TreeServiceRichlands /></Layout>} />
-          <Route path="/tree-service-swansboro-nc" element={<Layout><TreeServiceSwansboro /></Layout>} />
-          <Route path="/tree-service-sneads-ferry-nc" element={<Layout><TreeServiceSneadsFerry /></Layout>} />
-          <Route path="/tree-service-camp-lejeune-nc" element={<Layout><TreeServiceCampLejeune /></Layout>} />
-          <Route path="/tree-service-maysville-nc" element={<Layout><LocationPage city="Maysville" /></Layout>} />
-          <Route path="/tree-service-beulaville-nc" element={<Layout><LocationPage city="Beulaville" /></Layout>} />
-          <Route path="/tree-service-holly-ridge-nc" element={<Layout><LocationPage city="Holly Ridge" /></Layout>} />
-          <Route path="/tree-service-surf-city-nc" element={<Layout><LocationPage city="Surf City" /></Layout>} />
-          <Route path="/land-clearing-jacksonville-nc" element={<Layout><LandClearing /></Layout>} />
-          <Route path="/storm-cleanup-jacksonville-nc" element={<Layout><StormCleanup /></Layout>} />
-          <Route path="/storm-damage-trees-guide" element={<Layout><StormDamageGuide /></Layout>} />
-          <Route path="/tree-removal-cost-north-carolina" element={<Layout><TreeRemovalCost /></Layout>} />
-          <Route path="/tree-removal-near-house-jacksonville-nc" element={<Layout><TreeRemovalNearHouse /></Layout>} />
-          <Route path="/do-you-need-a-permit-to-remove-a-tree-nc" element={<Layout><TreeRemovalPermitNC /></Layout>} />
-          <Route path="/tree-removal-tight-spaces-jacksonville-nc" element={<Layout><TreeRemovalTightSpaces /></Layout>} />
-          <Route path="/tree-trimming-vs-pruning" element={<Layout><TreeTrimmingVsPruning /></Layout>} />
-          <Route path="/leaning-tree-dangerous-after-storm" element={<Layout><LeaningTreeDangerous /></Layout>} />
-          <Route path="*" element={<Layout><NotFound /></Layout>} />
-        </Routes>
-      </BrowserRouter>
-    </HelmetProvider>
-  );
-}
+// All routes share RootLayout (Navbar + Footer). Paths are relative to the
+// root "/" route. vite-react-ssg crawls this array to pre-render each path
+// to its own static HTML file.
+export const routes: RouteRecord[] = [
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "services", element: <ServicesPage /> },
+      { path: "about", element: <MeetTheOwners /> },
+      { path: "contact", element: <ContactPage /> },
+      { path: "service-area", element: <ServiceAreaPage /> },
+      { path: "reviews", element: <ReviewsPage /> },
+      { path: "blog", element: <BlogPage /> },
+      { path: "privacy-policy", element: <PrivacyPolicy /> },
+      { path: "tree-service-jacksonville-nc", element: <TreeServiceJacksonvilleNC /> },
+      { path: "tree-removal-jacksonville-nc", element: <TreeRemoval /> },
+      { path: "tree-trimming-jacksonville-nc", element: <TreeTrimming /> },
+      { path: "stump-grinding-jacksonville-nc", element: <StumpGrinding /> },
+      { path: "emergency-tree-service-jacksonville-nc", element: <EmergencyTreeService /> },
+      { path: "spider-lift-tree-removal-jacksonville-nc", element: <SpiderLiftRemoval /> },
+      { path: "tree-service-hubert-nc", element: <TreeServiceHubert /> },
+      { path: "tree-service-richlands-nc", element: <TreeServiceRichlands /> },
+      { path: "tree-service-swansboro-nc", element: <TreeServiceSwansboro /> },
+      { path: "tree-service-sneads-ferry-nc", element: <TreeServiceSneadsFerry /> },
+      { path: "tree-service-camp-lejeune-nc", element: <TreeServiceCampLejeune /> },
+      { path: "tree-service-maysville-nc", element: <LocationPage city="Maysville" /> },
+      { path: "tree-service-beulaville-nc", element: <LocationPage city="Beulaville" /> },
+      { path: "tree-service-holly-ridge-nc", element: <LocationPage city="Holly Ridge" /> },
+      { path: "tree-service-surf-city-nc", element: <LocationPage city="Surf City" /> },
+      { path: "land-clearing-jacksonville-nc", element: <LandClearing /> },
+      { path: "storm-cleanup-jacksonville-nc", element: <StormCleanup /> },
+      { path: "storm-damage-trees-guide", element: <StormDamageGuide /> },
+      { path: "tree-removal-cost-north-carolina", element: <TreeRemovalCost /> },
+      { path: "tree-removal-near-house-jacksonville-nc", element: <TreeRemovalNearHouse /> },
+      { path: "do-you-need-a-permit-to-remove-a-tree-nc", element: <TreeRemovalPermitNC /> },
+      { path: "tree-removal-tight-spaces-jacksonville-nc", element: <TreeRemovalTightSpaces /> },
+      { path: "tree-trimming-vs-pruning", element: <TreeTrimmingVsPruning /> },
+      { path: "leaning-tree-dangerous-after-storm", element: <LeaningTreeDangerous /> },
+      { path: "*", element: <NotFound /> },
+    ],
+  },
+];
+
+export default routes;

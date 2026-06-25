@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from 'react-router-dom';
 import { OtherCitiesWeServe } from '@/components/sections/OtherCitiesWeServe';
 import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
@@ -123,7 +123,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
 
   return (
     <>
-      <Helmet prioritizeSeoTags>
+      <Helmet>
         <title>{`${title} | ${BUSINESS_INFO.name}`}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />

@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Head as Helmet } from 'vite-react-ssg';
 import Hero from "../components/Hero";
 import ServicesSection from "../components/ServicesSection";
 import TrustSection from "../components/TrustSection";

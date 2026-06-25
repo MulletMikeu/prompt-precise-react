@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode, isSsrBuild }) => ({
   server: {
     host: "::",
     port: 8080,
@@ -17,11 +17,16 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-        },
-      },
+      // manualChunks only applies to the client build. During the
+      // vite-react-ssg SSR pass react/react-dom are external, so naming them
+      // in a manual chunk throws EXTERNAL_MODULES_CANNOT_BE_INCLUDED_IN_MANUAL_CHUNKS.
+      output: isSsrBuild
+        ? {}
+        : {
+            manualChunks: {
+              'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            },
+          },
     },
     chunkSizeWarningLimit: 1000,
   },
