@@ -47,7 +47,7 @@ export default function TreeRemoval() {
         },
         {
           heading: "Service Areas for Tree Removal",
-          text: "Content coming soon. This section will list all the areas we serve including Jacksonville, Camp Lejeune, Swansboro, Richlands, Sneads Ferry, and surrounding communities."
+          text: "Godhans Tree Company removes trees across Jacksonville and all of Onslow County, including Camp Lejeune, Hubert, Richlands, Swansboro, Sneads Ferry, Holly Ridge, and the surrounding coastal communities. Coastal North Carolina puts hard miles on trees — salt air, saturated soil, and hurricane-season winds leave a lot of weakened pines and storm-split hardwoods behind.\n\nWhether it's a leaning pine in a tight backyard or a large hardwood hanging over your roof, our crew has the boom trucks, rigging, and experience to take it down safely and haul away every bit of debris. Not sure if you're in our area? Give us a call — if you're in or near Onslow County, we can almost certainly help."
         }
       ]}
       faqs={[

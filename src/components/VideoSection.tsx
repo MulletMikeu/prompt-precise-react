@@ -59,6 +59,13 @@ export default function VideoSection() {
   const [activeVideo, setActiveVideo] = useState<{ id: string; title: string } | null>(null);
   const isPlaceholder = (id: string) => id.startsWith("PLACEHOLDER");
 
+  // Hide the whole section until at least one real video is available, rather
+  // than showing a grid of "Coming Soon" tiles. Re-appears automatically once
+  // a real youtubeId is added in siteData.
+  if (VIDEOS.every((video) => isPlaceholder(video.youtubeId))) {
+    return null;
+  }
+
   return (
     <section
       className="section-pad"
