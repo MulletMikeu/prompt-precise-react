@@ -1,40 +1,26 @@
 import { Outlet, useLocation } from "react-router-dom";
 import type { RouteRecord } from "vite-react-ssg";
+import type { ComponentType } from "react";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import HomePage from "./pages/HomePage";
-import ContactPage from "./pages/ContactPage";
-import ServicesPage from "./pages/ServicesPage";
-import ServiceAreaPage from "./pages/ServiceAreaPage";
-import ReviewsPage from "./pages/ReviewsPage";
-import BlogPage from "./pages/BlogPage";
-import NotFound from "./pages/NotFound";
 
-// Standalone service and location pages
-import TreeServiceJacksonvilleNC from "./pages/TreeServiceJacksonvilleNC";
-import TreeRemoval from "./pages/TreeRemoval";
-import TreeTrimming from "./pages/TreeTrimming";
-import StumpGrinding from "./pages/StumpGrinding";
-import EmergencyTreeService from "./pages/EmergencyTreeService";
-import SpiderLiftRemoval from "./pages/SpiderLiftRemoval";
-import TreeServiceHubert from "./pages/TreeServiceHubert";
-import TreeServiceRichlands from "./pages/TreeServiceRichlands";
-import TreeServiceSwansboro from "./pages/TreeServiceSwansboro";
-import TreeServiceSneadsFerry from "./pages/TreeServiceSneadsFerry";
-import TreeServiceCampLejeune from "./pages/TreeServiceCampLejeune";
-import StormDamageGuide from "./pages/StormDamageGuide";
-import TreeRemovalCost from "./pages/TreeRemovalCost";
-import TreeRemovalNearHouse from "./pages/TreeRemovalNearHouse";
-import TreeRemovalPermitNC from "./pages/TreeRemovalPermitNC";
-import TreeRemovalTightSpaces from "./pages/TreeRemovalTightSpaces";
-import TreeTrimmingVsPruning from "./pages/TreeTrimmingVsPruning";
-import LeaningTreeDangerous from "./pages/LeaningTreeDangerous";
-import MeetTheOwners from "./pages/MeetTheOwners";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import LandClearing from "./pages/LandClearing";
-import StormCleanup from "./pages/StormCleanup";
-import LocationPage from "./pages/LocationPage";
+// Lazy route helper: dynamically import a page's default export and expose it
+// as a react-router `Component`. This code-splits every route into its own
+// chunk so each page (and each prerendered HTML) only ships its own JS instead
+// of one monolithic bundle containing all ~30 pages.
+const page =
+  (loader: () => Promise<{ default: ComponentType }>): RouteRecord["lazy"] =>
+  async () => ({ Component: (await loader()).default });
+
+// Location pages share one component parameterised by city, so they need the
+// prop bound at route-resolution time rather than a bare default export.
+const locationPage =
+  (city: string): RouteRecord["lazy"] =>
+  async () => {
+    const { default: LocationPage } = await import("./pages/LocationPage");
+    return { Component: () => <LocationPage city={city} /> };
+  };
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -80,45 +66,46 @@ function RootLayout() {
 
 // All routes share RootLayout (Navbar + Footer). Paths are relative to the
 // root "/" route. vite-react-ssg crawls this array to pre-render each path
-// to its own static HTML file.
+// to its own static HTML file; each route is lazily imported so its JS lands
+// in a separate chunk loaded only for that page.
 export const routes: RouteRecord[] = [
   {
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: "services", element: <ServicesPage /> },
-      { path: "about", element: <MeetTheOwners /> },
-      { path: "contact", element: <ContactPage /> },
-      { path: "service-area", element: <ServiceAreaPage /> },
-      { path: "reviews", element: <ReviewsPage /> },
-      { path: "blog", element: <BlogPage /> },
-      { path: "privacy-policy", element: <PrivacyPolicy /> },
-      { path: "tree-service-jacksonville-nc", element: <TreeServiceJacksonvilleNC /> },
-      { path: "tree-removal-jacksonville-nc", element: <TreeRemoval /> },
-      { path: "tree-trimming-jacksonville-nc", element: <TreeTrimming /> },
-      { path: "stump-grinding-jacksonville-nc", element: <StumpGrinding /> },
-      { path: "emergency-tree-service-jacksonville-nc", element: <EmergencyTreeService /> },
-      { path: "spider-lift-tree-removal-jacksonville-nc", element: <SpiderLiftRemoval /> },
-      { path: "tree-service-hubert-nc", element: <TreeServiceHubert /> },
-      { path: "tree-service-richlands-nc", element: <TreeServiceRichlands /> },
-      { path: "tree-service-swansboro-nc", element: <TreeServiceSwansboro /> },
-      { path: "tree-service-sneads-ferry-nc", element: <TreeServiceSneadsFerry /> },
-      { path: "tree-service-camp-lejeune-nc", element: <TreeServiceCampLejeune /> },
-      { path: "tree-service-maysville-nc", element: <LocationPage city="Maysville" /> },
-      { path: "tree-service-beulaville-nc", element: <LocationPage city="Beulaville" /> },
-      { path: "tree-service-holly-ridge-nc", element: <LocationPage city="Holly Ridge" /> },
-      { path: "tree-service-surf-city-nc", element: <LocationPage city="Surf City" /> },
-      { path: "land-clearing-jacksonville-nc", element: <LandClearing /> },
-      { path: "storm-cleanup-jacksonville-nc", element: <StormCleanup /> },
-      { path: "storm-damage-trees-guide", element: <StormDamageGuide /> },
-      { path: "tree-removal-cost-north-carolina", element: <TreeRemovalCost /> },
-      { path: "tree-removal-near-house-jacksonville-nc", element: <TreeRemovalNearHouse /> },
-      { path: "do-you-need-a-permit-to-remove-a-tree-nc", element: <TreeRemovalPermitNC /> },
-      { path: "tree-removal-tight-spaces-jacksonville-nc", element: <TreeRemovalTightSpaces /> },
-      { path: "tree-trimming-vs-pruning", element: <TreeTrimmingVsPruning /> },
-      { path: "leaning-tree-dangerous-after-storm", element: <LeaningTreeDangerous /> },
-      { path: "*", element: <NotFound /> },
+      { index: true, lazy: page(() => import("./pages/HomePage")) },
+      { path: "services", lazy: page(() => import("./pages/ServicesPage")) },
+      { path: "about", lazy: page(() => import("./pages/MeetTheOwners")) },
+      { path: "contact", lazy: page(() => import("./pages/ContactPage")) },
+      { path: "service-area", lazy: page(() => import("./pages/ServiceAreaPage")) },
+      { path: "reviews", lazy: page(() => import("./pages/ReviewsPage")) },
+      { path: "blog", lazy: page(() => import("./pages/BlogPage")) },
+      { path: "privacy-policy", lazy: page(() => import("./pages/PrivacyPolicy")) },
+      { path: "tree-service-jacksonville-nc", lazy: page(() => import("./pages/TreeServiceJacksonvilleNC")) },
+      { path: "tree-removal-jacksonville-nc", lazy: page(() => import("./pages/TreeRemoval")) },
+      { path: "tree-trimming-jacksonville-nc", lazy: page(() => import("./pages/TreeTrimming")) },
+      { path: "stump-grinding-jacksonville-nc", lazy: page(() => import("./pages/StumpGrinding")) },
+      { path: "emergency-tree-service-jacksonville-nc", lazy: page(() => import("./pages/EmergencyTreeService")) },
+      { path: "spider-lift-tree-removal-jacksonville-nc", lazy: page(() => import("./pages/SpiderLiftRemoval")) },
+      { path: "tree-service-hubert-nc", lazy: page(() => import("./pages/TreeServiceHubert")) },
+      { path: "tree-service-richlands-nc", lazy: page(() => import("./pages/TreeServiceRichlands")) },
+      { path: "tree-service-swansboro-nc", lazy: page(() => import("./pages/TreeServiceSwansboro")) },
+      { path: "tree-service-sneads-ferry-nc", lazy: page(() => import("./pages/TreeServiceSneadsFerry")) },
+      { path: "tree-service-camp-lejeune-nc", lazy: page(() => import("./pages/TreeServiceCampLejeune")) },
+      { path: "tree-service-maysville-nc", lazy: locationPage("Maysville") },
+      { path: "tree-service-beulaville-nc", lazy: locationPage("Beulaville") },
+      { path: "tree-service-holly-ridge-nc", lazy: locationPage("Holly Ridge") },
+      { path: "tree-service-surf-city-nc", lazy: locationPage("Surf City") },
+      { path: "land-clearing-jacksonville-nc", lazy: page(() => import("./pages/LandClearing")) },
+      { path: "storm-cleanup-jacksonville-nc", lazy: page(() => import("./pages/StormCleanup")) },
+      { path: "storm-damage-trees-guide", lazy: page(() => import("./pages/StormDamageGuide")) },
+      { path: "tree-removal-cost-north-carolina", lazy: page(() => import("./pages/TreeRemovalCost")) },
+      { path: "tree-removal-near-house-jacksonville-nc", lazy: page(() => import("./pages/TreeRemovalNearHouse")) },
+      { path: "do-you-need-a-permit-to-remove-a-tree-nc", lazy: page(() => import("./pages/TreeRemovalPermitNC")) },
+      { path: "tree-removal-tight-spaces-jacksonville-nc", lazy: page(() => import("./pages/TreeRemovalTightSpaces")) },
+      { path: "tree-trimming-vs-pruning", lazy: page(() => import("./pages/TreeTrimmingVsPruning")) },
+      { path: "leaning-tree-dangerous-after-storm", lazy: page(() => import("./pages/LeaningTreeDangerous")) },
+      { path: "*", lazy: page(() => import("./pages/NotFound")) },
     ],
   },
 ];
