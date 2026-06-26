@@ -17,6 +17,16 @@ export default function HomePage() {
         <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://godhans.com/" />
+        {/* Preload the LCP hero image (AVIF) so it is discovered before the JS/CSS parse */}
+        <link
+          rel="preload"
+          as="image"
+          type="image/avif"
+          href="/images/hero-godhans-tree-removal-jacksonville-nc-1280.avif"
+          imageSrcSet="/images/hero-godhans-tree-removal-jacksonville-nc-768.avif 768w, /images/hero-godhans-tree-removal-jacksonville-nc-1280.avif 1280w, /images/hero-godhans-tree-removal-jacksonville-nc-1920.avif 1920w"
+          imageSizes="100vw"
+          fetchPriority="high"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:description" content={DESC} />
