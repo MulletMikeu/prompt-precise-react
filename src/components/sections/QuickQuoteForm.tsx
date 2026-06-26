@@ -125,7 +125,7 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
 
                 <div>
                   <label htmlFor="qq-message" className="block text-sm font-bold text-gray-700 mb-1.5">
-                    Message <span className="text-gray-300 font-normal">(optional)</span>
+                    Message <span className="text-gray-500 font-normal">(optional)</span>
                   </label>
                   <textarea
                     id="qq-message"

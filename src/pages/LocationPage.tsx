@@ -51,7 +51,7 @@ export default function LocationPage({ city }: LocationPageProps) {
                 <li className="text-gray-200" aria-current="page">{city}, NC</li>
               </ol>
             </nav>
-            <p className="font-body text-xs font-600 uppercase tracking-widest mb-4" style={{ color: "#C41230", letterSpacing: "0.12em" }}>Service Area</p>
+            <p className="font-body text-xs font-600 uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Service Area</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Tree Service in {city}, NC</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               Godhans Tree Company serves {city} and the surrounding Onslow County area with professional tree removal, trimming, stump grinding, and 24/7 emergency response. Veteran-owned, fully licensed and insured — free estimates on every job.
@@ -67,7 +67,7 @@ export default function LocationPage({ city }: LocationPageProps) {
                 <article key={service.href} className="p-8 flex flex-col gap-3" style={{ background: "#0A0A0A" }}>
                   <h3 className="text-lg font-bold text-white">{service.name}</h3>
                   <p className="text-base leading-relaxed flex-1" style={{ color: "#C8C8C2" }}>{service.desc}</p>
-                  <Link to={service.href} className="text-sm font-bold uppercase tracking-widest self-start" style={{ color: "#C41230" }}>
+                  <Link to={service.href} className="text-sm font-bold uppercase tracking-widest self-start" style={{ color: "#E5424F" }}>
                     Learn More →
                   </Link>
                 </article>

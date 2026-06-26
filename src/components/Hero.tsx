@@ -62,7 +62,7 @@ export default function Hero() {
           >
             Tree Service
             <br />
-            <span style={{ color: "#C41230" }}>Jacksonville, NC</span>
+            <span style={{ color: "#E5424F" }}>Jacksonville, NC</span>
             <br />
             Done Right.
           </h1>

@@ -30,7 +30,7 @@ export default function ServiceAreaSection() {
             <h2 id="area-heading" className="text-display-xl text-white mb-6">
               Proudly Serving
               <br />
-              <span style={{ color: "#C41230" }}>Onslow County & Beyond</span>
+              <span style={{ color: "#E5424F" }}>Onslow County & Beyond</span>
             </h2>
 
             <p className="font-body text-base leading-relaxed mb-10" style={{ color: "#C8C8C2" }}>
@@ -45,17 +45,17 @@ export default function ServiceAreaSection() {
                 const pagePath = CITY_PAGE_MAP[city.slug];
                 const sharedStyle = {
                   border: city.primary ? "1px solid #C41230" : "1px solid #2A2A2A",
-                  color: city.primary ? "#C41230" : "#888888",
+                  color: city.primary ? "#E5424F" : "#888888",
                   letterSpacing: "0.08em",
                 };
                 const hoverHandlers = pagePath ? {
                   onMouseEnter: (e: React.MouseEvent<HTMLAnchorElement>) => {
                     e.currentTarget.style.borderColor = "#C41230";
-                    e.currentTarget.style.color = "#C41230";
+                    e.currentTarget.style.color = "#E5424F";
                   },
                   onMouseLeave: (e: React.MouseEvent<HTMLAnchorElement>) => {
                     e.currentTarget.style.borderColor = city.primary ? "#C41230" : "#2A2A2A";
-                    e.currentTarget.style.color = city.primary ? "#C41230" : "#888888";
+                    e.currentTarget.style.color = city.primary ? "#E5424F" : "#888888";
                   },
                 } : {};
                 return pagePath ? (
@@ -108,7 +108,7 @@ export default function ServiceAreaSection() {
               <address className="not-italic">
                 <p className="font-display font-700 uppercase text-white mb-2" style={{ fontSize: "0.9rem", letterSpacing: "0.06em" }}>{BUSINESS.name}</p>
                 <p className="font-body text-sm mb-3" style={{ color: "#888888" }}>{BUSINESS.address.full}</p>
-                <a href={BUSINESS.phoneHref} className="font-bold block" style={{ color: "#C41230" }}>{BUSINESS.phone}</a>
+                <a href={BUSINESS.phoneHref} className="font-bold block" style={{ color: "#E5424F" }}>{BUSINESS.phone}</a>
                 <a href={BUSINESS.emailHref} className="text-sm block mt-1" style={{ color: "#888888" }}>{BUSINESS.email}</a>
               </address>
             </div>

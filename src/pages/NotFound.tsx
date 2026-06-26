@@ -10,9 +10,9 @@ const NotFound = () => {
       </Helmet>
       <div className="flex min-h-screen items-center justify-center" style={{ background: "#0A0A0A" }}>
         <div className="text-center px-6">
-          <h1 className="mb-4 text-6xl font-bold" style={{ color: "#C41230" }}>404</h1>
+          <h1 className="mb-4 text-6xl font-bold" style={{ color: "#E5424F" }}>404</h1>
           <p className="mb-6 text-xl" style={{ color: "#C8C8C2" }}>Page not found</p>
-          <Link to="/" className="font-bold uppercase tracking-wider text-sm" style={{ color: "#C41230" }}>
+          <Link to="/" className="font-bold uppercase tracking-wider text-sm" style={{ color: "#E5424F" }}>
             Return to Home
           </Link>
         </div>

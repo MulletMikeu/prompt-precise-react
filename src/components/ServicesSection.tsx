@@ -18,7 +18,7 @@ export default function ServicesSection() {
             <h2 id="services-heading" className="text-display-xl text-white">
               Tree Services in
               <br />
-              <span style={{ color: "#C41230" }}>Jacksonville & Onslow County</span>
+              <span style={{ color: "#E5424F" }}>Jacksonville & Onslow County</span>
             </h2>
           </div>
           <p className="font-body text-base max-w-sm md:text-right" style={{ color: "#888888" }}>
@@ -69,7 +69,7 @@ export default function ServicesSection() {
               {/* Arrow */}
               <span
                 className="inline-flex items-center gap-2 font-display font-700 text-sm uppercase tracking-widest transition-all duration-200 group-hover:gap-4"
-                style={{ color: "#C41230", letterSpacing: "0.1em" }}
+                style={{ color: "#E5424F", letterSpacing: "0.1em" }}
               >
                 Learn More <span aria-hidden="true">→</span>
               </span>

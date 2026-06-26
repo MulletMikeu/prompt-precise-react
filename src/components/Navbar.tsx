@@ -57,7 +57,7 @@ export default function Navbar() {
                 <Link
                   to={link.href}
                   className="text-sm font-semibold tracking-wide uppercase transition-colors"
-                  style={{ color: pathname === link.href ? "#C41230" : "#E8E8E2" }}
+                  style={{ color: pathname === link.href ? "#E5424F" : "#E8E8E2" }}
                 >
                   {link.label}
                 </Link>
@@ -92,6 +92,10 @@ export default function Navbar() {
         className="lg:hidden overflow-hidden transition-all duration-300"
         style={{
           maxHeight: open ? "100vh" : "0",
+          // visibility:hidden removes the collapsed menu's links from the tab
+          // order and a11y tree; as a stepped property under transition-all it
+          // applies instantly on open and defers until close finishes.
+          visibility: open ? "visible" : "hidden",
           background: "#0A0A0A",
           borderTop: open ? "1px solid #2A2A2A" : "none",
         }}
@@ -106,7 +110,7 @@ export default function Navbar() {
                   style={{
                     fontSize: "1.1rem",
                     letterSpacing: "0.06em",
-                    color: pathname === link.href ? "#C41230" : "#F5F5F0",
+                    color: pathname === link.href ? "#E5424F" : "#F5F5F0",
                     borderColor: "#1A1A1A",
                   }}
                 >

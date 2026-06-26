@@ -6,6 +6,10 @@
 :root {
   --red: #C41230;
   --red-dark: #9B0E25;
+  /* Lightened red for red TEXT on dark surfaces — #C41230 only reaches ~3.2:1
+     on near-black (fails WCAG AA for normal text); this hits ~4.9:1. Use --red
+     for fills/buttons (white-on-red), --red-text for red text/links on dark. */
+  --red-text: #E5424F;
   --black: #0A0A0A;
   --gray-dark: #111111;
   --gray-mid: #1A1A1A;
@@ -113,7 +117,7 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--red-text);
   }
 
   .label-red::before {
@@ -220,13 +224,13 @@
   }
 
   .phone-link {
-    color: var(--red);
+    color: var(--red-text);
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: 0.04em;
     transition: color 0.2s;
   }
-  .phone-link:hover { color: var(--red-dark); }
+  .phone-link:hover { color: #F0566A; }
 
   .stars { color: #E5C220; }
 

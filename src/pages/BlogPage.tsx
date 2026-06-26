@@ -73,7 +73,7 @@ export default function BlogPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-600 uppercase tracking-widest mb-4" style={{ color: "#C41230", letterSpacing: "0.12em" }}>Resources</p>
+            <p className="font-body text-xs font-600 uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Resources</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Tree Care Guides</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               Practical guides from our team in Jacksonville, NC — covering tree removal, storm damage, costs, permits, and more.
@@ -92,7 +92,7 @@ export default function BlogPage() {
                     </Link>
                   </h2>
                   <p className="text-base leading-relaxed" style={{ color: "#C8C8C2" }}>{guide.desc}</p>
-                  <Link to={guide.href} className="text-sm font-bold uppercase tracking-widest self-start" style={{ color: "#C41230" }}>
+                  <Link to={guide.href} className="text-sm font-bold uppercase tracking-widest self-start" style={{ color: "#E5424F" }}>
                     Read Guide →
                   </Link>
                 </article>

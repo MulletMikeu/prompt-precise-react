@@ -42,7 +42,7 @@ export default function ReviewsPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-600 uppercase tracking-widest mb-4" style={{ color: "#C41230", letterSpacing: "0.12em" }}>Customer Reviews</p>
+            <p className="font-body text-xs font-600 uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Customer Reviews</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">What Jacksonville Is Saying</h1>
             <div className="flex items-center gap-4">
               <p className="text-5xl font-bold" style={{ color: "#E5C220" }}>{BUSINESS.reviewRating}</p>

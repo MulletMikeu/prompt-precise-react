@@ -51,7 +51,7 @@ export default function VideoSection() {
           <h2 id="video-heading" className="text-display-xl text-white">
             Watch Godhans
             <br />
-            <span style={{ color: "#C41230" }}>In Action</span>
+            <span style={{ color: "#E5424F" }}>In Action</span>
           </h2>
         </div>
 
@@ -147,7 +147,7 @@ export default function VideoSection() {
 
         {/* YouTube link */}
         <div className="mt-8 text-center">
-          <a href="https://www.youtube.com/@godhans7945/" target="_blank" rel="noopener noreferrer" className="font-display font-700 text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#C41230")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Watch More on YouTube →</a>
+          <a href="https://www.youtube.com/@godhans7945/" target="_blank" rel="noopener noreferrer" className="font-display font-700 text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#E5424F")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Watch More on YouTube →</a>
         </div>
       </div>
 

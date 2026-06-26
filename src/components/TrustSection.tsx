@@ -42,7 +42,7 @@ export default function TrustSection() {
             <div key={stat.label} className="text-center py-10 px-6" style={{ background: "#111111" }}>
               <p
                 className="font-display font-800 mb-2"
-                style={{ fontSize: "clamp(2rem,5vw,3.5rem)", color: "#C41230", lineHeight: 1 }}
+                style={{ fontSize: "clamp(2rem,5vw,3.5rem)", color: "#E5424F", lineHeight: 1 }}
               >
                 {stat.value}
               </p>
@@ -63,7 +63,7 @@ export default function TrustSection() {
             <h2 id="trust-heading" className="text-display-xl text-white">
               Why Jacksonville
               <br />
-              <span style={{ color: "#C41230" }}>Chooses Us</span>
+              <span style={{ color: "#E5424F" }}>Chooses Us</span>
             </h2>
           </div>
           <div className="md:pt-12">
