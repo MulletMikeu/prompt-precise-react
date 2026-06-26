@@ -4,6 +4,11 @@ import type { ComponentType } from "react";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+// The landing route is imported eagerly: it is the LCP-critical page and is
+// already server-rendered for "/", so lazy-loading it would throw away the
+// prerendered paint and force a hydration re-render (measurably worse LCP).
+// Every other route stays lazy so its code never ships on the homepage.
+import HomePage from "./pages/HomePage";
 
 // Lazy route helper: dynamically import a page's default export and expose it
 // as a react-router `Component`. This code-splits every route into its own
@@ -73,7 +78,7 @@ export const routes: RouteRecord[] = [
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, lazy: page(() => import("./pages/HomePage")) },
+      { index: true, element: <HomePage /> },
       { path: "services", lazy: page(() => import("./pages/ServicesPage")) },
       { path: "about", lazy: page(() => import("./pages/MeetTheOwners")) },
       { path: "contact", lazy: page(() => import("./pages/ContactPage")) },
