@@ -19,7 +19,7 @@ export const BUSINESS = {
   hoursShort: "24/7",
   founded: 2013,
   yearsInBusiness: new Date().getFullYear() - 2013,
-  reviewCount: 15,
+  reviewCount: 17,
   reviewRating: "5.0",
   primaryCity: "Jacksonville, NC",
   county: "Onslow County",
