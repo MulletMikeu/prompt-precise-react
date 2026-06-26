@@ -1,18 +1,40 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { VIDEOS } from "../data/siteData";
 
 function VideoModal({ videoId, title, onClose }: { videoId: string; title: string; onClose: () => void }) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = prevOverflow;
+      previouslyFocused?.focus?.();
+    };
+  }, [onClose]);
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       style={{ background: "rgba(0,0,0,0.92)" }}
       onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label={`Video: ${title}`}
     >
-      <div className="relative w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="relative w-full max-w-4xl"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Video: ${title}`}
+      >
         <button
+          ref={closeRef}
           onClick={onClose}
           className="absolute -top-10 right-0 font-display font-700 text-white uppercase tracking-widest text-sm flex items-center gap-2"
           aria-label="Close video"
@@ -71,17 +93,16 @@ export default function VideoSection() {
                   setActiveVideo({ id: video.youtubeId, title: video.title });
                 }
               }}
-              aria-label={isPlaceholder(video.youtubeId) ? `${video.title} — Video coming soon` : `Play video: ${video.title}`}
               disabled={isPlaceholder(video.youtubeId)}
             >
-              {/* Thumbnail */}
+              {/* Thumbnail — decorative; the button is named by its visible title/subtitle */}
               <img
                 src={
                   isPlaceholder(video.youtubeId)
                     ? "/images/video-placeholder.jpg"
                     : `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`
                 }
-                alt={`${video.title} — Godhans Tree Company`}
+                alt=""
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
                 width="640"

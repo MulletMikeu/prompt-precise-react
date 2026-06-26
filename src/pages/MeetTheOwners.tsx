@@ -128,7 +128,7 @@ export default function MeetTheOwners() {
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
-      <main className="flex-grow pt-20 text-white">
+      <main id="main-content" className="flex-grow pt-20 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl py-10 sm:py-14">
             {/* Breadcrumbs */}
             <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-300">

@@ -23,7 +23,7 @@ export default function Footer() {
 
           <div>
             <Link to="/" className="inline-flex items-center gap-3 mb-6">
-              <div className="w-9 h-9 flex items-center justify-center font-bold text-white" style={{ background: "#C41230" }}>G</div>
+              <div className="w-9 h-9 flex items-center justify-center font-bold text-white" style={{ background: "#C41230" }} aria-hidden="true">G</div>
               <div className="leading-none">
                 <span className="block font-bold text-white uppercase" style={{ fontSize: "1.15rem" }}>Godhans</span>
                 <span className="block text-xs tracking-widest uppercase" style={{ color: "#888888" }}>Tree Company</span>
@@ -98,7 +98,7 @@ export default function Footer() {
           <p className="text-xs" style={{ color: "#888888" }}>© {year} Godhans Tree Company. All Rights Reserved.</p>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="text-xs" style={{ color: "#888888" }}>Privacy Policy</Link>
-            <Link to="/sitemap" className="text-xs" style={{ color: "#888888" }}>Sitemap</Link>
+            <a href="/sitemap.xml" className="text-xs" style={{ color: "#888888" }}>Sitemap</a>
           </div>
         </div>
       </div>

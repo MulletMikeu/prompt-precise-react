@@ -80,10 +80,11 @@ export default function ServicesPage() {
                   <p className="text-base leading-relaxed flex-1" style={{ color: "#C8C8C2" }}>{service.desc}</p>
                   <Link
                     to={service.href}
+                    aria-label={`Learn more about ${service.name}`}
                     className="text-sm font-bold uppercase tracking-widest self-start"
                     style={{ color: "#E5424F" }}
                   >
-                    Learn More →
+                    Learn More <span aria-hidden="true">→</span>
                   </Link>
                 </article>
               ))}

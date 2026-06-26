@@ -13,6 +13,11 @@ interface QuickQuoteFormProps {
 export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: QuickQuoteFormProps) {
   const [state, handleSubmit] = useForm('xkokzrjp');
 
+  // True when Formspree has returned a validation error for the given field,
+  // used to drive aria-invalid so screen readers announce the bad field.
+  const hasError = (field: string) =>
+    (state.errors?.getFieldErrors?.(field) ?? []).length > 0;
+
   const isDark = variant === 'dark';
   const sectionBg = isDark ? 'bg-gray-950 border-t border-gray-800' : 'bg-gray-50';
   const headingColor = isDark ? 'text-white' : 'text-black';
@@ -52,6 +57,10 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
               <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                 {source && <input type="hidden" name="page-source" value={source} />}
 
+                <p className="text-sm text-gray-500">
+                  Fields marked <span className="text-red-600">*</span> are required.
+                </p>
+
                 <div>
                   <label htmlFor="qq-name" className="block text-sm font-bold text-gray-700 mb-1.5">
                     Name <span className="text-red-600">*</span>
@@ -63,10 +72,12 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
                     required
                     autoComplete="name"
                     maxLength={100}
+                    aria-invalid={hasError('name') || undefined}
+                    aria-describedby="qq-name-error"
                     className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:border-red-600 focus:outline-none transition-colors"
                     placeholder="Your full name"
                   />
-                  <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-600 text-sm mt-1" />
+                  <ValidationError id="qq-name-error" prefix="Name" field="name" errors={state.errors} className="text-red-600 text-sm mt-1" />
                 </div>
 
                 <div>
@@ -80,10 +91,12 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
                     required
                     autoComplete="tel"
                     maxLength={20}
+                    aria-invalid={hasError('phone') || undefined}
+                    aria-describedby="qq-phone-error"
                     className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:border-red-600 focus:outline-none transition-colors"
                     placeholder="(555) 555-5555"
                   />
-                  <ValidationError prefix="Phone" field="phone" errors={state.errors} className="text-red-600 text-sm mt-1" />
+                  <ValidationError id="qq-phone-error" prefix="Phone" field="phone" errors={state.errors} className="text-red-600 text-sm mt-1" />
                 </div>
 
                 <div>
@@ -97,10 +110,12 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
                     required
                     autoComplete="street-address"
                     maxLength={200}
+                    aria-invalid={hasError('address') || undefined}
+                    aria-describedby="qq-address-error"
                     className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:border-red-600 focus:outline-none transition-colors"
                     placeholder="Street, City, NC"
                   />
-                  <ValidationError prefix="Address" field="address" errors={state.errors} className="text-red-600 text-sm mt-1" />
+                  <ValidationError id="qq-address-error" prefix="Address" field="address" errors={state.errors} className="text-red-600 text-sm mt-1" />
                 </div>
 
                 <div>
@@ -112,6 +127,8 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
                     name="service"
                     required
                     defaultValue={defaultService ?? ''}
+                    aria-invalid={hasError('service') || undefined}
+                    aria-describedby="qq-service-error"
                     className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:border-red-600 focus:outline-none transition-colors bg-white"
                   >
                     <option value="" disabled>Select a service…</option>
@@ -120,7 +137,7 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
                     <option value="Stump Grinding">Stump Grinding</option>
                     <option value="Emergency Tree Service">Emergency Tree Service</option>
                   </select>
-                  <ValidationError prefix="Service" field="service" errors={state.errors} className="text-red-600 text-sm mt-1" />
+                  <ValidationError id="qq-service-error" prefix="Service" field="service" errors={state.errors} className="text-red-600 text-sm mt-1" />
                 </div>
 
                 <div>
@@ -132,10 +149,12 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
                     name="message"
                     rows={3}
                     maxLength={1000}
+                    aria-invalid={hasError('message') || undefined}
+                    aria-describedby="qq-message-error"
                     className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:border-red-600 focus:outline-none transition-colors resize-none"
                     placeholder="Tell us about your tree (size, location, urgency)…"
                   />
-                  <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-600 text-sm mt-1" />
+                  <ValidationError id="qq-message-error" prefix="Message" field="message" errors={state.errors} className="text-red-600 text-sm mt-1" />
                 </div>
 
                 <button

@@ -38,6 +38,7 @@ export default function Navbar() {
             <div
               className="w-9 h-9 flex items-center justify-center text-white text-lg font-bold"
               style={{ background: "#C41230" }}
+              aria-hidden="true"
             >
               G
             </div>

@@ -36,7 +36,6 @@ export default function ServicesSection() {
               style={{ background: "#0A0A0A" }}
               onMouseEnter={(e) => (e.currentTarget.style.background = "#111111")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "#0A0A0A")}
-              aria-label={`Learn about ${service.name}`}
             >
               {/* Number */}
               <span

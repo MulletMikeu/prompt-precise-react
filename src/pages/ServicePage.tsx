@@ -165,7 +165,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
         )}
       </Helmet>
 
-      <main className="flex-grow pt-20">
+      <main id="main-content" className="flex-grow pt-20">
           {/* Hero */}
           <section className="bg-black py-16 sm:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
