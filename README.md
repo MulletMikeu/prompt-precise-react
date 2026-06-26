@@ -1,73 +1,49 @@
-# Welcome to your Lovable project
+# Godhans Tree Company — Website
 
-## Project info
+Marketing site for [Godhans Tree Company](https://godhans.com), a veteran-owned
+tree service in Jacksonville, NC (Onslow County). Service, location, and blog
+pages are statically pre-rendered for SEO and speed.
 
-**URL**: https://lovable.dev/projects/d129d18e-07ff-420e-880e-d902aa33243e
+## Tech stack
 
-## How can I edit this code?
+- **React 18** + **TypeScript**
+- **Vite** with **[vite-react-ssg](https://github.com/Daydreamer-riri/vite-react-ssg)** — every route is crawled and pre-rendered to static HTML at build time
+- **Tailwind CSS**
+- **react-router-dom** for routing (routes are defined in `src/App.tsx`)
+- **@formspree/react** for the quote/contact form
+- Deployed on **Vercel** (config in `vercel.json`)
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/d129d18e-07ff-420e-880e-d902aa33243e) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Local development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+npm run dev      # start the dev server
+npm run build    # production build (pre-renders all routes to /dist)
+npm run preview  # serve the built site locally
+npm run lint     # eslint
 ```
 
-**Edit a file directly in GitHub**
+## Project layout
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+  App.tsx              # route table (each path is lazily imported)
+  pages/               # one component per route
+    ServicePage.tsx    # shared template behind most service pages
+    LocationPage.tsx   # shared template behind the smaller city pages
+  components/          # Navbar, Footer, Hero, homepage sections, etc.
+  data/siteData.ts     # business info (phone, address, services, reviews, …)
+  lib/constants.ts     # derived business constants
+public/                # static assets (images, favicons, og-image, sitemap, robots)
+```
 
-**Use GitHub Codespaces**
+## Content editing
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Most business details (phone, address, services, service area, reviews) live in
+`src/data/siteData.ts`. Page copy lives in the corresponding file under
+`src/pages/`. Images go in `public/images/` and are referenced by absolute path.
 
-## What technologies are used for this project?
+## Deployment
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/d129d18e-07ff-420e-880e-d902aa33243e) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Pushing to `main` triggers an automatic Vercel deployment that runs
+`npm run build` and serves the pre-rendered `dist/` output.
