@@ -34,7 +34,7 @@ export default function Navbar() {
       <nav className="container-brand" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16">
 
-          <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="Godhans Tree Company">
+          <Link to="/" className="flex items-center gap-3 flex-shrink-0">
             <div
               className="w-9 h-9 flex items-center justify-center text-white text-lg font-bold"
               style={{ background: "#C41230" }}
