@@ -105,14 +105,26 @@ export default function TrustSection() {
 
         {/* Full-width job photo */}
         <div className="mt-px relative overflow-hidden" style={{ aspectRatio: "16/6", background: "#111111" }}>
-          <img
-            src="/images/yard-restoration-after-tree-removal-godhans.webp"
-            alt="Godhans Tree Company large tree removal job in Jacksonville NC"
-            className="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-            width="1600"
-            height="600"
-          />
+          <picture className="absolute inset-0 block w-full h-full">
+            <source
+              type="image/avif"
+              srcSet="/images/yard-restoration-after-tree-removal-godhans-640.avif 640w, /images/yard-restoration-after-tree-removal-godhans-1024.avif 1024w, /images/yard-restoration-after-tree-removal-godhans-1200.avif 1200w"
+              sizes="(min-width: 1280px) 1184px, 100vw"
+            />
+            <source
+              type="image/webp"
+              srcSet="/images/yard-restoration-after-tree-removal-godhans-640.webp 640w, /images/yard-restoration-after-tree-removal-godhans-1024.webp 1024w, /images/yard-restoration-after-tree-removal-godhans-1200.webp 1200w"
+              sizes="(min-width: 1280px) 1184px, 100vw"
+            />
+            <img
+              src="/images/yard-restoration-after-tree-removal-godhans.webp"
+              alt="Godhans Tree Company large tree removal job in Jacksonville NC"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              width="1200"
+              height="960"
+            />
+          </picture>
         </div>
       </div>
     </section>

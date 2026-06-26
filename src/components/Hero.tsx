@@ -10,15 +10,27 @@ export default function Hero() {
     >
       {/* Background image — replace src with your real hero photo */}
       <div className="absolute inset-0 z-0" style={{ background: "#111111" }}>
-        <img
-          src="/images/hero-godhans-tree-removal-jacksonville-nc.webp"
-          alt="Godhans Tree Company spider lift tree removal in Jacksonville NC"
-          className="w-full h-full object-cover object-top"
-          loading="eager"
-          fetchPriority="high"
-          width="1920"
-          height="1080"
-        />
+        <picture className="block w-full h-full">
+          <source
+            type="image/avif"
+            srcSet="/images/hero-godhans-tree-removal-jacksonville-nc-768.avif 768w, /images/hero-godhans-tree-removal-jacksonville-nc-1280.avif 1280w, /images/hero-godhans-tree-removal-jacksonville-nc-1920.avif 1920w"
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            srcSet="/images/hero-godhans-tree-removal-jacksonville-nc-768.webp 768w, /images/hero-godhans-tree-removal-jacksonville-nc-1280.webp 1280w, /images/hero-godhans-tree-removal-jacksonville-nc-1920.webp 1920w"
+            sizes="100vw"
+          />
+          <img
+            src="/images/hero-godhans-tree-removal-jacksonville-nc.webp"
+            alt="Godhans Tree Company spider lift tree removal in Jacksonville NC"
+            className="w-full h-full object-cover object-top"
+            loading="eager"
+            fetchPriority="high"
+            width="1920"
+            height="1430"
+          />
+        </picture>
         <div
           className="absolute inset-0"
           style={{

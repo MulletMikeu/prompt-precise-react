@@ -161,15 +161,27 @@ export default function MeetTheOwners() {
                   className="relative w-full overflow-hidden rounded-lg bg-gray-900"
                   style={{ aspectRatio: `${MICHAEL_PHOTO_WIDTH} / ${MICHAEL_PHOTO_HEIGHT}` }}
                 >
-                  <img
-                    src="/images/owner-michael-godhans-jacksonville-nc.webp"
-                    width={MICHAEL_PHOTO_WIDTH}
-                    height={MICHAEL_PHOTO_HEIGHT}
-                    alt={MICHAEL_PHOTO_ALT}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
+                  <picture className="absolute inset-0 block h-full w-full">
+                    <source
+                      type="image/avif"
+                      srcSet="/images/owner-michael-godhans-jacksonville-nc-600.avif 600w, /images/owner-michael-godhans-jacksonville-nc-900.avif 900w, /images/owner-michael-godhans-jacksonville-nc-1200.avif 1200w"
+                      sizes="(min-width: 768px) 768px, 100vw"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet="/images/owner-michael-godhans-jacksonville-nc-600.webp 600w, /images/owner-michael-godhans-jacksonville-nc-900.webp 900w, /images/owner-michael-godhans-jacksonville-nc-1200.webp 1200w"
+                      sizes="(min-width: 768px) 768px, 100vw"
+                    />
+                    <img
+                      src="/images/owner-michael-godhans-jacksonville-nc.webp"
+                      width={MICHAEL_PHOTO_WIDTH}
+                      height={MICHAEL_PHOTO_HEIGHT}
+                      alt={MICHAEL_PHOTO_ALT}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </picture>
                 </div>
                 {MICHAEL_PHOTO_CAPTION && (
                   <figcaption className="mt-2 text-sm text-gray-300">
@@ -207,15 +219,27 @@ export default function MeetTheOwners() {
                   className="relative w-full overflow-hidden rounded-lg bg-gray-900"
                   style={{ aspectRatio: `${JAMES_PHOTO_WIDTH} / ${JAMES_PHOTO_HEIGHT}` }}
                 >
-                  <img
-                    src="/images/owner-james-godhans-tree-service-jacksonville-nc.jpg"
-                    width={JAMES_PHOTO_WIDTH}
-                    height={JAMES_PHOTO_HEIGHT}
-                    alt={JAMES_PHOTO_ALT}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
+                  <picture className="absolute inset-0 block h-full w-full">
+                    <source
+                      type="image/avif"
+                      srcSet="/images/owner-james-godhans-tree-service-jacksonville-nc-512.avif 512w, /images/owner-james-godhans-tree-service-jacksonville-nc-768.avif 768w, /images/owner-james-godhans-tree-service-jacksonville-nc-1024.avif 1024w"
+                      sizes="(min-width: 768px) 768px, 100vw"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet="/images/owner-james-godhans-tree-service-jacksonville-nc-512.webp 512w, /images/owner-james-godhans-tree-service-jacksonville-nc-768.webp 768w, /images/owner-james-godhans-tree-service-jacksonville-nc-1024.webp 1024w"
+                      sizes="(min-width: 768px) 768px, 100vw"
+                    />
+                    <img
+                      src="/images/owner-james-godhans-tree-service-jacksonville-nc.jpg"
+                      width={JAMES_PHOTO_WIDTH}
+                      height={JAMES_PHOTO_HEIGHT}
+                      alt={JAMES_PHOTO_ALT}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </picture>
                 </div>
                 {JAMES_PHOTO_CAPTION && (
                   <figcaption className="mt-2 text-sm text-gray-300">
