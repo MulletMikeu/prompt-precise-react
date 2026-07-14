@@ -52,7 +52,7 @@ export default function TreeRemovalTightSpaces() {
           },
           {
             heading: "What You Get With Godhans",
-            text: "✔ Tracked spider lift — fits through 4-foot gates\n✔ No bucket truck on the lawn\n✔ Plywood mats over irrigation and septic\n✔ Climbers and rigging gear for every cut\n✔ Full cleanup — debris hauled off, yard raked\n✔ Licensed, insured, and locally owned\n✔ Free on-site estimates, no pressure"
+            text: "✔ Tracked spider lift — fits through 4-foot gates\n✔ No bucket truck on the lawn\n✔ Plywood mats over irrigation and septic\n✔ Climbers and rigging gear for every cut\n✔ Full cleanup — debris hauled off, yard raked\n✔ Fully insured and locally owned\n✔ Free on-site estimates, no pressure"
           }
         ]}
         faqs={[

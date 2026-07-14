@@ -43,7 +43,7 @@ export default function StumpGrinding() {
         },
         {
           heading: "Affordable Stump Grinding Services",
-          text: "Stump grinding costs depend on the size and location of the stump. We offer free estimates and honest pricing with no hidden fees.\n\n✔ Licensed & insured\n✔ Professional equipment\n✔ Fast and efficient service\n✔ Clean results"
+          text: "Stump grinding costs depend on the size and location of the stump. We offer free estimates and honest pricing with no hidden fees.\n\n✔ Fully insured\n✔ Professional equipment\n✔ Fast and efficient service\n✔ Clean results"
         }
       ]}
       faqs={[

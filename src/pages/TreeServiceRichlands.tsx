@@ -20,7 +20,7 @@ export default function TreeServiceRichlands() {
         },
         {
           heading: "Why Choose Us for Tree Service in Richlands, NC",
-          text: "✔ Licensed & insured\n✔ Experienced professionals\n✔ Safe, modern equipment\n✔ Fast and reliable service\n✔ Free estimates\n\nWe are committed to providing high-quality tree services with a focus on safety and customer satisfaction."
+          text: "✔ Fully insured\n✔ Experienced professionals\n✔ Safe, modern equipment\n✔ Fast and reliable service\n✔ Free estimates\n\nWe are committed to providing high-quality tree services with a focus on safety and customer satisfaction."
         }
       ]}
       faqs={[

@@ -141,8 +141,8 @@ export const SERVICE_AREAS = [
 export const TRUST_ITEMS = [
   {
     icon: "🛡️",
-    title: "Licensed & Insured",
-    description: "Fully licensed, bonded, and insured for your protection and peace of mind",
+    title: "Insured — Every Machine Covered",
+    description: "$2M liability, workers' comp, and every machine individually insured — including the spider lift. Bonds available for commercial work.",
   },
   {
     icon: "⭐",

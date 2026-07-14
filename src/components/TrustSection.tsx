@@ -2,8 +2,8 @@ import { BUSINESS, TRUST_STATS } from "../data/siteData";
 
 const TRUST_BLOCKS = [
   {
-    label: "Licensed & Insured",
-    body: `Full liability and workers' comp coverage on every job. Your property and our crew are always protected — no exceptions.`,
+    label: "Insured — Every Machine Covered",
+    body: `$2M general liability and workers' comp on every job — and every machine, including the spider lift, is individually insured. If a contractor's equipment isn't on the policy and it damages your home, you hold the bill. Ours is covered.`,
   },
   {
     label: "Veteran-Owned & Operated",
@@ -74,7 +74,7 @@ export default function TrustSection() {
               the only rule that matters.
             </p>
             <p className="font-body text-base leading-relaxed" style={{ color: "#888888" }}>
-              Fully licensed and insured · Veteran and disabled-veteran owned ·
+              $2M insured, every machine covered · Veteran and disabled-veteran owned ·
               Serving Jacksonville, NC and surrounding Onslow County communities
               since 2013.
             </p>

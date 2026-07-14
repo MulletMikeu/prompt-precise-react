@@ -9,11 +9,11 @@ export default function TreeServiceJacksonvilleNC() {
       slug="tree-service-jacksonville-nc"
       description="Local tree service in Jacksonville, NC: removal, trimming, stump grinding, and 24/7 emergency response. Free estimates from Godhans Tree Company."
       ctaText="Call Now"
-      quickAnswer="Looking for reliable tree service in Jacksonville, NC? Godhans Tree Company provides professional tree removal, tree trimming, stump grinding, and emergency tree services throughout Jacksonville and Onslow County. Licensed, insured, and trusted by local homeowners."
+      quickAnswer="Looking for reliable tree service in Jacksonville, NC? Godhans Tree Company provides professional tree removal, tree trimming, stump grinding, and emergency tree services throughout Jacksonville and Onslow County. Fully insured and trusted by local homeowners."
       sections={[
         {
           heading: "Jacksonville's Trusted Tree Service Professionals",
-          text: "When it comes to tree care in Jacksonville, NC, you need a team that understands the local landscape and responds quickly. Godhans Tree Company has been serving Jacksonville and the surrounding communities with professional tree services that homeowners and property managers trust.\n\nOur crew is fully licensed and insured, equipped with professional-grade tools, and ready to handle any tree situation — from routine trimming to emergency storm damage. We know the trees, soil, and weather patterns in Onslow County, and that local expertise makes a difference in every job we do.\n\nWhether you're in downtown Jacksonville, near Camp Lejeune, or in nearby areas like Richlands, Hubert, Sneads Ferry, or Swansboro, we provide fast response times and reliable service you can count on."
+          text: "When it comes to tree care in Jacksonville, NC, you need a team that understands the local landscape and responds quickly. Godhans Tree Company has been serving Jacksonville and the surrounding communities with professional tree services that homeowners and property managers trust.\n\nOur crew is fully insured, equipped with professional-grade tools, and ready to handle any tree situation — from routine trimming to emergency storm damage. We know the trees, soil, and weather patterns in Onslow County, and that local expertise makes a difference in every job we do.\n\nWhether you're in downtown Jacksonville, near Camp Lejeune, or in nearby areas like Richlands, Hubert, Sneads Ferry, or Swansboro, we provide fast response times and reliable service you can count on."
         },
         {
           heading: "Tree Removal in Jacksonville, NC",
@@ -33,7 +33,7 @@ export default function TreeServiceJacksonvilleNC() {
         },
         {
           heading: "Why Choose Godhans Tree Company in Jacksonville?",
-          text: "There are many reasons Jacksonville homeowners trust us with their tree care:\n\n• Local Jacksonville experts who know the area\n• Fast emergency response — available when you need us\n• Affordable, transparent pricing with free estimates\n• Fully licensed and insured for your protection\n• Professional equipment for safe, efficient work\n• Military discounts for Camp Lejeune families"
+          text: "There are many reasons Jacksonville homeowners trust us with their tree care:\n\n• Local Jacksonville experts who know the area\n• Fast emergency response — available when you need us\n• Affordable, transparent pricing with free estimates\n• Fully insured — every machine individually covered\n• Professional equipment for safe, efficient work\n• Military discounts for Camp Lejeune families"
         },
         {
           heading: "Areas We Serve Near Jacksonville, NC",

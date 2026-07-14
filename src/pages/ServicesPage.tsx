@@ -10,7 +10,7 @@ const SERVICES = [
   {
     name: "Tree Removal",
     href: "/tree-removal-jacksonville-nc",
-    desc: "Safe, controlled removal of any size tree. Licensed crew, full debris haul-away, and zero property damage.",
+    desc: "Safe, controlled removal of any size tree. Insured crew, full debris haul-away, and zero property damage.",
   },
   {
     name: "Tree Trimming",

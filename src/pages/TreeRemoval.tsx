@@ -12,7 +12,7 @@ export default function TreeRemoval() {
   return (
     <ServicePage
       title="Tree Removal in Jacksonville, NC"
-      subtitle="Safe, Affordable & Licensed Tree Removal Services — Free Estimates Available"
+      subtitle="Safe, Affordable & Fully Insured Tree Removal — Free Estimates Available"
       slug="tree-removal-jacksonville-nc"
       description="Professional tree removal services in Jacksonville, NC. Safe, efficient, and fully insured. Call Godhans Tree Company for a free estimate."
       ctaText="Call Now for a Free Estimate"
@@ -43,7 +43,7 @@ export default function TreeRemoval() {
         },
         {
           heading: "Affordable Tree Removal with No Surprises",
-          text: "Tree removal costs vary based on tree size, location, and complexity. We provide transparent pricing and free estimates so you know exactly what to expect.\n\n✔ Licensed & insured\n✔ Experienced professionals\n✔ Safe and efficient equipment\n✔ Honest, upfront pricing"
+          text: "Tree removal costs vary based on tree size, location, and complexity. We provide transparent pricing and free estimates so you know exactly what to expect.\n\n✔ Fully insured\n✔ Experienced professionals\n✔ Safe and efficient equipment\n✔ Honest, upfront pricing"
         },
         {
           heading: "Service Areas for Tree Removal",

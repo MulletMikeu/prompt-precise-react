@@ -8,7 +8,7 @@ import ServiceAreaSection from "../components/ServiceAreaSection";
 import CTABanner from "../components/CTABanner";
 
 const TITLE = "Tree Service Jacksonville NC | Godhans Tree Company";
-const DESC = "Veteran-owned tree service in Jacksonville, NC. Tree removal, trimming, stump grinding & 24/7 emergency service. Licensed & insured. Free estimates.";
+const DESC = "Veteran-owned tree service in Jacksonville, NC. Tree removal, trimming, stump grinding & 24/7 emergency service. Fully insured. Free estimates.";
 
 export default function HomePage() {
   return (

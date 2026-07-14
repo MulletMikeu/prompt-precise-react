@@ -22,7 +22,7 @@ export default function TreeRemovalNearHouse() {
           },
           {
             heading: "Why Homeowners Trust Godhans for This Work",
-            text: "✔ Fully licensed, bonded, and insured\n✔ Certificate of insurance available before work begins\n✔ Spider lift for tight access — no truck on the lawn\n✔ Years of experience with near-structure removals\n✔ Free, no-pressure on-site estimates\n✔ Same-day storm response if the tree is already on the house"
+            text: "✔ Fully insured — every machine individually covered\n✔ Certificate of insurance available before work begins\n✔ Spider lift for tight access — no truck on the lawn\n✔ Years of experience with near-structure removals\n✔ Free, no-pressure on-site estimates\n✔ Same-day storm response if the tree is already on the house"
           }
         ]}
         faqs={[

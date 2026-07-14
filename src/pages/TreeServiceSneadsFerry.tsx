@@ -20,13 +20,13 @@ export default function TreeServiceSneadsFerry() {
         },
         {
           heading: "Why Sneads Ferry Homeowners Choose Godhans",
-          text: "✔ Fast response across Sneads Ferry, North Topsail Beach, and Surf City\n✔ Fully licensed, bonded, and insured\n✔ Right-sized equipment for tight coastal lots\n✔ Storm response prioritization for hurricane damage\n✔ Free, no-obligation estimates\n\nWe show up on time, work safely, and leave your property cleaner than we found it."
+          text: "✔ Fast response across Sneads Ferry, North Topsail Beach, and Surf City\n✔ Fully insured — every machine individually covered\n✔ Right-sized equipment for tight coastal lots\n✔ Storm response prioritization for hurricane damage\n✔ Free, no-obligation estimates\n\nWe show up on time, work safely, and leave your property cleaner than we found it."
         }
       ]}
       faqs={[
         { question: "Do you service Sneads Ferry, NC for tree work?", answer: "Yes — we provide full tree services in Sneads Ferry including removal, trimming, stump grinding, and 24/7 emergency response." },
         { question: "Can you handle hurricane and storm-damaged trees?", answer: "Absolutely. Storm response is one of our specialties. Call (618) 704-4861 anytime — we respond same-day to fallen trees on homes, vehicles, and roads in Sneads Ferry." },
-        { question: "How much does tree removal cost in Sneads Ferry?", answer: "Most removals run $300–$2,500+ depending on tree size, access, and proximity to structures. We provide free on-site estimates with transparent, no-pressure pricing." }
+        { question: "How much does tree removal cost in Sneads Ferry?", answer: "Removals start at an $800 minimum. Most run $800–$3,500 depending on size and access; large or high-risk trees near structures can run $6,000–$10,000+. We provide free on-site estimates with transparent, no-pressure pricing." }
       ]}
       relatedServices={[
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },

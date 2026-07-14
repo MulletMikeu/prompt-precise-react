@@ -19,8 +19,8 @@ export default function LandClearing() {
           text: "Clearing land in coastal North Carolina comes with challenges: sandy soil, high water tables, dense pine and hardwood growth, and properties that back up to wetlands or creeks. Our crew knows the terrain and knows what equipment and techniques work here.\n\nWe assess each site before we start — looking at soil conditions, slope, drainage patterns, and access — so the job gets done right the first time without surprises.",
         },
         {
-          heading: "Veteran-Owned, Fully Licensed & Insured",
-          text: "Godhans Tree Company is veteran-owned and family-operated. Every crew member is part of our team — no subcontractors, no strangers on your property. We carry full liability and workers' comp coverage on every job.\n\n✔ Veteran-owned and community-driven\n✔ Fully licensed and insured\n✔ No subcontractors — our crew, our accountability\n✔ Free on-site estimates, no obligation\n✔ Serving Jacksonville, Richlands, Swansboro, Sneads Ferry, and all of Onslow County",
+          heading: "Veteran-Owned, Fully Insured — Every Machine Covered",
+          text: "Godhans Tree Company is veteran-owned and family-operated. Every crew member is part of our team — no subcontractors, no strangers on your property. We carry $2M general liability and workers' comp coverage on every job.\n\n✔ Veteran-owned and community-driven\n✔ $2M insured — every machine individually covered\n✔ No subcontractors — our crew, our accountability\n✔ Free on-site estimates, no obligation\n✔ Serving Jacksonville, Richlands, Swansboro, Sneads Ferry, and all of Onslow County",
         },
         {
           heading: "What to Expect After We Finish",

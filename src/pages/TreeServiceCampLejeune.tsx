@@ -20,12 +20,12 @@ export default function TreeServiceCampLejeune() {
         },
         {
           heading: "Why Camp Lejeune Families Choose Godhans",
-          text: "✔ Military discount on every job\n✔ Fast scheduling around PCS timelines\n✔ Fully licensed, bonded, and insured\n✔ Proof of insurance available for base/landlord requirements\n✔ Free, no-obligation estimates with transparent pricing\n✔ 24/7 emergency response for storm damage\n\nWe're proud to support the Marines, Navy, and military families who call Camp Lejeune home."
+          text: "✔ Military discount on every job\n✔ Fast scheduling around PCS timelines\n✔ Fully insured — every machine individually covered\n✔ Proof of insurance available for base/landlord requirements\n✔ Free, no-obligation estimates with transparent pricing\n✔ 24/7 emergency response for storm damage\n\nWe're proud to support the Marines, Navy, and military families who call Camp Lejeune home."
         }
       ]}
       faqs={[
         { question: "Do you offer a military discount?", answer: "Yes — we offer a military discount for active duty, retired, and veteran families. Just mention it when you call for your free estimate." },
-        { question: "Can you provide proof of insurance for base housing or landlords?", answer: "Absolutely. We're fully licensed, bonded, and insured, and we'll provide a current certificate of insurance on request before any work begins." },
+        { question: "Can you provide proof of insurance for base housing or landlords?", answer: "Absolutely. We're fully insured and bondable for commercial work, and we'll provide a current certificate of insurance on request before any work begins." },
         { question: "How fast can you schedule for a PCS move?", answer: "We prioritize military families on tight timelines. Most jobs can be scheduled within 1–2 weeks, and emergency situations are handled same-day." }
       ]}
       relatedServices={[

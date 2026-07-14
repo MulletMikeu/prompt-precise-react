@@ -95,7 +95,7 @@ export function PrecisionRemoval({ variant = 'light', heading, showImage = true 
             📞 Free Estimate — Call {BUSINESS_INFO.phone.display}
           </a>
           <p className={`text-sm mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-            Licensed, fully insured, and experienced with tight-access removals. No-pressure on-site quote.
+            Fully insured — every machine individually covered — and experienced with tight-access removals. No-pressure on-site quote.
           </p>
           <div className={`flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold ${isDark ? 'text-red-400' : 'text-red-600'}`}>
             <Link to="/tree-removal-jacksonville-nc" className="hover:underline underline-offset-2">

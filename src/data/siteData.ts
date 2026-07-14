@@ -29,10 +29,10 @@ export const BUSINESS = {
   },
   gbpUrl: "https://g.page/godhans",
   credentials: [
-    "Fully Licensed & Insured",
-    "Liability & Workers' Comp Coverage",
-    "Veteran-Owned & Operated",
-    "Disabled-Veteran Owned",
+    "$2M Liability & Workers' Comp — Insured",
+    "Every Machine Individually Insured",
+    "Bondable for Commercial Work",
+    "Veteran-Owned & Disabled-Veteran Owned",
     "24/7 Emergency Response",
     "Free Estimates",
   ],
@@ -75,7 +75,7 @@ export const SERVICES = [
     href: "/tree-trimming-jacksonville-nc",
     headline: "Arborist-Led Crown Work. Done Right.",
     description:
-      "Precision thinning, pruning, raising, shaping, and dead branch removal. Our ISA-certified arborists read every tree before touching it.",
+      "Precision thinning, pruning, raising, shaping, and dead branch removal. Michael reads every tree before we touch it — sound cuts, not guesswork.",
     features: [
       "Crown thinning and reduction",
       "Deadwood and hazard limb removal",
@@ -238,7 +238,7 @@ export const VIDEOS = [
 
 export const TRUST_STATS = [
   { value: "13+", label: "Years in Business" },
-  { value: "500+", label: "Jobs Completed" },
+  { value: "3,500+", label: "Jobs Completed" },
   { value: "5.0", label: "Google Rating" },
   { value: "24/7", label: "Emergency Response" },
 ] as const;

@@ -94,7 +94,7 @@ export default function Hero() {
             style={{ animationDelay: "0.55s", opacity: 0 }}
           >
             {[
-              "Licensed & Insured",
+              "Fully Insured",
               "Free Estimates",
               "24/7 Emergency Service",
               `${BUSINESS.yearsInBusiness}+ Years Experience`,

@@ -30,7 +30,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm leading-relaxed mb-4" style={{ color: "#888888" }}>
-              Veteran-owned tree service in Jacksonville, NC. Licensed, insured, and available 24/7.
+              Veteran-owned tree service in Jacksonville, NC. Fully insured, bondable, and available 24/7.
             </p>
             <p className="text-sm mb-1" style={{ color: "#888888" }}>{BUSINESS.address.full}</p>
             <a href={BUSINESS.phoneHref} className="font-bold block mt-2" style={{ color: "#E5424F" }}>{BUSINESS.phone}</a>

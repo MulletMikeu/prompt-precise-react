@@ -20,7 +20,7 @@ export default function TreeServiceSwansboro() {
         },
         {
           heading: "Why Swansboro Homeowners Choose Godhans",
-          text: "✔ Local crew that knows Swansboro and Cedar Point\n✔ Fully licensed, bonded, and insured\n✔ Proper equipment for tight historic-district lots\n✔ Same-day storm response\n✔ Free, no-obligation estimates with honest pricing\n\nWe treat every property like our own — careful, efficient, and clean."
+          text: "✔ Local crew that knows Swansboro and Cedar Point\n✔ Fully insured — every machine individually covered\n✔ Proper equipment for tight historic-district lots\n✔ Same-day storm response\n✔ Free, no-obligation estimates with honest pricing\n\nWe treat every property like our own — careful, efficient, and clean."
         }
       ]}
       faqs={[
