@@ -1,67 +1,35 @@
-import { useEffect, useRef, useState, ImgHTMLAttributes } from 'react';
+import { ImgHTMLAttributes } from 'react';
 
 interface LazyImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'srcSet'> {
   src: string;
   srcSet?: string;
   sizes?: string;
-  /** Distance (px) before viewport to start loading. Default 200. */
-  rootMargin?: string;
-  /** Optional placeholder src shown until in view. Defaults to a 1x1 transparent gif. */
-  placeholder?: string;
 }
 
-const TRANSPARENT_PIXEL =
-  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-
 /**
- * IntersectionObserver-based lazy image. Defers setting the real `src`/`srcSet`
- * until the element enters the viewport (or near it). Falls back to native lazy
- * loading if IntersectionObserver is unavailable.
+ * Image with NATIVE lazy loading. Renders the real `src`/`srcSet` directly, so the
+ * SSG-prerendered static HTML ships the actual image — visitors, Googlebot, and
+ * non-JS AI crawlers (GPTBot / ClaudeBot / PerplexityBot) all see it — while the
+ * browser still defers off-screen fetches via `loading="lazy"`.
+ *
+ * Previously this used an IntersectionObserver that set the real src only once the
+ * element scrolled into view. `useEffect` never runs during SSG prerender, so the
+ * static HTML shipped a 1x1 transparent GIF placeholder to every crawler. Native
+ * `loading="lazy"` gives the same deferral without hiding the image from prerender.
  */
 export function LazyImage({
   src,
   srcSet,
   sizes,
-  rootMargin = '200px',
-  placeholder = TRANSPARENT_PIXEL,
   loading = 'lazy',
   decoding = 'async',
   ...rest
 }: LazyImageProps) {
-  const ref = useRef<HTMLImageElement | null>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    if (inView) return;
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setInView(true);
-      return;
-    }
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setInView(true);
-            observer.disconnect();
-            break;
-          }
-        }
-      },
-      { rootMargin }
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [inView, rootMargin]);
-
   return (
     <img
-      ref={ref}
-      src={inView ? src : placeholder}
-      srcSet={inView ? srcSet : undefined}
-      sizes={inView ? sizes : undefined}
+      src={src}
+      srcSet={srcSet}
+      sizes={sizes}
       loading={loading}
       decoding={decoding}
       {...rest}
