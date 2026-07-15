@@ -5,7 +5,8 @@
       "PowerShell($lines = Get-Content \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\public\\\\sitemap.xml\"; $lines.Count; $lines[-15..-1])",
       "PowerShell($xml = Get-Content \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\public\\\\sitemap.xml\" -Raw; \\([xml]$xml\\).urlset.url.Count; \"Valid XML: $?\")",
       "PowerShell(Get-Command npm -ErrorAction SilentlyContinue)",
-      "PowerShell(Test-Path \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\public\"; Get-ChildItem \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\public\" -Force | ForEach-Object { $_.FullName })"
+      "PowerShell(Test-Path \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\public\"; Get-ChildItem \"c:\\\\Users\\\\arcai\\\\OneDrive\\\\Documents\\\\GitHub\\\\prompt-precise-react\\\\public\" -Force | ForEach-Object { $_.FullName })",
+      "WebFetch(domain:blog.godhans.com)"
     ]
   }
 }
