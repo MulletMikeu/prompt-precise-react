@@ -70,7 +70,7 @@ export const PRICING = {
 
 /**
  * CREDENTIAL — single source of truth for the trust/credential block rendered by
- * <CredentialBlock/> across service + city pages (Phase 4). No page hardcodes
+ * <WhyChooseGodhans/> across service + city pages (Phase 4). No page hardcodes
  * this text. "since 2013" is operating history; the LLC bullet carries no year —
  * the two must never collapse into "the LLC is 13 years old."
  */

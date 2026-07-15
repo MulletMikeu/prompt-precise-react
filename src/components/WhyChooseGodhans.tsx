@@ -1,12 +1,12 @@
 import { CREDENTIAL } from '../data/siteData';
 
 /**
- * Shared credential/trust block. Content comes entirely from CREDENTIAL in
- * siteData (single source) — no page hardcodes credential text. Rendered on
- * service + city pages via ServicePage's `credentialBlock` prop and directly
- * in LocationPage.
+ * WhyChooseGodhans — shared credential / "why choose us" block. Content comes
+ * entirely from CREDENTIAL in siteData (single source) — no page hardcodes
+ * credential text. Rendered on service + city pages via ServicePage's
+ * `credentialBlock` prop and directly in LocationPage.
  */
-export default function CredentialBlock() {
+export default function WhyChooseGodhans() {
   return (
     <section className="py-16 bg-gray-950 border-t border-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { OtherCitiesWeServe } from '@/components/sections/OtherCitiesWeServe';
 import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { LazyImage } from '@/components/ui/LazyImage';
-import CredentialBlock from '@/components/CredentialBlock';
+import WhyChooseGodhans from '@/components/WhyChooseGodhans';
 import { BUSINESS_INFO } from '@/lib/constants';
 
 const LOCATION_SLUGS = new Set([
@@ -54,7 +54,7 @@ interface ServicePageProps {
   /** Optional rich, semantic content rendered after the sections and before the FAQ
    *  (e.g. a case-study proof block). Full JSX so it can carry headings/links/figures. */
   caseStudy?: ReactNode;
-  /** When true, renders the shared <CredentialBlock/> (single-source trust block). */
+  /** When true, renders the shared <WhyChooseGodhans/> (single-source trust block). */
   credentialBlock?: boolean;
   finalCta?: { heading: string; text: string; buttonText?: string };
   relatedServices?: RelatedService[];
@@ -305,8 +305,8 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
           {/* Case study / proof block (optional rich content) */}
           {caseStudy}
 
-          {/* Shared credential block (single source; opt-in per page) */}
-          {credentialBlock && <CredentialBlock />}
+          {/* Shared WhyChooseGodhans block (single source; opt-in per page) */}
+          {credentialBlock && <WhyChooseGodhans />}
 
           {/* Photo Gallery */}
           {gallery && gallery.images.length > 0 && (

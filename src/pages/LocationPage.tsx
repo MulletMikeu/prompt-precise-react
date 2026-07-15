@@ -1,7 +1,7 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
-import CredentialBlock from "../components/CredentialBlock";
+import WhyChooseGodhans from "../components/WhyChooseGodhans";
 
 interface LocationPageProps {
   city: string;
@@ -149,7 +149,7 @@ export default function LocationPage({ city }: LocationPageProps) {
           </div>
         </section>
 
-        <CredentialBlock />
+        <WhyChooseGodhans />
 
         <section className="py-16" style={{ background: "#C41230" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
