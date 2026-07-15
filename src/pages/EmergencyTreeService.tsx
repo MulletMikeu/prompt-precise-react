@@ -66,7 +66,7 @@ export default function EmergencyTreeService() {
             src: sitePrep,
             srcSet: sitePrepSrcSet,
             alt: "Compact track loader clearing trees and prepping a residential lot in Jacksonville NC",
-            caption: "Property clearing & site prep — Onslow County"
+            caption: "Debris cleanup & haul-away — Onslow County"
           },
           {
             src: yardRestored,

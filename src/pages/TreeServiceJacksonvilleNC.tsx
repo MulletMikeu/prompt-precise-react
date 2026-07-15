@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
+import { PRICING } from '../data/siteData';
 
 export default function TreeServiceJacksonvilleNC() {
   return (
@@ -60,7 +61,7 @@ export default function TreeServiceJacksonvilleNC() {
       faqs={[
         {
           question: "How much does tree service cost in Jacksonville, NC?",
-          answer: "Tree service costs vary depending on the type of service, tree size, and complexity. Tree removal typically ranges from $800 to $3,500, while trimming starts around $300. Contact us for a free estimate specific to your situation."
+          answer: `Tree service costs vary by service, tree size, and complexity. Tree removal starts at an ${PRICING.removal.minimum} minimum and most jobs run ${PRICING.removal.most}; trimming runs ${PRICING.trimming.standard}. Contact us for a free estimate specific to your situation.`
         },
         {
           question: "Do I need a permit to remove a tree in Jacksonville, NC?",

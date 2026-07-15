@@ -1,4 +1,5 @@
 import ServicePage from './ServicePage';
+import { PRICING } from '../data/siteData';
 
 export default function TreeServiceSneadsFerry() {
   return (
@@ -16,7 +17,7 @@ export default function TreeServiceSneadsFerry() {
         },
         {
           heading: "Complete Tree Services in Sneads Ferry",
-          text: "Our services include:\n\n• Tree Removal — large pines, oaks, and storm-damaged trees\n• Tree Trimming & Pruning — health, safety, and view clearing\n• Stump Grinding — flush with grade, debris hauled off\n• 24/7 Emergency Tree Service — fallen trees on homes, vehicles, or roads\n• Land & Lot Clearing — for new builds and waterfront access"
+          text: "Our services include:\n\n• Tree Removal — large pines, oaks, and storm-damaged trees\n• Tree Trimming & Pruning — health, safety, and view clearing\n• Stump Grinding — flush with grade, debris hauled off\n• 24/7 Emergency Tree Service — fallen trees on homes, vehicles, or roads"
         },
         {
           heading: "Why Sneads Ferry Homeowners Choose Godhans",
@@ -26,7 +27,7 @@ export default function TreeServiceSneadsFerry() {
       faqs={[
         { question: "Do you service Sneads Ferry, NC for tree work?", answer: "Yes — we provide full tree services in Sneads Ferry including removal, trimming, stump grinding, and 24/7 emergency response." },
         { question: "Can you handle hurricane and storm-damaged trees?", answer: "Absolutely. Storm response is one of our specialties. Call (618) 704-4861 anytime — we respond same-day to fallen trees on homes, vehicles, and roads in Sneads Ferry." },
-        { question: "How much does tree removal cost in Sneads Ferry?", answer: "Removals start at an $800 minimum. Most run $800–$3,500 depending on size and access; large or high-risk trees near structures can run $6,000–$10,000+. We provide free on-site estimates with transparent, no-pressure pricing." }
+        { question: "How much does tree removal cost in Sneads Ferry?", answer: `${PRICING.removal.summary} We provide free on-site estimates with transparent, no-pressure pricing.` }
       ]}
       relatedServices={[
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },

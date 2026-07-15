@@ -107,7 +107,6 @@ export const routes: RouteRecord[] = [
       { path: "tree-service-beulaville-nc", lazy: locationPage("Beulaville") },
       { path: "tree-service-holly-ridge-nc", lazy: locationPage("Holly Ridge") },
       { path: "tree-service-surf-city-nc", lazy: locationPage("Surf City") },
-      { path: "land-clearing-jacksonville-nc", lazy: page(() => import("./pages/LandClearing")) },
       { path: "storm-cleanup-jacksonville-nc", lazy: page(() => import("./pages/StormCleanup")) },
       { path: "storm-damage-trees-guide", lazy: page(() => import("./pages/StormDamageGuide")) },
       { path: "tree-removal-cost-north-carolina", lazy: page(() => import("./pages/TreeRemovalCost")) },

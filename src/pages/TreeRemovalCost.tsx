@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
+import { PRICING } from '../data/siteData';
 
 export default function TreeRemovalCost() {
   return (
     <ServicePage
       title="How Much Does Tree Removal Cost in North Carolina? (2026 Guide)"
       slug="tree-removal-cost-north-carolina"
-      description="Tree removal in NC typically costs $800–$3,500 depending on tree size, location, and job difficulty. See full price ranges and what affects cost."
-      quickAnswer="Tree removal in North Carolina typically costs between $800 and $3,500 depending on the size of the tree, location, and difficulty of the job. Smaller trees may cost less, while large or hazardous trees can cost significantly more."
+      description={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum, with most jobs ${PRICING.removal.most} and large or hazardous trees ${PRICING.removal.large}. See full price ranges and what affects cost.`}
+      quickAnswer={PRICING.removal.summary}
       sections={[
         {
           heading: "Understanding Tree Removal Costs",
@@ -15,7 +16,11 @@ export default function TreeRemovalCost() {
         },
         {
           heading: "Average Tree Removal Costs",
-          text: "Here's a general breakdown of tree removal pricing:\n\n• Small trees (under 30 ft): $800 – $1,200\n• Medium trees (30–60 ft): $1,300 – $2,000\n• Large trees (60+ ft): $2,100 – $3,500+\n\nKeep in mind that these are estimates, and actual costs depend on your specific situation."
+          text: `Here's the breakdown of tree removal pricing:\n\n• Minimum, any removal: ${PRICING.removal.minimum}\n• Most removals: ${PRICING.removal.most}\n• Large or hazardous trees: ${PRICING.removal.large}\n• Exceptional jobs (tight access, severe hazards, complex rigging): ${PRICING.removal.exceptional}\n\nThese are ranges — actual cost depends on your specific tree and site.`
+        },
+        {
+          heading: "Why the Same Tree Can Cost Double",
+          text: PRICING.stories.sameTree
         },
         {
           heading: "What Affects Tree Removal Cost?",
@@ -37,7 +42,7 @@ export default function TreeRemovalCost() {
       faqs={[
         {
           question: "What is the average cost to remove a tree in NC?",
-          answer: "Most tree removals range from $800 to $3,500 depending on size and difficulty."
+          answer: PRICING.removal.summary
         },
         {
           question: "Does insurance cover tree removal?",

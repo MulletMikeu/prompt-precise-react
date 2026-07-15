@@ -1,4 +1,5 @@
 import ServicePage from './ServicePage';
+import { PRICING } from '../data/siteData';
 import treeTrimmingPhoto from '@/assets/tree-trimming-jacksonville-nc-godhans-1200.jpg';
 import treeTrimmingPhoto480 from '@/assets/tree-trimming-jacksonville-nc-godhans-480.jpg';
 import treeTrimmingPhoto800 from '@/assets/tree-trimming-jacksonville-nc-godhans-800.jpg';
@@ -45,6 +46,14 @@ export default function TreeTrimming() {
         {
           heading: "Our Tree Trimming Process",
           text: "We follow a careful process to ensure safe and effective trimming:\n\n• Inspection of tree health and structure\n• Identification of branches to remove\n• Precision trimming using proper techniques\n• Cleanup of all debris"
+        },
+        {
+          heading: "Tree Trimming Pricing in Jacksonville, NC",
+          text: PRICING.trimming.summary
+        },
+        {
+          heading: `Why We Have an ${PRICING.removal.minimum} Minimum`,
+          text: PRICING.stories.mobilization
         },
         {
           heading: "Affordable Tree Trimming You Can Trust",

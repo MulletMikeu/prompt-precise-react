@@ -38,6 +38,36 @@ export const BUSINESS = {
   ],
 } as const;
 
+/**
+ * PRICING — the single source of truth for every price shown on the site.
+ * Nothing anywhere should hardcode a dollar range; import from here and
+ * interpolate. Change a number once, it changes everywhere. (Phase 2.)
+ */
+export const PRICING = {
+  removal: {
+    minimum: "$800",
+    most: "$1,500–$3,500",
+    large: "$3,500–$6,000",
+    exceptional: "$10,000+",
+    summary:
+      "Removals start at an $800 minimum. Most run $1,500–$3,500; large or hazardous trees run $3,500–$6,000, and exceptional jobs — tight access, severe hazards, complex rigging — start at $10,000 and go up.",
+  },
+  trimming: {
+    minimum: "$800",
+    standard: "$800–$1,500",
+    lift: "$1,500+",
+    large: "$3,000+",
+    summary:
+      "Trimming starts at an $800 minimum. Standard trimming with no lift runs $800–$1,500; lift access for high canopies or work over the roof is $1,500+, and large oaks or difficult-access jobs run $3,000+.",
+  },
+  stories: {
+    sameTree:
+      "The same tree can cost $6,000 in an open yard and $10,000 wedged against a house with power lines overhead. The tree doesn't change the price — the obstacles do.",
+    mobilization:
+      "Why we have an $800 minimum: getting a full crew and equipment to your property is the biggest fixed cost of any job. That's why we don't do $200 quick cuts — and why the crew that shows up can handle anything, from a single limb to a 90-foot removal over your roof.",
+  },
+} as const;
+
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
@@ -61,7 +91,7 @@ export const SERVICES = [
       "All tree sizes — from small ornamentals to 100ft+ hardwoods",
       "Safe, controlled felling with zero property damage",
       "Complete debris removal and haul-away",
-      "Lot clearing for construction or development",
+      "Site cleanup and haul-away after removal",
       "Emergency removals available 24/7",
     ],
     metaTitle: "Tree Removal Jacksonville NC | Godhans Tree Company",
@@ -124,25 +154,6 @@ export const SERVICES = [
     metaTitle: "Emergency Tree Service Jacksonville NC | Godhans",
     metaDesc:
       "24/7 emergency tree service in Jacksonville, NC. We answer when others don't. Call now: (618) 704-4861.",
-  },
-  {
-    id: "land-clearing",
-    name: "Land Clearing",
-    slug: "land-clearing",
-    href: "/land-clearing-jacksonville-nc",
-    headline: "Lot Clearing, Rough Grading, Full Site Prep.",
-    description:
-      "From residential lot prep to commercial development clearing. Excavation, demolition, grading — we take it down to bare earth and hand it back ready.",
-    features: [
-      "Full lot clearing for construction",
-      "Rough grading and excavation",
-      "Brush and debris removal",
-      "Ditch work and drainage prep",
-      "Commercial and residential scale",
-    ],
-    metaTitle: "Land Clearing Jacksonville NC | Godhans Tree Company",
-    metaDesc:
-      "Land clearing and lot prep in Jacksonville, NC. Veteran-owned crew, heavy equipment. Free estimates — (618) 704-4861.",
   },
   {
     id: "storm-cleanup",

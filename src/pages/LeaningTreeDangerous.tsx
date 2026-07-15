@@ -1,4 +1,5 @@
 import ServicePage from './ServicePage';
+import { PRICING } from '../data/siteData';
 
 export default function LeaningTreeDangerous() {
   return (
@@ -27,7 +28,7 @@ export default function LeaningTreeDangerous() {
         },
         {
           heading: "Cost to Remove a Dangerous Leaning Tree",
-          text: "Removing a dangerous or storm-damaged tree typically costs between $800 and $3,500 or more, depending on:\n\n• Size and height of the tree\n• Proximity to structures or power lines\n• Severity of the lean or damage\n• Emergency vs. scheduled service\n\nEmergency removals may cost more due to urgency, but acting quickly can prevent far more expensive property damage. We provide free estimates so you know exactly what to expect."
+          text: `Removing a dangerous or storm-damaged tree starts at an ${PRICING.removal.minimum} minimum, with most jobs ${PRICING.removal.most} and large or hazardous trees ${PRICING.removal.large}, depending on:\n\n• Size and height of the tree\n• Proximity to structures or power lines\n• Severity of the lean or damage\n• Emergency vs. scheduled service\n\nEmergency removals may cost more due to urgency, but acting quickly can prevent far more expensive property damage. We provide free estimates so you know exactly what to expect.`
         },
         {
           heading: "What to Do Immediately After a Storm",

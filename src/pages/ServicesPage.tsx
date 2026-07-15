@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
 
 const TITLE = "Tree Services in Jacksonville, NC | Godhans Tree Company";
-const DESC = "Tree removal, trimming, stump grinding, land clearing & storm cleanup in Jacksonville, NC. Veteran-owned. Free estimates — call (618) 704-4861.";
+const DESC = "Tree removal, trimming, stump grinding & storm cleanup in Jacksonville, NC. Veteran-owned. Free estimates — call (618) 704-4861.";
 const CANONICAL = "https://godhans.com/services";
 
 const SERVICES = [
@@ -26,11 +26,6 @@ const SERVICES = [
     name: "Emergency Tree Service",
     href: "/emergency-tree-service-jacksonville-nc",
     desc: "True 24/7 response for storm damage, fallen trees, and hazardous situations. We answer day and night.",
-  },
-  {
-    name: "Land Clearing",
-    href: "/land-clearing-jacksonville-nc",
-    desc: "Residential and commercial lot clearing, rough grading, brush removal, and full site prep.",
   },
   {
     name: "Storm Cleanup",

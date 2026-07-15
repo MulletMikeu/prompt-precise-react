@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from 'react-router-dom';
 import { OtherCitiesWeServe } from '@/components/sections/OtherCitiesWeServe';
@@ -49,6 +50,9 @@ interface ServicePageProps {
   sections: { heading: string; text: string }[];
   sectionLinks?: Record<number, SectionLink | SectionLink[]>;
   faqs?: FaqItem[];
+  /** Optional rich, semantic content rendered after the sections and before the FAQ
+   *  (e.g. a case-study proof block). Full JSX so it can carry headings/links/figures. */
+  caseStudy?: ReactNode;
   finalCta?: { heading: string; text: string; buttonText?: string };
   relatedServices?: RelatedService[];
   heroImage?: {
@@ -76,7 +80,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, finalCta, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, finalCta, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `https://godhans.com/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
 
@@ -294,6 +298,9 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
               </div>
             </section>
           ))}
+
+          {/* Case study / proof block (optional rich content) */}
+          {caseStudy}
 
           {/* Photo Gallery */}
           {gallery && gallery.images.length > 0 && (

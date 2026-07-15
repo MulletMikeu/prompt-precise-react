@@ -22,7 +22,7 @@ export default function ServicesSection() {
             </h2>
           </div>
           <p className="font-body text-base max-w-sm md:text-right" style={{ color: "#888888" }}>
-            From single-tree removal to full lot clearing — if it involves trees, we handle it.
+            From single-tree removal to full-property cleanup — if it involves trees, we handle it.
           </p>
         </div>
 

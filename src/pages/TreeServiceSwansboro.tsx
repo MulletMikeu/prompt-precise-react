@@ -16,7 +16,7 @@ export default function TreeServiceSwansboro() {
         },
         {
           heading: "Complete Tree Services in Swansboro",
-          text: "Our services include:\n\n• Tree Removal — including large oaks, pines, and hazard trees\n• Tree Trimming & Pruning — proper structural pruning that protects tree health\n• Stump Grinding — ground below grade, debris removed\n• 24/7 Emergency Tree Service — storm damage, fallen trees, hanging limbs\n• Lot Cleanup & Land Clearing"
+          text: "Our services include:\n\n• Tree Removal — including large oaks, pines, and hazard trees\n• Tree Trimming & Pruning — proper structural pruning that protects tree health\n• Stump Grinding — ground below grade, debris removed\n• 24/7 Emergency Tree Service — storm damage, fallen trees, hanging limbs"
         },
         {
           heading: "Why Swansboro Homeowners Choose Godhans",

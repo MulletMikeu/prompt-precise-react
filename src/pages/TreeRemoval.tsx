@@ -1,4 +1,5 @@
 import ServicePage from './ServicePage';
+import { PRICING } from '../data/siteData';
 import removalHero from '@/assets/tree-removal-jacksonville-nc-godhans.jpg';
 import removalHero600Webp from '@/assets/tree-removal-jacksonville-nc-godhans-600.webp';
 import removalHero1200Webp from '@/assets/tree-removal-jacksonville-nc-godhans-1200.webp';
@@ -12,7 +13,7 @@ export default function TreeRemoval() {
   return (
     <ServicePage
       title="Tree Removal in Jacksonville, NC"
-      subtitle="Safe, Affordable & Fully Insured Tree Removal — Free Estimates Available"
+      subtitle="Safe, Insured Tree Removal — Free Estimates"
       slug="tree-removal-jacksonville-nc"
       description="Professional tree removal services in Jacksonville, NC. Safe, efficient, and fully insured. Call Godhans Tree Company for a free estimate."
       ctaText="Call Now for a Free Estimate"
@@ -27,7 +28,7 @@ export default function TreeRemoval() {
         caption: 'Tree removal job-site — Jacksonville, NC',
         showCta: true,
       }}
-      quickAnswer="Tree removal in Jacksonville, NC typically costs between $800 and $3000 depending on the size, location, and condition of the tree. Our team provides fast, safe, and fully insured tree removal services with free on-site estimates."
+      quickAnswer={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum. Most removals run ${PRICING.removal.most}, with large or hazardous trees at ${PRICING.removal.large}. ${PRICING.stories.sameTree}`}
       sections={[
         {
           heading: "Professional Tree Removal Services in Jacksonville, NC",
@@ -43,17 +44,111 @@ export default function TreeRemoval() {
         },
         {
           heading: "Affordable Tree Removal with No Surprises",
-          text: "Tree removal costs vary based on tree size, location, and complexity. We provide transparent pricing and free estimates so you know exactly what to expect.\n\n✔ Fully insured\n✔ Experienced professionals\n✔ Safe and efficient equipment\n✔ Honest, upfront pricing"
+          text: "Tree removal costs vary based on tree size, location, and complexity. We provide transparent pricing and free estimates so you know exactly what to expect.\n\n✔ $2M insured — every machine individually covered\n✔ Experienced professionals\n✔ Safe and efficient equipment\n✔ Honest, upfront pricing"
+        },
+        {
+          heading: `Why We Have an ${PRICING.removal.minimum} Minimum`,
+          text: PRICING.stories.mobilization
         },
         {
           heading: "Service Areas for Tree Removal",
           text: "Godhans Tree Company removes trees across Jacksonville and all of Onslow County, including Camp Lejeune, Hubert, Richlands, Swansboro, Sneads Ferry, Holly Ridge, and the surrounding coastal communities. Coastal North Carolina puts hard miles on trees — salt air, saturated soil, and hurricane-season winds leave a lot of weakened pines and storm-split hardwoods behind.\n\nWhether it's a leaning pine in a tight backyard or a large hardwood hanging over your roof, our crew has the boom trucks, rigging, and experience to take it down safely and haul away every bit of debris. Not sure if you're in our area? Give us a call — if you're in or near Onslow County, we can almost certainly help."
         }
       ]}
+      caseStudy={
+        <section className="py-16 bg-black border-t border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              The trees nobody else would touch — Gene Circle, Jacksonville
+            </h2>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              Some removals aren't about size. They're about whether anyone can do them at all — safely, in the space available, without dropping a hundred feet of timber onto a house.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-8">
+              We've taken down two of them at the same address. Here's what they cost, and why.
+            </p>
+
+            <figure className="my-8">
+              <img
+                src="/images/tight-access-tree-removal-tulip-poplar-gene-circle-jacksonville-nc-720.webp"
+                srcSet="/images/tight-access-tree-removal-tulip-poplar-gene-circle-jacksonville-nc-640.webp 640w, /images/tight-access-tree-removal-tulip-poplar-gene-circle-jacksonville-nc-720.webp 720w"
+                sizes="(max-width: 768px) 100vw, 768px"
+                alt="Massive tulip poplar trunk wedged between a house and shed with fence, tight-access tree removal Gene Circle Jacksonville NC"
+                width={720}
+                height={960}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto rounded-lg border-2 border-gray-800"
+              />
+            </figure>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">The bee tree — $12,000</h3>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              A 105-foot tulip poplar, dead-topped and rotting, eight feet from the client's house. A fence tight against one side, the neighbor's shed two feet beyond it, the client's own shed two feet behind the trunk. The working space was barely bigger than the tree.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              Most companies would have guessed at the risk. We measured it. Using our{' '}
+              <strong className="font-semibold text-white">IML-RESI resistograph</strong>
+              {' '}— a calibrated instrument that drills a fine needle through a standing trunk and records the wood's density onto a strip, revealing cavities and rot invisible from the outside — we mapped the decay before anyone left the ground. We're the only company operating one in this area.
+            </p>
+            <figure className="my-8">
+              <img
+                src="/images/iml-resi-resistograph-reading-rotted-trunk-jacksonville-nc-960.webp"
+                srcSet="/images/iml-resi-resistograph-reading-rotted-trunk-jacksonville-nc-640.webp 640w, /images/iml-resi-resistograph-reading-rotted-trunk-jacksonville-nc-960.webp 960w"
+                sizes="(max-width: 768px) 100vw, 768px"
+                alt="IML-RESI resistograph density reading strip from a rotted 56-inch tulip poplar trunk, Godhans tree risk assessment Jacksonville NC"
+                width={960}
+                height={486}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto rounded-lg border-2 border-gray-800"
+              />
+            </figure>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              The reading was alarming: on a 56-inch trunk, the sound outer wood was down to six inches on the good side and four on the bad. The rest was shell.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              Then, sixty feet up, we found the other problem: an estimated 30,000-bee hive living inside the trunk.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-8">
+              No crane could reach it. So we did it the hard way — negative-rigging the entire tree down by rope, by hand, in bee suits, in 95-degree heat. Four days. Not one piece touched the house.
+            </p>
+
+            <figure className="my-8">
+              <img
+                src="/images/pine-removal-aerial-tight-backyard-no-crane-jacksonville-nc-1024.webp"
+                srcSet="/images/pine-removal-aerial-tight-backyard-no-crane-jacksonville-nc-640.webp 640w, /images/pine-removal-aerial-tight-backyard-no-crane-jacksonville-nc-1024.webp 1024w"
+                sizes="(max-width: 768px) 100vw, 768px"
+                alt="Aerial view down a 120-foot pine being removed between rooftops in a tight Jacksonville NC backyard with no crane access"
+                width={1024}
+                height={1365}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto rounded-lg border-2 border-gray-800"
+              />
+            </figure>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">The tree in a box — $8,500</h3>
+            <p className="text-gray-300 leading-relaxed text-lg mb-8">
+              We came back for the second one: a 120-foot pine wedged behind a shed with less than a foot of clearance and fences on three sides. It was, functionally, standing in a box. No crane access. We rigged it down over the fence into the neighbor's yard, section by section, by rope. A day and a half.
+            </p>
+
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Why these numbers matter to you</h3>
+            {/* $3,000–$4,000 and $10,000 below are job-history / ladder-floor figures — keep consistent with PRICING.removal.exceptional ("$10,000+") */}
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              That same 120-foot pine in an open field might run $3,000–$4,000. Boxed in behind a shed with fences on three sides and no crane access, it ran $8,500 — and it was worth every dollar, because the alternative was a company that couldn't do it dropping it on a house.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              Our most complex removals start at $10,000 and go up from there — jobs with severe hazards, no equipment access, or rigging done entirely by hand. These are rare, but when they come, we're the crew that can do them safely, and we'll tell you exactly why the number is what it is before we start.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg font-semibold text-white">
+              The tree doesn't set the price. The obstacles do.
+            </p>
+          </div>
+        </section>
+      }
       faqs={[
         {
           question: "How much does tree removal cost in Jacksonville NC?",
-          answer: "Most tree removals range from $800 to $3,000 depending on the size and difficulty of the job. We provide free estimates to give you an exact price."
+          answer: `${PRICING.removal.summary} We provide free estimates to give you an exact price.`
         },
         {
           question: "Do I need a permit to remove a tree in Jacksonville NC?",
