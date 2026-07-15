@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { OtherCitiesWeServe } from '@/components/sections/OtherCitiesWeServe';
 import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { LazyImage } from '@/components/ui/LazyImage';
+import CredentialBlock from '@/components/CredentialBlock';
 import { BUSINESS_INFO } from '@/lib/constants';
 
 const LOCATION_SLUGS = new Set([
@@ -53,6 +54,8 @@ interface ServicePageProps {
   /** Optional rich, semantic content rendered after the sections and before the FAQ
    *  (e.g. a case-study proof block). Full JSX so it can carry headings/links/figures. */
   caseStudy?: ReactNode;
+  /** When true, renders the shared <CredentialBlock/> (single-source trust block). */
+  credentialBlock?: boolean;
   finalCta?: { heading: string; text: string; buttonText?: string };
   relatedServices?: RelatedService[];
   heroImage?: {
@@ -80,7 +83,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, finalCta, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, finalCta, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `https://godhans.com/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
 
@@ -102,7 +105,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
     "url": canonical,
     "telephone": BUSINESS_INFO.phone.tel,
     "email": BUSINESS_INFO.email,
-    "priceRange": "$$",
+    "priceRange": "$$$",
     "image": "https://godhans.com/og-image.jpg",
     "address": {
       "@type": "PostalAddress",
@@ -301,6 +304,9 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
 
           {/* Case study / proof block (optional rich content) */}
           {caseStudy}
+
+          {/* Shared credential block (single source; opt-in per page) */}
+          {credentialBlock && <CredentialBlock />}
 
           {/* Photo Gallery */}
           {gallery && gallery.images.length > 0 && (

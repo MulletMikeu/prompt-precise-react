@@ -68,6 +68,27 @@ export const PRICING = {
   },
 } as const;
 
+/**
+ * CREDENTIAL — single source of truth for the trust/credential block rendered by
+ * <CredentialBlock/> across service + city pages (Phase 4). No page hardcodes
+ * this text. "since 2013" is operating history; the LLC bullet carries no year —
+ * the two must never collapse into "the LLC is 13 years old."
+ */
+export const CREDENTIAL = {
+  legalName: "Godhans LLC",
+  sosId: "1961439",
+  heading: `Veteran-Owned, Family-Operated — Serving ${BUSINESS.county} Since ${BUSINESS.founded}`,
+  bullets: [
+    "Veteran-owned & disabled-veteran-owned",
+    "Family-operated — you talk to the people doing the work",
+    `Serving ${BUSINESS.county} since ${BUSINESS.founded} — 3,500+ jobs`,
+    "$2M general liability + workers' comp; every machine individually insured",
+    "Godhans LLC — registered & active with the NC Secretary of State (SoSID 1961439)",
+  ],
+  equipmentInsurance:
+    "$2M general liability and workers' comp on every job — and every machine, including the spider lift, is individually insured. If a contractor's equipment isn't on the policy and it damages your home, you hold the bill. Ours is covered.",
+} as const;
+
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },

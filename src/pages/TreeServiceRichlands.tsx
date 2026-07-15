@@ -6,6 +6,7 @@ export default function TreeServiceRichlands() {
       title="Tree Service in Richlands, NC"
       subtitle="Professional Tree Removal, Trimming & Stump Grinding in Richlands"
       slug="tree-service-richlands-nc"
+      credentialBlock
       description="Professional tree service in Richlands, NC. Tree removal, trimming, stump grinding, and emergency response. Free estimates from Godhans Tree Company."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Tree service in Richlands, NC includes tree removal, tree trimming, and stump grinding to keep your property safe and well-maintained. Our team provides reliable, affordable service with free estimates for homeowners and businesses in the Richlands area."
@@ -20,7 +21,7 @@ export default function TreeServiceRichlands() {
         },
         {
           heading: "Why Choose Us for Tree Service in Richlands, NC",
-          text: "✔ Fully insured\n✔ Experienced professionals\n✔ Safe, modern equipment\n✔ Fast and reliable service\n✔ Free estimates\n\nWe are committed to providing high-quality tree services with a focus on safety and customer satisfaction."
+          text: "We are committed to providing high-quality tree services with a focus on safety and customer satisfaction."
         }
       ]}
       faqs={[

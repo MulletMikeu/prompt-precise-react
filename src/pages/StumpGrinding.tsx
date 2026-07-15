@@ -14,6 +14,7 @@ export default function StumpGrinding() {
       title="Stump Grinding in Jacksonville, NC"
       subtitle="Fast, Affordable Stump Removal to Restore Your Yard"
       slug="stump-grinding-jacksonville-nc"
+      credentialBlock
       description="Fast, affordable stump grinding services in Jacksonville, NC. Professional equipment, clean results, and free estimates from Godhans Tree Company."
       ctaText="Call Now for a Free Estimate"
       heroImage={{
@@ -43,7 +44,7 @@ export default function StumpGrinding() {
         },
         {
           heading: "Affordable Stump Grinding Services",
-          text: "Stump grinding costs depend on the size and location of the stump. We offer free estimates and honest pricing with no hidden fees.\n\n✔ Fully insured\n✔ Professional equipment\n✔ Fast and efficient service\n✔ Clean results"
+          text: "Stump grinding costs depend on the size and location of the stump. We offer free estimates and honest pricing with no hidden fees."
         }
       ]}
       faqs={[

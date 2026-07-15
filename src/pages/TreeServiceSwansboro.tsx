@@ -6,6 +6,7 @@ export default function TreeServiceSwansboro() {
       title="Tree Service in Swansboro, NC"
       subtitle="Trusted Tree Removal, Trimming & Stump Grinding in Swansboro"
       slug="tree-service-swansboro-nc"
+      credentialBlock
       description="Tree service in Swansboro, NC: expert removal, trimming, stump grinding, and 24/7 storm cleanup. Free estimates from Godhans."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Swansboro's mature oaks, pines, and waterfront live oaks need expert care to stay safe and healthy. Godhans Tree Company provides professional tree removal, trimming, stump grinding, and 24/7 storm response throughout Swansboro, Cedar Point, and the Crystal Coast area."
@@ -20,7 +21,7 @@ export default function TreeServiceSwansboro() {
         },
         {
           heading: "Why Swansboro Homeowners Choose Godhans",
-          text: "✔ Local crew that knows Swansboro and Cedar Point\n✔ Fully insured — every machine individually covered\n✔ Proper equipment for tight historic-district lots\n✔ Same-day storm response\n✔ Free, no-obligation estimates with honest pricing\n\nWe treat every property like our own — careful, efficient, and clean."
+          text: "✔ Local crew that knows Swansboro and Cedar Point\n✔ Proper equipment for tight historic-district lots\n✔ Same-day storm response\n✔ Free, no-obligation estimates with honest pricing\n\nWe treat every property like our own — careful, efficient, and clean."
         }
       ]}
       faqs={[

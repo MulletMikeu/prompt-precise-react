@@ -6,6 +6,7 @@ export default function TreeServiceHubert() {
       title="Tree Service in Hubert, NC"
       subtitle="Trusted Tree Removal, Trimming & Stump Grinding in Hubert, NC"
       slug="tree-service-hubert-nc"
+      credentialBlock
       description="Professional tree service in Hubert, NC. Expert tree removal, trimming, stump grinding, and storm cleanup. Free estimates from Godhans Tree Company."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Tree service in Hubert, NC helps keep your property safe, clean, and well-maintained. We provide expert tree removal, trimming, and stump grinding services with fast response times and free estimates for residents in the Hubert area."
@@ -20,7 +21,7 @@ export default function TreeServiceHubert() {
         },
         {
           heading: "Why Homeowners in Hubert Choose Us",
-          text: "✔ Reliable and responsive service\n✔ Experienced and fully insured crew\n✔ Safe and efficient equipment\n✔ Local knowledge of tree conditions\n✔ Free, no-obligation estimates\n\nWe focus on delivering safe, high-quality results with every job."
+          text: "We know Hubert and the Swansboro-area terrain, and we focus on delivering safe, high-quality results with every job."
         }
       ]}
       faqs={[

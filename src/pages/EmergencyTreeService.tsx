@@ -22,6 +22,7 @@ export default function EmergencyTreeService() {
       title="Emergency Tree Service in Jacksonville, NC"
       subtitle="24/7 Storm Damage & Tree Removal — Same-Day & Next-Day Availability"
       slug="emergency-tree-service-jacksonville-nc"
+      credentialBlock
       description="Fast emergency tree service in Jacksonville NC. We handle storm damage, leaning trees, and hazardous removals. Call now for rapid response."
       ctaText="Call Now — Rapid Response"
       heroImage={{
@@ -42,7 +43,7 @@ export default function EmergencyTreeService() {
         },
         {
           heading: "Veteran-Owned, Family-Operated — Serving Onslow County Since 2013",
-          text: "Godhans Tree Company isn't a national call center. We're your neighbors in Jacksonville, NC, and we've cleared storm damage across Onslow County since 2013.\n\n✔ Veteran-owned and proudly serving the local community\n✔ Family-operated — you talk to the people doing the work\n✔ Working Onslow County since 2013 — 3,500+ jobs\n✔ $2M liability + workers' comp; every machine individually insured\n✔ Trusted by homeowners across Jacksonville, Richlands, Hubert, Sneads Ferry, and Swansboro\n\nWhen you call, you get a real local crew that knows the terrain, the tree species, and the storm patterns of coastal North Carolina."
+          text: "Godhans Tree Company isn't a national call center. We're your neighbors in Jacksonville, NC, and we've cleared storm damage across Onslow County since 2013.\n\nWhen you call, you get a real local crew that knows the terrain, the tree species, and the storm patterns of coastal North Carolina."
         },
         {
           heading: "Same-Day & Next-Day Availability",

@@ -79,7 +79,7 @@ export default function MeetTheOwners() {
     telephone: BUSINESS_INFO.phone.tel,
     email: BUSINESS_INFO.email,
     image: OG_IMAGE,
-    priceRange: '$$',
+    priceRange: '$$$',
     address: {
       '@type': 'PostalAddress',
       streetAddress: BUSINESS_INFO.location.street,

@@ -8,6 +8,7 @@ export default function TreeServiceJacksonvilleNC() {
       title="Tree Service in Jacksonville, NC"
       subtitle="Professional Tree Removal, Trimming, Stump Grinding & Emergency Services"
       slug="tree-service-jacksonville-nc"
+      credentialBlock
       description="Local tree service in Jacksonville, NC: removal, trimming, stump grinding, and 24/7 emergency response. Free estimates from Godhans Tree Company."
       ctaText="Call Now"
       quickAnswer="Looking for reliable tree service in Jacksonville, NC? Godhans Tree Company provides professional tree removal, tree trimming, stump grinding, and emergency tree services throughout Jacksonville and Onslow County. Fully insured and trusted by local homeowners."
@@ -34,7 +35,7 @@ export default function TreeServiceJacksonvilleNC() {
         },
         {
           heading: "Why Choose Godhans Tree Company in Jacksonville?",
-          text: "There are many reasons Jacksonville homeowners trust us with their tree care:\n\n• Local Jacksonville experts who know the area\n• Fast emergency response — available when you need us\n• Affordable, transparent pricing with free estimates\n• Fully insured — every machine individually covered\n• Professional equipment for safe, efficient work\n• Military discounts for Camp Lejeune families"
+          text: "There are many reasons Jacksonville homeowners trust us with their tree care:\n\n• Local Jacksonville experts who know the area\n• Fast emergency response — available when you need us\n• Affordable, transparent pricing with free estimates\n• Professional equipment for safe, efficient work\n• Military discounts for Camp Lejeune families"
         },
         {
           heading: "Areas We Serve Near Jacksonville, NC",

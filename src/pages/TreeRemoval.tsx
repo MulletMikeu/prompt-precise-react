@@ -15,6 +15,7 @@ export default function TreeRemoval() {
       title="Tree Removal in Jacksonville, NC"
       subtitle="Safe, Insured Tree Removal — Free Estimates"
       slug="tree-removal-jacksonville-nc"
+      credentialBlock
       description="Professional tree removal services in Jacksonville, NC. Safe, efficient, and fully insured. Call Godhans Tree Company for a free estimate."
       ctaText="Call Now for a Free Estimate"
       heroImage={{
@@ -44,7 +45,7 @@ export default function TreeRemoval() {
         },
         {
           heading: "Affordable Tree Removal with No Surprises",
-          text: "Tree removal costs vary based on tree size, location, and complexity. We provide transparent pricing and free estimates so you know exactly what to expect.\n\n✔ $2M insured — every machine individually covered\n✔ Experienced professionals\n✔ Safe and efficient equipment\n✔ Honest, upfront pricing"
+          text: "Tree removal costs vary based on tree size, location, and complexity. We provide transparent pricing and free estimates so you know exactly what to expect."
         },
         {
           heading: `Why We Have an ${PRICING.removal.minimum} Minimum`,
@@ -115,12 +116,12 @@ export default function TreeRemoval() {
 
             <figure className="my-8">
               <img
-                src="/images/pine-removal-aerial-tight-backyard-no-crane-jacksonville-nc-1024.webp"
-                srcSet="/images/pine-removal-aerial-tight-backyard-no-crane-jacksonville-nc-640.webp 640w, /images/pine-removal-aerial-tight-backyard-no-crane-jacksonville-nc-1024.webp 1024w"
+                src="/images/pine-removal-aerial-tight-backyard-no-crane-jacksonville-nc-768.webp"
+                srcSet="/images/pine-removal-aerial-tight-backyard-no-crane-jacksonville-nc-640.webp 640w, /images/pine-removal-aerial-tight-backyard-no-crane-jacksonville-nc-768.webp 768w"
                 sizes="(max-width: 768px) 100vw, 768px"
                 alt="Aerial view down a 120-foot pine being removed between rooftops in a tight Jacksonville NC backyard with no crane access"
-                width={1024}
-                height={1365}
+                width={768}
+                height={1024}
                 loading="lazy"
                 decoding="async"
                 className="w-full h-auto rounded-lg border-2 border-gray-800"

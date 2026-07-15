@@ -15,6 +15,7 @@ export default function TreeTrimming() {
       title="Tree Trimming in Jacksonville, NC"
       subtitle="Professional Tree Trimming & Pruning to Keep Your Trees Healthy and Safe"
       slug="tree-trimming-jacksonville-nc"
+      credentialBlock
       description="Expert tree trimming and pruning in Jacksonville, NC. Healthy growth, safer canopies, clean cleanup. Fully insured, free estimates."
       ctaText="Call Now for a Free Estimate"
       heroImage={{
@@ -57,7 +58,7 @@ export default function TreeTrimming() {
         },
         {
           heading: "Affordable Tree Trimming You Can Trust",
-          text: "Tree trimming costs depend on the size of the tree and the amount of work required. We offer free estimates and transparent pricing so you know exactly what to expect.\n\n✔ Fully insured\n✔ Experienced crew\n✔ Safe, professional equipment\n✔ Honest pricing"
+          text: "Tree trimming costs depend on the size of the tree and the amount of work required. We offer free estimates and transparent pricing so you know exactly what to expect."
         }
       ]}
       faqs={[
