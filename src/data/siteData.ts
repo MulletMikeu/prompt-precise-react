@@ -1,12 +1,13 @@
 export const BUSINESS = {
   name: "Godhans Tree Company",
+  legalName: "Godhans LLC",
   shortName: "Godhans",
   tagline: "We Take On The Jobs Others Won't",
   phone: "(618) 704-4861",
   phoneHref: "tel:+16187044861",
   phoneRaw: "+16187044861",
-  email: "godhans@godhans.com",
-  emailHref: "mailto:godhans@godhans.com",
+  email: "godhanstree@gmail.com",
+  emailHref: "mailto:godhanstree@gmail.com",
   address: {
     street: "4445 Gum Branch Rd",
     city: "Jacksonville",

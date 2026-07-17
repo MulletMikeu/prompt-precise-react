@@ -4,6 +4,7 @@ import { BUSINESS } from "../data/siteData";
 // BUSINESS_INFO is derived from BUSINESS so all pages share the same NAP data.
 export const BUSINESS_INFO = {
   name: BUSINESS.name,
+  legalName: BUSINESS.legalName,
   phone: {
     display: BUSINESS.phone,
     tel: BUSINESS.phoneRaw,

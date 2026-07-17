@@ -101,6 +101,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": BUSINESS_INFO.name,
+    "legalName": BUSINESS_INFO.legalName,
     "@id": "https://godhans.com",
     "url": canonical,
     "telephone": BUSINESS_INFO.phone.tel,
