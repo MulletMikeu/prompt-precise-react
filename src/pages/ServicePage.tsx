@@ -97,38 +97,6 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
     ]
   };
 
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": BUSINESS_INFO.name,
-    "legalName": BUSINESS_INFO.legalName,
-    "@id": "https://godhans.com",
-    "url": canonical,
-    "telephone": BUSINESS_INFO.phone.tel,
-    "email": BUSINESS_INFO.email,
-    "priceRange": "$$$",
-    "image": "https://godhans.com/og-image.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": BUSINESS_INFO.location.street,
-      "addressLocality": BUSINESS_INFO.location.city,
-      "addressRegion": BUSINESS_INFO.location.state,
-      "postalCode": BUSINESS_INFO.location.zip,
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": BUSINESS_INFO.location.coordinates.latitude,
-      "longitude": BUSINESS_INFO.location.coordinates.longitude
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
-    }
-  };
-
   return (
     <>
       <Helmet>
@@ -151,9 +119,6 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
 
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(localBusinessSchema)}
         </script>
         {faqs && faqs.length > 0 && (
           <script type="application/ld+json">

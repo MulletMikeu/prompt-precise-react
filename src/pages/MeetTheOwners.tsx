@@ -1,6 +1,5 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from 'react-router-dom';
-import { BUSINESS_INFO } from '@/lib/constants';
 
 // === EDITABLE PHOTO FIELDS (Michael) ===
 // Pre-filled SEO alt text — do not change template.
@@ -67,32 +66,7 @@ export default function MeetTheOwners() {
     description:
       'Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County.',
     isPartOf: { '@id': 'https://godhans.com/#website' },
-    about: { '@id': 'https://godhans.com/#localbusiness' },
-  };
-
-  const localBusinessSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': 'https://godhans.com/#localbusiness',
-    name: BUSINESS_INFO.name,
-    url: 'https://godhans.com/',
-    telephone: BUSINESS_INFO.phone.tel,
-    email: BUSINESS_INFO.email,
-    image: OG_IMAGE,
-    priceRange: '$$$',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: BUSINESS_INFO.location.street,
-      addressLocality: BUSINESS_INFO.location.city,
-      addressRegion: BUSINESS_INFO.location.state,
-      postalCode: BUSINESS_INFO.location.zip,
-      addressCountry: 'US',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: BUSINESS_INFO.location.coordinates.latitude,
-      longitude: BUSINESS_INFO.location.coordinates.longitude,
-    },
+    about: { '@id': 'https://godhans.com/#business' },
   };
 
   return (
@@ -124,7 +98,6 @@ export default function MeetTheOwners() {
         <meta name="twitter:description" content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County." />
 
         <script type="application/ld+json">{JSON.stringify(webPageSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
