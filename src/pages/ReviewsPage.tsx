@@ -65,7 +65,7 @@ export default function ReviewsPage() {
                   itemScope
                   itemType="https://schema.org/Review"
                 >
-                  <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" style={{ display: "none" }}>
+                  <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" itemID="https://godhans.com/#business" style={{ display: "none" }}>
                     <span itemProp="name" content="Godhans Tree Company" />
                   </span>
                   <span className="font-display font-800 mb-4 block" style={{ fontSize: "3rem", lineHeight: 1, color: "#C41230", opacity: 0.4 }} aria-hidden="true">"</span>

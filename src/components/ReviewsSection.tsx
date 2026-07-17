@@ -62,7 +62,7 @@ export default function ReviewsSection() {
               itemScope
               itemType="https://schema.org/Review"
             >
-              <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" style={{ display: "none" }}>
+              <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" itemID="https://godhans.com/#business" style={{ display: "none" }}>
                 <span itemProp="name" content="Godhans Tree Company" />
               </span>
 
