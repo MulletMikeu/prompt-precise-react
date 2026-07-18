@@ -78,11 +78,9 @@ const businessSchema = {
 };
 
 export default function BusinessSchema() {
-  // Escape `$` as the JSON unicode escape $. vite-react-ssg injects the
-  // Helmet head into the HTML template via String.replace, where a literal `$$`
-  // in the replacement collapses to `$` — which would corrupt priceRange "$$$"
-  // into "$$". $ contains no `$`, survives the replace, and JSON parsers
-  // (and Google) decode it back to `$`.
+  // priceRange is unicode-escaped (see the .replace below): vite-react-ssg injects head content via
+  // String.replace, where "$$" in the replacement collapses to "$". Any JSON-LD
+  // value containing $$ / $& / $` / $' must be escaped the same way.
   const json = JSON.stringify(businessSchema).replace(/\$/g, '\\u0024');
   return (
     <Helmet>
