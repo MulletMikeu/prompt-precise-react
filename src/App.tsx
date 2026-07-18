@@ -4,6 +4,7 @@ import type { ComponentType } from "react";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import BusinessSchema from "./components/BusinessSchema";
 // The landing route is imported eagerly: it is the LCP-critical page and is
 // already server-rendered for "/", so lazy-loading it would throw away the
 // prerendered paint and force a hydration re-render (measurably worse LCP).
@@ -58,6 +59,7 @@ function AnimateOnScroll() {
 function RootLayout() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0A0A0A" }}>
+      <BusinessSchema />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold focus:rounded focus:shadow-lg"
