@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
 
 const TITLE = "Tree Services in Jacksonville, NC | Godhans Tree Company";
-const DESC = "Tree removal, trimming, stump grinding & storm cleanup in Jacksonville, NC. Veteran-owned. Free estimates — call (618) 704-4861.";
+const DESC = `Tree removal, trimming, stump grinding & storm cleanup in Jacksonville, NC. Veteran-owned. Free estimates — call ${BUSINESS.phone}.`;
 const CANONICAL = "https://godhans.com/services";
 
 const SERVICES = [

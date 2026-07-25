@@ -118,7 +118,7 @@ export const SERVICES = [
     ],
     metaTitle: "Tree Removal Jacksonville NC | Godhans Tree Company",
     metaDesc:
-      "Expert tree removal in Jacksonville, NC. Veteran-owned, fully insured, boom trucks on every job. Free estimates — call (618) 704-4861.",
+      `Expert tree removal in Jacksonville, NC. Veteran-owned, fully insured, boom trucks on every job. Free estimates — call ${BUSINESS.phone}.`,
   },
   {
     id: "tree-trimming",
@@ -137,7 +137,7 @@ export const SERVICES = [
     ],
     metaTitle: "Tree Trimming Jacksonville NC | Godhans Tree Company",
     metaDesc:
-      "Professional tree trimming in Jacksonville, NC. Arborist-led crew, precise results. Free estimates — call (618) 704-4861.",
+      `Professional tree trimming in Jacksonville, NC. Arborist-led crew, precise results. Free estimates — call ${BUSINESS.phone}.`,
   },
   {
     id: "stump-grinding",
@@ -156,7 +156,7 @@ export const SERVICES = [
     ],
     metaTitle: "Stump Grinding Jacksonville NC | Godhans Tree Company",
     metaDesc:
-      "Stump grinding in Jacksonville, NC. Ground to grade, debris removed, yard restored. Free estimates — (618) 704-4861.",
+      `Stump grinding in Jacksonville, NC. Ground to grade, debris removed, yard restored. Free estimates — ${BUSINESS.phone}.`,
   },
   {
     id: "emergency-tree-service",
@@ -175,7 +175,7 @@ export const SERVICES = [
     ],
     metaTitle: "Emergency Tree Service Jacksonville NC | Godhans",
     metaDesc:
-      "24/7 emergency tree service in Jacksonville, NC. We answer when others don't. Call now: (618) 704-4861.",
+      `24/7 emergency tree service in Jacksonville, NC. We answer when others don't. Call now: ${BUSINESS.phone}.`,
   },
   {
     id: "storm-cleanup",
@@ -194,7 +194,7 @@ export const SERVICES = [
     ],
     metaTitle: "Storm Cleanup Jacksonville NC | Godhans Tree Company",
     metaDesc:
-      "Storm damage cleanup in Jacksonville, NC. Fast response, full debris removal. Call 24/7: (618) 704-4861.",
+      `Storm damage cleanup in Jacksonville, NC. Fast response, full debris removal. Call 24/7: ${BUSINESS.phone}.`,
   },
 ] as const;
 

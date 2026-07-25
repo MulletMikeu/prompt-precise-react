@@ -1,5 +1,6 @@
 import ServicePage from './ServicePage';
 import { PrecisionRemoval } from '@/components/sections/PrecisionRemoval';
+import { BUSINESS } from '@/data/siteData';
 
 export default function TreeRemovalNearHouse() {
   return (
@@ -28,7 +29,7 @@ export default function TreeRemovalNearHouse() {
         faqs={[
           { question: "Can you remove a tree leaning toward my house?", answer: "Yes. A leaning tree near a structure is one of the most common calls we get. We use rigging and a spider lift to take it down piece by piece, against the lean if necessary. Free on-site estimate." },
           { question: "Are you insured if something goes wrong?", answer: "Fully. We carry general liability and workers' comp, and we'll provide a current certificate of insurance on request before any work starts." },
-          { question: "What if a tree is already on my house?", answer: "Call (618) 704-4861 anytime — we offer 24/7 emergency response for trees on homes, garages, and vehicles in Jacksonville and surrounding areas." }
+          { question: "What if a tree is already on my house?", answer: `Call ${BUSINESS.phone} anytime — we offer 24/7 emergency response for trees on homes, garages, and vehicles in Jacksonville and surrounding areas.` }
         ]}
         relatedServices={[
           { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },

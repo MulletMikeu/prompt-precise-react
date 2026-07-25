@@ -1,5 +1,5 @@
 import ServicePage from './ServicePage';
-import { PRICING } from '../data/siteData';
+import { PRICING, BUSINESS } from '../data/siteData';
 
 export default function TreeServiceSneadsFerry() {
   return (
@@ -27,7 +27,7 @@ export default function TreeServiceSneadsFerry() {
       ]}
       faqs={[
         { question: "Do you service Sneads Ferry, NC for tree work?", answer: "Yes — we provide full tree services in Sneads Ferry including removal, trimming, stump grinding, and 24/7 emergency response." },
-        { question: "Can you handle hurricane and storm-damaged trees?", answer: "Absolutely. Storm response is one of our specialties. Call (618) 704-4861 anytime — we respond same-day to fallen trees on homes, vehicles, and roads in Sneads Ferry." },
+        { question: "Can you handle hurricane and storm-damaged trees?", answer: `Absolutely. Storm response is one of our specialties. Call ${BUSINESS.phone} anytime — we respond same-day to fallen trees on homes, vehicles, and roads in Sneads Ferry.` },
         { question: "How much does tree removal cost in Sneads Ferry?", answer: `${PRICING.removal.summary} We provide free on-site estimates with transparent, no-pressure pricing.` }
       ]}
       relatedServices={[

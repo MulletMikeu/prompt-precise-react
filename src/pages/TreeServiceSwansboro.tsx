@@ -1,4 +1,5 @@
 import ServicePage from './ServicePage';
+import { BUSINESS } from '../data/siteData';
 
 export default function TreeServiceSwansboro() {
   return (
@@ -27,7 +28,7 @@ export default function TreeServiceSwansboro() {
       faqs={[
         { question: "Do you service Swansboro, NC for tree work?", answer: "Yes — we provide full tree services in Swansboro including removal, trimming, stump grinding, and 24/7 emergency response." },
         { question: "Can you remove large oaks near my house in Swansboro?", answer: "Yes. We specialize in large hazardous removals near structures using proper rigging, cranes when needed, and full insurance coverage. Free on-site estimate included." },
-        { question: "How fast can you respond to storm damage in Swansboro?", answer: "We offer 24/7 emergency response. Most storm calls in Swansboro are responded to within hours. Call (618) 704-4861 anytime." }
+        { question: "How fast can you respond to storm damage in Swansboro?", answer: `We offer 24/7 emergency response. Most storm calls in Swansboro are responded to within hours. Call ${BUSINESS.phone} anytime.` }
       ]}
       relatedServices={[
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },

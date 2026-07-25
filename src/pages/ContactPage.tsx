@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
 
 const TITLE = "Contact Godhans Tree Company | Free Estimates in Jacksonville, NC";
-const DESC = "Request a free estimate from Godhans Tree Company in Jacksonville, NC. Call (618) 704-4861 or email us — 24/7 emergency tree service available.";
+const DESC = `Request a free estimate from Godhans Tree Company in Jacksonville, NC. Call ${BUSINESS.phone} or email us — 24/7 emergency tree service available.`;
 const CANONICAL = "https://godhans.com/contact";
 
 export default function ContactPage() {

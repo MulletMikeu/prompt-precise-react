@@ -1,4 +1,5 @@
 import ServicePage from './ServicePage';
+import { BUSINESS } from '@/data/siteData';
 import heroCrane from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine.webp';
 import heroCrane480 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-480.webp';
 import heroCrane800 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-800.webp';
@@ -80,7 +81,7 @@ export default function EmergencyTreeService() {
       faqs={[
         {
           question: "Who do I call for emergency tree removal in Jacksonville NC?",
-          answer: "Call Godhans Tree Company at (618) 704-4861. We're a veteran-owned, family-operated, fully insured tree service based in Jacksonville, NC, with 24/7 emergency response across Onslow County including Richlands, Hubert, Sneads Ferry, and Swansboro."
+          answer: `Call Godhans Tree Company at ${BUSINESS.phone}. We're a veteran-owned, family-operated, fully insured tree service based in Jacksonville, NC, with 24/7 emergency response across Onslow County including Richlands, Hubert, Sneads Ferry, and Swansboro.`
         },
         {
           question: "Will insurance cover storm-damaged trees?",
@@ -103,7 +104,7 @@ export default function EmergencyTreeService() {
       finalCta={{
         heading: "Tree Emergency Right Now? Call Us Immediately.",
         text: "Don't wait for the damage to get worse. Call Godhans Tree Company now for fast, professional emergency tree service in Jacksonville, NC and across Onslow County.",
-        buttonText: "Call (618) 704-4861 Now"
+        buttonText: `Call ${BUSINESS.phone} Now`
       }}
     />
   );

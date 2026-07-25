@@ -40,7 +40,7 @@ export default function ServiceAreaSection() {
             </p>
 
             {/* City tags */}
-            <div className="flex flex-wrap gap-3 mb-10" role="list" aria-label="Cities we serve">
+            <ul className="flex flex-wrap gap-3 mb-10 list-none m-0 p-0" aria-label="Cities we serve">
               {SERVICE_CITIES.map((city) => {
                 const pagePath = CITY_PAGE_MAP[city.slug];
                 const sharedStyle = {
@@ -58,29 +58,29 @@ export default function ServiceAreaSection() {
                     e.currentTarget.style.color = city.primary ? "#E5424F" : "#888888";
                   },
                 } : {};
-                return pagePath ? (
-                  <Link
-                    key={city.slug}
-                    to={pagePath}
-                    role="listitem"
-                    className="font-body text-sm font-500 uppercase tracking-wider px-4 py-2 transition-all duration-200"
-                    style={sharedStyle}
-                    {...hoverHandlers}
-                  >
-                    {city.name}, {city.state}
-                  </Link>
-                ) : (
-                  <span
-                    key={city.slug}
-                    role="listitem"
-                    className="font-body text-sm font-500 uppercase tracking-wider px-4 py-2"
-                    style={sharedStyle}
-                  >
-                    {city.name}, {city.state}
-                  </span>
+                return (
+                  <li key={city.slug}>
+                    {pagePath ? (
+                      <Link
+                        to={pagePath}
+                        className="block font-body text-sm font-500 uppercase tracking-wider px-4 py-2 transition-all duration-200"
+                        style={sharedStyle}
+                        {...hoverHandlers}
+                      >
+                        {city.name}, {city.state}
+                      </Link>
+                    ) : (
+                      <span
+                        className="block font-body text-sm font-500 uppercase tracking-wider px-4 py-2"
+                        style={sharedStyle}
+                      >
+                        {city.name}, {city.state}
+                      </span>
+                    )}
+                  </li>
                 );
               })}
-            </div>
+            </ul>
 
             <a href={BUSINESS.phoneHref} className="btn-primary">Check Your Area — Call {BUSINESS.phone}</a>
           </div>
