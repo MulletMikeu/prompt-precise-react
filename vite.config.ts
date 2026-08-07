@@ -27,6 +27,29 @@ export default defineConfig(({ isSsrBuild }) => ({
     // explicitly renders the catch-all to dist/404.html, which Vercel serves
     // automatically for unmatched paths.
     includedRoutes: (paths) => [...paths, "/404"],
+    /**
+     * Hoist <meta charset> (and viewport) to the top of <head>.
+     *
+     * react-helmet-async injects title/meta/canonical/JSON-LD at the START of
+     * <head>, ahead of everything in index.html — which pushed <meta charset> to
+     * byte ~4205, well past the 1024 bytes the HTML spec gives a browser to
+     * detect encoding before it commits to a default. The homepage's JSON-LD
+     * alone is 2.2 KB, and every JSON-LD block added later pushes it further.
+     *
+     * Rewriting the emitted HTML is the reliable fix: helmet's insertion point
+     * is not configurable, and reordering index.html does not help because
+     * helmet's output always lands first.
+     */
+    onPageRendered: (_route, html) => {
+      const HOIST = /\s*<meta\s+charset=["'][^"']*["']\s*\/?>|\s*<meta\s+name=["']viewport["'][^>]*>/gi;
+      const found = html.match(HOIST);
+      if (!found) return html;
+      // match() returns document order, and charset precedes viewport in
+      // index.html — so charset stays first, which is the part that matters.
+      return html
+        .replace(HOIST, "")
+        .replace(/<head[^>]*>/i, (head) => head + found.map((t) => t.trim()).join(""));
+    },
   },
   resolve: {
     alias: {

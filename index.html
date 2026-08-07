@@ -33,10 +33,10 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
 
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@400;500;600&display=optional" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@400;500;600&display=optional" /></noscript>
+    <!-- Self-hosted fonts: see the @font-face block in src/index.css for why.
+         Preload is the above-fold face only (hero H1 = .text-display-2xl).
+         crossorigin is required even same-origin or it double-fetches. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-condensed-800.woff2" crossorigin />
 
     <style>
       html { background: #0a0a0a; }
