@@ -69,7 +69,7 @@ export default function ServicesSection() {
             >
               {/* Number */}
               <span
-                className="block font-display font-800 mb-4"
+                className="block font-display font-extrabold mb-4"
                 style={{ fontSize: "3rem", lineHeight: 1, color: "#888888" }}
               >
                 0{i + 1}
@@ -97,7 +97,7 @@ export default function ServicesSection() {
 
               {/* Arrow */}
               <span
-                className="inline-flex items-center gap-2 font-display font-700 text-sm uppercase tracking-widest transition-all duration-200 group-hover:gap-4"
+                className="inline-flex items-center gap-2 font-display font-bold text-sm uppercase tracking-widest transition-all duration-200 group-hover:gap-4"
                 style={{ color: "#E5424F", letterSpacing: "0.1em" }}
               >
                 Learn More <span aria-hidden="true">→</span>

@@ -109,7 +109,7 @@ export default function LocationPage({ city }: LocationPageProps) {
                 <li className="text-gray-200" aria-current="page">{city}, NC</li>
               </ol>
             </nav>
-            <p className="font-body text-xs font-600 uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Service Area</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Service Area</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Tree Service in {city}, NC</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               {content.lead}

@@ -48,7 +48,7 @@ export default function CTABanner() {
           <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 flex-shrink-0">
             <Link
               to="/contact"
-              className="font-display font-700 uppercase text-base tracking-wider px-8 py-4 text-center transition-all duration-200"
+              className="font-display font-bold uppercase text-base tracking-wider px-8 py-4 text-center transition-all duration-200"
               style={{
                 background: "white",
                 color: "#C41230",
@@ -64,7 +64,7 @@ export default function CTABanner() {
             >
               Request Free Estimate
             </Link>
-            <a href={BUSINESS.phoneHref} className="font-display font-700 uppercase text-base tracking-wider px-8 py-4 text-center transition-all duration-200" style={{ background: "transparent", color: "white", letterSpacing: "0.06em", border: "2px solid rgba(255,255,255,0.6)" }} onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "white"; (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.1)"; }} onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.6)"; (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}>Call {BUSINESS.phone}</a>
+            <a href={BUSINESS.phoneHref} className="font-display font-bold uppercase text-base tracking-wider px-8 py-4 text-center transition-all duration-200" style={{ background: "transparent", color: "white", letterSpacing: "0.06em", border: "2px solid rgba(255,255,255,0.6)" }} onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "white"; (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.1)"; }} onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.6)"; (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}>Call {BUSINESS.phone}</a>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-600 uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Legal</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Legal</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Privacy Policy</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               {BUSINESS.name} respects your privacy. This page explains what information we collect when you contact us or use this website, how we use it, and the choices you have. Last updated {UPDATED}.

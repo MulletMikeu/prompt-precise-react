@@ -41,7 +41,7 @@ export default function TrustSection() {
           {TRUST_STATS.map((stat) => (
             <div key={stat.label} className="text-center py-10 px-6" style={{ background: "#111111" }}>
               <p
-                className="font-display font-800 mb-2"
+                className="font-display font-extrabold mb-2"
                 style={{ fontSize: "clamp(2rem,5vw,3.5rem)", color: "#E5424F", lineHeight: 1 }}
               >
                 {stat.value}
@@ -91,7 +91,7 @@ export default function TrustSection() {
                 aria-hidden="true"
               />
               <h3
-                className="font-display font-700 uppercase mb-4 text-white"
+                className="font-display font-bold uppercase mb-4 text-white"
                 style={{ fontSize: "1.15rem", letterSpacing: "0.03em" }}
               >
                 {block.label}

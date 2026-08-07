@@ -36,7 +36,7 @@ function VideoModal({ videoId, title, onClose }: { videoId: string; title: strin
         <button
           ref={closeRef}
           onClick={onClose}
-          className="absolute -top-10 right-0 font-display font-700 text-white uppercase tracking-widest text-sm flex items-center gap-2"
+          className="absolute -top-10 right-0 font-display font-bold text-white uppercase tracking-widest text-sm flex items-center gap-2"
           aria-label="Close video"
         >
           Close ✕
@@ -146,7 +146,7 @@ export default function VideoSection() {
               {isPlaceholder(video.youtubeId) && (
                 <div className="absolute top-4 left-4">
                   <span
-                    className="font-body text-xs font-600 uppercase tracking-widest px-3 py-1"
+                    className="font-body text-xs font-semibold uppercase tracking-widest px-3 py-1"
                     style={{ background: "#C41230", color: "white", letterSpacing: "0.1em" }}
                   >
                     Coming Soon
@@ -157,7 +157,7 @@ export default function VideoSection() {
               {/* Title overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <p
-                  className="font-display font-700 uppercase text-white mb-1"
+                  className="font-display font-bold uppercase text-white mb-1"
                   style={{ fontSize: "1.2rem", letterSpacing: "0.04em" }}
                 >
                   {video.title}
@@ -175,7 +175,7 @@ export default function VideoSection() {
 
         {/* YouTube link */}
         <div className="mt-8 text-center">
-          <a href="https://www.youtube.com/@godhans7945/" target="_blank" rel="noopener noreferrer" className="font-display font-700 text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#E5424F")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Watch More on YouTube →</a>
+          <a href="https://www.youtube.com/@godhans7945/" target="_blank" rel="noopener noreferrer" className="font-display font-bold text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#E5424F")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Watch More on YouTube →</a>
         </div>
       </div>
 

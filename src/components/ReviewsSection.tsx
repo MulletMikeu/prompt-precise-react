@@ -36,7 +36,7 @@ export default function ReviewsSection() {
           <div className="flex items-center gap-4">
             <div className="text-center">
               <p
-                className="font-display font-800 text-white"
+                className="font-display font-extrabold text-white"
                 style={{ fontSize: "3.5rem", lineHeight: 1, color: "#E5C220" }}
               >
                 {BUSINESS.reviewRating}
@@ -68,7 +68,7 @@ export default function ReviewsSection() {
 
               {/* Quote mark */}
               <span
-                className="font-display font-800 mb-4 block"
+                className="font-display font-extrabold mb-4 block"
                 style={{ fontSize: "4rem", lineHeight: 1, color: "#C41230", opacity: 0.4 }}
                 aria-hidden="true"
               >
@@ -96,7 +96,7 @@ export default function ReviewsSection() {
               >
                 <div>
                   <p
-                    className="font-display font-700 uppercase text-white"
+                    className="font-display font-bold uppercase text-white"
                     style={{ fontSize: "0.95rem", letterSpacing: "0.04em" }}
                     itemProp="author"
                     itemScope
@@ -121,7 +121,7 @@ export default function ReviewsSection() {
 
         {/* All reviews CTA */}
         <div className="mt-10 text-center">
-          <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="font-display font-700 text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#E5424F")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Read All {BUSINESS.reviewCount} Reviews on Google →</a>
+          <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="font-display font-bold text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#E5424F")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Read All {BUSINESS.reviewCount} Reviews on Google →</a>
         </div>
       </div>
     </section>

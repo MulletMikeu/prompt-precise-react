@@ -111,7 +111,7 @@ export default function Hero() {
                   aria-hidden="true"
                 />
                 <span
-                  className="font-body text-sm font-600 uppercase tracking-wider"
+                  className="font-body text-sm font-semibold uppercase tracking-wider"
                   style={{ color: "#C8C8C2", letterSpacing: "0.08em" }}
                 >
                   {item}

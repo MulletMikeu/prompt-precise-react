@@ -43,7 +43,7 @@ export default function ServiceAreaPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-600 uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Service Area</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Service Area</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Tree Service Throughout Onslow County</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               Godhans Tree Company is based in Jacksonville, NC and serves communities across Onslow County and beyond. Not sure if we cover your area? Call us — we never want to leave a neighbor without help.
@@ -61,7 +61,7 @@ export default function ServiceAreaPage() {
                   <Link
                     key={city.slug}
                     to={pagePath}
-                    className="font-body text-sm font-500 uppercase tracking-wider px-4 py-2 transition-colors"
+                    className="font-body text-sm font-medium uppercase tracking-wider px-4 py-2 transition-colors"
                     style={{
                       border: city.primary ? "1px solid #C41230" : "1px solid #2A2A2A",
                       color: city.primary ? "#E5424F" : "#888888",
@@ -72,7 +72,7 @@ export default function ServiceAreaPage() {
                 ) : (
                   <span
                     key={city.slug}
-                    className="font-body text-sm font-500 uppercase tracking-wider px-4 py-2"
+                    className="font-body text-sm font-medium uppercase tracking-wider px-4 py-2"
                     style={{ border: "1px solid #2A2A2A", color: "#888888" }}
                   >
                     {city.name}, {city.state}

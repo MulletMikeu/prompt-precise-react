@@ -63,7 +63,7 @@ export default function ServiceAreaSection() {
                     {pagePath ? (
                       <Link
                         to={pagePath}
-                        className="block font-body text-sm font-500 uppercase tracking-wider px-4 py-2 transition-all duration-200"
+                        className="block font-body text-sm font-medium uppercase tracking-wider px-4 py-2 transition-all duration-200"
                         style={sharedStyle}
                         {...hoverHandlers}
                       >
@@ -71,7 +71,7 @@ export default function ServiceAreaSection() {
                       </Link>
                     ) : (
                       <span
-                        className="block font-body text-sm font-500 uppercase tracking-wider px-4 py-2"
+                        className="block font-body text-sm font-medium uppercase tracking-wider px-4 py-2"
                         style={sharedStyle}
                       >
                         {city.name}, {city.state}
@@ -106,7 +106,7 @@ export default function ServiceAreaSection() {
             {/* Address block */}
             <div className="mt-4 p-5" style={{ background: "#111111", border: "1px solid #1A1A1A" }}>
               <address className="not-italic">
-                <p className="font-display font-700 uppercase text-white mb-2" style={{ fontSize: "0.9rem", letterSpacing: "0.06em" }}>{BUSINESS.name}</p>
+                <p className="font-display font-bold uppercase text-white mb-2" style={{ fontSize: "0.9rem", letterSpacing: "0.06em" }}>{BUSINESS.name}</p>
                 <p className="font-body text-sm mb-3" style={{ color: "#888888" }}>{BUSINESS.address.full}</p>
                 <a href={BUSINESS.phoneHref} className="font-bold block" style={{ color: "#E5424F" }}>{BUSINESS.phone}</a>
                 <a href={BUSINESS.emailHref} className="text-sm block mt-1" style={{ color: "#888888" }}>{BUSINESS.email}</a>
