@@ -62,7 +62,7 @@ export default function MeetTheOwners() {
     '@type': 'WebPage',
    '@id': PAGE_URL + '#webpage',
     url: PAGE_URL,
-    name: 'About Godhans Tree Company | Veteran-Owned Tree Service Jacksonville, NC',
+    name: 'About Godhans Tree Company | Jacksonville, NC',
     description:
       'Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County.',
     isPartOf: { '@id': 'https://godhans.com/#website' },
@@ -72,7 +72,7 @@ export default function MeetTheOwners() {
   return (
     <>
       <Helmet>
-        <title>About Godhans Tree Company | Veteran-Owned Tree Service Jacksonville, NC</title>
+        <title>About Godhans Tree Company | Jacksonville, NC</title>
         <meta
           name="description"
           content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County."
@@ -83,7 +83,7 @@ export default function MeetTheOwners() {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content={PAGE_URL} />
-        <meta property="og:title" content="About Godhans Tree Company | Veteran-Owned Tree Service Jacksonville, NC" />
+        <meta property="og:title" content="About Godhans Tree Company | Jacksonville, NC" />
         <meta
           property="og:description"
           content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County."
@@ -94,7 +94,7 @@ export default function MeetTheOwners() {
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={OG_IMAGE} />
-        <meta name="twitter:title" content="About Godhans Tree Company | Veteran-Owned Tree Service Jacksonville, NC" />
+        <meta name="twitter:title" content="About Godhans Tree Company | Jacksonville, NC" />
         <meta name="twitter:description" content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County." />
 
         <script type="application/ld+json">{JSON.stringify(webPageSchema)}</script>

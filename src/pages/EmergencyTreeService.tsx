@@ -21,6 +21,7 @@ export default function EmergencyTreeService() {
   return (
     <ServicePage
       title="Emergency Tree Service in Jacksonville, NC"
+      metaTitle="Emergency Tree Service in Jacksonville, NC | Godhans"
       subtitle="24/7 Storm Damage & Tree Removal — Same-Day & Next-Day Availability"
       slug="emergency-tree-service-jacksonville-nc"
       credentialBlock

@@ -30,6 +30,11 @@ export default function TreeRemoval() {
         showCta: true,
       }}
       quickAnswer={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum. Most removals run ${PRICING.removal.most}, with large or hazardous trees at ${PRICING.removal.large}. ${PRICING.stories.sameTree}`}
+      sectionLinks={{
+        // Section 2 is "Our Tree Removal Process", where rigging and access are
+        // described — the natural place to hand off to the tight-access page.
+        2: { href: "/tree-removal-tight-spaces-jacksonville-nc", label: "See how we handle tree removal in tight spaces" },
+      }}
       sections={[
         {
           heading: "Professional Tree Removal Services in Jacksonville, NC",

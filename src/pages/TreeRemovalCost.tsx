@@ -6,9 +6,15 @@ export default function TreeRemovalCost() {
   return (
     <ServicePage
       title="How Much Does Tree Removal Cost in North Carolina? (2026 Guide)"
+      metaTitle="Tree Removal Cost in North Carolina (2026 Guide)"
       slug="tree-removal-cost-north-carolina"
-      description={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum, with most jobs ${PRICING.removal.most} and large or hazardous trees ${PRICING.removal.large}. See full price ranges and what affects cost.`}
+      description={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum; most jobs run ${PRICING.removal.most} and large or hazardous trees ${PRICING.removal.large}. See full price ranges.`}
       quickAnswer={PRICING.removal.summary}
+      sectionLinks={{
+        // Section 2 explains why identical trees price differently; tight access is
+        // the single biggest driver, so link out to the detail there.
+        2: { href: "/tree-removal-tight-spaces-jacksonville-nc", label: "Why tight-access removals cost more" },
+      }}
       sections={[
         {
           heading: "Understanding Tree Removal Costs",

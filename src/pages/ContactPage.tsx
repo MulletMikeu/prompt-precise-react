@@ -2,7 +2,7 @@ import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
 
-const TITLE = "Contact Godhans Tree Company | Free Estimates in Jacksonville, NC";
+const TITLE = "Contact Godhans Tree Company | Free Estimates";
 const DESC = `Request a free estimate from Godhans Tree Company in Jacksonville, NC. Call ${BUSINESS.phone} or email us — 24/7 emergency tree service available.`;
 const CANONICAL = "https://godhans.com/contact";
 

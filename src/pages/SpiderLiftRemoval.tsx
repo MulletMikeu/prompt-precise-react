@@ -6,6 +6,7 @@ export default function SpiderLiftRemoval() {
     <>
       <ServicePage
         title="Spider Lift Tree Removal in Jacksonville, NC"
+        metaTitle="Spider Lift Tree Removal in Jacksonville, NC"
         subtitle="Reach 50+ Feet Without Damaging Your Lawn or Hardscape"
         slug="spider-lift-tree-removal-jacksonville-nc"
         description="Spider lift tree removal in Jacksonville, NC. Reach high limbs in tight spots near power lines, pools, and homes — no bucket truck needed."

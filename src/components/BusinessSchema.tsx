@@ -10,7 +10,12 @@ import { BUSINESS } from '../data/siteData';
  */
 const businessSchema = {
   '@context': 'https://schema.org',
-  '@type': ['TreeService', 'LocalBusiness'],
+  // NOT 'TreeService' — that type does not exist in the schema.org vocabulary
+  // (https://schema.org/TreeService returns 404), which invalidated this node on
+  // every page. HomeAndConstructionBusiness is the nearest real LocalBusiness
+  // subtype; both are listed so consumers that only understand the base type
+  // still resolve it.
+  '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
   '@id': 'https://godhans.com/#business',
   name: BUSINESS.name,
   legalName: BUSINESS.legalName,

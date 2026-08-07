@@ -21,7 +21,7 @@ export const BUSINESS = {
   founded: 2013,
   // Build-time constant, not `new Date()` — see the `define` note in vite.config.ts.
   yearsInBusiness: __BUILD_YEAR__ - 2013,
-  reviewCount: 17,
+  reviewCount: 20,
   reviewRating: "5.0",
   primaryCity: "Jacksonville, NC",
   county: "Onslow County",

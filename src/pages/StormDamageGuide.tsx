@@ -4,6 +4,7 @@ export default function StormDamageGuide() {
   return (
     <ServicePage
       title="What to Do After Storm Damage to Trees (Homeowner Guide)"
+      metaTitle="What to Do After Storm Damage to Trees | Godhans"
       slug="storm-damage-trees-guide"
       description="What to do after storm tree damage: stay clear of downed lines, assess from a safe distance, and call a pro. Step-by-step homeowner guide."
       quickAnswer="After storm damage, assess the area from a safe distance, avoid downed power lines, and contact a professional tree service immediately. Damaged or leaning trees can be dangerous and should be handled by trained experts."

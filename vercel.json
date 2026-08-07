@@ -43,6 +43,7 @@
     { "source": "/locations/beulaville-nc", "destination": "/tree-service-jacksonville-nc", "statusCode": 301 },
     { "source": "/locations/holly-ridge-nc", "destination": "/tree-service-jacksonville-nc", "statusCode": 301 },
     { "source": "/storm-damage-guide", "destination": "/storm-damage-trees-guide", "statusCode": 301 },
+    { "source": "/storm", "destination": "/emergency-tree-service-jacksonville-nc", "statusCode": 301 },
     { "source": "/tree-removal-near-house", "destination": "/tree-removal-near-house-jacksonville-nc", "statusCode": 301 },
     { "source": "/tree-removal-permit-nc", "destination": "/do-you-need-a-permit-to-remove-a-tree-nc", "statusCode": 301 },
     { "source": "/tree-removal-tight-spaces", "destination": "/tree-removal-tight-spaces-jacksonville-nc", "statusCode": 301 },

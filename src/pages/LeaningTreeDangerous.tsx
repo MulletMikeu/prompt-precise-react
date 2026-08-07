@@ -5,6 +5,7 @@ export default function LeaningTreeDangerous() {
   return (
     <ServicePage
       title="Is a Leaning Tree Dangerous After a Storm?"
+      metaTitle="Is a Leaning Tree Dangerous After a Storm?"
       slug="leaning-tree-dangerous-after-storm"
       description="How to tell if a leaning tree is dangerous after a storm, when to call a pro, and steps to protect your home. Expert guide from Godhans."
       ctaText="Call Now — Emergency Tree Service"

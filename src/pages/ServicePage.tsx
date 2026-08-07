@@ -42,7 +42,16 @@ interface GalleryImage {
 }
 
 interface ServicePageProps {
+  /** Rendered as the page H1 AND, by default, used to build the <title>. */
   title: string;
+  /**
+   * Overrides the <title>/og:title/twitter:title only, leaving the H1 alone.
+   * `title` + " | Godhans Tree Company" costs 23 characters of suffix, which
+   * pushed several pages past the ~60-char limit search results truncate at.
+   * Set this to a short, complete title (no suffix is appended) when the H1
+   * you want on the page is longer than the title you want in search.
+   */
+  metaTitle?: string;
   subtitle?: string;
   slug: string;
   description: string;
@@ -83,9 +92,10 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
 }
 
-export default function ServicePage({ title, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, finalCta, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, finalCta, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `https://godhans.com/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
+  const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -100,12 +110,12 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
   return (
     <>
       <Helmet>
-        <title>{`${title} | ${BUSINESS_INFO.name}`}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
         <meta name="robots" content="index, follow" />
         <meta name="build-marker" content="helmet-v2-2026-04-19" />
-        <meta property="og:title" content={`${title} | ${BUSINESS_INFO.name}`} />
+        <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
         <meta property="og:type" content="website" />
@@ -114,7 +124,7 @@ export default function ServicePage({ title, subtitle, slug, description, ctaTex
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
-        <meta name="twitter:title" content={`${title} | ${BUSINESS_INFO.name}`} />
+        <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={description} />
 
         <script type="application/ld+json">
