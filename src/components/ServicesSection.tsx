@@ -1,6 +1,36 @@
 import { Link } from "react-router-dom";
 import { SERVICES } from "../data/siteData";
 
+/**
+ * The gallery is one column below Tailwind's `sm` (640px) and three columns
+ * above it, inside `.container-brand` (max-width 1280px, padding clamped to
+ * 3rem). So past a 1280px viewport each cell is a fixed (1280 - 96) / 3 ≈ 394px
+ * and `33vw` would over-request by ~60%.
+ */
+const GALLERY_SIZES = "(min-width: 1280px) 394px, (min-width: 640px) 33vw, 100vw";
+
+/** Widths that scripts/gen-images.mjs emits, minus any above a master's own width. */
+const GALLERY = [
+  {
+    base: "multiple-pine-tree-removal-jacksonville-nc",
+    alt: "Tree removal in Jacksonville NC by Godhans Tree Company",
+    widths: [480, 768, 1024],
+  },
+  {
+    base: "stump-grinding-jacksonville-nc-godhans",
+    alt: "Stump grinding in Jacksonville NC by Godhans Tree Company",
+    widths: [480, 768, 1024],
+  },
+  {
+    base: "tree-trimming-jacksonville-nc-godhans",
+    alt: "Tree trimming in Jacksonville NC by Godhans Tree Company",
+    widths: [480, 768, 1024, 1280],
+  },
+];
+
+const srcSet = (photo: (typeof GALLERY)[number], ext: string) =>
+  photo.widths.map((w) => `/images/${photo.base}-${w}.${ext} ${w}w`).join(", ");
+
 export default function ServicesSection() {
   return (
     <section
@@ -76,22 +106,26 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* Job photo gallery */}
+        {/* Job photo gallery.
+            Variants come from scripts/gen-images.mjs, pre-cropped to the same 4/3 box
+            these render in. `widths` there must stay in sync with GALLERY_WIDTHS. */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-px mt-px" style={{ background: "#1A1A1A" }}>
-          {[
-            { src: "/images/multiple-pine-tree-removal-jacksonville-nc.webp", alt: "Tree removal in Jacksonville NC by Godhans Tree Company" },
-            { src: "/images/stump-grinding-jacksonville-nc-godhans.webp", alt: "Stump grinding in Jacksonville NC by Godhans Tree Company" },
-            { src: "/images/tree-trimming-jacksonville-nc-godhans.webp", alt: "Tree trimming in Jacksonville NC by Godhans Tree Company" },
-          ].map((photo) => (
-            <div key={photo.src} className="relative overflow-hidden" style={{ aspectRatio: "4/3", background: "#111111" }}>
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                className="absolute inset-0 w-full h-full object-cover"
-                loading="lazy"
-                width="400"
-                height="300"
-              />
+          {GALLERY.map((photo) => (
+            <div key={photo.base} className="relative overflow-hidden" style={{ aspectRatio: "4/3", background: "#111111" }}>
+              <picture>
+                <source type="image/avif" srcSet={srcSet(photo, "avif")} sizes={GALLERY_SIZES} />
+                <img
+                  src={`/images/${photo.base}-768.webp`}
+                  srcSet={srcSet(photo, "webp")}
+                  sizes={GALLERY_SIZES}
+                  alt={photo.alt}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width="1024"
+                  height="768"
+                />
+              </picture>
             </div>
           ))}
         </div>

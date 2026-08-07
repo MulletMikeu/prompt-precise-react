@@ -36,7 +36,15 @@ function ScrollToTop() {
   return null;
 }
 
+// Keyed to `pathname`, NOT dependency-free. Without a dependency array this
+// effect re-ran after *every* render of RootLayout — including the one Navbar
+// triggers on each scroll — tearing down the observer, re-running
+// querySelectorAll, and re-observing every target. Each observe() makes the
+// browser compute intersection geometry, which is what showed up as "Forced
+// reflow" during load. Re-scanning once per navigation is all this needs,
+// since new targets can only appear when a route swaps in.
 function AnimateOnScroll() {
+  const { pathname } = useLocation();
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -52,7 +60,7 @@ function AnimateOnScroll() {
     const targets = document.querySelectorAll(".animate-on-scroll");
     targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  });
+  }, [pathname]);
   return null;
 }
 

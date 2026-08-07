@@ -17,13 +17,18 @@ export default function HomePage() {
         <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://godhans.com/" />
-        {/* Preload the LCP hero image (AVIF) so it is discovered before the JS/CSS parse */}
+        {/* Preload the LCP hero image (AVIF) so it is discovered before the JS/CSS parse.
+            AVIF only, deliberately: a second preload for the webp ladder would be
+            honoured *in addition* by browsers that support both, downloading the hero
+            twice. Browsers without AVIF skip this on the `type` and fall through to the
+            <img srcset> in Hero.tsx, which is correctly sized even without the preload.
+            Widths must match the AVIF <source> in Hero.tsx or the preload is wasted. */}
         <link
           rel="preload"
           as="image"
           type="image/avif"
           href="/images/hero-godhans-tree-removal-jacksonville-nc-1280.avif"
-          imageSrcSet="/images/hero-godhans-tree-removal-jacksonville-nc-768.avif 768w, /images/hero-godhans-tree-removal-jacksonville-nc-1280.avif 1280w, /images/hero-godhans-tree-removal-jacksonville-nc-1920.avif 1920w"
+          imageSrcSet="/images/hero-godhans-tree-removal-jacksonville-nc-480.avif 480w, /images/hero-godhans-tree-removal-jacksonville-nc-768.avif 768w, /images/hero-godhans-tree-removal-jacksonville-nc-1280.avif 1280w, /images/hero-godhans-tree-removal-jacksonville-nc-1920.avif 1920w"
           imageSizes="100vw"
           fetchPriority="high"
         />

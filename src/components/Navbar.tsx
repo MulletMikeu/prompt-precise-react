@@ -7,8 +7,20 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
 
+  // The scrollY read is deferred into a rAF so it lands in the frame's own
+  // read phase instead of interleaving with style writes, and is coalesced to
+  // one read per frame no matter how many scroll events fire. Reading directly
+  // in the listener made every scroll event a layout-forcing read.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let queued = false;
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        setScrolled(window.scrollY > 40);
+      });
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
