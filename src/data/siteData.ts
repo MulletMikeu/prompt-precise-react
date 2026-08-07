@@ -19,7 +19,8 @@ export const BUSINESS = {
   hours: "Open 24 Hours — 7 Days a Week",
   hoursShort: "24/7",
   founded: 2013,
-  yearsInBusiness: new Date().getFullYear() - 2013,
+  // Build-time constant, not `new Date()` — see the `define` note in vite.config.ts.
+  yearsInBusiness: __BUILD_YEAR__ - 2013,
   reviewCount: 17,
   reviewRating: "5.0",
   primaryCity: "Jacksonville, NC",

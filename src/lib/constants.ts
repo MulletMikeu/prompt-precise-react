@@ -147,7 +147,8 @@ export const TRUST_ITEMS = [
   },
   {
     icon: "⭐",
-    title: `${new Date().getFullYear() - BUSINESS.founded}+ Years Experience`,
+    // Build-time constant, not `new Date()` — see the `define` note in vite.config.ts.
+    title: `${__BUILD_YEAR__ - BUSINESS.founded}+ Years Experience`,
     description: `Serving Jacksonville and surrounding areas since ${BUSINESS.founded} with expert tree care`,
   },
   {

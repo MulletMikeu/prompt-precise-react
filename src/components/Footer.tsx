@@ -15,7 +15,8 @@ const CITY_PAGE_MAP: Record<string, string> = {
 };
 
 export default function Footer() {
-  const year = new Date().getFullYear();
+  // Build-time constant, not `new Date()` — see the `define` note in vite.config.ts.
+  const year = __BUILD_YEAR__;
   return (
     <footer style={{ background: "#080808" }}>
       <div className="container-brand py-16 md:py-20">

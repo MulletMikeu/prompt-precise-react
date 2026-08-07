@@ -53,16 +53,24 @@ export default function Hero() {
       <div className="relative z-10 container-brand w-full pb-16 md:pb-24">
         <div className="max-w-4xl">
 
+          {/* No entrance animations in this block, deliberately. These elements
+              are prerendered into the static HTML, but each carried an inline
+              `opacity: 0` plus a fade-up utility, so none could paint until the
+              render-blocking CSS arrived, the keyframes registered, a 0.1–0.55s
+              delay elapsed and a 0.6s fade ran. An element at opacity 0 is not an
+              LCP candidate at all, so the whole hero — the LCP region — stayed
+              invisible through the part of the load that matters most. Below-fold
+              sections can still animate; this block must paint immediately.
+              (Don't name the utility class here: Tailwind scans comments too and
+              would regenerate the rule this removal is meant to drop.) */}
+
           {/* Label */}
-          <p className="label-red mb-6 animate-fade-up" style={{ animationDelay: "0.1s", opacity: 0 }}>
+          <p className="label-red mb-6">
             Veteran-Owned · Jacksonville, NC · Est. 2013
           </p>
 
           {/* H1 */}
-          <h1
-            className="text-display-2xl text-white mb-6 animate-fade-up"
-            style={{ animationDelay: "0.2s", opacity: 0 }}
-          >
+          <h1 className="text-display-2xl text-white mb-6">
             Tree Service
             <br />
             <span style={{ color: "#E5424F" }}>Jacksonville, NC</span>
@@ -72,8 +80,8 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p
-            className="font-body text-lg md:text-xl mb-10 max-w-2xl animate-fade-up"
-            style={{ color: "#C8C8C2", animationDelay: "0.35s", opacity: 0 }}
+            className="font-body text-lg md:text-xl mb-10 max-w-2xl"
+            style={{ color: "#C8C8C2" }}
           >
             Godhans takes on the jobs other companies won't. No job too big, no
             property too complex. We show up on time, work hard, and leave your
@@ -81,10 +89,7 @@ export default function Hero() {
           </p>
 
           {/* CTAs */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-up"
-            style={{ animationDelay: "0.45s", opacity: 0 }}
-          >
+          <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <Link to="/contact" className="btn-primary text-base sm:text-lg">
               Get Your Free Estimate
             </Link>
@@ -92,10 +97,7 @@ export default function Hero() {
           </div>
 
           {/* Trust bar */}
-          <div
-            className="flex flex-wrap gap-x-8 gap-y-3 animate-fade-up"
-            style={{ animationDelay: "0.55s", opacity: 0 }}
-          >
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
             {[
               "Fully Insured",
               "Free Estimates",
@@ -122,8 +124,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div
-        className="absolute bottom-8 right-8 z-10 hidden md:flex flex-col items-center gap-2 animate-fade-in"
-        style={{ animationDelay: "1s", opacity: 0 }}
+        className="absolute bottom-8 right-8 z-10 hidden md:flex flex-col items-center gap-2"
         aria-hidden="true"
       >
         <span
