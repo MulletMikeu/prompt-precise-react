@@ -16,7 +16,7 @@ const DESC = "Veteran-owned tree service in Jacksonville, NC. Tree removal, trim
  * the page — structured data must not assert anything a visitor cannot read.
  *
  * The cost question is deliberately absent even though the figures appear in the
- * hero prose and the comparison table: /tree-removal-cost-north-carolina already
+ * hero paragraph and the comparison table: /tree-removal-cost-north-carolina already
  * carries it as an FAQPage entry, and duplicating an FAQ across pages risks both
  * losing the rich result. The cost guide owns the structured version.
  */

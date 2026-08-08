@@ -74,7 +74,7 @@ export default function HeroCompare() {
             instead of swapping in a divs-and-roles copy. */}
         <div className="compare-wrap">
           <table className="compare">
-            <caption className="text-left font-body text-sm mb-4" style={{ color: "#888888" }}>
+            <caption>
               How Godhans compares to the typical tree company
             </caption>
             <thead>
@@ -88,7 +88,10 @@ export default function HeroCompare() {
               {COMPARISON.map((row) => (
                 <tr key={row.label}>
                   <th scope="row">{row.label}</th>
-                  <td className="compare-us">{row.us}</td>
+                  <td className="compare-us">
+                    <span className="tick" aria-hidden="true" />
+                    {row.us}
+                  </td>
                   <td className="compare-them">{row.them}</td>
                 </tr>
               ))}
@@ -105,32 +108,29 @@ export default function HeroCompare() {
         </div>
 
         {/* Trust chips */}
-        <ul className="flex flex-wrap gap-x-6 gap-y-3 mt-10 list-none p-0">
+        <ul className="flex flex-wrap gap-3 mt-10 list-none p-0">
           {chips.map((chip) => (
-            <li key={chip} className="flex items-center gap-2">
-              <span className="block w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#C41230" }} aria-hidden="true" />
-              <span className="font-body text-sm font-semibold uppercase tracking-wider" style={{ color: "#C8C8C2", letterSpacing: "0.08em" }}>
-                {chip}
-              </span>
+            <li key={chip} className="chip">
+              {chip}
             </li>
           ))}
         </ul>
 
         {/* Financing. Deliberately states no down payment, approval speed or
             payoff period — "flexible terms" and "ask us" is the whole promise. */}
-        <div className="mt-10 p-6 md:p-8" style={{ background: "#111111", borderLeft: "3px solid #C41230" }}>
-          <h2 className="text-display-md text-white mb-2">Get it done now. Pay over time.</h2>
-          <p className="font-body text-base" style={{ color: "#C8C8C2" }}>
+        <div className="financing-band mt-12">
+          <h2 className="mb-3">Get it done now. Pay over time.</h2>
+          <p className="font-body mb-6">
             In-house financing with flexible terms — we work with every customer's budget. Ask us.
           </p>
-          <Link to="/contact#financing" className="inline-block mt-4 font-body text-sm font-semibold underline underline-offset-2" style={{ color: "#E5424F" }}>
+          <Link to="/contact#financing" className="btn-on-red">
             How financing works
           </Link>
         </div>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 mt-10">
-          <Link to="/contact" className="btn-primary text-base sm:text-lg">
+          <Link to="/contact" className="btn-primary btn-hero">
             Schedule with Mike Today
           </Link>
           <a href={BUSINESS.phoneHref} className="btn-outline text-base sm:text-lg">

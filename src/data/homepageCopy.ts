@@ -1,7 +1,13 @@
 import { PRICING } from "./siteData";
 
 /**
- * The homepage hero's prose block, sentence by sentence.
+ * The homepage hero's paragraph, sentence by sentence.
+ *
+ * Careful with wording here: Tailwind's extractor scans comments, not just
+ * class attributes, so an ordinary English word that happens to match a utility
+ * or plugin name silently generates CSS. Naming the @tailwindcss/typography
+ * root class in a comment emitted its entire 12 KB ruleset onto the
+ * render-blocking stylesheet for a class nothing on the site uses.
  *
  * This is the single source for three surfaces that must agree word for word:
  * the rendered paragraph, the claims restated in fragment form by the comparison

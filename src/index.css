@@ -170,7 +170,7 @@
 
   .text-display-2xl {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-size: clamp(2.5rem, 6.6vw, 5.75rem);
     line-height: 0.92;
     font-weight: 800;
     text-transform: uppercase;
@@ -239,6 +239,85 @@
     padding: 0 clamp(1.25rem, 4vw, 3rem);
   }
 
+  /* ─── Homepage hero ─────────────────────────────────────
+     Presentation only. The hero must paint with first paint, so nothing here
+     introduces an animation, a transition on load, or an opacity that starts
+     at 0. Hover transitions are fine — they cannot delay the first frame. */
+
+  /* Full-bleed red band without changing the DOM: the banner still sits inside
+     .container-brand, so it is pulled out to the viewport edges and then padded
+     back so its text re-aligns with the 1280px content column. The hero section
+     sets overflow-hidden, which absorbs the scrollbar width that 100vw ignores. */
+  .financing-band {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    width: 100vw;
+    background: var(--red);
+    padding-block: clamp(2rem, 4vw, 3.25rem);
+    padding-inline: calc(clamp(1.25rem, 4vw, 3rem) + max(0px, (100vw - 1280px) / 2));
+  }
+
+  .financing-band h2 {
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.98;
+    font-size: clamp(2rem, 4.6vw, 3.5rem);
+  }
+
+  .financing-band p {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    max-width: 46ch;
+  }
+
+  /* White outlined button, inverted from .btn-outline for the red ground. */
+  .btn-on-red {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #fff;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    padding: 0.8rem 1.75rem;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-on-red:hover {
+    background: #fff;
+    color: var(--red);
+  }
+
+  /* Primary CTA, scaled up for the hero only — .btn-primary is shared with
+     every other page and must not grow there. */
+  .btn-primary.btn-hero {
+    font-size: clamp(1.0625rem, 1.8vw, 1.35rem);
+    padding: 1.15rem 2.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Bordered pills, condensed and letter-spaced. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--cream-dark);
+    border: 1px solid var(--gray-light);
+    padding: 0.55rem 1.1rem;
+    white-space: nowrap;
+  }
+
   /* ─── Homepage comparison table ─────────────────────────
      Stays a real <table> at every width. Below `sm` each row restacks into a
      block with its row header visible, rather than swapping in a divs-and-roles
@@ -246,49 +325,90 @@
      Only the visual box changes. */
   .compare {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0 0.75rem;
     font-family: var(--font-body);
+  }
+
+  /* Kicker treatment, matching .label-red rather than reading as body text. */
+  .compare caption {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red-text);
+    text-align: left;
+    padding-bottom: 0.75rem;
   }
 
   .compare th,
   .compare td {
     text-align: left;
     vertical-align: top;
-    padding: 1rem 1.25rem;
-    border-top: 1px solid var(--gray-light);
+    padding: 1.35rem 1.5rem;
   }
 
   .compare thead th {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--cream);
-    border-top: 0;
+    color: var(--muted);
+    padding-block: 0 0.25rem;
+  }
+
+  .compare thead th:nth-of-type(1) {
+    color: var(--red-text);
   }
 
   .compare tbody th {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--cream-dark);
     white-space: nowrap;
     width: 1%;
+    background: var(--gray-dark);
   }
 
+  /* Godhans column: brighter, larger, tinted, with a red edge. */
   .compare-us {
     color: var(--cream);
-    background: #101010;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    background: rgba(196, 18, 48, 0.09);
+    box-shadow: inset 3px 0 0 var(--red);
   }
 
   .compare-them {
     color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.55;
+    background: #0E0E0E;
+  }
+
+  /* Decorative tick. Masked SVG rather than a glyph, so there is no text for a
+     screen reader to announce even if it ignores aria-hidden. */
+  .tick {
+    display: inline-block;
+    width: 1.05em;
+    height: 1.05em;
+    margin-right: 0.55rem;
+    vertical-align: -0.16em;
+    background-color: var(--red-text);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center / contain;
   }
 
   @media (max-width: 639px) {
+    .compare {
+      border-spacing: 0 1rem;
+    }
+
     .compare thead {
       position: absolute;
       width: 1px;
@@ -301,17 +421,29 @@
 
     .compare tbody tr {
       display: block;
-      border-top: 1px solid var(--gray-light);
-      padding: 0.5rem 0;
+      background: var(--gray-dark);
     }
 
     .compare tbody th,
     .compare td {
       display: block;
       width: auto;
-      border-top: 0;
-      padding: 0.5rem 0;
       white-space: normal;
+    }
+
+    .compare tbody th {
+      padding: 1rem 1.15rem 0.5rem;
+      background: transparent;
+      color: var(--red-text);
+    }
+
+    .compare-us,
+    .compare-them {
+      padding: 0.9rem 1.15rem;
+    }
+
+    .compare-them {
+      background: transparent;
     }
 
     /* Column headers are hidden on mobile, so each cell states its own side. */
@@ -321,9 +453,9 @@
       font-family: var(--font-display);
       font-weight: 700;
       font-size: 0.7rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.35rem;
     }
 
     .compare-us::before {
@@ -334,11 +466,6 @@
     .compare-them::before {
       content: "The typical tree company";
       color: var(--muted);
-    }
-
-    .compare-us {
-      background: #101010;
-      padding: 0.75rem 1rem;
     }
   }
 
