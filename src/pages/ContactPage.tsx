@@ -87,6 +87,23 @@ export default function ContactPage() {
           </div>
         </section>
 
+        {/* Target of the homepage hero's "How financing works" link. Wording is
+            intentionally identical to the homepage banner and to PROSE.financing:
+            no down payment, approval speed, or payoff period is stated here or
+            anywhere else on the site, and none should be added. */}
+        <section id="financing" className="py-16" style={{ background: "#111111" }}>
+          <div className="max-w-4xl mx-auto px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-white mb-4">How financing works</h2>
+            <p className="text-base mb-4" style={{ color: "#C8C8C2" }}>
+              In-house financing with flexible terms — we work with every customer's budget. Ask us.
+            </p>
+            <p className="text-base" style={{ color: "#888888" }}>
+              Mention financing when you call or send your estimate request and we'll walk you
+              through the options for your job.
+            </p>
+          </div>
+        </section>
+
         <section className="py-16" style={{ background: "#C41230" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">24/7 Emergency Tree Service</h2>

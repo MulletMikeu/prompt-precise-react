@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { SERVICES } from "../data/siteData";
+import { BUSINESS, SERVICES } from "../data/siteData";
 
 /**
  * The gallery is one column below Tailwind's `sm` (640px) and three columns
@@ -100,7 +100,11 @@ export default function ServicesSection() {
                 className="inline-flex items-center gap-2 font-display font-bold text-sm uppercase tracking-widest transition-all duration-200 group-hover:gap-4"
                 style={{ color: "#E5424F", letterSpacing: "0.1em" }}
               >
-                Learn More <span aria-hidden="true">→</span>
+                {/* Keyword anchor rather than "Learn More". The whole card is a
+                    <Link>, so a link inside the description would be nested
+                    anchors — invalid HTML — and this is the one place the card's
+                    visible anchor text can carry the service + geo. */}
+                {service.name} in {BUSINESS.primaryCity} <span aria-hidden="true">→</span>
               </span>
             </Link>
           ))}

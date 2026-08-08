@@ -239,6 +239,109 @@
     padding: 0 clamp(1.25rem, 4vw, 3rem);
   }
 
+  /* ─── Homepage comparison table ─────────────────────────
+     Stays a real <table> at every width. Below `sm` each row restacks into a
+     block with its row header visible, rather than swapping in a divs-and-roles
+     copy — assistive tech and crawlers see identical semantics either way.
+     Only the visual box changes. */
+  .compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+  }
+
+  .compare th,
+  .compare td {
+    text-align: left;
+    vertical-align: top;
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--gray-light);
+  }
+
+  .compare thead th {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    border-top: 0;
+  }
+
+  .compare tbody th {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    width: 1%;
+  }
+
+  .compare-us {
+    color: var(--cream);
+    background: #101010;
+  }
+
+  .compare-them {
+    color: var(--muted);
+  }
+
+  @media (max-width: 639px) {
+    .compare thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .compare tbody tr {
+      display: block;
+      border-top: 1px solid var(--gray-light);
+      padding: 0.5rem 0;
+    }
+
+    .compare tbody th,
+    .compare td {
+      display: block;
+      width: auto;
+      border-top: 0;
+      padding: 0.5rem 0;
+      white-space: normal;
+    }
+
+    /* Column headers are hidden on mobile, so each cell states its own side. */
+    .compare-us::before,
+    .compare-them::before {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .compare-us::before {
+      content: "Godhans";
+      color: var(--red-text);
+    }
+
+    .compare-them::before {
+      content: "The typical tree company";
+      color: var(--muted);
+    }
+
+    .compare-us {
+      background: #101010;
+      padding: 0.75rem 1rem;
+    }
+  }
+
   .divider-red {
     display: block;
     width: 3rem;

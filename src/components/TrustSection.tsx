@@ -1,21 +1,12 @@
 import { BUSINESS, TRUST_STATS } from "../data/siteData";
 
+// Insured / 24-7 Response / Free Estimates were dropped when the homepage hero
+// gained the comparison table and trust-chip strip, which state all three above
+// the fold. What is left is what the hero does NOT already say.
 const TRUST_BLOCKS = [
-  {
-    label: "Insured — Every Machine Covered",
-    body: `$2M general liability and workers' comp on every job — and every machine, including the spider lift, is individually insured. If a contractor's equipment isn't on the policy and it damages your home, you hold the bill. Ours is covered.`,
-  },
   {
     label: "Veteran-Owned & Operated",
     body: `Founded by Michael Godbersen, a veteran who brought military discipline to the tree care industry. We show up. We do the work. We leave it right.`,
-  },
-  {
-    label: "24/7 Emergency Response",
-    body: `Storms and emergencies don't wait for business hours. Neither do we. Call any time — nights, weekends, holidays — and we answer.`,
-  },
-  {
-    label: "Free Estimates, No Pressure",
-    body: `We show up, assess the job, and give you a straight honest quote at no cost. No obligation. No sales games. Ever.`,
   },
   {
     label: "No Subcontractors",

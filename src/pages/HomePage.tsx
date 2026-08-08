@@ -1,5 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
-import Hero from "../components/Hero";
+import HeroCompare from "../components/HeroCompare";
+import { PROSE } from "../data/homepageCopy";
 import ServicesSection from "../components/ServicesSection";
 import TrustSection from "../components/TrustSection";
 import VideoSection from "../components/VideoSection";
@@ -10,6 +11,32 @@ import CTABanner from "../components/CTABanner";
 const TITLE = "Tree Service Jacksonville NC | Godhans Tree Company";
 const DESC = "Veteran-owned tree service in Jacksonville, NC. Tree removal, trimming, stump grinding & 24/7 emergency service. Fully insured. Free estimates.";
 
+/**
+ * Answers are verbatim sentences from PROSE (src/data/homepageCopy.ts), rendered on
+ * the page — structured data must not assert anything a visitor cannot read.
+ *
+ * The cost question is deliberately absent even though the figures appear in the
+ * hero prose and the comparison table: /tree-removal-cost-north-carolina already
+ * carries it as an FAQPage entry, and duplicating an FAQ across pages risks both
+ * losing the rich result. The cost guide owns the structured version.
+ */
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Does North Carolina license tree contractors?",
+      acceptedAnswer: { "@type": "Answer", text: PROSE.license },
+    },
+    {
+      "@type": "Question",
+      name: "Does Godhans offer financing?",
+      acceptedAnswer: { "@type": "Answer", text: PROSE.financing },
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <>
@@ -17,21 +44,9 @@ export default function HomePage() {
         <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://godhans.com/" />
-        {/* Preload the LCP hero image (AVIF) so it is discovered before the JS/CSS parse.
-            AVIF only, deliberately: a second preload for the webp ladder would be
-            honoured *in addition* by browsers that support both, downloading the hero
-            twice. Browsers without AVIF skip this on the `type` and fall through to the
-            <img srcset> in Hero.tsx, which is correctly sized even without the preload.
-            Widths must match the AVIF <source> in Hero.tsx or the preload is wasted. */}
-        <link
-          rel="preload"
-          as="image"
-          type="image/avif"
-          href="/images/hero-godhans-tree-removal-jacksonville-nc-1280.avif"
-          imageSrcSet="/images/hero-godhans-tree-removal-jacksonville-nc-480.avif 480w, /images/hero-godhans-tree-removal-jacksonville-nc-768.avif 768w, /images/hero-godhans-tree-removal-jacksonville-nc-1280.avif 1280w, /images/hero-godhans-tree-removal-jacksonville-nc-1920.avif 1920w"
-          imageSizes="100vw"
-          fetchPriority="high"
-        />
+        {/* No image preload: the hero no longer has a background photo, so the LCP
+            element is the display H2. The face that renders it (Barlow Condensed
+            800) is preloaded in index.html and now carries the LCP directly. */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:description" content={DESC} />
@@ -43,10 +58,11 @@ export default function HomePage() {
         <meta name="twitter:image" content="https://godhans.com/og-image-v2.jpg" />
         <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESC} />
+        <script type="application/ld+json">{JSON.stringify(FAQ_SCHEMA)}</script>
       </Helmet>
 
       <main id="main-content">
-        <Hero />
+        <HeroCompare />
         <ServicesSection />
         <TrustSection />
         <VideoSection />
