@@ -26,7 +26,7 @@ const JAMES_PHOTO_HEIGHT = 1800;
 // === END EDITABLE PHOTO FIELDS ===
 
 const PAGE_URL = 'https://godhans.com/about';
-const OG_IMAGE = 'https://godhans.com/og-image.jpg';
+const OG_IMAGE = 'https://godhans.com/og-image-v2.jpg';
 
 // === EDITABLE CONTENT FIELDS ===
 // Replace the placeholder strings below with the final copy.

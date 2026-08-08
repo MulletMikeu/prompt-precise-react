@@ -21,7 +21,7 @@ const businessSchema = {
   legalName: BUSINESS.legalName,
   url: 'https://godhans.com',
   logo: 'https://godhans.com/logo.png',
-  image: 'https://godhans.com/og-image.jpg',
+  image: 'https://godhans.com/og-image-v2.jpg',
   description:
     'Veteran-owned tree service in Jacksonville, NC specializing in tree removal, trimming, stump grinding, and emergency storm cleanup. Locally owned, fully insured with every machine individually covered, free estimates, 24/7 emergency response.',
   telephone: BUSINESS.phoneRaw,

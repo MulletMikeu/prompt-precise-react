@@ -88,11 +88,11 @@ export default function LocationPage({ city }: LocationPageProps) {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content="https://godhans.com/og-image.jpg" />
+        <meta property="og:image" content="https://godhans.com/og-image-v2.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://godhans.com/og-image.jpg" />
+        <meta name="twitter:image" content="https://godhans.com/og-image-v2.jpg" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
       </Helmet>
