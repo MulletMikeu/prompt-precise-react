@@ -42,31 +42,86 @@ const AVIF = { quality: 50, effort: 6 };
  * `aspect` pre-crops to the box the image actually renders in. The service
  * grid photos sit in a hard 4/3 `object-cover` frame, so the pixels outside
  * that crop are decoded and thrown away on every visit — cutting them in the
- * encoder is free bytes and makes the width/height attributes exact. The hero
- * is left uncropped: its visible crop shifts with the viewport.
+ * encoder is free bytes and makes the width/height attributes exact.
+ *
+ * `position` picks which part survives that crop, defaulting to centre. It
+ * exists because a centred crop throws away the subject on a few of these:
+ * the topped spar sits in the upper third of a portrait frame, and the stump
+ * grinder's remote operator stands at the far left of a very wide one.
+ *
+ * `extract` is an explicit pre-crop rect in SOURCE pixels, applied before the
+ * resize, for the cases where the discrete gravities are too coarse — sharp
+ * offers top/centre/left and nothing in between.
  */
 const IMAGES = [
   {
-    base: "hero-godhans-tree-removal-jacksonville-nc",
-    src: "public/images/hero-godhans-tree-removal-jacksonville-nc.webp",
-    widths: [480, 768, 1280, 1920],
+    // 16:9 rather than the 4:3 default: this one fills the why-us band, and a
+    // centred 16:9 window keeps the overhead lift bucket that a taller crop
+    // would leave in but a 16:6 band would have cut.
+    base: "godhans-crew-skid-steer-jacksonville-nc",
+    src: "scripts/image-src/IMG_2034.JPEG",
+    widths: [480, 768, 1024, 1280],
+    aspect: [16, 9],
   },
   {
-    base: "multiple-pine-tree-removal-jacksonville-nc",
-    src: "public/images/multiple-pine-tree-removal-jacksonville-nc.webp",
+    base: "spider-lift-full-extension-over-house-jacksonville-nc",
+    src: "scripts/image-src/IMG_2031.JPEG",
     widths: [480, 768, 1024, 1280],
     aspect: [4, 3],
   },
   {
-    base: "stump-grinding-jacksonville-nc-godhans",
-    src: "src/assets/stump-grinding-jacksonville-nc-godhans.jpg",
+    // Portrait source; the topped spar and its rigging sit in the upper third,
+    // so a centred 4:3 crop would land on parked cars and asphalt.
+    base: "pine-spar-rigging-tree-removal-jacksonville-nc",
+    src: "scripts/image-src/IMG_2150.JPEG",
+    widths: [480, 768, 1024, 1280],
+    aspect: [4, 3],
+    // A plain "top" gravity clipped the red lift out of the lower background;
+    // dropping the window 150px keeps the spar, its rigging line AND the lift.
+    extract: { left: 0, top: 150, width: 1536, height: 1152 },
+  },
+  {
+    // 2436x1074 after the video-scrubber overlay was cropped off at import.
+    // Very wide, with the remote operator at the far left — centre would cut him.
+    base: "stump-grinding-operator-jacksonville-nc",
+    src: "scripts/image-src/IMG_1730.JPEG",
+    widths: [480, 768, 1024, 1280],
+    aspect: [4, 3],
+    position: "left",
+  },
+  {
+    base: "spider-lift-tight-backyard-jacksonville-nc",
+    src: "scripts/image-src/IMG_2205.JPEG",
     widths: [480, 768, 1024, 1280],
     aspect: [4, 3],
   },
   {
-    base: "tree-trimming-jacksonville-nc-godhans",
-    src: "src/assets/tree-trimming-jacksonville-nc-godhans-1600.jpg",
-    widths: [480, 768, 1024, 1280],
+    // Source is already exactly 3:4, so this aspect is a no-op guard rather
+    // than a crop — it just pins the ratio if the master is ever replaced.
+    base: "michael-godbersen-climbing-jacksonville-nc",
+    src: "scripts/image-src/IMG_1725.JPEG",
+    widths: [480, 768, 1024],
+    aspect: [3, 4],
+  },
+  {
+    // Square crop of the same frame for the small CTA thumbnail. Top-anchored:
+    // his face is in the upper half of the portrait original.
+    base: "michael-godbersen-thumb-jacksonville-nc",
+    src: "scripts/image-src/IMG_1725.JPEG",
+    widths: [160, 320],
+    aspect: [1, 1],
+    position: "top",
+  },
+  {
+    base: "oak-limbs-over-roof-before-trimming-jacksonville-nc",
+    src: "scripts/image-src/IMG_1224.JPEG",
+    widths: [480, 768, 1024],
+    aspect: [4, 3],
+  },
+  {
+    base: "limbs-cleared-after-trimming-jacksonville-nc",
+    src: "scripts/image-src/IMG_1225.JPEG",
+    widths: [480, 768, 1024],
     aspect: [4, 3],
   },
 ];
@@ -121,9 +176,14 @@ async function main() {
         // differently and visibly jump when the browser swapped one in. Centre
         // also matches the CSS `object-cover` default these replaced, so the
         // crop is unchanged from what ships today.
-        ...(height ? { height, fit: "cover", position: "centre" } : {}),
+        ...(height
+          ? { height, fit: "cover", position: image.position ?? "centre" }
+          : {}),
         withoutEnlargement: true,
       };
+
+      // Explicit pre-crop, in source pixels, applied before the resize.
+      const extract = image.extract ?? null;
 
       for (const [ext, opts] of [
         ["avif", AVIF],
@@ -137,6 +197,7 @@ async function main() {
             JSON.stringify({
               src: image.src,
               mtime: fs.statSync(srcPath).mtimeMs,
+              extract,
               resize,
               ext,
               opts,
@@ -145,7 +206,9 @@ async function main() {
           .digest("hex");
 
         if (FORCE || cache[name] !== key || !fs.existsSync(outPath)) {
-          await sharp(srcPath).resize(resize).toFormat(ext, opts).toFile(outPath);
+          const pipeline = sharp(srcPath);
+          if (extract) pipeline.extract(extract);
+          await pipeline.resize(resize).toFormat(ext, opts).toFile(outPath);
           built++;
         }
         nextCache[name] = key;

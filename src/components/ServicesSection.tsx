@@ -12,18 +12,18 @@ const GALLERY_SIZES = "(min-width: 1280px) 394px, (min-width: 640px) 33vw, 100vw
 /** Widths that scripts/gen-images.mjs emits, minus any above a master's own width. */
 const GALLERY = [
   {
-    base: "multiple-pine-tree-removal-jacksonville-nc",
-    alt: "Tree removal in Jacksonville NC by Godhans Tree Company",
-    widths: [480, 768, 1024],
+    base: "pine-spar-rigging-tree-removal-jacksonville-nc",
+    alt: "Sectioned pine spar rigged for lowering during a tree removal in Jacksonville, NC",
+    widths: [480, 768, 1024, 1280],
   },
   {
-    base: "stump-grinding-jacksonville-nc-godhans",
-    alt: "Stump grinding in Jacksonville NC by Godhans Tree Company",
-    widths: [480, 768, 1024],
+    base: "stump-grinding-operator-jacksonville-nc",
+    alt: "Godhans operator grinding a large oak stump in Jacksonville, NC",
+    widths: [480, 768, 1024, 1280],
   },
   {
-    base: "tree-trimming-jacksonville-nc-godhans",
-    alt: "Tree trimming in Jacksonville NC by Godhans Tree Company",
+    base: "spider-lift-tight-backyard-jacksonville-nc",
+    alt: "Compact spider lift set up in a tight fenced backyard for tree removal in Jacksonville, NC",
     widths: [480, 768, 1024, 1280],
   },
 ];
@@ -108,6 +108,30 @@ export default function ServicesSection() {
               </span>
             </Link>
           ))}
+
+          {/* Sixth cell. The grid is 3 columns and SERVICES has five entries, so
+              this slot was empty at lg. Styled to match a card — same background,
+              same 1px seam — with the photo filling it rather than a text block. */}
+          <div className="relative overflow-hidden" style={{ background: "#0A0A0A", aspectRatio: "4/3" }}>
+            <picture className="absolute inset-0 block w-full h-full">
+              <source
+                type="image/avif"
+                srcSet="/images/spider-lift-full-extension-over-house-jacksonville-nc-480.avif 480w, /images/spider-lift-full-extension-over-house-jacksonville-nc-768.avif 768w, /images/spider-lift-full-extension-over-house-jacksonville-nc-1024.avif 1024w, /images/spider-lift-full-extension-over-house-jacksonville-nc-1280.avif 1280w"
+                sizes={GALLERY_SIZES}
+              />
+              <img
+                src="/images/spider-lift-full-extension-over-house-jacksonville-nc-768.webp"
+                srcSet="/images/spider-lift-full-extension-over-house-jacksonville-nc-480.webp 480w, /images/spider-lift-full-extension-over-house-jacksonville-nc-768.webp 768w, /images/spider-lift-full-extension-over-house-jacksonville-nc-1024.webp 1024w, /images/spider-lift-full-extension-over-house-jacksonville-nc-1280.webp 1280w"
+                sizes={GALLERY_SIZES}
+                alt="90-foot spider lift fully extended for tree removal over a house in Onslow County, NC"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="768"
+              />
+            </picture>
+          </div>
         </div>
 
         {/* Job photo gallery.

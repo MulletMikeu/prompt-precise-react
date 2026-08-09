@@ -128,8 +128,30 @@ export default function HeroCompare() {
           </Link>
         </div>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-10">
+        {/* CTAs. The thumbnail is 64px with explicit dimensions and a fixed-size
+            box, so it reserves its space immediately and cannot shift the row —
+            and it sits inline with the buttons rather than above them, so the
+            CTAs do not move down. 8 KiB at 2x, lazy. */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-10">
+          <picture className="hidden sm:block flex-shrink-0">
+            <source
+              type="image/avif"
+              srcSet="/images/michael-godbersen-thumb-jacksonville-nc-160.avif 160w, /images/michael-godbersen-thumb-jacksonville-nc-320.avif 320w"
+              sizes="64px"
+            />
+            <img
+              src="/images/michael-godbersen-thumb-jacksonville-nc-160.webp"
+              srcSet="/images/michael-godbersen-thumb-jacksonville-nc-160.webp 160w, /images/michael-godbersen-thumb-jacksonville-nc-320.webp 320w"
+              sizes="64px"
+              width={64}
+              height={64}
+              alt="Michael Godbersen of Godhans Tree Company"
+              loading="lazy"
+              decoding="async"
+              className="rounded-full object-cover"
+              style={{ width: "64px", height: "64px", border: "2px solid #C41230" }}
+            />
+          </picture>
           <Link to="/contact" className="btn-primary btn-hero">
             Schedule with Mike Today
           </Link>

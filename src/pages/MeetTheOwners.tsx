@@ -184,6 +184,36 @@ export default function MeetTheOwners() {
               )}
             </section>
 
+            {/* Michael on the rope — same treatment as the other owner photos. */}
+            <section aria-labelledby="michael-climbing-heading" className="mb-8">
+              <h2 id="michael-climbing-heading" className="sr-only">Michael climbing</h2>
+              <figure className="m-0">
+                <div
+                  className="relative w-full overflow-hidden rounded-lg bg-gray-900"
+                  style={{ aspectRatio: "3 / 4" }}
+                >
+                  <picture className="absolute inset-0 block h-full w-full">
+                    <source
+                      type="image/avif"
+                      srcSet="/images/michael-godbersen-climbing-jacksonville-nc-480.avif 480w, /images/michael-godbersen-climbing-jacksonville-nc-768.avif 768w, /images/michael-godbersen-climbing-jacksonville-nc-1024.avif 1024w"
+                      sizes="(min-width: 768px) 768px, 100vw"
+                    />
+                    <img
+                      src="/images/michael-godbersen-climbing-jacksonville-nc-768.webp"
+                      srcSet="/images/michael-godbersen-climbing-jacksonville-nc-480.webp 480w, /images/michael-godbersen-climbing-jacksonville-nc-768.webp 768w, /images/michael-godbersen-climbing-jacksonville-nc-1024.webp 1024w"
+                      sizes="(min-width: 768px) 768px, 100vw"
+                      width={768}
+                      height={1024}
+                      alt="Michael Godbersen of Godhans Tree Company climbing high above Jacksonville, NC rooftops"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </picture>
+                </div>
+              </figure>
+            </section>
+
             {/* James — Owner Photo */}
             <section aria-labelledby="james-photo-heading" className="mb-8">
               <h2 id="james-photo-heading" className="sr-only">Photo of James</h2>

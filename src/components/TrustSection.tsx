@@ -94,26 +94,26 @@ export default function TrustSection() {
           ))}
         </div>
 
-        {/* Full-width job photo */}
-        <div className="mt-px relative overflow-hidden" style={{ aspectRatio: "16/6", background: "#111111" }}>
+        {/* Why-us band photo. 16:9 to match the generated crop exactly, so the
+            width/height attributes are honest and object-cover has nothing to
+            trim — no CLS regardless of when it loads. */}
+        <div className="mt-px relative overflow-hidden" style={{ aspectRatio: "16/9", background: "#111111" }}>
           <picture className="absolute inset-0 block w-full h-full">
             <source
               type="image/avif"
-              srcSet="/images/yard-restoration-after-tree-removal-godhans-640.avif 640w, /images/yard-restoration-after-tree-removal-godhans-1024.avif 1024w, /images/yard-restoration-after-tree-removal-godhans-1200.avif 1200w"
-              sizes="(min-width: 1280px) 1184px, 100vw"
-            />
-            <source
-              type="image/webp"
-              srcSet="/images/yard-restoration-after-tree-removal-godhans-640.webp 640w, /images/yard-restoration-after-tree-removal-godhans-1024.webp 1024w, /images/yard-restoration-after-tree-removal-godhans-1200.webp 1200w"
+              srcSet="/images/godhans-crew-skid-steer-jacksonville-nc-480.avif 480w, /images/godhans-crew-skid-steer-jacksonville-nc-768.avif 768w, /images/godhans-crew-skid-steer-jacksonville-nc-1024.avif 1024w, /images/godhans-crew-skid-steer-jacksonville-nc-1280.avif 1280w"
               sizes="(min-width: 1280px) 1184px, 100vw"
             />
             <img
-              src="/images/yard-restoration-after-tree-removal-godhans.webp"
-              alt="Godhans Tree Company large tree removal job in Jacksonville NC"
+              src="/images/godhans-crew-skid-steer-jacksonville-nc-768.webp"
+              srcSet="/images/godhans-crew-skid-steer-jacksonville-nc-480.webp 480w, /images/godhans-crew-skid-steer-jacksonville-nc-768.webp 768w, /images/godhans-crew-skid-steer-jacksonville-nc-1024.webp 1024w, /images/godhans-crew-skid-steer-jacksonville-nc-1280.webp 1280w"
+              sizes="(min-width: 1280px) 1184px, 100vw"
+              alt="Godhans crew running a skid steer and spider lift during a tree removal in Jacksonville, NC"
               className="w-full h-full object-cover"
               loading="lazy"
-              width="1200"
-              height="960"
+              decoding="async"
+              width="1280"
+              height="720"
             />
           </picture>
         </div>

@@ -31,6 +31,65 @@ export default function TreeTrimming() {
         showCta: true,
       }}
       quickAnswer="Tree trimming in Jacksonville, NC helps improve tree health, safety, and appearance. Regular trimming removes dead or overgrown branches, reduces storm risk, and keeps your property looking its best. We provide safe, affordable trimming with free estimates."
+      /* Before/after proof block. Rendered through ServicePage's existing
+         caseStudy slot (after the sections, before the FAQ), so the page's
+         title, meta and heading structure are untouched. Both frames are
+         generated at 4:3 with explicit dimensions, so the pair lines up and
+         neither can shift layout. */
+      caseStudy={
+        /* No heading element here on purpose: the block is additive, and adding
+           an h2 would alter this page's heading outline. The section is named
+           with aria-label instead, which gives assistive tech a landmark name
+           without introducing a document heading. */
+        <section aria-label="Before and after: limbs cleared off a roof" className="max-w-3xl mx-auto">
+          <p className="text-gray-300 leading-relaxed text-lg mb-8">
+            Insurance carriers often require limbs cleared from over the roof — this is that job, done.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                base: "oak-limbs-over-roof-before-trimming-jacksonville-nc",
+                label: "Before",
+                alt: "Oak limbs overhanging a roof before insurance-required trimming in Jacksonville, NC",
+              },
+              {
+                base: "limbs-cleared-after-trimming-jacksonville-nc",
+                label: "After (shot from the lift)",
+                alt: "Aerial view after trimming showing limbs cleared back behind the roofline in Jacksonville, NC",
+              },
+            ].map((shot) => (
+              <figure key={shot.base} className="m-0">
+                <div
+                  className="relative w-full overflow-hidden rounded-lg border-2 border-gray-800 bg-gray-900"
+                  style={{ aspectRatio: "4 / 3" }}
+                >
+                  <picture className="absolute inset-0 block h-full w-full">
+                    <source
+                      type="image/avif"
+                      srcSet={`/images/${shot.base}-480.avif 480w, /images/${shot.base}-768.avif 768w, /images/${shot.base}-1024.avif 1024w`}
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                    />
+                    <img
+                      src={`/images/${shot.base}-768.webp`}
+                      srcSet={`/images/${shot.base}-480.webp 480w, /images/${shot.base}-768.webp 768w, /images/${shot.base}-1024.webp 1024w`}
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                      width={1024}
+                      height={768}
+                      alt={shot.alt}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </picture>
+                </div>
+                <figcaption className="mt-3 font-display font-bold uppercase tracking-widest text-sm" style={{ color: "#E5424F", letterSpacing: "0.1em" }}>
+                  {shot.label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      }
       sections={[
         {
           heading: "Expert Tree Trimming Services in Jacksonville, NC",
