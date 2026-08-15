@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { VIDEOS } from "../data/siteData";
+import { BUSINESS, VIDEOS } from "../data/siteData";
 
 function VideoModal({ videoId, title, onClose }: { videoId: string; title: string; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -175,7 +175,7 @@ export default function VideoSection() {
 
         {/* YouTube link */}
         <div className="mt-8 text-center">
-          <a href="https://www.youtube.com/@godhans7945/" target="_blank" rel="noopener noreferrer" className="font-display font-bold text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#E5424F")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Watch More on YouTube →</a>
+          <a href={BUSINESS.social.youtube} target="_blank" rel="noopener noreferrer" className="font-display font-bold text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#E5424F")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Watch More on YouTube →</a>
         </div>
       </div>
 

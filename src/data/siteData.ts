@@ -27,7 +27,7 @@ export const BUSINESS = {
   county: "Onslow County",
   social: {
     facebook: "https://www.facebook.com/profile.php?id=100057407111124",
-    youtube: "https://www.youtube.com/@godhans7945/",
+    youtube: "https://www.youtube.com/@Godhanstree",
   },
   gbpUrl: "https://g.page/godhans",
   credentials: [
