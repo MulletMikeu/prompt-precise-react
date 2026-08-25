@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Per-developer Claude Code settings (permission grants etc.) — machine-local,
+# not shared. The committed .claude/settings.json stays tracked.
+.claude/settings.local.json

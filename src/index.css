@@ -570,6 +570,64 @@
     border-top-color: var(--gray-light);
   }
 
+  /* Tailwind's preflight sets `color: inherit` on form controls, and body is
+     --cream for the dark site, so every control in the quote card inherited
+     near-white onto the card's white background: typed text and caret both
+     invisible at roughly 1.04:1. The placeholder has its own Tailwind grey and
+     stayed legible, which is what kept this hidden — an empty form looks fine
+     and only breaks once you type.
+
+     Scoped to #quote-form, not .quote-form-neutral: that wrapper only exists on
+     /contact, but QuickQuoteForm renders this section on the service and guide
+     pages too, and they were equally affected. The id is on the component's own
+     section, so every instance is covered. Specificity (1,0,1) beats preflight
+     without !important.
+
+     Colours are Tailwind greys rather than brand tokens because the card is a
+     deliberate light island (bg-white, border-gray-200, text-gray-700 labels);
+     values sit a step darker than their labels, placeholders a step lighter. */
+  #quote-form input,
+  #quote-form textarea,
+  #quote-form select {
+    color: #111827;
+    caret-color: #111827;
+  }
+
+  #quote-form input:focus,
+  #quote-form textarea:focus,
+  #quote-form select:focus {
+    color: #111827;
+    caret-color: #111827;
+  }
+
+  #quote-form option {
+    color: #111827;
+    background: #FFFFFF;
+  }
+
+  /* gray-500 rather than preflight's gray-400: 4.8:1 on white clears AA, and
+     still reads clearly as a placeholder next to the gray-900 value. */
+  #quote-form input::placeholder,
+  #quote-form textarea::placeholder {
+    color: #6B7280;
+    opacity: 1;
+  }
+
+  /* Chrome paints autofill through its own overlay: background-color is ignored
+     and the text colour comes from -webkit-text-fill-color, so neither the rule
+     above nor a plain background would reach it. The inset shadow is the only
+     way to hold the field white. */
+  #quote-form input:-webkit-autofill,
+  #quote-form input:-webkit-autofill:hover,
+  #quote-form input:-webkit-autofill:focus,
+  #quote-form select:-webkit-autofill,
+  #quote-form select:-webkit-autofill:hover,
+  #quote-form select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #111827;
+    caret-color: #111827;
+    box-shadow: 0 0 0 1000px #FFFFFF inset;
+  }
+
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--gray-dark); }
   ::-webkit-scrollbar-thumb { background: var(--gray-light); border-radius: 3px; }
