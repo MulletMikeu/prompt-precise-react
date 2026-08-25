@@ -1,5 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
+import { QuickQuoteForm } from "@/components/sections/QuickQuoteForm";
 import { BUSINESS } from "../data/siteData";
 
 const TITLE = "Contact Godhans Tree Company | Free Estimates";
@@ -37,6 +38,15 @@ export default function ContactPage() {
             </p>
           </div>
         </section>
+
+        {/* Sits directly under the H1 rather than at the foot of the page: this
+            is the destination of both header CTAs ("Free Estimate" and the
+            mobile menu's "Get Free Estimate"), so the form is the first thing
+            those taps land on. `source` tags the lead in Formspree the same way
+            ServicePage passes its slug. */}
+        <div className="quote-form-neutral">
+          <QuickQuoteForm source="contact" variant="dark" />
+        </div>
 
         <section id="contact" className="py-16" style={{ background: "#0A0A0A" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">

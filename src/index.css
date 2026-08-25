@@ -558,6 +558,18 @@
 
   .stars { color: #E5C220; }
 
+  /* QuickQuoteForm paints its own section in Tailwind's grays (bg-gray-950 /
+     border-gray-800), which suits ServicePage because that page is Tailwind
+     grays throughout. /contact is brand neutrals, so there the form's blue
+     tint lands between --gray-dark and --black and reads as a seam. Repaint it
+     to --gray-dark so it groups with the hero that promises the estimate, with
+     --gray-light as the hairline between them. Scoped to the wrapper: the eight
+     service pages rendering the same component are untouched. */
+  .quote-form-neutral > section {
+    background: var(--gray-dark);
+    border-top-color: var(--gray-light);
+  }
+
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--gray-dark); }
   ::-webkit-scrollbar-thumb { background: var(--gray-light); border-radius: 3px; }
