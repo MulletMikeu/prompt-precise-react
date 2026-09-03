@@ -90,6 +90,47 @@ export default function ReviewsPage() {
                 Read All {BUSINESS.reviewCount} Reviews on Google →
               </a>
             </div>
+
+            {/* Quoted lines below are verbatim excerpts from the live Google
+                listing, verified against it — not paraphrased. Attribution is
+                first name only, as displayed on the review. */}
+            <div className="mt-16 max-w-3xl mx-auto">
+              <h2 className="text-2xl font-bold text-white mb-4">What Comes Up Again and Again</h2>
+              <p className="text-base leading-relaxed mb-8" style={{ color: "#C8C8C2" }}>
+                Read enough of {BUSINESS.reviewCount} reviews and the same three things keep surfacing. They're worth naming, because they're the parts of a tree job people don't think to ask about until it's going badly.
+              </p>
+
+              <h3 className="text-lg font-bold text-white mb-2">The cleanup</h3>
+              <p className="text-base leading-relaxed mb-6" style={{ color: "#C8C8C2" }}>
+                More reviews mention the state of the yard afterward than mention the tree coming down. That tracks with how we work: brush chipped and hauled, wood removed or stacked where you asked, the drop zone raked, and the driveway and street blown clear. Customers notice the absence of a mess more than they notice the felling.
+              </p>
+
+              <h3 className="text-lg font-bold text-white mb-2">The communication</h3>
+              <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
+                The second theme is being told what's happening — before, during, and when the crew is arriving. One reviewer put it in terms of the conversation rather than the work:
+              </p>
+              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
+                "Very respectful of your home, very polite and friendly."
+              </blockquote>
+              <p className="text-sm mb-6" style={{ color: "#888888" }}>— M., Google review</p>
+
+              <h3 className="text-lg font-bold text-white mb-2">The pricing</h3>
+              <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
+                The third is that the number holds. We quote from measurements and the written quote is what you pay — no discovery of new charges once the crew is on site.
+              </p>
+              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
+                "great service and really good prices"
+              </blockquote>
+              <p className="text-sm mb-6" style={{ color: "#888888" }}>— James, Google review</p>
+
+              <p className="text-base leading-relaxed" style={{ color: "#C8C8C2" }}>
+                Worked with us before?{' '}
+                <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 font-semibold" style={{ color: "#E5424F" }}>
+                  Leave us a Google review
+                </a>
+                {' '}— it's the single most useful thing a past customer can do for a local crew, and we read every one of them.
+              </p>
+            </div>
           </div>
         </section>
 

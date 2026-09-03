@@ -81,6 +81,39 @@ export default function ServiceAreaPage() {
               })}
             </div>
 
+            <h2 className="text-2xl font-bold text-white mb-4">How Far Do You Travel?</h2>
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
+              Our radius is drawn around drive time from Gum Branch Road in Jacksonville, not around a county line. Most of Onslow County sits inside 20–30 minutes of the shop, which is why the whole county is standard service area rather than a special trip.
+            </p>
+            <p className="text-base leading-relaxed mb-10" style={{ color: "#C8C8C2" }}>
+              Past that, it depends on the job. A single removal an hour out may not price well on its own, but multiple trees or a contract makes the drive worth it for both of us — mobilization is the fixed cost, so it matters far less once we're staging a full day on your property. Call and ask; we'd rather tell you honestly than have you assume you're out of range.
+            </p>
+
+            <h2 className="text-2xl font-bold text-white mb-4">How Fast Can You Get Here?</h2>
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
+              It depends which of three clusters you're in, and being honest about that is more useful than promising everyone the same number.
+            </p>
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
+              <strong className="text-white">Jacksonville core and Camp Lejeune</strong> is where we're fastest. We're based here, we're usually already working here, and an active hazard often gets a crew the same day.
+            </p>
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
+              The <strong className="text-white">southern corridor</strong> — Sneads Ferry, Holly Ridge, and Surf City — runs down toward the coast. Emergencies still get prioritized, but scheduled work out there tends to get grouped, so if you're flexible on the day you'll usually get a better slot and a better price.
+            </p>
+            <p className="text-base leading-relaxed mb-10" style={{ color: "#C8C8C2" }}>
+              <strong className="text-white">Inland towns</strong> like Richlands, Beulaville, and Maysville work the same way. Storm calls move to the front of the line regardless of where you are; routine trimming and stump work gets scheduled around whichever direction the crew is already headed.
+            </p>
+
+            <h2 className="text-2xl font-bold text-white mb-4">Do Coastal and Inland Properties Have Different Tree Problems?</h2>
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
+              Yes, and the difference shows up in how the trees fail rather than in which species grow.
+            </p>
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
+              Nearer the coast, the soil is sandier and holds water at depth. After a wet stretch it stops gripping, and sustained wind levers a tree over at the root plate instead of snapping the trunk — which is why so much of our storm work down there is uprooted pines. Wind exposure is simply higher with less standing timber to break it up, so canopies take more direct loading.
+            </p>
+            <p className="text-base leading-relaxed mb-10" style={{ color: "#C8C8C2" }}>
+              Inland, the ground holds better and the failures skew toward the trees themselves: overgrown loblollies and sweetgums with long, heavy limbs that break at their weak points, and dead tops that come down in a summer thunderstorm. Both ends of the county share the same humidity problem — internal decay is a constant here, and a hollow trunk can sit under bark that looks perfect.
+            </p>
+
             <div className="p-6" style={{ background: "#111111", border: "1px solid #1A1A1A" }}>
               <h2 className="text-lg font-bold text-white mb-2">Don't See Your Town?</h2>
               <p className="text-base mb-4" style={{ color: "#C8C8C2" }}>
