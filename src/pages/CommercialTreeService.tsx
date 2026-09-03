@@ -9,6 +9,9 @@ export default function CommercialTreeService() {
       subtitle="HOAs, Apartment Complexes, Churches, Storefronts & Property Managers"
       slug="commercial-tree-service-jacksonville-nc"
       credentialBlock
+      // Commercial buyers may not own a home on the site at all — the shared
+      // insurance sentence reads "damages your property" here.
+      credentialDamageNoun="property"
       description="Commercial tree service in Jacksonville, NC for HOAs, apartment complexes, churches, and storefronts. $2M liability, COI on request, work scheduled around your hours."
       ctaText="Call for a Commercial Estimate"
       quickAnswer="Godhans Tree Company handles commercial tree removal, trimming, and stump grinding across Jacksonville and Onslow County — for HOAs, apartment complexes, churches, retail storefronts, and the property managers who answer for all of them. We carry $2M general liability with every machine individually insured, provide certificates of insurance for vendor onboarding, and schedule around your business hours rather than through them."
@@ -19,7 +22,7 @@ export default function CommercialTreeService() {
         },
         {
           heading: "Are You Insured for Commercial Work?",
-          text: `Yes — ${CREDENTIAL.equipmentInsurance}\n\nThat second half is the part that matters on a commercial site. Plenty of contractors carry a general liability policy and stop there, leaving the equipment off it. If an uninsured machine damages a building, a parking structure, or a tenant's vehicle, the property owner is the one holding the bill. Ours is covered.\n\nWe are also bondable for commercial work, and Godhans LLC is registered and active with the North Carolina Secretary of State (SoSID ${CREDENTIAL.sosId}) — the two things a procurement process usually asks for after the COI.`
+          text: `Yes — ${CREDENTIAL.equipmentInsurance('property')}\n\nThat second half is the part that matters on a commercial site. Plenty of contractors carry a general liability policy and stop there, leaving the equipment off it. If an uninsured machine damages a building, a parking structure, or a tenant's vehicle, the property owner is the one holding the bill. Ours is covered.\n\nWe are also bondable for commercial work, and Godhans LLC is registered and active with the North Carolina Secretary of State (SoSID ${CREDENTIAL.sosId}) — the two things a procurement process usually asks for after the COI.`
         },
         {
           heading: "Can You Provide a Certificate of Insurance for Vendor Onboarding?",

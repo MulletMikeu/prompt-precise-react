@@ -6,6 +6,24 @@ const TITLE = "Customer Reviews | Godhans Tree Company Jacksonville, NC";
 const DESC = `${BUSINESS.reviewRating}-star Google reviews for Godhans Tree Company — ${BUSINESS.reviewCount} verified reviews. Veteran-owned tree service in Jacksonville, NC. Read what customers say.`;
 const CANONICAL = "https://godhans.com/reviews";
 
+/**
+ * Pulls one verbatim sentence out of a published review in REVIEWS, so a quoted
+ * excerpt can never drift from the constant it came from — nothing here is
+ * retyped by hand. `contains` is a distinctive fragment of the wanted sentence;
+ * if the review text ever changes so the fragment disappears, this falls back
+ * to the full review rather than silently quoting the wrong line.
+ */
+function excerpt(id: number, contains: string): string {
+  const review = REVIEWS.find((r) => r.id === id);
+  if (!review) return "";
+  const sentences = review.text.match(/[^.]+\./g) ?? [review.text];
+  return (sentences.find((s) => s.includes(contains)) ?? review.text).trim();
+}
+
+function reviewerName(id: number): string {
+  return REVIEWS.find((r) => r.id === id)?.name ?? "";
+}
+
 function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5" role="img" aria-label={`${count} out of 5 stars`}>
@@ -89,6 +107,53 @@ export default function ReviewsPage() {
               <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="text-sm uppercase tracking-widest font-bold" style={{ color: "#888888" }}>
                 Read All {BUSINESS.reviewCount} Reviews on Google →
               </a>
+            </div>
+
+            {/* Every quoted line below is verbatim. The cleanup and
+                communication excerpts are pulled straight out of REVIEWS via
+                excerpt() so they cannot drift from the published constants; the
+                pricing line was read off the live Google listing in the
+                browser. Never paraphrase into quotation marks here. */}
+            <div className="mt-16 max-w-3xl mx-auto">
+              <h2 className="text-2xl font-bold text-white mb-4">What Comes Up Again and Again</h2>
+              <p className="text-base leading-relaxed mb-8" style={{ color: "#C8C8C2" }}>
+                Read enough of {BUSINESS.reviewCount} reviews and the same three things keep surfacing. They're worth naming, because they're the parts of a tree job people don't think to ask about until it's going badly.
+              </p>
+
+              <h3 className="text-lg font-bold text-white mb-2">The cleanup</h3>
+              <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
+                More reviews mention the state of the yard afterward than mention the tree coming down. That tracks with how we work: brush chipped and hauled, wood removed or stacked where you asked, the drop zone raked, and the driveway and street blown clear.
+              </p>
+              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
+                "{excerpt(3, "cleaner than they found it")}"
+              </blockquote>
+              <p className="text-sm mb-6" style={{ color: "#888888" }}>— {reviewerName(3)}, Google review</p>
+
+              <h3 className="text-lg font-bold text-white mb-2">The communication</h3>
+              <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
+                The second theme is being told what's happening — what it will cost before it starts, when the crew is arriving, and where the job stands while it's underway.
+              </p>
+              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
+                "{excerpt(2, "communicated when they would arrive")}"
+              </blockquote>
+              <p className="text-sm mb-6" style={{ color: "#888888" }}>— {reviewerName(2)}, Google review</p>
+
+              <h3 className="text-lg font-bold text-white mb-2">The pricing</h3>
+              <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
+                The third is that the number holds. We quote from measurements and the written quote is what you pay — no discovery of new charges once the crew is on site.
+              </p>
+              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
+                "great service and really good prices"
+              </blockquote>
+              <p className="text-sm mb-6" style={{ color: "#888888" }}>— James, Google review</p>
+
+              <p className="text-base leading-relaxed" style={{ color: "#C8C8C2" }}>
+                Worked with us before?{' '}
+                <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 font-semibold" style={{ color: "#E5424F" }}>
+                  Leave us a Google review
+                </a>
+                {' '}— it's the single most useful thing a past customer can do for a local crew, and we read every one of them.
+              </p>
             </div>
           </div>
         </section>
