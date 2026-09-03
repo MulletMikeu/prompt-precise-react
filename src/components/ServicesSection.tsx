@@ -134,6 +134,23 @@ export default function ServicesSection() {
           </div>
         </div>
 
+        {/* Commercial & residential split, directly under the grid.
+            The commercial anchor text is fixed at "commercial tree service in
+            Jacksonville" — the site already ranks #1 on non-geo commercial
+            terms, so this anchor is deliberate and must not be varied or
+            duplicated elsewhere on the homepage. */}
+        <p className="font-body text-base leading-relaxed mt-8" style={{ color: "#888888" }}>
+          Commercial &amp; Residential: we handle{' '}
+          <Link to="/commercial-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "#E5424F" }}>
+            commercial tree service in Jacksonville
+          </Link>
+          {' '}for HOAs, apartment complexes, churches, and storefronts — and{' '}
+          <Link to="/residential-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "#E5424F" }}>
+            residential tree service
+          </Link>
+          {' '}for homeowners across Onslow County.
+        </p>
+
         {/* Job photo gallery.
             Variants come from scripts/gen-images.mjs, pre-cropped to the same 4/3 box
             these render in. `widths` there must stay in sync with GALLERY_WIDTHS. */}

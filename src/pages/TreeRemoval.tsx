@@ -57,11 +57,16 @@ export default function TreeRemoval() {
           text: PRICING.stories.mobilization
         },
         {
+          heading: "Why Pine and Sweetgum Are the Most-Removed Trees in Jacksonville",
+          text: "Pine and sweetgum are #1 and #2 on our invoices, and it isn't close.\n\nBoth species share the same underlying problem: they overgrow themselves. Long, heavy limbs extend well past what the attachment can support, and unlike hardwoods, neither gives a crew many safe pruning options once that's happened. With an oak you can often prune your way out of a problem. With these two, frequently you can't — which is why they come out.\n\nPines add their own list. Needle drop is constant: pine straw drifts across the yard, blankets the roof, and packs into ridgelines where it holds moisture against the shingles. Fusiform rust forms galls on trunks and branches, and those galls become built-in break points — a limb doesn't fail at random, it fails at the gall. And weakened loblollies attract southern pine beetles and Ips engraver beetles, which finish the job.\n\nSweetgums add two more. The spiked seed balls are a genuine nuisance — they catch mower blades and they are hard on dogs' feet and bare feet alike. Below ground, sweetgums run aggressive surface roots that lift driveways and walkways over time.\n\nIf you have either species close to the house, it's worth having someone look before it becomes an emergency call."
+        },
+        {
           heading: "Service Areas for Tree Removal",
           text: "Godhans Tree Company removes trees across Jacksonville and all of Onslow County, including Camp Lejeune, Hubert, Richlands, Swansboro, Sneads Ferry, Holly Ridge, and the surrounding coastal communities. Coastal North Carolina puts hard miles on trees — salt air, saturated soil, and hurricane-season winds leave a lot of weakened pines and storm-split hardwoods behind.\n\nWhether it's a leaning pine in a tight backyard or a large hardwood hanging over your roof, our crew has the boom trucks, rigging, and experience to take it down safely and haul away every bit of debris. Not sure if you're in our area? Give us a call — if you're in or near Onslow County, we can almost certainly help."
         }
       ]}
       caseStudy={
+        <>
         <section className="py-16 bg-black border-t border-gray-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
@@ -150,6 +155,33 @@ export default function TreeRemoval() {
             </p>
           </div>
         </section>
+
+        {/* Sits directly after the case study so the resistograph is already
+            introduced above — this block covers the decay itself and the
+            decision the instrument enables, rather than re-explaining the tool. */}
+        <section className="py-16 bg-gray-950 border-t border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              How We Know If a Tree Is Actually Rotten
+            </h2>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              We drill it and measure, because on this coast you cannot tell from the outside.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              Coastal humidity makes internal decay a constant reality here rather than an occasional finding. Heartwood rot is the leading killer of Southern hardwoods, and it works from the inside out. Alongside it we see dry rot, wet rot, and root diseases that attack the tree below grade where nothing is visible at all.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              Two are worth knowing by name. <strong className="font-semibold text-white">Armillaria root rot</strong> announces itself if you know where to look: white fungal fans under the bark, black shoestring-like rhizomorphs running through the root zone, and clusters of mushrooms at the base after rain. <strong className="font-semibold text-white">Biscogniauxia canker</strong> — still widely called Hypoxylon — goes after oaks that are already stressed, typically by drought or by construction disturbance around the root zone.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              The cruel part is that none of this has to show. A trunk can be hollow while the bark over it looks perfect.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              That's why we stopped guessing. The resistograph measures drilling resistance through the wood, so what we hand you is a density reading rather than an opinion. It condemns trees that look fine from the driveway — and just as often it does the opposite, and saves the solid 100-year-old oak that's the centerpiece of a yard and needs nothing but annual maintenance.
+            </p>
+          </div>
+        </section>
+        </>
       }
       faqs={[
         {

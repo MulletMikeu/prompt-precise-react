@@ -108,6 +108,10 @@ export default function TreeTrimming() {
           text: "We follow a careful process to ensure safe and effective trimming:\n\n• Inspection of tree health and structure\n• Identification of branches to remove\n• Precision trimming using proper techniques\n• Cleanup of all debris"
         },
         {
+          heading: "Why We Don't Rush to Cut Oaks",
+          text: "Because an oak usually has a way out that other species don't.\n\nOaks regenerate through epicormic growth — new shoots pushed from dormant buds under the bark. It is not ideal growth, and no arborist pretends otherwise. But it is a second chance, and it gives a skilled crew options that simply don't exist on other trees.\n\nIn practice that means we can take a substantial prune off a roofline or back away from power lines and still leave you a canopy that doesn't look chopped in half — because the tree will respond and fill back in. The homeowner keeps the shade and the mature tree; the hazard still goes away.\n\nPines and sweetgums give you no such option. Cut them back hard and that's simply how they stay. This is the single biggest reason our invoices show pines and sweetgums getting removed while oaks get maintained year after year. When someone tells you an oak has to come out, it's worth asking whether it has to — or whether it just needs the right prune."
+        },
+        {
           heading: "Tree Trimming Pricing in Jacksonville, NC",
           text: PRICING.trimming.summary
         },
