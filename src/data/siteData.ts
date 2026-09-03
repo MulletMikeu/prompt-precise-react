@@ -75,7 +75,11 @@ export const PRICING = {
     excavation: "$800",
     depthStandard: "10 inches",
     depthMax: "10+ inches",
+    // Two forms of the same figure. `industryNorm` is the noun ("the industry
+    // norm is 6–8 inches"); `industryNormAdj` modifies a following noun ("the
+    // 6–8 inch industry norm"), which needs the singular. Pick by grammar.
     industryNorm: "6–8 inches",
+    industryNormAdj: "6–8 inch",
   },
   stories: {
     sameTree:

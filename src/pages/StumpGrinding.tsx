@@ -76,7 +76,7 @@ export default function StumpGrinding() {
       ]}
       faqs={[
         { question: "How much does stump grinding cost?", answer: `Stump grinding starts at a ${PRICING.stump.minimum} minimum and runs ${PRICING.stump.perInch}, measured at the widest point of the root flare. Most single residential stumps run ${PRICING.stump.most}. Additional stumps on the same visit are discounted, since the trip and setup are the fixed cost.` },
-        { question: "How deep do you grind the stump?", answer: `Up to ${PRICING.stump.depthMax} below grade, with ${PRICING.stump.depthStandard} as our standard — deeper than the ${PRICING.stump.industryNorm} industry norm. That leaves the spot ready for sod, concrete, or replanting.` },
+        { question: "How deep do you grind the stump?", answer: `Up to ${PRICING.stump.depthMax} below grade, with ${PRICING.stump.depthStandard} as our standard — deeper than the ${PRICING.stump.industryNormAdj} industry norm. That leaves the spot ready for sod, concrete, or replanting.` },
         { question: "Will the tree grow back after grinding?", answer: "No, stump grinding prevents regrowth in most cases." },
         { question: "Does stump grinding remove the whole stump?", answer: `Not entirely — grinding always leaves organic material below grade. The only true complete removal is full stump excavation with fresh fill, which we offer for building pads, foundations, and septic projects starting at ${PRICING.stump.excavation} per stump.` },
         { question: "Do you need to call 811 before stump grinding?", answer: "Yes. North Carolina classifies stump grinding as excavation, so utility locates are required three full working days before the work. We coordinate that call on every job." },
