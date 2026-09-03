@@ -6,6 +6,7 @@ import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { LazyImage } from '@/components/ui/LazyImage';
 import WhyChooseGodhans from '@/components/WhyChooseGodhans';
 import { BUSINESS_INFO } from '@/lib/constants';
+import type { DamageNoun } from '@/data/siteData';
 
 const LOCATION_SLUGS = new Set([
   'tree-service-jacksonville-nc',
@@ -78,6 +79,12 @@ interface ServicePageProps {
   caseStudy?: ReactNode;
   /** When true, renders the shared <WhyChooseGodhans/> (single-source trust block). */
   credentialBlock?: boolean;
+  /**
+   * Audience noun for the credential block's insurance sentence. Commercial
+   * buyers don't necessarily own a home on the site, so that page reads
+   * "damages your property"; everything else keeps the default "home".
+   */
+  credentialDamageNoun?: DamageNoun;
   finalCta?: { heading: string; text: string; buttonText?: string };
   /**
    * "Guides & Pricing" block rendered just before the FAQ. The guide and
@@ -119,7 +126,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `https://godhans.com/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -309,7 +316,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
           {caseStudy}
 
           {/* Shared WhyChooseGodhans block (single source; opt-in per page) */}
-          {credentialBlock && <WhyChooseGodhans />}
+          {credentialBlock && <WhyChooseGodhans damageNoun={credentialDamageNoun} />}
 
           {/* Photo Gallery */}
           {gallery && gallery.images.length > 0 && (

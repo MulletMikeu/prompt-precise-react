@@ -6,6 +6,24 @@ const TITLE = "Customer Reviews | Godhans Tree Company Jacksonville, NC";
 const DESC = `${BUSINESS.reviewRating}-star Google reviews for Godhans Tree Company — ${BUSINESS.reviewCount} verified reviews. Veteran-owned tree service in Jacksonville, NC. Read what customers say.`;
 const CANONICAL = "https://godhans.com/reviews";
 
+/**
+ * Pulls one verbatim sentence out of a published review in REVIEWS, so a quoted
+ * excerpt can never drift from the constant it came from — nothing here is
+ * retyped by hand. `contains` is a distinctive fragment of the wanted sentence;
+ * if the review text ever changes so the fragment disappears, this falls back
+ * to the full review rather than silently quoting the wrong line.
+ */
+function excerpt(id: number, contains: string): string {
+  const review = REVIEWS.find((r) => r.id === id);
+  if (!review) return "";
+  const sentences = review.text.match(/[^.]+\./g) ?? [review.text];
+  return (sentences.find((s) => s.includes(contains)) ?? review.text).trim();
+}
+
+function reviewerName(id: number): string {
+  return REVIEWS.find((r) => r.id === id)?.name ?? "";
+}
+
 function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5" role="img" aria-label={`${count} out of 5 stars`}>
@@ -91,9 +109,11 @@ export default function ReviewsPage() {
               </a>
             </div>
 
-            {/* Quoted lines below are verbatim excerpts from the live Google
-                listing, verified against it — not paraphrased. Attribution is
-                first name only, as displayed on the review. */}
+            {/* Every quoted line below is verbatim. The cleanup and
+                communication excerpts are pulled straight out of REVIEWS via
+                excerpt() so they cannot drift from the published constants; the
+                pricing line was read off the live Google listing in the
+                browser. Never paraphrase into quotation marks here. */}
             <div className="mt-16 max-w-3xl mx-auto">
               <h2 className="text-2xl font-bold text-white mb-4">What Comes Up Again and Again</h2>
               <p className="text-base leading-relaxed mb-8" style={{ color: "#C8C8C2" }}>
@@ -101,18 +121,22 @@ export default function ReviewsPage() {
               </p>
 
               <h3 className="text-lg font-bold text-white mb-2">The cleanup</h3>
-              <p className="text-base leading-relaxed mb-6" style={{ color: "#C8C8C2" }}>
-                More reviews mention the state of the yard afterward than mention the tree coming down. That tracks with how we work: brush chipped and hauled, wood removed or stacked where you asked, the drop zone raked, and the driveway and street blown clear. Customers notice the absence of a mess more than they notice the felling.
+              <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
+                More reviews mention the state of the yard afterward than mention the tree coming down. That tracks with how we work: brush chipped and hauled, wood removed or stacked where you asked, the drop zone raked, and the driveway and street blown clear.
               </p>
+              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
+                "{excerpt(3, "cleaner than they found it")}"
+              </blockquote>
+              <p className="text-sm mb-6" style={{ color: "#888888" }}>— {reviewerName(3)}, Google review</p>
 
               <h3 className="text-lg font-bold text-white mb-2">The communication</h3>
               <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
-                The second theme is being told what's happening — before, during, and when the crew is arriving. One reviewer put it in terms of the conversation rather than the work:
+                The second theme is being told what's happening — what it will cost before it starts, when the crew is arriving, and where the job stands while it's underway.
               </p>
               <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
-                "Very respectful of your home, very polite and friendly."
+                "{excerpt(2, "communicated when they would arrive")}"
               </blockquote>
-              <p className="text-sm mb-6" style={{ color: "#888888" }}>— M., Google review</p>
+              <p className="text-sm mb-6" style={{ color: "#888888" }}>— {reviewerName(2)}, Google review</p>
 
               <h3 className="text-lg font-bold text-white mb-2">The pricing</h3>
               <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>

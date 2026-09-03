@@ -95,6 +95,9 @@ export const PRICING = {
  * this text. "since 2013" is operating history; the LLC bullet carries no year —
  * the two must never collapse into "the LLC is 13 years old."
  */
+/** Audience-dependent noun in the equipment-insurance sentence. */
+export type DamageNoun = "home" | "property";
+
 export const CREDENTIAL = {
   legalName: "Godhans LLC",
   sosId: "1961439",
@@ -106,8 +109,15 @@ export const CREDENTIAL = {
     "$2M general liability + workers' comp; every machine individually insured",
     "Godhans LLC — registered & active with the NC Secretary of State (SoSID 1961439)",
   ],
-  equipmentInsurance:
-    "$2M general liability and workers' comp on every job — and every machine, including the spider lift, is individually insured. If a contractor's equipment isn't on the policy and it damages your home, you hold the bill. Ours is covered.",
+  /**
+   * The damage noun is the only thing that varies by audience: a homeowner
+   * reads "damages your home", a commercial buyer reads "damages your
+   * property" (they may not own a home on the site at all). Everything else in
+   * the sentence is identical, so this stays one string rather than two.
+   * Defaults to "home" — every existing caller keeps its current wording.
+   */
+  equipmentInsurance: (damageNoun: DamageNoun = "home") =>
+    `$2M general liability and workers' comp on every job — and every machine, including the spider lift, is individually insured. If a contractor's equipment isn't on the policy and it damages your ${damageNoun}, you hold the bill. Ours is covered.`,
 } as const;
 
 export const NAV_LINKS = [

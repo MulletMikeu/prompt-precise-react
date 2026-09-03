@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CREDENTIAL } from '../data/siteData';
+import { CREDENTIAL, type DamageNoun } from '../data/siteData';
 
 /**
  * The insurance paragraph names the spider lift, which has its own page. Rather
@@ -11,9 +11,10 @@ import { CREDENTIAL } from '../data/siteData';
 const SPIDER_LIFT_PHRASE = 'the spider lift';
 const SPIDER_LIFT_HREF = '/spider-lift-tree-removal-jacksonville-nc';
 
-function InsuranceCopy() {
-  const [before, ...rest] = CREDENTIAL.equipmentInsurance.split(SPIDER_LIFT_PHRASE);
-  if (rest.length === 0) return <>{CREDENTIAL.equipmentInsurance}</>;
+function InsuranceCopy({ damageNoun }: { damageNoun?: DamageNoun }) {
+  const copy = CREDENTIAL.equipmentInsurance(damageNoun);
+  const [before, ...rest] = copy.split(SPIDER_LIFT_PHRASE);
+  if (rest.length === 0) return <>{copy}</>;
   return (
     <>
       {before}
@@ -34,7 +35,7 @@ function InsuranceCopy() {
  * credential text. Rendered on service + city pages via ServicePage's
  * `credentialBlock` prop and directly in LocationPage.
  */
-export default function WhyChooseGodhans() {
+export default function WhyChooseGodhans({ damageNoun }: { damageNoun?: DamageNoun } = {}) {
   return (
     <section className="py-16 bg-gray-950 border-t border-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
@@ -50,7 +51,7 @@ export default function WhyChooseGodhans() {
           ))}
         </ul>
         <p className="text-gray-300 text-lg leading-relaxed border-l-4 border-red-600 pl-4">
-          <InsuranceCopy />
+          <InsuranceCopy damageNoun={damageNoun} />
         </p>
       </div>
     </section>
