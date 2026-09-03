@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import { BUSINESS } from '@/data/siteData';
 import heroCrane from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine.webp';
@@ -25,7 +26,7 @@ export default function EmergencyTreeService() {
       subtitle="24/7 Storm Damage & Tree Removal — Same-Day & Next-Day Availability"
       slug="emergency-tree-service-jacksonville-nc"
       credentialBlock
-      description="Fast emergency tree service in Jacksonville NC. We handle storm damage, leaning trees, and hazardous removals. Call now for rapid response."
+      description="Fast emergency tree service in Jacksonville, NC — storm damage, leaning trees, and hazardous tree removal. 24/7 response from a fully insured local crew."
       ctaText="Call Now — Rapid Response"
       heroImage={{
         src: heroCrane,
@@ -56,6 +57,35 @@ export default function EmergencyTreeService() {
           text: "In most cases, homeowners insurance covers tree removal when a tree damages a covered structure (home, garage, fence). Coverage typically includes the cost to remove the tree from the structure — not always the full yard cleanup.\n\nWe document the damage with photos before we start work, provide itemized invoices, and can speak with your adjuster if needed. If you're unsure, snap a few photos, save them, and call us — we'll help you understand what's typically covered and get the hazard removed right away."
         }
       ]}
+      /* Rendered through the caseStudy slot rather than `sections` because this
+         block needs an anchor id and links inside the prose — `sections` takes
+         plain text and puts its links underneath. */
+      caseStudy={
+        <section id="hazardous-tree-removal" className="py-16 bg-gray-950 border-t border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              Hazardous Tree Removal in Jacksonville, NC
+            </h2>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              A hazardous tree is one that is likely to fail and has something worth hitting underneath it. That combination — not size, not species — is what moves a tree to the front of our schedule.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              Three conditions account for most of what we take down as hazardous work. The first is a tree{' '}
+              <Link to="/leaning-tree-dangerous-after-storm" className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors">
+                leaning at a new angle after a storm
+              </Link>
+              , which usually means the roots have already let go on one side. The second is a lifted root plate: soil cracked or heaved around the base, a tree still standing only because the remaining roots haven't finished tearing. Those can hold for weeks and then come down on a calm day. The third is a decayed trunk — a tree a climber cannot safely tie into, because the wood that would hold the rigging is shell.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              That last one is where guessing gets people hurt, so we measure it. Our resistograph drills a fine needle through the standing trunk and records the wood's density, which tells us whether we're looking at a hazardous{' '}
+              <Link to="/tree-removal-jacksonville-nc" className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors">
+                tree removal
+              </Link>
+              {' '}that has to happen now, or a structurally sound tree that can wait for a scheduled visit. Both answers save you money — one by preventing the failure, the other by not removing a tree that didn't need to go.
+            </p>
+          </div>
+        </section>
+      }
       gallery={{
         heading: "Recent Emergency & Tree Removal Jobs in Jacksonville, NC",
         images: [

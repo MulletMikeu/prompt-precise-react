@@ -20,7 +20,7 @@ const SERVICES = [
   {
     name: "Stump Grinding",
     href: "/stump-grinding-jacksonville-nc",
-    desc: "Stumps ground to 6–12 inches below grade. All grindings removed. Property ready to replant or landscape.",
+    desc: "Stumps ground 10+ inches below grade. All grindings removed. Property ready to replant or landscape.",
   },
   {
     name: "Emergency Tree Service",
@@ -31,6 +31,16 @@ const SERVICES = [
     name: "Storm Cleanup",
     href: "/storm-cleanup-jacksonville-nc",
     desc: "Fast debris removal after storms. Downed tree extraction, limb and brush cleanup, same or next day.",
+  },
+  {
+    name: "Commercial Tree Service",
+    href: "/commercial-tree-service-jacksonville-nc",
+    desc: "HOAs, apartment complexes, churches, and storefronts. $2M liability, COI on request, scheduled around your hours.",
+  },
+  {
+    name: "Residential Tree Service",
+    href: "/residential-tree-service-jacksonville-nc",
+    desc: "Homeowner tree work with the lawn, fence, driveway, and septic field protected — and every stick hauled away.",
   },
 ];
 

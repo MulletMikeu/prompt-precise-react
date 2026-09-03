@@ -110,7 +110,10 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   if (slug.startsWith('tree-service-') && slug !== 'tree-service-jacksonville-nc') {
     return { name: 'Locations', slug: 'tree-service-jacksonville-nc' };
   }
-  if (slug.includes('removal') || slug.includes('trimming') || slug.includes('grinding') || slug.includes('emergency')) {
+  if (
+    slug.includes('removal') || slug.includes('trimming') || slug.includes('grinding') ||
+    slug.includes('emergency') || slug.startsWith('commercial-') || slug.startsWith('residential-')
+  ) {
     return { name: 'Services', slug: 'tree-service-jacksonville-nc' };
   }
   return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
