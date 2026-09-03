@@ -1,4 +1,32 @@
+import { Link } from 'react-router-dom';
 import { CREDENTIAL } from '../data/siteData';
+
+/**
+ * The insurance paragraph names the spider lift, which has its own page. Rather
+ * than duplicate the sentence in siteData just to carry an anchor, we split the
+ * single-source string on the phrase and link that occurrence. If the copy ever
+ * stops mentioning the lift, `split` returns one part and this renders the
+ * plain sentence unchanged.
+ */
+const SPIDER_LIFT_PHRASE = 'the spider lift';
+const SPIDER_LIFT_HREF = '/spider-lift-tree-removal-jacksonville-nc';
+
+function InsuranceCopy() {
+  const [before, ...rest] = CREDENTIAL.equipmentInsurance.split(SPIDER_LIFT_PHRASE);
+  if (rest.length === 0) return <>{CREDENTIAL.equipmentInsurance}</>;
+  return (
+    <>
+      {before}
+      <Link
+        to={SPIDER_LIFT_HREF}
+        className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+      >
+        {SPIDER_LIFT_PHRASE}
+      </Link>
+      {rest.join(SPIDER_LIFT_PHRASE)}
+    </>
+  );
+}
 
 /**
  * WhyChooseGodhans — shared credential / "why choose us" block. Content comes
@@ -22,7 +50,7 @@ export default function WhyChooseGodhans() {
           ))}
         </ul>
         <p className="text-gray-300 text-lg leading-relaxed border-l-4 border-red-600 pl-4">
-          {CREDENTIAL.equipmentInsurance}
+          <InsuranceCopy />
         </p>
       </div>
     </section>

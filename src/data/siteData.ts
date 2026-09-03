@@ -62,6 +62,21 @@ export const PRICING = {
     summary:
       "Trimming starts at an $800 minimum. Standard trimming with no lift runs $800–$1,500; lift access for high canopies or work over the roof is $1,500+, and large oaks or difficult-access jobs run $3,000+.",
   },
+  /**
+   * Stump grinding prices its own way: it is measured work, not a crew-day, so
+   * it has a far lower minimum than removal/trimming and a per-inch rate on top.
+   * The $800 excavation figure is a *different service* (full stump excavation
+   * with fresh fill) — never collapse it into the grinding numbers.
+   */
+  stump: {
+    minimum: "$200",
+    perInch: "$6 per inch",
+    most: "$200–$500",
+    excavation: "$800",
+    depthStandard: "10 inches",
+    depthMax: "10+ inches",
+    industryNorm: "6–8 inches",
+  },
   stories: {
     sameTree:
       "The same tree can cost $6,000 in an open yard and $10,000 wedged against a house with power lines overhead. The tree doesn't change the price — the obstacles do.",
@@ -149,7 +164,7 @@ export const SERVICES = [
     description:
       "Full reclamation of your yard. We grind to ground level, haul all debris away, and leave you a flat, usable surface.",
     features: [
-      "Ground to 6–12 inches below surface",
+      "Ground 10+ inches below grade — deeper than the 6–8 inch norm",
       "Root flare grinding available",
       "All grindings removed or spread as mulch",
       "Ready to replant or landscape immediately",

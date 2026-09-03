@@ -158,7 +158,8 @@ export default function TreeRemoval() {
         },
         {
           question: "Do I need a permit to remove a tree in Jacksonville NC?",
-          answer: "Permit requirements can vary depending on location and tree type. We can help guide you through any local requirements if needed."
+          answer: "Permit requirements can vary depending on location and tree type. We can help guide you through any local requirements if needed.",
+          link: { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Read the full NC tree removal permit guide →" }
         },
         {
           question: "How long does tree removal take?",
@@ -169,6 +170,27 @@ export default function TreeRemoval() {
           answer: "Yes, tree removal can be hazardous without proper equipment and experience. That's why it's best handled by trained professionals."
         }
       ]}
+      guides={{
+        heading: "Guides & Pricing",
+        intro: "More detail on what removals cost and how we handle the hard ones:",
+        links: [
+          {
+            href: "/tree-removal-cost-north-carolina",
+            label: "How much tree removal costs in North Carolina",
+            blurb: "Full price ranges, what drives them, and why the same tree can cost double."
+          },
+          {
+            href: "/tree-removal-near-house-jacksonville-nc",
+            label: "Removing a tree close to your house",
+            blurb: "How we take down trees leaning over a roof without dropping anything on it."
+          },
+          {
+            href: "/spider-lift-tree-removal-jacksonville-nc",
+            label: "Spider lift tree removal for backyards with no truck access",
+            blurb: "Fits through a standard gate, reaches 50+ feet, and doesn't tear up the lawn."
+          }
+        ]
+      }}
       relatedServices={[
         { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
         { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },

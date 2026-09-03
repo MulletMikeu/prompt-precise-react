@@ -46,6 +46,27 @@ export default function StormCleanup() {
           answer: "We can safely remove trees and limbs near power lines, but contact with active lines is handled by Duke Energy or your utility provider first. We'll assess the situation and coordinate the safest sequence — utility company clears any line contact, then we remove the tree.",
         },
       ]}
+      guides={{
+        heading: "Guides & Pricing",
+        intro: "What to check on your property once the weather clears:",
+        links: [
+          {
+            href: "/storm-damage-trees-guide",
+            label: "What to do after storm damage to your trees",
+            blurb: "How to assess the damage safely and what to photograph before cleanup starts."
+          },
+          {
+            href: "/leaning-tree-dangerous-after-storm",
+            label: "Is a leaning tree dangerous after a storm?",
+            blurb: "Why a tree that survived the storm can still come down on a calm day."
+          },
+          {
+            href: "/tree-removal-cost-north-carolina",
+            label: "How much tree removal costs in North Carolina",
+            blurb: "Price ranges for storm-damaged and hazardous trees across the state."
+          }
+        ]
+      }}
       relatedServices={[
         { label: "Emergency Tree Service", href: "/emergency-tree-service-jacksonville-nc" },
         { label: "Tree Removal", href: "/tree-removal-jacksonville-nc" },

@@ -97,6 +97,27 @@ export default function EmergencyTreeService() {
           answer: "Get everyone out of the affected area, shut off power to that part of the house if it's safe to do so, and avoid going near downed power lines. Take photos for insurance, then call us immediately. We'll safely stabilize and remove the tree to prevent further damage."
         }
       ]}
+      guides={{
+        heading: "Guides & Pricing",
+        intro: "If you're trying to work out how urgent it is, start here:",
+        links: [
+          {
+            href: "/leaning-tree-dangerous-after-storm",
+            label: "Is a leaning tree dangerous after a storm?",
+            blurb: "The warning signs that mean call now rather than wait for morning."
+          },
+          {
+            href: "/storm-damage-trees-guide",
+            label: "What to do after storm damage to your trees",
+            blurb: "Step by step, from making the area safe to documenting it for insurance."
+          },
+          {
+            href: "/tree-removal-cost-north-carolina",
+            label: "How much tree removal costs in North Carolina",
+            blurb: "What an emergency removal runs, and what drives the number up."
+          }
+        ]
+      }}
       relatedServices={[
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
         { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
