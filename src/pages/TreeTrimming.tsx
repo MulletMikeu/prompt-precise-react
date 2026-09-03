@@ -126,6 +126,27 @@ export default function TreeTrimming() {
         { question: "Is tree trimming necessary?", answer: "Yes, regular trimming helps maintain tree health, prevent hazards, and improve appearance." },
         { question: "Can trimming damage a tree?", answer: "Improper trimming can harm a tree, which is why it's best handled by trained professionals." }
       ]}
+      guides={{
+        heading: "Guides & Pricing",
+        intro: "Background reading before you book crown work:",
+        links: [
+          {
+            href: "/tree-trimming-vs-pruning",
+            label: "Tree trimming vs pruning — what's actually different",
+            blurb: "Which one your tree needs, and why the words aren't interchangeable."
+          },
+          {
+            href: "/tree-removal-cost-north-carolina",
+            label: "How much tree removal costs in North Carolina",
+            blurb: "For when trimming isn't enough and the tree has to come out."
+          },
+          {
+            href: "/spider-lift-tree-removal-jacksonville-nc",
+            label: "Spider lift access for high canopies and work over the roof",
+            blurb: "How we reach 50+ feet in a backyard without a bucket truck on the lawn."
+          }
+        ]
+      }}
       relatedServices={[
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
         { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },

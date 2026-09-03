@@ -19,6 +19,12 @@ const LOCATION_SLUGS = new Set([
 interface FaqItem {
   question: string;
   answer: string;
+  /**
+   * Optional link rendered under the answer. Deliberately NOT folded into
+   * `answer`: the FAQPage schema below serialises `answer` verbatim, and
+   * structured data must stay plain text.
+   */
+  link?: SectionLink;
 }
 
 interface RelatedService {
@@ -29,6 +35,13 @@ interface RelatedService {
 interface SectionLink {
   href: string;
   label: string;
+}
+
+interface GuideLink {
+  href: string;
+  label: string;
+  /** One line on what the guide answers, so the anchor isn't a bare list item. */
+  blurb?: string;
 }
 
 interface GalleryImage {
@@ -66,6 +79,13 @@ interface ServicePageProps {
   /** When true, renders the shared <WhyChooseGodhans/> (single-source trust block). */
   credentialBlock?: boolean;
   finalCta?: { heading: string; text: string; buttonText?: string };
+  /**
+   * "Guides & Pricing" block rendered just before the FAQ. The guide and
+   * specialty pages were only reachable through /blog, which left them starved
+   * of internal links while the nav pages piled them up; this is the slot that
+   * feeds them from the service pages that actually rank.
+   */
+  guides?: { heading?: string; intro?: string; links: GuideLink[] };
   relatedServices?: RelatedService[];
   heroImage?: {
     src: string;
@@ -83,6 +103,10 @@ interface ServicePageProps {
 }
 
 function getBreadcrumbCategory(slug: string): { name: string; slug: string } | null {
+  // The Jacksonville hub is the category target for every other slug, so it has
+  // no category of its own — without this it fell through to "Resources" and
+  // emitted a breadcrumb whose middle crumb pointed at the page itself.
+  if (slug === 'tree-service-jacksonville-nc') return null;
   if (slug.startsWith('tree-service-') && slug !== 'tree-service-jacksonville-nc') {
     return { name: 'Locations', slug: 'tree-service-jacksonville-nc' };
   }
@@ -92,7 +116,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, finalCta, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `https://godhans.com/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -359,6 +383,35 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
             </section>
           )}
 
+          {/* Guides & Pricing (internal links out to the guide/specialty pages) */}
+          {guides && guides.links.length > 0 && (
+            <section className="bg-gray-950 py-12 border-t border-gray-800">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  {guides.heading || 'Guides & Pricing'}
+                </h2>
+                {guides.intro && (
+                  <p className="text-gray-300 text-lg mb-6">{guides.intro}</p>
+                )}
+                <ul className="space-y-4">
+                  {guides.links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        to={link.href}
+                        className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+                      >
+                        {link.label}
+                      </Link>
+                      {link.blurb && (
+                        <span className="block text-gray-400 text-base mt-1">{link.blurb}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          )}
+
           {/* FAQ Section */}
           {faqs && faqs.length > 0 && (
             <section className="bg-black py-16">
@@ -371,6 +424,14 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                     <div key={index} className="border-b border-gray-800 pb-6">
                       <h3 className="text-white font-semibold text-lg mb-2">{faq.question}</h3>
                       <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                      {faq.link && (
+                        <Link
+                          to={faq.link.href}
+                          className="inline-block mt-2 text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+                        >
+                          {faq.link.label}
+                        </Link>
+                      )}
                     </div>
                   ))}
                 </div>

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import { PRICING } from '../data/siteData';
 
@@ -14,6 +13,9 @@ export default function TreeRemovalCost() {
         // Section 2 explains why identical trees price differently; tight access is
         // the single biggest driver, so link out to the detail there.
         2: { href: "/tree-removal-tight-spaces-jacksonville-nc", label: "Why tight-access removals cost more" },
+        // Section 5 (Onslow County) turns on gate-only access, which is the
+        // spider lift's whole reason for existing on this crew.
+        5: { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How spider lift access changes what a backyard removal costs" },
       }}
       sections={[
         {
@@ -31,6 +33,14 @@ export default function TreeRemovalCost() {
         {
           heading: "What Affects Tree Removal Cost?",
           text: "Several factors influence the final price:\n\n• Tree size and height\n• Tree condition (dead, leaning, damaged)\n• Location near structures or power lines\n• Accessibility of the area\n• Emergency vs scheduled service"
+        },
+        {
+          heading: "Tree Removal Cost in Coastal North Carolina",
+          text: `Coastal North Carolina removals sit at the higher end of the state's ranges — usually ${PRICING.removal.most} for a job that would price lower inland — because the ground, the season, and the condition of the trees all push toward machine work.\n\nThe soil is the first reason. Sandy coastal soil drains fast but holds water at depth, and after a wet week it won't carry a loaded truck. A crew that would have driven a bucket truck to the trunk in the Piedmont has to mat the ground, work from the street with more rigging, or bring a tracked lift instead. Every one of those adds hours.\n\nHurricane season is the second. From June through November, demand compresses into the days after each storm, and the trees that need attention are the ones nobody can safely defer. Scheduled work booked in the calm stretches of late winter and early spring prices better than the same tree booked the week after a named storm.\n\nStorm-weakened trees are the third, and the most expensive. A pine with a lifted root plate or a cracked trunk can't be climbed — the structure a climber would be tying into is the part that failed. That forces the job onto a lift or a crane, and machine time is the single largest line item on any removal.`
+        },
+        {
+          heading: "Why Onslow County Jobs Price the Way They Do",
+          text: "Onslow County prices reflect access more than size, because the properties here are laid out in ways that limit what equipment can reach the tree.\n\nBase-adjacent lots around Camp Lejeune are the clearest case. The housing is dense, the setbacks between structures are narrow, and the backyards are fenced — which means the tree gets removed through a gate or not at all. That rules out cranes on a large share of jobs and rules in the spider lift, which collapses to about 36 inches, crosses a lawn on rubber tracks without rutting it, and still reaches the canopy. It is slower per limb than a crane, but it is the difference between a clean removal and a job no one will quote.\n\nMilitary scheduling is the other factor. PCS timelines are fixed dates, not preferences, and work that has to land inside a two- or three-week window before a handover can't be moved to a cheaper slot in the calendar. When you have the flexibility to book ahead, use it — the same tree, same crew, same equipment, booked in a normal week rather than against a report date, is a straightforwardly cheaper job.",
         },
         {
           heading: "Tree Removal Costs in Jacksonville, NC",
