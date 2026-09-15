@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Structured summary of this site for AI assistants and LLM crawlers (llmstxt.org).
+# Redundant under "Allow: /" above — it is here to point at the file, not to permit it.
+# Deliberately not in sitemap.xml: sitemaps are for indexable pages, and listing a
+# .txt there earns permanent Search Console coverage noise for no benefit.
+Allow: /llms.txt
+
 Sitemap: https://godhans.com/sitemap.xml
