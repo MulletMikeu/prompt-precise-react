@@ -99,6 +99,7 @@ export default function Footer() {
           <p className="text-xs" style={{ color: "#888888" }}>© {year} Godhans Tree Company. All Rights Reserved.</p>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="text-xs" style={{ color: "#888888" }}>Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-xs" style={{ color: "#888888" }}>Terms of Service</Link>
             <a href="/sitemap.xml" className="text-xs" style={{ color: "#888888" }}>Sitemap</a>
           </div>
         </div>
