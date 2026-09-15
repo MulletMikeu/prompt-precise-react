@@ -5,7 +5,7 @@ import { BUSINESS } from "../data/siteData";
 const TITLE = "Privacy Policy | Godhans Tree Company";
 const DESC = "How Godhans Tree Company collects, uses, and protects the information you share with us when you request an estimate or use our website.";
 const CANONICAL = "https://godhans.com/privacy-policy";
-const UPDATED = "June 25, 2026";
+const UPDATED = "September 14, 2026";
 
 export default function PrivacyPolicy() {
   return (
@@ -65,6 +65,20 @@ export default function PrivacyPolicy() {
               </ul>
               <p className="text-base leading-relaxed mt-4">
                 We do not sell, rent, or trade your personal information to third parties.
+              </p>
+            </div>
+
+            {/* Sits immediately after the general data-sharing passage above so the
+                narrower SMS commitment is read as overriding it rather than as a
+                separate, possibly conflicting, promise further down the page.
+                Wording is carrier/CTIA-mandated — do not paraphrase. */}
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-4">SMS/Text Messaging</h2>
+              <p className="text-base leading-relaxed mb-4">
+                If you provide your mobile phone number and opt in to receive text messages from us, your phone number and opt-in consent will not be shared with or sold to third parties or affiliates for marketing or promotional purposes. Text messaging originator opt-in data and consent will not be shared with any third parties, excluding vendors and service providers acting on our behalf solely to deliver those messages.
+              </p>
+              <p className="text-base leading-relaxed">
+                Message and data rates may apply. Message frequency varies. Reply STOP to opt out at any time, or HELP for help.
               </p>
             </div>
 

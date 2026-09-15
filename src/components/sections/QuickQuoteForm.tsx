@@ -58,8 +58,16 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
 
   // Only point at the error node when one is actually rendered — otherwise
   // aria-describedby is a dangling reference to an element that isn't there.
-  const describedBy = (field: string) =>
-    isInvalid(field) ? `qq-${field}-error` : undefined;
+  // Phone additionally carries the always-present consent line: it is a legal
+  // disclosure about what submitting signs you up for, so a screen reader
+  // reaching the field by tab must hear it, not just a sighted visitor. Error
+  // first when there is one, so the actionable message leads.
+  const describedBy = (field: string) => {
+    const ids: string[] = [];
+    if (isInvalid(field)) ids.push(`qq-${field}-error`);
+    if (field === 'phone') ids.push('qq-phone-consent');
+    return ids.length > 0 ? ids.join(' ') : undefined;
+  };
 
   // One error slot per field: our message when we have one, else whatever
   // Formspree returned. Only ever one element, so the id stays unique.
@@ -186,6 +194,16 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark' }: Qui
                     placeholder="(555) 555-5555"
                   />
                   {renderError('phone', 'Phone')}
+                  {/* Consent disclosure for the calls/texts the phone number is
+                      collected for. Muted `text-sm text-gray-500`, the same
+                      treatment as the "Fields marked * are required" note and
+                      the call-us line, so it reads as fine print rather than as
+                      another field. Sits below the error slot so a validation
+                      message stays adjacent to the input it concerns. */}
+                  <p id="qq-phone-consent" className="text-sm text-gray-500 mt-2">
+                    By submitting, you agree to receive service-related calls and texts
+                    about your request from {BUSINESS_INFO.name}. Reply STOP anytime to opt out.
+                  </p>
                 </div>
 
                 <div>
