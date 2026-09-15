@@ -102,6 +102,7 @@ export const routes: RouteRecord[] = [
       { path: "reviews", lazy: page(() => import("./pages/ReviewsPage")) },
       { path: "blog", lazy: page(() => import("./pages/BlogPage")) },
       { path: "privacy-policy", lazy: page(() => import("./pages/PrivacyPolicy")) },
+      { path: "terms-of-service", lazy: page(() => import("./pages/TermsOfService")) },
       { path: "tree-service-jacksonville-nc", lazy: page(() => import("./pages/TreeServiceJacksonvilleNC")) },
       { path: "tree-removal-jacksonville-nc", lazy: page(() => import("./pages/TreeRemoval")) },
       { path: "tree-trimming-jacksonville-nc", lazy: page(() => import("./pages/TreeTrimming")) },
