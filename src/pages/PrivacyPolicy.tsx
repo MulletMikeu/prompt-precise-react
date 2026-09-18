@@ -81,7 +81,7 @@ export default function PrivacyPolicy() {
                 Message and data rates may apply. Message frequency varies. Reply STOP to opt out at any time, or HELP for help.
               </p>
               <p className="text-base leading-relaxed">
-                Any information sharing described elsewhere in this policy excludes mobile opt-in data and text messaging consent. Text messages are sent from (910) 727-4842.
+                Any information sharing described elsewhere in this policy excludes mobile opt-in data and text messaging consent.
               </p>
             </div>
 
