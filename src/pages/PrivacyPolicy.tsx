@@ -5,7 +5,7 @@ import { BUSINESS } from "../data/siteData";
 const TITLE = "Privacy Policy | Godhans Tree Company";
 const DESC = "How Godhans Tree Company collects, uses, and protects the information you share with us when you request an estimate or use our website.";
 const CANONICAL = "https://godhans.com/privacy-policy";
-const UPDATED = "September 14, 2026";
+const UPDATED = "September 17, 2026";
 
 export default function PrivacyPolicy() {
   return (
@@ -77,8 +77,11 @@ export default function PrivacyPolicy() {
               <p className="text-base leading-relaxed mb-4">
                 If you provide your mobile phone number and opt in to receive text messages from us, your phone number and opt-in consent will not be shared with or sold to third parties or affiliates for marketing or promotional purposes. Text messaging originator opt-in data and consent will not be shared with any third parties, excluding vendors and service providers acting on our behalf solely to deliver those messages.
               </p>
-              <p className="text-base leading-relaxed">
+              <p className="text-base leading-relaxed mb-4">
                 Message and data rates may apply. Message frequency varies. Reply STOP to opt out at any time, or HELP for help.
+              </p>
+              <p className="text-base leading-relaxed">
+                Any information sharing described elsewhere in this policy excludes mobile opt-in data and text messaging consent. Text messages are sent from (910) 727-4842.
               </p>
             </div>
 

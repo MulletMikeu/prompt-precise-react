@@ -78,6 +78,12 @@ export default function TermsOfService() {
               <p className="text-base leading-relaxed mb-4">
                 By opting in to receive text messages from {BUSINESS.name}, you agree to receive service-related messages including estimate confirmations, scheduling updates, arrival notifications, follow-ups on requested quotes, and feedback requests. Message frequency varies. Message and data rates may apply. Reply STOP at any time to opt out, or HELP for help.
               </p>
+              <p className="text-base leading-relaxed mb-4">
+                {/* One expression, not interpolated JSX text: React SSR would otherwise
+                    split this into separate text nodes and inject <!-- --> separators,
+                    breaking an exact-string fetch of the sentence by a carrier reviewer. */}
+                {`After you text STOP, we will send one final message confirming you have been unsubscribed, and no further messages will be sent unless you opt in again. For help, reply HELP or email ${BUSINESS.email}.`}
+              </p>
               <p className="text-base leading-relaxed">
                 Consent to receive text messages is not a condition of purchasing any services. Carriers are not liable for delayed or undelivered messages. Your opt-in consent will not be shared with third parties; see our{" "}
                 <Link to="/privacy-policy" className="font-bold" style={{ color: "#E5424F" }}>Privacy Policy</Link> for details.
