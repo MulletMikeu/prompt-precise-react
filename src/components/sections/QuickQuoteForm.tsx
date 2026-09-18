@@ -99,13 +99,12 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
   // Phone additionally carries the always-present consent line: it is a legal
   // disclosure about what submitting signs you up for, so a screen reader
   // reaching the field by tab must hear it, not just a sighted visitor. Error
-  // first when there is one, so the actionable message leads. Under fullOptIn
-  // that line is gone and the disclosure hangs off the checkbox group instead,
-  // so there is nothing to reference here.
+  // first when there is one, so the actionable message leads. Both variants of
+  // the line carry the same id, so the reference holds either way.
   const describedBy = (field: string) => {
     const ids: string[] = [];
     if (isInvalid(field)) ids.push(`qq-${field}-error`);
-    if (field === 'phone' && !fullOptIn) ids.push('qq-phone-consent');
+    if (field === 'phone') ids.push('qq-phone-consent');
     return ids.length > 0 ? ids.join(' ') : undefined;
   };
 
@@ -242,14 +241,18 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
                       another field. Sits below the error slot so a validation
                       message stays adjacent to the input it concerns.
 
-                      Suppressed under fullOptIn, and not merely supplemented:
+                      Under fullOptIn the line claims phone and email only:
                       "By submitting, you agree to receive … texts" asserts
                       consent by submission, which directly contradicts an
                       unchecked "No, I do not want to receive any text
-                      messages" sitting inches below it. Express consent has to
-                      be the only claim on the page for the checkbox record to
-                      mean anything. */}
-                  {!fullOptIn && (
+                      messages" in the group below. Express consent has to be
+                      the only claim about texting on the page for the checkbox
+                      record to mean anything. */}
+                  {fullOptIn ? (
+                    <p id="qq-phone-consent" className="text-sm text-gray-500 mt-2">
+                      By submitting, you agree that we may contact you about your request by phone or email. Text messaging is optional — your choices above control it.
+                    </p>
+                  ) : (
                     <p id="qq-phone-consent" className="text-sm text-gray-500 mt-2">
                       By submitting, you agree to receive service-related calls and texts
                       about your request from {BUSINESS_INFO.name}. Reply STOP anytime to opt out.
