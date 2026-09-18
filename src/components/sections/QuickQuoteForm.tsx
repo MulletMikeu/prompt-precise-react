@@ -250,7 +250,7 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
                       record to mean anything. */}
                   {fullOptIn ? (
                     <p id="qq-phone-consent" className="text-sm text-gray-500 mt-2">
-                      By submitting, you agree that we may contact you about your request by phone or email. Text messaging is optional — your choices above control it.
+                      By submitting, you agree that we may contact you about your request by phone or email. Text messaging is optional — your choices below control it.
                     </p>
                   ) : (
                     <p id="qq-phone-consent" className="text-sm text-gray-500 mt-2">
