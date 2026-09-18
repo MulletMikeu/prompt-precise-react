@@ -45,7 +45,7 @@ export default function ContactPage() {
             those taps land on. `source` tags the lead in Formspree the same way
             ServicePage passes its slug. */}
         <div className="quote-form-neutral">
-          <QuickQuoteForm source="contact" variant="dark" />
+          <QuickQuoteForm source="contact" variant="dark" fullOptIn />
         </div>
 
         <section id="contact" className="py-16" style={{ background: "#0A0A0A" }}>

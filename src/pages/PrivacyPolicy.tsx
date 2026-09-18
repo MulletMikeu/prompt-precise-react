@@ -80,8 +80,11 @@ export default function PrivacyPolicy() {
               <p className="text-base leading-relaxed mb-4">
                 Message and data rates may apply. Message frequency varies. Reply STOP to opt out at any time, or HELP for help.
               </p>
-              <p className="text-base leading-relaxed">
+              <p className="text-base leading-relaxed mb-4">
                 Any information sharing described elsewhere in this policy excludes mobile opt-in data and text messaging consent.
+              </p>
+              <p className="text-base leading-relaxed">
+                Our full messaging program terms, including opt-out handling and carrier liability, are available in our Terms of Service at https://godhans.com/terms-of-service.
               </p>
             </div>
 
