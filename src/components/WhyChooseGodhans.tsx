@@ -53,6 +53,21 @@ export default function WhyChooseGodhans({ damageNoun }: { damageNoun?: DamageNo
         <p className="text-gray-300 text-lg leading-relaxed border-l-4 border-red-600 pl-4">
           <InsuranceCopy damageNoun={damageNoun} />
         </p>
+        {/* The one body-copy link to /about on the site. /about had ZERO
+            in-content inlinks — reachable only through the nav and footer —
+            which is a bad place to leave the page that names the owners and
+            carries the veteran-owned claim this block asserts. This block
+            already recites the credentials, so it is the honest place to point
+            at the people behind them. */}
+        <p className="text-gray-300 text-lg leading-relaxed mt-6">
+          <Link
+            to="/about"
+            className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+          >
+            Meet Michael and James
+          </Link>
+          {' '}— the brothers who own the company and run the crew.
+        </p>
       </div>
     </section>
   );

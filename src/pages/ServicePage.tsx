@@ -6,7 +6,7 @@ import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { LazyImage } from '@/components/ui/LazyImage';
 import WhyChooseGodhans from '@/components/WhyChooseGodhans';
 import { BUSINESS_INFO } from '@/lib/constants';
-import { SITE_URL } from '@/data/siteData';
+import { BUSINESS, SITE_URL } from '@/data/siteData';
 import type { DamageNoun } from '@/data/siteData';
 
 const LOCATION_SLUGS = new Set([
@@ -408,34 +408,54 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
             </section>
           )}
 
-          {/* Guides & Pricing (internal links out to the guide/specialty pages) */}
-          {guides && guides.links.length > 0 && (
-            <section className="bg-gray-950 py-12 border-t border-gray-800">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                <h2 className="text-2xl font-bold text-white mb-4">
-                  {guides.heading || 'Guides & Pricing'}
-                </h2>
-                {guides.intro && (
-                  <p className="text-gray-300 text-lg mb-6">{guides.intro}</p>
-                )}
-                <ul className="space-y-4">
-                  {guides.links.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        to={link.href}
-                        className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
-                      >
-                        {link.label}
-                      </Link>
-                      {link.blurb && (
-                        <span className="block text-gray-400 text-base mt-1">{link.blurb}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-          )}
+          {/* Guides & Pricing (internal links out to the guide/specialty pages),
+              plus the standing link to /reviews.
+
+              The guides list stays opt-in — only 7 of the 21 ServicePage-backed
+              pages pass it — but the reviews line renders on all of them
+              unconditionally. /reviews had ZERO in-content inlinks and was
+              reachable only through the nav and footer, which is no way to
+              treat the page holding the social proof every one of these pages
+              is trying to earn. */}
+          <section className="bg-gray-950 py-12 border-t border-gray-800">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+              {guides && guides.links.length > 0 && (
+                <>
+                  <h2 className="text-2xl font-bold text-white mb-4">
+                    {guides.heading || 'Guides & Pricing'}
+                  </h2>
+                  {guides.intro && (
+                    <p className="text-gray-300 text-lg mb-6">{guides.intro}</p>
+                  )}
+                  <ul className="space-y-4 mb-8">
+                    {guides.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          to={link.href}
+                          className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+                        >
+                          {link.label}
+                        </Link>
+                        {link.blurb && (
+                          <span className="block text-gray-400 text-base mt-1">{link.blurb}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Want to hear it from our customers first?{' '}
+                <Link
+                  to="/reviews"
+                  className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+                >
+                  Read all {BUSINESS.reviewCount} Google reviews
+                </Link>
+                {' '}— what comes up most is the cleanup, the communication, and the fact that the quoted number holds.
+              </p>
+            </div>
+          </section>
 
           {/* FAQ Section */}
           {faqs && faqs.length > 0 && (
