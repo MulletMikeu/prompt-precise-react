@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BusinessSchema from "./components/BusinessSchema";
+import { initAnalytics, trackPageView } from "./lib/analytics";
 // The landing route is imported eagerly: it is the LCP-critical page and is
 // already server-rendered for "/", so lazy-loading it would throw away the
 // prerendered paint and force a hydration re-render (measurably worse LCP).
@@ -27,6 +28,27 @@ const locationPage =
     const { default: LocationPage } = await import("./pages/LocationPage");
     return { Component: () => <LocationPage city={city} /> };
   };
+
+/**
+ * Analytics. No-ops entirely unless VITE_GA_MEASUREMENT_ID is set at build
+ * time — see src/lib/analytics.ts for why the script itself is deferred past
+ * `load` + idle.
+ *
+ * initAnalytics() is idempotent and runs once; trackPageView fires for the
+ * first route AND every client-side navigation, because a prerendered SPA does
+ * not reload the document between pages. Both queue on window.dataLayer, so
+ * events recorded before gtag.js finishes loading are replayed, not dropped.
+ */
+function Analytics() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+  useEffect(() => {
+    trackPageView(pathname);
+  }, [pathname]);
+  return null;
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -91,6 +113,7 @@ function RootLayout() {
     <div className="min-h-screen flex flex-col" style={{ background: "#0A0A0A" }}>
       <DefaultRobots />
       <BusinessSchema />
+      <Analytics />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold focus:rounded focus:shadow-lg"

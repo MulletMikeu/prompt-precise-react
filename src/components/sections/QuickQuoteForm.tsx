@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { BUSINESS_INFO } from '@/lib/constants';
 import { BUSINESS } from '@/data/siteData';
+import { trackEvent } from '@/lib/analytics';
 
 interface QuickQuoteFormProps {
   /** Optional source identifier sent to Formspree (e.g. page slug) */
@@ -101,6 +102,20 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
   useEffect(() => {
     openedAt.current = Date.now();
   }, []);
+
+  // The conversion. Fired on the SUCCESS state rather than in onSubmit, so it
+  // only counts submissions Formspree actually accepted — a network failure or
+  // a server-side rejection must not look like a lead. `state.succeeded` goes
+  // false -> true exactly once, so this cannot double-count.
+  // No-ops unless VITE_GA_MEASUREMENT_ID is set; queues if gtag.js is still
+  // loading.
+  useEffect(() => {
+    if (!state.succeeded) return;
+    trackEvent('generate_lead', {
+      form_source: source ?? 'unknown',
+      form_id: 'quick-quote',
+    });
+  }, [state.succeeded, source]);
 
   // The two Yes boxes and the No box are contradictory answers to one question,
   // so each side clears the other. They are checkboxes rather than radios on
