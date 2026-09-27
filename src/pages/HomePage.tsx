@@ -3,7 +3,6 @@ import HeroCompare from "../components/HeroCompare";
 import { PROSE } from "../data/homepageCopy";
 import ServicesSection from "../components/ServicesSection";
 import TrustSection from "../components/TrustSection";
-import VideoSection from "../components/VideoSection";
 import ReviewsSection from "../components/ReviewsSection";
 import ServiceAreaSection from "../components/ServiceAreaSection";
 import CTABanner from "../components/CTABanner";
@@ -65,7 +64,6 @@ export default function HomePage() {
         <HeroCompare />
         <ServicesSection />
         <TrustSection />
-        <VideoSection />
         <ReviewsSection />
         <ServiceAreaSection />
         <CTABanner />
