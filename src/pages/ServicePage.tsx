@@ -6,6 +6,7 @@ import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { LazyImage } from '@/components/ui/LazyImage';
 import WhyChooseGodhans from '@/components/WhyChooseGodhans';
 import { BUSINESS_INFO } from '@/lib/constants';
+import { SITE_URL } from '@/data/siteData';
 import type { DamageNoun } from '@/data/siteData';
 
 const LOCATION_SLUGS = new Set([
@@ -109,21 +110,35 @@ interface ServicePageProps {
   gallery?: { heading?: string; images: GalleryImage[] };
 }
 
+/**
+ * Middle breadcrumb crumb, or null for a two-crumb trail.
+ *
+ * Every label here MUST resolve to a page that actually is that category. All
+ * three labels used to point at /tree-service-jacksonville-nc — a city page
+ * titled "Tree Company in Jacksonville, NC" — so 20 pages asserted a
+ * Services/Locations/Resources hierarchy the site does not have. Now "Services"
+ * goes to /services and "Locations" goes to /service-area, both of which are
+ * real hubs listing exactly what the crumb claims.
+ *
+ * "Resources" is gone rather than repointed: the guide pages (cost, permits,
+ * storm damage, trimming-vs-pruning…) have no hub page of their own — /blog
+ * lists some but not all — so any target would have been a guess. Those pages
+ * now carry a truthful two-crumb Home > Page trail instead of a fabricated
+ * middle level. Give them a real hub later and add the branch back.
+ */
 function getBreadcrumbCategory(slug: string): { name: string; slug: string } | null {
-  // The Jacksonville hub is the category target for every other slug, so it has
-  // no category of its own — without this it fell through to "Resources" and
-  // emitted a breadcrumb whose middle crumb pointed at the page itself.
+  // The Jacksonville hub sits directly under Home.
   if (slug === 'tree-service-jacksonville-nc') return null;
-  if (slug.startsWith('tree-service-') && slug !== 'tree-service-jacksonville-nc') {
-    return { name: 'Locations', slug: 'tree-service-jacksonville-nc' };
+  if (slug.startsWith('tree-service-')) {
+    return { name: 'Service Area', slug: 'service-area' };
   }
   if (
     slug.includes('removal') || slug.includes('trimming') || slug.includes('grinding') ||
     slug.includes('emergency') || slug.startsWith('commercial-') || slug.startsWith('residential-')
   ) {
-    return { name: 'Services', slug: 'tree-service-jacksonville-nc' };
+    return { name: 'Services', slug: 'services' };
   }
-  return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
+  return null;
 }
 
 export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
@@ -135,8 +150,8 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://godhans.com/" },
-      ...(breadcrumbCategory ? [{ "@type": "ListItem", "position": 2, "name": breadcrumbCategory.name, "item": `https://godhans.com/${breadcrumbCategory.slug}` }] : []),
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+      ...(breadcrumbCategory ? [{ "@type": "ListItem", "position": 2, "name": breadcrumbCategory.name, "item": `${SITE_URL}/${breadcrumbCategory.slug}` }] : []),
       { "@type": "ListItem", "position": breadcrumbCategory ? 3 : 2, "name": title }
     ]
   };
