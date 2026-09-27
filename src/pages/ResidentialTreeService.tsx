@@ -27,8 +27,8 @@ export default function ResidentialTreeService() {
           text: "Every stick, every limb, and every chip we generated leaves with us unless you ask us to leave it.\n\nCleanup on our jobs means the brush is chipped and hauled, the wood is cut down and removed or stacked where you want it, the drop zone is raked, and the driveway and street are blown clear. If you want the chips kept as mulch or the rounds left for firewood, say so and we'll stage them where you'd like them — that's a choice, not a default we make for you.\n\nThe standard we hold is simple: when the trucks pull out, the only evidence we were there should be the tree that's gone."
         },
         {
-          heading: "What Happens During a Free Estimate?",
-          text: `We come to the property, look at the actual tree, and give you a written number before anything starts.\n\nHere is the sequence. We walk the tree and the ground under it. We check access — gate widths, overhead lines, what can physically reach the trunk — because access drives price more than height does. We identify what's underneath the drop zone. If there's a stump in scope, we measure it at the widest point of the root flare rather than the trunk, because the flare is what the grinder actually has to cut through. Then you get a written quote.\n\nThat quote is the price you pay. We are not looking for a reason to revise it upward once the crew is on site. If we find something genuinely different from what was visible during the estimate — a hidden cavity, a second tree tangled in the first — we stop and talk to you before doing anything that changes the number.\n\n${PROSE.pricing}`
+          heading: "What an Estimate Should Include",
+          text: "We come to the property, look at the actual tree, and hand you a written number before anything starts. Free, and there is no version of this where you get talked into something on the doorstep.\n\nMore useful than describing ours is telling you what ANY estimate should contain — including one from someone else. If a quote is missing these, it is not finished, and the gaps are where the arguments come from:\n\n✓ SCOPE — exactly which trees, and what is happening to each one. “the oak out back” is not scope if there are two oaks out back.\n\n✓ DEBRIS — who hauls the wood, and is it in this price. This is the single most common gap. Cutting a tree down and removing a tree are two different jobs, and a cheap number often means only the first one was quoted.\n\n✓ STUMP — in or out, and if in, ground to what depth. A stump left at ankle height is a mower problem for the next ten years.\n\n✓ ACCESS PLAN — how the equipment physically reaches the trunk, and where the truck and trailer will sit. A company that has not worked this out has not finished the quote.\n\n✓ GROUND PROTECTION — on the sandy side of the county, whether mats are needed and what they add. Our shop on Gum Branch Road is roughly where the ground changes: coastal side is sandy loam, where a yard can look solid and give way under a loaded machine and grass tears when you turn logs on it. Inland toward Richlands it is regular dirt to hard-pack clay and usually no grass is lost at all. Either way you should hear which one you have before the work, not after.\n\n✓ CERTIFICATE OF INSURANCE — general liability and workers' comp, and ideally sent to you by their agent rather than forwarded by them.\n\n✓ A WRITTEN TOTAL — one number, not a range, with what would change it stated plainly.\n\nAnd the part that matters most, which no checklist can verify for you: if the price moves, we tell you before we touch the tree. Not on the invoice. If we open up the canopy and find the job is bigger than it looked from the ground, you get a phone call and a decision, not a surprise."
         },
         {
           heading: "Do You Offer Financing?",
@@ -66,6 +66,11 @@ export default function ResidentialTreeService() {
       }}
       faqs={[
         {
+          question: "What should a tree removal estimate include?",
+          answer: "Scope (exactly which trees and what happens to each), debris (who hauls the wood and whether it is in the price — the most common gap), the stump (in or out, and to what depth), an access plan (how equipment reaches the trunk and where the truck sits), ground protection if the lot is sandy, a certificate of insurance covering both general liability and workers' comp, and a written total rather than a range. If a quote is missing those, it is not finished. And if the price moves once work starts, you should hear about it before anyone touches the tree.",
+          link: { href: "/tree-service-jacksonville-nc", label: "Questions to ask before hiring anyone" }
+        },
+        {
           question: `Why is there an ${PRICING.removal.minimum} minimum on tree removal?`,
           answer: PRICING.stories.mobilization
         },
@@ -94,6 +99,8 @@ export default function ResidentialTreeService() {
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
         { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
         { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
+        { label: 'Debris Hauling', href: '/debris-hauling-jacksonville-nc' },
+        { label: 'Commercial Tree Service', href: '/commercial-tree-service-jacksonville-nc' },
       ]}
       finalCta={{
         heading: "Get a Free Estimate on Your Tree",
