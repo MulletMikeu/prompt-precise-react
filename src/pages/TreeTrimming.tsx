@@ -108,6 +108,10 @@ export default function TreeTrimming() {
           text: "We follow a careful process to ensure safe and effective trimming:\n\n• Inspection of tree health and structure\n• Identification of branches to remove\n• Precision trimming using proper techniques\n• Cleanup of all debris"
         },
         {
+          heading: "How We Actually Trim a Tree",
+          text: "This is the part of the job Michael cares most about, and it is most visible on live oaks.\n\nIt happens in two stages, and the order matters.\n\nFIRST, THE BOTTOM OF THE CANOPY. We clean the lowest fifteen to twenty per cent — the trunk itself and the first five to eight feet out along each limb — taking off the sapsucker and epicormic growth, the thin vertical shoots that clutter the inside of a tree. The point is not tidiness. It is that afterwards you can see up into the tree. You get the structure back: the trunk, the main limbs, the shape underneath all the fuzz. On an old live oak the difference is the whole character of the tree.\n\nTHEN, SELECTIVE THINNING UP HIGH. Where a branch splits into four, six, eight limbs, we take out the ones growing back toward other limbs. Not every other one — that is how you get a tree that looks like it has been shaved, and it is the most common thing we are called in to fix. Choosing by direction instead of by count means air and light move through the canopy while the tree still looks almost untouched from the ground. Done properly, most people cannot tell we were up there. They can tell the tree looks better.\n\nAND ALWAYS, REGARDLESS: dead limbs, cracked limbs, rotten limbs, and limbs crossing or rubbing each other. Those are not judgement calls. A rubbing limb is a wound that never closes, and a cracked limb is a decision the tree has already made.\n\nWhat we do not do is top a tree. Cutting the leaders off to reduce height produces a flush of weak regrowth from the wound, and every one of those shoots is more likely to fail than the limb that was removed. If someone has quoted you on topping, that is worth a second conversation."
+        },
+        {
           heading: "Why We Don't Rush to Cut Oaks",
           text: "Because an oak usually has a way out that other species don't.\n\nOaks regenerate through epicormic growth — new shoots pushed from dormant buds under the bark. It is not ideal growth, and no arborist pretends otherwise. But it is a second chance, and it gives a skilled crew options that simply don't exist on other trees.\n\nIn practice that means we can take a substantial prune off a roofline or back away from power lines and still leave you a canopy that doesn't look chopped in half — because the tree will respond and fill back in. The homeowner keeps the shade and the mature tree; the hazard still goes away.\n\nPines and sweetgums give you no such option. Cut them back hard and that's simply how they stay. This is the single biggest reason our invoices show pines and sweetgums getting removed while oaks get maintained year after year. When someone tells you an oak has to come out, it's worth asking whether it has to — or whether it just needs the right prune."
         },
@@ -155,6 +159,8 @@ export default function TreeTrimming() {
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
         { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
         { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
+        { label: 'Resistograph Tree Testing', href: '/resistograph-tree-testing-jacksonville-nc' },
+        { label: 'Commercial Tree Service', href: '/commercial-tree-service-jacksonville-nc' },
       ]}
       finalCta={{
         heading: "Schedule Your Tree Trimming Service Today",

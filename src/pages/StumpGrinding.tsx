@@ -48,6 +48,10 @@ export default function StumpGrinding() {
           text: `Stump grinding starts at a ${PRICING.stump.minimum} minimum and runs ${PRICING.stump.perInch}, measured at the widest point of the root flare. Most single residential stumps land between ${PRICING.stump.most.replace('–', ' and ')}.\n\nIf you have more than one stump on the property, each additional stump on the same visit is discounted. The trip and the setup are the fixed cost of the job — once the machine is on site and running, the second and third stumps cost you materially less than the first.`
         },
         {
+          heading: "Ordinary Stumps, and the Old-Growth Ones",
+          text: `Most stumps are boring, and that is good news for your bill. Two to three feet across, an hour or so of work, and the grinder never has a hard time. We take a little of the grindings away with us so what you are left with is flat rather than a mound that settles into a dip over the next year.\n\nOld-growth oak and pine are the exception, and the difference is not what you can see.\n\nA Jacksonville oak stump measuring six or seven feet across at the root flare has, in our experience, fanned out to fifteen or seventeen feet underground. The visible stump is the small part. Those jobs have produced two to two and a half dump trailers of grindings on their own — which is why a stump that is twice as wide as another one is not twice the price, it is considerably more.\n\nThat is also why we measure at the root flare rather than the trunk. The flare is the honest number, because the flare is what predicts the root system we are actually going to be grinding.\n\nSo: typical stumps run ${PRICING.stump.most}. The genuinely large old-growth ones have run ${PRICING.stump.largest}. If you have a stump that looks like one of the big ones, send a photo with something in frame for scale and we will tell you which category it is before anyone comes out.`
+        },
+        {
           heading: "Why Do You Measure the Root Flare Instead of the Trunk?",
           text: "Because the trunk understates the job. The flare is where the trunk widens out into the roots at and below ground level, and that is the width the grinder actually has to cut through.\n\nMagnolias and water oaks are the clearest examples in Jacksonville — both spread far wider at and below grade than the trunk above them suggests. Quoting off the trunk diameter on one of those would price a job we could not do at that number. Measuring at the widest point of the flare is how the quote we give you is the price you pay."
         },
@@ -107,6 +111,8 @@ export default function StumpGrinding() {
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
         { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
         { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
+        { label: 'Debris Hauling', href: '/debris-hauling-jacksonville-nc' },
+        { label: 'Residential Tree Service', href: '/residential-tree-service-jacksonville-nc' },
       ]}
       finalCta={{
         heading: "Remove That Stump Today",

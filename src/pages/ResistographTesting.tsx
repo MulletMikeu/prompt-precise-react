@@ -34,7 +34,7 @@ export default function ResistographTesting() {
       subtitle="Measuring Internal Decay Before Anyone Decides to Cut"
       slug="resistograph-tree-testing-jacksonville-nc"
       credentialBlock
-      description="Resistograph testing in Jacksonville, NC measures internal decay in a standing tree, so a sound hardwood doesn't get removed on a guess. Onslow County species notes."
+      description="Resistograph testing in Jacksonville, NC measures internal decay in a standing tree, so a sound hardwood isn't removed on a guess. Local species notes."
       ctaText={`Ask About Testing — ${BUSINESS.phone}`}
       quickAnswer="A resistograph is a drill that measures wood. It pushes a needle-thin probe through a standing trunk and records how hard the wood pushes back, which maps the solid wood and the rot without taking the tree apart. We use it for one reason: so nobody has to decide whether a big hardwood is dangerous by looking at it."
       sections={[
