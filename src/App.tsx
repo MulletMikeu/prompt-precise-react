@@ -174,6 +174,8 @@ export const routes: RouteRecord[] = [
       { path: "tree-removal-tight-spaces-jacksonville-nc", lazy: page(() => import("./pages/TreeRemovalTightSpaces")) },
       { path: "tree-trimming-vs-pruning", lazy: page(() => import("./pages/TreeTrimmingVsPruning")) },
       { path: "leaning-tree-dangerous-after-storm", lazy: page(() => import("./pages/LeaningTreeDangerous")) },
+      { path: "resistograph-tree-testing-jacksonville-nc", lazy: page(() => import("./pages/ResistographTesting")) },
+      { path: "debris-hauling-jacksonville-nc", lazy: page(() => import("./pages/DebrisHauling")) },
       { path: "*", lazy: page(() => import("./pages/NotFound")) },
     ],
   },

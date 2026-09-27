@@ -100,13 +100,71 @@ export const PRICING = {
     // 6–8 inch industry norm"), which needs the singular. Pick by grammar.
     industryNorm: "6–8 inches",
     industryNormAdj: "6–8 inch",
+    /**
+     * Old-growth oak and pine stumps, which price nothing like the 2–3 ft
+     * stumps `most` describes. Kept as its own figure so the ordinary range
+     * never gets stretched to cover the outliers.
+     *
+     * NOTE: batch-2 field notes gave the ordinary range as "$200–$450" while
+     * `most` above has said "$200–$500" since before this branch. `most` is
+     * unchanged — the discrepancy is flagged for the owner rather than
+     * silently overwritten.
+     */
+    largest: "$1,500+",
+  },
+  /**
+   * Emergency work on a tree that is ON a structure. Priced separately from
+   * `removal` because almost none of the cost is the tree: it is after-hours
+   * mobilization, crane or lift time, rigging a loaded trunk off a roof in
+   * pieces, working around weather, and tarping the opening before we leave.
+   */
+  emergency: {
+    structure: "$7,000–$15,000+",
+  },
+  /**
+   * Removals where the tree is close enough to the house that position, not
+   * size, sets the price. `typical` includes the stump.
+   */
+  nearHouse: {
+    typical: "$1,300",
+    mature: "$2,000–$3,200",
+    besideStructure: "$6,000–$8,000",
+  },
+  /**
+   * Organic debris hauling (trees, brush, leaves) as a standalone service —
+   * no demolition, no construction waste, no household junk.
+   */
+  debris: {
+    minimum: "$800",
+    perTrailer: "$400",
+    localRadiusMiles: 5,
+    trailersAtMinimum: "about two full trailers",
+    bigTreeLoads: "3–5 loads",
   },
   stories: {
     sameTree:
       "The same tree can cost $6,000 in an open yard and $10,000 wedged against a house with power lines overhead. The tree doesn't change the price — the obstacles do.",
     mobilization:
       "Why we have an $800 minimum: getting a full crew and equipment to your property is the biggest fixed cost of any job. That's why we don't do $200 quick cuts — and why the crew that shows up can handle anything, from a single limb to a 90-foot removal over your roof.",
+    position:
+      "Position matters more than size. A 70-foot pine in an open yard drops in one piece; the same tree three feet off your bedroom wall comes down in sections on ropes, and that is the difference in the number.",
   },
+} as const;
+
+/**
+ * The storm / insurance lead block, rendered above the fold on BOTH
+ * /emergency-tree-service-jacksonville-nc and /storm-cleanup-jacksonville-nc.
+ *
+ * One constant, two pages, so the two can never drift — and so this exact
+ * wording is the only version of it anywhere. It is approved copy: do NOT
+ * strengthen it. Specifically, never write "you pay nothing", "we waive your
+ * deductible", or "guaranteed covered" — we bill the insurer and work the claim,
+ * which is not the same as promising an outcome we do not control.
+ */
+export const STORM_LEAD = {
+  body:
+    "Tree on your house? Our first job is stopping the damage. We get the tree off and tarp any openings as fast as it can be done safely — because water getting in is what turns a bad day into a major repair. We bill your insurance directly and work with your adjuster, doing everything we can so your cost stays at your normal deductible.",
+  ctaLabel: `Call ${BUSINESS.phone} — 24/7.`,
 } as const;
 
 /**
@@ -245,6 +303,25 @@ export const SERVICES = [
     metaTitle: "Storm Cleanup Jacksonville NC | Godhans Tree Company",
     metaDesc:
       `Storm damage cleanup in Jacksonville, NC. Fast response, full debris removal. Call 24/7: ${BUSINESS.phone}.`,
+  },
+  {
+    id: "debris-hauling",
+    name: "Debris Hauling",
+    slug: "debris-hauling",
+    href: "/debris-hauling-jacksonville-nc",
+    headline: "Organic Debris, Gone. Trailer by Trailer.",
+    description:
+      "Trees, brush, and leaves only. Already cut it yourself and the pile got away from you? We load it and haul it — priced by the trailer, not by guesswork.",
+    features: [
+      "Trees, limbs, brush, and leaves — organic debris only",
+      `${PRICING.debris.minimum} minimum, about ${PRICING.debris.perTrailer} per standard dump trailer`,
+      "DIY piles that outgrew the truck you planned to use",
+      "Burn-ban summers when the pile can't go anywhere",
+      "Cleanup after a crew that cut cheap and left it",
+    ],
+    metaTitle: "Debris Hauling Jacksonville NC | Godhans Tree Company",
+    metaDesc:
+      `Organic debris hauling in Jacksonville, NC — trees, brush, and leaves. Priced by the trailer. Free estimates — ${BUSINESS.phone}.`,
   },
 ] as const;
 
