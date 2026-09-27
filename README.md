@@ -111,6 +111,15 @@ page and counting them would stamp all 34 URLs with the same date. The script
 exits non-zero rather than emitting a partial sitemap if a route in `App.tsx` is
 written in a shape it cannot parse.
 
+Because per-route dates need real git history and CI clones shallow, the script
+first runs `git fetch --unshallow`. If that is not possible it **keeps the
+committed `public/sitemap.xml` untouched** rather than overwriting it with 34
+copies of the deploy date. So the generated file is committed on purpose: run
+`npm run sitemap` locally before a release and commit the result, and CI will
+either improve on it or leave it alone. (Measured: on a depth-1 clone of `main`,
+un-guarded generation collapsed all 34 URLs to a single date instead of the
+correct 2026-08-08 / 2026-09-02 / 2026-09-17 spread.)
+
 **IndexNow is a manual post-deploy step, on purpose.** Run it once the
 production deployment is live:
 

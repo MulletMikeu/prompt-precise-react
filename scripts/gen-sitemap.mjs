@@ -48,6 +48,64 @@ const die = (msg) => {
   process.exit(1);
 };
 
+const git = (args) => execFileSync('git', args, { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+
+/**
+ * Per-route dates need real history, and CI does not have it by default.
+ *
+ * Vercel (and most CI) clones shallow. `git log -1 -- <file>` on a depth-1 clone
+ * returns NOTHING for every file that was not touched by the tip commit, so
+ * every route falls back to the same date. Measured on a depth-1 clone of main:
+ * all 34 URLs came out 2026-09-17 instead of the correct spread of 2026-08-08 /
+ * 2026-09-02 / 2026-09-17. That is the original "lastmod tells crawlers nothing"
+ * bug wearing a different hat — every deploy would claim all 34 pages changed.
+ *
+ * So: deepen the clone if we can, and if we cannot, REFUSE to overwrite the
+ * committed sitemap.xml with worse data. The committed file was generated from
+ * full history by whoever last ran a local build, which is strictly better than
+ * 34 copies of today's date.
+ */
+function haveUsableHistory() {
+  let shallow;
+  try {
+    shallow = git(['rev-parse', '--is-shallow-repository']) === 'true';
+  } catch {
+    console.warn('[gen-sitemap] not a git repository — keeping the committed sitemap.xml');
+    return false;
+  }
+  if (!shallow) return true;
+
+  console.warn('[gen-sitemap] shallow clone detected; fetching full history…');
+  try {
+    git(['fetch', '--unshallow', '--quiet']);
+  } catch (err) {
+    console.warn(`[gen-sitemap] --unshallow failed: ${String(err.message).split('\n')[0]}`);
+  }
+  try {
+    if (git(['rev-parse', '--is-shallow-repository']) === 'false') {
+      console.log('[gen-sitemap] history deepened — per-route dates available');
+      return true;
+    }
+  } catch { /* fall through */ }
+  return false;
+}
+
+// ------------------------------------------------------------- history check
+
+if (!haveUsableHistory()) {
+  if (fs.existsSync(OUT)) {
+    const existing = fs.readFileSync(OUT, 'utf8');
+    const dates = [...new Set([...existing.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((m) => m[1]))];
+    console.warn(
+      `[gen-sitemap] KEEPING the committed public/sitemap.xml unchanged ` +
+      `(${dates.length} distinct lastmod value(s)). Regenerate it from a full ` +
+      `clone — \`npm run sitemap\` locally — and commit the result.`,
+    );
+    process.exit(0);
+  }
+  die('shallow clone AND no committed public/sitemap.xml to fall back on — run `npm run sitemap` locally and commit it.');
+}
+
 // ---------------------------------------------------------------- route table
 
 const app = fs.readFileSync(APP, 'utf8');
