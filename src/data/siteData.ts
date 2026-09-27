@@ -1,3 +1,17 @@
+/** Canonical origin — apex, no trailing slash. Absolute URLs build from this. */
+export const SITE_URL = "https://godhans.com";
+
+/**
+ * Stable @id of the one canonical LocalBusiness node (emitted by
+ * <BusinessSchema/>). Anything that needs to *reference* the business —
+ * Review/itemReviewed, WebPage/about — points here instead of restating a
+ * partial copy of the business.
+ */
+export const BUSINESS_ID = `${SITE_URL}/#business`;
+
+/** Stable @id of the WebSite node (also emitted by <BusinessSchema/>). */
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+
 export const BUSINESS = {
   name: "Godhans Tree Company",
   legalName: "Godhans LLC",
@@ -21,12 +35,18 @@ export const BUSINESS = {
   founded: 2013,
   // Build-time constant, not `new Date()` — see the `define` note in vite.config.ts.
   yearsInBusiness: __BUILD_YEAR__ - 2013,
-  reviewCount: 26,
+  // The ONLY place a review count lives. Every visible count, the /reviews
+  // meta description, and the hero chip read from here — see the list in
+  // README under "Review count". Update this when the Google total moves.
+  reviewCount: 27,
   reviewRating: "5.0",
   primaryCity: "Jacksonville, NC",
   county: "Onslow County",
   social: {
-    facebook: "https://www.facebook.com/profile.php?id=100057407111124",
+    // Facebook's canonical profile URL, not the /profile.php?id= form — that
+    // one 301s here, and `sameAs` should name the destination rather than a
+    // redirect hop.
+    facebook: "https://www.facebook.com/people/Godhans/100057407111124/",
     youtube: "https://www.youtube.com/@Godhanstree",
   },
   gbpUrl: "https://g.page/godhans",
@@ -241,12 +261,20 @@ export const SERVICE_CITIES = [
   { name: "Surf City", state: "NC", slug: "surf-city-nc", primary: false },
 ] as const;
 
+/**
+ * `date` is the display string; `datePublished` is the machine-readable form
+ * emitted as Review/datePublished microdata. Deliberately `YYYY-MM` (a valid
+ * reduced-precision ISO 8601 date) rather than `YYYY-MM-01`: Google only
+ * publishes the month for these reviews, so pinning a day would assert a date
+ * we do not have. Keep the two fields describing the same month.
+ */
 export const REVIEWS = [
   {
     id: 1,
     name: "Scott M.",
     stars: 5,
     date: "May 2026",
+    datePublished: "2026-05",
     text: "Outstanding customer service. Impeccable knowledge and skill in his business. Great price and extremely professional service! Call them first!",
     source: "Google Review",
   },
@@ -255,6 +283,7 @@ export const REVIEWS = [
     name: "Tristen B.",
     stars: 5,
     date: "May 2026",
+    datePublished: "2026-05",
     text: "Michael was very professional and upfront about the cost of a tree removal in my back yard. Also communicated when they would arrive and kept me updated throughout the job. Great experience overall.",
     source: "Google Review",
   },
@@ -263,41 +292,14 @@ export const REVIEWS = [
     name: "R. Morgan",
     stars: 5,
     date: "May 2026",
+    datePublished: "2026-05",
     text: "I recently hired this tree removal service to remove 4 extremely large trees, and the experience exceeded my expectations. The team was professional, efficient, and left the property cleaner than they found it. Highly recommend.",
     source: "Google Review",
   },
 ] as const;
 
-export const VIDEOS = [
-  {
-    id: "v1",
-    title: "Our Work",
-    subtitle: "See the crew in action",
-    youtubeId: "PLACEHOLDER_1",
-    thumbnail: "/images/video-thumb-our-work.jpg",
-  },
-  {
-    id: "v2",
-    title: "Meet the Team",
-    subtitle: "Veteran-owned, locally operated",
-    youtubeId: "PLACEHOLDER_2",
-    thumbnail: "/images/video-thumb-meet-team.jpg",
-  },
-  {
-    id: "v3",
-    title: "How It Works",
-    subtitle: "Estimate to cleanup",
-    youtubeId: "PLACEHOLDER_3",
-    thumbnail: "/images/video-thumb-how-it-works.jpg",
-  },
-  {
-    id: "v4",
-    title: "Why Godhans",
-    subtitle: "No job too big, no excuses",
-    youtubeId: "PLACEHOLDER_4",
-    thumbnail: "/images/video-thumb-why-godhans.jpg",
-  },
-] as const;
+/** Best rating on the scale the review stars are drawn against. */
+export const REVIEW_BEST_RATING = 5;
 
 export const TRUST_STATS = [
   { value: "13+", label: "Years in Business" },

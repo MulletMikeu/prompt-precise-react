@@ -1,4 +1,5 @@
-import { REVIEWS, BUSINESS } from "../data/siteData";
+import { REVIEWS, BUSINESS, REVIEW_BEST_RATING } from "../data/siteData";
+import ReviewMicrodata from "./ReviewMicrodata";
 
 function Stars({ count }: { count: number }) {
   return (
@@ -62,9 +63,11 @@ export default function ReviewsSection() {
               itemScope
               itemType="https://schema.org/Review"
             >
-              <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" itemID="https://godhans.com/#business" style={{ display: "none" }}>
-                <span itemProp="name" content="Godhans Tree Company" />
-              </span>
+              <ReviewMicrodata
+                stars={review.stars}
+                datePublished={review.datePublished}
+                bestRating={REVIEW_BEST_RATING}
+              />
 
               {/* Quote mark */}
               <span

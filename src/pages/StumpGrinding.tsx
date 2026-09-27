@@ -1,5 +1,5 @@
 import ServicePage from './ServicePage';
-import { PRICING } from '../data/siteData';
+import { BUSINESS, PRICING } from '../data/siteData';
 import stumpHero from '@/assets/stump-grinding-jacksonville-nc-godhans.jpg';
 import stumpHero600Webp from '@/assets/stump-grinding-jacksonville-nc-godhans-600.webp';
 import stumpHero1200Webp from '@/assets/stump-grinding-jacksonville-nc-godhans-1200.webp';
@@ -25,7 +25,7 @@ export default function StumpGrinding() {
         sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
         width: 1200,
         height: 828,
-        alt: 'Stump Grinding in Jacksonville NC – real job-site photo by Godhans Tree Service.',
+        alt: `Stump Grinding in Jacksonville NC – real job-site photo by ${BUSINESS.name}.`,
         caption: 'Stump grinding job-site — Jacksonville, NC',
         showCta: true,
       }}
