@@ -13,11 +13,11 @@ export default function TreeServiceJacksonvilleNC() {
   return (
     <ServicePage
       title="Tree Company in Jacksonville, NC"
-      metaTitle="Tree Company in Jacksonville, NC — Local Crew, Neighborhoods & FAQs | Godhans"
+      metaTitle="Tree Company in Jacksonville, NC — Local Crew | Godhans"
       subtitle="The Local Crew, the Neighborhoods We Work, and the Questions We Get Most"
       slug="tree-service-jacksonville-nc"
       credentialBlock
-      description="Meet the Jacksonville, NC tree company behind the work: the local crew, the neighborhoods we cover, Camp Lejeune PCS scheduling, and answers on cost and permits."
+      description="Meet the Jacksonville, NC tree company behind the work: the local crew, the neighborhoods we cover, Camp Lejeune PCS scheduling, plus cost and permit answers."
       ctaText="Call Now"
       quickAnswer="Godhans Tree Company is a veteran-owned, family-operated tree company based in Jacksonville, NC. This page covers who shows up, the neighborhoods and base-adjacent properties we work in, the species and storm patterns specific to Onslow County, and straight answers on what jobs cost."
       sections={[

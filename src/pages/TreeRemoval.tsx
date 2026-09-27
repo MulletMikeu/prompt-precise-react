@@ -1,5 +1,5 @@
 import ServicePage from './ServicePage';
-import { PRICING } from '../data/siteData';
+import { BUSINESS, PRICING } from '../data/siteData';
 import removalHero from '@/assets/tree-removal-jacksonville-nc-godhans.jpg';
 import removalHero600Webp from '@/assets/tree-removal-jacksonville-nc-godhans-600.webp';
 import removalHero1200Webp from '@/assets/tree-removal-jacksonville-nc-godhans-1200.webp';
@@ -25,7 +25,7 @@ export default function TreeRemoval() {
         sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
         width: 1200,
         height: 960,
-        alt: 'Tree removal in Jacksonville NC – real job-site photo by Godhans Tree Service.',
+        alt: `Tree removal in Jacksonville NC – real job-site photo by ${BUSINESS.name}.`,
         caption: 'Tree removal job-site — Jacksonville, NC',
         showCta: true,
       }}

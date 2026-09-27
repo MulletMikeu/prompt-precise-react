@@ -1,4 +1,5 @@
 import ServicePage from './ServicePage';
+import { BUSINESS } from '../data/siteData';
 import { PrecisionRemoval } from '@/components/sections/PrecisionRemoval';
 import tightHero from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans.jpg';
 import tight600Jpg from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-600.jpg';
@@ -11,7 +12,7 @@ import tight1200Webp from '@/assets/tree-removal-tight-spaces-jacksonville-nc-go
 //   (2) caption: Editable caption shown under the image
 //   (3) geo:     Optional EXIF/GEO data string (omit if unavailable)
 const HERO_PHOTO = {
-  alt: 'Tree removal in tight spaces in Jacksonville NC – real job-site photo by Godhans Tree Service.',
+  alt: `Tree removal in tight spaces in Jacksonville NC – real job-site photo by ${BUSINESS.name}.`,
   caption: 'Tight-space tree removal job site — Jacksonville, NC',
   geo: undefined as string | undefined,
 };

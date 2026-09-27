@@ -1,6 +1,7 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
-import { BUSINESS, REVIEWS } from "../data/siteData";
+import { BUSINESS, REVIEWS, REVIEW_BEST_RATING } from "../data/siteData";
+import ReviewMicrodata from "../components/ReviewMicrodata";
 
 const TITLE = "Customer Reviews | Godhans Tree Company Jacksonville, NC";
 const DESC = `${BUSINESS.reviewRating}-star Google reviews for Godhans Tree Company — ${BUSINESS.reviewCount} verified reviews. Veteran-owned tree service in Jacksonville, NC. Read what customers say.`;
@@ -43,16 +44,9 @@ export default function ReviewsPage() {
         <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href={CANONICAL} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:type" content="website" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:description" content={DESC} />
         <meta property="og:url" content={CANONICAL} />
-        <meta property="og:image" content="https://godhans.com/og-image-v2.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://godhans.com/og-image-v2.jpg" />
         <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESC} />
       </Helmet>
@@ -83,9 +77,11 @@ export default function ReviewsPage() {
                   itemScope
                   itemType="https://schema.org/Review"
                 >
-                  <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" itemID="https://godhans.com/#business" style={{ display: "none" }}>
-                    <span itemProp="name" content="Godhans Tree Company" />
-                  </span>
+                  <ReviewMicrodata
+                    stars={review.stars}
+                    datePublished={review.datePublished}
+                    bestRating={REVIEW_BEST_RATING}
+                  />
                   <span className="font-display font-extrabold mb-4 block" style={{ fontSize: "3rem", lineHeight: 1, color: "#C41230", opacity: 0.4 }} aria-hidden="true">"</span>
                   <div className="mb-4"><Stars count={review.stars} /></div>
                   <blockquote className="text-base leading-relaxed flex-1 mb-6" style={{ color: "#C8C8C2" }} itemProp="reviewBody">

@@ -44,10 +44,12 @@ export default function EmergencyTreeService() {
           heading: "When to Call Us Immediately",
           text: "If you see any of these warning signs, do not wait — call us right away:\n\n⚠ A tree has fallen on your home, garage, vehicle, or fence\n⚠ A tree is leaning at a new angle after a storm\n⚠ Visible cracks or splits in the trunk or major limbs\n⚠ Soil heaving or exposed roots near the base of a tree\n⚠ Large broken limbs hanging in the canopy (\"widow makers\")\n⚠ Branches resting on or near power lines\n⚠ A tree blocking your driveway, road, or emergency access\n\nThese situations can get worse quickly — especially with rain, wind, or saturated soil. Faster response means less property damage."
         },
-        {
-          heading: "Veteran-Owned, Family-Operated — Serving Onslow County Since 2013",
-          text: "Godhans Tree Company isn't a national call center. We're your neighbors in Jacksonville, NC, and we've cleared storm damage across Onslow County since 2013.\n\nWhen you call, you get a real local crew that knows the terrain, the tree species, and the storm patterns of coastal North Carolina."
-        },
+        /* No hardcoded credential section here. This page passes
+           `credentialBlock`, which renders <WhyChooseGodhans/> with
+           CREDENTIAL.heading — the identical string this section used — so the
+           page carried the same H2 twice with near-duplicate trust copy. The
+           shared block is the one that stays; it is single-sourced from
+           siteData and already says everything this section said. */
         {
           heading: "Same-Day & Next-Day Availability",
           text: "We prioritize emergencies. Most calls are scheduled for the same day or the next morning, and active hazards (trees on homes, blocking access, or near power lines) get moved to the front of the line.\n\nCall us first — before the damage spreads, before water gets inside, and before a leaning tree decides to fall on its own."

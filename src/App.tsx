@@ -1,10 +1,11 @@
 import { Outlet, useLocation } from "react-router-dom";
-import type { RouteRecord } from "vite-react-ssg";
+import { Head as Helmet, type RouteRecord } from "vite-react-ssg";
 import type { ComponentType } from "react";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BusinessSchema from "./components/BusinessSchema";
+import { initAnalytics, trackPageView } from "./lib/analytics";
 // The landing route is imported eagerly: it is the LCP-critical page and is
 // already server-rendered for "/", so lazy-loading it would throw away the
 // prerendered paint and force a hydration re-render (measurably worse LCP).
@@ -27,6 +28,27 @@ const locationPage =
     const { default: LocationPage } = await import("./pages/LocationPage");
     return { Component: () => <LocationPage city={city} /> };
   };
+
+/**
+ * Analytics. No-ops entirely unless VITE_GA_MEASUREMENT_ID is set at build
+ * time — see src/lib/analytics.ts for why the script itself is deferred past
+ * `load` + idle.
+ *
+ * initAnalytics() is idempotent and runs once; trackPageView fires for the
+ * first route AND every client-side navigation, because a prerendered SPA does
+ * not reload the document between pages. Both queue on window.dataLayer, so
+ * events recorded before gtag.js finishes loading are replayed, not dropped.
+ */
+function Analytics() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+  useEffect(() => {
+    trackPageView(pathname);
+  }, [pathname]);
+  return null;
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -64,10 +86,34 @@ function AnimateOnScroll() {
   return null;
 }
 
+/**
+ * Site-wide crawl directives, emitted once here instead of statically in
+ * index.html. A page that needs different rules (NotFound: "noindex, follow")
+ * puts its own `robots` meta in its Helmet; helmet dedupes by `name` and the
+ * deeper, later-mounted page instance wins — so the page REPLACES this default
+ * rather than adding a second contradictory tag beside it.
+ *
+ * Previously index.html hardcoded "index, follow, max-image-preview:large, …"
+ * and eleven pages re-emitted a weaker "index, follow" on top of it, while /404
+ * ended up shipping both "index, follow" and "noindex, follow".
+ */
+function DefaultRobots() {
+  return (
+    <Helmet>
+      <meta
+        name="robots"
+        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      />
+    </Helmet>
+  );
+}
+
 function RootLayout() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0A0A0A" }}>
+      <DefaultRobots />
       <BusinessSchema />
+      <Analytics />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold focus:rounded focus:shadow-lg"

@@ -1,9 +1,11 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from 'react-router-dom';
+import { BUSINESS, BUSINESS_ID, SITE_URL, WEBSITE_ID } from '../data/siteData';
 
 // === EDITABLE PHOTO FIELDS (Michael) ===
-// Pre-filled SEO alt text — do not change template.
-const MICHAEL_PHOTO_ALT = 'Michael, owner of Godhans Tree Service in Jacksonville NC.';
+// Pre-filled SEO alt text — do not change template. The company name comes from
+// BUSINESS.name so it can never drift from the canonical entity name.
+const MICHAEL_PHOTO_ALT = `Michael, owner of ${BUSINESS.name} in Jacksonville NC.`;
 // Editable caption — leave empty to hide.
 const MICHAEL_PHOTO_CAPTION = '';
 // Optional EXIF / GEO data — leave empty to hide.
@@ -15,7 +17,7 @@ const MICHAEL_PHOTO_HEIGHT = 1408;
 
 // === EDITABLE PHOTO FIELDS (James) ===
 // Pre-filled SEO alt text — do not change template.
-const JAMES_PHOTO_ALT = 'James, owner of Godhans Tree Service in Jacksonville NC.';
+const JAMES_PHOTO_ALT = `James, owner of ${BUSINESS.name} in Jacksonville NC.`;
 // Editable caption — leave empty to hide.
 const JAMES_PHOTO_CAPTION = '';
 // Optional EXIF / GEO data — leave empty to hide.
@@ -25,12 +27,11 @@ const JAMES_PHOTO_WIDTH = 1200;
 const JAMES_PHOTO_HEIGHT = 1800;
 // === END EDITABLE PHOTO FIELDS ===
 
-const PAGE_URL = 'https://godhans.com/about';
-const OG_IMAGE = 'https://godhans.com/og-image-v2.jpg';
+const PAGE_URL = `${SITE_URL}/about`;
 
 // === EDITABLE CONTENT FIELDS ===
 // Replace the placeholder strings below with the final copy.
-const INTRO_TEXT = 'Godhans Tree Service is a veteran-owned, family-operated company built on safety, precision, and a commitment to leaving every property better than we arrived. As brothers and co-owners, Michael and James bring complementary skill sets that allow us to handle everything from routine tree care to the most complex and hazardous removals.';
+const INTRO_TEXT = `${BUSINESS.name} is a veteran-owned, family-operated company built on safety, precision, and a commitment to leaving every property better than we arrived. As brothers and co-owners, Michael and James bring complementary skill sets that allow us to handle everything from routine tree care to the most complex and hazardous removals.`;
 
 const MISSION_STATEMENT = 'Our mission is to leave every property better than we arrived.';
 
@@ -60,13 +61,15 @@ export default function MeetTheOwners() {
   const webPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-   '@id': PAGE_URL + '#webpage',
+    '@id': PAGE_URL + '#webpage',
     url: PAGE_URL,
     name: 'About Godhans Tree Company | Jacksonville, NC',
     description:
       'Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County.',
-    isPartOf: { '@id': 'https://godhans.com/#website' },
-    about: { '@id': 'https://godhans.com/#business' },
+    // Both @ids are the shared constants BusinessSchema emits, so these
+    // references resolve instead of dangling.
+    isPartOf: { '@id': WEBSITE_ID },
+    about: { '@id': BUSINESS_ID },
   };
 
   return (
@@ -78,10 +81,8 @@ export default function MeetTheOwners() {
           content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County."
         />
         <link rel="canonical" href={PAGE_URL} />
-        <meta name="robots" content="index, follow, max-image-preview:large" />
 
         {/* Open Graph */}
-        <meta property="og:type" content="website" />
         <meta property="og:url" content={PAGE_URL} />
         <meta property="og:title" content="About Godhans Tree Company | Jacksonville, NC" />
         <meta
@@ -89,11 +90,6 @@ export default function MeetTheOwners() {
           content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County."
         />
         <meta property="og:site_name" content="Godhans Tree Company" />
-        <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={OG_IMAGE} />
         <meta name="twitter:title" content="About Godhans Tree Company | Jacksonville, NC" />
         <meta name="twitter:description" content="Meet the veteran owners of Godhans Tree Company in Jacksonville, NC — Michael and James, USMC veterans delivering expert tree care across Onslow County." />
 

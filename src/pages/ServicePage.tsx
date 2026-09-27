@@ -6,6 +6,7 @@ import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { LazyImage } from '@/components/ui/LazyImage';
 import WhyChooseGodhans from '@/components/WhyChooseGodhans';
 import { BUSINESS_INFO } from '@/lib/constants';
+import { BUSINESS, SITE_URL } from '@/data/siteData';
 import type { DamageNoun } from '@/data/siteData';
 
 const LOCATION_SLUGS = new Set([
@@ -109,25 +110,39 @@ interface ServicePageProps {
   gallery?: { heading?: string; images: GalleryImage[] };
 }
 
+/**
+ * Middle breadcrumb crumb, or null for a two-crumb trail.
+ *
+ * Every label here MUST resolve to a page that actually is that category. All
+ * three labels used to point at /tree-service-jacksonville-nc — a city page
+ * titled "Tree Company in Jacksonville, NC" — so 20 pages asserted a
+ * Services/Locations/Resources hierarchy the site does not have. Now "Services"
+ * goes to /services and "Locations" goes to /service-area, both of which are
+ * real hubs listing exactly what the crumb claims.
+ *
+ * "Resources" is gone rather than repointed: the guide pages (cost, permits,
+ * storm damage, trimming-vs-pruning…) have no hub page of their own — /blog
+ * lists some but not all — so any target would have been a guess. Those pages
+ * now carry a truthful two-crumb Home > Page trail instead of a fabricated
+ * middle level. Give them a real hub later and add the branch back.
+ */
 function getBreadcrumbCategory(slug: string): { name: string; slug: string } | null {
-  // The Jacksonville hub is the category target for every other slug, so it has
-  // no category of its own — without this it fell through to "Resources" and
-  // emitted a breadcrumb whose middle crumb pointed at the page itself.
+  // The Jacksonville hub sits directly under Home.
   if (slug === 'tree-service-jacksonville-nc') return null;
-  if (slug.startsWith('tree-service-') && slug !== 'tree-service-jacksonville-nc') {
-    return { name: 'Locations', slug: 'tree-service-jacksonville-nc' };
+  if (slug.startsWith('tree-service-')) {
+    return { name: 'Service Area', slug: 'service-area' };
   }
   if (
     slug.includes('removal') || slug.includes('trimming') || slug.includes('grinding') ||
     slug.includes('emergency') || slug.startsWith('commercial-') || slug.startsWith('residential-')
   ) {
-    return { name: 'Services', slug: 'tree-service-jacksonville-nc' };
+    return { name: 'Services', slug: 'services' };
   }
-  return { name: 'Resources', slug: 'tree-service-jacksonville-nc' };
+  return null;
 }
 
 export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
-  const canonical = `https://godhans.com/${slug}`;
+  const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
 
@@ -135,8 +150,8 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://godhans.com/" },
-      ...(breadcrumbCategory ? [{ "@type": "ListItem", "position": 2, "name": breadcrumbCategory.name, "item": `https://godhans.com/${breadcrumbCategory.slug}` }] : []),
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+      ...(breadcrumbCategory ? [{ "@type": "ListItem", "position": 2, "name": breadcrumbCategory.name, "item": `${SITE_URL}/${breadcrumbCategory.slug}` }] : []),
       { "@type": "ListItem", "position": breadcrumbCategory ? 3 : 2, "name": title }
     ]
   };
@@ -147,17 +162,10 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
         <title>{pageTitle}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
-        <meta name="robots" content="index, follow" />
         <meta name="build-marker" content="helmet-v2-2026-04-19" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://godhans.com/og-image-v2.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://godhans.com/og-image-v2.jpg" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={description} />
 
@@ -393,34 +401,54 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
             </section>
           )}
 
-          {/* Guides & Pricing (internal links out to the guide/specialty pages) */}
-          {guides && guides.links.length > 0 && (
-            <section className="bg-gray-950 py-12 border-t border-gray-800">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                <h2 className="text-2xl font-bold text-white mb-4">
-                  {guides.heading || 'Guides & Pricing'}
-                </h2>
-                {guides.intro && (
-                  <p className="text-gray-300 text-lg mb-6">{guides.intro}</p>
-                )}
-                <ul className="space-y-4">
-                  {guides.links.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        to={link.href}
-                        className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
-                      >
-                        {link.label}
-                      </Link>
-                      {link.blurb && (
-                        <span className="block text-gray-400 text-base mt-1">{link.blurb}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-          )}
+          {/* Guides & Pricing (internal links out to the guide/specialty pages),
+              plus the standing link to /reviews.
+
+              The guides list stays opt-in — only 7 of the 21 ServicePage-backed
+              pages pass it — but the reviews line renders on all of them
+              unconditionally. /reviews had ZERO in-content inlinks and was
+              reachable only through the nav and footer, which is no way to
+              treat the page holding the social proof every one of these pages
+              is trying to earn. */}
+          <section className="bg-gray-950 py-12 border-t border-gray-800">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+              {guides && guides.links.length > 0 && (
+                <>
+                  <h2 className="text-2xl font-bold text-white mb-4">
+                    {guides.heading || 'Guides & Pricing'}
+                  </h2>
+                  {guides.intro && (
+                    <p className="text-gray-300 text-lg mb-6">{guides.intro}</p>
+                  )}
+                  <ul className="space-y-4 mb-8">
+                    {guides.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          to={link.href}
+                          className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+                        >
+                          {link.label}
+                        </Link>
+                        {link.blurb && (
+                          <span className="block text-gray-400 text-base mt-1">{link.blurb}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Want to hear it from our customers first?{' '}
+                <Link
+                  to="/reviews"
+                  className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+                >
+                  Read all {BUSINESS.reviewCount} Google reviews
+                </Link>
+                {' '}— what comes up most is the cleanup, the communication, and the fact that the quoted number holds.
+              </p>
+            </div>
+          </section>
 
           {/* FAQ Section */}
           {faqs && faqs.length > 0 && (

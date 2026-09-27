@@ -1,3 +1,8 @@
+# Everything on this site is open to every crawler. The per-agent groups below
+# grant nothing that "User-agent: *" does not already grant — they are here so
+# the permission is explicit and on the record, rather than something a reader
+# has to infer from the absence of a Disallow.
+
 User-agent: *
 Allow: /
 
@@ -6,5 +11,73 @@ Allow: /
 # Deliberately not in sitemap.xml: sitemaps are for indexable pages, and listing a
 # .txt there earns permanent Search Console coverage noise for no benefit.
 Allow: /llms.txt
+
+# ── AI / LLM crawlers ───────────────────────────────────────────────────────
+# Training and retrieval crawlers, named explicitly. A local tree service wants
+# to be the answer an assistant gives when someone asks who to call in
+# Jacksonville, so all of these are allowed on purpose.
+
+# OpenAI — model training
+User-agent: GPTBot
+Allow: /
+
+# OpenAI — ChatGPT browsing / user-triggered fetches
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI — search index
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic — Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google — controls Gemini/Vertex training and AI Overviews grounding, and is
+# SEPARATE from Googlebot: disallowing it would not affect Search ranking, and
+# allowing it is what keeps this site eligible to be cited in AI Overviews.
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence / Siri
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft Copilot
+User-agent: bingbot
+Allow: /
+
+# Common Crawl — the corpus many smaller models train from
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# ByteDance / Doubao
+User-agent: Bytespider
+Allow: /
 
 Sitemap: https://godhans.com/sitemap.xml

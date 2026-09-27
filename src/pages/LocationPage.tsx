@@ -1,6 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
-import { BUSINESS } from "../data/siteData";
+import { BUSINESS, SITE_URL } from "../data/siteData";
 import WhyChooseGodhans from "../components/WhyChooseGodhans";
 
 interface LocationPageProps {
@@ -72,10 +72,33 @@ const defaultContent = (city: string): CityCopy => ({
 
 export default function LocationPage({ city }: LocationPageProps) {
   const slug = city.toLowerCase().replace(/\s+/g, "-");
-  const canonical = `https://godhans.com/tree-service-${slug}-nc`;
+  const canonical = `${SITE_URL}/tree-service-${slug}-nc`;
   const title = `Tree Service in ${city}, NC | Godhans Tree Company`;
   const description = `Tree removal, trimming, stump grinding & 24/7 emergency tree service in ${city}, NC. Veteran-owned, insured — Godhans Tree Company. Free estimates.`;
   const content = CITY_CONTENT[city] ?? defaultContent(city);
+
+  // These four city pages had no BreadcrumbList at all, unlike the six
+  // ServicePage-backed city pages — and the visual trail below disagreed with
+  // those pages too (Home > Service Area > City here, Home > Locations > City
+  // there). Both now say Home > Service Area > City, and the schema is
+  // generated from the same three values the visual trail renders so they can
+  // never diverge.
+  const breadcrumbTrail = [
+    { name: "Home", href: "/", url: `${SITE_URL}/` },
+    { name: "Service Area", href: "/service-area", url: `${SITE_URL}/service-area` },
+    { name: `${city}, NC`, href: null, url: canonical },
+  ];
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbTrail.map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.name,
+      item: crumb.url,
+    })),
+  };
 
   return (
     <>
@@ -83,18 +106,12 @@ export default function LocationPage({ city }: LocationPageProps) {
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content="https://godhans.com/og-image-v2.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://godhans.com/og-image-v2.jpg" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       <main id="main-content" className="pt-20">
@@ -102,11 +119,16 @@ export default function LocationPage({ city }: LocationPageProps) {
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
             <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-300">
               <ol className="flex flex-wrap items-center gap-2">
-                <li><Link to="/" className="hover:text-red-600 transition-colors">Home</Link></li>
-                <li aria-hidden="true">/</li>
-                <li><Link to="/service-area" className="hover:text-red-600 transition-colors">Service Area</Link></li>
-                <li aria-hidden="true">/</li>
-                <li className="text-gray-200" aria-current="page">{city}, NC</li>
+                {breadcrumbTrail.map((crumb, i) => (
+                  <li key={crumb.name} className="flex items-center gap-2">
+                    {i > 0 && <span aria-hidden="true">/</span>}
+                    {crumb.href ? (
+                      <Link to={crumb.href} className="hover:text-red-600 transition-colors">{crumb.name}</Link>
+                    ) : (
+                      <span className="text-gray-200" aria-current="page">{crumb.name}</span>
+                    )}
+                  </li>
+                ))}
               </ol>
             </nav>
             <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Service Area</p>
