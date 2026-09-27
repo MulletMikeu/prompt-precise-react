@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { BUSINESS_INFO } from '@/lib/constants';
 import { BUSINESS } from '@/data/siteData';
@@ -32,6 +32,27 @@ const SMS_FIELDS = {
 type SmsConsent = { customerCare: boolean; marketing: boolean; decline: boolean };
 
 const NO_SMS_CONSENT: SmsConsent = { customerCare: false, marketing: false, decline: false };
+
+/**
+ * Spam controls. There were none before this — the form relied entirely on
+ * Formspree's built-in filtering.
+ *
+ * `_gotcha` is Formspree's honeypot convention: a field no human can see, which
+ * Formspree silently discards the submission for if it arrives filled. It is
+ * positioned off-screen rather than `display: none` — the crawlers worth
+ * catching skip anything explicitly hidden — and carries tabIndex={-1} plus
+ * aria-hidden so keyboard and screen-reader users never reach it.
+ *
+ * MIN_FILL_MS is the second gate: a scripted POST fills and submits in
+ * milliseconds, where a person typing a name, phone, address and service takes
+ * seconds. Tripping it is recoverable, not fatal — a human who somehow beats the
+ * clock gets a short "look it over and submit again" notice, and the second
+ * attempt is always past the threshold. It fails OPEN: before the mount effect
+ * runs (and during SSG prerender) the reference time is 0, which makes the
+ * elapsed time enormous and lets the submit through.
+ */
+const HONEYPOT_FIELD = '_gotcha';
+const MIN_FILL_MS = 2500;
 
 /** Fields we validate, in DOM order — the order decides which one gets focus
     when a submit is rejected. `message` is optional and never validated. */
@@ -72,6 +93,14 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
   // Never validated and never required: consent is not a condition of purchase,
   // so leaving all three boxes alone is a valid, submittable state.
   const [smsConsent, setSmsConsent] = useState<SmsConsent>(NO_SMS_CONSENT);
+  // Set on mount, so it measures how long the visitor has had the form open.
+  // Stays 0 through SSG prerender and the first client render — see MIN_FILL_MS.
+  const openedAt = useRef(0);
+  const [tooFast, setTooFast] = useState(false);
+
+  useEffect(() => {
+    openedAt.current = Date.now();
+  }, []);
 
   // The two Yes boxes and the No box are contradictory answers to one question,
   // so each side clears the other. They are checkboxes rather than radios on
@@ -140,10 +169,20 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
     if (firstInvalid) {
       // Nothing reaches the network until the form is clean.
       event.preventDefault();
+      setTooFast(false);
       form.querySelector<HTMLElement>(`#qq-${firstInvalid}`)?.focus();
       return;
     }
 
+    // Checked only once the fields are valid, so the notice can never appear
+    // alongside a field error and compete with it for attention.
+    if (Date.now() - openedAt.current < MIN_FILL_MS) {
+      event.preventDefault();
+      setTooFast(true);
+      return;
+    }
+
+    setTooFast(false);
     handleSubmit(event);
   };
 
@@ -194,6 +233,30 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
               <form onSubmit={onSubmit} onChange={onChange} className="space-y-4" noValidate>
                 {source && <input type="hidden" name="page-source" value={source} />}
 
+                {/* Honeypot — see HONEYPOT_FIELD. Off-screen rather than hidden,
+                    unreachable by tab, and invisible to screen readers. Never
+                    `required`: a human must be able to submit with it empty. */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    width: 1,
+                    height: 1,
+                    overflow: 'hidden',
+                    clip: 'rect(0 0 0 0)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  <label htmlFor="qq-gotcha">Leave this field empty</label>
+                  <input
+                    id="qq-gotcha"
+                    type="text"
+                    name={HONEYPOT_FIELD}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <p className="text-sm text-gray-500">
                   Fields marked <span className="text-red-600">*</span> are required.
                 </p>
@@ -241,16 +304,20 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
                       another field. Sits below the error slot so a validation
                       message stays adjacent to the input it concerns.
 
-                      Under fullOptIn the line claims phone and email only:
-                      "By submitting, you agree to receive … texts" asserts
-                      consent by submission, which directly contradicts an
-                      unchecked "No, I do not want to receive any text
-                      messages" in the group below. Express consent has to be
-                      the only claim about texting on the page for the checkbox
-                      record to mean anything. */}
+                      Under fullOptIn the line claims CALLS ONLY. Two things it
+                      must not say:
+
+                      - "…or texts". "By submitting, you agree to receive …
+                        texts" asserts consent by submission, which directly
+                        contradicts an unchecked "No, I do not want to receive
+                        any text messages" in the group below. Express consent
+                        has to be the only claim about texting on the page for
+                        the checkbox record to mean anything.
+                      - "…or email". The form has no email field, so promising
+                        email contact described something we cannot do. */}
                   {fullOptIn ? (
                     <p id="qq-phone-consent" className="text-sm text-gray-500 mt-2">
-                      By submitting, you agree that we may contact you about your request by phone or email. Text messaging is optional — your choices below control it.
+                      By submitting, you agree that we may call you about your request. Text messaging is optional — your choices below control it.
                     </p>
                   ) : (
                     <p id="qq-phone-consent" className="text-sm text-gray-500 mt-2">
@@ -370,6 +437,13 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
                   />
                   {renderError('message', 'Message')}
                 </div>
+
+                {tooFast && (
+                  <p role="alert" className="text-red-600 text-sm">
+                    Give your details a quick look and press the button once more — we
+                    want to be sure we got them right.
+                  </p>
+                )}
 
                 <button
                   type="submit"
