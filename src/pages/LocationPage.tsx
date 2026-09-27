@@ -72,7 +72,7 @@ const defaultContent = (city: string): CityCopy => ({
 
 export default function LocationPage({ city }: LocationPageProps) {
   const slug = city.toLowerCase().replace(/\s+/g, "-");
-  const canonical = `https://godhans.com/tree-service-${slug}-nc`;
+  const canonical = `${SITE_URL}/tree-service-${slug}-nc`;
   const title = `Tree Service in ${city}, NC | Godhans Tree Company`;
   const description = `Tree removal, trimming, stump grinding & 24/7 emergency tree service in ${city}, NC. Veteran-owned, insured — Godhans Tree Company. Free estimates.`;
   const content = CITY_CONTENT[city] ?? defaultContent(city);
@@ -106,16 +106,9 @@ export default function LocationPage({ city }: LocationPageProps) {
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content="https://godhans.com/og-image-v2.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://godhans.com/og-image-v2.jpg" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>

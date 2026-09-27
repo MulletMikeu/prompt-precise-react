@@ -142,7 +142,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
 }
 
 export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
-  const canonical = `https://godhans.com/${slug}`;
+  const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
 
@@ -162,17 +162,10 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
         <title>{pageTitle}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
-        <meta name="robots" content="index, follow" />
         <meta name="build-marker" content="helmet-v2-2026-04-19" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://godhans.com/og-image-v2.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://godhans.com/og-image-v2.jpg" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={description} />
 

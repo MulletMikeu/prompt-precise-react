@@ -120,6 +120,32 @@
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
 
+  /* Keyboard focus ring.
+   *
+   * The site had no :focus-visible style at all — the only focus CSS was a text
+   * colour change on the quote-form inputs. Dozens of links carry inline
+   * style={{ color: … }} against near-black backgrounds and relied entirely on
+   * the browser default ring.
+   *
+   * :focus-visible (not :focus) so a mouse click never paints a ring, only
+   * keyboard/AT navigation does. The white outline reads on the dark page
+   * grounds; the dark box-shadow immediately outside it keeps the ring visible
+   * where an element sits on one of the white or red panels (the quote-form
+   * card, the red CTA bands). outline-offset lifts it off the glyphs.
+   */
+  :focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(10, 10, 10, 0.85);
+    border-radius: 2px;
+  }
+
+  /* The form card is a white panel, so invert: a dark ring on light ground. */
+  #quote-form :focus-visible {
+    outline-color: #0A0A0A;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9);
+  }
+
   html {
     background: var(--black);
     color: var(--cream);

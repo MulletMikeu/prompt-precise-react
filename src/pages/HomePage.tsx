@@ -46,15 +46,9 @@ export default function HomePage() {
         {/* No image preload: the hero no longer has a background photo, so the LCP
             element is the display H2. The face that renders it (Barlow Condensed
             800) is preloaded in index.html and now carries the LCP directly. */}
-        <meta property="og:type" content="website" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:description" content={DESC} />
         <meta property="og:url" content="https://godhans.com/" />
-        <meta property="og:image" content="https://godhans.com/og-image-v2.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://godhans.com/og-image-v2.jpg" />
         <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESC} />
         <script type="application/ld+json">{JSON.stringify(FAQ_SCHEMA)}</script>

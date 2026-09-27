@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import type { RouteRecord } from "vite-react-ssg";
+import { Head as Helmet, type RouteRecord } from "vite-react-ssg";
 import type { ComponentType } from "react";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
@@ -64,9 +64,32 @@ function AnimateOnScroll() {
   return null;
 }
 
+/**
+ * Site-wide crawl directives, emitted once here instead of statically in
+ * index.html. A page that needs different rules (NotFound: "noindex, follow")
+ * puts its own `robots` meta in its Helmet; helmet dedupes by `name` and the
+ * deeper, later-mounted page instance wins — so the page REPLACES this default
+ * rather than adding a second contradictory tag beside it.
+ *
+ * Previously index.html hardcoded "index, follow, max-image-preview:large, …"
+ * and eleven pages re-emitted a weaker "index, follow" on top of it, while /404
+ * ended up shipping both "index, follow" and "noindex, follow".
+ */
+function DefaultRobots() {
+  return (
+    <Helmet>
+      <meta
+        name="robots"
+        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      />
+    </Helmet>
+  );
+}
+
 function RootLayout() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0A0A0A" }}>
+      <DefaultRobots />
       <BusinessSchema />
       <a
         href="#main-content"

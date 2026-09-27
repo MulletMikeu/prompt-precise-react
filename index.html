@@ -6,9 +6,21 @@
 
     <!-- Per-route page title, meta description and canonical link are injected
          at build time by each page via vite-react-ssg Head. Do NOT add a static
-         title or description tag here, or every page would share the same one. -->
+         title or description tag here, or every page would share the same one.
+
+         `robots` is deliberately NOT here. It used to be, which meant /404
+         shipped a static "index, follow" alongside NotFound's Helmet
+         "noindex, follow" — two contradictory tags that only resolved correctly
+         because Google takes the most restrictive. The default now comes from a
+         Helmet in RootLayout, so a page that needs different rules REPLACES it
+         rather than arguing with it. See src/App.tsx.
+
+         The og:*/twitter:* tags below ARE static on purpose: every page used the
+         same values, and each page's Helmet was re-emitting all six, so the
+         built HTML carried them twice. Page-specific tags (og:title,
+         og:description, og:url, twitter:title, twitter:description) stay in the
+         page Helmets. -->
     <meta name="author" content="Godhans Tree Company" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
     <meta name="geo.region" content="US-NC" />
     <meta name="geo.placename" content="Jacksonville, North Carolina" />

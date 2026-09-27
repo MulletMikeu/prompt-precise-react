@@ -42,8 +42,14 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Footer column headings are <h2>, not <h3>. They have no <h2>
+              ancestor — the footer is a sibling of <main> — so h3 skipped a level
+              on /404, whose only other heading is the page <h1>. On content
+              pages an <h2> always preceded them, which is why this only
+              surfaced on the 404. Visual size is set by the inline fontSize,
+              so nothing changes on screen. */}
           <div>
-            <h3 className="font-bold uppercase text-white mb-6" style={{ fontSize: "0.8rem", letterSpacing: "0.12em" }}>Our Services</h3>
+            <h2 className="font-bold uppercase text-white mb-6" style={{ fontSize: "0.8rem", letterSpacing: "0.12em" }}>Our Services</h2>
             <ul className="list-none m-0 p-0 flex flex-col gap-2.5">
               {SERVICES.map((s) => (
                 <li key={s.id}>
@@ -54,7 +60,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold uppercase text-white mb-6" style={{ fontSize: "0.8rem", letterSpacing: "0.12em" }}>Service Area</h3>
+            <h2 className="font-bold uppercase text-white mb-6" style={{ fontSize: "0.8rem", letterSpacing: "0.12em" }}>Service Area</h2>
             <ul className="list-none m-0 p-0 flex flex-col gap-2.5">
               {SERVICE_CITIES.map((city) => {
                 const pagePath = CITY_PAGE_MAP[city.slug];
@@ -74,7 +80,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold uppercase text-white mb-6" style={{ fontSize: "0.8rem", letterSpacing: "0.12em" }}>Quick Links</h3>
+            <h2 className="font-bold uppercase text-white mb-6" style={{ fontSize: "0.8rem", letterSpacing: "0.12em" }}>Quick Links</h2>
             <ul className="list-none m-0 p-0 flex flex-col gap-2.5 mb-10">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
