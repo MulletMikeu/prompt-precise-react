@@ -3,6 +3,7 @@ import ServicePage from './ServicePage';
 import { BUSINESS, PRICING } from '@/data/siteData';
 import StormInsuranceLead from '@/components/sections/StormInsuranceLead';
 import SampleEmergencyInvoice from '@/components/sections/SampleEmergencyInvoice';
+import EmergencyJobGallery from '@/components/sections/EmergencyJobGallery';
 import heroCrane from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine.webp';
 import heroCrane480 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-480.webp';
 import heroCrane800 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-800.webp';
@@ -114,9 +115,10 @@ A storm-damaged tree that is NOT on a structure is ordinary removal work and pri
           </div>
         </section>
 
-        {/* Renders nothing until the owner adds redacted line items to
-            EMERGENCY_INVOICE in src/data/ownerContent.ts. A fabricated invoice
-            would be worse than no invoice. */}
+        {/* Photo proof first, then the bill for the same kind of work. Both
+            render nothing while their arrays in src/data/ownerContent.ts are
+            empty — a fabricated job or invoice would be worse than none. */}
+        <EmergencyJobGallery />
         <SampleEmergencyInvoice />
         </>
       }
