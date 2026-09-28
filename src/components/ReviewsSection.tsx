@@ -1,5 +1,4 @@
-import { REVIEWS, BUSINESS, REVIEW_BEST_RATING } from "../data/siteData";
-import ReviewMicrodata from "./ReviewMicrodata";
+import { REVIEWS, BUSINESS } from "../data/siteData";
 
 function Stars({ count }: { count: number }) {
   return (
@@ -60,15 +59,7 @@ export default function ReviewsSection() {
               key={review.id}
               className="p-8 flex flex-col"
               style={{ background: "#111111" }}
-              itemScope
-              itemType="https://schema.org/Review"
             >
-              <ReviewMicrodata
-                stars={review.stars}
-                datePublished={review.datePublished}
-                bestRating={REVIEW_BEST_RATING}
-              />
-
               {/* Quote mark */}
               <span
                 className="font-display font-extrabold mb-4 block"
@@ -87,7 +78,6 @@ export default function ReviewsSection() {
               <blockquote
                 className="font-body text-base leading-relaxed flex-1 mb-6"
                 style={{ color: "#C8C8C2" }}
-                itemProp="reviewBody"
               >
                 "{review.text}"
               </blockquote>
@@ -101,11 +91,8 @@ export default function ReviewsSection() {
                   <p
                     className="font-display font-bold uppercase text-white"
                     style={{ fontSize: "0.95rem", letterSpacing: "0.04em" }}
-                    itemProp="author"
-                    itemScope
-                    itemType="https://schema.org/Person"
                   >
-                    <span itemProp="name">{review.name}</span>
+                    {review.name}
                   </p>
                   <p className="font-body text-xs mt-0.5" style={{ color: "#888888" }}>
                     {review.date}

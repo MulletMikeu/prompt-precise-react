@@ -49,9 +49,16 @@
 
 
     <!-- Self-hosted fonts: see the @font-face block in src/index.css for why.
-         Preload is the above-fold face only (hero H1 = .text-display-2xl).
-         crossorigin is required even same-origin or it double-fetches. -->
+         crossorigin is required even same-origin or it double-fetches.
+
+         TWO faces, not one. 800 is the homepage hero (.text-display-2xl). 700 is
+         the <h1> on every ServicePage-backed page — `font-bold` on a heading,
+         which resolves to a DIFFERENT file. Preloading only 800 left that H1
+         racing the network on 30+ pages, and it lost often enough to show up as
+         CLS 0.099 on /storm-damage-trees-guide: the heading wrapped to four
+         lines in the fallback and three once Barlow Condensed arrived. -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-condensed-800.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-condensed-700.woff2" crossorigin />
 
     <style>
       html { background: #0a0a0a; }
