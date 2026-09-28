@@ -70,8 +70,12 @@ export default function ResistographTesting() {
           text: "North Carolina has not taken a hurricane landfall since Isaias came ashore at Ocean Isle Beach in August 2020, according to the NC State Climate Office's landfall record. Before that, Dorian in September 2019, and Florence — which the National Weather Service in Wilmington puts on the beach near Wrightsville the morning of Sept. 14, 2018 with sustained winds near 90 mph.\n\nSix quiet years is long enough for a lot of people to stop thinking about their trees, and it is exactly the wrong conclusion to draw. Decay does not take years off. A tree that would have come down in Florence and didn't has spent six more seasons rotting, and the next storm does not care that the last one was a while ago.\n\nThe cheapest version of storm preparation is knowing which of your trees is hollow before the wind tells you.",
         },
         {
+          // The doubled $ below is deliberate: in a template literal `$${x}`
+          // renders "$" followed by the value. A single $ would be swallowed as
+          // part of the interpolation — which is exactly how these first shipped
+          // reading "200 for each of the first two trees".
           heading: "What Resistograph Testing Costs",
-          text: `Testing is priced per tree: ${PRICING.resistograph.first2PerTree} for each of the first two trees, then ${PRICING.resistograph.additionalPerTree} for every additional tree measured on the same visit, with a ${PRICING.resistograph.minimum} minimum.\n\nSo five trees on one visit is $700 — two at ${PRICING.resistograph.first2PerTree} and three at ${PRICING.resistograph.additionalPerTree}.\n\nThe rate halves after the second tree because the first two carry the setup. Once the equipment is out and we are already on the property, each additional trunk is mostly just the time it takes to take the readings.\n\nAnnual re-tests price the same way, and re-testing several trees together is the cheapest way to keep a whole yard monitored.`
+          text: `Testing is priced per tree: $${PRICING.resistograph.first2PerTree} for each of the first two trees, then $${PRICING.resistograph.additionalPerTree} for every additional tree measured on the same visit, with a $${PRICING.resistograph.minimum} minimum.\n\nSo five trees on one visit is $700 — two at $${PRICING.resistograph.first2PerTree} and three at $${PRICING.resistograph.additionalPerTree}.\n\nThe rate halves after the second tree because the first two carry the setup. Once the equipment is out and we are already on the property, each additional trunk is mostly just the time it takes to take the readings.\n\nAnnual re-tests price the same way, and re-testing several trees together is the cheapest way to keep a whole yard monitored.`
         },
         {
           heading: 'When to Ask for a Test',
@@ -193,7 +197,7 @@ export default function ResistographTesting() {
         },
         {
           question: 'How much does resistograph testing cost in Jacksonville, NC?',
-          answer: `Testing is ${PRICING.resistograph.first2PerTree} per tree for the first two trees, then ${PRICING.resistograph.additionalPerTree} for each additional tree tested on the same visit, with a ${PRICING.resistograph.minimum} minimum. Five trees on one visit comes to $700. The rate drops after the second tree because the first two carry the setup — once the equipment is out and we are on site, each further trunk is mostly the time it takes to take the readings.`,
+          answer: `Testing is $${PRICING.resistograph.first2PerTree} per tree for the first two trees, then $${PRICING.resistograph.additionalPerTree} for each additional tree tested on the same visit, with a $${PRICING.resistograph.minimum} minimum. Five trees on one visit comes to $700. The rate drops after the second tree because the first two carry the setup — once the equipment is out and we are on site, each further trunk is mostly the time it takes to take the readings.`,
         },
         {
           question: 'How much rot means a tree has to come down?',
