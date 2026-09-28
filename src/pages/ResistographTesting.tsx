@@ -144,6 +144,7 @@ export default function ResistographTesting() {
             </p>
             <LiteYouTube
               id="IVCBzWks1uo"
+              thumbnail="/images/video-resistograph-live-oak-swansboro-nc-480.jpg"
               title="Resistograph test on a massive live oak in Swansboro, NC."
               caption="Resistograph test on a massive live oak in Swansboro, NC."
             />

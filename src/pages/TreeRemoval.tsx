@@ -109,6 +109,7 @@ export default function TreeRemoval() {
             </p>
             <LiteYouTube
               id="f54f7VLgkIU"
+              thumbnail="/images/video-spider-lift-loblolly-jacksonville-nc-480.jpg"
               title="Our spider lift topping a loblolly pine between homes — no crane, no torn-up yard."
               caption="Our spider lift topping a loblolly pine between homes — no crane, no torn-up yard."
             />

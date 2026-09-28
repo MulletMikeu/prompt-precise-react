@@ -21,7 +21,9 @@ export default function SpiderLiftRemoval() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
               <h2 id="lift-video-heading" className="sr-only">The spider lift working</h2>
               <LiteYouTube
+                priority
                 id="f54f7VLgkIU"
+                thumbnail="/images/video-spider-lift-loblolly-jacksonville-nc-480.jpg"
                 title="Our spider lift topping a loblolly pine between homes — no crane, no torn-up yard."
                 caption="Our spider lift topping a loblolly pine between homes — no crane, no torn-up yard."
               />
