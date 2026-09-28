@@ -1,5 +1,7 @@
 import ServicePage from './ServicePage';
 import { BUSINESS, PRICING } from '../data/siteData';
+import RecentJobs from '@/components/sections/RecentJobs';
+import LiteYouTube from '@/components/ui/LiteYouTube';
 import removalHero from '@/assets/tree-removal-jacksonville-nc-godhans.jpg';
 import removalHero600Webp from '@/assets/tree-removal-jacksonville-nc-godhans-600.webp';
 import removalHero1200Webp from '@/assets/tree-removal-jacksonville-nc-godhans-1200.webp';
@@ -30,10 +32,19 @@ export default function TreeRemoval() {
         showCta: true,
       }}
       quickAnswer={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum. Most removals run ${PRICING.removal.most}, with large or hazardous trees at ${PRICING.removal.large}. ${PRICING.stories.sameTree}`}
+      /* Positional keys. Section order after batch 2:
+           0 intro · 1 when-to-remove · 2 process · 3 pricing · 4 minimum ·
+           5 pine+sweetgum · 6 bradford-pear · 7 sandy-ground · 8 weather ·
+           9 service-areas */
       sectionLinks={{
         // Section 2 is "Our Tree Removal Process", where rigging and access are
         // described — the natural place to hand off to the tight-access page.
         2: { href: "/tree-removal-tight-spaces-jacksonville-nc", label: "See how we handle tree removal in tight spaces" },
+        7: [
+          { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How the spider lift stays off your lawn" },
+          { href: "/residential-tree-service-jacksonville-nc", label: "What an estimate should include — including ground protection" },
+        ],
+        8: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
       }}
       sections={[
         {
@@ -61,12 +72,49 @@ export default function TreeRemoval() {
           text: "Pine and sweetgum are #1 and #2 on our invoices, and it isn't close.\n\nBoth species share the same underlying problem: they overgrow themselves. Long, heavy limbs extend well past what the attachment can support, and unlike hardwoods, neither gives a crew many safe pruning options once that's happened. With an oak you can often prune your way out of a problem. With these two, frequently you can't — which is why they come out.\n\nPines add their own list. Needle drop is constant: pine straw drifts across the yard, blankets the roof, and packs into ridgelines where it holds moisture against the shingles. Fusiform rust forms galls on trunks and branches, and those galls become built-in break points — a limb doesn't fail at random, it fails at the gall. And weakened loblollies attract southern pine beetles and Ips engraver beetles, which finish the job.\n\nSweetgums add two more. The spiked seed balls are a genuine nuisance — they catch mower blades and they are hard on dogs' feet and bare feet alike. Below ground, sweetgums run aggressive surface roots that lift driveways and walkways over time.\n\nIf you have either species close to the house, it's worth having someone look before it becomes an emergency call."
         },
         {
+          heading: "The Third One: Bradford Pear",
+          text: "Pine and sweetgum are one and two. Third on the list, and climbing, is the Bradford pear.\n\nThe wood is the problem. Bradford pears grow fast and they grow badly: NC State Extension describes branches growing “at upright angles with weak crotches that break with age, wind and ice,” and says the ‘Bradford’ cultivar in particular “develops tight crotches that are likely to be split in half by heavy wind and rainstorms.” That matches what we see. The wood is soft and snappy and it fails without much warning — a pear that looks fine in the morning can be half a tree by the afternoon, and a mature one splitting down the fork is one of the few failures we would call genuinely unpredictable.\n\nIt is also invasive here. Extension states plainly that “this plant is an invasive species in North Carolina” and that it “is problematic, and alternatives should be considered” — the ornamental escapes into fencerows and woodland edges and crosses back to thorny Callery pear.\n\nTo be clear about the law, because there is a lot of confusion about it: North Carolina has NOT banned Bradford pear. Nobody is making you remove one. What does exist is the NC Bradford Pear Bounty, run by NC State Extension Forestry with the NC Forest Service, the NC Urban Forest Council and the NC Wildlife Federation, which gives you a free native tree in exchange for cutting one down — up to five trees. Events move around the state, so it is worth checking whether one is scheduled near Onslow County before you pay to have a pear removed.\n\nIf you want a replacement suggestion, Extension's own list of alternatives starts with eastern redbud, flowering dogwood, common serviceberry and American plum."
+        },
+        {
+          heading: "Sandy Ground, and the Crane We Put in a Yard",
+          text: "The ground here decides how we show up, and we learned that expensively.\n\nOur first crane job was in Hubert. The yard looked solid — it looked like any other yard — and backing the crane about ten feet into it put a fifteen-ton machine down to the axle. Sandy loam does that. It carries weight right up until it does not, and there is no stage in between that gives you a warning.\n\nThat job is the reason our equipment list looks the way it does now. A spider lift weighs a fraction of a crane, walks through a gate on tracks, and spreads its load across four outriggers instead of two axles. Mini track loaders move wood over grass without the point loading a wheeled machine puts through turf. Between them, we very rarely need to put anything heavy on a lawn at all — and when we do, we know to say so first.\n\nWhich side of the county you are on matters. Our shop on Gum Branch Road is roughly the dividing line. Coastal side — Sneads Ferry, Swansboro, Hubert, about half of Jacksonville — is sandy loam, and grass tears easily when heavy logs are turned on it, so we set that expectation at the quote and offer ground mats for a small added cost. Inland toward Richlands it is regular dirt going to hard-pack clay, and on those jobs there is usually no grass lost at all."
+        },
+        {
+          heading: "Wind, Lightning, and When Trees Actually Break",
+          text: "In our experience the wind here has a schedule. Coastal gusts pick up around ten or eleven in the morning, and above about fifty feet is where a climber actually feels them — which is why the high, exposed work on a breezy day gets done early or gets moved.\n\nThe damage is not evenly spread either. Southwest Jacksonville and the Ramsey Road side running toward Maysville see more of the tornado and waterspout-type damage than the rest of our area does. That is a pattern in the jobs we get called to, not a meteorological finding, but it is consistent enough that we factor it in when someone on that side asks whether a marginal tree is worth keeping.\n\nThe threat people underestimate is lightning. It is the number one non-wind cause of the tree failures we deal with, and tall pines take most of the strikes for the obvious reason — they are the tallest thing in the yard. A struck pine often looks survivable and is not."
+        },
+        {
           heading: "Service Areas for Tree Removal",
           text: "Godhans Tree Company removes trees across Jacksonville and all of Onslow County, including Camp Lejeune, Hubert, Richlands, Swansboro, Sneads Ferry, Holly Ridge, and the surrounding coastal communities. Coastal North Carolina puts hard miles on trees — salt air, saturated soil, and hurricane-season winds leave a lot of weakened pines and storm-split hardwoods behind.\n\nWhether it's a leaning pine in a tight backyard or a large hardwood hanging over your roof, our crew has the boom trucks, rigging, and experience to take it down safely and haul away every bit of debris. Not sure if you're in our area? Give us a call — if you're in or near Onslow County, we can almost certainly help."
         }
       ]}
       caseStudy={
         <>
+        {/* Sits directly after the pine / sandy-ground sections. The caption says
+            "dismantling ... from the top down" rather than "topping" on purpose:
+            the trimming page states flatly that we do not top trees, and reusing
+            that word here for a completely different operation would read as a
+            contradiction. Do not reintroduce it. */}
+        <section id="lift-video" className="py-16 bg-gray-950 border-t border-gray-800" aria-labelledby="removal-video-heading">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 id="removal-video-heading" className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              Taking a Pine Down Between Two Houses
+            </h2>
+            <p className="text-gray-300 leading-relaxed text-lg mb-6">
+              A tall loblolly with a house on either side and no room to drop it. The
+              spider lift walks in on tracks, so there is no crane on the lawn and no
+              ruts across the sandy ground — the two problems that otherwise decide how
+              a job like this gets priced.
+            </p>
+            <LiteYouTube
+              id="f54f7VLgkIU"
+              thumbnail="/images/video-spider-lift-loblolly-jacksonville-nc-480.jpg"
+              title="Our spider lift dismantling a loblolly pine from the top down between homes — no crane, no torn-up yard."
+              caption="Our spider lift dismantling a loblolly pine from the top down between homes — no crane, no torn-up yard."
+            />
+          </div>
+        </section>
+
         <section className="py-16 bg-black border-t border-gray-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
@@ -181,6 +229,51 @@ export default function TreeRemoval() {
             </p>
           </div>
         </section>
+
+        {/* Bradford pear facts above are NC State Extension's words, so they are
+            linked rather than just attributed. */}
+        <section id="sources" className="py-12 bg-gray-950 border-t border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 className="text-2xl font-bold text-white mb-4">Sources</h2>
+            <ul className="space-y-4">
+              <li>
+                <a
+                  href="https://plants.ces.ncsu.edu/plants/pyrus-calleryana/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+                >
+                  NC State Extension Plant Toolbox — Pyrus calleryana (Bradford pear)
+                </a>
+                <span className="block text-gray-400 text-base mt-1">
+                  Weak crotches that break with age, wind and ice; invasive in North
+                  Carolina; native alternatives worth planting instead.
+                </span>
+              </li>
+              <li>
+                <a
+                  href="https://forestry.ces.ncsu.edu/news/nc-bradford-pear-bounty/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+                >
+                  NC State Extension Forestry — NC Bradford Pear Bounty
+                </a>
+                <span className="block text-gray-400 text-base mt-1">
+                  A free native tree in exchange for a Bradford pear you remove, up to
+                  five, run with the NC Forest Service, NC Urban Forest Council and NC
+                  Wildlife Federation.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Renders nothing until the owner adds real jobs and prices to
+            RECENT_JOBS in src/data/ownerContent.ts. Invented job cards with
+            invented prices would be the worst content on this site — people quote
+            these numbers back to us on the phone. */}
+        <RecentJobs />
         </>
       }
       faqs={[

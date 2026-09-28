@@ -1,4 +1,5 @@
 import ServicePage from './ServicePage';
+import LiteYouTube from '@/components/ui/LiteYouTube';
 import { PrecisionRemoval } from '@/components/sections/PrecisionRemoval';
 
 export default function SpiderLiftRemoval() {
@@ -11,6 +12,24 @@ export default function SpiderLiftRemoval() {
         slug="spider-lift-tree-removal-jacksonville-nc"
         description="Spider lift tree removal in Jacksonville, NC. Reach high limbs in tight spots near power lines, pools, and homes — no bucket truck needed."
         ctaText="Call Now for a Free Estimate"
+        /* leadBlock renders above the hero image, so the video is genuinely near
+           the top of the page — this is the one page where showing the machine
+           working beats describing it. Click-to-play facade: no YouTube JS or
+           iframe until tapped. */
+        leadBlock={
+          <section className="bg-black pt-4 pb-10" aria-labelledby="lift-video-heading">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+              <h2 id="lift-video-heading" className="sr-only">The spider lift working</h2>
+              <LiteYouTube
+                priority
+                id="f54f7VLgkIU"
+                thumbnail="/images/video-spider-lift-loblolly-jacksonville-nc-480.jpg"
+                title="Our spider lift dismantling a loblolly pine from the top down between homes — no crane, no torn-up yard."
+                caption="Our spider lift dismantling a loblolly pine from the top down between homes — no crane, no torn-up yard."
+              />
+            </div>
+          </section>
+        }
         quickAnswer="A spider lift is a tracked, lightweight aerial platform that fits through standard gates, distributes weight to protect lawns, and reaches 50+ feet up. We use it on Jacksonville properties where bucket trucks or cranes can't go — backyards, near pools, over fences, and right up against structures and power lines."
         sections={[
           {

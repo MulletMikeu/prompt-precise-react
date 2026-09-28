@@ -3,8 +3,22 @@ import { Link } from "react-router-dom";
 import { BUSINESS } from "../data/siteData";
 import { PROSE } from "../data/homepageCopy";
 
-const TITLE = "Tree Services in Jacksonville, NC | Godhans Tree Company";
-const DESC = `Tree removal, trimming, stump grinding & storm cleanup in Jacksonville, NC. Veteran-owned. Free estimates — call ${BUSINESS.phone}.`;
+/**
+ * This page is the SERVICES HUB and nothing else.
+ *
+ * It used to be titled "Tree Services in Jacksonville, NC", which put it in
+ * direct competition with the homepage — whose whole job is "tree service
+ * jacksonville nc" — and with /tree-service-jacksonville-nc, which is the local
+ * crew / trust hub. Three pages on one head term is two too many.
+ *
+ * So the geo is deliberately out of the title, the H1 and the description here.
+ * This page exists to route people to the right service page and to be the honest
+ * target of the "Services" breadcrumb; the homepage owns the head term and
+ * /tree-service-jacksonville-nc owns the local-crew intent. Do not put
+ * "Jacksonville" back in the title.
+ */
+const TITLE = "All Tree Services We Offer | Godhans Tree Company";
+const DESC = `Every service we offer: removal, trimming, stump grinding, emergency response, storm cleanup, debris hauling and testing. Free estimates — ${BUSINESS.phone}.`;
 const CANONICAL = "https://godhans.com/services";
 
 const SERVICES = [
@@ -43,6 +57,16 @@ const SERVICES = [
     href: "/residential-tree-service-jacksonville-nc",
     desc: "Homeowner tree work with the lawn, fence, driveway, and septic field protected — and every stick hauled away.",
   },
+  {
+    name: "Debris Hauling",
+    href: "/debris-hauling-jacksonville-nc",
+    desc: "Organic debris only — trees, brush, leaves. Already cut it yourself? We load and haul, priced by the trailer.",
+  },
+  {
+    name: "Resistograph Tree Testing",
+    href: "/resistograph-tree-testing-jacksonville-nc",
+    desc: "Measures internal decay in a standing trunk, so a sound hardwood does not get removed on somebody's guess.",
+  },
 ];
 
 export default function ServicesPage() {
@@ -63,7 +87,7 @@ export default function ServicesPage() {
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
             <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>What We Do</p>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Tree Services</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">All Tree Services We Offer</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               Full-service tree care for residential and commercial properties across Jacksonville, NC and Onslow County. From routine trimming to complex emergency removals — we handle it all.
             </p>

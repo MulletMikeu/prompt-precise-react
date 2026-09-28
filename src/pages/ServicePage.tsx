@@ -71,6 +71,15 @@ interface ServicePageProps {
   slug: string;
   description: string;
   ctaText?: string;
+  /**
+   * Rendered immediately after the hero, ABOVE the hero image and the quick
+   * answer — i.e. the first thing under the H1 block on a phone. Reserved for
+   * content that has to be seen before anything else; currently the storm /
+   * insurance block on the two emergency pages, where someone with a tree
+   * through their roof should not have to scroll to learn we tarp and bill the
+   * insurer.
+   */
+  leadBlock?: ReactNode;
   quickAnswer?: string;
   sections: { heading: string; text: string }[];
   sectionLinks?: Record<number, SectionLink | SectionLink[]>;
@@ -141,7 +150,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return null;
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -213,6 +222,8 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
               </div>
             </div>
            </section>
+
+          {leadBlock}
 
           {/* Hero Image - placed directly under H1, above first paragraph */}
           {heroImage && (

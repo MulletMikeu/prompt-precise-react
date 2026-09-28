@@ -109,29 +109,13 @@ export default function ServicesSection() {
             </Link>
           ))}
 
-          {/* Sixth cell. The grid is 3 columns and SERVICES has five entries, so
-              this slot was empty at lg. Styled to match a card — same background,
-              same 1px seam — with the photo filling it rather than a text block. */}
-          <div className="relative overflow-hidden" style={{ background: "#0A0A0A", aspectRatio: "4/3" }}>
-            <picture className="absolute inset-0 block w-full h-full">
-              <source
-                type="image/avif"
-                srcSet="/images/spider-lift-full-extension-over-house-jacksonville-nc-480.avif 480w, /images/spider-lift-full-extension-over-house-jacksonville-nc-768.avif 768w, /images/spider-lift-full-extension-over-house-jacksonville-nc-1024.avif 1024w, /images/spider-lift-full-extension-over-house-jacksonville-nc-1280.avif 1280w"
-                sizes={GALLERY_SIZES}
-              />
-              <img
-                src="/images/spider-lift-full-extension-over-house-jacksonville-nc-768.webp"
-                srcSet="/images/spider-lift-full-extension-over-house-jacksonville-nc-480.webp 480w, /images/spider-lift-full-extension-over-house-jacksonville-nc-768.webp 768w, /images/spider-lift-full-extension-over-house-jacksonville-nc-1024.webp 1024w, /images/spider-lift-full-extension-over-house-jacksonville-nc-1280.webp 1280w"
-                sizes={GALLERY_SIZES}
-                alt="90-foot spider lift fully extended for tree removal over a house in Onslow County, NC"
-                className="absolute inset-0 w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-                width="1024"
-                height="768"
-              />
-            </picture>
-          </div>
+          {/* No filler cell here any more. SERVICES used to have five entries,
+              which left the sixth slot of the 3-column grid empty at lg, and a
+              photo filled it. Debris Hauling is the sixth service, so the grid
+              is now exactly 2 rows x 3 and a seventh cell would orphan itself on
+              a third row. The spider-lift-over-house photo that used to sit here
+              is no longer on the homepage; the gallery strip below still carries
+              a different spider-lift shot. */}
         </div>
 
         {/* Commercial & residential split, directly under the grid.

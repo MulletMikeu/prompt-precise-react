@@ -51,7 +51,11 @@ export default function LeaningTreeDangerous() {
         },
         {
           question: "Will insurance cover tree removal after a storm?",
-          answer: "Homeowners insurance may cover tree removal if the tree caused damage to a structure. Check with your insurance provider and document all damage with photos."
+          // Deliberately short and pointed at the hub. This answer used to be a
+          // third partial version of the same explanation; /storm-cleanup-* now
+          // owns the topic so there is one accurate account of it.
+          answer: "Generally when the tree has damaged a covered structure, and your deductible applies. A tree that came down and hit nothing is usually your cost — the standard provision caps removal at a few hundred dollars and requires that the tree damaged a structure or blocked the driveway. Photograph everything before anything is moved. We keep the full explanation on one page so it stays accurate.",
+          link: { href: "/storm-cleanup-jacksonville-nc", label: "What insurance typically covers after a storm" }
         },
         {
           question: "Can I remove a dangerous tree myself?",
@@ -65,8 +69,8 @@ export default function LeaningTreeDangerous() {
       relatedServices={[
         { label: "Emergency Tree Service", href: "/emergency-tree-service-jacksonville-nc" },
         { label: "Tree Removal", href: "/tree-removal-jacksonville-nc" },
-        { label: "Tree Service in Jacksonville NC", href: "/tree-service-jacksonville-nc" },
-        { label: "Storm Damage Guide", href: "/storm-damage-trees-guide" }
+        { label: "Storm Cleanup", href: "/storm-cleanup-jacksonville-nc" },
+        { label: "Resistograph Tree Testing", href: "/resistograph-tree-testing-jacksonville-nc" }
       ]}
       finalCta={{
         heading: "Don't Wait — Get Emergency Tree Help Now",

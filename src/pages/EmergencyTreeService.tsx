@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
-import { BUSINESS } from '@/data/siteData';
+import { BUSINESS, PRICING } from '@/data/siteData';
+import StormInsuranceLead from '@/components/sections/StormInsuranceLead';
+import SampleEmergencyInvoice from '@/components/sections/SampleEmergencyInvoice';
 import heroCrane from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine.webp';
 import heroCrane480 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-480.webp';
 import heroCrane800 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-800.webp';
@@ -28,13 +30,18 @@ export default function EmergencyTreeService() {
       credentialBlock
       description="Fast emergency tree service in Jacksonville, NC — storm damage, leaning trees, and hazardous tree removal. 24/7 response from a fully insured local crew."
       ctaText="Call Now — Rapid Response"
+      /* Above the hero image on purpose: someone with a tree through their
+         roof should not have to scroll to learn that we tarp the opening and
+         bill the insurer. Wording lives in STORM_LEAD (siteData) — approved
+         copy, byte-identical with /storm-cleanup-jacksonville-nc. */
+      leadBlock={<StormInsuranceLead />}
       heroImage={{
         src: heroCrane,
         webpSrcSet: craneSrcSet,
         sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
         alt: "Emergency tree removal crew in Jacksonville NC using a green crane to safely cut down a damaged pine tree near a home"
       }}
-      quickAnswer="When a storm hits Jacksonville, Richlands, or anywhere in Onslow County, you don't have time to wait. Godhans Tree Company provides 24/7 emergency tree service for fallen trees, storm damage, leaning trunks, and dangerous limbs — with same-day and next-day availability. Call us now and we'll dispatch a fully insured crew to make your property safe again."
+      quickAnswer="Emergency tree service in Jacksonville, NC means a real person answers at 2 a.m. and a crew is moving before the weather has finished. We handle fallen trees on houses, leaning trunks, hanging limbs and blocked driveways across Onslow County, with same-day and next-day availability — and on a tree-through-the-roof call the first job is stopping the water getting in."
       sections={[
         {
           heading: "Our Emergency Tree Services in Jacksonville, NC",
@@ -55,14 +62,33 @@ export default function EmergencyTreeService() {
           text: "We prioritize emergencies. Most calls are scheduled for the same day or the next morning, and active hazards (trees on homes, blocking access, or near power lines) get moved to the front of the line.\n\nCall us first — before the damage spreads, before water gets inside, and before a leaning tree decides to fall on its own."
         },
         {
-          heading: "Will Insurance Cover Storm-Damaged Trees?",
-          text: "In most cases, homeowners insurance covers tree removal when a tree damages a covered structure (home, garage, fence). Coverage typically includes the cost to remove the tree from the structure — not always the full yard cleanup.\n\nWe document the damage with photos before we start work, provide itemized invoices, and can speak with your adjuster if needed. If you're unsure, snap a few photos, save them, and call us — we'll help you understand what's typically covered and get the hazard removed right away."
+          heading: "What Emergency Tree Work Costs",
+          text: `Getting a tree off a structure is the most expensive work we do. Most tree-on-house emergencies run about ${PRICING.emergency.structure}, and occasionally more.
+
+That number surprises people, so here is where it goes. Almost none of it is the tree:
+
+• After-hours mobilization — a full crew and equipment rolling at night, on a weekend, or in the middle of a storm
+• Crane or spider-lift time, which is how you take weight off a roof instead of dragging it across one
+• Rigging a loaded trunk — a tree resting on a structure is under tension, and it comes off in measured pieces on ropes, not in one cut
+• Weather, which slows everything down and sometimes stops it
+• Tarping the opening before we leave
+
+A storm-damaged tree that is NOT on a structure is ordinary removal work and prices like it. The premium is for the load sitting on your house, not for the hour of the night.`
+        },
+        {
+          heading: "When Another Crew Drops One",
+          text: "Two or three times a year we get called out to a tree that another company put on a house.\n\nWe are not naming anyone and we are not telling you this to sell fear. We are telling you because it is the clearest answer to why the insurance question matters more than the price on a tree job. If the crew that drops a tree on your roof does not carry general liability, and does not have every machine on the policy, the bill lands on you and your insurer — and then you are arguing about it for months while the hole is still there.\n\nThose calls are also why we would rather measure a questionable trunk than take a big tree down beside a house on a guess."
+        },
+        {
+          heading: "Will Insurance Cover It?",
+          text: "Usually, when the tree has damaged a covered structure — and the mechanics are worth reading properly rather than skimming a paragraph here.\n\nWe keep all of it on one page so it stays accurate and consistent: what a homeowners policy typically pays toward removal, the small sublimit that applies to debris, what happens when a tree falls and hits nothing at all, and why you should photograph the damage rather than wait for the adjuster before stopping active damage.\n\nWhat we do on our side of it, every time: photograph the damage before we touch anything, itemize the invoice, bill your insurance directly, and speak to your adjuster."
         }
       ]}
       /* Rendered through the caseStudy slot rather than `sections` because this
          block needs an anchor id and links inside the prose — `sections` takes
          plain text and puts its links underneath. */
       caseStudy={
+        <>
         <section id="hazardous-tree-removal" className="py-16 bg-gray-950 border-t border-gray-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
@@ -87,6 +113,12 @@ export default function EmergencyTreeService() {
             </p>
           </div>
         </section>
+
+        {/* Renders nothing until the owner adds redacted line items to
+            EMERGENCY_INVOICE in src/data/ownerContent.ts. A fabricated invoice
+            would be worse than no invoice. */}
+        <SampleEmergencyInvoice />
+        </>
       }
       gallery={{
         heading: "Recent Emergency & Tree Removal Jobs in Jacksonville, NC",
@@ -111,14 +143,27 @@ export default function EmergencyTreeService() {
           }
         ]
       }}
+      /* Section indices: 0 services · 1 when-to-call · 2 same-day · 3 cost ·
+         4 another-crew · 5 insurance. Kept in sync by hand — if a section is
+         added or removed above, re-check these. */
+      sectionLinks={{
+        3: { href: "/tree-removal-cost-north-carolina", label: "Full tree removal cost breakdown for North Carolina" },
+        4: { href: "/resistograph-tree-testing-jacksonville-nc", label: "Resistograph testing — measuring a trunk instead of guessing" },
+        5: { href: "/storm-cleanup-jacksonville-nc", label: "Storm cleanup and what insurance typically covers" }
+      }}
       faqs={[
         {
           question: "Who do I call for emergency tree removal in Jacksonville NC?",
           answer: `Call Godhans Tree Company at ${BUSINESS.phone}. We're a veteran-owned, family-operated, fully insured tree service based in Jacksonville, NC, with 24/7 emergency response across Onslow County including Richlands, Hubert, Sneads Ferry, and Swansboro.`
         },
         {
+          question: "How much does emergency tree removal cost in Jacksonville NC?",
+          answer: `Most tree-on-house emergencies run about ${PRICING.emergency.structure}, and occasionally more. Almost none of that is the tree itself — it is after-hours mobilisation, crane or spider-lift time, rigging a loaded trunk off the roof in pieces, working around the weather, and tarping the opening before we leave. A storm-damaged tree that is not on a structure prices as ordinary removal work.`
+        },
+        {
           question: "Will insurance cover storm-damaged trees?",
-          answer: "Most homeowners insurance policies cover tree removal when a tree damages a covered structure like your home, garage, or fence. The policy usually pays to remove the tree off the structure. We document damage with photos, provide itemized invoices, and can coordinate with your adjuster to make the claim process easier."
+          answer: "Usually, when the tree has damaged a covered structure. We photograph the damage before we touch anything, itemize the invoice, bill your insurance directly, and speak to your adjuster. The detail — what is typically covered, the small debris sublimit, and what happens when a tree hits nothing — is all on our storm cleanup page so there is one accurate version of it.",
+          link: { href: "/storm-cleanup-jacksonville-nc", label: "Storm cleanup and what insurance covers" }
         },
         {
           question: "How fast can you respond to an emergency call?",
@@ -147,13 +192,25 @@ export default function EmergencyTreeService() {
             href: "/tree-removal-cost-north-carolina",
             label: "How much tree removal costs in North Carolina",
             blurb: "What an emergency removal runs, and what drives the number up."
+          },
+          {
+            href: "/resistograph-tree-testing-jacksonville-nc",
+            label: "Resistograph tree testing",
+            blurb: "Measuring internal decay before a storm finds it for you."
+          },
+          {
+            href: "/storm-cleanup-jacksonville-nc",
+            label: "Storm cleanup and insurance",
+            blurb: "What a homeowners policy typically covers, in one place."
           }
         ]
       }}
       relatedServices={[
         { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
+        { label: 'Storm Cleanup', href: '/storm-cleanup-jacksonville-nc' },
+        { label: 'Debris Hauling', href: '/debris-hauling-jacksonville-nc' },
+        { label: 'Residential Tree Service', href: '/residential-tree-service-jacksonville-nc' },
+        { label: 'Commercial Tree Service', href: '/commercial-tree-service-jacksonville-nc' },
       ]}
       finalCta={{
         heading: "Tree Emergency Right Now? Call Us Immediately.",
