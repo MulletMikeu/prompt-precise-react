@@ -117,17 +117,23 @@ export default function ResistographTesting() {
               plainly. The tool is useful precisely because it is capable of telling us the
               answer we were not expecting.
             </p>
-            {RESISTOGRAPH_PRINTOUT.image && (
+            {RESISTOGRAPH_PRINTOUT.base && (
               <figure className="mt-8 m-0">
-                <img
-                  src={RESISTOGRAPH_PRINTOUT.image}
-                  alt={RESISTOGRAPH_PRINTOUT.imageAlt}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full rounded-lg border-2 border-gray-800 bg-black"
-                />
+                <picture>
+                  <source type="image/webp" srcSet={`${RESISTOGRAPH_PRINTOUT.base}.webp`} />
+                  <img
+                    src={`${RESISTOGRAPH_PRINTOUT.base}.jpg`}
+                    alt={RESISTOGRAPH_PRINTOUT.alt}
+                    width={RESISTOGRAPH_PRINTOUT.width}
+                    height={RESISTOGRAPH_PRINTOUT.height}
+                    sizes="(min-width: 768px) 768px, 100vw"
+                    loading="lazy"
+                    decoding="async"
+                    className="block w-full h-auto rounded-lg border-2 border-gray-800 bg-black"
+                  />
+                </picture>
                 {RESISTOGRAPH_PRINTOUT.caption && (
-                  <figcaption className="mt-3 text-gray-400 text-base">
+                  <figcaption className="mt-3 text-gray-400 text-base leading-relaxed">
                     {RESISTOGRAPH_PRINTOUT.caption}
                   </figcaption>
                 )}
