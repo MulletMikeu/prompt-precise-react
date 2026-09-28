@@ -1,7 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
-import { BUSINESS, REVIEWS, REVIEW_BEST_RATING } from "../data/siteData";
-import ReviewMicrodata from "../components/ReviewMicrodata";
+import { BUSINESS, REVIEWS } from "../data/siteData";
 
 const TITLE = "Customer Reviews | Godhans Tree Company Jacksonville, NC";
 const DESC = `${BUSINESS.reviewRating}-star Google reviews for Godhans Tree Company — ${BUSINESS.reviewCount} verified reviews. Veteran-owned tree service in Jacksonville, NC. Read what customers say.`;
@@ -74,23 +73,16 @@ export default function ReviewsPage() {
                   key={review.id}
                   className="p-8 flex flex-col"
                   style={{ background: "#0A0A0A" }}
-                  itemScope
-                  itemType="https://schema.org/Review"
                 >
-                  <ReviewMicrodata
-                    stars={review.stars}
-                    datePublished={review.datePublished}
-                    bestRating={REVIEW_BEST_RATING}
-                  />
                   <span className="font-display font-extrabold mb-4 block" style={{ fontSize: "3rem", lineHeight: 1, color: "#C41230", opacity: 0.4 }} aria-hidden="true">"</span>
                   <div className="mb-4"><Stars count={review.stars} /></div>
-                  <blockquote className="text-base leading-relaxed flex-1 mb-6" style={{ color: "#C8C8C2" }} itemProp="reviewBody">
+                  <blockquote className="text-base leading-relaxed flex-1 mb-6" style={{ color: "#C8C8C2" }}>
                     "{review.text}"
                   </blockquote>
                   <footer className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid #2A2A2A" }}>
                     <div>
-                      <p className="font-bold uppercase text-white text-sm" itemProp="author" itemScope itemType="https://schema.org/Person">
-                        <span itemProp="name">{review.name}</span>
+                      <p className="font-bold uppercase text-white text-sm">
+                        {review.name}
                       </p>
                       <p className="text-xs mt-0.5" style={{ color: "#888888" }}>{review.date}</p>
                     </div>

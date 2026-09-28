@@ -345,11 +345,14 @@ export const SERVICE_CITIES = [
 ] as const;
 
 /**
- * `date` is the display string; `datePublished` is the machine-readable form
- * emitted as Review/datePublished microdata. Deliberately `YYYY-MM` (a valid
- * reduced-precision ISO 8601 date) rather than `YYYY-MM-01`: Google only
- * publishes the month for these reviews, so pinning a day would assert a date
- * we do not have. Keep the two fields describing the same month.
+ * Reviews as displayed on the site. `date` is the display string and there is
+ * deliberately no machine-readable twin: these render as plain HTML with no
+ * Review markup at all.
+ *
+ * Do not add Review, Rating or aggregateRating structured data here or in the
+ * components. Google does not show star snippets for a business reviewing
+ * itself on its own site, and the markup we did have earned a "Invalid object
+ * type for field itemReviewed" error in Search Console for the trouble.
  */
 export const REVIEWS = [
   {
@@ -357,7 +360,6 @@ export const REVIEWS = [
     name: "Scott M.",
     stars: 5,
     date: "May 2026",
-    datePublished: "2026-05",
     text: "Outstanding customer service. Impeccable knowledge and skill in his business. Great price and extremely professional service! Call them first!",
     source: "Google Review",
   },
@@ -366,7 +368,6 @@ export const REVIEWS = [
     name: "Tristen B.",
     stars: 5,
     date: "May 2026",
-    datePublished: "2026-05",
     text: "Michael was very professional and upfront about the cost of a tree removal in my back yard. Also communicated when they would arrive and kept me updated throughout the job. Great experience overall.",
     source: "Google Review",
   },
@@ -375,14 +376,11 @@ export const REVIEWS = [
     name: "R. Morgan",
     stars: 5,
     date: "May 2026",
-    datePublished: "2026-05",
     text: "I recently hired this tree removal service to remove 4 extremely large trees, and the experience exceeded my expectations. The team was professional, efficient, and left the property cleaner than they found it. Highly recommend.",
     source: "Google Review",
   },
 ] as const;
 
-/** Best rating on the scale the review stars are drawn against. */
-export const REVIEW_BEST_RATING = 5;
 
 export const TRUST_STATS = [
   { value: "13+", label: "Years in Business" },

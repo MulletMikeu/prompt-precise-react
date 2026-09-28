@@ -34,10 +34,14 @@ export default {
         card: { DEFAULT: "#111111", foreground: "#F5F5F0" },
         popover: { DEFAULT: "#111111", foreground: "#F5F5F0" },
       },
+      // Must stay in step with --font-display / --font-body in src/index.css.
+      // The *Fallback families are metric-matched @font-face rules (measured,
+      // see index.css); without them here the Tailwind utilities would bypass
+      // the fix and text would still re-wrap on swap.
       fontFamily: {
-        display: ['"Barlow Condensed"', "sans-serif"],
-        body: ["Barlow", "sans-serif"],
-        sans: ["Barlow", "sans-serif"],
+        display: ['"Barlow Condensed"', '"Barlow Condensed Fallback"', "sans-serif"],
+        body: ["Barlow", '"Barlow Fallback"', "sans-serif"],
+        sans: ["Barlow", '"Barlow Fallback"', "sans-serif"],
       },
       borderRadius: {
         lg: "4px",

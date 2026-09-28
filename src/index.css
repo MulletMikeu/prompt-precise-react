@@ -22,7 +22,74 @@
 
    font-display: swap, per spec. These are same-origin and the above-the-fold
    face is preloaded in index.html, so the swap window should be short — but a
-   swap can still shift text if it lands late. Watch CLS on the next run. */
+   swap can still shift text if it lands late, and it did: production Lighthouse
+   caught /storm-damage-trees-guide at CLS 0.099, intermittently 0.000, with the
+   culprit being the hero paragraph re-wrapping when Barlow replaced the
+   fallback. Fixed by the metric-matched fallback faces below. */
+
+/* Metric-matched fallbacks.
+ *
+ * The numbers below are MEASURED, not estimated: rendered in headless Chrome at
+ * 100px against the live faces, comparing Barlow to what `sans-serif` actually
+ * resolves to (Arial on Windows).
+ *
+ *   at weight 400      width   ascent   at weight 700      width   ascent
+ *   Barlow             2470.2    100     Barlow             2688.9    100
+ *   Barlow Condensed   (n/a)             Barlow Condensed   2193.2    100
+ *   Arial              2567.9     91     Arial Bold         2911.4     91
+ *
+ * Two things shift on swap, and both matter: Barlow is ~3.8% narrower than
+ * Arial, so lines wrap at different points, and its ascent is taller (100 vs
+ * 91), so every line box changes height. size-adjust fixes the first,
+ * ascent/descent-override the second.
+ *
+ * `local()` only — these never cause a network request. If Arial is absent the
+ * browser falls through to the plain family at the end of each stack.
+ *
+ * To re-derive after a font change: scratchpad/font-metrics.mjs. */
+
+@font-face {
+  font-family: 'Barlow Fallback';
+  font-weight: 400 500;
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 96.20%;
+  ascent-override: 103.95%;
+  descent-override: 20.79%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Barlow Fallback';
+  font-weight: 600 800;
+  src: local('Arial Bold'), local('Arial'), local('Helvetica'), local('Liberation Sans Bold');
+  size-adjust: 92.36%;
+  ascent-override: 108.27%;
+  descent-override: 21.65%;
+  line-gap-override: 0%;
+}
+
+/* Weight-scoped, because the width ratio moves a LOT with weight — Barlow
+ * Condensed is 91.8% of Arial at 400 but only 75.3% at 700. A single ratio
+ * cannot serve both, and headings (the things that re-wrap) are bold. */
+@font-face {
+  font-family: 'Barlow Condensed Fallback';
+  font-weight: 400 500;
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 91.79%;
+  ascent-override: 96.96%;
+  descent-override: 23.97%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Barlow Condensed Fallback';
+  font-weight: 600 800;
+  src: local('Arial Bold'), local('Arial'), local('Helvetica'), local('Liberation Sans Bold');
+  size-adjust: 75.33%;
+  ascent-override: 132.75%;
+  descent-override: 29.20%;
+  line-gap-override: 0%;
+}
 
 @font-face {
   font-family: 'Barlow Condensed';
@@ -112,8 +179,8 @@
   --cream-dark: #E8E8E2;
   --muted: #888888;
 
-  --font-display: 'Barlow Condensed', sans-serif;
-  --font-body: 'Barlow', sans-serif;
+  --font-display: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
+  --font-body: 'Barlow', 'Barlow Fallback', sans-serif;
 }
 
 /* ─── Base ────────────────────────────────────────────── */
