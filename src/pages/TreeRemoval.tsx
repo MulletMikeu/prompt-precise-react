@@ -91,11 +91,10 @@ export default function TreeRemoval() {
       caseStudy={
         <>
         {/* Sits directly after the pine / sandy-ground sections. The caption says
-            "topping", which here means taking the top out of a tree we are
-            DISMANTLING — the opposite of the reduction topping we refuse to do on
-            a tree that is staying. The paragraph below draws that line explicitly,
-            because a visitor who has read our trimming page would otherwise have
-            fair grounds to think we contradict ourselves. */}
+            "dismantling ... from the top down" rather than "topping" on purpose:
+            the trimming page states flatly that we do not top trees, and reusing
+            that word here for a completely different operation would read as a
+            contradiction. Do not reintroduce it. */}
         <section id="lift-video" className="py-16 bg-gray-950 border-t border-gray-800" aria-labelledby="removal-video-heading">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
             <h2 id="removal-video-heading" className="text-2xl sm:text-3xl font-bold text-white mb-6">
@@ -110,16 +109,9 @@ export default function TreeRemoval() {
             <LiteYouTube
               id="f54f7VLgkIU"
               thumbnail="/images/video-spider-lift-loblolly-jacksonville-nc-480.jpg"
-              title="Our spider lift topping a loblolly pine between homes — no crane, no torn-up yard."
-              caption="Our spider lift topping a loblolly pine between homes — no crane, no torn-up yard."
+              title="Our spider lift dismantling a loblolly pine from the top down between homes — no crane, no torn-up yard."
+              caption="Our spider lift dismantling a loblolly pine from the top down between homes — no crane, no torn-up yard."
             />
-            <p className="text-gray-300 leading-relaxed text-lg mt-6">
-              One clarification, because we are firm about the word elsewhere: taking the
-              top out of a tree during a sectional removal is dismantling, and it is how a
-              pine like this comes down safely in a tight spot. It is not the same thing as
-              topping a tree you intend to keep, which does damage the tree cannot repair —
-              and that we will not do.
-            </p>
           </div>
         </section>
 

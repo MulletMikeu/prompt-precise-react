@@ -43,7 +43,7 @@ export default function PrivacyPolicy() {
               <ul className="list-disc pl-6 flex flex-col gap-2 text-base leading-relaxed">
                 <li><span className="font-semibold text-white">Contact details you give us</span> — such as your name, phone number, email address, and property address when you call, email, or submit a form requesting a quote or estimate.</li>
                 <li><span className="font-semibold text-white">Job details</span> — information you share about the work you need so we can prepare an accurate estimate.</li>
-                <li><span className="font-semibold text-white">Website usage data</span> — anonymous, aggregated information (such as pages visited and general location) collected automatically through analytics, as described below.</li>
+                <li><span className="font-semibold text-white">Website usage data</span> — information collected automatically by Google Analytics when you visit, such as which pages you viewed, roughly where in the world you are, what kind of device and browser you used, and whether you tapped a call button or sent us a form. See &ldquo;Analytics and cookies&rdquo; below.</li>
               </ul>
             </div>
 
@@ -87,14 +87,40 @@ export default function PrivacyPolicy() {
                 Our quote and contact forms are processed by Formspree, a third-party form provider that delivers your message to us by email. Information you submit through these forms is handled according to Formspree's privacy practices.
               </p>
               <p className="text-base leading-relaxed">
-                This site uses Google Analytics to understand how visitors use our pages. Google Analytics uses cookies and similar technologies to collect anonymous, aggregated usage data, which helps us improve the site. This data does not personally identify you. You can opt out of Google Analytics using Google's browser add-on, or by blocking cookies in your browser settings.
+                We use Google Analytics 4 to measure how the site is doing. It tells us how many people visited, which pages they read, and which of those visits turned into an inquiry — specifically, when someone submits the quote form and when someone taps a call button. We look at those numbers to work out which pages are worth writing and which are not.
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl font-bold text-white mb-4">Cookies</h2>
+              <p className="text-base leading-relaxed mb-4">
+                A cookie is a small text file a website stores on your device. Google Analytics 4 sets cookies so it can tell a returning visitor from a new one and keep a visit together as one session. Those are the only cookies this site sets — there is no advertising network, no remarketing pixel, and no other tracker on it.
+              </p>
+              <p className="text-base leading-relaxed mb-4">
+                Google describes what it does with the data it collects on sites that use its services here:{' '}
+                <a
+                  href="https://policies.google.com/technologies/partner-sites"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 font-semibold"
+                  style={{ color: "#E5424F" }}
+                >
+                  How Google uses information from sites or apps that use our services
+                </a>
+                .
+              </p>
               <p className="text-base leading-relaxed">
-                A cookie is a small text file stored on your device. We use only the cookies needed for basic site functionality and for the anonymous analytics described above. You can set your browser to refuse cookies or to alert you when cookies are being sent; some parts of the site may not function as intended if you do.
+                If you would rather not be counted, you have two straightforward options. Install the{' '}
+                <a
+                  href="https://tools.google.com/dlpage/gaoptout"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 font-semibold"
+                  style={{ color: "#E5424F" }}
+                >
+                  Google Analytics opt-out browser add-on
+                </a>
+                , which stops Google Analytics on every site you visit, not just ours. Or set your browser to refuse cookies. Nothing on this site stops working if you do either — the analytics simply will not see you.
               </p>
             </div>
 
