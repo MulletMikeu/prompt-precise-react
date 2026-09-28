@@ -12,7 +12,7 @@
  * Rules for whoever fills these in:
  *   - Real jobs and real numbers only. If a price was unusual, say why.
  *   - No customer names, no street addresses, no house numbers. "Area" means a
- *     neighbourhood or a road — "Brynn Marr", "off Gum Branch Rd" — never "1423
+ *     neighborhood or a road — "Brynn Marr", "off Gum Branch Rd" — never "1423
  *     Example Ln".
  *   - Photos must be ours, and must be of the job described.
  *   - On the invoice: redact the customer, the address, the claim number and the
@@ -28,7 +28,7 @@ export interface RecentJob {
   imageAlt: string;
   /** What the job was: "70 ft loblolly pine over a detached garage". */
   jobType: string;
-  /** Neighbourhood or road only — never a street address. */
+  /** Neighborhood or road only — never a street address. */
   area: string;
   /** What it came to, e.g. "$2,400". */
   price: string;
@@ -65,3 +65,23 @@ export const EMERGENCY_INVOICE_TOTAL = '';
  * mean something. Leave empty to omit.
  */
 export const EMERGENCY_INVOICE_CONTEXT = '';
+
+/**
+ * The resistograph printout from the pecan described on
+ * /resistograph-tree-testing-jacksonville-nc — the tree that measured under 20%
+ * rot about four years ago, was trimmed to reduce weight instead of removed, and
+ * is still standing.
+ *
+ * Set `image` to a path under /images/ and the figure appears beneath that story
+ * on the next build. While `image` is empty the figure renders NOTHING — the
+ * written account stands on its own rather than sitting next to a placeholder
+ * box, and we are not putting a stand-in graph next to a real measurement.
+ */
+export const RESISTOGRAPH_PRINTOUT = {
+  /** e.g. "/images/resistograph-printout-pecan-jacksonville-nc-1024.webp" */
+  image: '',
+  /** Describe what the trace actually shows. */
+  imageAlt: '',
+  /** Optional caption under the figure. */
+  caption: '',
+};

@@ -63,7 +63,7 @@ export default function EmergencyTreeService() {
         },
         {
           heading: "What Emergency Tree Work Costs",
-          text: `Getting a tree off a structure is the most expensive work we do. Emergency removals where the tree is ON the house, the garage or a vehicle typically run ${PRICING.emergency.structure}, and occasionally more.
+          text: `Getting a tree off a structure is the most expensive work we do. Most tree-on-house emergencies run about ${PRICING.emergency.structure}, and occasionally more.
 
 That number surprises people, so here is where it goes. Almost none of it is the tree:
 
@@ -81,7 +81,7 @@ A storm-damaged tree that is NOT on a structure is ordinary removal work and pri
         },
         {
           heading: "Will Insurance Cover It?",
-          text: "Usually, when the tree has damaged a covered structure — and the mechanics are worth reading properly rather than skimming a paragraph here.\n\nWe keep all of it on one page so it stays accurate and consistent: what a homeowners policy typically pays toward removal, the small sublimit that applies to debris, what happens when a tree falls and hits nothing at all, and why you should photograph the damage rather than wait for the adjuster before stopping active damage.\n\nWhat we do on our side of it, every time: photograph the damage before we touch anything, itemise the invoice, bill your insurance directly, and speak to your adjuster."
+          text: "Usually, when the tree has damaged a covered structure — and the mechanics are worth reading properly rather than skimming a paragraph here.\n\nWe keep all of it on one page so it stays accurate and consistent: what a homeowners policy typically pays toward removal, the small sublimit that applies to debris, what happens when a tree falls and hits nothing at all, and why you should photograph the damage rather than wait for the adjuster before stopping active damage.\n\nWhat we do on our side of it, every time: photograph the damage before we touch anything, itemize the invoice, bill your insurance directly, and speak to your adjuster."
         }
       ]}
       /* Rendered through the caseStudy slot rather than `sections` because this
@@ -158,11 +158,11 @@ A storm-damaged tree that is NOT on a structure is ordinary removal work and pri
         },
         {
           question: "How much does emergency tree removal cost in Jacksonville NC?",
-          answer: `Emergency work where the tree is on the house, the garage or a vehicle typically runs ${PRICING.emergency.structure}, and occasionally more. Almost none of that is the tree itself — it is after-hours mobilisation, crane or spider-lift time, rigging a loaded trunk off the roof in pieces, working around the weather, and tarping the opening before we leave. A storm-damaged tree that is not on a structure prices as ordinary removal work.`
+          answer: `Most tree-on-house emergencies run about ${PRICING.emergency.structure}, and occasionally more. Almost none of that is the tree itself — it is after-hours mobilisation, crane or spider-lift time, rigging a loaded trunk off the roof in pieces, working around the weather, and tarping the opening before we leave. A storm-damaged tree that is not on a structure prices as ordinary removal work.`
         },
         {
           question: "Will insurance cover storm-damaged trees?",
-          answer: "Usually, when the tree has damaged a covered structure. We photograph the damage before we touch anything, itemise the invoice, bill your insurance directly, and speak to your adjuster. The detail — what is typically covered, the small debris sublimit, and what happens when a tree hits nothing — is all on our storm cleanup page so there is one accurate version of it.",
+          answer: "Usually, when the tree has damaged a covered structure. We photograph the damage before we touch anything, itemize the invoice, bill your insurance directly, and speak to your adjuster. The detail — what is typically covered, the small debris sublimit, and what happens when a tree hits nothing — is all on our storm cleanup page so there is one accurate version of it.",
           link: { href: "/storm-cleanup-jacksonville-nc", label: "Storm cleanup and what insurance covers" }
         },
         {

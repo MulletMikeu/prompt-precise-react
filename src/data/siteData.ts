@@ -104,11 +104,6 @@ export const PRICING = {
      * Old-growth oak and pine stumps, which price nothing like the 2–3 ft
      * stumps `most` describes. Kept as its own figure so the ordinary range
      * never gets stretched to cover the outliers.
-     *
-     * NOTE: batch-2 field notes gave the ordinary range as "$200–$450" while
-     * `most` above has said "$200–$500" since before this branch. `most` is
-     * unchanged — the discrepancy is flagged for the owner rather than
-     * silently overwritten.
      */
     largest: "$1,500+",
   },
@@ -119,7 +114,18 @@ export const PRICING = {
    * pieces, working around weather, and tarping the opening before we leave.
    */
   emergency: {
-    structure: "$7,000–$15,000+",
+    structure: "$6,000–$15,000+",
+  },
+  /**
+   * Resistograph testing, priced per tree rather than folded into the estimate.
+   * The first two trees carry the setup; each extra tree on the same visit is
+   * marginal time, which is why the rate halves after two. `minimum` exists so a
+   * single-tree call is not quoted below the cost of turning up.
+   */
+  resistograph: {
+    first2PerTree: 200,
+    additionalPerTree: 100,
+    minimum: 200,
   },
   /**
    * Removals where the tree is close enough to the house that position, not

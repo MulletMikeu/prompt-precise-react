@@ -24,7 +24,7 @@ export default function DebrisHauling() {
       sections={[
         {
           heading: 'What We Haul — and What We Don\'t',
-          text: "We take organic debris: whole trees, trunk sections, limbs, brush, and leaves. That is the whole list.\n\nWe do not take construction or demolition waste, shingles, fencing, treated lumber, furniture, appliances, tyres, or household junk — not even mixed in with a load of brush. This is not a junk-removal service wearing a tree company's name, and a load with non-organic material in it stops being a brush load.\n\nIf your pile is brush with a few boards and an old mattress in the middle of it, tell us on the phone. We would rather sort that out before a trailer is sitting in your driveway.",
+          text: "We take organic debris: whole trees, trunk sections, limbs, brush, and leaves. That is the whole list.\n\nWe do not take construction or demolition waste, shingles, fencing, treated lumber, furniture, appliances, tires, or household junk — not even mixed in with a load of brush. This is not a junk-removal service wearing a tree company's name, and a load with non-organic material in it stops being a brush load.\n\nIf your pile is brush with a few boards and an old mattress in the middle of it, tell us on the phone. We would rather sort that out before a trailer is sitting in your driveway.",
         },
         {
           heading: 'What Debris Hauling Costs',

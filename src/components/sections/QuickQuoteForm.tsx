@@ -432,6 +432,7 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
                     <option value="Tree Trimming">Tree Trimming</option>
                     <option value="Stump Grinding">Stump Grinding</option>
                     <option value="Emergency Tree Service">Emergency Tree Service</option>
+                    <option value="Debris Hauling">Debris Hauling</option>
                   </select>
                   {renderError('service', 'Service')}
                 </div>

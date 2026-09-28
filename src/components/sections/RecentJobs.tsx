@@ -20,7 +20,7 @@ export default function RecentJobs() {
         </h2>
         <p className="text-gray-300 text-lg leading-relaxed mb-8">
           Real jobs from around Jacksonville and Onslow County, with what each one came
-          to. Neighbourhoods rather than addresses — your job is your business.
+          to. Neighborhoods rather than addresses — your job is your business.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {RECENT_JOBS.map((job) => (

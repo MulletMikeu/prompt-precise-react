@@ -1,6 +1,7 @@
 import ServicePage from './ServicePage';
 import { BUSINESS, PRICING } from '../data/siteData';
 import RecentJobs from '@/components/sections/RecentJobs';
+import LiteYouTube from '@/components/ui/LiteYouTube';
 import removalHero from '@/assets/tree-removal-jacksonville-nc-godhans.jpg';
 import removalHero600Webp from '@/assets/tree-removal-jacksonville-nc-godhans-600.webp';
 import removalHero1200Webp from '@/assets/tree-removal-jacksonville-nc-godhans-1200.webp';
@@ -89,6 +90,38 @@ export default function TreeRemoval() {
       ]}
       caseStudy={
         <>
+        {/* Sits directly after the pine / sandy-ground sections. The caption says
+            "topping", which here means taking the top out of a tree we are
+            DISMANTLING — the opposite of the reduction topping we refuse to do on
+            a tree that is staying. The paragraph below draws that line explicitly,
+            because a visitor who has read our trimming page would otherwise have
+            fair grounds to think we contradict ourselves. */}
+        <section id="lift-video" className="py-16 bg-gray-950 border-t border-gray-800" aria-labelledby="removal-video-heading">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 id="removal-video-heading" className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              Taking a Pine Down Between Two Houses
+            </h2>
+            <p className="text-gray-300 leading-relaxed text-lg mb-6">
+              A tall loblolly with a house on either side and no room to drop it. The
+              spider lift walks in on tracks, so there is no crane on the lawn and no
+              ruts across the sandy ground — the two problems that otherwise decide how
+              a job like this gets priced.
+            </p>
+            <LiteYouTube
+              id="f54f7VLgkIU"
+              title="Our spider lift topping a loblolly pine between homes — no crane, no torn-up yard."
+              caption="Our spider lift topping a loblolly pine between homes — no crane, no torn-up yard."
+            />
+            <p className="text-gray-300 leading-relaxed text-lg mt-6">
+              One clarification, because we are firm about the word elsewhere: taking the
+              top out of a tree during a sectional removal is dismantling, and it is how a
+              pine like this comes down safely in a tight spot. It is not the same thing as
+              topping a tree you intend to keep, which does damage the tree cannot repair —
+              and that we will not do.
+            </p>
+          </div>
+        </section>
+
         <section className="py-16 bg-black border-t border-gray-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">

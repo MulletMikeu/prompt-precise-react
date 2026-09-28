@@ -36,7 +36,10 @@ export default function TreeTrimming() {
          title, meta and heading structure are untouched. Both frames are
          generated at 4:3 with explicit dimensions, so the pair lines up and
          neither can shift layout. */
+      /* Two blocks: the existing before/after figure, and the topping sources
+         for the quotations in the trimming section above. */
       caseStudy={
+        <>
         /* No heading element here on purpose: the block is additive, and adding
            an h2 would alter this page's heading outline. The section is named
            with aria-label instead, which gives assistive tech a landmark name
@@ -89,6 +92,49 @@ export default function TreeTrimming() {
             ))}
           </div>
         </section>
+
+        <section id="topping-sources" className="py-12 bg-gray-950 border-t border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 className="text-2xl font-bold text-white mb-4">On Topping — Sources</h2>
+            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              We would rather you checked this than took our word for it, because refusing
+              to top a tree costs us work and we would say it either way.
+            </p>
+            <ul className="space-y-5">
+              <li>
+                <a
+                  href="https://www.treesaregood.org/Portals/0/TreesAreGood_Why%20Topping%20Hurts_0321.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+                >
+                  International Society of Arboriculture — Why Topping Hurts Trees
+                </a>
+                <span className="block text-gray-400 text-base mt-1">
+                  ISA&rsquo;s consumer brochure on why topping is not a valid method of
+                  height reduction.
+                </span>
+              </li>
+              <li>
+                <a
+                  href="https://extension.psu.edu/tree-topping-the-cost-is-greater-than-you-think"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+                >
+                  Penn State Extension — Tree Topping: The Cost is Greater Than You Think
+                </a>
+                <span className="block text-gray-400 text-base mt-1">
+                  The source of the two quotations above: that a tree &ldquo;cannot stop
+                  the spread of decay when it is topped,&rdquo; and that regrowth is
+                  &ldquo;weakly attached and break[s] easily in wind or snowstorms, even
+                  many years later when they are large and heavy.&rdquo;
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+        </>
       }
       sections={[
         {
@@ -109,7 +155,7 @@ export default function TreeTrimming() {
         },
         {
           heading: "How We Actually Trim a Tree",
-          text: "This is the part of the job Michael cares most about, and it is most visible on live oaks.\n\nIt happens in two stages, and the order matters.\n\nFIRST, THE BOTTOM OF THE CANOPY. We clean the lowest fifteen to twenty per cent — the trunk itself and the first five to eight feet out along each limb — taking off the sapsucker and epicormic growth, the thin vertical shoots that clutter the inside of a tree. The point is not tidiness. It is that afterwards you can see up into the tree. You get the structure back: the trunk, the main limbs, the shape underneath all the fuzz. On an old live oak the difference is the whole character of the tree.\n\nTHEN, SELECTIVE THINNING UP HIGH. Where a branch splits into four, six, eight limbs, we take out the ones growing back toward other limbs. Not every other one — that is how you get a tree that looks like it has been shaved, and it is the most common thing we are called in to fix. Choosing by direction instead of by count means air and light move through the canopy while the tree still looks almost untouched from the ground. Done properly, most people cannot tell we were up there. They can tell the tree looks better.\n\nAND ALWAYS, REGARDLESS: dead limbs, cracked limbs, rotten limbs, and limbs crossing or rubbing each other. Those are not judgement calls. A rubbing limb is a wound that never closes, and a cracked limb is a decision the tree has already made.\n\nWhat we do not do is top a tree. Cutting the leaders off to reduce height produces a flush of weak regrowth from the wound, and every one of those shoots is more likely to fail than the limb that was removed. If someone has quoted you on topping, that is worth a second conversation."
+          text: "This is the part of the job Michael cares most about, and it is most visible on live oaks.\n\nThe call that brings it on, more than any other: a large oak that has started shedding more small dead interior branches than it used to, and has dropped one or two of the overgrown larger limbs. That is the pattern people phone us about, and it is exactly what the method below is for — the interior deadwood comes out, and the limbs that have outgrown their attachment get the weight taken off them before they are the next thing on the lawn.\n\nIt happens in two stages, and the order matters.\n\nFIRST, THE BOTTOM OF THE CANOPY. We clean the lowest fifteen to twenty percent — the trunk itself and the first five to eight feet out along each limb — taking off the sapsucker and epicormic growth, the thin vertical shoots that clutter the inside of a tree. The point is not tidiness. It is that afterwards you can see up into the tree. You get the structure back: the trunk, the main limbs, the shape underneath all the fuzz. On an old live oak the difference is the whole character of the tree.\n\nTHEN, SELECTIVE THINNING UP HIGH. Where a branch splits into four, six, eight limbs, we take out the ones growing back toward other limbs. Not every other one — that is how you get a tree that looks like it has been shaved. Choosing by direction instead of by count means air and light move through the canopy while the tree still looks almost untouched from the ground. Done properly, most people cannot tell we were up there. They can tell the tree looks better.\n\nAND ALWAYS, REGARDLESS: dead limbs, cracked limbs, rotten limbs, and limbs crossing or rubbing each other. Those are not judgment calls. A rubbing limb is a wound that never closes, and a cracked limb is a decision the tree has already made.\n\nWHAT WE WILL NOT DO IS TOP A TREE. Cutting the leaders off to reduce height does damage the tree cannot repair. A proper cut at the branch collar is something a tree can defend itself against; a topping cut is not, and as Penn State Extension puts it, a tree “cannot stop the spread of decay when it is topped.” It also starves the tree — the leaves are how it feeds itself, and removing that much canopy at once forces it to burn stored reserves to grow the leaves back.\n\nThen there is what grows back, which is the part that fools people. A topped tree throws up a dense flush of shoots that looks like vigorous recovery and is nothing of the kind. Those shoots have no branch collar — none of the interwoven trunk and branch wood that anchors a limb that grew there naturally — so, in Extension's words, they are “weakly attached and break easily in wind or snowstorms, even many years later when they are large and heavy.” You have traded one tall limb for a dozen badly attached ones, on a trunk that is now decaying. If someone has quoted you on topping, that is worth a second conversation."
         },
         {
           heading: "Why We Don't Rush to Cut Oaks",
@@ -129,6 +175,10 @@ export default function TreeTrimming() {
         }
       ]}
       faqs={[
+        {
+          question: "Will you top my tree to reduce its height?",
+          answer: "No. Topping does damage a tree cannot repair — Penn State Extension notes a tree “cannot stop the spread of decay when it is topped” — and it starves the tree by removing the canopy it feeds itself with. The regrowth looks like recovery but has no branch collar anchoring it, so it is “weakly attached and break[s] easily in wind or snowstorms, even many years later when they are large and heavy.” If height or weight is the worry, selective reduction at proper cuts does the job without those consequences.",
+        },
         { question: "How often should trees be trimmed?", answer: "Most trees should be trimmed every 1–3 years depending on the species and growth rate." },
         { question: "What is the best time of year to trim trees?", answer: "Late winter or early spring is often ideal, but trimming can be done year-round depending on the situation." },
         { question: "Is tree trimming necessary?", answer: "Yes, regular trimming helps maintain tree health, prevent hazards, and improve appearance." },
