@@ -1,13 +1,19 @@
 import ServicePage from './ServicePage';
 import { BUSINESS, PRICING } from '../data/siteData';
-import stumpHero from '@/assets/stump-grinding-jacksonville-nc-godhans.jpg';
-import stumpHero600Webp from '@/assets/stump-grinding-jacksonville-nc-godhans-600.webp';
-import stumpHero1200Webp from '@/assets/stump-grinding-jacksonville-nc-godhans-1200.webp';
-import stumpHero600Jpg from '@/assets/stump-grinding-jacksonville-nc-godhans-600.jpg';
-import stumpHero1200Jpg from '@/assets/stump-grinding-jacksonville-nc-godhans-1200.jpg';
+import stump480Avif from '@/assets/stump-grinding-jacksonville-nc-godhans-480.avif';
+import stump480Webp from '@/assets/stump-grinding-jacksonville-nc-godhans-480.webp';
+import stump480Jpg from '@/assets/stump-grinding-jacksonville-nc-godhans-480.jpg';
+import stump800Avif from '@/assets/stump-grinding-jacksonville-nc-godhans-800.avif';
+import stump800Webp from '@/assets/stump-grinding-jacksonville-nc-godhans-800.webp';
+import stump800Jpg from '@/assets/stump-grinding-jacksonville-nc-godhans-800.jpg';
+import stump1200Avif from '@/assets/stump-grinding-jacksonville-nc-godhans-1200.avif';
+import stump1200Webp from '@/assets/stump-grinding-jacksonville-nc-godhans-1200.webp';
+import stump1200Jpg from '@/assets/stump-grinding-jacksonville-nc-godhans-1200.jpg';
 
-const stumpWebpSrcSet = `${stumpHero600Webp} 600w, ${stumpHero1200Webp} 1200w`;
-const stumpJpgSrcSet = `${stumpHero600Jpg} 600w, ${stumpHero1200Jpg} 1200w`;
+const stumpAvifSrcSet = `${stump480Avif} 480w, ${stump800Avif} 800w, ${stump1200Avif} 1200w`;
+const stumpWebpSrcSet = `${stump480Webp} 480w, ${stump800Webp} 800w, ${stump1200Webp} 1200w`;
+const stumpJpgSrcSet = `${stump480Jpg} 480w, ${stump800Jpg} 800w, ${stump1200Jpg} 1200w`;
+
 
 export default function StumpGrinding() {
   return (
@@ -19,7 +25,8 @@ export default function StumpGrinding() {
       description={`Stump grinding in Jacksonville, NC from a ${PRICING.stump.minimum} minimum, ${PRICING.stump.perInch} at the root flare. Most stumps run ${PRICING.stump.most}. Ground ${PRICING.stump.depthMax} below grade.`}
       ctaText="Call Now for a Free Estimate"
       heroImage={{
-        src: stumpHero,
+        src: stump1200Jpg,
+        avifSrcSet: stumpAvifSrcSet,
         webpSrcSet: stumpWebpSrcSet,
         jpgSrcSet: stumpJpgSrcSet,
         sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',

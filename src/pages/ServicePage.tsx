@@ -9,6 +9,14 @@ import { BUSINESS_INFO } from '@/lib/constants';
 import { BUSINESS, SITE_URL } from '@/data/siteData';
 import type { DamageNoun } from '@/data/siteData';
 
+/**
+ * The hero renders inside a max-w-5xl (1024px) container with page padding, so
+ * it is never wider than ~1024px and is full-bleed below 640px. The preload
+ * below MUST use the same value as the <source> elements or the browser
+ * preloads one candidate and then picks another.
+ */
+const HERO_SIZES = '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px';
+
 const LOCATION_SLUGS = new Set([
   'tree-service-jacksonville-nc',
   'tree-service-camp-lejeune-nc',
@@ -112,6 +120,11 @@ interface ServicePageProps {
     height?: number;
     geo?: string;
     showCta?: boolean;
+    /**
+     * AVIF candidates, offered first. Roughly half the bytes of the equivalent
+     * WebP on these photos, which is what moved the hero-LCP pages.
+     */
+    avifSrcSet?: string;
     webpSrcSet?: string;
     jpgSrcSet?: string;
     sizes?: string;
@@ -178,6 +191,21 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={description} />
 
+        {/* Preload the hero, which is the LCP element on every page that has
+            one. Without this the browser cannot discover it until the CSS has
+            arrived and laid the section out. AVIF only, with a matching `sizes`
+            — a browser that cannot decode the type skips the preload rather
+            than wasting it, and falls through to the <source> chain. */}
+        {heroImage?.avifSrcSet && (
+          <link
+            rel="preload"
+            as="image"
+            type="image/avif"
+            imageSrcSet={heroImage.avifSrcSet}
+            imageSizes={heroImage.sizes || HERO_SIZES}
+          />
+        )}
+
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbSchema)}
         </script>
@@ -235,18 +263,25 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                     style={{ aspectRatio: `${heroImage.width || 1600} / ${heroImage.height || 900}` }}
                   >
                     <picture>
+                      {heroImage.avifSrcSet && (
+                        <source
+                          type="image/avif"
+                          srcSet={heroImage.avifSrcSet}
+                          sizes={heroImage.sizes || HERO_SIZES}
+                        />
+                      )}
                       {heroImage.webpSrcSet && (
                         <source
                           type="image/webp"
                           srcSet={heroImage.webpSrcSet}
-                          sizes={heroImage.sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px'}
+                          sizes={heroImage.sizes || HERO_SIZES}
                         />
                       )}
                       {heroImage.jpgSrcSet && (
                         <source
                           type="image/jpeg"
                           srcSet={heroImage.jpgSrcSet}
-                          sizes={heroImage.sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px'}
+                          sizes={heroImage.sizes || HERO_SIZES}
                         />
                       )}
                       <img

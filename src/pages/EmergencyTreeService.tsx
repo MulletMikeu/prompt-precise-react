@@ -4,10 +4,6 @@ import { BUSINESS, PRICING } from '@/data/siteData';
 import StormInsuranceLead from '@/components/sections/StormInsuranceLead';
 import SampleEmergencyInvoice from '@/components/sections/SampleEmergencyInvoice';
 import EmergencyJobGallery from '@/components/sections/EmergencyJobGallery';
-import heroCrane from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine.webp';
-import heroCrane480 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-480.webp';
-import heroCrane800 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-800.webp';
-import heroCrane1200 from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-1200.webp';
 import sitePrep from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing.webp';
 import sitePrep480 from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing-480.webp';
 import sitePrep800 from '@/assets/tree-removal-site-prep-jacksonville-nc-property-clearing-800.webp';
@@ -16,8 +12,20 @@ import yardRestored from '@/assets/yard-restoration-after-tree-removal-jacksonvi
 import yardRestored480 from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc-480.webp';
 import yardRestored800 from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc-800.webp';
 import yardRestored1200 from '@/assets/yard-restoration-after-tree-removal-jacksonville-nc-1200.webp';
+import crane480Avif from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-480.avif';
+import crane480Webp from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-480.webp';
+import crane480Jpg from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-480.jpg';
+import crane800Avif from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-800.avif';
+import crane800Webp from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-800.webp';
+import crane800Jpg from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-800.jpg';
+import crane1125Avif from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-1125.avif';
+import crane1125Webp from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-1125.webp';
+import crane1125Jpg from '@/assets/emergency-tree-removal-jacksonville-nc-crane-cutting-pine-1125.jpg';
 
-const craneSrcSet = `${heroCrane480} 480w, ${heroCrane800} 800w, ${heroCrane1200} 1200w`;
+const craneAvifSrcSet = `${crane480Avif} 480w, ${crane800Avif} 800w, ${crane1125Avif} 1125w`;
+const craneWebpSrcSet = `${crane480Webp} 480w, ${crane800Webp} 800w, ${crane1125Webp} 1125w`;
+const craneJpgSrcSet = `${crane480Jpg} 480w, ${crane800Jpg} 800w, ${crane1125Jpg} 1125w`;
+
 const sitePrepSrcSet = `${sitePrep480} 480w, ${sitePrep800} 800w, ${sitePrep1200} 1200w`;
 const yardSrcSet = `${yardRestored480} 480w, ${yardRestored800} 800w, ${yardRestored1200} 1200w`;
 
@@ -37,8 +45,10 @@ export default function EmergencyTreeService() {
          copy, byte-identical with /storm-cleanup-jacksonville-nc. */
       leadBlock={<StormInsuranceLead />}
       heroImage={{
-        src: heroCrane,
-        webpSrcSet: craneSrcSet,
+        src: crane1125Jpg,
+        avifSrcSet: craneAvifSrcSet,
+        webpSrcSet: craneWebpSrcSet,
+        jpgSrcSet: craneJpgSrcSet,
         sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
         alt: "Emergency tree removal crew in Jacksonville NC using a green crane to safely cut down a damaged pine tree near a home"
       }}
@@ -126,8 +136,8 @@ A storm-damaged tree that is NOT on a structure is ordinary removal work and pri
         heading: "Recent Emergency & Tree Removal Jobs in Jacksonville, NC",
         images: [
           {
-            src: heroCrane,
-            srcSet: craneSrcSet,
+            src: crane1125Jpg,
+            srcSet: craneWebpSrcSet,
             alt: "Bucket crane removing a large pine tree in a Jacksonville NC backyard after storm damage",
             caption: "Crane removal of a damaged pine — Jacksonville, NC"
           },

@@ -7,13 +7,14 @@
     "dev": "vite-react-ssg dev",
     "images": "node scripts/gen-images.mjs",
     "sitemap": "node scripts/gen-sitemap.mjs",
-    "prebuild": "node scripts/gen-images.mjs && node scripts/gen-sitemap.mjs",
+    "prebuild": "node scripts/gen-images.mjs && node scripts/gen-hero-images.mjs && node scripts/gen-sitemap.mjs",
     "build": "vite-react-ssg build",
     "indexnow": "node scripts/indexnow.mjs",
     "build:dev": "vite-react-ssg build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "brand": "node scripts/gen-brand.mjs"
+    "brand": "node scripts/gen-brand.mjs",
+    "hero-images": "node scripts/gen-hero-images.mjs"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",

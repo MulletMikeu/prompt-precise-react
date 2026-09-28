@@ -1,13 +1,18 @@
 import ServicePage from './ServicePage';
 import { BUSINESS, PRICING } from '../data/siteData';
-import treeTrimmingPhoto from '@/assets/tree-trimming-jacksonville-nc-godhans-1200.jpg';
-import treeTrimmingPhoto480 from '@/assets/tree-trimming-jacksonville-nc-godhans-480.jpg';
-import treeTrimmingPhoto800 from '@/assets/tree-trimming-jacksonville-nc-godhans-800.jpg';
-import treeTrimmingPhoto1600 from '@/assets/tree-trimming-jacksonville-nc-godhans-1600.jpg';
-import treeTrimmingPhotoWebp480 from '@/assets/tree-trimming-jacksonville-nc-godhans-480.webp';
-import treeTrimmingPhotoWebp800 from '@/assets/tree-trimming-jacksonville-nc-godhans-800.webp';
-import treeTrimmingPhotoWebp1200 from '@/assets/tree-trimming-jacksonville-nc-godhans-1200.webp';
-import treeTrimmingPhotoWebp1600 from '@/assets/tree-trimming-jacksonville-nc-godhans-1600.webp';
+import trim480Avif from '@/assets/tree-trimming-jacksonville-nc-godhans-480.avif';
+import trim480Webp from '@/assets/tree-trimming-jacksonville-nc-godhans-480.webp';
+import trim480Jpg from '@/assets/tree-trimming-jacksonville-nc-godhans-480.jpg';
+import trim800Avif from '@/assets/tree-trimming-jacksonville-nc-godhans-800.avif';
+import trim800Webp from '@/assets/tree-trimming-jacksonville-nc-godhans-800.webp';
+import trim800Jpg from '@/assets/tree-trimming-jacksonville-nc-godhans-800.jpg';
+import trim1200Avif from '@/assets/tree-trimming-jacksonville-nc-godhans-1200.avif';
+import trim1200Webp from '@/assets/tree-trimming-jacksonville-nc-godhans-1200.webp';
+import trim1200Jpg from '@/assets/tree-trimming-jacksonville-nc-godhans-1200.jpg';
+
+const trimAvifSrcSet = `${trim480Avif} 480w, ${trim800Avif} 800w, ${trim1200Avif} 1200w`;
+const trimWebpSrcSet = `${trim480Webp} 480w, ${trim800Webp} 800w, ${trim1200Webp} 1200w`;
+const trimJpgSrcSet = `${trim480Jpg} 480w, ${trim800Jpg} 800w, ${trim1200Jpg} 1200w`;
 
 export default function TreeTrimming() {
   return (
@@ -19,9 +24,10 @@ export default function TreeTrimming() {
       description="Expert tree trimming and pruning in Jacksonville, NC. Healthy growth, safer canopies, clean cleanup. Fully insured, free estimates."
       ctaText="Call Now for a Free Estimate"
       heroImage={{
-        src: treeTrimmingPhoto,
-        webpSrcSet: `${treeTrimmingPhotoWebp480} 480w, ${treeTrimmingPhotoWebp800} 800w, ${treeTrimmingPhotoWebp1200} 1200w, ${treeTrimmingPhotoWebp1600} 1600w`,
-        jpgSrcSet: `${treeTrimmingPhoto480} 480w, ${treeTrimmingPhoto800} 800w, ${treeTrimmingPhoto} 1200w, ${treeTrimmingPhoto1600} 1600w`,
+        src: trim1200Jpg,
+        avifSrcSet: trimAvifSrcSet,
+        webpSrcSet: trimWebpSrcSet,
+        jpgSrcSet: trimJpgSrcSet,
         sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
         alt: `Tree trimming in Jacksonville NC – real job-site photo by ${BUSINESS.name}.`,
         caption: "Real job-site photo: Godhans crew trimming a large waterfront oak in Jacksonville, NC using a spider lift for precision pruning.",
