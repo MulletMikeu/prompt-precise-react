@@ -1,11 +1,19 @@
 import ServicePage from './ServicePage';
 import { BUSINESS } from '../data/siteData';
 import { PrecisionRemoval } from '@/components/sections/PrecisionRemoval';
-import tightHero from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans.jpg';
-import tight600Jpg from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-600.jpg';
-import tight1200Jpg from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-1200.jpg';
-import tight600Webp from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-600.webp';
-import tight1200Webp from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-1200.webp';
+import tight480Avif from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-480.avif';
+import tight480Webp from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-480.webp';
+import tight480Jpg from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-480.jpg';
+import tight800Avif from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-800.avif';
+import tight800Webp from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-800.webp';
+import tight800Jpg from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-800.jpg';
+import tight1125Avif from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-1125.avif';
+import tight1125Webp from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-1125.webp';
+import tight1125Jpg from '@/assets/tree-removal-tight-spaces-jacksonville-nc-godhans-1125.jpg';
+
+const tightAvifSrcSet = `${tight480Avif} 480w, ${tight800Avif} 800w, ${tight1125Avif} 1125w`;
+const tightWebpSrcSet = `${tight480Webp} 480w, ${tight800Webp} 800w, ${tight1125Webp} 1125w`;
+const tightJpgSrcSet = `${tight480Jpg} 480w, ${tight800Jpg} 800w, ${tight1125Jpg} 1125w`;
 
 // Job-site photo placeholder — edit these three fields when swapping the image:
 //   (1) alt:     SEO-optimized alt text (template — DO NOT rewrite)
@@ -17,8 +25,6 @@ const HERO_PHOTO = {
   geo: undefined as string | undefined,
 };
 
-const tightWebpSrcSet = `${tight600Webp} 600w, ${tight1200Webp} 1200w`;
-const tightJpgSrcSet = `${tight600Jpg} 600w, ${tight1200Jpg} 1200w`;
 
 export default function TreeRemovalTightSpaces() {
   return (
@@ -31,7 +37,8 @@ export default function TreeRemovalTightSpaces() {
         description="Tight-space tree removal in Jacksonville, NC: backyards, fenced lots, near pools and septic. Spider lift access, no lawn damage."
         ctaText="Call Now for a Free Estimate"
         heroImage={{
-          src: tightHero,
+          src: tight1125Jpg,
+          avifSrcSet: tightAvifSrcSet,
           webpSrcSet: tightWebpSrcSet,
           jpgSrcSet: tightJpgSrcSet,
           sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',

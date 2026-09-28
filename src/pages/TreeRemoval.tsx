@@ -2,14 +2,20 @@ import ServicePage from './ServicePage';
 import { BUSINESS, PRICING } from '../data/siteData';
 import RecentJobs from '@/components/sections/RecentJobs';
 import LiteYouTube from '@/components/ui/LiteYouTube';
-import removalHero from '@/assets/tree-removal-jacksonville-nc-godhans.jpg';
-import removalHero600Webp from '@/assets/tree-removal-jacksonville-nc-godhans-600.webp';
-import removalHero1200Webp from '@/assets/tree-removal-jacksonville-nc-godhans-1200.webp';
-import removalHero600Jpg from '@/assets/tree-removal-jacksonville-nc-godhans-600.jpg';
-import removalHero1200Jpg from '@/assets/tree-removal-jacksonville-nc-godhans-1200.jpg';
+import removal480Avif from '@/assets/tree-removal-jacksonville-nc-godhans-480.avif';
+import removal480Webp from '@/assets/tree-removal-jacksonville-nc-godhans-480.webp';
+import removal480Jpg from '@/assets/tree-removal-jacksonville-nc-godhans-480.jpg';
+import removal800Avif from '@/assets/tree-removal-jacksonville-nc-godhans-800.avif';
+import removal800Webp from '@/assets/tree-removal-jacksonville-nc-godhans-800.webp';
+import removal800Jpg from '@/assets/tree-removal-jacksonville-nc-godhans-800.jpg';
+import removal1125Avif from '@/assets/tree-removal-jacksonville-nc-godhans-1125.avif';
+import removal1125Webp from '@/assets/tree-removal-jacksonville-nc-godhans-1125.webp';
+import removal1125Jpg from '@/assets/tree-removal-jacksonville-nc-godhans-1125.jpg';
 
-const removalWebpSrcSet = `${removalHero600Webp} 600w, ${removalHero1200Webp} 1200w`;
-const removalJpgSrcSet = `${removalHero600Jpg} 600w, ${removalHero1200Jpg} 1200w`;
+const removalAvifSrcSet = `${removal480Avif} 480w, ${removal800Avif} 800w, ${removal1125Avif} 1125w`;
+const removalWebpSrcSet = `${removal480Webp} 480w, ${removal800Webp} 800w, ${removal1125Webp} 1125w`;
+const removalJpgSrcSet = `${removal480Jpg} 480w, ${removal800Jpg} 800w, ${removal1125Jpg} 1125w`;
+
 
 export default function TreeRemoval() {
   return (
@@ -21,7 +27,8 @@ export default function TreeRemoval() {
       description="Professional tree removal services in Jacksonville, NC. Safe, efficient, and fully insured. Call Godhans Tree Company for a free estimate."
       ctaText="Call Now for a Free Estimate"
       heroImage={{
-        src: removalHero,
+        src: removal1125Jpg,
+        avifSrcSet: removalAvifSrcSet,
         webpSrcSet: removalWebpSrcSet,
         jpgSrcSet: removalJpgSrcSet,
         sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
