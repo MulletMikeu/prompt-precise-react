@@ -168,6 +168,14 @@ export default function TreeTrimming() {
           text: "Because an oak usually has a way out that other species don't.\n\nOaks regenerate through epicormic growth — new shoots pushed from dormant buds under the bark. It is not ideal growth, and no arborist pretends otherwise. But it is a second chance, and it gives a skilled crew options that simply don't exist on other trees.\n\nIn practice that means we can take a substantial prune off a roofline or back away from power lines and still leave you a canopy that doesn't look chopped in half — because the tree will respond and fill back in. The homeowner keeps the shade and the mature tree; the hazard still goes away.\n\nPines and sweetgums give you no such option. Cut them back hard and that's simply how they stay. This is the single biggest reason our invoices show pines and sweetgums getting removed while oaks get maintained year after year. When someone tells you an oak has to come out, it's worth asking whether it has to — or whether it just needs the right prune."
         },
         {
+          heading: "The Best Time of Year to Trim",
+          text: "For anything beyond light clearance over a roof, the dormant season is better — winter into early spring. In eastern North Carolina that is roughly January through mid-March.\n\nThe reasoning is simple once you hear it. Every cut opens the tree. In the dormant season there is less insect activity to find that opening, less sap flow, and lower disease pressure generally. You can also see the branch structure with the leaves off, which is half of pruning well. NC Cooperative Extension's guidance runs the same way — when plants are dormant, the branching pattern is visible and the risk of spreading disease is low.\n\nOne thing worth correcting, because it comes up every spring: people read that oaks must not be pruned between bud break and leaf drop because of oak wilt, and then apply it here. Oak wilt is real, but NC State Extension describes it as a lethal disease found in several counties in Western NC, and the guidance is to avoid spring pruning in areas where oak wilt is present. Onslow County is not one of those areas, and the coastal-county pruning calendars put oaks in the ordinary December–January dormant window along with the other shade trees. We still prefer dormant for oaks, for the reasons above — just not because of oak wilt."
+        },
+        {
+          heading: "Trimming Year-Round, and Before Hurricane Season",
+          text: "We trim year-round on request. Our practice is to tell you best practice first, and then do what you decide — if you understand the tradeoff and want the work done now, that is a legitimate choice and we will do it properly.\n\nThe most common version of that: weight reduction before hurricane season. Somebody has a pine or an oak with long, heavy limbs extended over the roof, and it is July. Waiting until January to reduce that weight means carrying it through the entire season that the weight is actually a problem. Reducing it in summer costs the tree a little more stress than a January cut would. Between those two, we will make the case for doing it now, because storm risk is the bigger number.\n\nWhat to look for before the season: limbs extending well past the rest of the canopy, especially over the house; deadwood still hanging in the crown; two leaders pulling apart at a fork; and anything that has visibly shifted since the last storm. Call early. Once a named storm is in the forecast, everyone calls at once, and the crews who could have reduced your tree in June are pulling other people's trees off roofs."
+        },
+        {
           heading: "Tree Trimming Pricing in Jacksonville, NC",
           text: PRICING.trimming.summary
         },
@@ -186,7 +194,9 @@ export default function TreeTrimming() {
           answer: "No. Topping does damage a tree cannot repair — Penn State Extension notes a tree “cannot stop the spread of decay when it is topped” — and it starves the tree by removing the canopy it feeds itself with. The regrowth looks like recovery but has no branch collar anchoring it, so it is “weakly attached and break[s] easily in wind or snowstorms, even many years later when they are large and heavy.” If height or weight is the worry, selective reduction at proper cuts does the job without those consequences.",
         },
         { question: "How often should trees be trimmed?", answer: "Most trees should be trimmed every 1–3 years depending on the species and growth rate." },
-        { question: "What is the best time of year to trim trees?", answer: "Late winter or early spring is often ideal, but trimming can be done year-round depending on the situation." },
+        { question: "What is the best time of year to trim trees?", answer: "The dormant season — winter into early spring, roughly January through mid-March in eastern North Carolina. There is less insect activity, less sap flow and lower disease pressure, and the branch structure is visible with the leaves off. We trim year-round on request; we will tell you best practice first and then do what you decide." },
+        { question: "Should I avoid pruning oaks in spring because of oak wilt?", answer: "Not in Onslow County. NC State Extension describes oak wilt as a lethal disease found in several counties in Western NC, and the guidance is to avoid spring pruning where oak wilt is present. Coastal pruning calendars put oaks in the ordinary December–January dormant window. We still prefer dormant-season work on oaks, but for general wound and disease reasons rather than oak wilt." },
+        { question: "Should I trim before hurricane season?", answer: "If a tree has long, heavy limbs extended over the roof, yes — reducing that weight before the season is usually worth more than waiting for the ideal dormant window. Call early; once a named storm is in the forecast, crews are busy pulling trees off roofs." },
         { question: "Is tree trimming necessary?", answer: "Yes, regular trimming helps maintain tree health, prevent hazards, and improve appearance." },
         { question: "Can trimming damage a tree?", answer: "Improper trimming can harm a tree, which is why it's best handled by trained professionals." }
       ]}
@@ -208,6 +218,11 @@ export default function TreeTrimming() {
             href: "/spider-lift-tree-removal-jacksonville-nc",
             label: "Spider lift access for high canopies and work over the roof",
             blurb: "How we reach 50+ feet in a backyard without a bucket truck on the lawn."
+          },
+          {
+            href: "/tree-cabling-bracing-jacksonville-nc",
+            label: "Cabling and bracing for a split fork or weak union",
+            blurb: "When reduction pruning isn't enough and the tree needs hardware to stay."
           }
         ]
       }}

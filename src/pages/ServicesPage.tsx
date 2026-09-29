@@ -67,6 +67,11 @@ const SERVICES = [
     href: "/resistograph-tree-testing-jacksonville-nc",
     desc: "Measures internal decay in a standing trunk, so a sound hardwood does not get removed on somebody's guess.",
   },
+  {
+    name: "Tree Cabling & Bracing",
+    href: "/tree-cabling-bracing-jacksonville-nc",
+    desc: "Support hardware for a split fork or weak union — steel or non-invasive synthetic, installed on trees worth keeping.",
+  },
 ];
 
 export default function ServicesPage() {

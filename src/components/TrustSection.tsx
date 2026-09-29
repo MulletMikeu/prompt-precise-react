@@ -67,7 +67,7 @@ export default function TrustSection() {
             <p className="font-body text-base leading-relaxed" style={{ color: "#888888" }}>
               $2M insured, every machine covered · Veteran and disabled-veteran owned ·
               Serving Jacksonville, NC and surrounding Onslow County communities
-              since 2013.
+              since {BUSINESS.founded}.
             </p>
           </div>
         </div>

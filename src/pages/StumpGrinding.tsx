@@ -81,6 +81,10 @@ export default function StumpGrinding() {
         {
           // Was a vague "costs depend on size and location" paragraph, which now
           // contradicts the measured pricing above it.
+          heading: "Stump Grinding for Builders and New Construction",
+          text: "A fair share of our grinding work comes from construction sites rather than homeowners, and it is worth saying plainly what we do and do not take on.\n\nWe do tree and stump removal for builders. We do not do land clearing. Clearing a raw lot is a different trade with different machines, and we are not going to take that job just because it has trees in it.\n\nThe calls we do get are the ones that come after the clearing crew: a tree the land clearers left standing, a house or driveway that moved on the plan so a stump is suddenly in the footprint, a finished house with a tree too close to it, or a buyer who asks for a removal before closing. Stumps inside a future slab or driveway need to be gone, not just ground low, and that is a conversation worth having before the concrete is scheduled.\n\nWe work closely with a couple of local builders and we are used to working around a construction schedule."
+        },
+        {
           heading: "Free Estimates, No Hidden Fees",
           text: "Every stump gets measured at the flare before we quote it, and the number we give you is the number you pay. Single stumps or full-property clearing — the estimate is free either way."
         }

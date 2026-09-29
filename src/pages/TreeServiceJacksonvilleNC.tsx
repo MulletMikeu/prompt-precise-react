@@ -1,5 +1,5 @@
 import ServicePage from './ServicePage';
-import { CREDENTIAL, PRICING } from '../data/siteData';
+import { CREDENTIAL, PRICING, YEAR_FOUNDED_LOCAL } from '../data/siteData';
 
 /**
  * Retargeted (Sept 2026). This page and the homepage both targeted "Tree Service
@@ -23,7 +23,7 @@ export default function TreeServiceJacksonvilleNC() {
       sections={[
         {
           heading: "The Crew Behind Godhans Tree Company",
-          text: "Godhans Tree Company is run out of Jacksonville, NC by the people who do the work. When you call, you're not routing through a national dispatcher — you're talking to the crew that will be standing in your yard, and to Michael, who reads every tree before we touch it.\n\nThat matters more here than it does inland. Onslow County soil, the species that grow in it, and the storms that come off the coast all behave in specific ways, and a crew that has worked the same ground since 2013 prices and plans a job differently than one seeing it for the first time.\n\nFor the full menu of what we do — removal, trimming, stump grinding, storm work, and 24/7 emergency response — start on our main services overview."
+          text: `Godhans Tree Company is run out of Jacksonville, NC by the people who do the work. When you call, you're not routing through a national dispatcher — you're talking to the crew that will be standing in your yard, and to Michael, who reads every tree before we touch it.\n\nThat matters more here than it does inland. Onslow County soil, the species that grow in it, and the storms that come off the coast all behave in specific ways, and a crew that has worked the same ground since ${YEAR_FOUNDED_LOCAL} prices and plans a job differently than one seeing it for the first time.\n\nFor the full menu of what we do — removal, trimming, stump grinding, storm work, and 24/7 emergency response — start on our main services overview.`
         },
         {
           heading: "Neighborhoods We Work In Around Jacksonville",
@@ -43,7 +43,7 @@ export default function TreeServiceJacksonvilleNC() {
         },
         {
           heading: "Why Jacksonville Homeowners Call Us",
-          text: "• Local crew — we live here, and we've worked Onslow County since 2013\n• Fast emergency response, including nights and weekends\n• Transparent pricing with free estimates and no surprise line items\n• Equipment matched to the property, including a spider lift for gate-only backyards\n• Military discounts for Camp Lejeune families, scheduled around PCS dates"
+          text: `• Local crew — we live here, and we've worked Onslow County since ${YEAR_FOUNDED_LOCAL}\n• Fast emergency response, including nights and weekends\n• Transparent pricing with free estimates and no surprise line items\n• Equipment matched to the property, including a spider lift for gate-only backyards\n• Military discounts for Camp Lejeune families, scheduled around PCS dates`
         },
         {
           heading: "How to Verify a Tree Company in North Carolina",

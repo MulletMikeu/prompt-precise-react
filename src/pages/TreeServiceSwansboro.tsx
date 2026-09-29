@@ -1,5 +1,5 @@
 import ServicePage from './ServicePage';
-import { BUSINESS } from '../data/siteData';
+import { BUSINESS, YEAR_FOUNDED_LOCAL } from '../data/siteData';
 
 export default function TreeServiceSwansboro() {
   return (
@@ -17,7 +17,7 @@ export default function TreeServiceSwansboro() {
       sections={[
         {
           heading: "Local Tree Experts Serving Swansboro, NC",
-          text: "Swansboro is known for its beautiful tree canopy — historic live oaks downtown, towering loblolly pines in surrounding neighborhoods, and waterfront properties exposed to coastal weather. Our crews have years of experience working in this exact environment.\n\nWe protect what matters: your home, your hardscaping, and your landscaping. Every job includes thorough cleanup, and we leave the worksite spotless.\n\nOne local note: HOA approval for tree work comes up more often around Swansboro than anywhere else we work, so it's worth checking your covenants before you schedule."
+          text: `Swansboro is known for its beautiful tree canopy — historic live oaks downtown, towering loblolly pines in surrounding neighborhoods, and waterfront properties exposed to coastal weather. Our crews have worked in this exact environment since ${YEAR_FOUNDED_LOCAL}.\n\nWe protect what matters: your home, your hardscaping, and your landscaping. Every job includes thorough cleanup, and we leave the worksite spotless.\n\nOne local note: HOA approval for tree work comes up more often around Swansboro than anywhere else we work, so it's worth checking your covenants before you schedule.`
         },
         {
           heading: "Complete Tree Services in Swansboro",

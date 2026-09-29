@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
+import { YEAR_FOUNDED_LOCAL } from '../data/siteData';
 
 /**
  * Outbound link to the rule itself. These open in a new tab because the reader
@@ -43,7 +44,7 @@ function OnslowPermitSection() {
 
         <div className="text-gray-300 leading-relaxed text-lg space-y-5">
           <p>
-            Here is the short version, after more than twenty years of doing this work locally.
+            Here is the short version, after doing this work in Onslow County since {YEAR_FOUNDED_LOCAL}.
             To our knowledge there is no state or Onslow County permit required to remove a tree
             on private residential property — as long as the tree isn't in wetlands or within the
             regulated distance of a natural waterway like a creek, river, sound, or lake. In

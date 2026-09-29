@@ -9,6 +9,8 @@ export default function TreeRemovalCost() {
       slug="tree-removal-cost-north-carolina"
       description={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum; most jobs run ${PRICING.removal.most} and large or hazardous trees ${PRICING.removal.large}. See full price ranges.`}
       quickAnswer={PRICING.removal.summary}
+      /* Positional keys. Batch 5 inserted the large-pine section at 7, after
+         every key below, so 2 and 5 still point where they did. */
       sectionLinks={{
         // Section 2 explains why identical trees price differently; tight access is
         // the single biggest driver, so link out to the detail there.
@@ -47,6 +49,10 @@ export default function TreeRemovalCost() {
           text: "In Jacksonville, NC and surrounding areas like Richlands and Hubert, tree removal costs can vary based on storm exposure, tree density, and property layout.\n\nHomes with limited access or trees close to structures may require more time and specialized equipment, increasing the cost."
         },
         {
+          heading: "What a Large Pine Actually Costs Here",
+          text: `Loblolly pine is the tree we remove most in Onslow County, so it is worth pricing on its own rather than leaving it inside a general range. These are 80 foot and up.\n\nOPEN YARD — ${PRICING.largePine.openYard}. Room to work, somewhere to drop it, nothing underneath that matters. This is the cheap version of a big tree, and it is cheaper than people expect.\n\nLEANING OVER THE HOUSE — ${PRICING.largePine.leaningOverHouse}. Same tree, same height, same diameter. What changed is that nothing can be dropped, so every piece comes down on a rope, and the crew is working above a roof all day.\n\nOVER THE HOUSE PLUS OBSTACLES — ${PRICING.largePine.withObstacles}. Sheds, driveways, power lines, hard access, and no way to get a crane into position. Each of those removes an option, and the job becomes rigging every piece out of a space that has no room for it.\n\nThe pattern is the one that runs through this whole guide: the tree is not what sets the price. What is underneath it is.`
+        },
+        {
           heading: "How to Save on Tree Removal",
           text: "There are several ways to keep costs down:\n\n• Schedule removal before emergencies happen\n• Combine multiple tree jobs\n• Get a free estimate to compare options\n• Work with a local, experienced provider"
         },
@@ -56,6 +62,10 @@ export default function TreeRemovalCost() {
         }
       ]}
       faqs={[
+        {
+          question: "How long does a tree removal take?",
+          answer: "A small tree in an open yard is about three hours start to finish, including stump grinding and cleanup. A large pine near a house takes a full day to cut and haul, with stump grinding at the end of that day or the next morning — call it a day and a half, up to two. Crane jobs run about the same total time; the crane buys reach in tight quarters rather than speed."
+        },
         {
           question: "What is the average cost to remove a tree in NC?",
           answer: PRICING.removal.summary
