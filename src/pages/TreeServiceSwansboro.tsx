@@ -11,10 +11,13 @@ export default function TreeServiceSwansboro() {
       description="Tree service in Swansboro, NC: expert removal, trimming, stump grinding, and 24/7 storm cleanup. Free estimates from Godhans."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Swansboro's mature oaks, pines, and waterfront live oaks need expert care to stay safe and healthy. Godhans Tree Company provides professional tree removal, trimming, stump grinding, and 24/7 storm response throughout Swansboro, Cedar Point, and the Crystal Coast area."
+      sectionLinks={{
+        0: { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Permits, HOA approvals and shoreline rules in Onslow County" },
+      }}
       sections={[
         {
           heading: "Local Tree Experts Serving Swansboro, NC",
-          text: "Swansboro is known for its beautiful tree canopy — historic live oaks downtown, towering loblolly pines in surrounding neighborhoods, and waterfront properties exposed to coastal weather. Our crews have years of experience working in this exact environment.\n\nWe protect what matters: your home, your hardscaping, and your landscaping. Every job includes thorough cleanup, and we leave the worksite spotless."
+          text: "Swansboro is known for its beautiful tree canopy — historic live oaks downtown, towering loblolly pines in surrounding neighborhoods, and waterfront properties exposed to coastal weather. Our crews have years of experience working in this exact environment.\n\nWe protect what matters: your home, your hardscaping, and your landscaping. Every job includes thorough cleanup, and we leave the worksite spotless.\n\nOne local note: HOA approval for tree work comes up more often around Swansboro than anywhere else we work, so it's worth checking your covenants before you schedule."
         },
         {
           heading: "Complete Tree Services in Swansboro",
