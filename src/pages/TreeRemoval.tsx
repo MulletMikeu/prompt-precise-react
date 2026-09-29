@@ -46,7 +46,10 @@ export default function TreeRemoval() {
       sectionLinks={{
         // Section 2 is "Our Tree Removal Process", where rigging and access are
         // described — the natural place to hand off to the tight-access page.
-        2: { href: "/tree-removal-tight-spaces-jacksonville-nc", label: "See how we handle tree removal in tight spaces" },
+        2: [
+          { href: "/tree-removal-tight-spaces-jacksonville-nc", label: "See how we handle tree removal in tight spaces" },
+          { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Do you need a permit to remove a tree in Onslow County?" },
+        ],
         7: [
           { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How the spider lift stays off your lawn" },
           { href: "/residential-tree-service-jacksonville-nc", label: "What an estimate should include — including ground protection" },
@@ -64,7 +67,7 @@ export default function TreeRemoval() {
         },
         {
           heading: "Our Tree Removal Process",
-          text: "We follow a safe and efficient process to ensure your property is protected:\n\n1. Free Estimate & Inspection – We assess the tree and surrounding area\n2. Planning & Safety Setup – We prepare the site and equipment\n3. Careful Tree Removal – Sections are cut and removed safely\n4. Cleanup – We remove debris and leave your property clean"
+          text: "We follow a safe and efficient process to ensure your property is protected:\n\n1. Free Estimate & Inspection – We assess the tree and surrounding area\n2. Planning & Safety Setup – We prepare the site and equipment\n3. Careful Tree Removal – Sections are cut and removed safely\n4. Cleanup – We remove debris and leave your property clean\n\nIf your property sits in an HOA or backs up to water, we'll flag anything that needs approval at the estimate, before the job goes on the schedule."
         },
         {
           heading: "Affordable Tree Removal with No Surprises",

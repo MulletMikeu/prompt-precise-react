@@ -11,10 +11,13 @@ export default function TreeServiceSneadsFerry() {
       description="Tree service in Sneads Ferry, NC: removal, trimming, stump grinding, and 24/7 coastal storm cleanup. Free estimates from Godhans."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Sneads Ferry homeowners face unique coastal challenges — high winds, salt air, and storm-prone trees. Godhans Tree Company provides expert tree removal, trimming, stump grinding, and emergency storm cleanup throughout Sneads Ferry and the Topsail area, with fast response times and free estimates."
+      sectionLinks={{
+        0: { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "CAMA shoreline rules, wetlands and tree permits in Onslow County" },
+      }}
       sections={[
         {
           heading: "Local Tree Experts Serving Sneads Ferry, NC",
-          text: "Sneads Ferry's coastal location means trees take a beating from hurricanes, nor'easters, and constant salt-laden winds off the New River Inlet. Our crews understand how coastal pines, live oaks, and palms behave under storm stress and how to remove or maintain them safely.\n\nFrom waterfront properties to inland subdivisions, we handle every job with the right equipment and proper insurance — protecting your home, deck, fence, and landscaping."
+          text: "Sneads Ferry's coastal location means trees take a beating from hurricanes, nor'easters, and constant salt-laden winds off the New River Inlet. Our crews understand how coastal pines, live oaks, and palms behave under storm stress and how to remove or maintain them safely.\n\nFrom waterfront properties to inland subdivisions, we handle every job with the right equipment and proper insurance — protecting your home, deck, fence, and landscaping.\n\nOn waterfront lots it's worth knowing where the shoreline rules start and stop before any clearing — cutting a tree and clearing ground are treated very differently this close to the water."
         },
         {
           heading: "Complete Tree Services in Sneads Ferry",
