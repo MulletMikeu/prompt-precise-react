@@ -78,6 +78,18 @@ export const BUSINESS = {
 } as const;
 
 /**
+ * A large tree hard against, or leaning over, a house.
+ *
+ * Hoisted out of PRICING because two entries describe this same job from
+ * different directions — `nearHouse.besideStructure` (any mature tree beside a
+ * structure) and `largePine.leaningOverHouse` (the pine case) — and batch 5
+ * shipped them disagreeing at the top end, $8,000 against $7,000. The owner's
+ * ruling is $6,000–$8,000, so both now read from one binding rather than two
+ * numbers someone has to remember to keep in step.
+ */
+const BESIDE_STRUCTURE = "$6,000–$8,000";
+
+/**
  * PRICING — the single source of truth for every price shown on the site.
  * Nothing anywhere should hardcode a dollar range; import from here and
  * interpolate. Change a number once, it changes everywhere. (Phase 2.)
@@ -151,7 +163,7 @@ export const PRICING = {
   nearHouse: {
     typical: "$1,300",
     mature: "$2,000–$3,200",
-    besideStructure: "$6,000–$8,000",
+    besideStructure: BESIDE_STRUCTURE,
   },
   /**
    * Cabling and bracing — supplemental support hardware, priced per tree.
@@ -173,14 +185,14 @@ export const PRICING = {
    *    tree" band. `openYard` below starts $500 under it, because a big pine
    *    with nothing around it is the easy end of "large" — not a contradiction,
    *    but do not average the two.
-   *  - `nearHouse.besideStructure` ($6,000–$8,000) describes any mature tree
-   *    beside a structure; `leaningOverHouse` ($6,000–$7,000) is the pine case
-   *    specifically. They disagree at the top end by $1,000. Flagged for the
-   *    owner rather than silently reconciled, since each was quoted separately.
+   *  - `leaningOverHouse` is the same job as `nearHouse.besideStructure` seen
+   *    from the pine side. They used to disagree at the top end ($7,000 vs
+   *    $8,000); the owner ruled for $6,000–$8,000, and both now read the
+   *    BESIDE_STRUCTURE binding above. Do not re-split them into two literals.
    */
   largePine: {
     openYard: "$3,000–$4,000",
-    leaningOverHouse: "$6,000–$7,000",
+    leaningOverHouse: BESIDE_STRUCTURE,
     withObstacles: "$10,000+",
   },
   /**
