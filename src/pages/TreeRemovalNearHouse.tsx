@@ -1,6 +1,6 @@
 import ServicePage from './ServicePage';
 import { PrecisionRemoval } from '@/components/sections/PrecisionRemoval';
-import { BUSINESS, PRICING } from '@/data/siteData';
+import { BUSINESS, PRICING, YEAR_FOUNDED_LOCAL } from '@/data/siteData';
 
 export default function TreeRemovalNearHouse() {
   return (
@@ -39,7 +39,7 @@ export default function TreeRemovalNearHouse() {
           },
           {
             heading: "Why Homeowners Trust Godhans for This Work",
-            text: "✔ Fully insured — every machine individually covered\n✔ Certificate of insurance available before work begins\n✔ Spider lift for tight access — no truck on the lawn\n✔ Years of experience with near-structure removals\n✔ Free, no-pressure on-site estimates\n✔ Same-day storm response if the tree is already on the house"
+            text: `✔ Fully insured — every machine individually covered\n✔ Certificate of insurance available before work begins\n✔ Spider lift for tight access — no truck on the lawn\n✔ Near-structure removals in Onslow County since ${YEAR_FOUNDED_LOCAL}\n✔ Free, no-pressure on-site estimates\n✔ Same-day storm response if the tree is already on the house`
           }
         ]}
         faqs={[

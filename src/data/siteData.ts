@@ -12,6 +12,21 @@ export const BUSINESS_ID = `${SITE_URL}/#business`;
 /** Stable @id of the WebSite node (also emitted by <BusinessSchema/>). */
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
+/**
+ * The year Godhans began operating in Onslow County. Single source for every
+ * experience claim on the site.
+ *
+ * Prefer "since 2013" in prose over a computed span. `BUSINESS.yearsInBusiness`
+ * does compute one, but only from __BUILD_YEAR__ (a build-time define, never
+ * `new Date()` at runtime) so a prerendered page cannot drift from the clock of
+ * whoever loads it — see the `define` note in vite.config.ts.
+ *
+ * `BUSINESS.founded` and `BUSINESS.yearsInBusiness` both derive from this.
+ * Never write a years-of-experience figure that does not resolve back here:
+ * batch 5 found a page claiming "more than twenty years", which was wrong.
+ */
+export const YEAR_FOUNDED_LOCAL = 2013;
+
 export const BUSINESS = {
   name: "Godhans Tree Company",
   legalName: "Godhans LLC",
@@ -32,9 +47,11 @@ export const BUSINESS = {
   coordinates: { lat: 34.7541, lng: -77.4302 },
   hours: "Open 24 Hours — 7 Days a Week",
   hoursShort: "24/7",
-  founded: 2013,
+  founded: YEAR_FOUNDED_LOCAL,
   // Build-time constant, not `new Date()` — see the `define` note in vite.config.ts.
-  yearsInBusiness: __BUILD_YEAR__ - 2013,
+  // Derives from the constant too: this line used to repeat the literal 2013,
+  // which meant the "one source of truth" had two places to edit.
+  yearsInBusiness: __BUILD_YEAR__ - YEAR_FOUNDED_LOCAL,
   // The ONLY place a review count lives. Every visible count, the /reviews
   // meta description, and the hero chip read from here — see the list in
   // README under "Review count". Update this when the Google total moves.
@@ -135,6 +152,36 @@ export const PRICING = {
     typical: "$1,300",
     mature: "$2,000–$3,200",
     besideStructure: "$6,000–$8,000",
+  },
+  /**
+   * Cabling and bracing — supplemental support hardware, priced per tree.
+   * Both system types (steel-cable-and-hardware, or a non-invasive synthetic
+   * wrap) land in the same range, so the choice is the customer's and not a
+   * price decision.
+   */
+  cabling: {
+    typical: "$1,500–$2,500",
+    large: "$4,000+",
+  },
+  /**
+   * Large pine removal, where position rather than size sets the price.
+   *
+   * These are the owner's figures for an 80ft+ loblolly, and they are the
+   * source of truth for pine. Two overlaps to be aware of before editing:
+   *
+   *  - `removal.large` ($3,500–$6,000) is the general "large or hazardous
+   *    tree" band. `openYard` below starts $500 under it, because a big pine
+   *    with nothing around it is the easy end of "large" — not a contradiction,
+   *    but do not average the two.
+   *  - `nearHouse.besideStructure` ($6,000–$8,000) describes any mature tree
+   *    beside a structure; `leaningOverHouse` ($6,000–$7,000) is the pine case
+   *    specifically. They disagree at the top end by $1,000. Flagged for the
+   *    owner rather than silently reconciled, since each was quoted separately.
+   */
+  largePine: {
+    openYard: "$3,000–$4,000",
+    leaningOverHouse: "$6,000–$7,000",
+    withObstacles: "$10,000+",
   },
   /**
    * Organic debris hauling (trees, brush, leaves) as a standalone service —

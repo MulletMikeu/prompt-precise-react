@@ -234,6 +234,7 @@ export default function ResistographTesting() {
           { href: '/tree-removal-near-house-jacksonville-nc', label: 'Tree removal near a house', blurb: 'What changes when the tree is close enough that position sets the price.' },
           { href: '/leaning-tree-dangerous-after-storm', label: 'Is a leaning tree dangerous after a storm?', blurb: 'The signs that mean act now, and the ones that mean watch it.' },
           { href: '/storm-cleanup-jacksonville-nc', label: 'Storm cleanup and insurance', blurb: 'What a homeowners policy typically covers when a tree comes down.' },
+          { href: '/tree-cabling-bracing-jacksonville-nc', label: 'Cabling and bracing', blurb: 'If the wood tests sound, hardware can support the weak union instead of removing the tree.' },
         ],
       }}
       finalCta={{

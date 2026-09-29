@@ -175,6 +175,7 @@ export const routes: RouteRecord[] = [
       { path: "tree-trimming-vs-pruning", lazy: page(() => import("./pages/TreeTrimmingVsPruning")) },
       { path: "leaning-tree-dangerous-after-storm", lazy: page(() => import("./pages/LeaningTreeDangerous")) },
       { path: "resistograph-tree-testing-jacksonville-nc", lazy: page(() => import("./pages/ResistographTesting")) },
+      { path: "tree-cabling-bracing-jacksonville-nc", lazy: page(() => import("./pages/TreeCablingBracing")) },
       { path: "debris-hauling-jacksonville-nc", lazy: page(() => import("./pages/DebrisHauling")) },
       { path: "*", lazy: page(() => import("./pages/NotFound")) },
     ],

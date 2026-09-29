@@ -39,10 +39,11 @@ export default function TreeRemoval() {
         showCta: true,
       }}
       quickAnswer={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum. Most removals run ${PRICING.removal.most}, with large or hazardous trees at ${PRICING.removal.large}. ${PRICING.stories.sameTree}`}
-      /* Positional keys. Section order after batch 2:
-           0 intro · 1 when-to-remove · 2 process · 3 pricing · 4 minimum ·
-           5 pine+sweetgum · 6 bradford-pear · 7 sandy-ground · 8 weather ·
-           9 service-areas */
+      /* Positional keys. Section order after batch 5 — "how-long" was inserted
+         at 3, which pushed everything from the old 3 down by one:
+           0 intro · 1 when-to-remove · 2 process · 3 how-long · 4 pricing ·
+           5 minimum · 6 pine+sweetgum · 7 bradford-pear · 8 sandy-ground ·
+           9 weather · 10 service-areas */
       sectionLinks={{
         // Section 2 is "Our Tree Removal Process", where rigging and access are
         // described — the natural place to hand off to the tight-access page.
@@ -50,11 +51,14 @@ export default function TreeRemoval() {
           { href: "/tree-removal-tight-spaces-jacksonville-nc", label: "See how we handle tree removal in tight spaces" },
           { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Do you need a permit to remove a tree in Onslow County?" },
         ],
-        7: [
+        // 3 is the new timing section; the crane-vs-lift comparison in it is
+        // the natural hand-off to the spider lift page.
+        3: { href: "/spider-lift-tree-removal-jacksonville-nc", label: "Why the spider lift is cutting in 30 minutes" },
+        8: [
           { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How the spider lift stays off your lawn" },
           { href: "/residential-tree-service-jacksonville-nc", label: "What an estimate should include — including ground protection" },
         ],
-        8: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
+        9: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
       }}
       sections={[
         {
@@ -68,6 +72,10 @@ export default function TreeRemoval() {
         {
           heading: "Our Tree Removal Process",
           text: "We follow a safe and efficient process to ensure your property is protected:\n\n1. Free Estimate & Inspection – We assess the tree and surrounding area\n2. Planning & Safety Setup – We prepare the site and equipment\n3. Careful Tree Removal – Sections are cut and removed safely\n4. Cleanup – We remove debris and leave your property clean\n\nIf your property sits in an HOA or backs up to water, we'll flag anything that needs approval at the estimate, before the job goes on the schedule."
+        },
+        {
+          heading: "How Long a Tree Removal Actually Takes",
+          text: "People ask how long they need to be home, or how many days the yard is out of commission. Real numbers from our own jobs:\n\nSMALL TREE, OPEN YARD — ABOUT 3 HOURS. That is the whole visit: cut the tree, grind the stump, rake, leaf-blow, and haul everything away. You get your afternoon back.\n\nBIG PINE NEAR A HOUSE — 1.5 DAYS, SOMETIMES 2. An 80 to 90 foot loblolly, two and a half to three feet through the trunk, takes a full day to cut and get the bulk of the debris hauled. Stump grinding happens at the end of that day if there is light left, and next morning if there isn't. Call it a day and a half, up to two.\n\nCRANE JOBS RUN ABOUT THE SAME. This surprises people who assume a crane is faster. Crane setup — cribbing, mats, checks, rigging — takes about an hour and a half before anything gets cut. Our remote-control spider lift is off the trailer and cutting within about thirty minutes. What the crane actually buys is not speed, it is reach in tight quarters: it picks pieces out and sets them down where the crew can process them, instead of everything coming down through a space that has no room for it.\n\nWe try to grind stumps the same day. On big trees it usually rolls to a second morning, and we will tell you which at the estimate rather than leaving you guessing."
         },
         {
           heading: "Affordable Tree Removal with No Surprises",
@@ -92,6 +100,10 @@ export default function TreeRemoval() {
         {
           heading: "Wind, Lightning, and When Trees Actually Break",
           text: "In our experience the wind here has a schedule. Coastal gusts pick up around ten or eleven in the morning, and above about fifty feet is where a climber actually feels them — which is why the high, exposed work on a breezy day gets done early or gets moved.\n\nThe damage is not evenly spread either. Southwest Jacksonville and the Ramsey Road side running toward Maysville see more of the tornado and waterspout-type damage than the rest of our area does. That is a pattern in the jobs we get called to, not a meteorological finding, but it is consistent enough that we factor it in when someone on that side asks whether a marginal tree is worth keeping.\n\nThe threat people underestimate is lightning. It is the number one non-wind cause of the tree failures we deal with, and tall pines take most of the strikes for the obvious reason — they are the tallest thing in the yard. A struck pine often looks survivable and is not."
+        },
+        {
+          heading: "Removals for Builders and New Construction",
+          text: "We do tree and stump removal for builders. We do not do land clearing — that is a different trade with different equipment, and we would rather send you to someone who does it properly than pretend otherwise.\n\nWhat we actually get called for on new construction is the leftovers and the changes: the land clearers left a tree standing, the house or the driveway moved on the plan and now something is in the way, a finished house turns out to have a tree too close to it, or a buyer walks the lot and asks for trimming or a removal before closing.\n\nWe work closely with a couple of local builders on exactly this kind of work, and we are used to fitting into a construction schedule rather than setting one."
         },
         {
           heading: "Service Areas for Tree Removal",
