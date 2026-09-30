@@ -118,6 +118,22 @@ export default function BusinessSchema() {
   return (
     <Helmet>
       <script type="application/ld+json">{json}</script>
+      {/*
+        Legacy geo meta, moved here out of index.html. They are barely read by
+        search engines today, but while they existed they held a second,
+        hardcoded copy of the coordinates that drifted from siteData — so if
+        they ship at all, they ship from the same constant as the geo node
+        above. geo.position uses a semicolon, ICBM a comma; that is the spec,
+        not a typo.
+      */}
+      <meta
+        name="geo.position"
+        content={`${BUSINESS.coordinates.lat};${BUSINESS.coordinates.lng}`}
+      />
+      <meta
+        name="ICBM"
+        content={`${BUSINESS.coordinates.lat}, ${BUSINESS.coordinates.lng}`}
+      />
     </Helmet>
   );
 }
