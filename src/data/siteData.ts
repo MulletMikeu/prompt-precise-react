@@ -44,7 +44,20 @@ export const BUSINESS = {
     zip: "28540",
     full: "4445 Gum Branch Rd, Jacksonville, NC 28540",
   },
-  coordinates: { lat: 34.7541, lng: -77.4302 },
+  /**
+   * The actual business pin at 4445 Gum Branch Rd — matches the Google Business
+   * Profile and the Local Falcon grid origin.
+   *
+   * These were 34.7541, -77.4302 until 2026-09-30, which is downtown
+   * Jacksonville, roughly 4.9 miles southeast of the shop. Every consumer of
+   * this constant reads it (LocalBusiness/geo, the geo.position and ICBM meta
+   * tags, the Google Maps deep link), so the whole site pointed at the wrong
+   * place while the embedded map on /service-area was already correct.
+   *
+   * Do not round these. Do not restate them anywhere — the meta tags used to
+   * carry their own hardcoded copy, which is how the two drifted apart.
+   */
+  coordinates: { lat: 34.8202161, lng: -77.458531 },
   hours: "Open 24 Hours — 7 Days a Week",
   hoursShort: "24/7",
   founded: YEAR_FOUNDED_LOCAL,

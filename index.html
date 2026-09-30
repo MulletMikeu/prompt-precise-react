@@ -24,8 +24,13 @@
 
     <meta name="geo.region" content="US-NC" />
     <meta name="geo.placename" content="Jacksonville, North Carolina" />
-    <meta name="geo.position" content="34.7541;-77.4302" />
-    <meta name="ICBM" content="34.7541, -77.4302" />
+    <!--
+      geo.position and ICBM are NOT here. They carried a hardcoded copy of the
+      business coordinates, which silently drifted from BUSINESS.coordinates in
+      siteData and left the site advertising a pin ~5 miles from the shop.
+      They are emitted by <BusinessSchema/> now, from the same constant that
+      feeds the LocalBusiness geo node. Do not re-add them here.
+    -->
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Godhans Tree Company" />
