@@ -90,7 +90,7 @@ export function PrecisionRemoval({ variant = 'light', heading, showImage = true 
         <div className="text-center max-w-2xl mx-auto">
           <a
             href={`tel:${BUSINESS_INFO.phone.tel}`}
-            className="bg-red-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-lg inline-flex items-center gap-2 text-lg mb-4"
+            className="bg-brand-red text-white px-8 py-4 rounded-lg font-bold hover:bg-brand-red-dark transition-all duration-300 shadow-lg inline-flex items-center gap-2 text-lg mb-4"
           >
             📞 Free Estimate — Call {BUSINESS_INFO.phone.display}
           </a>

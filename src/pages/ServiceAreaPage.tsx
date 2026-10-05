@@ -36,7 +36,7 @@ export default function ServiceAreaPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Service Area</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>Service Area</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Tree Service Throughout Onslow County</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               Godhans Tree Company is based in Jacksonville, NC and serves communities across Onslow County and beyond. Not sure if we cover your area? Call us — we never want to leave a neighbor without help.
@@ -56,8 +56,8 @@ export default function ServiceAreaPage() {
                     to={pagePath}
                     className="font-body text-sm font-medium uppercase tracking-wider px-4 py-2 transition-colors"
                     style={{
-                      border: city.primary ? "1px solid #C41230" : "1px solid #2A2A2A",
-                      color: city.primary ? "#E5424F" : "#888888",
+                      border: city.primary ? "1px solid var(--red)" : "1px solid #2A2A2A",
+                      color: city.primary ? "var(--red-text)" : "#888888",
                     }}
                   >
                     {city.name}, {city.state}
@@ -117,14 +117,14 @@ export default function ServiceAreaPage() {
           </div>
         </section>
 
-        <section className="py-16" style={{ background: "#C41230" }}>
+        <section className="py-16 bg-brand-red">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Ready to Schedule?</h2>
             <p className="mb-8 text-base" style={{ color: "rgba(255,255,255,0.85)" }}>
               Fast response times throughout Onslow County. Free estimates, no obligation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center" style={{ background: "white", color: "#C41230" }}>Request Estimate</Link>
+              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center bg-white text-brand-red">Request Estimate</Link>
               <a href={BUSINESS.phoneHref} className="font-bold uppercase tracking-wide px-8 py-4 text-center border-2 border-white text-white">{BUSINESS.phone}</a>
             </div>
           </div>

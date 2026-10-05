@@ -238,7 +238,7 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
                 </p>
                 <a
                   href={`tel:${BUSINESS_INFO.phone.tel}`}
-                  className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors"
+                  className="inline-block bg-brand-red text-white px-6 py-3 rounded-lg font-bold hover:bg-brand-red-dark transition-colors"
                 >
                   📞 Call Now: {BUSINESS_INFO.phone.display}
                 </a>
@@ -464,7 +464,7 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
                 <button
                   type="submit"
                   disabled={state.submitting}
-                  className="w-full bg-red-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-lg"
+                  className="w-full bg-brand-red text-white py-4 rounded-lg font-bold text-lg hover:bg-brand-red-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-lg"
                 >
                   {state.submitting ? 'Sending…' : 'Get a Fast Quote'}
                 </button>

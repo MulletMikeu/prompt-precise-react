@@ -10,8 +10,17 @@ export default {
     extend: {
       colors: {
         brand: {
+          // These mirror the custom properties in src/index.css — see the long
+          // note on the three reds there for which one does what. Short form:
+          // `red` fills, `red-dark` is its hover, `red-text` is red text on
+          // dark (because `red` fails AA as text on near-black).
+          //
+          // `red-light` (#E8173A) is NOT a fourth role. It is unused, and it is
+          // 4.35:1 on near-black — close enough to passing to look safe and
+          // still a failure. Reach for `red-text`, not this.
           red: "#C41230",
           "red-dark": "#9B0E25",
+          "red-text": "#E5424F",
           "red-light": "#E8173A",
           black: "#0A0A0A",
           "gray-dark": "#111111",

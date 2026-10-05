@@ -28,7 +28,7 @@ export default function ReviewsSection() {
             <h2 id="reviews-heading" className="text-display-xl text-white">
               What Jacksonville
               <br />
-              <span style={{ color: "#E5424F" }}>Is Saying</span>
+              <span style={{ color: "var(--red-text)" }}>Is Saying</span>
             </h2>
           </div>
 
@@ -63,7 +63,7 @@ export default function ReviewsSection() {
               {/* Quote mark */}
               <span
                 className="font-display font-extrabold mb-4 block"
-                style={{ fontSize: "4rem", lineHeight: 1, color: "#C41230", opacity: 0.4 }}
+                style={{ fontSize: "4rem", lineHeight: 1, color: "var(--red)", opacity: 0.4 }}
                 aria-hidden="true"
               >
                 "
@@ -111,7 +111,7 @@ export default function ReviewsSection() {
 
         {/* All reviews CTA */}
         <div className="mt-10 text-center">
-          <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="font-display font-bold text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#E5424F")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Read All {BUSINESS.reviewCount} Reviews on Google →</a>
+          <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="font-display font-bold text-sm uppercase tracking-widest inline-flex items-center gap-2 transition-colors" style={{ color: "#888888", letterSpacing: "0.1em" }} onMouseEnter={(e) => (e.currentTarget.style.color = "var(--red-text)")} onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}>Read All {BUSINESS.reviewCount} Reviews on Google →</a>
         </div>
       </div>
     </section>

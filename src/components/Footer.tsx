@@ -24,7 +24,7 @@ export default function Footer() {
 
           <div>
             <Link to="/" className="inline-flex items-center gap-3 mb-6">
-              <div className="w-9 h-9 flex items-center justify-center font-bold text-white" style={{ background: "#C41230" }} aria-hidden="true">G</div>
+              <div className="w-9 h-9 flex items-center justify-center font-bold text-white" style={{ background: "var(--red)" }} aria-hidden="true">G</div>
               <div className="leading-none">
                 <span className="block font-bold text-white uppercase" style={{ fontSize: "1.15rem" }}>Godhans</span>
                 <span className="block text-xs tracking-widest uppercase" style={{ color: "#888888" }}>Tree Company</span>
@@ -34,7 +34,7 @@ export default function Footer() {
               Veteran-owned tree service in Jacksonville, NC. Fully insured, bondable, and available 24/7.
             </p>
             <p className="text-sm mb-1" style={{ color: "#888888" }}>{BUSINESS.address.full}</p>
-            <a href={BUSINESS.phoneHref} className="font-bold block mt-2" style={{ color: "#E5424F" }}>{BUSINESS.phone}</a>
+            <a href={BUSINESS.phoneHref} className="font-bold block mt-2" style={{ color: "var(--red-text)" }}>{BUSINESS.phone}</a>
             <a href={BUSINESS.emailHref} className="text-sm block mt-1" style={{ color: "#888888" }}>{BUSINESS.email}</a>
             <div className="flex gap-4 mt-4">
               <a href={BUSINESS.social.facebook} target="_blank" rel="noopener noreferrer" className="text-xs uppercase tracking-widest" style={{ color: "#888888" }}>Facebook</a>
@@ -88,12 +88,12 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <Link to="/contact" className="text-sm" style={{ color: "#E5424F" }}>Get Free Estimate</Link>
+                <Link to="/contact" className="text-sm" style={{ color: "var(--red-text)" }}>Get Free Estimate</Link>
               </li>
             </ul>
             <div className="p-4" style={{ border: "1px solid #1A1A1A", background: "#0A0A0A" }}>
               <p className="font-bold uppercase text-white mb-1" style={{ fontSize: "0.8rem" }}>Hours</p>
-              <p className="text-sm" style={{ color: "#E5424F" }}>Open 24 Hours</p>
+              <p className="text-sm" style={{ color: "var(--red-text)" }}>Open 24 Hours</p>
               <p className="text-xs mt-1" style={{ color: "#888888" }}>7 Days a Week</p>
             </div>
           </div>
