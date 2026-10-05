@@ -54,7 +54,7 @@ export default function CompletedJobsTable() {
                   <th
                     key={head}
                     scope="col"
-                    className="px-3 py-3 text-sm sm:text-base font-bold text-white align-top border-b border-gray-700"
+                    className="px-2 sm:px-3 py-3 text-sm sm:text-base font-bold text-white align-top border-b border-gray-700"
                   >
                     {head}
                   </th>
@@ -69,24 +69,24 @@ export default function CompletedJobsTable() {
                 >
                   <th
                     scope="row"
-                    className="px-3 py-4 text-sm sm:text-base font-semibold text-white align-top text-left"
+                    className="px-2 sm:px-3 py-4 text-sm sm:text-base font-semibold text-white align-top text-left"
                   >
                     {job.type}
                     <span className="block font-normal text-gray-400 text-sm mt-1">
                       {job.area} · {job.completed}
                     </span>
                   </th>
-                  <td className="px-3 py-4 text-sm sm:text-base text-gray-300 align-top leading-relaxed">
+                  <td className="px-2 sm:px-3 py-4 text-sm sm:text-base text-gray-300 align-top leading-relaxed">
                     {job.size}
                     <span className="block text-gray-400 text-sm mt-1">{job.access}</span>
                   </td>
-                  <td className="px-3 py-4 text-sm sm:text-base font-bold text-white align-top whitespace-nowrap">
+                  <td className="px-2 sm:px-3 py-4 text-sm sm:text-base font-bold text-white align-top whitespace-nowrap">
                     {job.price}
                   </td>
-                  <td className="px-3 py-4 text-sm sm:text-base text-gray-300 align-top">
+                  <td className="px-2 sm:px-3 py-4 text-sm sm:text-base text-gray-300 align-top">
                     {job.basis}
                   </td>
-                  <td className="px-3 py-4 text-sm sm:text-base text-gray-300 align-top leading-relaxed">
+                  <td className="px-2 sm:px-3 py-4 text-sm sm:text-base text-gray-300 align-top leading-relaxed">
                     {job.detail}
                   </td>
                 </tr>

@@ -20,9 +20,15 @@ import { PRICING } from '@/data/siteData';
  *    "Situation: Most removals, Price range: …" rather than reading 21 loose
  *    cells.
  *  - Cell text wraps rather than forcing a fixed width, which is what lets
- *    three columns survive a 360px viewport.
+ *    three columns survive a 360px viewport. Measured: min-content width is
+ *    327px against the 328px available inside a 360px viewport's gutters, so
+ *    it fits with no horizontal scroll at all. Two things buy that last 30px
+ *    and both are mobile-only — `px-2` padding that opens up to `sm:px-3`, and
+ *    letting the price column wrap below the `sm` breakpoint. Tightening the
+ *    padding further, or putting `whitespace-nowrap` back on the price at all
+ *    widths, pushes it over again.
  *  - The wrapper is still a focusable scroll region (role="region" + tabIndex)
- *    as a backstop for very narrow viewports and large text settings: if the
+ *    as a backstop for narrower viewports and large text settings: if the
  *    table does overflow, a keyboard user can reach and scroll it. A scroll
  *    container that cannot be focused is a WCAG 2.1.1 failure, which is the
  *    easy way to lose a 100 on this page.
@@ -119,19 +125,19 @@ export default function RemovalPriceTable() {
               <tr className="bg-gray-900">
                 <th
                   scope="col"
-                  className="px-3 py-3 text-sm sm:text-base font-bold text-white align-top border-b border-gray-700"
+                  className="px-2 sm:px-3 py-3 text-sm sm:text-base font-bold text-white align-top border-b border-gray-700"
                 >
                   Situation
                 </th>
                 <th
                   scope="col"
-                  className="px-3 py-3 text-sm sm:text-base font-bold text-white align-top border-b border-gray-700 whitespace-nowrap"
+                  className="px-2 sm:px-3 py-3 text-sm sm:text-base font-bold text-white align-top border-b border-gray-700 sm:whitespace-nowrap"
                 >
                   Price range
                 </th>
                 <th
                   scope="col"
-                  className="px-3 py-3 text-sm sm:text-base font-bold text-white align-top border-b border-gray-700"
+                  className="px-2 sm:px-3 py-3 text-sm sm:text-base font-bold text-white align-top border-b border-gray-700"
                 >
                   What drives it
                 </th>
@@ -142,16 +148,18 @@ export default function RemovalPriceTable() {
                 <tr key={band.situation} className="border-b border-gray-800 last:border-0">
                   <th
                     scope="row"
-                    className="px-3 py-4 text-sm sm:text-base font-semibold text-white align-top text-left"
+                    className="px-2 sm:px-3 py-4 text-sm sm:text-base font-semibold text-white align-top text-left"
                   >
                     {band.situation}
                   </th>
                   {/* The figure is the thing a reader came for, so it gets the
-                      brand weight and does not wrap mid-range. */}
-                  <td className="px-3 py-4 text-sm sm:text-base font-bold text-white align-top whitespace-nowrap">
+                      brand weight. It holds on one line from `sm` up; below
+                      that it is allowed to wrap, which is the 30px that lets
+                      the whole table fit a 360px phone without scrolling. */}
+                  <td className="px-2 sm:px-3 py-4 text-sm sm:text-base font-bold text-white align-top sm:whitespace-nowrap">
                     {band.range}
                   </td>
-                  <td className="px-3 py-4 text-sm sm:text-base text-gray-300 align-top leading-relaxed">
+                  <td className="px-2 sm:px-3 py-4 text-sm sm:text-base text-gray-300 align-top leading-relaxed">
                     {band.driver}
                   </td>
                 </tr>
