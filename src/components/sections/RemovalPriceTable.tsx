@@ -88,9 +88,6 @@ const BANDS: Band[] = [
   },
 ];
 
-/** Exported so the page can cite the same list it renders. */
-export { BANDS as REMOVAL_BANDS };
-
 export default function RemovalPriceTable() {
   return (
     <section className="bg-black py-16 border-t border-gray-800">
@@ -99,8 +96,8 @@ export default function RemovalPriceTable() {
           id="price-table-heading"
           className="text-2xl sm:text-3xl font-bold text-white mb-6"
         >
-          {PRICING.removal.minimum} minimum to {PRICING.emergency.structure}: every
-          band we quote
+          {PRICING.removal.minimum} to {PRICING.emergency.structure}: every band
+          we quote
         </h2>
         <p className="text-gray-300 text-lg leading-relaxed mb-8">
           These are our bands, not a national average. The third column is the
