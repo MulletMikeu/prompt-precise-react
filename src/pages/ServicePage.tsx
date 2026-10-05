@@ -98,6 +98,19 @@ interface ServicePageProps {
    * on purpose (see the note in <AuthorByline/>).
    */
   authorUpdated?: string;
+  /**
+   * Rich content rendered between the quick answer and the first section.
+   *
+   * Exists for the one case where a block has to sit ABOVE the prose rather
+   * than after it: a price table on a pricing page, which is what the reader
+   * came for and should not have to scroll eight sections to reach. `caseStudy`
+   * below is the same kind of slot but renders after the sections, which is
+   * right for proof and wrong for the headline answer.
+   *
+   * Optional and undefined on all other pages, so adding it changed no other
+   * page's output — including the live A/B control. Keep it that way.
+   */
+  priceBlock?: ReactNode;
   sections: { heading: string; text: string }[];
   sectionLinks?: Record<number, SectionLink | SectionLink[]>;
   faqs?: FaqItem[];
@@ -172,7 +185,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return null;
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, priceBlock, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -355,6 +368,8 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
               </div>
             </section>
           )}
+
+          {priceBlock}
 
           {/* Content Sections */}
           {sections.map((section, index) => (
