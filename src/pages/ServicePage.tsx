@@ -311,8 +311,12 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                   {(heroImage.caption || heroImage.geo) && (
                     <figcaption className="mt-3 text-center text-gray-300 text-sm">
                       {heroImage.caption}
+                      {/* gray-400 on the geo line, not gray-500: #6B7280 on
+                          bg-black is 4.34:1 and fails AA. gray-400 is 8.27:1
+                          and still reads dimmer than the gray-300 caption it
+                          sits under, so the hierarchy survives the fix. */}
                       {heroImage.geo && (
-                        <span className="block text-gray-500 text-xs mt-1">📍 {heroImage.geo}</span>
+                        <span className="block text-gray-400 text-xs mt-1">📍 {heroImage.geo}</span>
                       )}
                     </figcaption>
                   )}
@@ -549,7 +553,14 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
                 {finalCta?.heading || "Ready to Get Started?"}
               </h2>
-              <p className="text-white/90 mb-6 text-lg">
+              {/* Solid white, not white/90. 90% white composited over bg-red-600
+                  resolves to #FCE9E9 — a red-tinted near-white that reads as
+                  LOWER contrast against the band than pure white does: 4.13:1
+                  versus 4.83:1. The dimming was costing contrast rather than
+                  buying any, and 4.13 failed WCAG AA (4.5) for normal text on
+                  24 pages, which was the single most widespread a11y defect on
+                  the site. Do not reintroduce an alpha here. */}
+              <p className="text-white mb-6 text-lg">
                 {finalCta?.text || "Contact Godhans Tree Company today for a free estimate."}
               </p>
               <a

@@ -80,7 +80,11 @@ export default function BlogPage() {
               {GUIDES.map((guide) => (
                 <article key={guide.href} className="p-8 flex flex-col gap-3" style={{ background: "#0A0A0A" }}>
                   <h2 className="text-xl font-bold">
-                    <Link to={guide.href} className="text-white hover:text-red-600 transition-colors">
+                    {/* hover:red-500, not red-600 — 4.10:1 on dark fails AA.
+                        Lighthouse cannot see a hover state, so this one was not
+                        in the audit; it is the same defect as the resting-state
+                        red-600 text and gets the same fix. */}
+                    <Link to={guide.href} className="text-white hover:text-red-500 transition-colors">
                       {guide.title}
                     </Link>
                   </h2>

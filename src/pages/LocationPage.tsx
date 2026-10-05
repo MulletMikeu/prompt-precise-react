@@ -122,8 +122,10 @@ export default function LocationPage({ city }: LocationPageProps) {
                 {breadcrumbTrail.map((crumb, i) => (
                   <li key={crumb.name} className="flex items-center gap-2">
                     {i > 0 && <span aria-hidden="true">/</span>}
+                    {/* hover:red-500 — see the note in BlogPage: a hover state
+                        is invisible to Lighthouse but still has to clear AA. */}
                     {crumb.href ? (
-                      <Link to={crumb.href} className="hover:text-red-600 transition-colors">{crumb.name}</Link>
+                      <Link to={crumb.href} className="hover:text-red-500 transition-colors">{crumb.name}</Link>
                     ) : (
                       <span className="text-gray-200" aria-current="page">{crumb.name}</span>
                     )}
