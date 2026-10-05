@@ -547,25 +547,44 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
           {/* Quick Quote Form (Formspree) */}
           <QuickQuoteForm source={slug} variant="dark" />
 
-          {/* Final CTA */}
-          <section className="bg-red-600 py-12">
+          {/* Final CTA.
+
+              bg-brand-red (#C41230) — the `brand.red` token in
+              tailwind.config.ts, which mirrors --red in index.css. NOT
+              Tailwind's bg-red-600 (#DC2626), which this band used while the
+              other six CTA bands on the site (/blog, /contact, /reviews,
+              /service-area, /services, and the city pages) were all already
+              #C41230. Two CTA conventions, one of them on ~20 pages, and the
+              one on ~20 pages was the wrong one.
+
+              The darker ground also buys contrast headroom: white on #C41230 is
+              6.04:1 against 4.83:1 on #DC2626. */}
+          <section className="bg-brand-red py-12">
             <div className="container mx-auto px-4 text-center">
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
                 {finalCta?.heading || "Ready to Get Started?"}
               </h2>
-              {/* Solid white, not white/90. 90% white composited over bg-red-600
-                  resolves to #FCE9E9 — a red-tinted near-white that reads as
-                  LOWER contrast against the band than pure white does: 4.13:1
-                  versus 4.83:1. The dimming was costing contrast rather than
-                  buying any, and 4.13 failed WCAG AA (4.5) for normal text on
-                  24 pages, which was the single most widespread a11y defect on
-                  the site. Do not reintroduce an alpha here. */}
+              {/* Solid white, not white/90. 90% white composited over the red
+                  band resolves to a red-TINTED near-white, and that tint reads
+                  as LOWER contrast against the red behind it than pure white
+                  does — on the old #DC2626 ground it was 4.13:1 against 4.83:1,
+                  which failed WCAG AA (4.5) for normal text on 24 pages. On
+                  this #C41230 ground the same comparison is 5.08:1 against
+                  6.04:1: both clear AA now, but the alpha still costs contrast
+                  instead of buying any. Do not reintroduce one. */}
               <p className="text-white mb-6 text-lg">
                 {finalCta?.text || "Contact Godhans Tree Company today for a free estimate."}
               </p>
+              {/* text-brand-red, following the band above it. These two reds
+                  matched before (#DC2626 on both), so darkening only the band
+                  would have left a #DC2626 button sitting on a #C41230 ground
+                  — a mismatch introduced by the fix rather than found by it.
+                  White + #C41230 is also exactly what the button in the other
+                  six CTA bands uses, and it reads 6.04:1 on white against
+                  red-600's 4.83:1. */}
               <a
                 href={`tel:${BUSINESS_INFO.phone.tel}`}
-                className="bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors inline-flex items-center gap-2 text-lg"
+                className="bg-white text-brand-red px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors inline-flex items-center gap-2 text-lg"
               >
                 📞 {finalCta?.buttonText || `Call ${BUSINESS_INFO.phone.display}`}
               </a>
