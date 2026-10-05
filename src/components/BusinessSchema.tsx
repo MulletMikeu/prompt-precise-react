@@ -1,5 +1,27 @@
 import { Head as Helmet } from 'vite-react-ssg';
-import { BUSINESS, BUSINESS_ID, SITE_URL, WEBSITE_ID } from '../data/siteData';
+import { AUTHOR, BUSINESS, BUSINESS_ID, JAMES, SITE_URL, WEBSITE_ID } from '../data/siteData';
+
+const ABOUT_URL = `${SITE_URL}/about`;
+
+/**
+ * Lean Person stubs for the two owners, so LocalBusiness.founder and
+ * .employee below point at nodes that actually exist in this @graph on every
+ * page rather than at bare @ids nothing defines.
+ *
+ * Deliberately minimal — name, role, where to find them, who they work for.
+ * The rich node (portrait, knowsAbout, bio) belongs on /about, which emits it
+ * under the same @id; identical @ids are the same entity in JSON-LD, so the two
+ * merge there. Keeping the site-wide copy thin also keeps these bytes off the
+ * other 37 pages, which gain nothing from Michael's knowsAbout list.
+ */
+const personStub = (person: typeof AUTHOR | typeof JAMES) => ({
+  '@type': 'Person',
+  '@id': person.personId,
+  name: person.name,
+  jobTitle: person.role,
+  url: ABOUT_URL,
+  worksFor: { '@id': BUSINESS_ID },
+});
 
 /**
  * The single canonical LocalBusiness (#business) JSON-LD node plus the WebSite
@@ -62,6 +84,11 @@ const businessSchema = {
   ],
   priceRange: '$$$',
   foundingDate: String(BUSINESS.founded),
+  // Michael founded the company; both brothers own and work in it. These are
+  // @id references, not inline copies — the nodes are in the same @graph below,
+  // and the full versions are on /about under the same @ids.
+  founder: { '@id': AUTHOR.personId },
+  employee: [{ '@id': AUTHOR.personId }, { '@id': JAMES.personId }],
   areaServed: [
     { '@type': 'City', name: 'Jacksonville, NC' },
     { '@type': 'City', name: 'Maysville, NC' },
@@ -107,7 +134,7 @@ const websiteSchema = {
 
 const graph = {
   '@context': 'https://schema.org',
-  '@graph': [businessSchema, websiteSchema],
+  '@graph': [businessSchema, websiteSchema, personStub(AUTHOR), personStub(JAMES)],
 };
 
 export default function BusinessSchema() {

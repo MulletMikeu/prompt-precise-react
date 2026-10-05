@@ -17,6 +17,7 @@ export default function DebrisHauling() {
       metaTitle="Debris Hauling in Jacksonville, NC | Godhans"
       subtitle="Trees, Brush and Leaves — Priced by the Trailer"
       slug="debris-hauling-jacksonville-nc"
+      authorUpdated="2026-09-27"
       credentialBlock
       description={`Organic debris hauling in Jacksonville, NC — trees, brush, leaves. ${PRICING.debris.minimum} minimum, about ${PRICING.debris.perTrailer} per dump trailer. Free estimates.`}
       ctaText={`Get a Hauling Quote — ${BUSINESS.phone}`}

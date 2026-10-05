@@ -6,6 +6,7 @@ export default function TreeTrimmingVsPruning() {
       title="Tree Trimming vs Pruning: What's the Difference?"
       metaTitle="Tree Trimming vs Pruning: What's the Difference?"
       slug="tree-trimming-vs-pruning"
+      authorUpdated="2026-08-07"
       description="Trimming shapes a tree's appearance; pruning removes dead or diseased limbs to improve health. Learn the difference and when to use each."
       quickAnswer="Tree trimming focuses on maintaining the shape and appearance of a tree, while pruning is used to improve tree health by removing dead, diseased, or damaged branches. Both are important for maintaining safe and healthy trees."
       sections={[

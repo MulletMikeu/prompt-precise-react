@@ -128,7 +128,15 @@ npm run indexnow -- --dry-run      # show what would be sent, send nothing
 npm run indexnow                   # URLs with lastmod in the last 7 days
 npm run indexnow -- --since=2026-09-01
 npm run indexnow -- --all          # every URL in the sitemap
+npm run indexnow -- --urls=/about,/reviews   # exactly these, sitemap-validated
 ```
+
+Use `--urls` after a batch that edits shared code. `gen-sitemap` takes each
+route's lastmod from the newest commit among its local imports, so a change to
+`siteData.ts`, `BusinessSchema.tsx` or `ServicePage.tsx` restamps **all 38
+URLs** with the same date and the default 7-day window then submits the whole
+site. Correct about the dates, useless as a signal — IndexNow is a per-page
+"re-crawl this" ping. Name the pages whose content actually changed instead.
 
 It is deliberately not a `postbuild` hook. A Vercel build finishes *before* its
 deployment is promoted, so submitting from the build tells Bing to re-crawl URLs

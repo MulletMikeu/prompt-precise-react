@@ -22,6 +22,24 @@
  *   npm run indexnow                   # URLs whose lastmod is within 7 days
  *   npm run indexnow -- --since=2026-09-01
  *   npm run indexnow -- --all          # every URL in the sitemap
+ *   npm run indexnow -- --urls=/about,/reviews
+ *
+ * ── WHY --urls EXISTS ───────────────────────────────────────────────────────
+ *
+ * The lastmod window is the right default, but it over-selects whenever a
+ * change lands in a module every page imports — siteData.ts, BusinessSchema,
+ * ServicePage. gen-sitemap walks each route's local imports and takes the
+ * newest commit date, so touching siteData restamps all 38 URLs with the same
+ * day and the 7-day window then submits the entire site. That is true of the
+ * dates and useless as a signal: IndexNow is a "this page changed, re-crawl
+ * it" ping, and spending it on 38 URLs when a dozen have new content is how a
+ * host gets de-prioritised for crying wolf.
+ *
+ * So --urls takes an explicit comma-separated list of paths (or absolute URLs)
+ * and submits exactly those, bypassing the sitemap selection entirely. Use it
+ * after a batch that edits shared code: pass the pages whose *content* actually
+ * changed. The paths are still validated against the sitemap, so a typo fails
+ * loudly instead of pinging a 404.
  *
  * Google does not participate in IndexNow and ignores it; it discovers changes
  * from the sitemap's lastmod instead. Both halves matter.
@@ -48,6 +66,7 @@ const valueOf = (name) => {
 const dryRun = has('--dry-run');
 const all = has('--all');
 const since = valueOf('--since');
+const urlsArg = valueOf('--urls');
 
 const fail = (msg) => {
   console.error(`\n[indexnow] ${msg}\n`);
@@ -81,8 +100,36 @@ const entries = [...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^
 
 if (!entries.length) fail('parsed 0 <url> entries from public/sitemap.xml — is it the generated format?');
 
+if (urlsArg && (all || since)) {
+  fail('--urls selects the list itself — do not combine it with --all or --since.');
+}
+
+/**
+ * Explicit list mode. Accepts "/about" or the full "https://godhans.com/about";
+ * either way it must be a URL the sitemap already contains, so a path typo or a
+ * page that was never built fails here rather than being submitted as a 404.
+ */
+let explicit = null;
+if (urlsArg) {
+  const byLoc = new Map(entries.map((e) => [e.loc, e]));
+  const requested = urlsArg.split(',').map((s) => s.trim()).filter(Boolean);
+  if (!requested.length) fail('--urls was given with no URLs.');
+  const resolved = [];
+  const unknown = [];
+  for (const raw of requested) {
+    const loc = raw.startsWith('http') ? raw : `${ORIGIN}${raw.startsWith('/') ? '' : '/'}${raw}`;
+    const hit = byLoc.get(loc) ?? byLoc.get(loc.replace(/\/$/, ''));
+    if (hit) resolved.push(hit);
+    else unknown.push(`${raw}  ->  ${loc}`);
+  }
+  if (unknown.length) {
+    fail(`these --urls are not in public/sitemap.xml:\n  ${unknown.join('\n  ')}\n\nRun a build first, or fix the path.`);
+  }
+  explicit = resolved;
+}
+
 let cutoff = null;
-if (!all) {
+if (!all && !explicit) {
   if (since) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(since)) fail(`--since must be YYYY-MM-DD, got "${since}"`);
     cutoff = since;
@@ -94,7 +141,7 @@ if (!all) {
 }
 
 // lastmod is YYYY-MM-DD, so a string compare is a date compare.
-const selected = entries.filter((e) => all || e.lastmod >= cutoff);
+const selected = explicit ?? entries.filter((e) => all || e.lastmod >= cutoff);
 
 // A URL that is not on the canonical apex host would be silently dropped by the
 // endpoint, so refuse rather than half-submit.
@@ -104,7 +151,8 @@ if (offHost.length) {
 }
 
 console.log(`[indexnow] sitemap has ${entries.length} URLs`);
-console.log(all ? '[indexnow] --all: submitting every URL' : `[indexnow] selecting lastmod >= ${cutoff}`);
+if (explicit) console.log(`[indexnow] --urls: submitting ${explicit.length} explicitly named URL(s)`);
+else console.log(all ? '[indexnow] --all: submitting every URL' : `[indexnow] selecting lastmod >= ${cutoff}`);
 console.log(`[indexnow] ${selected.length} URL(s) selected:`);
 for (const e of selected) console.log(`             ${e.lastmod}  ${e.loc}`);
 

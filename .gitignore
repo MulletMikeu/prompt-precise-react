@@ -26,3 +26,7 @@ dist-ssr
 # Per-developer Claude Code settings (permission grants etc.) — machine-local,
 # not shared. The committed .claude/settings.json stays tracked.
 .claude/settings.local.json
+
+# Incremental build state from `tsc -b` (a typecheck leaves these behind;
+# the Vite build does not need them).
+*.tsbuildinfo
