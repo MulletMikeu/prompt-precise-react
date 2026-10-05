@@ -40,6 +40,7 @@ export default function ResistographTesting() {
       metaTitle="Resistograph Tree Testing in Jacksonville, NC | Godhans"
       subtitle="Measuring Internal Decay Before Anyone Decides to Cut"
       slug="resistograph-tree-testing-jacksonville-nc"
+      authorUpdated="2026-09-28"
       credentialBlock
       description="Resistograph testing in Jacksonville, NC measures internal decay in a standing tree, so a sound hardwood isn't removed on a guess. Local species notes."
       ctaText={`Ask About Testing — ${BUSINESS.phone}`}

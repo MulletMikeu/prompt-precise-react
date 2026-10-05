@@ -13,6 +13,41 @@ export const BUSINESS_ID = `${SITE_URL}/#business`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 /**
+ * The two named people behind the company, and the only source for either
+ * name, role or Person @id. Nothing may retype "Michael Godbersen", "Owner",
+ * "James Godbersen" or "Co-Owner" as a literal again: the visible H2s on
+ * /about, the portrait alt text, the author byline on the guide pages and every
+ * Person node in the structured data all read from here.
+ *
+ * `personId` is the stable @id of each Person node. Those nodes are emitted in
+ * two places on purpose:
+ *
+ *   - <BusinessSchema/> emits a lean stub site-wide (name, jobTitle, url,
+ *     worksFor) so LocalBusiness.founder and .employee resolve inside the same
+ *     @graph on every page instead of dangling.
+ *   - /about emits the full node — portrait, knowsAbout, description — under
+ *     the SAME @id. Matching @ids are one entity in JSON-LD, so the two merge
+ *     on /about rather than duplicating.
+ *
+ * AUTHOR is Michael specifically because he is the sole author of the site's
+ * content. James is co-owner and does not author pages, which is why only
+ * AUTHOR feeds <AuthorByline/>. Do not add a third person here — no one else
+ * is an owner or an author of this site.
+ */
+export const AUTHOR = {
+  name: "Michael Godbersen",
+  role: "Owner",
+  personId: `${SITE_URL}/about#michael`,
+} as const;
+
+/** Co-owner. Named but never an author — see the note on AUTHOR. */
+export const JAMES = {
+  name: "James Godbersen",
+  role: "Co-Owner",
+  personId: `${SITE_URL}/about#james`,
+} as const;
+
+/**
  * The year Godhans began operating in Onslow County. Single source for every
  * experience claim on the site.
  *

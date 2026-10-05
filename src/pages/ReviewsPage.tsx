@@ -133,7 +133,12 @@ export default function ReviewsPage() {
               <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
                 "great service and really good prices"
               </blockquote>
-              <p className="text-sm mb-6" style={{ color: "#888888" }}>— James, Google review</p>
+              {/* "(customer)" is not decoration. One of the two co-owners is
+                  also named James, and an unqualified "— James" under a
+                  five-star quote reads as the company praising itself. We do
+                  not know this customer's surname or initial and will not
+                  invent one, so the disambiguation goes in the attribution. */}
+              <p className="text-sm mb-6" style={{ color: "#888888" }}>— James (customer), Google review</p>
 
               <p className="text-base leading-relaxed" style={{ color: "#C8C8C2" }}>
                 Worked with us before?{' '}

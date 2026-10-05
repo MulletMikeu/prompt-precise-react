@@ -34,6 +34,7 @@ export default function TreeRemovalTightSpaces() {
         metaTitle="Tree Removal in Tight Spaces | Jacksonville, NC"
         subtitle="Backyard Trees, Narrow Lots, Pool Areas, and Fenced Properties"
         slug="tree-removal-tight-spaces-jacksonville-nc"
+        authorUpdated="2026-09-28"
         description="Tight-space tree removal in Jacksonville, NC: backyards, fenced lots, near pools and septic. Spider lift access, no lawn damage."
         ctaText="Call Now for a Free Estimate"
         heroImage={{

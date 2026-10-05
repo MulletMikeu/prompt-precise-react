@@ -20,6 +20,7 @@ export default function TreeCablingBracing() {
       title="Tree Cabling and Bracing in Jacksonville, NC"
       metaTitle="Tree Cabling & Bracing Jacksonville NC | Godhans"
       slug="tree-cabling-bracing-jacksonville-nc"
+      authorUpdated="2026-09-28"
       credentialBlock
       description={`Tree cabling and bracing in Jacksonville, NC. Steel hardware or non-invasive synthetic systems, ${PRICING.cabling.typical} for a typical mature tree. Honest assessment first.`}
       ctaText="Call for a Free Assessment"

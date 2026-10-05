@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from 'react-router-dom';
+import AuthorByline from '@/components/AuthorByline';
 import { OtherCitiesWeServe } from '@/components/sections/OtherCitiesWeServe';
 import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { LazyImage } from '@/components/ui/LazyImage';
@@ -89,6 +90,14 @@ interface ServicePageProps {
    */
   leadBlock?: ReactNode;
   quickAnswer?: string;
+  /**
+   * Opt-in author byline under the hero. Pass the page's own last-modified date
+   * as a plain ISO date (YYYY-MM-DD) from git history; passing it is what turns
+   * the byline on. Omit it and nothing renders — the service and city pages are
+   * company pages, not signed articles, and the two A/B test pages are excluded
+   * on purpose (see the note in <AuthorByline/>).
+   */
+  authorUpdated?: string;
   sections: { heading: string; text: string }[];
   sectionLinks?: Record<number, SectionLink | SectionLink[]>;
   faqs?: FaqItem[];
@@ -163,7 +172,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return null;
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -240,6 +249,9 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
                 {description}
               </p>
+              {/* Byline sits directly under the H1 block, where a reader looks
+                  for "who wrote this" — not buried at the foot of the page. */}
+              {authorUpdated && <AuthorByline updated={authorUpdated} />}
               <div className="mt-8">
                 <a
                   href={`tel:${BUSINESS_INFO.phone.tel}`}
