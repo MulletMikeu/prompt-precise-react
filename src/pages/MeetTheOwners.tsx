@@ -196,7 +196,7 @@ export default function MeetTheOwners() {
             <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-300">
               <ol className="flex flex-wrap items-center gap-2">
                 <li>
-                  <Link to="/" className="hover:text-red-600 transition-colors">Home</Link>
+                  <Link to="/" className="hover:text-red-500 transition-colors">Home</Link>
                 </li>
                 <li aria-hidden="true">/</li>
                 <li className="text-gray-200" aria-current="page">About</li>
@@ -211,7 +211,7 @@ export default function MeetTheOwners() {
               {INTRO_TEXT ? (
                 <p className="text-gray-300 text-lg leading-relaxed">{INTRO_TEXT}</p>
               ) : (
-                <p className="text-gray-500 italic">[Introduction text — add via INTRO_TEXT]</p>
+                <p className="text-gray-400 italic">[Introduction text — add via INTRO_TEXT]</p>
               )}
             </section>
 
@@ -251,7 +251,7 @@ export default function MeetTheOwners() {
                   </figcaption>
                 )}
                 {MICHAEL_PHOTO_EXIF && (
-                  <p className="mt-1 text-xs text-gray-500">{MICHAEL_PHOTO_EXIF}</p>
+                  <p className="mt-1 text-xs text-gray-400">{MICHAEL_PHOTO_EXIF}</p>
                 )}
               </figure>
             </section>
@@ -261,15 +261,23 @@ export default function MeetTheOwners() {
               <h2 id="owner-michael" className="text-2xl font-bold mb-2">
                 {OWNER_MICHAEL.name || '[Owner name]'}
               </h2>
+              {/* red-500, not red-600. #DC2626 on the near-black page ground is
+                  4.10:1 and fails WCAG AA (4.5) for normal text; #EF4444 is
+                  5.26:1. red-500 is also what the rest of the component layer
+                  already uses for red text on dark — including the ✓ in
+                  <WhyChooseGodhans/>, which this page's credential block
+                  mirrors — so red-600 was the odd one out, not the standard.
+                  red-600 stays correct for red text on WHITE (4.83:1): the
+                  quote-form card and the two on-red buttons keep it. */}
               {OWNER_MICHAEL.role ? (
-                <p className="text-red-600 font-medium mb-3">{OWNER_MICHAEL.role}</p>
+                <p className="text-red-500 font-medium mb-3">{OWNER_MICHAEL.role}</p>
               ) : (
-                <p className="text-gray-500 italic mb-3">[Role — add via OWNER_MICHAEL.role]</p>
+                <p className="text-gray-400 italic mb-3">[Role — add via OWNER_MICHAEL.role]</p>
               )}
               {OWNER_MICHAEL.bio ? (
                 <p className="text-gray-300 leading-relaxed">{OWNER_MICHAEL.bio}</p>
               ) : (
-                <p className="text-gray-500 italic">[Bio — add via OWNER_MICHAEL.bio]</p>
+                <p className="text-gray-400 italic">[Bio — add via OWNER_MICHAEL.bio]</p>
               )}
             </section>
 
@@ -339,7 +347,7 @@ export default function MeetTheOwners() {
                   </figcaption>
                 )}
                 {JAMES_PHOTO_EXIF && (
-                  <p className="mt-1 text-xs text-gray-500">{JAMES_PHOTO_EXIF}</p>
+                  <p className="mt-1 text-xs text-gray-400">{JAMES_PHOTO_EXIF}</p>
                 )}
               </figure>
             </section>
@@ -350,14 +358,14 @@ export default function MeetTheOwners() {
                 {OWNER_BROTHER.name || '[Brother name — add via OWNER_BROTHER.name]'}
               </h2>
               {OWNER_BROTHER.role ? (
-                <p className="text-red-600 font-medium mb-3">{OWNER_BROTHER.role}</p>
+                <p className="text-red-500 font-medium mb-3">{OWNER_BROTHER.role}</p>
               ) : (
-                <p className="text-gray-500 italic mb-3">[Role — add via OWNER_BROTHER.role]</p>
+                <p className="text-gray-400 italic mb-3">[Role — add via OWNER_BROTHER.role]</p>
               )}
               {OWNER_BROTHER.bio ? (
                 <p className="text-gray-300 leading-relaxed">{OWNER_BROTHER.bio}</p>
               ) : (
-                <p className="text-gray-500 italic">[Bio — add via OWNER_BROTHER.bio]</p>
+                <p className="text-gray-400 italic">[Bio — add via OWNER_BROTHER.bio]</p>
               )}
             </section>
 
@@ -383,7 +391,7 @@ export default function MeetTheOwners() {
               <ul className="space-y-3">
                 {CREDENTIAL.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-3 text-gray-300 leading-relaxed">
-                    <span aria-hidden="true" className="text-red-600 mt-1 flex-shrink-0">✓</span>
+                    <span aria-hidden="true" className="text-red-500 mt-1 flex-shrink-0">✓</span>
                     <span>{bullet}</span>
                   </li>
                 ))}
@@ -394,7 +402,7 @@ export default function MeetTheOwners() {
             <div className="mt-10 pt-6 border-t border-gray-800">
               <Link
                 to="/tree-service-jacksonville-nc"
-                className="text-red-600 hover:text-red-500 font-medium"
+                className="text-red-500 hover:text-red-400 font-medium"
               >
                 ← Explore our Jacksonville, NC tree services
               </Link>

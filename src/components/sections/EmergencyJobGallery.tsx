@@ -63,7 +63,10 @@ export default function EmergencyJobGallery() {
                   </picture>
                 </div>
                 <figcaption className="mt-2 text-gray-300 text-sm leading-snug">
-                  <span className="text-gray-500 font-semibold tabular-nums">
+                  {/* gray-400, not gray-500: #6B7280 on bg-gray-950 is 4.16:1
+                      and fails AA. gray-400 is 7.93:1 and stays a step dimmer
+                      than the gray-300 caption it numbers. */}
+                  <span className="text-gray-400 font-semibold tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>{' '}
                   {photo.caption}
