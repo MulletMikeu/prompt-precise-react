@@ -255,7 +255,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
               <div className="mt-8">
                 <a
                   href={`tel:${BUSINESS_INFO.phone.tel}`}
-                  className="bg-red-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-lg inline-flex items-center gap-2 text-lg"
+                  className="bg-brand-red text-white px-8 py-4 rounded-lg font-bold hover:bg-brand-red-dark transition-all duration-300 shadow-lg inline-flex items-center gap-2 text-lg"
                 >
                   📞 {ctaText || `Call ${BUSINESS_INFO.phone.display}`}
                 </a>
@@ -325,13 +325,17 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                   <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center items-center">
                     <Link
                       to="/contact"
-                      className="w-full sm:w-auto bg-red-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-lg text-lg text-center"
+                      className="w-full sm:w-auto bg-brand-red text-white px-8 py-4 rounded-lg font-bold hover:bg-brand-red-dark transition-all duration-300 shadow-lg text-lg text-center"
                     >
                       Get a Free Estimate
                     </Link>
+                    {/* text-brand-red, matching the filled button beside it.
+                        These two are one button group — red fill + white
+                        inverse — so leaving this one on #DC2626 while its
+                        partner moved to #C41230 would split the pair. */}
                     <a
                       href={`tel:${BUSINESS_INFO.phone.tel}`}
-                      className="w-full sm:w-auto bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors text-lg text-center inline-flex items-center justify-center gap-2"
+                      className="w-full sm:w-auto bg-white text-brand-red px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors text-lg text-center inline-flex items-center justify-center gap-2"
                     >
                       📞 Call {BUSINESS_INFO.phone.display}
                     </a>

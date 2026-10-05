@@ -24,7 +24,7 @@ const COMPARISON = [
       <>
         Straight pricing — {PRICING.removal.minimum} minimum, most removals run{" "}
         {PRICING.removal.most}, written quote before work starts.{" "}
-        <Link to="/tree-removal-cost-north-carolina" className="underline underline-offset-2" style={{ color: "#E5424F" }}>
+        <Link to="/tree-removal-cost-north-carolina" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
           See the full 2026 cost breakdown
         </Link>
         .
@@ -56,7 +56,7 @@ const chips = [
 export default function HeroCompare() {
   return (
     <section className="relative overflow-hidden" style={{ background: "#0A0A0A", paddingTop: "7rem" }} aria-labelledby="hero-heading">
-      <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "#C41230" }} aria-hidden="true" />
+      <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "var(--red)" }} aria-hidden="true" />
 
       <div className="container-brand pb-16 md:pb-24">
         <div className="max-w-4xl">
@@ -149,7 +149,7 @@ export default function HeroCompare() {
               loading="lazy"
               decoding="async"
               className="rounded-full object-cover"
-              style={{ width: "64px", height: "64px", border: "2px solid #C41230" }}
+              style={{ width: "64px", height: "64px", border: "2px solid var(--red)" }}
             />
           </picture>
           <Link to="/contact" className="btn-primary btn-hero">

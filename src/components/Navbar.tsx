@@ -36,7 +36,7 @@ export default function Navbar() {
         borderBottom: scrolled ? "1px solid #2A2A2A" : "1px solid transparent",
       }}
     >
-      <div style={{ background: "#C41230" }} className="hidden md:block text-white text-center py-1.5">
+      <div style={{ background: "var(--red)" }} className="hidden md:block text-white text-center py-1.5">
         <p className="text-sm tracking-wide">
           24/7 Emergency Service Available —{" "}
           <a href={BUSINESS.phoneHref} className="font-bold underline underline-offset-2">{BUSINESS.phone}</a>
@@ -49,7 +49,7 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-3 flex-shrink-0">
             <div
               className="w-9 h-9 flex items-center justify-center text-white text-lg font-bold"
-              style={{ background: "#C41230" }}
+              style={{ background: "var(--red)" }}
               aria-hidden="true"
             >
               G
@@ -70,7 +70,7 @@ export default function Navbar() {
                 <Link
                   to={link.href}
                   className="text-sm font-semibold tracking-wide uppercase transition-colors"
-                  style={{ color: pathname === link.href ? "#E5424F" : "#E8E8E2" }}
+                  style={{ color: pathname === link.href ? "var(--red-text)" : "#E8E8E2" }}
                 >
                   {link.label}
                 </Link>
@@ -123,7 +123,7 @@ export default function Navbar() {
                   style={{
                     fontSize: "1.1rem",
                     letterSpacing: "0.06em",
-                    color: pathname === link.href ? "#E5424F" : "#F5F5F0",
+                    color: pathname === link.href ? "var(--red-text)" : "#F5F5F0",
                     borderColor: "#1A1A1A",
                   }}
                 >

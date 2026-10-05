@@ -53,7 +53,7 @@ export default function ReviewsPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Customer Reviews</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>Customer Reviews</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">What Jacksonville Is Saying</h1>
             <div className="flex items-center gap-4">
               <p className="text-5xl font-bold" style={{ color: "#E5C220" }}>{BUSINESS.reviewRating}</p>
@@ -74,7 +74,7 @@ export default function ReviewsPage() {
                   className="p-8 flex flex-col"
                   style={{ background: "#0A0A0A" }}
                 >
-                  <span className="font-display font-extrabold mb-4 block" style={{ fontSize: "3rem", lineHeight: 1, color: "#C41230", opacity: 0.4 }} aria-hidden="true">"</span>
+                  <span className="font-display font-extrabold mb-4 block" style={{ fontSize: "3rem", lineHeight: 1, color: "var(--red)", opacity: 0.4 }} aria-hidden="true">"</span>
                   <div className="mb-4"><Stars count={review.stars} /></div>
                   <blockquote className="text-base leading-relaxed flex-1 mb-6" style={{ color: "#C8C8C2" }}>
                     "{review.text}"
@@ -112,7 +112,7 @@ export default function ReviewsPage() {
               <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
                 More reviews mention the state of the yard afterward than mention the tree coming down. That tracks with how we work: brush chipped and hauled, wood removed or stacked where you asked, the drop zone raked, and the driveway and street blown clear.
               </p>
-              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
+              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid var(--red)" }}>
                 "{excerpt(3, "cleaner than they found it")}"
               </blockquote>
               <p className="text-sm mb-6" style={{ color: "#888888" }}>— {reviewerName(3)}, Google review</p>
@@ -121,7 +121,7 @@ export default function ReviewsPage() {
               <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
                 The second theme is being told what's happening — what it will cost before it starts, when the crew is arriving, and where the job stands while it's underway.
               </p>
-              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
+              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid var(--red)" }}>
                 "{excerpt(2, "communicated when they would arrive")}"
               </blockquote>
               <p className="text-sm mb-6" style={{ color: "#888888" }}>— {reviewerName(2)}, Google review</p>
@@ -130,7 +130,7 @@ export default function ReviewsPage() {
               <p className="text-base leading-relaxed mb-2" style={{ color: "#C8C8C2" }}>
                 The third is that the number holds. We quote from measurements and the written quote is what you pay — no discovery of new charges once the crew is on site.
               </p>
-              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid #C41230" }}>
+              <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid var(--red)" }}>
                 "great service and really good prices"
               </blockquote>
               {/* "(customer)" is not decoration. One of the two co-owners is
@@ -142,7 +142,7 @@ export default function ReviewsPage() {
 
               <p className="text-base leading-relaxed" style={{ color: "#C8C8C2" }}>
                 Worked with us before?{' '}
-                <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 font-semibold" style={{ color: "#E5424F" }}>
+                <a href={BUSINESS.gbpUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 font-semibold" style={{ color: "var(--red-text)" }}>
                   Leave us a Google review
                 </a>
                 {' '}— it's the single most useful thing a past customer can do for a local crew, and we read every one of them.
@@ -151,14 +151,14 @@ export default function ReviewsPage() {
           </div>
         </section>
 
-        <section className="py-16" style={{ background: "#C41230" }}>
+        <section className="py-16 bg-brand-red">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Join Our Happy Customers</h2>
             <p className="mb-8 text-base" style={{ color: "rgba(255,255,255,0.85)" }}>
               Free estimates. No obligation. Veteran-owned and always on time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center" style={{ background: "white", color: "#C41230" }}>Get Free Estimate</Link>
+              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center bg-white text-brand-red">Get Free Estimate</Link>
               <a href={BUSINESS.phoneHref} className="font-bold uppercase tracking-wide px-8 py-4 text-center border-2 border-white text-white">{BUSINESS.phone}</a>
             </div>
           </div>

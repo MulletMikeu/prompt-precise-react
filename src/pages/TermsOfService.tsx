@@ -25,7 +25,7 @@ export default function TermsOfService() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Legal</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>Legal</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Terms of Service</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               These terms cover how {BUSINESS.name} quotes, schedules, and performs tree work, and how we communicate with you along the way. Last updated {UPDATED}.
@@ -79,7 +79,7 @@ export default function TermsOfService() {
               </p>
               <p className="text-base leading-relaxed">
                 Consent to receive text messages is not a condition of purchasing any services. Carriers are not liable for delayed or undelivered messages. Your opt-in consent will not be shared with third parties; see our{" "}
-                <Link to="/privacy-policy" className="font-bold" style={{ color: "#E5424F" }}>Privacy Policy</Link> for details.
+                <Link to="/privacy-policy" className="font-bold" style={{ color: "var(--red-text)" }}>Privacy Policy</Link> for details.
               </p>
             </div>
 
@@ -135,8 +135,8 @@ export default function TermsOfService() {
               <p className="text-base leading-relaxed mt-4">
                 <span className="font-semibold text-white">{BUSINESS.name}</span><br />
                 {BUSINESS.address.full}<br />
-                Phone: <a href={BUSINESS.phoneHref} className="font-bold" style={{ color: "#E5424F" }}>{BUSINESS.phone}</a><br />
-                Email: <a href={BUSINESS.emailHref} className="font-bold" style={{ color: "#E5424F" }}>{BUSINESS.email}</a>
+                Phone: <a href={BUSINESS.phoneHref} className="font-bold" style={{ color: "var(--red-text)" }}>{BUSINESS.phone}</a><br />
+                Email: <a href={BUSINESS.emailHref} className="font-bold" style={{ color: "var(--red-text)" }}>{BUSINESS.email}</a>
               </p>
               <p className="text-sm mt-8">
                 <Link to="/contact" className="font-bold uppercase tracking-widest" style={{ color: "#888888" }}>Contact Us →</Link>

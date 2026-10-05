@@ -66,7 +66,7 @@ export default function BlogPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Resources</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>Resources</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Tree Care Guides</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               Practical guides from our team in Jacksonville, NC — covering tree removal, storm damage, costs, permits, and more.
@@ -89,7 +89,7 @@ export default function BlogPage() {
                     </Link>
                   </h2>
                   <p className="text-base leading-relaxed" style={{ color: "#C8C8C2" }}>{guide.desc}</p>
-                  <Link to={guide.href} className="text-sm font-bold uppercase tracking-widest self-start" style={{ color: "#E5424F" }}>
+                  <Link to={guide.href} className="text-sm font-bold uppercase tracking-widest self-start" style={{ color: "var(--red-text)" }}>
                     Read Guide →
                   </Link>
                 </article>
@@ -98,14 +98,14 @@ export default function BlogPage() {
           </div>
         </section>
 
-        <section className="py-16" style={{ background: "#C41230" }}>
+        <section className="py-16 bg-brand-red">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Have a Tree Question?</h2>
             <p className="mb-8 text-base" style={{ color: "rgba(255,255,255,0.85)" }}>
               Skip the research and call us directly. Free estimates, honest advice.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center" style={{ background: "white", color: "#C41230" }}>Contact Us</Link>
+              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center bg-white text-brand-red">Contact Us</Link>
               <a href={BUSINESS.phoneHref} className="font-bold uppercase tracking-wide px-8 py-4 text-center border-2 border-white text-white">{BUSINESS.phone}</a>
             </div>
           </div>

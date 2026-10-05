@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Legal</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>Legal</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Privacy Policy</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               {BUSINESS.name} respects your privacy. This page explains what information we collect when you contact us or use this website, how we use it, and the choices you have. Last updated {UPDATED}.
@@ -103,7 +103,7 @@ export default function PrivacyPolicy() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline underline-offset-2 font-semibold"
-                  style={{ color: "#E5424F" }}
+                  style={{ color: "var(--red-text)" }}
                 >
                   How Google uses information from sites or apps that use our services
                 </a>
@@ -116,7 +116,7 @@ export default function PrivacyPolicy() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline underline-offset-2 font-semibold"
-                  style={{ color: "#E5424F" }}
+                  style={{ color: "var(--red-text)" }}
                 >
                   Google Analytics opt-out browser add-on
                 </a>
@@ -135,8 +135,8 @@ export default function PrivacyPolicy() {
               <h2 className="text-2xl font-bold text-white mb-4">Your Choices</h2>
               <p className="text-base leading-relaxed">
                 You may ask us to update or delete the contact information you have shared with us at any time. To do so, call us at{" "}
-                <a href={BUSINESS.phoneHref} className="font-bold" style={{ color: "#E5424F" }}>{BUSINESS.phone}</a> or email{" "}
-                <a href={BUSINESS.emailHref} className="font-bold" style={{ color: "#E5424F" }}>{BUSINESS.email}</a>.
+                <a href={BUSINESS.phoneHref} className="font-bold" style={{ color: "var(--red-text)" }}>{BUSINESS.phone}</a> or email{" "}
+                <a href={BUSINESS.emailHref} className="font-bold" style={{ color: "var(--red-text)" }}>{BUSINESS.email}</a>.
               </p>
             </div>
 
@@ -155,8 +155,8 @@ export default function PrivacyPolicy() {
               <p className="text-base leading-relaxed mt-4">
                 <span className="font-semibold text-white">{BUSINESS.name}</span><br />
                 {BUSINESS.address.full}<br />
-                Phone: <a href={BUSINESS.phoneHref} className="font-bold" style={{ color: "#E5424F" }}>{BUSINESS.phone}</a><br />
-                Email: <a href={BUSINESS.emailHref} className="font-bold" style={{ color: "#E5424F" }}>{BUSINESS.email}</a>
+                Phone: <a href={BUSINESS.phoneHref} className="font-bold" style={{ color: "var(--red-text)" }}>{BUSINESS.phone}</a><br />
+                Email: <a href={BUSINESS.emailHref} className="font-bold" style={{ color: "var(--red-text)" }}>{BUSINESS.email}</a>
               </p>
               <p className="text-sm mt-8">
                 <Link to="/contact" className="font-bold uppercase tracking-widest" style={{ color: "#888888" }}>Contact Us →</Link>

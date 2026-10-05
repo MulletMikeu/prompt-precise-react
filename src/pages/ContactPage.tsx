@@ -24,7 +24,7 @@ export default function ContactPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Get in Touch</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>Get in Touch</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Contact Us for a Free Estimate</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               No automated phone trees. No long waits. When you call Godhans, you reach a real person — and we always call back the same day.
@@ -51,7 +51,7 @@ export default function ContactPage() {
                   <div>
                     <dt className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#888888" }}>Phone</dt>
                     <dd>
-                      <a href={BUSINESS.phoneHref} className="text-lg font-bold" style={{ color: "#E5424F" }}>{BUSINESS.phone}</a>
+                      <a href={BUSINESS.phoneHref} className="text-lg font-bold" style={{ color: "var(--red-text)" }}>{BUSINESS.phone}</a>
                       <p className="text-sm mt-0.5" style={{ color: "#888888" }}>Available 24/7 for emergencies</p>
                     </dd>
                   </div>
@@ -75,10 +75,10 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-xl font-bold text-white mb-6">Request a Free Estimate</h2>
                 <p className="text-base leading-relaxed mb-6" style={{ color: "#C8C8C2" }}>
-                  The fastest way to get a quote is to call us directly at <a href={BUSINESS.phoneHref} className="font-bold" style={{ color: "#E5424F" }}>{BUSINESS.phone}</a>. We can often schedule same-day or next-day estimates.
+                  The fastest way to get a quote is to call us directly at <a href={BUSINESS.phoneHref} className="font-bold" style={{ color: "var(--red-text)" }}>{BUSINESS.phone}</a>. We can often schedule same-day or next-day estimates.
                 </p>
                 <p className="text-base leading-relaxed mb-6" style={{ color: "#C8C8C2" }}>
-                  You can also reach us by email at <a href={BUSINESS.emailHref} className="font-bold" style={{ color: "#E5424F" }}>{BUSINESS.email}</a> and we'll respond within a few hours.
+                  You can also reach us by email at <a href={BUSINESS.emailHref} className="font-bold" style={{ color: "var(--red-text)" }}>{BUSINESS.email}</a> and we'll respond within a few hours.
                 </p>
                 <a href={BUSINESS.phoneHref} className="btn-primary inline-flex">Call Now — {BUSINESS.phone}</a>
                 <p className="text-sm mt-5">
@@ -107,13 +107,13 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="py-16" style={{ background: "#C41230" }}>
+        <section className="py-16 bg-brand-red">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">24/7 Emergency Tree Service</h2>
             <p className="mb-8 text-base" style={{ color: "rgba(255,255,255,0.85)" }}>
               Storm damage doesn't wait for business hours. Neither do we. Call any time.
             </p>
-            <a href={BUSINESS.phoneHref} className="font-bold uppercase tracking-wide px-8 py-4 text-center inline-block" style={{ background: "white", color: "#C41230" }}>
+            <a href={BUSINESS.phoneHref} className="font-bold uppercase tracking-wide px-8 py-4 text-center inline-block bg-white text-brand-red">
               Call {BUSINESS.phone}
             </a>
           </div>

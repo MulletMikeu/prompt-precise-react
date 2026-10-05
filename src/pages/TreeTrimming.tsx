@@ -91,7 +91,7 @@ export default function TreeTrimming() {
                     />
                   </picture>
                 </div>
-                <figcaption className="mt-3 font-display font-bold uppercase tracking-widest text-sm" style={{ color: "#E5424F", letterSpacing: "0.1em" }}>
+                <figcaption className="mt-3 font-display font-bold uppercase tracking-widest text-sm" style={{ color: "var(--red-text)", letterSpacing: "0.1em" }}>
                   {shot.label}
                 </figcaption>
               </figure>

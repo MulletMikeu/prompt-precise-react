@@ -133,7 +133,7 @@ export default function LocationPage({ city }: LocationPageProps) {
                 ))}
               </ol>
             </nav>
-            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>Service Area</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>Service Area</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Tree Service in {city}, NC</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               {content.lead}
@@ -149,7 +149,7 @@ export default function LocationPage({ city }: LocationPageProps) {
                 <article key={service.href} className="p-8 flex flex-col gap-3" style={{ background: "#0A0A0A" }}>
                   <h3 className="text-lg font-bold text-white">{service.name}</h3>
                   <p className="text-base leading-relaxed flex-1" style={{ color: "#C8C8C2" }}>{service.desc}</p>
-                  <Link to={service.href} aria-label={`Learn more about ${service.name}`} className="text-sm font-bold uppercase tracking-widest self-start" style={{ color: "#E5424F" }}>
+                  <Link to={service.href} aria-label={`Learn more about ${service.name}`} className="text-sm font-bold uppercase tracking-widest self-start" style={{ color: "var(--red-text)" }}>
                     Learn More <span aria-hidden="true">→</span>
                   </Link>
                 </article>
@@ -175,14 +175,14 @@ export default function LocationPage({ city }: LocationPageProps) {
 
         <WhyChooseGodhans />
 
-        <section className="py-16" style={{ background: "#C41230" }}>
+        <section className="py-16 bg-brand-red">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Serving {city}, NC — Free Estimates</h2>
             <p className="mb-8 text-base" style={{ color: "rgba(255,255,255,0.85)" }}>
               Veteran-owned, fully insured, and available 24/7 for emergencies throughout Onslow County and beyond.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center" style={{ background: "white", color: "#C41230" }}>
+              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center bg-white text-brand-red">
                 Request Free Estimate
               </Link>
               <a href={BUSINESS.phoneHref} className="font-bold uppercase tracking-wide px-8 py-4 text-center border-2 border-white text-white">

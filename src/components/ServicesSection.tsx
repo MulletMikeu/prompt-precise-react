@@ -48,7 +48,7 @@ export default function ServicesSection() {
             <h2 id="services-heading" className="text-display-xl text-white">
               Tree Services in
               <br />
-              <span style={{ color: "#E5424F" }}>Jacksonville & Onslow County</span>
+              <span style={{ color: "var(--red-text)" }}>Jacksonville & Onslow County</span>
             </h2>
           </div>
           <p className="font-body text-base max-w-sm md:text-right" style={{ color: "#888888" }}>
@@ -86,7 +86,7 @@ export default function ServicesSection() {
               {/* Divider */}
               <div
                 className="w-8 h-0.5 mb-4 transition-all duration-300 group-hover:w-16"
-                style={{ background: "#C41230" }}
+                style={{ background: "var(--red)" }}
                 aria-hidden="true"
               />
 
@@ -98,7 +98,7 @@ export default function ServicesSection() {
               {/* Arrow */}
               <span
                 className="inline-flex items-center gap-2 font-display font-bold text-sm uppercase tracking-widest transition-all duration-200 group-hover:gap-4"
-                style={{ color: "#E5424F", letterSpacing: "0.1em" }}
+                style={{ color: "var(--red-text)", letterSpacing: "0.1em" }}
               >
                 {/* Keyword anchor rather than "Learn More". The whole card is a
                     <Link>, so a link inside the description would be nested
@@ -125,11 +125,11 @@ export default function ServicesSection() {
             duplicated elsewhere on the homepage. */}
         <p className="font-body text-base leading-relaxed mt-8" style={{ color: "#888888" }}>
           Commercial &amp; Residential: we handle{' '}
-          <Link to="/commercial-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "#E5424F" }}>
+          <Link to="/commercial-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
             commercial tree service in Jacksonville
           </Link>
           {' '}for HOAs, apartment complexes, churches, and storefronts — and{' '}
-          <Link to="/residential-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "#E5424F" }}>
+          <Link to="/residential-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
             residential tree service
           </Link>
           {' '}for homeowners across Onslow County.

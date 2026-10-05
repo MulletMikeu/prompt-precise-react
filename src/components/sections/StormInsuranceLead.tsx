@@ -18,7 +18,7 @@ import { BUSINESS, STORM_LEAD } from '@/data/siteData';
 export default function StormInsuranceLead() {
   return (
     <section
-      className="bg-red-700 py-8 sm:py-10"
+      className="bg-brand-red py-8 sm:py-10"
       aria-labelledby="storm-lead-heading"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
@@ -30,7 +30,7 @@ export default function StormInsuranceLead() {
         </p>
         <a
           href={BUSINESS.phoneHref}
-          className="mt-6 inline-flex items-center gap-2 bg-white text-red-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
+          className="mt-6 inline-flex items-center gap-2 bg-white text-brand-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
         >
           <span aria-hidden="true">📞</span>
           {STORM_LEAD.ctaLabel}

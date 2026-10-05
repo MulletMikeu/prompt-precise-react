@@ -165,11 +165,37 @@
 
 /* ─── Brand Design System ─────────────────────────────── */
 :root {
+  /* ── The three reds. Pick by JOB, not by eye. ──────────────────────────────
+   *
+   *   --red       #C41230  fills: CTA bands, buttons, logo mark, rules, borders.
+   *                        White on it is 6.04:1 — passes AA for normal text.
+   *   --red-dark  #9B0E25  the hover/active state of anything filled with --red.
+   *                        White on it is 8.46:1, so a hover can never be the
+   *                        state that fails.
+   *   --red-text  #E5424F  red TEXT and links on dark surfaces. --red itself is
+   *                        only 3.2:1 on near-black and FAILS AA for normal
+   *                        text, which is the entire reason this third red
+   *                        exists; #E5424F is 4.9:1. Never use --red for text
+   *                        on dark, and never use --red-text as a fill.
+   *
+   * These are consumed two ways, and both resolve to the values here:
+   *
+   *   - Tailwind classes — bg-brand-red, hover:bg-brand-red-dark,
+   *     text-brand-red — from the `brand` palette in tailwind.config.ts.
+   *     Preferred. Use these whenever the element's colour is static.
+   *   - var(--red) / var(--red-text) inside an inline `style`, for the cases a
+   *     class cannot express: a colour mixed with computed properties, a
+   *     conditional (`city.primary ? … : …`), or an onMouseEnter handler
+   *     assigning to element.style.
+   *
+   * What must NOT happen is a third way: a hex literal typed into a component.
+   * There were 65 of those across 18 files — every one a private copy that no
+   * token change could reach, and the reason the CTA bands drifted into two
+   * different reds for months. If you are about to write #C41230 or #E5424F in
+   * a .tsx file, use one of the two mechanisms above instead.
+   */
   --red: #C41230;
   --red-dark: #9B0E25;
-  /* Lightened red for red TEXT on dark surfaces — #C41230 only reaches ~3.2:1
-     on near-black (fails WCAG AA for normal text); this hits ~4.9:1. Use --red
-     for fills/buttons (white-on-red), --red-text for red text/links on dark. */
   --red-text: #E5424F;
   --black: #0A0A0A;
   --gray-dark: #111111;

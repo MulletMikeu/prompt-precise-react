@@ -5,7 +5,7 @@ export default function CTABanner() {
   return (
     <section
       className="section-pad-sm relative overflow-hidden"
-      style={{ background: "#C41230" }}
+      style={{ background: "var(--red)" }}
       aria-label="Call to action"
     >
       {/* Subtle texture */}
@@ -51,7 +51,7 @@ export default function CTABanner() {
               className="font-display font-bold uppercase text-base tracking-wider px-8 py-4 text-center transition-all duration-200"
               style={{
                 background: "white",
-                color: "#C41230",
+                color: "var(--red)",
                 letterSpacing: "0.06em",
                 border: "2px solid white",
               }}

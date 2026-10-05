@@ -91,7 +91,7 @@ export default function ServicesPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#E5424F", letterSpacing: "0.12em" }}>What We Do</p>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>What We Do</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">All Tree Services We Offer</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>
               Full-service tree care for residential and commercial properties across Jacksonville, NC and Onslow County. From routine trimming to complex emergency removals — we handle it all.
@@ -110,7 +110,7 @@ export default function ServicesPage() {
                     to={service.href}
                     aria-label={`Learn more about ${service.name}`}
                     className="text-sm font-bold uppercase tracking-widest self-start"
-                    style={{ color: "#E5424F" }}
+                    style={{ color: "var(--red-text)" }}
                   >
                     Learn More <span aria-hidden="true">→</span>
                   </Link>
@@ -147,14 +147,14 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="py-16" style={{ background: "#C41230" }}>
+        <section className="py-16 bg-brand-red">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Get a Free Estimate on Any Service</h2>
             <p className="mb-8 text-base" style={{ color: "rgba(255,255,255,0.85)" }}>
               Veteran-owned, fully insured, and available 24/7 for emergencies in Jacksonville, NC.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center transition-colors" style={{ background: "white", color: "#C41230" }}>Request Estimate</Link>
+              <Link to="/contact" className="font-bold uppercase tracking-wide px-8 py-4 text-center transition-colors bg-white text-brand-red">Request Estimate</Link>
               <a href={BUSINESS.phoneHref} className="font-bold uppercase tracking-wide px-8 py-4 text-center border-2 border-white text-white">{BUSINESS.phone}</a>
             </div>
           </div>
