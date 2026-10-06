@@ -4,38 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Per-route page title, meta description and canonical link are injected
-         at build time by each page via vite-react-ssg Head. Do NOT add a static
-         title or description tag here, or every page would share the same one.
-
-         `robots` is deliberately NOT here. It used to be, which meant /404
-         shipped a static "index, follow" alongside NotFound's Helmet
-         "noindex, follow" — two contradictory tags that only resolved correctly
-         because Google takes the most restrictive. The default now comes from a
-         Helmet in RootLayout, so a page that needs different rules REPLACES it
-         rather than arguing with it. See src/App.tsx.
-
-         The og:*/twitter:* tags below ARE static on purpose: every page used the
-         same values, and each page's Helmet was re-emitting all six, so the
-         built HTML carried them twice. Page-specific tags (og:title,
-         og:description, og:url, twitter:title, twitter:description) stay in the
-         page Helmets. -->
-    <!-- The author is a person, not the company. Michael Godbersen writes the
-         site's content; the company is the publisher, which is already asserted
-         by WebSite.publisher -> #business in <BusinessSchema/>. Keep this in
-         step with AUTHOR.name in src/data/siteData.ts — it is the one place
-         the name is hardcoded, because a static tag cannot import. -->
     <meta name="author" content="Michael Godbersen" />
 
     <meta name="geo.region" content="US-NC" />
     <meta name="geo.placename" content="Jacksonville, North Carolina" />
-    <!--
-      geo.position and ICBM are NOT here. They carried a hardcoded copy of the
-      business coordinates, which silently drifted from BUSINESS.coordinates in
-      siteData and left the site advertising a pin ~5 miles from the shop.
-      They are emitted by <BusinessSchema/> now, from the same constant that
-      feeds the LocalBusiness geo node. Do not re-add them here.
-    -->
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Godhans Tree Company" />
@@ -49,25 +21,12 @@
     <meta name="twitter:site" content="@godhanstree" />
     <meta name="twitter:image" content="https://godhans.com/og-image-v2.jpg" />
 
-    <!-- ?v= must be bumped whenever an icon's bytes change: these are served
-         immutable for a year, so without it returning visitors keep the old one. -->
     <link rel="icon" href="/favicon.ico?v=4" sizes="any" />
     <link rel="icon" type="image/png" href="/favicon-32x32.png?v=4" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-16x16.png?v=4" sizes="16x16" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
     <link rel="manifest" href="/site.webmanifest?v=4" />
 
-
-    <!-- KEEP COMMENTS IN THIS FILE SHORT. Unlike the ones in src/index.css,
-         which the CSS minifier strips, every byte of comment here is copied
-         into all 38 prerendered pages and shipped on the critical path.
-
-         Fonts: see src/index.css. crossorigin is required even same-origin.
-         ONE face, and only the one above the fold on every route: Condensed 700,
-         the <h1> everywhere. 800 (the homepage hero) is preloaded by HomePage's
-         own Helmet instead — it is used on 2 routes, so here it cost 36 pages a
-         high-priority fetch of a file they never render. Rationale in full:
-         src/pages/HomePage.tsx and scripts/subset-fonts.mjs. -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-condensed-700.woff2" crossorigin />
 
     <style>
