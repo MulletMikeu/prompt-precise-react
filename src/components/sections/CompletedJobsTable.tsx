@@ -32,7 +32,7 @@ export default function CompletedJobsTable() {
         </h2>
         <p className="text-gray-300 text-lg leading-relaxed mb-8">
           Real jobs, redacted — neighborhood or road at most, month and year
-          only, no customer details. The basis column says whether the figure was
+          only, no customer details. Under each figure is how it was arrived at:
           invoiced, quoted, or billed to an insurer.
         </p>
 
