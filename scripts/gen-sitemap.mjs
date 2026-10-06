@@ -110,10 +110,31 @@ if (!haveUsableHistory()) {
 
 const app = fs.readFileSync(APP, 'utf8');
 
-/** `{ index: true, element: <HomePage /> }` + its `import HomePage from "…"`. */
+/**
+ * The index route, in either shape it has had:
+ *
+ *   { index: true, lazy: page(() => import("./pages/HomePage")) }   ← current
+ *   { index: true, element: <HomePage /> } + `import HomePage from "…"`
+ *
+ * The homepage used to be the one eagerly-imported route, which is why the
+ * second form existed and why this function could not just reuse the `lazy:`
+ * regex below. It is lazy like every other route now, but both forms are still
+ * accepted: this script dying is how a route silently vanishes from the
+ * sitemap, and that should not hinge on which of two equivalent spellings the
+ * homepage happens to use this month.
+ */
 function indexRoute() {
+  const lazy = app.match(
+    /\{\s*index:\s*true,\s*lazy:\s*page\(\(\)\s*=>\s*import\(["']([^"']+)["']\)\)\s*\}/,
+  );
+  if (lazy) return { url: '/', spec: lazy[1] };
   const m = app.match(/\{\s*index:\s*true,\s*element:\s*<(\w+)\s*\/>\s*\}/);
-  if (!m) die('could not find the index route ({ index: true, element: <X /> }) in src/App.tsx');
+  if (!m) {
+    die(
+      'could not find the index route in src/App.tsx — expected either ' +
+      '{ index: true, lazy: page(() => import("…")) } or { index: true, element: <X /> }',
+    );
+  }
   const imp = app.match(new RegExp(`import ${m[1]} from ["']([^"']+)["']`));
   if (!imp) die(`index route renders <${m[1]}/> but no import for it was found`);
   return { url: '/', spec: imp[1] };

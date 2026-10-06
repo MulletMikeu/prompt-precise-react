@@ -58,16 +58,16 @@
     <link rel="manifest" href="/site.webmanifest?v=4" />
 
 
-    <!-- Self-hosted fonts: see the @font-face block in src/index.css for why.
-         crossorigin is required even same-origin or it double-fetches.
+    <!-- KEEP COMMENTS IN THIS FILE SHORT. Unlike the ones in src/index.css,
+         which the CSS minifier strips, every byte of comment here is copied
+         into all 38 prerendered pages and shipped on the critical path.
 
-         TWO faces, not one. 800 is the homepage hero (.text-display-2xl). 700 is
-         the <h1> on every ServicePage-backed page — `font-bold` on a heading,
-         which resolves to a DIFFERENT file. Preloading only 800 left that H1
-         racing the network on 30+ pages, and it lost often enough to show up as
-         CLS 0.099 on /storm-damage-trees-guide: the heading wrapped to four
-         lines in the fallback and three once Barlow Condensed arrived. -->
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-condensed-800.woff2" crossorigin />
+         Fonts: see src/index.css. crossorigin is required even same-origin.
+         ONE face, and only the one above the fold on every route: Condensed 700,
+         the <h1> everywhere. 800 (the homepage hero) is preloaded by HomePage's
+         own Helmet instead — it is used on 2 routes, so here it cost 36 pages a
+         high-priority fetch of a file they never render. Rationale in full:
+         src/pages/HomePage.tsx and scripts/subset-fonts.mjs. -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-condensed-700.woff2" crossorigin />
 
     <style>
