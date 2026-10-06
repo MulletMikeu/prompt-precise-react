@@ -148,18 +148,43 @@ production deployment is live:
 
 ```sh
 npm run indexnow -- --dry-run      # show what would be sent, send nothing
-npm run indexnow                   # URLs with lastmod in the last 7 days
-npm run indexnow -- --since=2026-09-01
+npm run indexnow                   # URLs whose RENDERED CONTENT changed
+npm run indexnow -- --since=2026-09-01       # old lastmod-window behaviour
 npm run indexnow -- --all          # every URL in the sitemap
 npm run indexnow -- --urls=/about,/reviews   # exactly these, sitemap-validated
 ```
 
-Use `--urls` after a batch that edits shared code. `gen-sitemap` takes each
-route's lastmod from the newest commit among its local imports, so a change to
-`siteData.ts`, `BusinessSchema.tsx` or `ServicePage.tsx` restamps **all 38
-URLs** with the same date and the default 7-day window then submits the whole
-site. Correct about the dates, useless as a signal — IndexNow is a per-page
-"re-crawl this" ping. Name the pages whose content actually changed instead.
+**A common-mode ship submits nothing, by default.** Selection is by rendered
+content, not by date: the script fingerprints each page's prerendered HTML in
+`dist/` with everything that is not content normalised away — asset filenames
+and hashes, the SSG hash, the loader-data manifest name, resource hints
+(`preload`/`modulepreload`/stylesheet/entry script), react-router's empty
+hydration payload, every HTML comment, and all whitespace. Change the font set,
+split a bundle, strip a comment, rotate every asset hash: the fingerprints do
+not move, zero URLs are selected, and nothing is sent. **That is the designed
+outcome, not a failure** — do not reach for `--all` when you see it.
+
+This replaced a 7-day `lastmod` window that was wrong in one specific, recurring
+way. `gen-sitemap` takes each route's lastmod from the newest commit among its
+local imports, so touching `siteData.ts`, `BusinessSchema.tsx`, `ServicePage.tsx`
+or `index.html` restamps **all 38 URLs** with the same date and the window then
+submitted the whole site. Correct about the dates, useless as a signal. Measured
+against three real ships: a font/bundle ship and a comment strip now select **0**
+URLs each; the ship that added one photo to one page selects exactly **1**.
+
+Because it compares against the last submission, the baseline is committed:
+`scripts/indexnow-content.json`. A successful run rewrites it — **commit the
+result**, or a fresh clone has no baseline and the next run submits everything.
+It reads `dist/`, so build first; a stale `dist/` is the one thing that makes
+this lie, and the script fails loudly if `dist/` is missing or incomplete.
+
+**The live A/B control is excluded from every selection mode**, including
+`--all` and an explicit `--urls` that names it. Pinging one arm of a running
+test and not the other is a change to the experiment. `--include-ab-control`
+overrides it; delete `AB_CONTROL` from the script when the test ends.
+
+`--urls` remains the escape hatch for naming pages by hand, and `--since` keeps
+the old date behaviour for when you genuinely want it.
 
 It is deliberately not a `postbuild` hook. A Vercel build finishes *before* its
 deployment is promoted, so submitting from the build tells Bing to re-crawl URLs
