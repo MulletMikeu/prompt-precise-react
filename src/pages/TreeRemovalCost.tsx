@@ -4,6 +4,35 @@ import PriceReconciliation from '@/components/sections/PriceReconciliation';
 import RemovalPriceTable from '@/components/sections/RemovalPriceTable';
 import { PRICING } from '../data/siteData';
 
+/* The tier-2 pine, photographed. Variants are built by `npm run hero-images`
+   from the master in src/assets; imported rather than referenced by path so
+   Vite fingerprints them, which is what makes vercel.json's immutable
+   year-long image cache safe to apply to them. */
+import pine360Avif from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-360.avif';
+import pine360Webp from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-360.webp';
+import pine360Jpg from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-360.jpg';
+import pine540Avif from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-540.avif';
+import pine540Webp from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-540.webp';
+import pine540Jpg from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-540.jpg';
+import pine720Avif from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-720.avif';
+import pine720Webp from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-720.webp';
+import pine720Jpg from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-720.jpg';
+
+const PINE_AVIF = `${pine360Avif} 360w, ${pine540Avif} 540w, ${pine720Avif} 720w`;
+const PINE_WEBP = `${pine360Webp} 360w, ${pine540Webp} 540w, ${pine720Webp} 720w`;
+const PINE_JPG = `${pine360Jpg} 360w, ${pine540Jpg} 540w, ${pine720Jpg} 720w`;
+
+/**
+ * What the box this renders in actually measures, which is what `sizes` has to
+ * describe or the browser picks the wrong candidate:
+ *   >= md  the figure floats at w-80, so a flat 320px.
+ *   < md   it spans the prose column — 100vw minus the container's padding,
+ *          which is px-4 below sm and px-6 from sm up (max-w-3xl never binds at
+ *          these widths). ~358px on a 390px phone, so 720w covers DPR 2.
+ * 720 is deliberately the top step; see FIGURES in scripts/gen-hero-images.mjs.
+ */
+const PINE_SIZES = '(min-width: 768px) 320px, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)';
+
 /**
  * The date in the visible byline. This is the date the page actually shipped to
  * production, taken from the merge — NOT today's date computed at build time
@@ -46,6 +75,65 @@ const WHY = PRICING.largePine.whyDouble;
  * for and a heading that makes them read a sentence to find it has wasted the
  * only glance they were going to give it.
  */
+/**
+ * The tier-2 pine, in the pine-ladder section, beside the tier-2 paragraph.
+ *
+ * This is the one tier a reader cannot picture from the prose. The whole point
+ * of the section above it is that height alone does not set the price and
+ * diameter does — and "about 90 feet tall, about 36–38 inches in diameter" is
+ * precisely the sentence nobody can convert into a mental image. The photo is
+ * that tree.
+ *
+ * Three things about it are load-bearing and should not be loosened:
+ *
+ *  - It must never become the LCP element. It sits in section 2 of the page,
+ *    below the price table and the first prose section, so it is well below the
+ *    fold on any viewport; `loading="lazy"` means it is not even requested
+ *    until it approaches the viewport. Verified against Lighthouse's
+ *    largest-contentful-paint-element audit after shipping, not assumed.
+ *  - width/height are the real intrinsic pixels of the 720 variant (720x960,
+ *    an exact 3:4 like the 1200x1600 master), so the browser reserves the right
+ *    box before any bytes arrive. Get these wrong and the page reflows when the
+ *    image lands, which is CLS on a page that currently measures 0.0001.
+ *  - The caption's two price-bearing phrases interpolate from PRICING rather
+ *    than being typed. This page's first rule is that it contains no hardcoded
+ *    dollar amount, and a caption is not an exception — if the owner moves the
+ *    tier-2 price, this moves with it.
+ *
+ * The float is `md:` and up only. On a phone it stacks above the prose at full
+ * column width, which is the right reading order anyway: see the tree, then
+ * read what it costs.
+ */
+function PineLadderFigure() {
+  return (
+    <figure className="mb-6 md:float-right md:mb-4 md:ml-8 md:w-80">
+      <picture>
+        <source type="image/avif" srcSet={PINE_AVIF} sizes={PINE_SIZES} />
+        <source type="image/webp" srcSet={PINE_WEBP} sizes={PINE_SIZES} />
+        <img
+          src={pine720Jpg}
+          srcSet={PINE_JPG}
+          sizes={PINE_SIZES}
+          alt="Large loblolly pine, about 90 feet tall and 38 inches in diameter, behind a home in Jacksonville, NC."
+          width={720}
+          height={960}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-auto rounded-lg border-2 border-gray-800"
+        />
+      </picture>
+      {/* text-base against the section's text-lg, and a lighter grey: a caption
+          that matches the body copy competes with it instead of serving it.
+          `whitespace-normal` because the prose block this renders inside is
+          `whitespace-pre-line`, which would otherwise honour the newlines in
+          this JSX and break the caption at odd places. */}
+      <figcaption className="mt-3 text-base leading-relaxed text-gray-400 whitespace-normal">
+        {`About 90 feet tall and roughly 38 inches across at chest height — ${PINE.tier2.site}. A removal like this runs about ${PINE.tier2.price} with stump grinding included.`}
+      </figcaption>
+    </figure>
+  );
+}
+
 export default function TreeRemovalCost() {
   return (
     <ServicePage
@@ -56,6 +144,11 @@ export default function TreeRemovalCost() {
       quickAnswer={PRICING.removal.summary}
       authorUpdated={SHIP_DATE}
       priceBlock={<RemovalPriceTable />}
+      /* Positional key, same indexing as sectionLinks below: 1 is the pine
+         ladder. The figure renders inside that section's prose block so it
+         floats beside the tier paragraphs rather than landing under the
+         section. */
+      sectionFigures={{ 1: <PineLadderFigure /> }}
       /* Positional keys — recount these against the `sections` array below
          after inserting or removing any section. */
       sectionLinks={{
