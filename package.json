@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite-react-ssg dev",
+    "fonts": "node scripts/subset-fonts.mjs",
     "images": "node scripts/gen-images.mjs",
     "sitemap": "node scripts/gen-sitemap.mjs",
     "prebuild": "node scripts/gen-images.mjs && node scripts/gen-hero-images.mjs && node scripts/gen-sitemap.mjs",

@@ -6,6 +6,59 @@ import path from "path";
 // referenced here.
 import type {} from "vite-react-ssg";
 
+/**
+ * Font faces to preload on specific routes only.
+ *
+ * index.html is copied into all 38 prerendered pages, so a `<link rel=preload>`
+ * there is a site-wide, highest-priority fetch. That is right for Barlow
+ * Condensed 700 (the <h1> on every route) and wrong for everything else: 800
+ * used to sit beside it and is used on just two routes, so 36 pages were
+ * downloading 22 KB of a face they never render, against the stylesheet and
+ * against the face they did need.
+ *
+ * Why here rather than in the page's own Helmet, which is the obvious place:
+ * react-helmet-async dedupes `<link rel="canonical">` but not
+ * `<link rel="preload">`, and vite-react-ssg renders each page twice against a
+ * single provider — so a preload declared in a page component lands in the
+ * emitted HTML TWICE. Measured, not theorised. Doing it in the same
+ * onPageRendered hook that already rewrites <head> gives exactly one tag, in a
+ * known position, with no runtime dependency at all.
+ *
+ * Keys are the route paths vite-react-ssg passes to onPageRendered; both "/"
+ * and "" are accepted for the index so this does not hinge on that detail.
+ * A face listed for a route it does not need is a straight regression, so add
+ * to this map only with an above-the-fold element to point at.
+ */
+const ROUTE_FONT_PRELOADS: Record<string, string[]> = {
+  // The hero .text-display-2xl is the LCP element on the homepage and Barlow
+  // Condensed 800 is the only face that renders it.
+  "/": ["/fonts/barlow-condensed-800.woff2"],
+};
+
+/**
+ * Insert this route's extra font preloads immediately BEFORE the shared
+ * Condensed 700 preload in <head>, so the face that carries this page's LCP is
+ * discovered first. Falls back to just after <head> if that tag ever moves, and
+ * no-ops when the route has no entry — it must never be the reason a build
+ * fails.
+ */
+function addRouteFontPreloads(route: string, html: string): string {
+  const hrefs = ROUTE_FONT_PRELOADS[route] ?? ROUTE_FONT_PRELOADS[route === "" ? "/" : route];
+  if (!hrefs?.length) return html;
+
+  const tags = hrefs
+    // Belt and braces: if index.html ever preloads one of these itself, do not
+    // emit a second copy of it here.
+    .filter((href) => !html.includes(`href="${href}"`))
+    .map((href) => `<link rel="preload" as="font" type="font/woff2" href="${href}" crossorigin>`)
+    .join("");
+  if (!tags) return html;
+
+  const anchor = /<link\s+rel="preload"\s+as="font"[^>]*>/i;
+  if (anchor.test(html)) return html.replace(anchor, (tag) => tags + tag);
+  return html.replace(/<head[^>]*>/i, (head) => head + tags);
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ isSsrBuild }) => ({
   server: {
@@ -40,15 +93,20 @@ export default defineConfig(({ isSsrBuild }) => ({
      * is not configurable, and reordering index.html does not help because
      * helmet's output always lands first.
      */
-    onPageRendered: (_route, html) => {
+    onPageRendered: (route, html) => {
+      let out = html;
+
       const HOIST = /\s*<meta\s+charset=["'][^"']*["']\s*\/?>|\s*<meta\s+name=["']viewport["'][^>]*>/gi;
-      const found = html.match(HOIST);
-      if (!found) return html;
-      // match() returns document order, and charset precedes viewport in
-      // index.html — so charset stays first, which is the part that matters.
-      return html
-        .replace(HOIST, "")
-        .replace(/<head[^>]*>/i, (head) => head + found.map((t) => t.trim()).join(""));
+      const found = out.match(HOIST);
+      if (found) {
+        // match() returns document order, and charset precedes viewport in
+        // index.html — so charset stays first, which is the part that matters.
+        out = out
+          .replace(HOIST, "")
+          .replace(/<head[^>]*>/i, (head) => head + found.map((t) => t.trim()).join(""));
+      }
+
+      return addRouteFontPreloads(route, out);
     },
   },
   resolve: {

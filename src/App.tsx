@@ -6,11 +6,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BusinessSchema from "./components/BusinessSchema";
 import { initAnalytics, trackPageView } from "./lib/analytics";
-// The landing route is imported eagerly: it is the LCP-critical page and is
-// already server-rendered for "/", so lazy-loading it would throw away the
-// prerendered paint and force a hydration re-render (measurably worse LCP).
-// Every other route stays lazy so its code never ships on the homepage.
-import HomePage from "./pages/HomePage";
+// NOTE: HomePage is lazy like every other route — see the note on the "/" index
+// route below for why the eager import it used to have was a net loss.
 
 // Lazy route helper: dynamically import a page's default export and expose it
 // as a react-router `Component`. This code-splits every route into its own
@@ -140,7 +137,21 @@ export const routes: RouteRecord[] = [
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <HomePage /> },
+      // The homepage was the one eager route, on the reasoning that it is
+      // LCP-critical and lazy-loading it would cost the prerendered paint. It
+      // does not: vite-react-ssg resolves a route's `lazy` before it renders,
+      // so "/" is prerendered byte-for-byte the same either way, and the paint
+      // comes from that HTML plus the CSS — not from the chunk. Hydration is
+      // what waits for the chunk, and hydration is not LCP.
+      //
+      // What the eager import DID do was put HomePage and all six of its
+      // sections (HeroCompare, ServicesSection, TrustSection, ReviewsSection,
+      // ServiceAreaSection, CTABanner, plus homepageCopy) inside the entry
+      // chunk that EVERY page loads — about 25 KB raw of code that 37 of the 38
+      // routes parse and never render, on a site whose remaining score gap is
+      // all FCP and LCP and whose fonts are competing for the same mobile
+      // bandwidth. Measured both ways before changing it; see the commit.
+      { index: true, lazy: page(() => import("./pages/HomePage")) },
       { path: "services", lazy: page(() => import("./pages/ServicesPage")) },
       { path: "about", lazy: page(() => import("./pages/MeetTheOwners")) },
       { path: "contact", lazy: page(() => import("./pages/ContactPage")) },
