@@ -44,13 +44,13 @@ export default function CompletedJobsTable() {
         >
           <table className="w-full border-collapse text-left">
             <caption className="sr-only">
-              Completed tree removal jobs, listing the month completed, area,
-              job type, tree size, access, price, the basis for that price, and
-              what set it.
+              Completed tree removal jobs, listing the job and area, the tree
+              size and access, the price with the basis it was arrived at, and
+              what set that price.
             </caption>
             <thead>
               <tr className="bg-gray-900">
-                {['Job', 'Size & access', 'Price', 'Basis', 'What set it'].map((head) => (
+                {['Job', 'Size & access', 'Price', 'What set it'].map((head) => (
                   <th
                     key={head}
                     scope="col"
@@ -80,11 +80,15 @@ export default function CompletedJobsTable() {
                     {job.size}
                     <span className="block text-gray-400 text-sm mt-1">{job.access}</span>
                   </td>
-                  <td className="px-2 sm:px-3 py-4 text-sm sm:text-base font-bold text-white align-top whitespace-nowrap">
-                    {job.price}
-                  </td>
-                  <td className="px-2 sm:px-3 py-4 text-sm sm:text-base text-gray-300 align-top">
-                    {job.basis}
+                  {/* `basis` rides under the figure rather than taking a fifth
+                      column: at five columns this table could not fit a phone
+                      without scrolling, and the basis is only ever read
+                      together with the number it qualifies. */}
+                  <td className="px-2 sm:px-3 py-4 text-sm sm:text-base font-bold text-white align-top">
+                    <span className="sm:whitespace-nowrap">{job.price}</span>
+                    <span className="block font-normal text-gray-400 text-sm mt-1">
+                      {job.basis}
+                    </span>
                   </td>
                   <td className="px-2 sm:px-3 py-4 text-sm sm:text-base text-gray-300 align-top leading-relaxed">
                     {job.detail}

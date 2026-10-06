@@ -138,25 +138,66 @@ export const BUSINESS = {
 const BESIDE_STRUCTURE = "$6,000–$8,000";
 
 /**
- * The owner's "same tree, two prices" example — ONE specific tree, never an
- * average, and never to be presented as one.
+ * THE PINE LADDER — the owner's ruling, and the single source for every pine
+ * figure on the site.
  *
- * Hoisted so that `stories.sameTree` can interpolate it instead of spelling the
- * figures out in prose, and so the cost page can lead a heading with the same
- * numbers without hardcoding them. One binding, one set of figures.
+ * This replaced an unresolved conflict: `largePine.openYard` ($3,000–$4,000)
+ * used to be described as "80 ft+" with no diameter, while a separate same-tree
+ * example put an 80–90 ft pine of 3+ ft diameter at ~$6,000 in an open yard.
+ * Those two read as a contradiction because height alone was doing the work.
+ * The owner's resolution is that **diameter at breast height is the variable**,
+ * and the ladder below is how the three tiers actually price. The old
+ * "3+ ft / 80–90 ft open yard" wording is gone; do not reintroduce it.
  *
- * ⚠️ UNRESOLVED, PENDING OWNER RULING: `openYard` here is $6,000 for an 80–90 ft
- * pine of 3+ ft diameter in an open yard, while `largePine.openYard` is
- * $3,000–$4,000 for an 80 ft+ pine in an open yard. Both are the owner's. The
- * only variable that separates them is DIAMETER — this example specifies 3+ ft,
- * the largePine band specifies no diameter at all. Do NOT average them, and do
- * NOT edit one to match the other; the owner decides whether diameter is the
- * official distinction.
+ * Each tier carries its own size, site and price so a heading, a table row and
+ * an FAQ answer cannot drift from each other — they all read from here.
+ *
+ * `tier2.price` is ~$6,000 WITH STUMP GRINDING INCLUDED. That is a bundled
+ * total, not a stump figure: it must never be split into a stump-only number,
+ * least of all on /tree-removal-cost-north-carolina (see the note on `stump`).
  */
-const SAME_TREE_EXAMPLE = {
-  size: "80–90 foot pine, three feet or more in diameter",
-  openYard: "$6,000",
-  withObstacles: "$10,000+",
+const PINE_LADDER = {
+  tier1: {
+    size: "70–80 feet tall, about 28–32 inches in diameter at breast height",
+    shortSize: "70–80 ft, 28–32 in",
+    site: "open yard",
+    price: "$3,000–$4,000",
+    note: "We do these quite frequently.",
+  },
+  tier2: {
+    size: "about 90 feet tall, about 36–38 inches in diameter",
+    shortSize: "about 90 ft, 36–38 in",
+    site: "behind the house with some room to work",
+    price: "$6,000",
+    note: "Stump grinding included. Closer in than this, the same size sits in the beside-the-structure band.",
+  },
+  tier3: {
+    size: "90–100 feet tall",
+    shortSize: "90–100 ft",
+    site: "leaning over the house with obstacles — a shed, a fence, a power line",
+    price: "$10,000+",
+    note: "Not common, but they happen.",
+  },
+} as const;
+
+/**
+ * Why tier 2 costs almost double tier 1 — the owner's reasoning, in figures.
+ *
+ * These are equipment and workload facts rather than service prices, but they
+ * live here for the same reason everything else does: the cost page quotes them,
+ * and a number quoted in prose that is not in this file is a number that will
+ * eventually drift. `sawBig`/`sawSmall` are what the saws cost us, NOT anything
+ * a customer is charged — never render them as a line item.
+ */
+const PINE_WHY_DOUBLE = {
+  sawThreshold: "about 36 inches",
+  sawBig: "$2,500–$3,000",
+  sawSmall: "about $1,000",
+  tier1Logs: "roughly 6–7 logs at 8–10 feet",
+  tier1Loads: "often one load",
+  tier2Logs: "8–10 big pieces",
+  bucketReach: "60–70 feet",
+  ourLift: "90 feet",
 } as const;
 
 /**
@@ -246,13 +287,14 @@ export const PRICING = {
     large: "$4,000+",
   },
   /**
-   * Large pine removal, where position rather than size sets the price.
+   * Large pine removal — the tree we remove most in Onslow County.
    *
-   * These are the owner's figures for an 80ft+ loblolly, and they are the
-   * source of truth for pine. Two overlaps to be aware of before editing:
+   * Every figure here reads from PINE_LADDER above, which is the owner's ruling
+   * on how pine prices by DIAMETER rather than height alone. Two overlaps to be
+   * aware of before editing:
    *
    *  - `removal.large` ($3,500–$6,000) is the general "large or hazardous
-   *    tree" band. `openYard` below starts $500 under it, because a big pine
+   *    tree" band. `openYard` starts $500 under it, because a 28–32 inch pine
    *    with nothing around it is the easy end of "large" — not a contradiction,
    *    but do not average the two.
    *  - `leaningOverHouse` is the same job as `nearHouse.besideStructure` seen
@@ -261,9 +303,12 @@ export const PRICING = {
    *    BESIDE_STRUCTURE binding above. Do not re-split them into two literals.
    */
   largePine: {
-    openYard: "$3,000–$4,000",
+    openYard: PINE_LADDER.tier1.price,
+    behindHouse: PINE_LADDER.tier2.price,
     leaningOverHouse: BESIDE_STRUCTURE,
-    withObstacles: "$10,000+",
+    withObstacles: PINE_LADDER.tier3.price,
+    ladder: PINE_LADDER,
+    whyDouble: PINE_WHY_DOUBLE,
   },
   /**
    * Organic debris hauling (trees, brush, leaves) as a standalone service —
@@ -292,21 +337,17 @@ export const PRICING = {
   },
   stories: {
     /**
-     * NOT an average, and must never be presented as one — it is one specific
-     * tree at two specific sites. The parameters (80–90 ft, 3+ ft diameter) are
-     * the owner's and are load-bearing: a 3-foot-diameter pine is well above the
-     * ordinary 80 ft+ loblolly that `largePine.openYard` ($3,000–$4,000) prices,
-     * which is why the open-yard figure here is ~$6,000 and not that band. Those
-     * two numbers are NOT reconciled in the data — the distinction is diameter,
-     * and it is pending an owner ruling. Do not average them and do not quietly
-     * change one to match the other.
+     * NOT an average, and must never be presented as one — it is the step from
+     * PINE_LADDER tier 2 to tier 3, which is where the owner's "same tree, two
+     * prices" point actually lives: a pine of roughly one size, priced twice
+     * because of what is underneath it.
      *
-     * Also rendered on /tree-removal-jacksonville-nc (TreeRemoval.tsx), so
-     * editing this string changes two pages, not one.
+     * Reads from PINE_LADDER so it cannot drift from the ladder on the cost
+     * page. Also rendered on /tree-removal-jacksonville-nc (TreeRemoval.tsx),
+     * so editing this string changes two pages, not one — that is approved.
      */
-    sameTreeExample: SAME_TREE_EXAMPLE,
     sameTree:
-      `This is not an average — it is one tree. An ${SAME_TREE_EXAMPLE.size}, is about ${SAME_TREE_EXAMPLE.openYard} to take down in an open yard. Put obstacles under it — the house, fences, sheds, power lines — so that nothing can be dropped and every piece has to be sectioned and rigged out, and the same tree is ${SAME_TREE_EXAMPLE.withObstacles}. The tree doesn't change the price — the obstacles do.`,
+      `This is not an average — it is the same tree in two places. A pine of ${PINE_LADDER.tier2.shortSize} ${PINE_LADDER.tier2.site} is about ${PINE_LADDER.tier2.price}, stump grinding included. Put a pine of ${PINE_LADDER.tier3.shortSize} ${PINE_LADDER.tier3.site}, so nothing can be dropped and every piece has to be sectioned and rigged out, and it is ${PINE_LADDER.tier3.price}. The tree barely changed — the obstacles did.`,
     /**
      * The limit on photo estimates, in the owner's terms. Kept as prose rather
      * than a figure because the point of it is the refusal to give a figure.

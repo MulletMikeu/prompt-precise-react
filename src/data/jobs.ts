@@ -58,10 +58,57 @@ export interface CompletedJob {
 export const MIN_PUBLISHED = 3;
 
 /**
- * Owner supplies these. Leave empty until then — an empty array is the correct,
- * safe state and hides the section entirely.
+ * Owner-supplied, September 2026. Every row is a real job that was actually
+ * invoiced or billed; nothing here is a composite or an illustration.
+ *
+ * Redaction applied: no customer names, no street addresses or house numbers.
+ * "off Piney Green Rd" is a road, and "near the Angry Ginger" is an
+ * owner-approved local landmark — both are deliberately coarser than an
+ * address. Dates are month-and-year, except the storm job where the on-site
+ * days matter to the claim narrative and the owner approved naming them.
+ *
+ * Two of these are bundled removal-plus-stump-grinding totals. That is fine on
+ * the cost page: a bundled total is not a stump-only price. Do NOT split the
+ * stump portion out of them anywhere.
  */
-export const COMPLETED_JOBS: CompletedJob[] = [];
+export const COMPLETED_JOBS: CompletedJob[] = [
+  {
+    completed: 'September 2026',
+    area: 'Richlands',
+    type: 'Tree removal + stump grinding',
+    size: '~60 ft oak, growing into a fence',
+    access: 'Tight — 8 ft side path to the backyard, worked from both yards',
+    price: '$2,800',
+    basis: 'invoiced',
+    detail:
+      'Cut, hauled away and stump ground. Spider lift, Bobcat MT120 mini track loader and Carlton stump grinder. The 8 ft side path ruled out anything bigger, so the job ran from the owner’s yard and the neighbour’s. Invoiced and paid.',
+    publish: true,
+  },
+  {
+    completed: 'September 2026',
+    area: 'Off Piney Green Rd, Jacksonville',
+    type: 'Tree removal + stump grinding',
+    size: '~75 ft oak, front yard',
+    access: 'Open yard',
+    price: '$3,400',
+    basis: 'invoiced',
+    detail:
+      'Cut down, hauled away and stump ground using the 90 ft spider lift. An open front yard is the cheap version of a tree this size — room to work and somewhere to put the pieces. Invoiced and paid.',
+    publish: true,
+  },
+  {
+    completed: 'September 2026 (on site Sep 3–4)',
+    area: 'Central Jacksonville, near the Angry Ginger',
+    type: 'Emergency storm removal',
+    size: '~60 ft oak, failed limbs on the house',
+    access: 'Over a structure',
+    price: '$6,965',
+    basis: 'insurance-billed',
+    detail:
+      'Limbs lifted off the roof, a 20×20 ft emergency tarp over the opening the same visit, and four debris loads. The homeowner paid $0 out of pocket — we handled the entire claim and billed the insurer directly, where other quotes ran $5,000–$10,000 and wanted the homeowner to pay first and wait for reimbursement. Because the standing trunk was left badly compromised, the insurer also approved taking the rest of the tree; that depends on the policy and the adjuster, but we make the case when the remaining tree threatens the house. Billed and paid.',
+    publish: true,
+  },
+];
 
 /** The rows that are actually publishable right now. */
 export const publishedJobs = (): CompletedJob[] =>

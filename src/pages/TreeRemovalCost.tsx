@@ -5,47 +5,46 @@ import RemovalPriceTable from '@/components/sections/RemovalPriceTable';
 import { PRICING } from '../data/siteData';
 
 /**
- * ============================================================================
- * ⚠️  SHIP DATE — MUST BE SET AT MERGE TIME. DO NOT SHIP THIS PLACEHOLDER.  ⚠️
- * ============================================================================
- *
- * This is the date rendered in the visible byline ("Updated November 1, 2026")
- * and it is a freshness claim, so it has to be the date the page actually went
- * live — not the date the branch was cut, and not today's date computed at
- * build time (see the note in <AuthorByline/> on why the date is never
- * computed). The value below is a PLACEHOLDER chosen only so the byline renders
- * correctly on the preview deploy.
- *
- * At merge: set this to the real ship date in YYYY-MM-DD form, in the same
- * commit as the merge, and nowhere else.
+ * The date in the visible byline. This is the date the page actually shipped to
+ * production, taken from the merge — NOT today's date computed at build time
+ * (see the note in <AuthorByline/> on why the date is never computed), and not
+ * a placeholder. If this page is substantially revised again, move it then and
+ * not otherwise: a byline that restamps itself on every deploy is a freshness
+ * claim we did not earn.
  */
-const SHIP_DATE = '2026-11-01';
+const SHIP_DATE = '2026-10-05';
+
+/** Shorthands — the pine ladder is referenced constantly below. */
+const PINE = PRICING.largePine.ladder;
+const WHY = PRICING.largePine.whyDouble;
 
 /**
- * /tree-removal-cost-north-carolina — the TREATMENT arm of the live A/B test
- * against /stump-grinding-jacksonville-nc.
+ * /tree-removal-cost-north-carolina — the TREATMENT arm of the A/B test against
+ * /stump-grinding-jacksonville-nc.
  *
- * Two rules this page lives under:
+ * Three rules this page lives under:
  *
  *  1. EVERY FIGURE COMES FROM PRICING. There is not one hardcoded dollar amount
  *     below — all of them interpolate from siteData. No national averages, no
- *     "industry standard" numbers, no invented jobs, customers or quotes.
+ *     "industry standard" numbers, no invented jobs, customers or quotes. The
+ *     jobs block reads real, redacted jobs from src/data/jobs.ts.
  *
- *  2. NO STUMP-GRINDING PRICES. Stump pricing is the control arm's claim, and
- *     it prices on a different basis entirely (measured per-inch work rather
- *     than a crew-day). The link in `relatedServices` is fine; a stump figure
- *     on this page is not. PRICING.stump is deliberately never imported here.
+ *  2. NO STUMP-ONLY PRICES. Stump pricing is the control arm's claim and prices
+ *     on a different basis (measured per-inch work, not a crew-day). Bundled
+ *     totals that say "stump grinding included" are fine — the pine tier-2
+ *     figure and two of the jobs are exactly that. A stump-ONLY figure is not:
+ *     PRICING.stump is deliberately never imported here.
+ *
+ *  3. NO SECTION RESTATES ANOTHER. The page carries a price table, a pine
+ *     ladder, a reconciliation block and a jobs table, all of which touch the
+ *     same bands. Each has to earn its place by adding what the others do not —
+ *     the table gives the shape, the ladder gives the sizes, the reconciliation
+ *     gives the mechanism, the jobs give the proof. Prose that merely re-listed
+ *     the bands was cut; it was costing real page weight for nothing.
  *
  * Every H2 leads with its figure, because the figure is what the reader came
  * for and a heading that makes them read a sentence to find it has wasted the
  * only glance they were going to give it.
- *
- * KNOWN UNRESOLVED CONFLICT, flagged for the owner and NOT resolved in code:
- * PRICING.largePine.openYard is $3,000–$4,000 for an 80 ft+ pine in an open
- * yard, while the owner's same-tree example is ~$6,000 for an 80–90 ft pine of
- * 3+ ft diameter in an open yard. Section 3 below distinguishes the two by
- * DIAMETER, which is the only variable that separates them — that wording is a
- * proposal awaiting the owner's ruling, not a decision taken here.
  */
 export default function TreeRemovalCost() {
   return (
@@ -60,42 +59,34 @@ export default function TreeRemovalCost() {
       /* Positional keys — recount these against the `sections` array below
          after inserting or removing any section. */
       sectionLinks={{
-        // Section 2 (large pine) — access is what moves it off the open-yard
-        // band, and the lift is how we get access back.
-        2: {
+        // Section 1 (the ladder) ends on access and the lift.
+        1: {
           href: '/spider-lift-tree-removal-jacksonville-nc',
           label: 'How spider lift access changes what a backyard removal costs',
         },
-        // Section 4 (close to the house) has a whole page behind it.
-        4: {
+        // Section 3 (close to the house) has a whole page behind it.
+        3: {
           href: '/tree-removal-near-house-jacksonville-nc',
           label: 'Tree removal near a house: what changes when position sets the price',
-        },
-        // Section 9 (Onslow access) — tight access is the single biggest driver.
-        9: {
-          href: '/tree-removal-tight-spaces-jacksonville-nc',
-          label: 'Why tight-access removals cost more',
         },
       }}
       sections={[
         /* --- q-011: How much does tree removal cost in Jacksonville, NC? --- */
         {
           heading: `${PRICING.removal.minimum} minimum, ${PRICING.removal.most} for most removals in Jacksonville, NC`,
-          text: `That is the direct answer. Tree removal in Jacksonville and the rest of Onslow County starts at an ${PRICING.removal.minimum} minimum, and most removals we do land between ${PRICING.removal.most}.\n\nAbove that band there are three more: large or hazardous trees run ${PRICING.removal.large}; a tree hard against or leaning over the house runs ${PRICING.nearHouse.besideStructure}; and exceptional jobs — tight access, severe hazards, complex rigging — start at ${PRICING.removal.exceptional} and go up.\n\nThe table above is all five bands in one place, with what moves a job from one to the next. Those are our numbers for our crew and our equipment in this county. They are not a state or national average, and we would rather give you a band we actually quote than an average that matches nobody's tree.`,
-        },
-        {
-          heading: `${PRICING.removal.minimum} is a floor, not a starting tier`,
-          text: PRICING.stories.mobilization,
+          text: `That is the direct answer. Tree removal in Jacksonville and the rest of Onslow County starts at an ${PRICING.removal.minimum} minimum, and most removals we do land between ${PRICING.removal.most}. The table above is every band we quote. These are our numbers for our crew in this county — not a state or national average.\n\nThe ${PRICING.removal.minimum} is a floor rather than a starting tier. ${PRICING.stories.mobilization}`,
         },
 
         /* ------- q-012: Average cost to remove a large pine tree in NC ------ */
         {
-          heading: `${PRICING.largePine.openYard} for a large pine in an open yard`,
-          text: `Loblolly pine is the tree we remove most in Onslow County, so it is worth pricing on its own rather than leaving it inside a general range. These are 80 feet and up.\n\nOPEN YARD — ${PRICING.largePine.openYard}. Room to work, somewhere to drop it, nothing underneath that matters. This is the cheap version of a big tree, and it is cheaper than people expect.\n\nLEANING OVER THE HOUSE — ${PRICING.largePine.leaningOverHouse}. Same tree, same height, same diameter. What changed is that nothing can be dropped, so every piece comes down on a rope and the crew is working above a roof all day.\n\nOVER THE HOUSE PLUS OBSTACLES — ${PRICING.largePine.withObstacles}. Sheds, driveways, power lines, hard access, and no way to get a crane into position. Each of those removes an option, and the job becomes rigging every piece out of a space that has no room for it.\n\nThe pattern is the one that runs through this whole guide: the tree is not what sets the price. What is underneath it is.`,
+          heading: `${PINE.tier1.price}, about ${PINE.tier2.price}, ${PINE.tier3.price}: the three pines we actually remove`,
+          text: `Loblolly pine is the tree we remove most in Onslow County, so it prices on its own rather than disappearing into a general range. There are three tiers, and it is diameter — not height on its own — that decides which one you are in.\n\nOPEN YARD — ${PINE.tier1.size}, ${PINE.tier1.site}: ${PINE.tier1.price}. ${PINE.tier1.note}\n\nBEHIND THE HOUSE — ${PINE.tier2.size}, ${PINE.tier2.site}: about ${PINE.tier2.price}, stump grinding included. Bring that same size closer in and it sits in the ${PRICING.nearHouse.besideStructure} beside-the-structure band instead.\n\nLEANING OVER THE HOUSE WITH OBSTACLES — ${PINE.tier3.size}, ${PINE.tier3.site}: ${PINE.tier3.price}. ${PINE.tier3.note} One of ours was a 100 foot pine crammed in behind two sheds and fences, in an almost impossible spot to work — that was a ${PINE.tier3.price} removal.\n\nWhat pushes a job into that top tier here is usually access. Base-adjacent lots around Camp Lejeune are dense, the setbacks are narrow and the backyards are fenced, so the tree leaves through a gate or it does not leave — which rules out a crane on a large share of jobs and rules in the spider lift, which collapses to about 36 inches and crosses a lawn on rubber tracks without rutting it. Coastal ground adds to it: sandy soil holds water at depth, and after a wet week it will not carry a loaded truck, so the crew mats the ground or works from the street with more rigging. A storm-weakened pine cannot be climbed at all, because the structure a climber would tie into is the part that failed.\n\nIf you have the flexibility, booking in a calm stretch rather than the week after a named storm, or against a fixed PCS date, is straightforwardly cheaper for the same tree.`,
         },
+
+        /* ------------- Why tier 2 costs almost double tier 1 ---------------- */
         {
-          heading: `About ${PRICING.stories.sameTreeExample.openYard} in an open yard, ${PRICING.stories.sameTreeExample.withObstacles} with obstacles — one tree, two prices`,
-          text: `${PRICING.stories.sameTree}\n\nOne thing to be clear about, because the two numbers above sit next to a ${PRICING.largePine.openYard} band: that band is an ordinary 80-foot-plus loblolly, where the height is what makes it large. This tree is not that. Three feet or more through the trunk is far more wood in every piece, and diameter — not height — is what decides whether a trunk comes down in a few picks or a dozen, and whether the crew is rigging weight the lift can take in one go.`,
+          heading: `${PINE.tier1.price} to ${PRICING.nearHouse.besideStructure}: why a 90 foot pine costs almost double an 80 foot pine`,
+          text: `From a photo you cannot tell a 75–80 foot, 30 inch pine from a 90 foot, 38 inch pine. In person the difference is significant. Here is what actually changes between them:\n\nTHE SAW. Past ${WHY.sawThreshold} in diameter we bring out a ${WHY.sawBig} saw to cut across the trunk. A 30 inch tree can be done with ${WHY.sawSmall} saw.\n\nTHE LOGS. A 70 foot, 28 inch pine gives ${WHY.tier1Logs}, ${WHY.tier1Loads} on our single-axle log truck. A 90 foot, 36–38 inch pine is ${WHY.tier2Logs}, and the heavy bottom half almost always needs a second log-truck run.\n\nTHE DEBRIS. A bigger tree carries more limb structure, and all of it has to be processed and hauled.\n\nTHE REACH. Most bucket trucks reach only ${WHY.bucketReach}. We run a ${WHY.ourLift} lift. Across the whole market a 70–80 foot tree is a different ball game than a 90–100 foot tree.\n\nThe most common surprise is exactly this one: someone hoping for a ${PINE.tier1.price} tree, which turns out to be a 90 footer 10 to 12 inches bigger around, and that pushes it to ${PRICING.nearHouse.besideStructure} — almost double. It is not the news anybody wants, but we try to be fair with our prices.`,
         },
 
         /* --- q-018: How much to remove a tree close to a house? ------------- */
@@ -107,36 +98,24 @@ export default function TreeRemovalCost() {
         /* --- q-029: What should be included in a tree removal estimate? ---- */
         {
           heading: '7 line items a real estimate itemizes — and a written quote before work starts',
-          text: `Ask for the estimate in writing and ask for it itemized. This is how ours are actually built, line by line, straight off the invoice structure:\n\n1. MOBILIZATION AND DEMOBILIZATION — getting the crew and the machines to you and away again, as its own line. This is the biggest fixed cost on any job and it is why there is a minimum at all.\n\n2. EQUIPMENT BY THE HOUR — the lift, the crane, the loader, each at its own hourly rate for the hours it is actually running. Machine time is the largest variable line on a removal.\n\n3. CREW LABOUR BY ROLE AND HOURS — lead arborist, safety supervisor, equipment operator, ground crew, each at their own rate for their own hours. Not "labor: one lump".\n\n4. DEBRIS HAULING BY THE LOAD — counted in loads, priced per load.\n\n5. DISPOSAL FEES — what the landfill or the yard charges to take it, separately from what it costs us to haul it there.\n\n6. STUMP HANDLING — the stump is its own decision and its own line, whether that is grinding it, cutting it flush, or leaving it. Priced separately on our quotes, and separately on this site.\n\n7. ON INSURANCE JOBS, THE SPLIT — emergency mitigation on one side, debris removal on the other. That split is not bookkeeping: the small tree-debris sublimit on a homeowner's policy generally applies to the debris side and generally does not apply to the mitigation side, and an estimate that lumps them together makes it impossible for your adjuster to see which is which.\n\nAnd the part that matters more than any single line: a written quote before any work starts. If a number was only ever said out loud, it is not a quote.`,
+          text: `Ask for the estimate in writing and ask for it itemized. This is how ours are actually built, line by line, straight off the invoice structure:\n\n1. MOBILIZATION AND DEMOBILIZATION — getting the crew and the machines to you and away again, as its own line. This is the biggest fixed cost on any job and it is why there is a minimum at all.\n\n2. EQUIPMENT BY THE HOUR — the lift, the crane, the loader, each at its own hourly rate for the hours it is actually running.\n\n3. CREW LABOUR BY ROLE AND HOURS — lead arborist, safety supervisor, equipment operator, ground crew, each at their own rate for their own hours. Not "labor: one lump".\n\n4. DEBRIS HAULING BY THE LOAD — counted in loads, priced per load.\n\n5. DISPOSAL FEES — what the landfill or the yard charges to take it, separately from what it costs us to haul it there.\n\n6. STUMP HANDLING — the stump is its own decision and its own line, whether that is grinding it, cutting it flush, or leaving it.\n\n7. ON INSURANCE JOBS, THE SPLIT — emergency mitigation on one side, debris removal on the other. That split is not bookkeeping: the small tree-debris sublimit on a homeowner's policy generally applies to the debris side and generally does not apply to the mitigation side, and an estimate that lumps them together makes it impossible for your adjuster to see which is which.\n\nAnd the part that matters more than any single line: a written quote before any work starts. If a number was only ever said out loud, it is not a quote.`,
         },
 
         /* ---------------- Photo ballpark + the honest limit ---------------- */
         {
           heading: `${PRICING.photoEstimate.smallPine} from a photo for a small pine — above that we come and look`,
-          text: `People send us photos and ask for a ballpark, and for the small end we will give one. A pine that is ${PRICING.photoEstimate.smallPineSize} runs roughly ${PRICING.photoEstimate.smallPine}.\n\nIf it is big and anywhere near a structure, the honest ballpark is ${PRICING.photoEstimate.nearStructureFloor} — and we need to come look.\n\nThat is not us being cagey. ${PRICING.stories.photoLimit}`,
+          text: `People send us photos and ask for a ballpark, and for the small end we will give one. A pine that is ${PRICING.photoEstimate.smallPineSize} runs roughly ${PRICING.photoEstimate.smallPine}.\n\nIf it is big and anywhere near a structure, the honest ballpark is ${PRICING.photoEstimate.nearStructureFloor} — and we need to come look. ${PRICING.stories.photoLimit}`,
         },
 
         /* ----------------------------- Emergency ----------------------------- */
         {
           heading: `${PRICING.emergency.structure} when the tree is already on the structure`,
-          text: `Emergency work on a tree that is ON a house prices separately from everything above, because almost none of the cost is the tree. It is after-hours mobilization, crane or lift time, rigging a loaded trunk off a roof in pieces, working around the weather, and tarping the opening before we leave — water getting in is what turns a bad day into a major repair.\n\nWe bill your insurance directly and work with your adjuster. That is also where the mitigation-versus-debris split in an itemized estimate stops being paperwork and starts being money.`,
-        },
-
-        /* ------------------------- Regional detail -------------------------- */
-        {
-          heading: `Still ${PRICING.removal.most} on the coast — but at the top of the band`,
-          text: `Coastal North Carolina removals sit at the higher end of the state's ranges — usually ${PRICING.removal.most} for a job that would price lower inland — because the ground, the season, and the condition of the trees all push toward machine work.\n\nThe soil is the first reason. Sandy coastal soil drains fast but holds water at depth, and after a wet week it won't carry a loaded truck. A crew that would have driven a bucket truck to the trunk in the Piedmont has to mat the ground, work from the street with more rigging, or bring a tracked lift instead. Every one of those adds hours.\n\nHurricane season is the second. From June through November, demand compresses into the days after each storm, and the trees that need attention are the ones nobody can safely defer. Scheduled work booked in the calm stretches of late winter and early spring prices better than the same tree booked the week after a named storm.\n\nStorm-weakened trees are the third, and the most expensive. A pine with a lifted root plate or a cracked trunk can't be climbed — the structure a climber would be tying into is the part that failed. That forces the job onto a lift or a crane, and machine time is the single largest line item on any removal.`,
-        },
-        {
-          heading: `${PRICING.largePine.withObstacles} territory: when Onslow County access removes every option`,
-          text: `Onslow County prices reflect access more than size, because the properties here are laid out in ways that limit what equipment can reach the tree — and the ${PRICING.largePine.withObstacles} band is what it looks like when access has removed every option at once.\n\nBase-adjacent lots around Camp Lejeune are the clearest case. The housing is dense, the setbacks between structures are narrow, and the backyards are fenced — which means the tree gets removed through a gate or not at all. That rules out cranes on a large share of jobs and rules in the spider lift, which collapses to about 36 inches, crosses a lawn on rubber tracks without rutting it, and still reaches the canopy. It is slower per limb than a crane, but it is the difference between a clean removal and a job no one will quote.\n\nMilitary scheduling is the other factor. PCS timelines are fixed dates, not preferences, and work that has to land inside a two- or three-week window before a handover can't be moved to a cheaper slot in the calendar. When you have the flexibility to book ahead, use it — the same tree, same crew, same equipment, booked in a normal week rather than against a report date, is a straightforwardly cheaper job.`,
+          text: `A tree already on a house prices separately from everything above, and the reason is in the table: almost none of the cost is the tree. Our first job is stopping the damage — getting the tree off and tarping the opening, because water getting in is what turns a bad day into a major repair.\n\nWe bill your insurance directly and work with your adjuster, so you are not paying the whole job up front and waiting for reimbursement. This is where the mitigation-versus-debris split in an itemized estimate stops being paperwork and starts being money.`,
         },
       ]}
       caseStudy={
         <>
           <PriceReconciliation />
-          {/* Renders nothing until the owner publishes 3+ rows in
-              src/data/jobs.ts. That is deliberate — see the file header. */}
           <CompletedJobsTable />
         </>
       }
@@ -147,7 +126,7 @@ export default function TreeRemovalCost() {
         },
         {
           question: 'What is the average cost to remove a large pine tree in NC?',
-          answer: `For a loblolly pine of 80 feet or more, an open yard with room to work and somewhere to drop it runs ${PRICING.largePine.openYard}. The same pine leaning over the house runs ${PRICING.largePine.leaningOverHouse}, because nothing can be dropped and every piece comes down on a rope. Add obstacles — sheds, fences, power lines, no crane position — and it is ${PRICING.largePine.withObstacles}. A notably thicker pine — an ${PRICING.stories.sameTreeExample.size} — is about ${PRICING.stories.sameTreeExample.openYard} even in an open yard, because diameter rather than height decides how many picks the trunk takes.`,
+          answer: `Diameter decides it more than height, and there are three tiers. ${PINE.tier1.size}, ${PINE.tier1.site}: ${PINE.tier1.price}, and we do these quite frequently. ${PINE.tier2.size}, ${PINE.tier2.site}: about ${PINE.tier2.price} with stump grinding included. ${PINE.tier3.size}, ${PINE.tier3.site}: ${PINE.tier3.price}. Bring the middle size closer to the house and it sits in the ${PRICING.nearHouse.besideStructure} band.`,
         },
         {
           question: 'How much does it cost to remove a tree close to a house?',
@@ -159,22 +138,13 @@ export default function TreeRemovalCost() {
             'Seven things, itemized, in writing before any work starts: mobilization and demobilization as its own line; equipment by the hour for the lift, crane and loader; crew labour broken out by role and hours rather than one lump; debris hauling counted and priced by the load; disposal fees separate from hauling; stump handling as its own line; and on insurance jobs the split between emergency mitigation and debris removal, because the tree-debris sublimit on a homeowner policy generally applies to the debris side and generally does not apply to the mitigation side.',
         },
         {
-          question: 'Why can the same tree be two different prices?',
-          answer: `Because we price a crew-day plus the equipment that crew needs, not the tree. A removal that finishes inside one crew-day prices one way; the same removal that runs four hours into a second morning costs another mobilization, another day of lift time and another day of wages. An ${PRICING.stories.sameTreeExample.size} is about ${PRICING.stories.sameTreeExample.openYard} in an open yard and ${PRICING.stories.sameTreeExample.withObstacles} once the house, fences, sheds and power lines force sectioning and rigging. The tree did not change — the obstacles did.`,
-        },
-        {
-          question: 'Can you give me a price from a photo?',
-          answer: `For a small pine, yes — one that is ${PRICING.photoEstimate.smallPineSize} runs roughly ${PRICING.photoEstimate.smallPine}. For anything big or near a structure the honest answer is ${PRICING.photoEstimate.nearStructureFloor} and we need to come look. From a photo you cannot tell a 28-inch, 75-foot pine from a 34-inch, 95-foot pine, and that difference is the difference between a lift and a climb, and between one day and two.`,
-        },
-        {
-          question: 'How long does a tree removal take?',
-          answer:
-            'A small tree in an open yard is about three hours start to finish, including stump grinding and cleanup. A large pine near a house takes a full day to cut and haul, with stump grinding at the end of that day or the next morning — call it a day and a half, up to two. Crane jobs run about the same total time; the crane buys reach in tight quarters rather than speed.',
+          question: 'Why does a 90 foot pine cost almost double an 80 foot pine?',
+          answer: `Because past ${WHY.sawThreshold} in diameter the job changes tools and trips. A 30 inch trunk can be cut with ${WHY.sawSmall} saw; past that we bring out a ${WHY.sawBig} one. A 70 foot, 28 inch pine is ${WHY.tier1Logs} and ${WHY.tier1Loads} on our single-axle log truck, while a 90 foot, 36–38 inch pine is ${WHY.tier2Logs} and the heavy bottom half needs a second run. There is more limb structure to haul, and most bucket trucks only reach ${WHY.bucketReach} where we run a ${WHY.ourLift} lift.`,
         },
         {
           question: 'Does insurance cover tree removal?',
           answer:
-            'Insurance may cover removal if the tree caused damage to a structure. We bill your insurance directly and work with your adjuster. Ask for the estimate split between emergency mitigation and debris removal — the tree-debris sublimit generally applies to the debris side and generally does not apply to the mitigation side.',
+            'Insurance may cover removal if the tree caused damage to a structure. We bill your insurance directly and work with your adjuster, so you are not paying the whole job up front and waiting for reimbursement. Ask for the estimate split between emergency mitigation and debris removal — the tree-debris sublimit generally applies to the debris side and generally does not apply to the mitigation side. Where a standing trunk is left badly compromised, we make the case to the adjuster for removing the rest of the tree, though that depends on the policy and the adjuster.',
         },
       ]}
       finalCta={{

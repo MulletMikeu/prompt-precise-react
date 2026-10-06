@@ -46,50 +46,50 @@ const BANDS: Band[] = [
   {
     situation: 'Minimum, any removal',
     range: PRICING.removal.minimum,
-    driver:
-      'Getting a full crew and the equipment onto your property. This is a fixed cost and it does not scale down, which is why there is no cheaper tier below it.',
+    driver: 'Crew and equipment on site. A fixed cost that does not scale down.',
     source: 'PRICING.removal.minimum',
   },
   {
     situation: 'Most removals',
     range: PRICING.removal.most,
-    driver:
-      'One crew, one day, room to work. The tree comes down in manageable pieces and the debris goes straight onto the trailer.',
+    driver: 'One crew, one day, room to work.',
     source: 'PRICING.removal.most',
   },
   {
     situation: 'Large or hazardous tree',
     range: PRICING.removal.large,
-    driver:
-      'Size, or a defect that rules out climbing — a lifted root plate or a cracked trunk means the structure a climber would tie into is the part that failed. That forces the job onto a lift.',
+    driver: 'Size, or a defect that rules out climbing and forces the lift.',
     source: 'PRICING.removal.large',
   },
   {
-    situation: 'Large pine, open yard (80 ft+)',
+    situation: `Pine, ${PRICING.largePine.ladder.tier1.shortSize}, open yard`,
     range: PRICING.largePine.openYard,
+    driver: 'Roughly 6–7 logs, often one load. The frequent one.',
+    source: 'PRICING.largePine.ladder.tier1',
+  },
+  {
+    situation: `Pine, ${PRICING.largePine.ladder.tier2.shortSize}, behind the house`,
+    range: PRICING.largePine.behindHouse,
     driver:
-      'Height without obstacles. There is somewhere to drop it and nothing underneath that matters, which makes this the cheap end of a big tree.',
-    source: 'PRICING.largePine.openYard',
+      'Stump grinding included. A bigger saw, 8–10 big pieces, and a second log-truck run for the heavy bottom half.',
+    source: 'PRICING.largePine.ladder.tier2',
   },
   {
     situation: 'Beside, or leaning over, the house',
     range: PRICING.nearHouse.besideStructure,
-    driver:
-      'Position, not size. Nothing can be dropped, so every piece comes down on a rope and the crew works above a roof all day.',
+    driver: 'Position, not size. Nothing can be dropped, so every piece ropes down over a roof.',
     source: 'PRICING.nearHouse.besideStructure / PRICING.largePine.leaningOverHouse',
   },
   {
-    situation: 'Over the house plus obstacles',
+    situation: `Pine, ${PRICING.largePine.ladder.tier3.shortSize}, over the house plus obstacles`,
     range: PRICING.largePine.withObstacles,
-    driver:
-      'Sheds, fences, driveways, power lines and no way to get a crane into position. Each one removes an option until every piece has to be rigged out of a space with no room for it.',
-    source: 'PRICING.largePine.withObstacles (= PRICING.removal.exceptional)',
+    driver: 'A shed, a fence, a power line, and no crane position. Every option removed is hours added.',
+    source: 'PRICING.largePine.ladder.tier3 (= PRICING.removal.exceptional)',
   },
   {
     situation: 'Emergency — tree already on the structure',
     range: PRICING.emergency.structure,
-    driver:
-      'Almost none of this is the tree. It is after-hours mobilization, crane or lift time, rigging a loaded trunk off a roof in pieces, working around weather, and tarping the opening before we leave.',
+    driver: 'Almost none of this is the tree. After-hours mobilization, machine time, and tarping.',
     source: 'PRICING.emergency.structure',
   },
 ];
