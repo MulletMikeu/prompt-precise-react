@@ -112,6 +112,24 @@ interface ServicePageProps {
    */
   priceBlock?: ReactNode;
   sections: { heading: string; text: string }[];
+  /**
+   * Rich content placed INSIDE a section's prose block, keyed by the same
+   * positional index as `sectionLinks`. For a photograph that belongs to a
+   * specific passage of a specific section rather than to the page — the
+   * pine-ladder tree on /tree-removal-cost-north-carolina is the only one so
+   * far. `gallery` groups photos into their own band at the end of the page and
+   * `caseStudy` sits after all the prose; neither can put a picture next to the
+   * paragraph it illustrates, which is the whole point of this slot.
+   *
+   * It renders as the first child of the prose div, so a `float-*` figure wraps
+   * the opening paragraphs on wide screens and stacks above them on a phone.
+   *
+   * Optional and undefined on every other page, so adding it changes no other
+   * page's output — including the live A/B control, whose HTML was verified
+   * byte-identical across this change. Keep it that way: same discipline as
+   * `priceBlock` above.
+   */
+  sectionFigures?: Record<number, ReactNode>;
   sectionLinks?: Record<number, SectionLink | SectionLink[]>;
   faqs?: FaqItem[];
   /** Optional rich, semantic content rendered after the sections and before the FAQ
@@ -185,7 +203,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return null;
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, priceBlock, sections, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, priceBlock, sections, sectionFigures, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -382,6 +400,12 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                   {section.heading}
                 </h2>
                 <div className="text-gray-300 leading-relaxed text-lg whitespace-pre-line">
+                  {/* Rendered as the FIRST child of the prose block, before the
+                      text, so a figure that floats sits alongside the opening
+                      paragraphs rather than orphaned under the whole section.
+                      Undefined on every page that does not pass it, which emits
+                      nothing at all — see the prop's note above. */}
+                  {sectionFigures?.[index]}
                   {section.text}
                 </div>
                 {sectionLinks && sectionLinks[index] && (

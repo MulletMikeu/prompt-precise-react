@@ -50,6 +50,46 @@ const HEROES = [
   'emergency-tree-removal-jacksonville-nc-crane-cutting-pine.webp',
 ];
 
+/**
+ * Masters that are NOT heroes: photographs placed inside a section's prose.
+ *
+ * Same three formats and the same encoder settings — the only thing that
+ * differs is the width ladder, and it differs a lot. A hero fills the content
+ * column; an in-content figure floats at a few hundred CSS pixels beside the
+ * text, so the hero's 1200px top step would be a file no layout ever asks for.
+ * Giving these their own `widths` keeps the ladder honest: the largest step is
+ * what the widest rendered box needs at DPR 2, and nothing above it exists to
+ * be mis-selected.
+ */
+const FIGURES = [
+  {
+    // Floats at max 360px CSS from `md` up, and spans the content column
+    // (~350px) on a phone — so 720 is the real ceiling at DPR 2 and anything
+    // wider would be bytes nobody fetches.
+    file: 'loblolly-pine-90ft-38in-behind-home-jacksonville-nc.jpg',
+    widths: [360, 540, 720],
+    // The master is 1200px — wider than this ladder on purpose, not by
+    // accident, so do NOT add it as a top step. See `nativeTop` below.
+    nativeTop: false,
+  },
+];
+
+/**
+ * Every master to process, paired with the width ladder it should get.
+ *
+ * `nativeTop` controls whether the master's own intrinsic width is appended as
+ * a final step. Heroes want that: their ladder tops out at 1200, three of those
+ * masters are only 1125px (so 1200 would upscale and the native width is the
+ * honest ceiling) while the trimming master is 1600px (so there is real detail
+ * above 1200 worth a step). In-content figures want the opposite — their ladder
+ * is deliberately far below the master, and appending 1200 would emit three
+ * files no `sizes` attribute on the page can ever select.
+ */
+const MASTERS = [
+  ...HEROES.map((file) => ({ file, widths: WIDTHS, nativeTop: true })),
+  ...FIGURES,
+];
+
 /** `foo-1600.jpg` and `foo.jpg` both mean the base `foo`. */
 const baseName = (file) => file.replace(/\.[a-z0-9]+$/i, '').replace(/-\d+$/, '');
 
@@ -57,7 +97,7 @@ let written = 0;
 let skipped = 0;
 let bytes = 0;
 
-for (const master of HEROES) {
+for (const { file: master, widths: ladder, nativeTop } of MASTERS) {
   const src = path.join(ASSETS, master);
   if (!fs.existsSync(src)) {
     console.error(`  MISSING master: ${master}`);
@@ -67,12 +107,13 @@ for (const master of HEROES) {
   const base = baseName(master);
   const meta = await sharp(src).metadata();
   // Cap at the master's intrinsic width, then add that width itself as the top
-  // step when nothing in WIDTHS already reaches it. Three of these masters are
+  // step when nothing in `ladder` already reaches it. Three of these masters are
   // 1125px wide, so the pre-existing "-1200" files were upscales — bytes spent
   // inventing detail. The native width is the honest ceiling.
-  const capped = WIDTHS.filter((w) => w <= meta.width);
-  const widths = capped.includes(meta.width) ? capped : [...capped, meta.width];
-  const dropped = WIDTHS.filter((w) => w > meta.width);
+  const capped = ladder.filter((w) => w <= meta.width);
+  const widths =
+    nativeTop && !capped.includes(meta.width) ? [...capped, meta.width] : capped;
+  const dropped = ladder.filter((w) => w > meta.width);
 
   console.log(`\n${base}  (master ${meta.width}x${meta.height})`);
   if (dropped.length) console.log(`  skipping ${dropped.join(', ')} — wider than the master; using ${meta.width} as the top step instead`);
