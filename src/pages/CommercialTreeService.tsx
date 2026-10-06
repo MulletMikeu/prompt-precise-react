@@ -42,7 +42,7 @@ export default function CommercialTreeService() {
         },
         {
           heading: "What Makes Tight Commercial Lots Different?",
-          text: "Commercial lots are frequently harder to work than residential yards, because everything is paved, occupied, or both.\n\nA crane needs setup room and often a lane closure. A bucket truck weighs 25,000–40,000 lbs, which is a real question mark over a parking deck, a drainage structure, or a freshly sealed lot. Our spider lift solves most of it: it collapses to about 36 inches to pass through a service gate, rolls on rubber tracks that spread the load instead of concentrating it, and reaches 50+ feet of working height — so we can take limbs off a roofline or clear a canopy over parking without staging a crane in your customers' way.\n\nThat is usually the difference between a job done on a Tuesday morning and a job that needs a road closure permit."
+          text: "Commercial lots are frequently harder to work than residential yards, because everything is paved, occupied, or both.\n\nA crane needs setup room and often a lane closure. A bucket truck weighs 25,000–40,000 lbs, which is a real question mark over a parking deck, a drainage structure, or a freshly sealed lot. Our spider lift solves most of it: it collapses to about 36 inches to pass through a service gate, rolls on rubber tracks that spread the load instead of concentrating it, and reaches 90 feet of working height — so we can take limbs off a roofline or clear a canopy over parking without staging a crane in your customers' way.\n\nThat is usually the difference between a job done on a Tuesday morning and a job that needs a road closure permit."
         },
         {
           heading: "Commercial Storm Response in Onslow County",

@@ -49,10 +49,14 @@ export interface AuthorBylineProps {
  * ISO string, and the human-readable text is the formatted one, rather than
  * asking a parser to guess at prose.
  *
- * NOT rendered on /tree-removal-cost-north-carolina or
- * /stump-grinding-jacksonville-nc — those two are the treatment and control of
- * a live A/B test, and adding a byline to one side of it would change what the
- * test is measuring.
+ * NOT rendered on /stump-grinding-jacksonville-nc — that page is the CONTROL of
+ * a live A/B test and must not change at all.
+ *
+ * It IS rendered on /tree-removal-cost-north-carolina as of the
+ * treatment/cost-page-2026-11 branch: that page is the TREATMENT arm, and a
+ * dated byline is one of the things the test is deliberately measuring. The
+ * date there is a marked SHIP_DATE constant that has to be set to the real ship
+ * date at merge — see the header of src/pages/TreeRemovalCost.tsx.
  */
 export default function AuthorByline({ updated }: AuthorBylineProps) {
   return (
