@@ -93,6 +93,19 @@ export default defineConfig(({ isSsrBuild }) => ({
      * is not configurable, and reordering index.html does not help because
      * helmet's output always lands first.
      */
+    /**
+     * Runs on every prerendered page, so everything it touches is multiplied by
+     * 38 — and so is everything in index.html, which this rewrites a copy of.
+     *
+     * Related, and the reason this note is here rather than there: index.html
+     * is kept COMMENT-FREE on purpose. Nothing in this pipeline strips HTML
+     * comments (the CSS minifier strips the ones in index.css, and JSX
+     * `{/* … *\/}` never reaches the output, which is what makes the shell the
+     * easy place to get this wrong). The rationale for every tag in it lives in
+     * docs/index-html.md. The 8-byte `<!-- -->` comments you will see in the
+     * built HTML are React's text-node separators and are required for
+     * hydration — not ours to remove.
+     */
     onPageRendered: (route, html) => {
       let out = html;
 

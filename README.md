@@ -39,11 +39,34 @@ src/
   lib/analytics.ts     # GA4 loader (off unless VITE_GA_MEASUREMENT_ID is set)
 scripts/
   gen-images.mjs       # responsive image variants (prebuild)
+  gen-hero-images.mjs  # AVIF/WebP/JPEG variants for src/assets masters (prebuild)
   gen-sitemap.mjs      # sitemap.xml with per-route lastmod from git (prebuild)
+  subset-fonts.mjs     # webfont subsetter, `npm run fonts` (manual, needs python)
   indexnow.mjs         # IndexNow submission (manual, post-deploy)
 public/                # static assets (images, favicons, og-image, robots, llms.txt)
                        # sitemap.xml here is GENERATED — do not hand-edit
+index.html             # the HTML shell. KEEP IT COMMENT-FREE — see below
+docs/index-html.md     # why every tag in index.html is the way it is
 ```
+
+### `index.html` carries no comments
+
+Vite copies `index.html` verbatim and `vite-react-ssg` prerenders it into all 38
+pages, and nothing in the pipeline strips HTML comments — unlike `src/index.css`,
+whose comments the CSS minifier removes, and unlike JSX `{/* … */}`, which never
+reaches the output. A comment there is shipped 38 times on the critical path. It
+had grown to 2,669 bytes in a 4,411-byte file (61% of it), or 101 KB across the
+site.
+
+The explanations were worth keeping, so they moved to **`docs/index-html.md`** —
+why there is no static `<title>`, why `robots` and `geo.position` are deliberately
+absent, why the `og:*` tags are static, why the icon `?v=` must be bumped, and
+why exactly one font face is preloaded. Read that before changing a tag there,
+and put any new rationale in it rather than in the shell.
+
+The only comments that should appear in the built HTML are React's own 8-byte
+`<!-- -->` text-node separators. Those are emitted by the renderer and are
+**required for hydration** — never strip them.
 
 ## Content editing
 
