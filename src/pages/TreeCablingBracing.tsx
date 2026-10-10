@@ -1,16 +1,20 @@
 import ServicePage from './ServicePage';
-import { PRICING, YEAR_FOUNDED_LOCAL } from '../data/siteData';
+import { PRICING, SOURCES, YEAR_FOUNDED_LOCAL } from '../data/siteData';
 
 /**
  * The page quotes a peer-reviewed paper and leans on a national standard, and
  * had no outbound citation for either. Both are linked here rather than merely
  * named, same pattern as the topping sources on /tree-trimming-jacksonville-nc.
  *
- * Deliberately NOT linked: the claim that scheduling a support-system
- * inspection is the owner's responsibility. It is in the copy as our own
- * guidance because no publicly readable source was found that states it, and
- * attributing it to A300 without having checked the clause text would be
- * inventing a citation. Confirm against the standard and attribute it then.
+ * RESOLVED IN BATCH 3. This note used to say the owner-responsibility claim was
+ * deliberately NOT attributed to A300, because nobody had read the clause text
+ * and inventing a citation was worse than carrying the claim as our own
+ * guidance. The clause has now been read: it is 33.4.2 of ANSI A300
+ * (Part 3)-2013 and it says exactly that, so it is cited below.
+ *
+ * What did NOT get attributed is the annual interval — see the long note on
+ * SOURCES.ansiA300Part3_2013. The standard says "periodically" and leaves the
+ * timeframe open on purpose. Keep "once a year" in our own voice.
  */
 function CablingSources() {
   return (
@@ -47,6 +51,34 @@ function CablingSources() {
               Supplemental support systems &mdash; cabling, bracing, guying and propping
               &mdash; are Clause 7. The 2023 consolidation replaced the former Part 3,
               which is why this page cites the clause rather than a part number.
+            </span>
+          </li>
+          <li>
+            <a
+              href={SOURCES.ansiA300Part3_2013.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+            >
+              {SOURCES.ansiA300Part3_2013.label}
+            </a>
+            <span className="block text-gray-400 text-base mt-1">
+              The edition we actually read, and the source of the quotation above.
+              Clause <strong className="font-semibold text-white">33.4.2</strong> is where
+              &ldquo;scheduling inspections shall be the responsibility of the tree
+              owner&rdquo; comes from; clause 39.1 adds that systems &ldquo;should be
+              inspected periodically&rdquo;.
+              {' '}
+              <strong className="font-semibold text-white">
+                The annual interval on this page is ours, not A300&rsquo;s.
+              </strong>
+              {' '}The standard sets no timeframe: its Annex C &mdash; which states of
+              itself that it is not part of the standard &mdash; makes the right interval
+              depend on &ldquo;the species and condition of the tree, weather events, the
+              supplemental support system method and type, and the type and materials of
+              components used.&rdquo; These are 2013 clause numbers; the 2023
+              consolidation is paywalled and has not been read, so they are not restated
+              as 2023 Clause 7 subclauses.
             </span>
           </li>
         </ul>
@@ -95,7 +127,7 @@ export default function TreeCablingBracing() {
         },
         {
           heading: "Installed and Forgotten Is How These Fail",
-          text: "A support system is not a one-time purchase: plan on an inspection by an arborist at least once a year, and understand that scheduling it is the tree owner's job — yours, not the company's that installed it, unless you arrange otherwise. That is the part almost nobody is told at the sale, so we would rather lead with it.\n\nIndustry guidance runs to an annual look at minimum, with dynamic synthetic systems generally wanting more frequent checks for tension, UV degradation, and any sign the sling is girdling the stem.\n\nWhat we see on uninspected systems is predictable. Cables go slack or, worse, stay tight while the tree grows around them. Bark overgrows hardware and wraps until the system is buried and can no longer be inspected, adjusted, or even properly assessed. At that point the system is not maintainable — it has to be cut out and a new one installed, which costs more than the inspections would have.\n\nSo: put it on a calendar. Inspections are a professional service of their own — if you would like us to handle them, ask and we will quote and schedule them. If you would rather have someone else do them, do that. Just do not let the system disappear into the tree."
+          text: `A support system is not a one-time purchase, and scheduling the inspections is the tree owner's job — yours, not the company's that installed it, unless you arrange otherwise. That is not our house rule. ANSI A300 (Part 3)-2013, clause 33.4.2, puts it in those words: "${SOURCES.ansiA300Part3_2013.schedulingClause}"\n\nThat is the part almost nobody is told at the sale, so we would rather lead with it.\n\nHOW OFTEN IS OUR CALL, NOT THE STANDARD'S, and we will be straight about the difference. A300 says systems "should be inspected periodically" and deliberately does not set an interval — its annex makes the right timeframe depend on the species and condition of the tree, weather events, the type of system and the materials in it. Our own guidance is an annual look at minimum, with dynamic synthetic systems wanting more frequent checks for tension, UV degradation, and any sign the sling is girdling the stem. Treat "once a year" as us talking, not as a standard being quoted at you.\n\nWhat we see on uninspected systems is predictable. Cables go slack or, worse, stay tight while the tree grows around them. Bark overgrows hardware and wraps until the system is buried and can no longer be inspected, adjusted, or even properly assessed. At that point the system is not maintainable — it has to be cut out and a new one installed, which costs more than the inspections would have.\n\nSo: put it on a calendar. Inspections are a professional service of their own — if you would like us to handle them, ask and we will quote and schedule them. If you would rather have someone else do them, do that. Just do not let the system disappear into the tree.`
         },
         {
           heading: "Can a split tree be saved with cables instead of removal?",
@@ -129,7 +161,7 @@ export default function TreeCablingBracing() {
         },
         {
           question: "How often should a tree cable be inspected?",
-          answer: "Plan on at least an annual inspection by an arborist, and more often for dynamic synthetic systems, which are checked for tension, UV degradation and any girdling of the stem. The ANSI A300 standards treat periodic inspection as part of the system and make scheduling it the tree owner's responsibility, so it will not happen automatically after installation. Inspection is a professional service of its own and is quoted separately from the installation — it is not included in the install price."
+          answer: "Two separate answers, and it is worth keeping them apart. WHOSE JOB IT IS: the standard's. ANSI A300 (Part 3)-2013, clause 33.4.2, states that \"scheduling inspections shall be the responsibility of the tree owner\" — so it will not happen automatically after installation. HOW OFTEN: ours. A300 says systems should be inspected \"periodically\" and deliberately sets no interval, leaving it to depend on the species and condition of the tree, weather events, and the type and materials of the system. Our own guidance is at least annually, and more often for dynamic synthetic systems, which get checked for tension, UV degradation and any girdling of the stem. Inspection is a professional service of its own and is quoted separately from the installation."
         },
         {
           question: "What happens if a cable system is never inspected?",

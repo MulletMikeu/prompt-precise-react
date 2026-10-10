@@ -279,6 +279,24 @@ import climberHighInToppedTreeOnslowCountyNc640Jpg from '@/assets/climber-high-i
 import climberHighInToppedTreeOnslowCountyNc800Avif from '@/assets/climber-high-in-topped-tree-onslow-county-nc-800.avif';
 import climberHighInToppedTreeOnslowCountyNc800Webp from '@/assets/climber-high-in-topped-tree-onslow-county-nc-800.webp';
 import climberHighInToppedTreeOnslowCountyNc800Jpg from '@/assets/climber-high-in-topped-tree-onslow-county-nc-800.jpg';
+import climberInLargePineMaysvilleNc400Avif from '@/assets/climber-in-large-pine-maysville-nc-400.avif';
+import climberInLargePineMaysvilleNc400Webp from '@/assets/climber-in-large-pine-maysville-nc-400.webp';
+import climberInLargePineMaysvilleNc400Jpg from '@/assets/climber-in-large-pine-maysville-nc-400.jpg';
+import climberInLargePineMaysvilleNc640Avif from '@/assets/climber-in-large-pine-maysville-nc-640.avif';
+import climberInLargePineMaysvilleNc640Webp from '@/assets/climber-in-large-pine-maysville-nc-640.webp';
+import climberInLargePineMaysvilleNc640Jpg from '@/assets/climber-in-large-pine-maysville-nc-640.jpg';
+import climberInLargePineMaysvilleNc800Avif from '@/assets/climber-in-large-pine-maysville-nc-800.avif';
+import climberInLargePineMaysvilleNc800Webp from '@/assets/climber-in-large-pine-maysville-nc-800.webp';
+import climberInLargePineMaysvilleNc800Jpg from '@/assets/climber-in-large-pine-maysville-nc-800.jpg';
+import pineRemovalRoadsideSandRidgeRoadHubertNc400Avif from '@/assets/pine-removal-roadside-sand-ridge-road-hubert-nc-400.avif';
+import pineRemovalRoadsideSandRidgeRoadHubertNc400Webp from '@/assets/pine-removal-roadside-sand-ridge-road-hubert-nc-400.webp';
+import pineRemovalRoadsideSandRidgeRoadHubertNc400Jpg from '@/assets/pine-removal-roadside-sand-ridge-road-hubert-nc-400.jpg';
+import pineRemovalRoadsideSandRidgeRoadHubertNc640Avif from '@/assets/pine-removal-roadside-sand-ridge-road-hubert-nc-640.avif';
+import pineRemovalRoadsideSandRidgeRoadHubertNc640Webp from '@/assets/pine-removal-roadside-sand-ridge-road-hubert-nc-640.webp';
+import pineRemovalRoadsideSandRidgeRoadHubertNc640Jpg from '@/assets/pine-removal-roadside-sand-ridge-road-hubert-nc-640.jpg';
+import pineRemovalRoadsideSandRidgeRoadHubertNc800Avif from '@/assets/pine-removal-roadside-sand-ridge-road-hubert-nc-800.avif';
+import pineRemovalRoadsideSandRidgeRoadHubertNc800Webp from '@/assets/pine-removal-roadside-sand-ridge-road-hubert-nc-800.webp';
+import pineRemovalRoadsideSandRidgeRoadHubertNc800Jpg from '@/assets/pine-removal-roadside-sand-ridge-road-hubert-nc-800.jpg';
 
 /* The red oak, central Jacksonville — item 1. */
 export const RED_OAK_STUMP: Photo = {
@@ -488,4 +506,20 @@ export const CLIMBER_TOPPED_TREE: Photo = {
   avifSrcSet: `${climberHighInToppedTreeOnslowCountyNc400Avif} 400w, ${climberHighInToppedTreeOnslowCountyNc640Avif} 640w, ${climberHighInToppedTreeOnslowCountyNc800Avif} 800w`,
   width: 800,
   height: 1352,
+};
+
+/* Batch 3 (Ship E) — the city-page jobs that needed new photographs. */
+export const MAYSVILLE_CLIMBER: Photo = {
+  src: climberInLargePineMaysvilleNc800Jpg,
+  srcSet: `${climberInLargePineMaysvilleNc400Webp} 400w, ${climberInLargePineMaysvilleNc640Webp} 640w, ${climberInLargePineMaysvilleNc800Webp} 800w`,
+  avifSrcSet: `${climberInLargePineMaysvilleNc400Avif} 400w, ${climberInLargePineMaysvilleNc640Avif} 640w, ${climberInLargePineMaysvilleNc800Avif} 800w`,
+  width: 800,
+  height: 1663,
+};
+export const HUBERT_ROADSIDE_PINE: Photo = {
+  src: pineRemovalRoadsideSandRidgeRoadHubertNc800Jpg,
+  srcSet: `${pineRemovalRoadsideSandRidgeRoadHubertNc400Webp} 400w, ${pineRemovalRoadsideSandRidgeRoadHubertNc640Webp} 640w, ${pineRemovalRoadsideSandRidgeRoadHubertNc800Webp} 800w`,
+  avifSrcSet: `${pineRemovalRoadsideSandRidgeRoadHubertNc400Avif} 400w, ${pineRemovalRoadsideSandRidgeRoadHubertNc640Avif} 640w, ${pineRemovalRoadsideSandRidgeRoadHubertNc800Avif} 800w`,
+  width: 800,
+  height: 1067,
 };

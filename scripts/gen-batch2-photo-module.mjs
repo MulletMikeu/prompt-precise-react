@@ -55,6 +55,8 @@ const PHOTOS = [
   ['CLIMBER_ASCENDING', 'climber-ascending-limbed-trunk-onslow-county-nc', GALLERY, null],
   ['CLIMBER_TOPPING_PINE', 'climber-topping-pine-beside-crane-onslow-county-nc', GALLERY, null],
   ['CLIMBER_TOPPED_TREE', 'climber-high-in-topped-tree-onslow-county-nc', GALLERY, null],
+  ['MAYSVILLE_CLIMBER', 'climber-in-large-pine-maysville-nc', GALLERY, 'Batch 3 (Ship E) — the city-page jobs that needed new photographs'],
+  ['HUBERT_ROADSIDE_PINE', 'pine-removal-roadside-sand-ridge-road-hubert-nc', GALLERY, null],
 ];
 
 const camel = (base, w, ext) =>

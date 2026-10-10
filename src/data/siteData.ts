@@ -694,6 +694,88 @@ export const SOURCES = {
     upheaval:
       "Trees that continue to increase their lean angle over a short period of time or begin to show signs of soil upheaving should be considered high risk and inspected immediately by an arborist.",
   },
+  /**
+   * ANSI A300 (Part 3)-2013, Supplemental Support Systems. Added in Batch 3,
+   * resolving a note that had sat on /tree-cabling-bracing-jacksonville-nc
+   * since the page was written: the owner-responsibility claim was in the copy
+   * unsourced because nobody had read the clause text.
+   *
+   * READ THE SPLIT BEFORE EDITING THAT PAGE. The standard supports WHOSE job
+   * scheduling is. It does NOT support an annual interval — it says
+   * "periodically" and then, in an annex that states of itself that it is not
+   * part of the standard, makes the timeframe depend on species, condition,
+   * weather events, system type and materials. So:
+   *   - "Scheduling inspections shall be the responsibility of the tree owner"
+   *     is A300's and is cited as such.
+   *   - "At least once a year" is OURS and must stay in our own voice.
+   * Crediting the interval to A300 would be inventing the single thing the
+   * standard deliberately declines to specify.
+   *
+   * EDITION. This is the 2013 Part 3. The 2023 consolidation moved supplemental
+   * support systems into Clause 7 of A300-2023, which is paywalled and has NOT
+   * been read — so the clause numbers here are 2013 numbers and must be
+   * presented as such, never restated as 2023 Clause 7 subclauses.
+   */
+  ansiA300Part3_2013: {
+    url: "https://west-chester.com/DocumentCenter/View/10140/A300-3",
+    label: "ANSI A300 (Part 3)-2013, Supplemental Support Systems",
+    /** Clause 33.4.2, verbatim. Confirmed against the standard text 2026-10-10. */
+    schedulingClause:
+      "Prior to installation, the owner or owner's agent shall be notified of the need for periodic inspection by an arborist of the supplemental support system's condition; position; cable tension; and the tree's structural integrity, see Annex C. Scheduling inspections shall be the responsibility of the tree owner.",
+    /** Clause 39.1, verbatim. */
+    inspectionClause:
+      "Systems should be inspected periodically for wear, corrosion, degradation of hardware, and damage to the tree. The inspection should include the system's condition, position, cable tension, and the tree's structural integrity, see Annex C.",
+    /** Annex C-2, verbatim — the reason no interval is credited to the standard. */
+    annexTimeframes:
+      "Appropriate timeframes for periodic inspections are based on the species and condition of the tree, weather events, the supplemental support system method and type, and the type and materials of components used.",
+  },
+} as const;
+
+/**
+ * CITY_JOBS — one real, owner-supplied job per town, with the price the owner
+ * actually charged.
+ *
+ * These are JOB HISTORY, not price bands, and the distinction matters the same
+ * way it does for `stories.geneCircle`: a band is what we quote today, a job is
+ * what one specific tree cost on one specific day. Never average them, never
+ * present one as a rate, and never let a band edit drag one of these with it.
+ *
+ * They live here rather than in the page files for the ordinary reason — one
+ * place to correct a figure — and because the city pages are the most likely
+ * part of the site to be rebuilt wholesale.
+ *
+ * `treeCount` is deliberately absent on Hubert. The owner described "pine
+ * trees" and gave no number; inventing one to make the sentence read better
+ * would be exactly the kind of invention the specificity rule forbids.
+ */
+export const CITY_JOBS = {
+  hollyRidge: {
+    price: "$2,800",
+    date: "August 6, 2026",
+    summary:
+      "a 24 inch, 60 foot pine overhanging the corner of a house — cut, hauled, and the stump ground out",
+  },
+  maysville: {
+    price: "$6,000",
+    summary:
+      "a very large pine beside a metal garage with a septic field we could not drive over — climbed and removed",
+  },
+  beulaville: {
+    price: "$3,500",
+    date: "October 2, 2020",
+    summary:
+      "a tree through a barn roof after a thunderstorm — craned out of the building, then the rest of the tree removed",
+  },
+  surfCity: {
+    price: "$2,200",
+    summary:
+      "an oak carrying heavy heartwood rot about a mile from the ocean — cut down and removed",
+  },
+  hubert: {
+    price: "$4,500",
+    summary:
+      "climbing and removing pine trees off Sand Ridge Road, near a back gate of Camp Lejeune",
+  },
 } as const;
 
 /**

@@ -129,6 +129,10 @@ const BATCH2 = [
   ['climber-ascending-limbed-trunk-onslow-county-nc.jpg', GALLERY],
   ['climber-topping-pine-beside-crane-onslow-county-nc.jpg', GALLERY],
   ['climber-high-in-topped-tree-onslow-county-nc.jpg', GALLERY],
+
+  // Batch 3 (Ship E) — the Maysville and Hubert city-page jobs.
+  ['climber-in-large-pine-maysville-nc.jpg', GALLERY],
+  ['pine-removal-roadside-sand-ridge-road-hubert-nc.jpg', GALLERY],
 ].map(([file, widths]) => ({ file, widths, nativeTop: false }));
 
 /**
