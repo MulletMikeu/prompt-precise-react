@@ -27,6 +27,16 @@ export default function StormCleanup() {
        * /reviews, all of which an audit found at two or fewer in-sentence
        * inbound links.
        */
+      /* Section 3 is the neighbour question. Its prose ends by promising a
+         fuller, individually cited set of answers — this is the link that
+         keeps that promise. Indices: 0 services · 1 when-to-call · 2 insurance ·
+         3 neighbour · 4 serving-onslow. */
+      sectionLinks={{
+        3: {
+          href: "/neighbor-tree-problems-jacksonville-nc",
+          label: "Neighbor tree problems: who can cut, who pays, and what to do",
+        },
+      }}
       sectionBodies={{
         0: (
           <>
@@ -77,7 +87,7 @@ export default function StormCleanup() {
         },
         {
           heading: "My neighbor's tree fell on my property — who pays?",
-          text: "Your policy, not theirs. A healthy tree blown down in a storm is treated as an act of nature, and the property it lands on is the one that claims it — which is usually not the answer people are hoping for. It is the most common question we get after a storm.\n\nTHE GENERAL RULE: YOUR POLICY, NOT THEIRS. The property it lands on is the one that claims it — you file with your own homeowners insurance and handle the cleanup, even though the tree grew in someone else's yard. The Insurance Information Institute puts it plainly: you are insured no matter who owns the tree, and in most cases an insurer is not going to spend time working out where a tree or its branches originally came from. Same limits apply as anywhere else on this page, including the $500 standard cap on removal itself.\n\nTHE EXCEPTION, AND IT IS A REAL ONE. If the tree was visibly dead, diseased or neglected, and the owner knew or reasonably should have known, that changes the picture — this is negligence rather than an act of nature, and the tree's owner may be liable. Poor maintenance is not something a homeowners policy is meant to cover. In practice your insurer may pay your claim and then pursue the neighbor's insurer to recover it, a process called subrogation; if that succeeds you can get your deductible back.\n\nWHAT THAT MEANS PRACTICALLY. If you have been looking at a dead tree leaning over your fence for two years, document it now, while it is still standing. Photographs with dates, and a written note to your neighbor, are worth considerably more than your recollection afterward. And if it is your tree that is dead, that is the cheapest possible moment to deal with it.\n\nNot legal or insurance advice; talk to your insurer. Your declarations page and your adjuster beat anything written here, and liability questions are for an attorney rather than a tree company.",
+          text: `Your policy, not theirs. A healthy tree blown down in a storm is treated as an act of nature, and the property it lands on is the one that claims it — which is usually not the answer people are hoping for. It is the most common question we get after a storm.\n\nYou file with your own homeowners insurance and handle the cleanup, even though the tree grew in someone else's yard. The Insurance Information Institute puts it in four words: "${SOURCES.iiiTreeFalls.quote}" In most cases an insurer is not going to spend time working out where a tree or its branches originally came from. The same limits apply as anywhere else on this page, including the $500 standard cap on removal itself.\n\nTHE EXCEPTION, AND IT IS A REAL ONE. If the tree was visibly dead, diseased or neglected, and the owner knew or reasonably should have known, that changes the picture — this is negligence rather than an act of nature, and the tree's owner may be liable. Poor maintenance is not something a homeowners policy is meant to cover. In practice your insurer may pay your claim and then pursue the neighbor's insurer to recover it, a process called subrogation; if that succeeds you can get your deductible back.\n\nWHAT THAT MEANS PRACTICALLY. If you have been looking at a dead tree leaning over your fence for two years, document it now, while it is still standing. Photographs with dates, and a written note to your neighbor, are worth considerably more than your recollection afterward. And if it is your tree that is dead, that is the cheapest possible moment to deal with it.\n\nNot legal or insurance advice; talk to your insurer. Your declarations page and your adjuster beat anything written here, and liability questions are for an attorney rather than a tree company. There is a fuller set of neighbour-tree answers, each one cited to a North Carolina source, on our neighbour tree problems page — linked below.`,
         },
         {
           heading: "Serving All of Onslow County",
@@ -135,8 +145,12 @@ export default function StormCleanup() {
           answer: "Not if damage is still happening. If there is an opening in your roof and rain is coming through it, the loss is growing by the hour, and policies expect you to take reasonable steps to prevent further damage rather than wait for an appointment. Photograph everything first from several angles, then get the tree off and the opening covered. Those photographs are what separate what the storm did from what the next three days of rain did.",
         },
         {
+          /* Batch 4: this answer asserted two rules of North Carolina law with
+             no citation behind either, on a page whose prose is otherwise
+             carefully sourced. Both now carry the source they came from. */
           question: "What if a neighbor's tree fell onto my property?",
-          answer: "In North Carolina, the property owner where the damage occurred is generally responsible for removal costs — even if the tree originated on a neighbor's property. However, if negligence can be shown (the neighbor knew the tree was dead or hazardous and failed to act), there may be grounds for recovery. We recommend documenting everything and contacting your insurance company first.",
+          answer: `In North Carolina the property owner where the damage occurred is generally responsible for removal costs, even if the tree grew on a neighbor's land — the Insurance Information Institute puts the insurance side in four words: "${SOURCES.iiiTreeFalls.quote}" Ward and Smith, P.A. state the healthy-tree case directly: "${SOURCES.wardSmithFallenTree.healthy}" If negligence can be shown — the neighbor knew the tree was dead or hazardous and did nothing — there may be grounds for recovery, because NC State Extension describes the duty as being "${SOURCES.ncExtensionTreeFall.duty}" Document everything before anything is moved and contact your insurer first. This is general information, not legal advice.`,
+          link: { href: "/neighbor-tree-problems-jacksonville-nc", label: "All six neighbor-tree questions, each cited to an NC source →" },
         },
         {
           question: "Can you remove a tree that's leaning on power lines?",

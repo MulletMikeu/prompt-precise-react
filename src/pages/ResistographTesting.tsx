@@ -345,6 +345,7 @@ export default function ResistographTesting() {
           { href: '/leaning-tree-dangerous-after-storm', label: 'Is a leaning tree dangerous after a storm?', blurb: 'The signs that mean act now, and the ones that mean watch it.' },
           { href: '/storm-cleanup-jacksonville-nc', label: 'Storm cleanup and insurance', blurb: 'What a homeowners policy typically covers when a tree comes down.' },
           { href: '/tree-cabling-bracing-jacksonville-nc', label: 'Cabling and bracing', blurb: 'If the wood tests sound, hardware can support the weak union instead of removing the tree.' },
+          { href: '/neighbor-tree-problems-jacksonville-nc', label: "When the tree is your neighbor's", blurb: 'A measurement is the strongest thing to attach to a written notice — plus who can cut what, cited to NC law.' },
         ],
       }}
       finalCta={{
