@@ -20,6 +20,60 @@ is the narrative one.
 
 ---
 
+## 2026-10-10 — Ship D, sitewide owner content and photographs (common mode)
+
+**Pushed** 2026-10-10 19:07:54 UTC · **confirmed serving** 19:12:11 UTC
+**Commits:** `e47619d` → `db7cb7f` (merge) → `c45f3eb` (IndexNow state)
+**Shared record:** `ships/2026-10-10-ship-d.md`
+
+Nine of 36 prerendered pages changed. **Neither arm's HTML moved and neither
+arm's inbound link count moved**; both verified content-identical to live
+production after the deploy (treatment `deccdc61129c42db`, control
+`37e882d124b2d7ac`, unchanged either side). No `lastmod` moved, because all nine
+changed pages were already stamped 2026-10-10 by Ship A. IndexNow took exactly
+9 URLs, both arms excluded by the fingerprint selector.
+
+Owner content across items 1–9 of `prompts/batch-2.md`: the removal page gains
+pine-size, pine-health and pine-beetle sections, a $6,500 red oak case and the
+fuller Gene Circle account; the resistograph page gains the 45%-rot water oak and
+how to read a trace; `/storm-damage-trees-guide` is rebuilt as hurricane prep;
+the leaning page gains the grew-leaning vs started-leaning distinction; insurance
+FAQs land on three pages. **28 owner photographs** imported, all GPS/EXIF
+stripped (13 of the 46 sources carried GPS), three phone screen-recordings
+cropped free of their home-indicator bars.
+
+**Lighthouse production, mobile, median of 5: perf 96–98 and a11y 100 on all
+nine pages.** Two outlier runs (81, 82) on `/tree-trimming-jacksonville-nc`
+against three at 98 are recorded rather than smoothed away.
+
+**Three things worth carrying forward.**
+
+1. **The per-arm check caught a rule violation before it shipped.** The storm
+   guide's first build added two links to the treatment — a guides-list entry and
+   a case-study anchor — taking it from 13/23 to 14/25. Ship D is barred from
+   adding or removing links to that arm. Both were repointed to
+   `/tree-removal-near-house-jacksonville-nc` and the file now carries a comment
+   marking the treatment off-limits until Dec 1. This is Ship A's inbound-link
+   confound exactly, caught pre-deploy this time instead of at a readout.
+
+2. **Ricky's item 7b was NOT fixed, and now is.** A developer comment was
+   rendering as visible copy on `/tree-trimming-jacksonville-nc` — four lines of
+   `/* No heading element here on purpose… */` in JSX *children* position, where
+   it is not a comment at all but literal text. It survived the 2026-10-06
+   comment strip and the 2026-10-10 verification because the probe set tested
+   `{/*` and `*/}`, the brace-wrapped form, and this one was unbraced. Braces
+   added; all 36 pages then probed against 12 patterns, 0 failures, re-verified
+   live. Measured effect: 2,811 → 2,770 visible words, −251 bytes.
+
+3. **Do not point a directory-wide metadata stripper at this repo.** Running
+   `strip-metadata.mjs` over `src/assets` rewrote six pre-existing committed
+   images including `stump-grinding-jacksonville-nc-godhans.jpg`, the control's
+   hero master. Caught and reverted before any commit, so the control never
+   moved — but the failure mode is general and the new masters never needed it
+   anyway, since sharp drops metadata on re-encode.
+
+---
+
 ## 2026-10-10 — Ship C, treatment amendment (treatment v3)
 
 **Record ID:** `godhans-cost-page-2026-11`
