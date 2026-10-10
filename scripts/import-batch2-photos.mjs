@@ -49,6 +49,12 @@ const JPEG = { quality: 88, mozjpeg: true, progressive: true };
 /** Content box for the three screen recordings, in source pixels. */
 const SCREENSHOT = { left: 0, top: 486, width: 1170, height: 1977 };
 const SCREENSHOT_FULLBLEED = { left: 0, top: 1, width: 1170, height: 2485 };
+/**
+ * IMG_2044 is a fourth screenshot with a different geometry again: a dark
+ * status bar across rows 0-99 and, unlike the other three, NO home-indicator
+ * pill at the bottom — so it keeps its last row. Measured, not assumed.
+ */
+const SCREENSHOT_2044 = { left: 0, top: 100, width: 1170, height: 2432 };
 
 const PHOTOS = [
   // --- item 1: the $6,500 red oak, central Jacksonville ---
@@ -106,6 +112,20 @@ const PHOTOS = [
   { from: `${SRC}/IMG_1176.PNG`, to: 'climber-ascending-limbed-trunk-onslow-county-nc.jpg', crop: SCREENSHOT },
   { from: `${SRC}/IMG_1177.PNG`, to: 'climber-topping-pine-beside-crane-onslow-county-nc.jpg', crop: SCREENSHOT_FULLBLEED },
   { from: `${SRC}/IMG_1182.PNG`, to: 'climber-high-in-topped-tree-onslow-county-nc.jpg', crop: SCREENSHOT },
+
+  /*
+   * --- Batch 3 (Ship E): the two city-page jobs that needed new photographs ---
+   *
+   * The other three city jobs reuse masters already imported above: Holly Ridge
+   * takes the two spider-lift frames, Beulaville the barn sequence, and Surf
+   * City the heartwood-rot pair. Only Maysville and Hubert needed new files.
+   *
+   * These two DO carry their town in the filename, because for these the owner
+   * stated the location — which is the same rule the Batch 2 names follow, not
+   * an exception to it.
+   */
+  { from: `${SRC}/IMG_2044.PNG`, to: 'climber-in-large-pine-maysville-nc.jpg', crop: SCREENSHOT_2044 },
+  { from: `${SRC}/IMG_2480.JPEG`, to: 'pine-removal-roadside-sand-ridge-road-hubert-nc.jpg' },
 ];
 
 let written = 0;

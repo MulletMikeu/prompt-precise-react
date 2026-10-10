@@ -299,8 +299,20 @@ export default function MeetTheOwners() {
                 <Link to="/tree-removal-jacksonville-nc" className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold">
                   removals other crews turn down
                 </Link>
-                {' '}— a 105-foot tulip poplar eight feet off a house, a 120-foot pine boxed in behind
-                a shed — and measuring a questionable trunk with a{' '}
+                {/* Batch 3 carry-over: this narration is the third place the Gene
+                    Circle pair is described, after /tree-removal-jacksonville-nc
+                    and the cost page, and it was the vaguest of the three. It now
+                    names the address and matches the removal page's account — the
+                    bee hive, and the pine going out over the fence rather than
+                    simply being "boxed in". NO PRICES here on purpose: the figures
+                    live on the removal page, and a fourth copy of them is a fourth
+                    thing to keep in step. The three links in this paragraph are
+                    unchanged in number and destination; one points at the live A/B
+                    treatment arm, which Ship E may not add or remove links to. */}
+                {' '}— the pair at Gene Circle, a 105-foot tulip poplar eight feet off a house with
+                a bee hive sixty feet up inside it, and a 120-foot pine boxed in behind a shed that
+                had to be rigged out over the fence into the neighbor&rsquo;s yard — and measuring a
+                questionable trunk with a{' '}
                 <Link to="/resistograph-tree-testing-jacksonville-nc" className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold">
                   resistograph
                 </Link>
