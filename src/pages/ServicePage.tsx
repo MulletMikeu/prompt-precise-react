@@ -63,6 +63,19 @@ interface GalleryImage {
   sizes?: string;
   width?: number;
   height?: number;
+  /**
+   * AVIF candidates, offered ahead of `srcSet`. Optional, and when it is absent
+   * the gallery emits exactly the bare <img> it emitted before this existed —
+   * which is what keeps /emergency-tree-service-jacksonville-nc's output
+   * unchanged by the prop merely existing. Same opt-in discipline as
+   * `priceBlock`, `sectionFigures`, `sectionBodies` and `faqPosition`.
+   *
+   * It is worth having because a gallery <img> can only carry ONE srcSet, so
+   * without a <picture> wrapper every AVIF variant on disk is unreachable and
+   * the page ships WebP to browsers that would have taken ~35% fewer bytes in
+   * AVIF. On the Batch 2 pages that is six photographs per page.
+   */
+  avifSrcSet?: string;
 }
 
 interface ServicePageProps {
@@ -525,16 +538,42 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {gallery.images.map((img, i) => (
                     <figure key={i} className="rounded-lg overflow-hidden border-2 border-gray-800 bg-black shadow-xl">
-                      <LazyImage
-                        src={img.src}
-                        srcSet={img.srcSet}
-                        sizes={img.sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
-                        alt={img.alt}
-                        fetchPriority="low"
-                        width={img.width || 800}
-                        height={img.height || 600}
-                        className="w-full h-56 object-cover bg-gray-900"
-                      />
+                      {/* Wrapped only when AVIF candidates were supplied. A
+                          <picture> with no <source> children renders the same
+                          bytes as a bare <img>, but emitting the wrapper
+                          unconditionally would still change the markup of the
+                          one page that already had a gallery — so it is
+                          conditional, not cosmetic. */}
+                      {img.avifSrcSet ? (
+                        <picture>
+                          <source
+                            type="image/avif"
+                            srcSet={img.avifSrcSet}
+                            sizes={img.sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
+                          />
+                          <LazyImage
+                            src={img.src}
+                            srcSet={img.srcSet}
+                            sizes={img.sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
+                            alt={img.alt}
+                            fetchPriority="low"
+                            width={img.width || 800}
+                            height={img.height || 600}
+                            className="w-full h-56 object-cover bg-gray-900"
+                          />
+                        </picture>
+                      ) : (
+                        <LazyImage
+                          src={img.src}
+                          srcSet={img.srcSet}
+                          sizes={img.sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
+                          alt={img.alt}
+                          fetchPriority="low"
+                          width={img.width || 800}
+                          height={img.height || 600}
+                          className="w-full h-56 object-cover bg-gray-900"
+                        />
+                      )}
                       {img.caption && (
                         <figcaption className="text-gray-300 text-sm p-3 text-center">
                           {img.caption}

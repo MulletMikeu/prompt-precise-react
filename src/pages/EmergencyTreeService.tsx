@@ -117,7 +117,11 @@ A storm-damaged tree that is NOT on a structure is ordinary removal work and pri
           text: "Two or three times a year we get called out to a tree that another company put on a house.\n\nWe are not naming anyone and we are not telling you this to sell fear. We are telling you because it is the clearest answer to why the insurance question matters more than the price on a tree job. If the crew that drops a tree on your roof does not carry general liability, and does not have every machine on the policy, the bill lands on you and your insurer — and then you are arguing about it for months while the hole is still there.\n\nThose calls are also why we would rather measure a questionable trunk than take a big tree down beside a house on a guess."
         },
         {
-          heading: "Will Insurance Cover It?",
+          // Batch 2 item 8: insurance headings take question phrasing. Was
+          // "Will Insurance Cover It?" — a question, but one that does not say
+          // what "it" is, which is exactly the ambiguity the page then spends
+          // three paragraphs resolving.
+          heading: "Does homeowners insurance cover a tree on the house?",
           text: "Usually, when the tree has damaged a covered structure — and the mechanics are worth reading properly rather than skimming a paragraph here.\n\nWe keep all of it on one page so it stays accurate and consistent: what a homeowners policy typically pays toward removal, the small sublimit that applies to debris, what happens when a tree falls and hits nothing at all, and why you should photograph the damage rather than wait for the adjuster before stopping active damage.\n\nWhat we do on our side of it, every time: photograph the damage before we touch anything, itemize the invoice, bill your insurance directly, and speak to your adjuster."
         }
       ]}
@@ -202,6 +206,11 @@ A storm-damaged tree that is NOT on a structure is ordinary removal work and pri
           question: "Will insurance cover storm-damaged trees?",
           answer: "Usually, when the tree has damaged a covered structure. We photograph the damage before we touch anything, itemize the invoice, bill your insurance directly, and speak to your adjuster. The detail — what is typically covered, the small debris sublimit, and what happens when a tree hits nothing — is all on our storm cleanup page so there is one accurate version of it.",
           link: { href: "/storm-cleanup-jacksonville-nc", label: "Storm cleanup and what insurance covers" }
+        },
+        {
+          question: "Do you bill insurance directly?",
+          answer: "Yes. We bill your insurance directly and work with your adjuster, doing everything we can so your cost stays at your normal deductible. Worth knowing where that applies: direct billing is for mitigation — a tree on the house or on another covered structure, where getting it off and tarping the opening is what stops the damage getting worse. A yard tree that came down and hit nothing is a different situation and frequently is not covered at all. We will tell you which of the two you have at the estimate rather than after the work.",
+          link: { href: "/storm-cleanup-jacksonville-nc", label: "The full picture on what a policy covers" }
         },
         {
           question: "How fast can you respond to an emergency call?",

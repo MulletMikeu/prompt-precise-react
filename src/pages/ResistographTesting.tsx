@@ -3,6 +3,15 @@ import ServicePage from './ServicePage';
 import { BUSINESS, PRICING } from '@/data/siteData';
 import LiteYouTube from '@/components/ui/LiteYouTube';
 import { RESISTOGRAPH_PRINTOUT } from '@/data/ownerContent';
+import { RESISTOGRAPH_TRACE, RESISTOGRAPH_SCALE } from '@/data/batch2Photos';
+
+/**
+ * The traces span the max-w-3xl content column. They get the wider 480/768/1024
+ * ladder rather than the gallery one because they are meant to be READ — the
+ * whole claim is that you can see the needle drop into the rot — and 800px is
+ * not enough to make a pencil-width line legible on a retina display.
+ */
+const TRACE_SIZES = '(min-width: 768px) 768px, 100vw';
 
 /**
  * Outbound sources. Every external fact on this page is attributed in the prose
@@ -80,6 +89,17 @@ export default function ResistographTesting() {
           text: `Testing is priced per tree: $${PRICING.resistograph.first2PerTree} for each of the first two trees, then $${PRICING.resistograph.additionalPerTree} for every additional tree measured on the same visit, with a $${PRICING.resistograph.minimum} minimum.\n\nSo five trees on one visit is $700 — two at $${PRICING.resistograph.first2PerTree} and three at $${PRICING.resistograph.additionalPerTree}.\n\nThe rate halves after the second tree because the first two carry the setup. Once the equipment is out and we are already on the property, each additional trunk is mostly just the time it takes to take the readings.\n\nAnnual re-tests price the same way, and re-testing several trees together is the cheapest way to keep a whole yard monitored.`
         },
         {
+          /*
+           * Batch 2 item 3. Placed here rather than on /contact or /services
+           * because this is the page where a reader is already asking "what
+           * does it cost to have someone tell me whether my tree is safe?" —
+           * and it sits directly after the testing price so the two numbers
+           * can be compared instead of discovered separately.
+           */
+          heading: `A look is free when you are considering work. A written assessment is ${PRICING.inspection.assessment}.`,
+          text: `Those are two different things and it is worth being plain about which you are buying.\n\nIF YOU ARE CONSIDERING WORK, THE INSPECTION IS FREE. Thinking about having a tree removed, trimmed or ground out? We come and look, walk the job with you, and price it. That costs nothing and it always has. You are under no obligation at the end of it.\n\nIF YOU WANT AN ARBORIST'S ASSESSMENT ON ITS OWN, THAT IS ${PRICING.inspection.assessment}. A health and risk assessment is a service rather than a sales call: a considered opinion on the condition of your trees, what is wrong with them, what the risk actually is and what they need. The price covers ${PRICING.inspection.assessmentScope}, and we will stretch it to ${PRICING.inspection.assessmentMaxTrees} on the same visit.\n\nThe reason the second one is not free is the same reason it is worth having. An assessment you did not pay for is an assessment nobody is accountable for, and it tends to arrive at whatever conclusion sells the most work. Paying for it is what buys you an answer that can be "this tree is fine, leave it alone" — which is the answer a free visit has every incentive not to give you.`
+        },
+        {
           heading: 'When to Ask for a Test',
           text: "Worth testing:\n\n• A large hardwood within falling distance of the house, especially a maple or water oak\n• Any tree that has been struck by lightning\n• A trunk with a cavity, a seam, a fungal bracket, or an old wound that never closed\n• A tree another company has told you to remove, when you would rather have a measurement than a second opinion\n• Trees you are deciding between — when the budget covers one removal and you have three candidates\n\nNot worth testing: small trees, obvious hazards already failing, and anything where the root plate has lifted. If the soil has heaved, the wood quality is beside the point.\n\nWe fold testing into the estimate when it is relevant rather than selling it as a separate visit. Ask when you call.",
         },
@@ -141,6 +161,94 @@ export default function ResistographTesting() {
                 )}
               </figure>
             )}
+          </div>
+        </section>
+
+        {/* Batch 2 item 2. Deliberately placed straight after the pecan, which
+            is the tree we did NOT remove: a page arguing that measurement
+            beats guessing has to show the measurement sending the decision
+            both ways, or it is just a longer way of advertising removals. */}
+        <section id="water-oak" className="py-16 bg-black border-t border-gray-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              A 20-Inch Water Oak That Looked Healthy, and Was 45 Percent Gone
+            </h2>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              Jacksonville. A water oak about 20 inches through, standing on the corner of
+              a home with its weight out over the roofline. From the ground it looked
+              healthy. The one thing against it was a canopy that had thinned — not
+              dramatically, just less leaf than it should have carried.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              The resistograph put roughly <strong className="font-semibold text-white">45 percent heartwood rot</strong>{' '}
+              inside it.
+            </p>
+            <figure className="my-8">
+              <picture>
+                <source type="image/avif" srcSet={RESISTOGRAPH_TRACE.avifSrcSet} sizes={TRACE_SIZES} />
+                <img
+                  src={RESISTOGRAPH_TRACE.src}
+                  srcSet={RESISTOGRAPH_TRACE.srcSet}
+                  sizes={TRACE_SIZES}
+                  alt="Resistograph paper trace from the 20-inch water oak: tight narrow bands at the outer edge where the wood is sound, and long rising hills that drop away through the middle where the heartwood has gone."
+                  width={RESISTOGRAPH_TRACE.width}
+                  height={RESISTOGRAPH_TRACE.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto rounded-lg border-2 border-gray-800"
+                />
+              </picture>
+              <figcaption className="mt-3 text-gray-400 text-base">
+                The strip the drill printed as it went through the trunk.
+              </figcaption>
+            </figure>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">How to read the strip</h3>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              It is less mysterious than it looks, and you can check our reading against
+              the picture rather than taking our word for it.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              Where the trace <strong className="font-semibold text-white">rises into hills and drops away again</strong>,
+              the needle is passing through wood that is decayed or simply not there any
+              more — it meets little resistance, wanders, and the line wanders with it.
+              Where the trace settles into <strong className="font-semibold text-white">tight, narrow bands</strong>,
+              the needle is in strong, intact wood: the outer layers, the cambium and
+              xylem, which is the part actually holding the tree up.
+            </p>
+            <figure className="my-8">
+              <picture>
+                <source type="image/avif" srcSet={RESISTOGRAPH_SCALE.avifSrcSet} sizes={TRACE_SIZES} />
+                <img
+                  src={RESISTOGRAPH_SCALE.src}
+                  srcSet={RESISTOGRAPH_SCALE.srcSet}
+                  sizes={TRACE_SIZES}
+                  alt="The same resistograph trace with a pen laid along it for scale, showing how far the decayed run extends across the strip."
+                  width={RESISTOGRAPH_SCALE.width}
+                  height={RESISTOGRAPH_SCALE.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto rounded-lg border-2 border-gray-800"
+                />
+              </picture>
+              <figcaption className="mt-3 text-gray-400 text-base">
+                A pen on the strip for scale — the decayed run is most of the middle of the trunk.
+              </figcaption>
+            </figure>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              We recommended removal and removed it. Worth saying why, given this page
+              spends most of its length arguing that rot on its own does not condemn a
+              tree: it was not the 45 percent by itself. It was 45 percent in a trunk only
+              20 inches across — so the sound shell that remained was thin in absolute
+              terms, not just in ratio — on a stem leaning its weight over a roof. Put the
+              same reading in a 48-inch trunk in the middle of a field and we would have
+              been talking about monitoring it.
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              The instrument works on any species. Pines read differently — the trace runs
+              in looser waves rather than the tight bands a hardwood gives — so the shape
+              you are looking for depends on what you drilled, which is a large part of why
+              the reading is a job rather than a glance at a graph.
+            </p>
           </div>
         </section>
 

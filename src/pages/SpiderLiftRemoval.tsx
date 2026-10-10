@@ -1,5 +1,6 @@
 import ServicePage from './ServicePage';
 import { EQUIPMENT } from '../data/siteData';
+import { LIFT_TO_PINE, LIFT_ON_LAWN, LAWN_UNRUTTED } from '@/data/batch2Photos';
 
 const LIFT = EQUIPMENT.spiderLift;
 const TRUCK = EQUIPMENT.bucketTruck;
@@ -68,6 +69,37 @@ export default function SpiderLiftRemoval() {
           answer: `It collapses to ${LIFT.collapsedWidth} wide, which clears a ${LIFT.gate}. We confirm the actual gate width during the free on-site estimate rather than finding out on the morning of the job.`
         }
       ]}
+      /*
+       * Batch 2 item 9. The specs above are unchanged — 90 ft platform,
+       * 95–96 ft working reach, 50 ft outreach — these photographs are what a
+       * spec page was missing rather than a change to what it claims.
+       *
+       * The third image contains no machine at all, deliberately. It is a
+       * finished lawn, and it is the evidence for the one claim on this page a
+       * reader is most entitled to be sceptical about: that the machine does
+       * not wreck the grass. A photo of the lift cannot show that; a photo of
+       * the lawn can.
+       */
+      gallery={{
+        heading: `The ${LIFT.platformHeight} lift on real jobs`,
+        images: [
+          {
+            ...LIFT_TO_PINE,
+            alt: `Red tracked spider lift with its boom extended up into a tall pine beside a home in Onslow County, NC.`,
+            caption: `Boom up into a pine from the lawn — no truck, no crane position needed.`,
+          },
+          {
+            ...LIFT_ON_LAWN,
+            alt: 'The spider lift parked on a lawn between two mature oaks, its rubber tracks spreading the load across the grass.',
+            caption: `Collapsed to ${LIFT.collapsedWidth}, it crosses a lawn on rubber tracks rather than tires.`,
+          },
+          {
+            ...LAWN_UNRUTTED,
+            alt: 'A lawn in an Onslow County, NC neighborhood with no ruts, tracks or machine damage across the grass.',
+            caption: 'And this is the part that matters afterwards: no ruts, no tire scars, nothing to repair.',
+          },
+        ],
+      }}
       guides={{
         heading: "Related",
         intro: "What the machine is usually being used for:",

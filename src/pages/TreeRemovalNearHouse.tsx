@@ -1,6 +1,14 @@
 import ServicePage from './ServicePage';
 import { PrecisionRemoval } from '@/components/sections/PrecisionRemoval';
 import { BUSINESS, PRICING, YEAR_FOUNDED_LOCAL } from '@/data/siteData';
+import {
+  TOWABLE_OVER_SHED,
+  TOWABLE_BEHIND_FENCE,
+  TOWABLE_OVER_FENCE,
+  TRACKED_OUTRIGGERS,
+  BOOM_OVER_TARP,
+  TARPED_ROOF,
+} from '@/data/batch2Photos';
 
 export default function TreeRemovalNearHouse() {
   return (
@@ -67,6 +75,48 @@ export default function TreeRemovalNearHouse() {
           { question: "Can you remove a tree in a fully fenced backyard?", answer: "Yes. Our spider lift fits through most standard gates — about 36 inches wide collapsed, against a standard 4-foot gate. If the gate is too narrow, we climb and rope down instead. We confirm gate width during the free estimate." },
           { question: "Will you damage my pool deck or pavers?", answer: "No. The spider lift weighs a fraction of a bucket truck and runs on rubber tracks. On hard surfaces we lay protective matting. Pools and pavers stay intact." }
         ]}
+        /*
+         * Batch 2 item 9. Two jobs, in the order the page argues them: the
+         * fence-and-yard access problem first, then the tree that was already
+         * on the house. The tarped roof is doing real work here — it is the
+         * only picture on the page of the outcome the whole rigging argument
+         * exists to prevent, and of the tarping we say we do first.
+         */
+        gallery={{
+          heading: 'Working over fences, pools and roofs',
+          images: [
+            {
+              ...TOWABLE_OVER_SHED,
+              alt: 'Green towable lift with an operator in the basket, working a tree above a backyard shed and fence.',
+              caption: 'Operator in the basket above the shed — every piece roped, nothing dropped.',
+            },
+            {
+              ...TOWABLE_BEHIND_FENCE,
+              alt: 'The lift set up behind a metal fence beside a large oak, with water behind the property.',
+              caption: 'Set up outside the fence line, reaching in. No machine on the lawn at all.',
+            },
+            {
+              ...TOWABLE_OVER_FENCE,
+              alt: 'The lift reaching over a metal fence into a large oak standing between two houses.',
+              caption: 'Fifty feet of outreach is what lets the machine stay here and the basket go there.',
+            },
+            {
+              ...TRACKED_OUTRIGGERS,
+              alt: 'Red tracked lift set down on its four outriggers on bare ground tight against the side of a house.',
+              caption: 'Four outriggers, hard against the house. This is the footprint a crane cannot match.',
+            },
+            {
+              ...BOOM_OVER_TARP,
+              alt: 'Looking down the lift boom to a blue tarp covering the damaged section of roof below.',
+              caption: 'Looking down the boom at the tarp. The tarp goes on before the tree is finished.',
+            },
+            {
+              ...TARPED_ROOF,
+              alt: 'A tarped roof seen from the lift basket, with the boom rigged clear of the shingles.',
+              caption: 'Water getting in is what turns a bad day into a major repair, so this is job one.',
+            },
+          ],
+        }}
         relatedServices={[
           { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
           { label: 'Spider Lift Tree Removal', href: '/spider-lift-tree-removal-jacksonville-nc' },

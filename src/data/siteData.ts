@@ -221,6 +221,18 @@ export const PRICING = {
     large: "$3,000+",
     summary:
       "Trimming starts at an $800 minimum. Standard trimming with no lift runs $800–$1,500; lift access for high canopies or work over the roof is $1,500+, and large oaks or difficult-access jobs run $3,000+.",
+    /**
+     * Storm-prep weight reduction, which is a different job from general
+     * trimming and is quoted differently. `overRoof` is the typical figure for
+     * taking load off the limbs that actually sit over the house — the single
+     * most requested piece of hurricane prep we do. `fewLowLimbs` is the small
+     * version: one to three low limbs, no lift, usually an hour or two.
+     *
+     * Both sit inside the `lift` ($1,500+) band rather than contradicting it:
+     * work over a roof needs the lift, which is what sets that floor.
+     */
+    weightReductionOverRoof: "$1,500–$2,000",
+    fewLowLimbs: "about $1,000",
   },
   /**
    * Stump grinding prices its own way: it is measured work, not a crew-day, so
@@ -266,6 +278,26 @@ export const PRICING = {
     first2PerTree: 200,
     additionalPerTree: 100,
     minimum: 200,
+  },
+  /**
+   * Looking at a tree, as its own service — and the distinction between the
+   * two kinds is the whole point of carrying these figures.
+   *
+   * A free estimate is what happens when someone is considering WORK: we come
+   * out, look, and price the job. An arborist health and risk assessment is a
+   * different product — a written opinion on whether a tree is safe and what
+   * it needs, bought on its own, with no work necessarily following. Charging
+   * for the first would be sharp practice; giving away the second would make
+   * it worthless, because an assessment nobody pays for is an assessment
+   * nobody is accountable for.
+   *
+   * `assessmentScope` is what the base price covers; `assessmentMaxTrees` is
+   * where a yard stops being a yard and starts being a survey.
+   */
+  inspection: {
+    assessment: "$300–$500",
+    assessmentScope: "two or three trees",
+    assessmentMaxTrees: "about ten",
   },
   /**
    * Removals where the tree is close enough to the house that position, not
@@ -635,6 +667,32 @@ export const SOURCES = {
     /** Verbatim, confirmed on the live page 2026-10-10. */
     quote:
       "The homeowners policy will pay reasonable expense, up to $500 for any one loss, for the removal of trees from your premises provided that the tree has damaged a structure or blocked the driveway.",
+  },
+  /**
+   * The leaning-tree source. Added in Batch 2 for the claim that a tree which
+   * GREW leaning is a different proposition from one that STARTED leaning.
+   *
+   * Note what the publication does and does not say, because the copy on
+   * /leaning-tree-dangerous-after-storm is careful about it and should stay
+   * careful: reaction wood means the risk "can be significantly reduced", NOT
+   * that a long-leaning tree is categorically safe. And on soil upheaval the
+   * publication's instruction is "high risk … inspected immediately by an
+   * arborist" — recommending REMOVAL at that point is our practice, not theirs,
+   * and is attributed to us in the copy.
+   */
+  ufifasTreeFailure: {
+    url: "https://ask.ifas.ufl.edu/publication/EP507",
+    label:
+      "UF/IFAS Extension ENH1246/EP507 — Is my tree safe? Recognizing Conditions that Increase the Likelihood of Tree Failure",
+    /** All verbatim, confirmed against the live publication 2026-10-10. */
+    reactionWood:
+      "If a tree is able to produce additional reaction wood to account for this imbalance, the risk associated with this defect can be significantly reduced.",
+    compensating:
+      "Trees with less severe, longer-persisting leans will have enlarged lower trunks (compression wood) to compensate for their unbalanced growth.",
+    rapidLean:
+      "Leans that have formed relatively rapidly (e.g., after a severe storm) are an indication of partial root failure and require immediate attention.",
+    upheaval:
+      "Trees that continue to increase their lean angle over a short period of time or begin to show signs of soil upheaving should be considered high risk and inspected immediately by an arborist.",
   },
 } as const;
 
