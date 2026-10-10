@@ -11,25 +11,48 @@ const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2
  * $500 and the regulator is linked, reading the URL from SOURCES so it cannot
  * drift from the version on /storm-cleanup-jacksonville-nc.
  */
-function InsuranceSource() {
+function PageSources() {
   return (
     <section id="insurance-source" className="py-12 bg-gray-950 border-t border-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-        <h2 className="text-2xl font-bold text-white mb-4">Where the $500 Figure Comes From</h2>
-        <p className="text-gray-300 text-lg leading-relaxed">
-          The removal cap in the FAQ below is the state regulator&rsquo;s description of the
-          standard provision, not ours &mdash;{' '}
-          <a
-            href={SOURCES.ncdoiHomeowners.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
-          >
-            {SOURCES.ncdoiHomeowners.label}
-          </a>
-          . Your own declarations page still governs your policy, and some carriers write more
-          coverage than the standard.
-        </p>
+        <h2 className="text-2xl font-bold text-white mb-4">Sources</h2>
+        <ul className="space-y-5">
+          <li>
+            <a
+              href={SOURCES.ufifasTreeFailure.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+            >
+              {SOURCES.ufifasTreeFailure.label}
+            </a>
+            <span className="block text-gray-400 text-base mt-1">
+              McLean, Koeser, Northrop &amp; Hasing. The source of the four quotations
+              above about reaction wood, compensating growth, rapidly formed leans and
+              soil upheaval. Note what it does <em>not</em> say: reaction wood means the
+              risk &ldquo;can be significantly reduced&rdquo;, not that a long-leaning
+              tree is safe. And where we recommend removal on a lifted root plate, that
+              is our practice &mdash; the publication&rsquo;s own instruction is to treat
+              the tree as high risk and have an arborist inspect it immediately.
+            </span>
+          </li>
+          <li>
+            <a
+              href={SOURCES.ncdoiHomeowners.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+            >
+              {SOURCES.ncdoiHomeowners.label}
+            </a>
+            <span className="block text-gray-400 text-base mt-1">
+              The $500 removal cap in the FAQ is the state regulator&rsquo;s description
+              of the standard provision, not ours. Your own declarations page still
+              governs your policy, and some carriers write more coverage than the
+              standard.
+            </span>
+          </li>
+        </ul>
       </div>
     </section>
   );
@@ -46,7 +69,7 @@ export default function LeaningTreeDangerous() {
       description="How to tell if a leaning tree is dangerous after a storm, when to call a pro, and steps to protect your home. Expert guide from Godhans."
       ctaText="Call Now — Emergency Tree Service"
       quickAnswer="Yes, a leaning tree after a storm can be extremely dangerous. A tree that suddenly shifts or leans following high winds or heavy rain may have compromised roots or structural damage. It could fall without warning, putting your home, family, and property at serious risk. Contact a professional tree service immediately for an assessment."
-      caseStudy={<InsuranceSource />}
+      caseStudy={<PageSources />}
       /**
        * In-prose links, via ServicePage's `sectionBodies` slot. The recoverable
        * -vs-removal section named neither of the two things that actually decide
@@ -54,7 +77,9 @@ export default function LeaningTreeDangerous() {
        * added. Edit both or neither.
        */
       sectionBodies={{
-        3: (
+        // 4 is "Can a Leaning Tree Be Saved?" — was 3 before Batch 2 inserted
+        // the grew-leaning / started-leaning section at index 1.
+        4: (
           <>
             {"In some cases, a leaning tree can be saved — but it depends on the severity of the damage.\n\nA tree may be recoverable if:\n• The lean is minor and roots are mostly intact\n• The tree is young and flexible\n• There is no trunk splitting or major root exposure\n\nA tree likely needs removal if:\n• The lean is severe or sudden\n• Roots are torn or lifted from the ground\n• The trunk is cracked or split\n• It poses an immediate threat to structures or people\n\nTwo things move this from a judgment call to a decision. If the trunk is the question, it can be "}
             <Link to="/resistograph-tree-testing-jacksonville-nc" className={PROSE_LINK}>drilled and measured</Link>
@@ -70,6 +95,24 @@ export default function LeaningTreeDangerous() {
         {
           heading: "Why Leaning Trees Are Dangerous After Storms",
           text: "Storms put enormous stress on trees through high winds, heavy rain, and saturated soil. A tree that was standing straight before a storm but is now leaning has likely suffered root damage or internal structural failure.\n\nUnlike trees that naturally grow at an angle, a sudden lean is a warning sign that the tree could fall at any time. The longer you wait, the greater the risk to your home, vehicles, fences, and anyone nearby."
+        },
+        {
+          /*
+           * Batch 2 item 7. Inserted at index 1, which moved "Can a Leaning
+           * Tree Be Saved?" from 3 to 4 — the sectionBodies key below was
+           * updated to match.
+           *
+           * The three quotes are verbatim from UF/IFAS EP507 via
+           * SOURCES.ufifasTreeFailure. Two limits are deliberately preserved
+           * in the wording and should survive any future edit: the source says
+           * reaction wood means risk "can be significantly reduced", not that a
+           * long-leaning tree is safe; and on soil upheaval its instruction is
+           * to treat the tree as high risk and have an arborist inspect it
+           * immediately — recommending removal at that point is OUR practice,
+           * and the copy says so in our own voice rather than theirs.
+           */
+          heading: "A tree that grew leaning is a different thing from a tree that started leaning",
+          text: `This is the distinction that decides it, and it is the one most storm advice skips straight past.\n\nA tree that has stood at an angle for years has spent those years building wood to deal with it. UF/IFAS Extension puts it plainly: "${SOURCES.ufifasTreeFailure.reactionWood}" You can often see the evidence from the driveway — "${SOURCES.ufifasTreeFailure.compensating}" That thickened, slightly pear-shaped base is the tree's own answer to its lean, and it took years to build. So no, the pine that has leaned over your fence since you moved in is not, by virtue of leaning, more likely to come down.\n\nWhat matters is not the angle. It is whether the angle is changing.\n\nSO ASK YOURSELF ONE QUESTION: IS IT LEANING MORE THAN IT WAS LAST SEASON? That is the whole test, and you are better placed to answer it than we are, because you see the tree every day. A lean that has moved is a lean the tree has not had time to compensate for. Extension is direct about the storm case: "${SOURCES.ufifasTreeFailure.rapidLean}" A new lean is not a tree that bent. It is a tree whose roots have partly let go.\n\nAND ONE SIGN THAT ENDS THE CONVERSATION: SOIL LIFTING AT THE BASE. If the ground on the high side of the lean is raised, cracked, or has started to heave into a ridge, the root plate is coming up and you are looking at the beginning of a failure, not a feature of the tree. Extension's instruction is that trees increasing their lean or "${SOURCES.ufifasTreeFailure.upheaval.slice(SOURCES.ufifasTreeFailure.upheaval.indexOf('begin to show'))}"\n\nOur own practice goes one step further than that, and we will say so in our own voice rather than theirs: when we see a lifted or lifting root plate, we recommend removal. Not monitoring, not cabling. At that point the wood quality of the trunk is beside the point — there is nothing left to measure, because the problem is underneath it.`
         },
         {
           heading: "Signs a Tree Is Dangerous After a Storm",
@@ -120,6 +163,15 @@ export default function LeaningTreeDangerous() {
         {
           question: "How can I tell if a leaning tree will fall?",
           answer: "Warning signs include cracked soil at the base, exposed roots, trunk splits, and a sudden change in lean angle. A professional can evaluate the risk accurately."
+        },
+        {
+          question: "Is a tree that has always leaned more likely to fall?",
+          answer: "No — not by virtue of the lean itself. A tree that grew at an angle has been building wood to compensate the whole time, and UF/IFAS Extension notes that where a tree produces that additional reaction wood, the risk associated with the lean can be significantly reduced. You can often see it: a thickened, slightly pear-shaped lower trunk on the low side. What matters is change, not angle. Ask whether it is leaning more than it was last season, and look at the ground on the high side — raised, cracked or heaving soil means the root plate is lifting, and at that point we recommend removal rather than monitoring.",
+        },
+        {
+          question: "Do you bill insurance directly?",
+          answer: "Yes. We bill your insurance directly and work with your adjuster, doing everything we can so your cost stays at your normal deductible. Direct billing applies to mitigation work — a tree on the house or on another covered structure, where getting it off and tarping the opening is what stops the damage getting worse. A yard tree that came down and hit nothing is a different matter and frequently is not covered at all, so we will tell you which of the two you have before we start rather than after.",
+          link: { href: "/storm-cleanup-jacksonville-nc", label: "What insurance typically covers after a storm" }
         }
       ]}
       relatedServices={[

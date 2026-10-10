@@ -75,6 +75,63 @@ const FIGURES = [
 ];
 
 /**
+ * The ServicePage `gallery` slot: a 1/2/3-column grid inside max-w-5xl, with
+ * `sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"`. The
+ * widest box it ever paints is a phone at 100vw (~640 CSS px) rather than the
+ * desktop third-column (~341 CSS px), so ~640 at DPR 2 is the real ceiling and
+ * 800 is the honest top step. A 1200 step here would be bytes no `sizes` can
+ * select — the same mistake the hero ladder already documents.
+ */
+const GALLERY = [400, 640, 800];
+
+/**
+ * The Batch 2 owner photographs (2026-10-10). Masters are written by
+ * scripts/import-batch2-photos.mjs, which is also where the EXIF/GPS stripping
+ * and the phone-UI cropping happen — by the time a file reaches this list it is
+ * already a clean, correctly-oriented, ≤1600px JPEG.
+ *
+ * All take the GALLERY ladder except the two resistograph traces: those are
+ * read rather than looked at — the whole point is whether you can see the
+ * needle drop into the rot — so they render at content-column width and get a
+ * ladder that goes with it.
+ */
+const TRACE = [480, 768, 1024];
+const BATCH2 = [
+  ['red-oak-stump-five-feet-wide-before-grinding-jacksonville-nc.jpg', GALLERY],
+  ['red-oak-stump-grinding-root-chasing-jacksonville-nc.jpg', GALLERY],
+  ['resistograph-trace-water-oak-heartwood-rot-jacksonville-nc.jpg', TRACE],
+  ['resistograph-trace-pen-for-scale-jacksonville-nc.jpg', TRACE],
+  // The only master in this set that is not a full-resolution camera file:
+  // it arrived 600x800, so GALLERY's 640 and 800 steps would both be dropped
+  // as upscales and the photo would ship with a single 400px candidate. 600 is
+  // its honest ceiling.
+  ['southern-pine-beetle-pitch-tubes-onslow-county-nc.jpg', [400, 600]],
+  ['wind-cracked-pine-limb-over-house-richlands-nc.jpg', GALLERY],
+  ['cracked-pine-limb-canopy-inspection-richlands-nc.jpg', GALLERY],
+  ['heartwood-rot-hollow-oak-trunk-surf-city-nc.jpg', GALLERY],
+  ['heartwood-rot-oak-stump-surf-city-nc.jpg', GALLERY],
+  ['tree-through-barn-roof-beulaville-nc.jpg', GALLERY],
+  ['crane-set-up-over-damaged-barn-beulaville-nc.jpg', GALLERY],
+  ['climber-in-fallen-tree-on-barn-beulaville-nc.jpg', GALLERY],
+  ['crane-lifting-tree-section-off-barn-beulaville-nc.jpg', GALLERY],
+  ['storm-broken-limb-hanging-in-canopy-onslow-county-nc.jpg', GALLERY],
+  ['split-pine-limb-in-canopy-onslow-county-nc.jpg', GALLERY],
+  ['spider-lift-boom-extended-to-pine-onslow-county-nc.jpg', GALLERY],
+  ['spider-lift-tracked-base-on-lawn-onslow-county-nc.jpg', GALLERY],
+  ['lawn-left-unrutted-after-lift-work-onslow-county-nc.jpg', GALLERY],
+  ['towable-lift-working-over-backyard-shed-onslow-county-nc.jpg', GALLERY],
+  ['towable-lift-set-up-behind-fence-onslow-county-nc.jpg', GALLERY],
+  ['towable-lift-reaching-over-fence-to-oak-onslow-county-nc.jpg', GALLERY],
+  ['tracked-lift-on-outriggers-beside-house-onslow-county-nc.jpg', GALLERY],
+  ['lift-boom-over-tarped-roof-onslow-county-nc.jpg', GALLERY],
+  ['tarped-roof-under-lift-onslow-county-nc.jpg', GALLERY],
+  ['tall-pines-over-houses-onslow-county-nc.jpg', GALLERY],
+  ['climber-ascending-limbed-trunk-onslow-county-nc.jpg', GALLERY],
+  ['climber-topping-pine-beside-crane-onslow-county-nc.jpg', GALLERY],
+  ['climber-high-in-topped-tree-onslow-county-nc.jpg', GALLERY],
+].map(([file, widths]) => ({ file, widths, nativeTop: false }));
+
+/**
  * Every master to process, paired with the width ladder it should get.
  *
  * `nativeTop` controls whether the master's own intrinsic width is appended as
@@ -88,6 +145,7 @@ const FIGURES = [
 const MASTERS = [
   ...HEROES.map((file) => ({ file, widths: WIDTHS, nativeTop: true })),
   ...FIGURES,
+  ...BATCH2,
 ];
 
 /** `foo-1600.jpg` and `foo.jpg` both mean the base `foo`. */

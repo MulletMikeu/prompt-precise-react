@@ -51,10 +51,17 @@ export default function TreeTrimming() {
          for the quotations in the trimming section above. */
       caseStudy={
         <>
-        /* No heading element here on purpose: the block is additive, and adding
-           an h2 would alter this page's heading outline. The section is named
-           with aria-label instead, which gives assistive tech a landmark name
-           without introducing a document heading. */
+        {/* No heading element here on purpose: the block is additive, and adding
+            an h2 would alter this page's heading outline. The section is named
+            with aria-label instead, which gives assistive tech a landmark name
+            without introducing a document heading.
+
+            THE BRACES ARE LOAD-BEARING. Without them this is not a comment at
+            all — it is JSX *text*, and React rendered all four lines of it as
+            visible copy on the live page, between the guides paragraph and the
+            "Insurance carriers often require limbs cleared" line. Found by
+            probing production on 2026-10-10 (Ricky item 7b). A comment in JSX
+            children position must always be brace-wrapped. */}
         <section aria-label="Before and after: limbs cleared off a roof" className="max-w-3xl mx-auto">
           <p className="text-gray-300 leading-relaxed text-lg mb-8">
             Insurance carriers often require limbs cleared from over the roof — this is that job, done.
