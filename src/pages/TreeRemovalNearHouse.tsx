@@ -73,7 +73,12 @@ export default function TreeRemovalNearHouse() {
           { question: "What if a tree is already on my house?", answer: `Call ${BUSINESS.phone} anytime — we offer 24/7 emergency response for trees on homes, garages, and vehicles in Jacksonville and surrounding areas.` },
           // Both carried over from the consolidated tight-spaces page.
           { question: "Can you remove a tree in a fully fenced backyard?", answer: "Yes. Our spider lift fits through most standard gates — about 36 inches wide collapsed, against a standard 4-foot gate. If the gate is too narrow, we climb and rope down instead. We confirm gate width during the free estimate." },
-          { question: "Will you damage my pool deck or pavers?", answer: "No. The spider lift weighs a fraction of a bucket truck and runs on rubber tracks. On hard surfaces we lay protective matting. Pools and pavers stay intact." }
+          { question: "Will you damage my pool deck or pavers?", answer: "No. The spider lift weighs a fraction of a bucket truck and runs on rubber tracks. On hard surfaces we lay protective matting. Pools and pavers stay intact." },
+          {
+            question: "The tree is on the boundary, or we would need to work from next door. Is that a problem?",
+            answer: "Usually not. We will work from a neighbor's yard with their permission — and only with it, since entering another's land without consent is what North Carolina's treble-damages statute attaches to. In practice the neighbor almost always says yes, because rigging into open ground is safer for their property than lowering sections over a roof. On boundary trees we are also happy to talk to both households and split the cost: one crew making one trip is genuinely cheaper than two jobs, because mobilisation is the biggest fixed cost on any job.",
+            link: { href: "/neighbor-tree-problems-jacksonville-nc", label: "Neighbor tree problems: who can cut, who pays, what to do" }
+          }
         ]}
         /*
          * Batch 2 item 9. Two jobs, in the order the page argues them: the

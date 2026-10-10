@@ -169,6 +169,11 @@ export default function LeaningTreeDangerous() {
           answer: "No — not by virtue of the lean itself. A tree that grew at an angle has been building wood to compensate the whole time, and UF/IFAS Extension notes that where a tree produces that additional reaction wood, the risk associated with the lean can be significantly reduced. You can often see it: a thickened, slightly pear-shaped lower trunk on the low side. What matters is change, not angle. Ask whether it is leaning more than it was last season, and look at the ground on the high side — raised, cracked or heaving soil means the root plate is lifting, and at that point we recommend removal rather than monitoring.",
         },
         {
+          question: "What if the leaning tree is my neighbor's?",
+          answer: "Then the useful move is an arborist's opinion followed by a written note to them, because North Carolina liability for a falling tree turns on what its owner knew or reasonably should have known. A neighbor who was never told can argue the danger was not foreseeable; one holding a dated letter with photographs cannot. You can also trim what overhangs your own property back to the property line at your own cost — but not cross the line, cut the trunk, or trim so hard the tree becomes unstable.",
+          link: { href: "/neighbor-tree-problems-jacksonville-nc", label: "Neighbor tree problems: who can cut, who pays, what to do" }
+        },
+        {
           question: "Do you bill insurance directly?",
           answer: "Yes. We bill your insurance directly and work with your adjuster, doing everything we can so your cost stays at your normal deductible. Direct billing applies to mitigation work — a tree on the house or on another covered structure, where getting it off and tarping the opening is what stops the damage getting worse. A yard tree that came down and hit nothing is a different matter and frequently is not covered at all, so we will tell you which of the two you have before we start rather than after.",
           link: { href: "/storm-cleanup-jacksonville-nc", label: "What insurance typically covers after a storm" }

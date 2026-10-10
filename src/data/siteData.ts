@@ -729,6 +729,72 @@ export const SOURCES = {
     annexTimeframes:
       "Appropriate timeframes for periodic inspections are based on the species and condition of the tree, weather events, the supplemental support system method and type, and the type and materials of components used.",
   },
+
+  /* ---------------------------------------------------------------------
+   * Neighbour tree law. Added in Batch 4 for
+   * /neighbor-tree-problems-jacksonville-nc.
+   *
+   * READ THIS BEFORE EDITING THAT PAGE. It is the only page on the site that
+   * makes legal statements, and the rule it is built under is strict: every
+   * legal claim is tied to a North Carolina source — the General Statutes, NC
+   * State Extension, the NC Department of Insurance, or an NC case-law summary
+   * from a named NC firm. Anything that could not be sourced is stated as the
+   * OWNER'S PRACTICE in his own voice and is not dressed as law. If you add a
+   * claim there and cannot cite it from this list, write it as practice or
+   * leave it out.
+   * ------------------------------------------------------------------- */
+
+  /** N.C. Gen. Stat. § 1-539.1, from the General Assembly's own site. */
+  ncgsTreble: {
+    url: "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_1/GS_1-539.1.html",
+    label: "N.C. Gen. Stat. § 1-539.1 — Damages for unlawful cutting, removal or burning of timber",
+    /** Subsection (a), verbatim. Confirmed against ncleg.gov 2026-10-10. */
+    quote:
+      "Any person, firm or corporation not being the bona fide owner thereof or agent of the owner who shall without the consent and permission of the bona fide owner enter upon the land of another and injure, cut or remove any valuable wood, timber, shrub or tree therefrom, shall be liable to the owner of said land for triple the value of such wood, timber, shrubs or trees so injured, cut or removed.",
+  },
+
+  /** NC State Extension's agricultural-law publication on tree-fall liability. */
+  ncExtensionTreeFall: {
+    url: "https://content.ces.ncsu.edu/tree-fall-liability-who-is-responsible-for-property-damage",
+    label:
+      "NC State Extension — Tree Fall Liability: Who Is Responsible for Property Damage? (Robert Andrew Branan, 2022)",
+    /** Verbatim. */
+    duty:
+      "Under negligence theory, the landowner is under a duty to eliminate the reasonably foreseeable danger a tree may pose to adjoining property.",
+    /** Verbatim — why "it was a hurricane" is not automatically a defence. */
+    actsOfGod:
+      "While normally 'acts of god' events – e.g. hurricanes – do not themselves assign liability",
+    /** The NC case the publication cites. */
+    caseCite: "Rowe v. McGee, 5 N.C. App. 60, 168 S.E.2d 77 (1969)",
+  },
+
+  /** An NC law firm's summary of the healthy-vs-defective distinction. */
+  wardSmithFallenTree: {
+    url: "https://www.wardandsmith.com/article/who-is-responsible-for-that-fallen-tree",
+    label: "Ward and Smith, P.A. — Who Is Responsible for That Fallen Tree?",
+    /** Both verbatim. */
+    defective:
+      "If the tree is dead, dying, rotten, diseased, or alive but obviously hazardous because it is leaning precariously toward another property, the owner of the property where the tree grows will most likely be liable for any damage caused by the tree if it falls on another's property.",
+    healthy:
+      "if a tree is alive, appears to be healthy, and is not leaning toward another's property, and the tree falls because of a hurricane (normally considered an 'Act of God'), then the owner of the lot from which the tree fell will probably not be liable.",
+  },
+
+  /** An NC firm on the self-help trimming rule, which Extension does not cover. */
+  adkinsTrimming: {
+    url: "https://lkn-law.com/2026/08/04/can-i-cut-my-neighbors-tree-limbs-north-carolina-neighbor-property-line-land-and-hoa-disputes-explained/",
+    label: "Adkins Law PLLC (Huntersville, NC) — Can I Cut My Neighbor's Tree Limbs?",
+    /** Verbatim. */
+    quote:
+      "A North Carolina property owner can generally trim the portion of a neighbor's branches that crosses onto the owner's property, but the trimming should stop at the property line.",
+  },
+
+  /** The Insurance Information Institute line the storm-cleanup page quotes. */
+  iiiTreeFalls: {
+    url: "https://www.iii.org/article/if-a-tree-falls-on-your-house-are-you-covered-2",
+    label: "Insurance Information Institute — If a tree falls on your house, are you covered?",
+    /** Verbatim. */
+    quote: "You are insured no matter who owns the tree.",
+  },
 } as const;
 
 /**

@@ -712,6 +712,11 @@ export default function TreeRemoval() {
             blurb: "How we take down trees leaning over a roof without dropping anything on it."
           },
           {
+            href: "/neighbor-tree-problems-jacksonville-nc",
+            label: "When it is the neighbor's tree",
+            blurb: "Who can cut what, who pays when one falls, and whether we will work from next door — cited to North Carolina sources."
+          },
+          {
             href: "/spider-lift-tree-removal-jacksonville-nc",
             label: "Spider lift tree removal for backyards with no truck access",
             blurb: `Fits a ${EQUIPMENT.spiderLift.gate}, ${EQUIPMENT.spiderLift.platformHeight} platform with about ${EQUIPMENT.spiderLift.workingHeight} of working reach, and doesn't tear up the lawn.`
