@@ -44,12 +44,12 @@ function OnslowPermitSection() {
 
         <div className="text-gray-300 leading-relaxed text-lg space-y-5">
           <p>
-            Here is the short version, after doing this work in Onslow County since {YEAR_FOUNDED_LOCAL}.
             To our knowledge there is no state or Onslow County permit required to remove a tree
             on private residential property — as long as the tree isn't in wetlands or within the
             regulated distance of a natural waterway like a creek, river, sound, or lake. In
             practice, the only approval we actually run into isn't a government permit at all.
-            It's the HOA.
+            It's the HOA. That is the short version, after doing this work in Onslow County
+            since {YEAR_FOUNDED_LOCAL}.
           </p>
           <p>
             The exceptions worth knowing are below: water and wetlands, new construction inside
@@ -136,8 +136,25 @@ function OnslowPermitSection() {
             bufferyard, street-tree, or landscaping obligation on an approved plan. Removing those
             without approval is listed as a violation. If a tree was planted or preserved to
             satisfy a site plan, on a commercial lot or in a newer subdivision, it isn't simply
-            the owner's to take out. For a specific lot, Jacksonville Planning &amp; Permitting is
-            at 910-938-5236 and Onslow County Land Use is at 910-455-3661 ext. 3.
+            the owner's to take out. For a specific lot,{' '}
+            <a
+              href="https://www.jacksonvillenc.gov/Directory.aspx?did=49"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+            >
+              Jacksonville Planning &amp; Permitting
+            </a>{' '}
+            is at 910-938-5236 and{' '}
+            <a
+              href="https://www.onslowcountync.gov/174/Land-Use"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+            >
+              Onslow County Land Use
+            </a>{' '}
+            is at 910-455-3661 ext. 3.
           </p>
         </div>
 
@@ -146,9 +163,9 @@ function OnslowPermitSection() {
         </h3>
         <div className="text-gray-300 leading-relaxed text-lg space-y-5">
           <p>
-            This is the one that catches people. In our experience the approvals that come up on
-            real jobs are HOA approvals, not government permits. Plenty of associations require
-            sign-off for tree work, and removal is the item they're strictest about.
+            In our experience the approvals that come up on real jobs are HOA approvals, not
+            government permits — and removal is the item associations are strictest about. It is
+            the one that catches people. Plenty of associations require sign-off for tree work.
           </p>
           <p>
             We can't point to an Onslow County community that requires it — it's more common in
@@ -185,35 +202,38 @@ export default function TreeRemovalPermitNC() {
       title="Do You Need a Permit to Remove a Tree in North Carolina?"
       metaTitle="Do You Need a Permit to Remove a Tree in NC?"
       slug="do-you-need-a-permit-to-remove-a-tree-nc"
+      faqPosition="early"
       authorUpdated="2026-09-28"
       description="Most NC homeowners do not need a permit to remove a tree on private property, but city or county rules may apply. Check local guidelines first."
       quickAnswer="In most cases, you do not need a permit to remove a tree on private property in North Carolina. However, local city or county regulations may apply, especially for protected trees or certain areas, so it's important to check local guidelines before removing a tree."
-      sections={[
-        {
-          heading: "Understanding Tree Removal Laws in NC",
-          text: "If you're planning to remove a tree from your property, you may be wondering whether a permit is required. Tree removal laws in North Carolina can vary depending on your location and the type of property.\n\nThis guide explains when permits may be required and what homeowners should know before removing a tree."
-        },
-        {
-          heading: "North Carolina Tree Removal Regulations",
-          text: "North Carolina does not have a statewide law requiring permits for tree removal on private residential property. However, local municipalities may have specific rules or restrictions.\n\nCertain areas may regulate tree removal to protect the environment, maintain community aesthetics, or preserve specific tree species."
-        },
-        {
-          heading: "Situations Where a Permit May Be Required",
-          text: "A permit may be needed in certain cases:\n\n• Trees located in protected or historic districts\n• Trees near public roads or sidewalks\n• Trees in environmentally sensitive areas\n• Large or protected tree species\n\nAlways check with your local city or county office to confirm requirements."
-        },
-        {
-          heading: "Tree Removal Rules in Jacksonville, NC",
-          text: "In Jacksonville, NC and surrounding areas, most homeowners can remove trees on private property without a permit. However, regulations can change, and certain situations may require approval.\n\nWhen in doubt, it's best to verify with local authorities or work with a professional tree service that understands local guidelines."
-        },
-        {
-          heading: "Working With a Professional Tree Service",
-          text: "A professional tree service can help ensure your tree removal is done safely and in compliance with any local regulations. They can also assess whether permits or special considerations apply to your situation."
-        },
-        {
-          heading: "Tree Removal Services in Jacksonville, NC",
-          text: "If you need help removing a tree safely and efficiently, we offer professional tree removal services in Jacksonville, NC."
-        }
-      ]}
+      /**
+       * Deliberately empty: the cited answer lives in <OnslowPermitSection/>
+       * below, and it now leads the page.
+       *
+       * Six generic sections used to sit above it -- "Understanding Tree Removal
+       * Laws in NC", "North Carolina Tree Removal Regulations", "Situations
+       * Where a Permit May Be Required", "Tree Removal Rules in Jacksonville,
+       * NC", "Working With a Professional Tree Service" and "Tree Removal
+       * Services in Jacksonville, NC". They pushed the CAMA / 15A NCAC 07H
+       * .0209 / 33 CFR 323.2(d) / UDO answer to 26% of the way down the page
+       * and restated the quick answer three times in weaker form on the way.
+       *
+       * Checked for unique facts before deleting. Every substantive claim they
+       * made survives below, and more precisely:
+       *   - "no statewide permit on private residential property" -> the Onslow
+       *     section says it, scoped to state AND county, with the wetlands and
+       *     waterway carve-outs the generic version omitted.
+       *   - "trees near public roads or sidewalks" -> the UDO paragraph, which
+       *     names the actual mechanism: required trees carrying a bufferyard,
+       *     street-tree or landscaping obligation on an approved plan.
+       *   - "environmentally sensitive areas" -> the CAMA and wetlands
+       *     subsections, with the citations.
+       * Two claims were dropped rather than moved because nothing on the site
+       * or in the cited ordinances supports them: "protected or historic
+       * districts" and "large or protected tree species". Flagged to the owner
+       * rather than silently rewritten.
+       */
+      sections={[]}
       caseStudy={<OnslowPermitSection />}
       faqs={[
         {
@@ -232,8 +252,14 @@ export default function TreeRemovalPermitNC() {
           answer: "No, most residential tree removals do not require a permit, but local rules may apply."
         },
         {
+          /**
+           * Names the two authorities instead of saying "your local office",
+           * which is the weakest sentence the page had. Still no phone numbers,
+           * for the reason given on the first FAQ above: this text serialises
+           * verbatim into FAQPage schema and the numbers belong in visible copy.
+           */
           question: "Who do I contact to check tree removal rules?",
-          answer: "Contact your local city or county office for the most accurate information."
+          answer: "For a specific lot in Onslow County, City of Jacksonville Planning & Permitting if the property is inside the city limits, and Onslow County Land Use if it is not. A Jacksonville mailing address does not always mean a property is inside the city, and the two are separate permitting authorities, so confirm which one your lot falls under first. Their direct numbers are in the Onslow County section above."
         },
         {
           question: "Can I remove a tree myself?",

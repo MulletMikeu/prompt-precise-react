@@ -53,7 +53,7 @@ const PAGE_URL = `${SITE_URL}/about`;
  * nothing it could resolve to a person, which is the entire job of this page.
  */
 const PAGE_TITLE = 'About Godhans Tree Company | Jacksonville, NC';
-const PAGE_DESCRIPTION = `${AUTHOR.name} (${AUTHOR.role.toLowerCase()}) and ${JAMES.name} (${JAMES.role.toLowerCase()}) run ${BUSINESS.name} in ${BUSINESS.primaryCity} — brothers and USMC veterans serving ${BUSINESS.county} since ${BUSINESS.founded}.`;
+const PAGE_DESCRIPTION = `${AUTHOR.name} (${AUTHOR.role.toLowerCase()}) and ${JAMES.name} (${JAMES.role.toLowerCase()}) run ${BUSINESS.name} in ${BUSINESS.primaryCity}. Brothers, USMC veterans, ${BUSINESS.county} since ${BUSINESS.founded}.`;
 
 // === EDITABLE CONTENT FIELDS ===
 /*
@@ -205,19 +205,30 @@ export default function MeetTheOwners() {
 
             <h1 className="text-3xl sm:text-4xl font-bold mb-6">About Godhans Tree Company</h1>
 
-            {/* Intro */}
-            <section aria-labelledby="intro-heading" className="mb-10">
-              <h2 id="intro-heading" className="sr-only">Introduction</h2>
+            {/* Intro.
+
+                Was <section aria-labelledby> with an sr-only <h2>Introduction</h2>.
+                "Introduction" named nothing — it was a placeholder standing in the
+                document outline between the H1 and the two owner headings — and a
+                single paragraph does not need to be its own labelled region. Plain
+                div: no heading, no landmark, same rendering. */}
+            <div className="mb-10">
               {INTRO_TEXT ? (
                 <p className="text-gray-300 text-lg leading-relaxed">{INTRO_TEXT}</p>
               ) : (
                 <p className="text-gray-400 italic">[Introduction text — add via INTRO_TEXT]</p>
               )}
-            </section>
+            </div>
 
             {/* Michael — Owner Photo */}
-            <section aria-labelledby="michael-photo-heading" className="mb-8">
-              <h2 id="michael-photo-heading" className="sr-only">Photo of {AUTHOR.name}</h2>
+            {/* Photo sections: the sr-only <h2>s that used to label these three were
+                invisible but still sat in the document heading outline, which put
+                "Photo of Michael Godbersen" between the H1 and the real owner
+                headings. Converted to aria-label on the section so the region keeps
+                its accessible name without adding a heading -- and without a
+                redundant sr-only caption, which would double-announce alongside the
+                img alt that already describes the photo. */}
+            <section aria-label={`Photo of ${AUTHOR.name}`} className="mb-8">
               <figure className="m-0">
                 <div
                   className="relative w-full overflow-hidden rounded-lg bg-gray-900"
@@ -279,11 +290,31 @@ export default function MeetTheOwners() {
               ) : (
                 <p className="text-gray-400 italic">[Bio — add via OWNER_MICHAEL.bio]</p>
               )}
+              {/* This page had zero in-prose outbound links. The bio above names
+                  high-risk technical removals and reading trees, and both of
+                  those are pages — so they are linked from the sentence that
+                  describes them rather than left as claims. */}
+              <p className="text-gray-300 leading-relaxed mt-4">
+                In practice that means the{' '}
+                <Link to="/tree-removal-jacksonville-nc" className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold">
+                  removals other crews turn down
+                </Link>
+                {' '}— a 105-foot tulip poplar eight feet off a house, a 120-foot pine boxed in behind
+                a shed — and measuring a questionable trunk with a{' '}
+                <Link to="/resistograph-tree-testing-jacksonville-nc" className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold">
+                  resistograph
+                </Link>
+                {' '}rather than condemning it on a look. He also writes every page on this site,
+                including the{' '}
+                <Link to="/tree-removal-cost-north-carolina" className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold">
+                  price bands
+                </Link>
+                .
+              </p>
             </section>
 
             {/* Michael on the rope — same treatment as the other owner photos. */}
-            <section aria-labelledby="michael-climbing-heading" className="mb-8">
-              <h2 id="michael-climbing-heading" className="sr-only">{AUTHOR.name} climbing</h2>
+            <section aria-label={`${AUTHOR.name} climbing`} className="mb-8">
               <figure className="m-0">
                 <div
                   className="relative w-full overflow-hidden rounded-lg bg-gray-900"
@@ -312,8 +343,7 @@ export default function MeetTheOwners() {
             </section>
 
             {/* James — Owner Photo */}
-            <section aria-labelledby="james-photo-heading" className="mb-8">
-              <h2 id="james-photo-heading" className="sr-only">Photo of {JAMES.name}</h2>
+            <section aria-label={`Photo of ${JAMES.name}`} className="mb-8">
               <figure className="m-0">
                 <div
                   className="relative w-full overflow-hidden rounded-lg bg-gray-900"

@@ -1,5 +1,9 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import { PRICING, BUSINESS } from '../data/siteData';
+
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
 
 export default function TreeServiceSneadsFerry() {
   return (
@@ -7,12 +11,32 @@ export default function TreeServiceSneadsFerry() {
       title="Tree Service in Sneads Ferry, NC"
       subtitle="Trusted Tree Removal, Trimming & Stump Grinding in Sneads Ferry"
       slug="tree-service-sneads-ferry-nc"
+      faqPosition="early"
       credentialBlock
       description="Tree service in Sneads Ferry, NC: removal, trimming, stump grinding, and 24/7 coastal storm cleanup. Free estimates from Godhans."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Sneads Ferry homeowners face unique coastal challenges — high winds, salt air, and storm-prone trees. Godhans Tree Company provides expert tree removal, trimming, stump grinding, and emergency storm cleanup throughout Sneads Ferry and the Topsail area, with fast response times and free estimates."
       sectionLinks={{
         0: { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "CAMA shoreline rules, wetlands and tree permits in Onslow County" },
+      }}
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. This page had ZERO
+       * editorial outbound links before batch 1 — every link on it was a templated
+       * band or a service card. Same copy as the `text` entry it replaces, plus the
+       * local detail that makes each anchor relevant. Edit both or neither.
+       */
+      sectionBodies={{
+        2: (
+          <>
+            {"Coastal storms, salt air and sandy soil are the three things that decide tree work out here, and we have been working it since 2013. Sandy ground carries weight right up until it does not — see "}
+            <Link to="/storm-cleanup-jacksonville-nc" className={PROSE_LINK}>what insurance covers after a storm</Link>
+            {", "}
+            <Link to="/tree-removal-cost-north-carolina" className={PROSE_LINK}>what a removal costs here</Link>
+            {" and "}
+            <Link to="/spider-lift-tree-removal-jacksonville-nc" className={PROSE_LINK}>the lift that stays off a soft lawn</Link>
+            {"."}
+          </>
+        ),
       }}
       sections={[
         {

@@ -1,4 +1,8 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
+
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
 
 export default function TreeServiceRichlands() {
   return (
@@ -6,10 +10,30 @@ export default function TreeServiceRichlands() {
       title="Tree Service in Richlands, NC"
       subtitle="Professional Tree Removal, Trimming & Stump Grinding in Richlands"
       slug="tree-service-richlands-nc"
+      faqPosition="early"
       credentialBlock
       description="Professional tree service in Richlands, NC. Tree removal, trimming, stump grinding, and emergency response. Free estimates from Godhans Tree Company."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Tree service in Richlands, NC includes tree removal, tree trimming, and stump grinding to keep your property safe and well-maintained. Our team provides reliable, affordable service with free estimates for homeowners and businesses in the Richlands area."
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. This page had ZERO
+       * editorial outbound links before batch 1 — every link on it was a templated
+       * band or a service card. Same copy as the `text` entry it replaces, plus the
+       * local detail that makes each anchor relevant. Edit both or neither.
+       */
+      sectionBodies={{
+        2: (
+          <>
+            {"We are committed to providing high-quality tree services with a focus on safety and customer satisfaction. Richlands is the inland side of our area — regular dirt going to hard-pack clay, where there is usually no grass lost at all — see "}
+            <Link to="/tree-removal-cost-north-carolina" className={PROSE_LINK}>what a removal costs here</Link>
+            {", "}
+            <Link to="/tree-removal-jacksonville-nc" className={PROSE_LINK}>how long a removal actually takes</Link>
+            {" and "}
+            <Link to="/emergency-tree-service-jacksonville-nc" className={PROSE_LINK}>24/7 storm response</Link>
+            {"."}
+          </>
+        ),
+      }}
       sections={[
         {
           heading: "Reliable Tree Services in Richlands, NC",

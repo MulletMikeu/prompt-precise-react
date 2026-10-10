@@ -1,4 +1,8 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
+
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
 
 export default function StormDamageGuide() {
   return (
@@ -6,9 +10,31 @@ export default function StormDamageGuide() {
       title="What to Do After Storm Damage to Trees (Homeowner Guide)"
       metaTitle="What to Do After Storm Damage to Trees | Godhans"
       slug="storm-damage-trees-guide"
+      faqPosition="early"
       authorUpdated="2026-08-07"
       description="What to do after storm tree damage: stay clear of downed lines, assess from a safe distance, and call a pro. Step-by-step homeowner guide."
       quickAnswer="After storm damage, assess the area from a safe distance, avoid downed power lines, and contact a professional tree service immediately. Damaged or leaning trees can be dangerous and should be handled by trained experts."
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. This page had one
+       * editorial outbound link and is the thinnest guide on the site; the
+       * prevention section named trimming, dead-tree removal and monitoring tree
+       * health without linking any of the three pages that do them.
+       */
+      sectionBodies={{
+        5: (
+          <>
+            {"Take proactive steps to protect your property:\n\n• Reduce weight on limbs extending over the roof before hurricane season — "}
+            <Link to="/tree-trimming-jacksonville-nc" className={PROSE_LINK}>what to look for, and when to call</Link>
+            {"\n• Remove dead or weak trees before a storm finds them — "}
+            <Link to="/tree-removal-jacksonville-nc" className={PROSE_LINK}>what a removal costs and how long it takes</Link>
+            {"\n• Monitor tree health, and measure a trunk rather than guessing — "}
+            <Link to="/resistograph-tree-testing-jacksonville-nc" className={PROSE_LINK}>resistograph testing</Link>
+            {"\n• Know what your policy actually covers before you need it — "}
+            <Link to="/storm-cleanup-jacksonville-nc" className={PROSE_LINK}>storm damage and insurance</Link>
+            {"\n\nPreventative maintenance can reduce the risk of severe damage."}
+          </>
+        ),
+      }}
       sections={[
         {
           heading: "Dealing With Tree Damage After a Storm",

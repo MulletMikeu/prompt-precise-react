@@ -25,6 +25,7 @@
  * look, not a silently shorter sitemap.
  */
 import { execFileSync } from 'node:child_process';
+
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -42,6 +43,58 @@ const CHROME = new Set([
   'src/components/Footer.tsx',
   'src/components/Navbar.tsx',
 ]);
+
+/**
+ * A file imported by more than this many routes is SHARED infrastructure and is
+ * excluded from the git-derived SEED date. Two, not one, because a few modules
+ * legitimately render on exactly two pages and are page content —
+ * PrecisionRemoval, for instance.
+ */
+const SHARED_ROUTE_THRESHOLD = 2;
+
+/** Where the rendered-content dates live. Written by scripts/stamp-sitemap.mjs. */
+const CONTENT_STATE = path.join(ROOT, 'scripts/sitemap-content.json');
+
+/**
+ * WHY THIS SCRIPT ONLY SEEDS THE DATES
+ *
+ * The original rule was: lastmod = newest commit across the route's whole
+ * import graph, minus Navbar/Footer. Right in principle, collapsed in practice.
+ * Measured on this repo: all 37 URLs read `2026-10-05`, because a brand-token
+ * sweep and an a11y-contrast pass both touched `src/pages/ServicePage.tsx`, and
+ * a genuine content commit touched `src/data/siteData.ts` -- a 600-line module
+ * every single route imports for `BUSINESS`. Real content changes across those
+ * same 37 pages span 2026-04-06 to 2026-10-05. Crawlers were being told the
+ * entire site changed in one day: the same "lastmod tells you nothing" failure
+ * this script was written to fix, arriving from the other direction.
+ *
+ * Two fixes were tried and rejected:
+ *
+ *   1. Extend CHROME to cover siteData/ServicePage. Wrong: a price change in
+ *      siteData.ts genuinely does change dozens of pages, and excluding the
+ *      file would silently stop reporting that.
+ *   2. Date a shared module by its last COPY change -- hash its string literals
+ *      at each revision, find where they last differed. Implemented, measured,
+ *      and it STILL collapsed to one date, because the copy change was real.
+ *      File granularity cannot answer the actual question: PINE_LADDER changing
+ *      is a real copy change in siteData.ts, but it alters four pages, not
+ *      thirty-seven. No amount of source analysis fixes that -- the answer is
+ *      only visible in the rendered output.
+ *
+ * So dating moved to where it is decidable. `scripts/stamp-sitemap.mjs` runs
+ * AFTER the build, fingerprints each prerendered page in dist/ with everything
+ * that is not content normalised away (the same normalisation
+ * scripts/indexnow.mjs uses, for the same reason), and stamps the build's date
+ * only on the pages whose rendered content actually moved. Those dates persist
+ * in scripts/sitemap-content.json, which is COMMITTED: it is the record of what
+ * production read like, so it has to travel with the repo.
+ *
+ * This script's remaining job is the SEED -- a defensible date for a URL with
+ * no recorded fingerprint yet. The seed ignores shared modules, because "when
+ * did this page's own component last change" is the best estimate available
+ * without rendering, and it reproduces the real 2026-04-06 -> 2026-10-05
+ * spread. Once a URL has a fingerprint, its seed is never consulted again.
+ */
 
 const die = (msg) => {
   console.error(`\n[gen-sitemap] ${msg}\n`);
@@ -242,13 +295,68 @@ function lastCommitDate(file) {
 // Taken from git rather than the clock so two builds of the same commit agree.
 const headDate = lastCommitDate('.') ?? new Date().toISOString().slice(0, 10);
 
+/**
+ * Last commit date at which a file's COPY changed, as YYYY-MM-DD.
+ *
+ * Walks the file's commits newest-first and returns the first whose copyHash
+ * differs from the next-older version's. Falls back to the file's oldest commit
+ * date (the version where its copy first existed) when every revision has the
+ * same copy — which is the correct answer for a file that has only ever been
+ * restyled.
+ */
+/**
+ * Rendered-content dates recorded by the last stamped build, keyed by URL path.
+ *
+ * Absent on a fresh checkout and for any URL added since, which is exactly what
+ * the git-derived seed is for.
+ */
+const recorded = (() => {
+  if (!fs.existsSync(CONTENT_STATE)) return {};
+  try {
+    const parsed = JSON.parse(fs.readFileSync(CONTENT_STATE, 'utf8'));
+    return parsed && typeof parsed === 'object' && parsed.pages ? parsed.pages : {};
+  } catch {
+    console.warn('[gen-sitemap] scripts/sitemap-content.json unreadable; seeding every date from git');
+    return {};
+  }
+})();
+
+// ------------------------------------------------- shared vs route-local files
+
+// Which files each route depends on, resolved once so the shared-module count
+// below is measured rather than guessed at.
+const routeFiles = routes.map(({ url, spec }) => ({ url, spec, files: dependencies(spec) }));
+
+const routeCount = new Map();
+for (const { files } of routeFiles) {
+  for (const f of new Set(files)) routeCount.set(f, (routeCount.get(f) ?? 0) + 1);
+}
+const isShared = (file) => (routeCount.get(file) ?? 0) > SHARED_ROUTE_THRESHOLD;
+
 // ------------------------------------------------------------------- generate
 
-const entries = routes.map(({ url, spec }) => {
-  const files = dependencies(spec);
-  const dates = files.map(lastCommitDate).filter(Boolean);
+let seeded = 0;
+const entries = routeFiles.map(({ url, files }) => {
+  // A recorded rendered-content date always wins: it is the only one that knows
+  // whether THIS page's output actually moved.
+  const fromState = recorded[url]?.lastmod;
+  if (fromState) return { url, lastmod: fromState, files: files.length, source: 'content' };
+
+  // Seed: newest commit across this route's own files, shared modules excluded.
+  seeded += 1;
+  const local = files.filter((f) => !isShared(f)).map(lastCommitDate).filter(Boolean);
+
+  // The four LocationPage cities have NO route-local file — LocationPage.tsx
+  // serves all of them, so it is shared by definition and the filter above
+  // empties their list. Falling through to headDate would stamp them "today",
+  // which is the collapse this whole exercise is about. Use the full graph for
+  // them instead: a real date from a shared module beats an invented one.
+  const dates = local.length
+    ? local
+    : files.map(lastCommitDate).filter(Boolean);
+
   const lastmod = dates.length ? dates.sort().at(-1) : headDate;
-  return { url, lastmod, files: files.length };
+  return { url, lastmod, files: files.length, source: local.length ? 'seed' : 'seed(shared)' };
 });
 
 const xml = [
@@ -269,4 +377,28 @@ fs.writeFileSync(OUT, xml);
 
 const spread = [...new Set(entries.map((e) => e.lastmod))].sort();
 console.log(`[gen-sitemap] wrote ${entries.length} URLs to public/sitemap.xml`);
-console.log(`[gen-sitemap] lastmod values in use: ${spread.join(', ')}`);
+console.log(`[gen-sitemap] lastmod values in use (${spread.length}): ${spread.join(', ')}`);
+
+const sharedFiles = [...routeCount.entries()].filter(([f]) => isShared(f)).map(([f]) => f).sort();
+console.log(`[gen-sitemap] shared modules excluded from the seed: ${sharedFiles.length}`);
+console.log(`[gen-sitemap] dates: ${entries.length - seeded} from recorded content, ${seeded} seeded from git`);
+
+/**
+ * One date across every URL is the failure this script exists to prevent, in
+ * either direction — a stale hand-written sitemap, or a shared-module commit
+ * restamping the lot. It happened once (all 37 URLs read 2026-10-05 after a
+ * brand-token sweep), so it fails the build now rather than shipping quietly.
+ *
+ * The threshold is deliberately weak: two distinct dates. It is a smoke alarm
+ * for "the dating logic collapsed", not an assertion about how often the site
+ * is edited.
+ */
+if (spread.length < 2 && entries.length > 4) {
+  die(
+    `every one of the ${entries.length} URLs got the same lastmod (${spread[0]}).\n` +
+    `That is the collapse this script is supposed to prevent: a change to a module\n` +
+    `every route imports has restamped the whole sitemap. Check SHARED_ROUTE_THRESHOLD\n` +
+    `and copyHash() in this file before shipping — a sitemap that claims all\n` +
+    `${entries.length} pages changed on one day tells a crawler nothing.`,
+  );
+}

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import { BUSINESS, PRICING } from '@/data/siteData';
 
@@ -10,6 +11,9 @@ import { BUSINESS, PRICING } from '@/data/siteData';
  * "Organic only" is stated three times on purpose — it is the single biggest
  * source of wasted calls.
  */
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
+
 export default function DebrisHauling() {
   return (
     <ServicePage
@@ -17,11 +21,31 @@ export default function DebrisHauling() {
       metaTitle="Debris Hauling in Jacksonville, NC | Godhans"
       subtitle="Trees, Brush and Leaves — Priced by the Trailer"
       slug="debris-hauling-jacksonville-nc"
+      faqPosition="early"
       authorUpdated="2026-09-27"
       credentialBlock
       description={`Organic debris hauling in Jacksonville, NC — trees, brush, leaves. ${PRICING.debris.minimum} minimum, about ${PRICING.debris.perTrailer} per dump trailer. Free estimates.`}
       ctaText={`Get a Hauling Quote — ${BUSINESS.phone}`}
-      quickAnswer={`We haul organic debris only — trees, limbs, brush and leaves. Nothing else. Hauling starts at a ${PRICING.debris.minimum} minimum and runs about ${PRICING.debris.perTrailer} per standard dump trailer after that, so you can work out roughly where a pile lands before we ever come out.`}
+      quickAnswer={`We haul organic debris only — trees, limbs, brush and leaves. Nothing else. Hauling starts at an ${PRICING.debris.minimum} minimum and runs about ${PRICING.debris.perTrailer} per standard dump trailer after that, so you can work out roughly where a pile lands before we ever come out.`}
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. The three rural
+       * city pages had four in-sentence inbound links each and a burn-ban pile on
+       * an acre lot is exactly their call. Same copy; anchors and one sentence
+       * added.
+       */
+      sectionBodies={{
+        2: (
+          <>
+            {"Three calls come in far more than any others.\n\nThe first is the DIY job that got away. Somebody with a chainsaw and a free Saturday takes down a tree or limbs one up, which is the easy half — and then they are standing in a yard with a pile that will not fit in a pickup, and it turns out a medium tree makes a genuinely astonishing amount of brush. There is no shame in this call. Cutting is one problem and volume is a completely different one.\n\nThe second is a burn ban. In a dry summer the pile you were planning to burn is suddenly a pile you are living with, and it is not getting smaller. That one comes in most from the larger rural lots out toward "}
+            <Link to="/tree-service-maysville-nc" className={PROSE_LINK}>Maysville</Link>
+            {", "}
+            <Link to="/tree-service-beulaville-nc" className={PROSE_LINK}>Beulaville</Link>
+            {" and "}
+            <Link to="/tree-service-holly-ridge-nc" className={PROSE_LINK}>Holly Ridge</Link>
+            {", where there is room to make a pile nobody can move.\n\nThe third is cleanup after a crew that cut cheap. A low number often means the cutting was quoted and the removal wasn't, and the customer finds out when the truck leaves. We will haul it. We would also rather you had read our estimate page first — a quote that does not say what happens to the wood is not a finished quote."}
+          </>
+        ),
+      }}
       sections={[
         {
           heading: 'What We Haul — and What We Don\'t',
@@ -29,7 +53,7 @@ export default function DebrisHauling() {
         },
         {
           heading: 'What Debris Hauling Costs',
-          text: `Hauling has the same ${PRICING.debris.minimum} minimum as the rest of our work, and for the same reason: the biggest fixed cost of any job is getting a truck, a trailer and a crew to your property at all. Past the minimum it prices by the trailer — about ${PRICING.debris.perTrailer} for each standard dump trailer.\n\nWithin roughly ${PRICING.debris.localRadiusMiles} miles of our shop on Gum Branch Road, the minimum typically covers ${PRICING.debris.trailersAtMinimum}. That is enough for most medium trees, cut and stacked. A genuinely big tree is a different conversation — a large hardwood or a mature pine, once it is in pieces, can run ${PRICING.debris.bigTreeLoads}.\n\nDistance matters because drive time is the cost. Further out, the same pile takes more of the day, and the quote reflects that rather than pretending it doesn't.`,
+          text: `Hauling has the same ${PRICING.debris.minimum} minimum as the rest of our work, and for the same reason: the biggest fixed cost of any job is getting a truck, a trailer and a crew to your property at all. Past the minimum it prices by the trailer — about ${PRICING.debris.perTrailer} for each standard dump trailer for residential hauling. Insurance jobs are billed differently: an itemized, after-the-job invoice using North Carolina standard line-item rates, which is why the hauling line on one of our storm invoices does not match the residential figure above.\n\nWithin roughly ${PRICING.debris.localRadiusMiles} miles of our shop on Gum Branch Road, the minimum typically covers ${PRICING.debris.trailersAtMinimum}. That is enough for most medium trees, cut and stacked. A genuinely big tree is a different conversation — a large hardwood or a mature pine, once it is in pieces, can run ${PRICING.debris.bigTreeLoads}.\n\nDistance matters because drive time is the cost. Further out, the same pile takes more of the day, and the quote reflects that rather than pretending it doesn't.`,
         },
         {
           heading: 'Why People Call Us for Hauling',
@@ -54,7 +78,7 @@ export default function DebrisHauling() {
         },
         {
           question: 'How much does debris hauling cost in Jacksonville, NC?',
-          answer: `There is a ${PRICING.debris.minimum} minimum, and past that it runs about ${PRICING.debris.perTrailer} per standard dump trailer. Within about ${PRICING.debris.localRadiusMiles} miles of our Gum Branch Road shop the minimum typically covers ${PRICING.debris.trailersAtMinimum}, which handles most medium trees. A big tree in pieces can run ${PRICING.debris.bigTreeLoads}.`,
+          answer: `There is an ${PRICING.debris.minimum} minimum, and past that it runs about ${PRICING.debris.perTrailer} per standard dump trailer. Within about ${PRICING.debris.localRadiusMiles} miles of our Gum Branch Road shop the minimum typically covers ${PRICING.debris.trailersAtMinimum}, which handles most medium trees. A big tree in pieces can run ${PRICING.debris.bigTreeLoads}.`,
         },
         {
           question: 'I cut the tree down myself. Will you just haul it away?',

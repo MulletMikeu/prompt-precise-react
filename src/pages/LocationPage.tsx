@@ -1,6 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
-import { BUSINESS, SITE_URL, YEAR_FOUNDED_LOCAL } from "../data/siteData";
+import { BUSINESS, PRICING, SITE_URL, YEAR_FOUNDED_LOCAL } from "../data/siteData";
 import WhyChooseGodhans from "../components/WhyChooseGodhans";
 
 interface LocationPageProps {
@@ -10,7 +10,7 @@ interface LocationPageProps {
 const SERVICES = [
   { name: "Tree Removal", href: "/tree-removal-jacksonville-nc", desc: "Safe removal of any size tree. Full debris haul-away included." },
   { name: "Tree Trimming", href: "/tree-trimming-jacksonville-nc", desc: "Crown work, deadwood removal, and precision pruning." },
-  { name: "Stump Grinding", href: "/stump-grinding-jacksonville-nc", desc: "Ground to grade, grindings removed, yard ready to use." },
+  { name: "Stump Grinding", href: "/stump-grinding-jacksonville-nc", desc: `Ground ${PRICING.stump.depthStandard} below grade, grindings hauled, yard ready to use.` },
   { name: "Emergency Service", href: "/emergency-tree-service-jacksonville-nc", desc: "24/7 response for storm damage and hazardous situations." },
 ];
 

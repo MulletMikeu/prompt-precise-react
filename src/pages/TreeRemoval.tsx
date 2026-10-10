@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
-import { BUSINESS, PRICING } from '../data/siteData';
+import { BUSINESS, EQUIPMENT, PRICING } from '../data/siteData';
+
 import RecentJobs from '@/components/sections/RecentJobs';
 import LiteYouTube from '@/components/ui/LiteYouTube';
 import removal480Avif from '@/assets/tree-removal-jacksonville-nc-godhans-480.avif';
@@ -16,6 +18,9 @@ const removalAvifSrcSet = `${removal480Avif} 480w, ${removal800Avif} 800w, ${rem
 const removalWebpSrcSet = `${removal480Webp} 480w, ${removal800Webp} 800w, ${removal1125Webp} 1125w`;
 const removalJpgSrcSet = `${removal480Jpg} 480w, ${removal800Jpg} 800w, ${removal1125Jpg} 1125w`;
 
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
+
 
 export default function TreeRemoval() {
   return (
@@ -23,6 +28,7 @@ export default function TreeRemoval() {
       title="Tree Removal in Jacksonville, NC"
       subtitle="Safe, Insured Tree Removal — Free Estimates"
       slug="tree-removal-jacksonville-nc"
+      faqPosition="early"
       credentialBlock
       description="Professional tree removal services in Jacksonville, NC. Safe, efficient, and fully insured. Call Godhans Tree Company for a free estimate."
       ctaText="Call Now for a Free Estimate"
@@ -39,43 +45,101 @@ export default function TreeRemoval() {
         showCta: true,
       }}
       quickAnswer={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum. Most removals run ${PRICING.removal.most}, with large or hazardous trees at ${PRICING.removal.large}. ${PRICING.stories.sameTree}`}
-      /* Positional keys. Section order after batch 5 — "how-long" was inserted
-         at 3, which pushed everything from the old 3 down by one:
-           0 intro · 1 when-to-remove · 2 process · 3 how-long · 4 pricing ·
-           5 minimum · 6 pine+sweetgum · 7 bradford-pear · 8 sandy-ground ·
-           9 weather · 10 service-areas */
+      /* Positional keys. Batch 1 deleted the two generic sections that used to
+         open the page ("Professional Tree Removal Services in Jacksonville, NC"
+         and "Our Tree Removal Process"), so every index below moved down by
+         two. Current order:
+           0 when-to-remove · 1 how-long · 2 pricing · 3 minimum ·
+           4 pine+sweetgum · 5 bradford-pear · 6 sandy-ground · 7 weather ·
+           8 builders · 9 service-areas */
       sectionLinks={{
-        // Section 2 is "Our Tree Removal Process", where rigging and access are
-        // described — the natural place to hand off to the tight-access page.
-        2: [
-          { href: "/tree-removal-tight-spaces-jacksonville-nc", label: "See how we handle tree removal in tight spaces" },
+        // 0 is "When Should You Remove a Tree?", which now carries the HOA and
+        // waterfront line the deleted process section used to hold — so the
+        // permit hand-off belongs with it.
+        0: [
           { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Do you need a permit to remove a tree in Onslow County?" },
+          // Was /tree-removal-tight-spaces-jacksonville-nc, 301'd into
+          // near-house in this batch. Repointed rather than dropped.
+          { href: "/tree-removal-near-house-jacksonville-nc", label: "How we rig a removal in a tight space beside the house" },
         ],
-        // 3 is the new timing section; the crane-vs-lift comparison in it is
-        // the natural hand-off to the spider lift page.
-        3: { href: "/spider-lift-tree-removal-jacksonville-nc", label: "Why the spider lift is cutting in 30 minutes" },
-        8: [
+        // 1 is the timing section; the crane-vs-lift comparison in it is the
+        // natural hand-off to the spider lift page.
+        1: { href: "/spider-lift-tree-removal-jacksonville-nc", label: "Why the spider lift is cutting in 30 minutes" },
+        6: [
           { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How the spider lift stays off your lawn" },
           { href: "/residential-tree-service-jacksonville-nc", label: "What an estimate should include — including ground protection" },
         ],
-        9: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
+        7: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
+      }}
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. Same copy as
+       * the `text` entries they replace, with anchors added inside sentences
+       * that already named the destination. Edit both or neither.
+       *
+       * Targets chosen to feed the pages an audit found starved of in-sentence
+       * links: /tree-cabling-bracing-* (1 editorial inbound), /debris-hauling-*
+       * (2) and /reviews (0 editorial).
+       */
+      sectionBodies={{
+        0: (
+          <>
+            {"You may need tree removal if:\n\n• The tree is dead or dying\n• Storm damage has weakened the structure\n• The tree is leaning dangerously toward your home\n• Roots are damaging your foundation or driveway\n• Branches are falling or pose a safety risk\n• The tree is overcrowding your yard or blocking sunlight\n\nIf you're unsure, we can inspect your tree and recommend the best solution — and the answer is not always removal. A healthy mature oak with one split fork is usually a candidate for "}
+            <Link to="/tree-cabling-bracing-jacksonville-nc" className={PROSE_LINK}>cabling and bracing</Link>
+            {` at ${PRICING.cabling.typical} rather than a removal, and a trunk that merely looks worrying can be `}
+            <Link to="/resistograph-tree-testing-jacksonville-nc" className={PROSE_LINK}>measured instead of guessed at</Link>
+            {". And if your property sits in an HOA or backs up to water, we'll flag anything that needs approval at the estimate, before the job goes on the schedule."}
+          </>
+        ),
+        2: (
+          <>
+            {"Tree removal costs vary based on tree size, location, and complexity. We provide transparent pricing and free estimates so you know exactly what to expect — and what our customers mention most in our "}
+            <Link to="/reviews" className={PROSE_LINK}>Google reviews</Link>
+            {" is that the quoted number holds. If the tree is already down and the pile is the whole problem, that is "}
+            <Link to="/debris-hauling-jacksonville-nc" className={PROSE_LINK}>debris hauling</Link>
+            {` and it prices separately, from an ${PRICING.debris.minimum} minimum. The `}
+            <Link to="/services" className={PROSE_LINK}>services overview</Link>
+            {" explains which of trimming, removal and grinding fixes which problem, and the longer write-ups are in our "}
+            <Link to="/blog" className={PROSE_LINK}>tree care guides</Link>
+            {"."}
+          </>
+        ),
+        // "Service Areas for Tree Removal" — the city list was six place names
+        // in a sentence with no links. Each of those pages had two editorial
+        // inbound links before this, both from templated card grids.
+        9: (
+          <>
+            {"Godhans Tree Company removes trees across Jacksonville and all of Onslow County, including "}
+            <Link to="/tree-service-camp-lejeune-nc" className={PROSE_LINK}>Camp Lejeune</Link>
+            {", "}
+            <Link to="/tree-service-hubert-nc" className={PROSE_LINK}>Hubert</Link>
+            {", "}
+            <Link to="/tree-service-richlands-nc" className={PROSE_LINK}>Richlands</Link>
+            {", "}
+            <Link to="/tree-service-swansboro-nc" className={PROSE_LINK}>Swansboro</Link>
+            {", "}
+            <Link to="/tree-service-sneads-ferry-nc" className={PROSE_LINK}>Sneads Ferry</Link>
+            {", "}
+            <Link to="/tree-service-holly-ridge-nc" className={PROSE_LINK}>Holly Ridge</Link>
+            {", "}
+            <Link to="/tree-service-surf-city-nc" className={PROSE_LINK}>Surf City</Link>
+            {", "}
+            <Link to="/tree-service-maysville-nc" className={PROSE_LINK}>Maysville</Link>
+            {", "}
+            <Link to="/tree-service-beulaville-nc" className={PROSE_LINK}>Beulaville</Link>
+            {" and the surrounding coastal communities. Coastal North Carolina puts hard miles on trees — salt air, saturated soil, and hurricane-season winds leave a lot of weakened pines and storm-split hardwoods behind.\n\nWhether it's a leaning pine in a tight backyard or a large hardwood hanging over your roof, our crew has the boom trucks, rigging, and experience to take it down safely and haul away every bit of debris. Not sure if you're in our area? Give us a call — if you're in or near Onslow County, we can almost certainly help. The full list is on our "}
+            <Link to="/service-area" className={PROSE_LINK}>service area page</Link>
+            {"."}
+          </>
+        ),
       }}
       sections={[
         {
-          heading: "Professional Tree Removal Services in Jacksonville, NC",
-          text: "If you have a dangerous, damaged, or unwanted tree on your property, professional removal is the safest solution. Our team specializes in removing trees of all sizes while protecting your home, landscaping, and surrounding structures.\n\nWe handle everything from small residential removals to large, high-risk tree jobs. Whether your tree is leaning, dead, storm-damaged, or simply in the way, we have the equipment and experience to remove it safely."
-        },
-        {
           heading: "When Should You Remove a Tree?",
-          text: "You may need tree removal if:\n\n• The tree is dead or dying\n• Storm damage has weakened the structure\n• The tree is leaning dangerously toward your home\n• Roots are damaging your foundation or driveway\n• Branches are falling or pose a safety risk\n• The tree is overcrowding your yard or blocking sunlight\n\nIf you're unsure, we can inspect your tree and recommend the best solution."
+          text: "You may need tree removal if:\n\n• The tree is dead or dying\n• Storm damage has weakened the structure\n• The tree is leaning dangerously toward your home\n• Roots are damaging your foundation or driveway\n• Branches are falling or pose a safety risk\n• The tree is overcrowding your yard or blocking sunlight\n\nIf you're unsure, we can inspect your tree and recommend the best solution. And if your property sits in an HOA or backs up to water, we'll flag anything that needs approval at the estimate, before the job goes on the schedule."
         },
         {
-          heading: "Our Tree Removal Process",
-          text: "We follow a safe and efficient process to ensure your property is protected:\n\n1. Free Estimate & Inspection – We assess the tree and surrounding area\n2. Planning & Safety Setup – We prepare the site and equipment\n3. Careful Tree Removal – Sections are cut and removed safely\n4. Cleanup – We remove debris and leave your property clean\n\nIf your property sits in an HOA or backs up to water, we'll flag anything that needs approval at the estimate, before the job goes on the schedule."
-        },
-        {
-          heading: "How Long a Tree Removal Actually Takes",
-          text: "People ask how long they need to be home, or how many days the yard is out of commission. Real numbers from our own jobs:\n\nSMALL TREE, OPEN YARD — ABOUT 3 HOURS. That is the whole visit: cut the tree, grind the stump, rake, leaf-blow, and haul everything away. You get your afternoon back.\n\nBIG PINE NEAR A HOUSE — 1.5 DAYS, SOMETIMES 2. An 80 to 90 foot loblolly, two and a half to three feet through the trunk, takes a full day to cut and get the bulk of the debris hauled. Stump grinding happens at the end of that day if there is light left, and next morning if there isn't. Call it a day and a half, up to two.\n\nCRANE JOBS RUN ABOUT THE SAME. This surprises people who assume a crane is faster. Crane setup — cribbing, mats, checks, rigging — takes about an hour and a half before anything gets cut. Our remote-control spider lift is off the trailer and cutting within about thirty minutes. What the crane actually buys is not speed, it is reach in tight quarters: it picks pieces out and sets them down where the crew can process them, instead of everything coming down through a space that has no room for it.\n\nWe try to grind stumps the same day. On big trees it usually rolls to a second morning, and we will tell you which at the estimate rather than leaving you guessing."
+          heading: "How long does it take to remove a large tree?",
+          text: "A small tree in an open yard is about 3 hours, start to cleanup. A big pine runs 1 to 1.5 days, and a massive one 1.5 to 2. Real numbers from our own jobs:\n\nSMALL TREE, OPEN YARD — ABOUT 3 HOURS. That is the whole visit: cut the tree, grind the stump, rake, leaf-blow, and haul everything away. You get your afternoon back.\n\nBIG PINE — 1 TO 1.5 DAYS. An 80 to 90 foot loblolly, two and a half to three feet through the trunk, takes a full day to cut and get the bulk of the debris hauled.\n\nA MASSIVE PINE — 1.5 TO 2 DAYS. Bigger than that, or hard against a structure so every piece has to be rigged down, and the cutting alone fills a day and a half.\n\nTHE STUMP IS THE BOTTLENECK, NOT THE TREE. This is the part that decides whether you get your yard back on day one. An ordinary stump is about an hour and a half of grinding; a big one runs 3 to 4 hours. On a large removal that is what pushes the job into a second morning — the tree is down and hauled, and the grinder still needs most of another half-day. We try to grind the same day and we will tell you at the estimate which way yours is likely to go, rather than leaving you guessing.\n\nCRANE JOBS RUN ABOUT THE SAME. This surprises people who assume a crane is faster. Crane setup — cribbing, mats, checks, rigging — takes about an hour and a half before anything gets cut. Our remote-control spider lift is off the trailer and cutting within about thirty minutes. What the crane actually buys is not speed, it is reach in tight quarters: it picks pieces out and sets them down where the crew can process them, instead of everything coming down through a space that has no room for it."
         },
         {
           heading: "Affordable Tree Removal with No Surprises",
@@ -95,11 +159,11 @@ export default function TreeRemoval() {
         },
         {
           heading: "Sandy Ground, and the Crane We Put in a Yard",
-          text: "The ground here decides how we show up, and we learned that expensively.\n\nOur first crane job was in Hubert. The yard looked solid — it looked like any other yard — and backing the crane about ten feet into it put a fifteen-ton machine down to the axle. Sandy loam does that. It carries weight right up until it does not, and there is no stage in between that gives you a warning.\n\nThat job is the reason our equipment list looks the way it does now. A spider lift weighs a fraction of a crane, walks through a gate on tracks, and spreads its load across four outriggers instead of two axles. Mini track loaders move wood over grass without the point loading a wheeled machine puts through turf. Between them, we very rarely need to put anything heavy on a lawn at all — and when we do, we know to say so first.\n\nWhich side of the county you are on matters. Our shop on Gum Branch Road is roughly the dividing line. Coastal side — Sneads Ferry, Swansboro, Hubert, about half of Jacksonville — is sandy loam, and grass tears easily when heavy logs are turned on it, so we set that expectation at the quote and offer ground mats for a small added cost. Inland toward Richlands it is regular dirt going to hard-pack clay, and on those jobs there is usually no grass lost at all."
+          text: "Our first crane job put a fifteen-ton machine down to the axle about ten feet into a Hubert yard that looked solid. Sandy loam does that: it carries weight right up until it does not, and there is no stage in between that gives you a warning.\n\nThat job is the reason our equipment list looks the way it does now. A spider lift weighs a fraction of a crane, walks through a gate on tracks, and spreads its load across four outriggers instead of two axles. Mini track loaders move wood over grass without the point loading a wheeled machine puts through turf. Between them, we very rarely need to put anything heavy on a lawn at all — and when we do, we know to say so first.\n\nWhich side of the county you are on matters. Our shop on Gum Branch Road is roughly the dividing line. Coastal side — Sneads Ferry, Swansboro, Hubert, about half of Jacksonville — is sandy loam, and grass tears easily when heavy logs are turned on it, so we set that expectation at the quote and offer ground mats for a small added cost. Inland toward Richlands it is regular dirt going to hard-pack clay, and on those jobs there is usually no grass lost at all."
         },
         {
           heading: "Wind, Lightning, and When Trees Actually Break",
-          text: "In our experience the wind here has a schedule. Coastal gusts pick up around ten or eleven in the morning, and above about fifty feet is where a climber actually feels them — which is why the high, exposed work on a breezy day gets done early or gets moved.\n\nThe damage is not evenly spread either. Southwest Jacksonville and the Ramsey Road side running toward Maysville see more of the tornado and waterspout-type damage than the rest of our area does. That is a pattern in the jobs we get called to, not a meteorological finding, but it is consistent enough that we factor it in when someone on that side asks whether a marginal tree is worth keeping.\n\nThe threat people underestimate is lightning. It is the number one non-wind cause of the tree failures we deal with, and tall pines take most of the strikes for the obvious reason — they are the tallest thing in the yard. A struck pine often looks survivable and is not."
+          text: "Coastal gusts pick up around ten or eleven in the morning, and above about fifty feet is where a climber actually feels them — which is why, in our experience, the high exposed work on a breezy day gets done early or gets moved.\n\nThe damage is not evenly spread either. Southwest Jacksonville and the Ramsey Road side running toward Maysville see more of the tornado and waterspout-type damage than the rest of our area does. That is a pattern in the jobs we get called to, not a meteorological finding, but it is consistent enough that we factor it in when someone on that side asks whether a marginal tree is worth keeping.\n\nThe threat people underestimate is lightning. It is the number one non-wind cause of the tree failures we deal with, and tall pines take most of the strikes for the obvious reason — they are the tallest thing in the yard. A struck pine often looks survivable and is not."
         },
         {
           heading: "Removals for Builders and New Construction",
@@ -143,10 +207,13 @@ export default function TreeRemoval() {
               The trees nobody else would touch — Gene Circle, Jacksonville
             </h2>
             <p className="text-gray-300 leading-relaxed text-lg mb-4">
-              Some removals aren't about size. They're about whether anyone can do them at all — safely, in the space available, without dropping a hundred feet of timber onto a house.
+              Two removals at one Gene Circle address: a 105-foot tulip poplar eight feet from
+              the house at $12,000, and a 120-foot pine boxed in behind a shed at $8,500.
             </p>
             <p className="text-gray-300 leading-relaxed text-lg mb-8">
-              We've taken down two of them at the same address. Here's what they cost, and why.
+              Neither was about size. Both were about whether anyone could do them at all — safely,
+              in the space available, without dropping a hundred feet of timber onto a house.
+              Here's what set each number.
             </p>
 
             <figure className="my-8">
@@ -238,10 +305,19 @@ export default function TreeRemoval() {
               We drill it and measure, because on this coast you cannot tell from the outside.
             </p>
             <p className="text-gray-300 leading-relaxed text-lg mb-4">
-              Coastal humidity makes internal decay a constant reality here rather than an occasional finding. Heartwood rot is the leading killer of Southern hardwoods, and it works from the inside out. Alongside it we see dry rot, wet rot, and root diseases that attack the tree below grade where nothing is visible at all.
+              Coastal humidity makes internal decay a constant reality here rather than an occasional finding. In our experience in this area, heartwood rot is the leading killer of hardwoods, and it works from the inside out. Alongside it we see dry rot, wet rot, and root diseases that attack the tree below grade where nothing is visible at all.
             </p>
             <p className="text-gray-300 leading-relaxed text-lg mb-4">
-              Two are worth knowing by name. <strong className="font-semibold text-white">Armillaria root rot</strong> announces itself if you know where to look: white fungal fans under the bark, black shoestring-like rhizomorphs running through the root zone, and clusters of mushrooms at the base after rain. <strong className="font-semibold text-white">Biscogniauxia canker</strong> — still widely called Hypoxylon — goes after oaks that are already stressed, typically by drought or by construction disturbance around the root zone.
+              Two are worth knowing by name, and both are described by{' '}
+              <a
+                href="https://content.ces.ncsu.edu/common-disease-pests-of-oak-in-north-carolina"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+              >
+                NC State Extension
+              </a>
+              . <strong className="font-semibold text-white">Armillaria root rot</strong> announces itself if you know where to look: white fungal mycelial fans under the bark, rhizomorphs that look like black strings under the bark or around the base, and clusters of yellow-orange mushrooms near the tree. <strong className="font-semibold text-white">Biscogniauxia canker</strong> — still widely called Hypoxylon — is, in Extension's words, &ldquo;opportunistic, attacking trees already weakened or stressed by abiotic factors or other pests&rdquo;; around here that usually means drought or construction disturbance around the root zone.
             </p>
             <p className="text-gray-300 leading-relaxed text-lg mb-4">
               The cruel part is that none of this has to show. A trunk can be hollow while the bark over it looks perfect.
@@ -285,6 +361,23 @@ export default function TreeRemoval() {
                   A free native tree in exchange for a Bradford pear you remove, up to
                   five, run with the NC Forest Service, NC Urban Forest Council and NC
                   Wildlife Federation.
+                </span>
+              </li>
+              <li>
+                <a
+                  href="https://content.ces.ncsu.edu/common-disease-pests-of-oak-in-north-carolina"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+                >
+                  NC State Extension — Common Disease Pests of Oak in North Carolina
+                </a>
+                <span className="block text-gray-400 text-base mt-1">
+                  The Armillaria root rot signs quoted above — white mycelial fans,
+                  black string-like rhizomorphs, clustered yellow-orange mushrooms — and
+                  Biscogniauxia (Hypoxylon) canker as &ldquo;opportunistic, attacking trees
+                  already weakened or stressed.&rdquo; What we say about how often we find
+                  heartwood rot here is our own experience, not Extension&rsquo;s.
                 </span>
               </li>
             </ul>
@@ -334,7 +427,7 @@ export default function TreeRemoval() {
           {
             href: "/spider-lift-tree-removal-jacksonville-nc",
             label: "Spider lift tree removal for backyards with no truck access",
-            blurb: "Fits through a standard gate, reaches 50+ feet, and doesn't tear up the lawn."
+            blurb: `Fits a ${EQUIPMENT.spiderLift.gate}, ${EQUIPMENT.spiderLift.platformHeight} platform with about ${EQUIPMENT.spiderLift.workingHeight} of working reach, and doesn't tear up the lawn.`
           }
         ]
       }}

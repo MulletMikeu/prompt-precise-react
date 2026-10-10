@@ -1,13 +1,71 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import { BUSINESS, CREDENTIAL, PRICING } from '../data/siteData';
+
+/**
+ * In-prose links, via ServicePage's `sectionBodies` slot.
+ *
+ * This page had ZERO editorial outbound links before batch 1 — every internal
+ * link on it was a templated cross-link band or a curated guides list. These
+ * bodies are the same copy as the `text` entries they replace, with anchors
+ * added inside the sentences that were already naming the thing being linked.
+ * Keep them in sync with the strings below if either is edited: the `text`
+ * value is still the fallback and still what the FAQ/schema reasoning assumes.
+ */
+const LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
+
+const SECTION_BODIES = {
+  // "Are You Insured for Commercial Work?" — the SoS registry is the thing a
+  // procurement reviewer would actually want to click.
+  1: (
+    <>
+      {`Yes — ${CREDENTIAL.equipmentInsurance('property')}\n\nThat second half is the part that matters on a commercial site. Plenty of contractors carry a general liability policy and stop there, leaving the equipment off it. If an uninsured machine damages a building, a parking structure, or a tenant's vehicle, the property owner is the one holding the bill. Ours is covered.\n\nWe are also bondable for commercial work, and `}
+      {CREDENTIAL.legalName}
+      {` is registered and active with the `}
+      <a
+        href="https://www.sosnc.gov/online_services/search/by_title/_Business_Registration"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={LINK}
+      >
+        North Carolina Secretary of State business registry
+      </a>
+      {` (SoSID ${CREDENTIAL.sosId}) — the two things a procurement process usually asks for after the COI. Search the registry for the legal name on your quote; if it does not match, that is worth a phone call before anyone starts cutting.`}
+    </>
+  ),
+  // "What Makes Tight Commercial Lots Different?" — names the lift and the
+  // near-structure work, so it links to both.
+  6: (
+    <>
+      {`Commercial lots are frequently harder to work than residential yards, because everything is paved, occupied, or both.\n\nA crane needs setup room and often a lane closure. A bucket truck weighs 25,000–40,000 lbs, which is a real question mark over a parking deck, a drainage structure, or a freshly sealed lot. Our `}
+      <Link to="/spider-lift-tree-removal-jacksonville-nc" className={LINK}>spider lift</Link>
+      {` solves most of it: it collapses to about 36 inches to pass through a service gate, rolls on rubber tracks that spread the load instead of concentrating it, and reaches 90 feet of working height — so we can take limbs off a roofline or clear a canopy over parking without staging a crane in your customers' way. The same rigging approach we use for a `}
+      <Link to="/tree-removal-near-house-jacksonville-nc" className={LINK}>removal hard against a structure</Link>
+      {` applies here, and so does the 20–40% tight-access premium.\n\nThat is usually the difference between a job done on a Tuesday morning and a job that needs a road closure permit.`}
+    </>
+  ),
+  // "Commercial Storm Response in Onslow County" — names documentation and
+  // itemised invoices, which is exactly what the storm/insurance page covers.
+  7: (
+    <>
+      {`Storms don't wait for business hours, and a commercial property has more exposure than a house does — more roof, more parking, more people who need to get in the next morning.\n\nWe run `}
+      <Link to="/emergency-tree-service-jacksonville-nc" className={LINK}>24/7 emergency response</Link>
+      {` across Jacksonville and Onslow County, and commercial sites blocking access or threatening a structure get prioritized. We document damage with photographs before work begins and provide itemized invoices, which is what your carrier and your ownership group are both going to ask for — `}
+      <Link to="/storm-cleanup-jacksonville-nc" className={LINK}>how insurance handles storm tree work</Link>
+      {` is on one page so there is a single accurate version of it.\n\nIf you manage multiple properties, one call to ${BUSINESS.phone} reaches the people who will actually be on site — not a national dispatcher routing your storm to whoever answers.`}
+    </>
+  ),
+};
 
 export default function CommercialTreeService() {
   return (
     <ServicePage
+      sectionBodies={SECTION_BODIES}
       title="Commercial Tree Service in Jacksonville, NC"
       metaTitle="Commercial Tree Service in Jacksonville, NC | Godhans"
       subtitle="HOAs, Apartment Complexes, Churches, Storefronts & Property Managers"
       slug="commercial-tree-service-jacksonville-nc"
+      faqPosition="early"
       credentialBlock
       // Commercial buyers may not own a home on the site at all — the shared
       // insurance sentence reads "damages your property" here.
@@ -59,7 +117,7 @@ export default function CommercialTreeService() {
             blurb: "Full price ranges and the factors that move them — useful for building a budget line."
           },
           {
-            href: "/tree-removal-tight-spaces-jacksonville-nc",
+            href: "/tree-removal-near-house-jacksonville-nc",
             label: "Tree removal in tight spaces",
             blurb: "How we work sites with no crane room, paved surfaces, and structures on every side."
           },

@@ -1,71 +1,93 @@
 import ServicePage from './ServicePage';
-import LiteYouTube from '@/components/ui/LiteYouTube';
-import { PrecisionRemoval } from '@/components/sections/PrecisionRemoval';
+import { EQUIPMENT } from '../data/siteData';
 
+const LIFT = EQUIPMENT.spiderLift;
+const TRUCK = EQUIPMENT.bucketTruck;
+
+/**
+ * The spider lift page, rebuilt as an EQUIPMENT SPEC page.
+ *
+ * It used to be a short benefits page that overlapped 33% with
+ * /tree-removal-near-house-jacksonville-nc and /tree-removal-tight-spaces-…
+ * (now consolidated into near-house) and understated the machine's reach as
+ * "50+ feet" — on the one page whose whole job is the machine. Its three
+ * remaining jobs are now: state the numbers, say what they mean for a job, and
+ * hand off. The access narrative and the tight-access premium live on
+ * near-house; this page does not restate them.
+ */
 export default function SpiderLiftRemoval() {
   return (
-    <>
-      <ServicePage
-        title="Spider Lift Tree Removal in Jacksonville, NC"
-        metaTitle="Spider Lift Tree Removal in Jacksonville, NC"
-        subtitle="Reach 50+ Feet Without Damaging Your Lawn or Hardscape"
-        slug="spider-lift-tree-removal-jacksonville-nc"
-        authorUpdated="2026-09-27"
-        description="Spider lift tree removal in Jacksonville, NC. Reach high limbs in tight spots near power lines, pools, and homes — no bucket truck needed."
-        ctaText="Call Now for a Free Estimate"
-        /* leadBlock renders above the hero image, so the video is genuinely near
-           the top of the page — this is the one page where showing the machine
-           working beats describing it. Click-to-play facade: no YouTube JS or
-           iframe until tapped. */
-        leadBlock={
-          <section className="bg-black pt-4 pb-10" aria-labelledby="lift-video-heading">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-              <h2 id="lift-video-heading" className="sr-only">The spider lift working</h2>
-              <LiteYouTube
-                priority
-                id="f54f7VLgkIU"
-                thumbnail="/images/video-spider-lift-loblolly-jacksonville-nc-480.jpg"
-                title="Our spider lift dismantling a loblolly pine from the top down between homes — no crane, no torn-up yard."
-                caption="Our spider lift dismantling a loblolly pine from the top down between homes — no crane, no torn-up yard."
-              />
-            </div>
-          </section>
+    <ServicePage
+      title="Spider Lift Tree Removal in Jacksonville, NC"
+      metaTitle="Spider Lift Tree Removal | Jacksonville, NC"
+      subtitle={`${LIFT.platformHeight} Platform, ${LIFT.horizontalOutreach} Outreach, Through a ${LIFT.gate}`}
+      slug="spider-lift-tree-removal-jacksonville-nc"
+      faqPosition="early"
+      authorUpdated="2026-10-10"
+      description={`Spider lift tree removal in Jacksonville, NC. ${LIFT.platformHeight} platform height, ${LIFT.workingHeight} working reach, ${LIFT.horizontalOutreach} outreach, fits a ${LIFT.gate}.`}
+      ctaText="Call Now for a Free Estimate"
+      quickAnswer={`Our spider lift has a ${LIFT.platformHeight} platform height, about ${LIFT.workingHeight} of working reach and ${LIFT.horizontalOutreach} of horizontal outreach. It collapses to ${LIFT.collapsedWidth} wide — through a ${LIFT.gate} — runs on rubber tracks, and spreads its load across four outriggers. That combination is why it reaches backyard trees a bucket truck or crane cannot get to, without putting a heavy machine on your lawn.`}
+      sections={[
+        {
+          heading: "How high and how far does the spider lift reach?",
+          text: `PLATFORM HEIGHT — ${LIFT.platformHeight}. How high the basket itself goes.\n\nWORKING HEIGHT — about ${LIFT.workingHeight}. Platform height plus the operator's working reach from it. This is the number that decides whether the top of a tree can be reached rather than climbed, and it is why a 90-foot pine is a lift job for us rather than a climb.\n\nHORIZONTAL OUTREACH — ${LIFT.horizontalOutreach}. How far out from the chassis the basket will go. On a backyard job this matters more than height: it is the difference between setting up once and repositioning around a tree four times, and it is what lets us work a canopy that is over a roof from a position that is not.\n\nFor comparison, most bucket trucks reach ${TRUCK.typicalReach} — and they have to be able to park within reach of the tree to do it.`
+        },
+        {
+          heading: "Why a spider lift instead of a bucket truck or a crane?",
+          text: `A bucket truck weighs ${TRUCK.weight}. On Jacksonville's sandy soil after a wet week, that is how you get ruts across a yard, a cracked driveway apron, and — worst case — a drain line or septic lid crushed under a tire. It also has to get there: a truck that cannot fit down a side yard cannot work the tree at the end of it.\n\nThe spider lift answers both. It weighs a fraction of that, collapses to ${LIFT.collapsedWidth} so it passes a ${LIFT.gate} instead of driving around the house, runs on rubber tracks that spread the load rather than concentrating it on four contact patches, and sets down on four outriggers instead of two axles.\n\nAgainst a crane the tradeoff is different, and it is not speed. Crane setup — cribbing, mats, checks, rigging — runs about an hour and a half before anything gets cut; the spider lift is off the trailer and cutting in about thirty minutes. What a crane buys is the ability to pick a piece out and set it down somewhere else entirely. What the lift buys is getting to the tree at all.`
+        },
+        {
+          heading: "Which jobs is it the right machine for?",
+          text: "• Backyards with no truck or trailer access\n• Trees over in-ground pools, patios and decks\n• Tight setbacks between houses\n• Work around power drops (insulated boom available)\n• Over septic tanks, drain fields and irrigation\n• Soft, saturated or recently landscaped lawns\n• High canopy work and roofline clearance a ladder cannot reach safely\n\nWhere it is not the answer: a tree in an open field with room to drop it, where a straight fell is faster and cheaper, and a trunk too decayed to rig off at all — which is a measurement question before it is an equipment question."
+        },
+        {
+          heading: "What it means for your yard and your bill",
+          text: "Rubber tracks distribute weight, plywood mats go down over soft ground and anything buried, and every limb is rigged and lowered rather than dropped. The practical result is that the lawn repair is not a line on your invoice.\n\nIt also removes the two things that most often push a backyard removal into a higher band: no crane position needed, and no road closure to stage one. We will show you the access plan at the estimate, before anything is cut."
         }
-        quickAnswer="A spider lift is a tracked, lightweight aerial platform that fits through standard gates, distributes weight to protect lawns, and reaches 50+ feet up. We use it on Jacksonville properties where bucket trucks or cranes can't go — backyards, near pools, over fences, and right up against structures and power lines."
-        sections={[
-          {
-            heading: "Why a Spider Lift Beats a Bucket Truck",
-            text: "Bucket trucks weigh 25,000–40,000 lbs. They sink into wet North Carolina soil, crack pavers, snap irrigation lines, and can't fit through a backyard gate. A spider lift weighs a fraction of that, runs on rubber tracks, and reaches the same height — without ever leaving the side of the house.\n\nFor most Jacksonville backyard removals, this is the difference between a clean job and a $4,000 lawn-repair bill."
-          },
-          {
-            heading: "Where We Use the Spider Lift",
-            text: "• Backyards with no truck access\n• Near in-ground pools and patios\n• Tight setbacks between houses\n• Around power lines (insulated boom available)\n• Septic fields and drainage areas\n• Soft, wet, or recently landscaped lawns"
-          },
-          {
-            heading: "What This Means for You",
-            text: "✔ No torn-up lawn\n✔ No cranes blocking the road\n✔ No driveway damage\n✔ Faster setup, cleaner job\n✔ Safer rigging — every limb roped down, not dropped\n✔ Same-day estimates, fully insured"
-          }
-        ]}
-        faqs={[
-          { question: "How tall a tree can you remove with a spider lift?", answer: "Our spider lift reaches 50+ feet of working height, which covers the vast majority of residential trees in Jacksonville. For larger trees, we combine the lift with climbing and rigging." },
-          { question: "Will the spider lift damage my lawn?", answer: "Rubber tracks distribute weight far better than truck tires. On wet or soft ground we lay plywood mats. The footprint is similar to a riding mower, not a service truck." },
-          { question: "Can it fit through my gate?", answer: "Most spider lifts collapse to about 36 inches wide — narrower than a standard 4-foot gate. We confirm gate width during the free on-site estimate." }
-        ]}
-        relatedServices={[
-          { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-          { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-          { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-          { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-        ]}
-        finalCta={{
-          heading: "Need a Tree Removed in a Tight Space?",
-          text: "Get a free on-site estimate from Godhans Tree Company. We'll show you exactly how the spider lift will access your tree — and what it will cost.",
-          buttonText: "Call for Free Estimate"
-        }}
-      />
-      <div className="bg-black">
-        <PrecisionRemoval variant="dark" showImage={false} />
-      </div>
-    </>
+      ]}
+      sectionLinks={{
+        0: { href: "/tree-removal-jacksonville-nc", label: "How long a removal takes, and why a crane is not faster" },
+        2: { href: "/resistograph-tree-testing-jacksonville-nc", label: "Measuring a trunk before deciding it can be rigged" },
+        3: { href: "/tree-removal-near-house-jacksonville-nc", label: "What a tight-access removal near the house costs" },
+      }}
+      faqs={[
+        {
+          question: "How tall a tree can you remove with a spider lift?",
+          answer: `Platform height is ${LIFT.platformHeight} and working reach is about ${LIFT.workingHeight}, which covers the overwhelming majority of residential trees in Jacksonville, including a mature loblolly pine. Taller than that, or where the top is out past the ${LIFT.horizontalOutreach} of outreach, we combine the lift with climbing and rigging.`
+        },
+        {
+          question: "How far out can it reach from where it sets up?",
+          answer: `${LIFT.horizontalOutreach} of horizontal outreach. On a backyard job that usually matters more than height, because it decides how many times the machine has to be repositioned around the tree — and whether we can work a canopy that overhangs the roof from a position that does not.`
+        },
+        {
+          question: "Will the spider lift damage my lawn?",
+          answer: `Rubber tracks distribute weight far better than truck tires, and on wet or soft ground we lay plywood mats. The footprint is closer to a riding mower than to a ${TRUCK.weight} service truck. Point out your septic field, drain lines and irrigation before we start and we will plan the route around them.`
+        },
+        {
+          question: "Can it fit through my gate?",
+          answer: `It collapses to ${LIFT.collapsedWidth} wide, which clears a ${LIFT.gate}. We confirm the actual gate width during the free on-site estimate rather than finding out on the morning of the job.`
+        }
+      ]}
+      guides={{
+        heading: "Related",
+        intro: "What the machine is usually being used for:",
+        links: [
+          { href: "/tree-removal-near-house-jacksonville-nc", label: "Tree removal near a house", blurb: "Prices, the tight-access premium, and how a near-structure removal is rigged." },
+          { href: "/tree-removal-jacksonville-nc", label: "Tree removal in Jacksonville, NC", blurb: "What removals cost, how long they take, and the species we take out most." },
+          { href: "/emergency-tree-service-jacksonville-nc", label: "Emergency tree service", blurb: "Where the lift bills at $145/hr on an itemised storm invoice." },
+        ],
+      }}
+      relatedServices={[
+        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
+        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
+        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
+        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
+      ]}
+      finalCta={{
+        heading: "Tree a Truck Can't Reach?",
+        text: "Tell us where it is and what is around it. We will tell you whether it is a lift job, a climb, or both — and give you a written number before anything is cut.",
+        buttonText: "Call for Free Estimate"
+      }}
+    />
   );
 }

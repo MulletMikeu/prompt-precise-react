@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { EMERGENCY_INVOICES, EMERGENCY_INVOICE_CAVEAT } from '@/data/ownerContent';
+import { SOURCES } from '@/data/siteData';
 
 /**
  * "Sample emergency invoice (anonymized)" on the emergency page.
@@ -100,6 +101,23 @@ export default function SampleEmergencyInvoice() {
             {EMERGENCY_INVOICE_CAVEAT}
           </p>
         )}
+
+        {/* The Section B notes above cite a $500-per-loss debris sublimit. That
+            figure is the state regulator's, so it gets the regulator's link
+            rather than sitting on the page unsourced. Reads from SOURCES so this
+            page and /storm-cleanup-* cannot end up on different URLs. */}
+        <p className="text-gray-400 text-sm leading-relaxed mt-4 pl-4">
+          The $500-per-loss debris figure is the standard provision as described by the{' '}
+          <a
+            href={SOURCES.ncdoiHomeowners.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+          >
+            {SOURCES.ncdoiHomeowners.label}
+          </a>
+          . Your declarations page governs your policy.
+        </p>
 
         <p className="mt-6">
           <Link
