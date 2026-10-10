@@ -13,6 +13,69 @@ effect to the thing being tested.
 here, including ships that changed neither arm.** Note the control's verified
 state every time, even when the answer is "unchanged" — especially then.
 
+Machine-readable records of each ship also go to the shared folder, as
+`godhans-shared/ships/YYYY-MM-DD-ship-<letter>.md`, carrying the UTC serve time
+and any treatment copy verbatim. That is the copy Ricky's lane reads; this file
+is the narrative one.
+
+---
+
+## 2026-10-10 — Ship C, treatment amendment (treatment v3)
+
+**Record ID:** `godhans-cost-page-2026-11`
+**URL:** `/tree-removal-cost-north-carolina` (treatment arm)
+**Pushed** 2026-10-10 18:09:03 UTC · **confirmed serving** 18:14:33 UTC
+**Commits:** `0c35692` → `b0c11dd` (merge) → `bc669fa` (IndexNow state)
+**Shared record:** `ships/2026-10-10-ship-c.md`
+
+One sentence **added** to the pine price ladder, owner-sourced, fixed wording:
+
+> Height doesn't set a pine's price; trunk diameter and log size do. Our Gene
+> Circle pine stood 120 ft with a 28 in base: rigged over a fence, it ran
+> $8,500. The same tree in an open field is a one-day, $3,000–$4,000 job.
+
+219 characters, placed as the fourth paragraph — after the three tiers, before
+the access paragraph. It is stored as `PRICING.stories.geneCircle` and
+interpolated, so the page keeps its own first rule of carrying no hardcoded
+dollar amount. The two figures inside that string are deliberately literals:
+they are job history, not price bands, and `$3,000–$4,000` only *happens* to
+equal `PINE_LADDER.tier1.price`. That coincidence is the evidence the sentence
+rests on — same money, same ~28 in base, 40–50 ft more tree — and interpolating
+it would couple a past invoice to a live band.
+
+**Byline NOT restamped**, per `DECISIONS.md`. Still "Updated October 5, 2026".
+
+**Verified:** 1 of 36 pages changed, **+221 chars (the 219-char sentence + the
+paragraph break), 0 removed**. Control content-identical to live production
+(collapsed hash `37e882d124b2d7ac` before and after). **No page's inbound link
+count moved**, editorial or total. Neither arm's `lastmod` moved — the treatment
+was already stamped `2026-10-10` by Ship B that morning. IndexNow selected
+exactly 1 URL, HTTP 200.
+
+**Lighthouse production, mobile, median of 5: perf 96, a11y 100, CLS 0, LCP
+2.1 s.** Ship C's own perf contribution is zero and was measured, not assumed:
+the same local-preview test against the `main` build and the Ship C build
+returned 93/93 and 100/100 across five runs each. Local preview reads ~3 points
+under production (no CDN, no edge compression, none of `vercel.json`'s immutable
+headers) and is labelled a proxy. The 2026-10-06 record has this page at a
+production median of 100; this ship did not cost that, and the gap is not
+attributed further without a controlled re-measure.
+
+**Effect on the treatment's exposure windows.** This is now the third
+page-state, and the second mid-flight amendment:
+
+| Window | From | To |
+|---|---|---|
+| v1, unamended | 2026-10-06 00:23 UTC | 2026-10-10 05:02 UTC (~4.2 d) |
+| v2, Ship B | 2026-10-10 05:02 UTC | 2026-10-10 18:14:33 UTC (~13.2 h) |
+| v3, Ship C | 2026-10-10 18:14:33 UTC | ongoing |
+
+By a 2026-11-01 read, v3 is ~21.4 days of a ~26.6-day life — **~81%**. v2 is
+~2% of it. The windowing recommendation from Ship B therefore simplifies rather
+than compounds: **window from 2026-10-10 and treat v2+v3 as one post-amendment
+period**, because the v2 stub is half a day inside the same day as v3 and no
+read can resolve it.
+
 ---
 
 ## 2026-10-10 — Ship B, treatment amendment
