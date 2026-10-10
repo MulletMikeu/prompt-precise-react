@@ -20,6 +20,66 @@ is the narrative one.
 
 ---
 
+## 2026-10-10 — Ship E, city pages made local (common mode)
+
+**Pushed** 2026-10-10 20:24:51 UTC · **confirmed serving** 20:30:40 UTC
+**Commits:** `9515c8f` → `3c5e9c6` (merge) → `c798509` (IndexNow state)
+**Shared record:** `ships/2026-10-10-ship-e.md`
+
+Eleven of 36 pages changed. **Neither arm's HTML moved and neither arm's inbound
+link count moved**; both verified content-identical to live production
+afterwards (`deccdc61129c42db` / `37e882d124b2d7ac`, unchanged since Ship C).
+IndexNow took exactly 11 URLs. Lighthouse production median of 5: **perf 96–99,
+a11y 100, CLS 0 on all eleven.**
+
+**The problem, measured.** The nine non-hub city pages shared **49.6%–64.9% of
+their visible 5-grams** with each other — town name neutralised, so that is real
+duplication rather than the name differing. Average 51.8%, average 826 words.
+**After: 27.4%–38.8%, average 29.0%, average 1,263 words.**
+
+Each town gained a real owner job at the price actually charged, the county it
+is actually in, verified local facts with source URLs, and questions answered
+for that town. Holly Ridge $2,800, Maysville $6,000, Beulaville $3,500, Surf
+City $2,200, Hubert $4,500 — and no tree count on Hubert, because the owner gave
+none.
+
+**Three towns are not in Onslow County and the pages now say so:** Maysville is
+Jones, Beulaville is Duplin, Surf City straddles Onslow and Pender. All four
+`LocationPage` towns previously implied Onslow by omission.
+
+**The structural fix that did most of the work, and it was not in the brief.**
+Every city page carried a "veteran-owned, fully insured, no subcontractors"
+paragraph that was the largest single source of the overlap — and it was already
+being said by the shared `WhyChooseGodhans` band rendering *directly below it on
+the same page*. It was duplicated with itself. Deleting it removed boilerplate
+without removing a claim.
+
+**Carry-overs from Ship D, both done.** `/tree-cabling-bracing` now cites ANSI
+A300 (Part 3)-2013 clause 33.4.2 verbatim for "scheduling inspections shall be
+the responsibility of the tree owner", edition stated — closing a note that had
+sat in that file since it was written. The annual interval stays ours and the
+page says so, because A300 says "periodically" and sets no timeframe on purpose.
+`MeetTheOwners.tsx` now names Gene Circle and matches the removal page, no
+prices added.
+
+**The best thing found this batch:** the National Register documentation for the
+Richlands historic district records that "the well-drained loamy soils of the
+section were superior to those around elsewhere in the county" — independently
+corroborating, from colonial land records, the inland-vs-coastal ground claim
+the owner has been making on the removal page in his own voice. The town is
+named after its soil. Relatedly, the USDA soil series named ONSLOW has its type
+location "0.6 mile southwest of Swansboro".
+
+**Carry forward: the treatment arm keeps being the natural link target.** For
+the second ship running, the obvious editorial destination for "what does this
+cost" was `/tree-removal-cost-north-carolina`, and for the second ship running
+the per-arm check caught it before deploy (this time the Maysville job link,
+13/23 → 14/24). Both files now carry a comment, but a comment is not a
+mechanism — see "Recommended next" in the shared record for the build-time
+assertion that would end the class.
+
+---
+
 ## 2026-10-10 — Ship D, sitewide owner content and photographs (common mode)
 
 **Pushed** 2026-10-10 19:07:54 UTC · **confirmed serving** 19:12:11 UTC
