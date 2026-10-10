@@ -20,6 +20,53 @@ is the narrative one.
 
 ---
 
+## 2026-10-10 — Ship F, neighbor tree problems page (non-test)
+
+**Pushed** 2026-10-10 21:06:37 UTC · **confirmed serving** 21:12:23 UTC
+**Commits:** `28fe1a2` → `1bc219b` (merge) → `c6a8af8` (IndexNow state)
+**Shared record:** `ships/2026-10-10-ship-f.md`
+
+New page `/neighbor-tree-problems-jacksonville-nc` — 3,827 words, six
+answer-first questions, FAQPage schema. One page added, five changed, 31
+identical of 37. Sitemap 35 → 36 URLs. **Neither arm moved**, in HTML or
+inbound links; both content-identical to live afterwards. IndexNow took 6.
+Lighthouse production median of 5: **perf 95–98, a11y 100, CLS 0 on all six.**
+
+**This is the only page on the site that makes legal statements**, so it was
+built under a stricter rule: every legal claim tied to a North Carolina source
+(General Statutes, NC State Extension, NCDOI, or a named NC firm's case-law
+summary), everything unsourceable written as the owner's practice in his own
+voice, and a plain not-legal-advice line under the hero. All quotations are
+stored verbatim in `SOURCES` and were fetched and confirmed before use —
+including **N.C. Gen. Stat. § 1-539.1** from ncleg.gov, which is what makes
+"stop at the property line" a practical rule rather than etiquette.
+
+**Where it declines to answer.** On roots the owner's position was "tricky;
+consult an expert", and the page honours that: no legal answer, an explicit
+statement that we found no clean NC source settling it, and the question sent to
+an attorney. It gives the arboriculture instead, which is usually what decides
+the outcome.
+
+**Storm cleanup, per audit D1.** The opener was already answer-first; the actual
+defect was that the next paragraph restated it almost verbatim, and that is
+gone. More importantly its neighbour FAQ was asserting two rules of NC law with
+no citation behind either, on an otherwise carefully sourced page — both now
+carry their source. **Note: audit D1 is not in the shared folder** (only the
+retrievability audit is), so this was worked from the instruction's description.
+
+**Two things to carry forward.**
+
+1. **`/tree-removal-jacksonville-nc` is on the gate line** — median exactly 95,
+   one run at 94. It is the only page without margin, at ~5,800 words and twelve
+   images, because it has absorbed content in every batch since Ship D. Splitting
+   the pine-health sections onto their own page is the cheapest fix and would
+   make both pages better.
+2. **The build-time arm assertion is still not built.** Recommended after Ship E;
+   this ship simply happened not to trip it. The per-arm checker has caught two
+   real violations and still lives in a scratchpad.
+
+---
+
 ## 2026-10-10 — Ship E, city pages made local (common mode)
 
 **Pushed** 2026-10-10 20:24:51 UTC · **confirmed serving** 20:30:40 UTC
