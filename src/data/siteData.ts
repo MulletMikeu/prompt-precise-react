@@ -354,6 +354,31 @@ export const PRICING = {
      */
     photoLimit:
       "From photos you cannot tell a 28-inch, 75-foot pine from a 34-inch, 95-foot pine — even standing under it, that call is hard. And that difference is the difference between a lift and a climb, and between one day and two. We run a 90-foot lift, so it is rare that a top can't be reached or rigged; what the photo can't settle is how long getting to it takes.",
+    /**
+     * The owner's Gene Circle sentence, and the plainest statement on the site
+     * that diameter rather than height sets a pine's price.
+     *
+     * APPROVED COPY, FIXED WORDING. This is a 219-character owner ruling
+     * reproduced character for character, including the straight apostrophes
+     * and the en dash in the price range. Do not reword it, re-punctuate it,
+     * or round its figures — it is quoted verbatim in the ship record and
+     * checked against the rendered page.
+     *
+     * Why the two dollar figures are literals here when nothing else in this
+     * file's prose is: they are JOB HISTORY, not price bands. `$3,000–$4,000`
+     * happens to equal `PINE_LADDER.tier1.price` today, and interpolating it
+     * would quietly couple a past job's invoice to a live price band — so if
+     * the owner ever moves tier 1, this sentence would silently restate the
+     * new band as something we once charged. The coincidence is also the
+     * evidence: the same $3,000–$4,000 buys a 70–80 ft tier-1 pine and this
+     * 120 ft one, because both measure ~28 in at the base. Coupling the two
+     * numbers would destroy exactly the point the sentence makes.
+     *
+     * Rendered on /tree-removal-cost-north-carolina (the A/B treatment arm),
+     * so editing this string is a mid-test content change to one arm.
+     */
+    geneCircle:
+      "Height doesn't set a pine's price; trunk diameter and log size do. Our Gene Circle pine stood 120 ft with a 28 in base: rigged over a fence, it ran $8,500. The same tree in an open field is a one-day, $3,000–$4,000 job.",
     mobilization:
       "Why we have an $800 minimum: getting a full crew and equipment to your property is the biggest fixed cost of any job. That's why we don't do $200 quick cuts — and why the crew that shows up can handle anything, from a single limb to a 90-foot removal over your roof.",
     position:
