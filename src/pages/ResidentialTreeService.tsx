@@ -1,6 +1,10 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import { PRICING } from '../data/siteData';
 import { PROSE } from '../data/homepageCopy';
+
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
 
 export default function ResidentialTreeService() {
   return (
@@ -9,10 +13,32 @@ export default function ResidentialTreeService() {
       metaTitle="Residential Tree Service in Jacksonville, NC | Godhans"
       subtitle="Tree Work Done Around Your House, Your Lawn, and Your Septic Field"
       slug="residential-tree-service-jacksonville-nc"
+      faqPosition="early"
       credentialBlock
       description={`Residential tree service in Jacksonville, NC. We protect the house, lawn, fence, and septic field, haul every stick away, quote from measurements — from ${PRICING.removal.minimum}.`}
       ctaText="Call for a Free Estimate"
       quickAnswer="Residential tree work is judged on two things: whether the tree came down safely, and what your yard looks like when the trucks leave. Godhans Tree Company handles removal, trimming, and stump grinding for homeowners across Jacksonville and Onslow County — with the lawn, fence, driveway, and septic field treated as part of the job rather than acceptable collateral."
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. Same copy as the
+       * `text` entry it replaces, with anchors in sentences that already named
+       * the destination. Feeds /tree-cabling-bracing-*, /debris-hauling-* and
+       * /reviews.
+       */
+      sectionBodies={{
+        6: (
+          <>
+            {"A handful of signs are worth a phone call rather than a wait-and-see:\n\n• A lean that appeared or worsened after a storm\n• Cracked or heaved soil around the base of a trunk\n• Mushroom clusters at the base after rain\n• Large dead limbs hanging in the canopy\n• A dead top on a pine near the house\n• Limbs resting on the roof or against siding\n\nNone of these automatically means removal. Several of them mean a tree that can be pruned and kept, a split fork that "}
+            <Link to="/tree-cabling-bracing-jacksonville-nc" className={PROSE_LINK}>cabling and bracing</Link>
+            {" will hold, or a trunk worth "}
+            <Link to="/resistograph-tree-testing-jacksonville-nc" className={PROSE_LINK}>measuring before anyone decides</Link>
+            {". But all of them are worth having someone look at, and we don't charge for the look. If limbs are already down and it is the pile you need gone, "}
+            <Link to="/debris-hauling-jacksonville-nc" className={PROSE_LINK}>debris hauling</Link>
+            {" is a job of its own — and the "}
+            <Link to="/reviews" className={PROSE_LINK}>reviews</Link>
+            {" will tell you what our cleanup actually looks like."}
+          </>
+        ),
+      }}
       sections={[
         {
           heading: "How Do You Protect the House During a Removal?",
@@ -39,6 +65,11 @@ export default function ResidentialTreeService() {
           text: "The three that make up almost all homeowner tree work, plus the storm calls that interrupt them:\n\n• Tree removal — dead, dying, leaning, storm-damaged, or simply too close to the house\n• Tree trimming — deadwood removal, canopy raising, clearing limbs off a roofline, and the insurance-required pruning carriers ask for\n• Stump grinding — ground well below grade so the spot takes sod, concrete, or a replant\n• Emergency and storm work — 24/7, with hazards that threaten a structure prioritized\n\nMost residential properties in Jacksonville need some combination of these every few years, not constantly. A crew that tells you a healthy tree needs work every season is selling you something."
         },
         {
+          /**
+           * Index 6. Carries in-prose links via `sectionBodies` below — the
+           * best signs list on the site, and it previously named the resistograph
+           * and cabling without linking either.
+           */
           heading: "What Should a Homeowner Watch For Between Visits?",
           text: "A handful of signs are worth a phone call rather than a wait-and-see:\n\n• A lean that appeared or worsened after a storm\n• Cracked or heaved soil around the base of a trunk\n• Mushroom clusters at the base after rain\n• Large dead limbs hanging in the canopy\n• A dead top on a pine near the house\n• Limbs resting on the roof or against siding\n\nNone of these automatically means removal. Several of them mean a tree that can be pruned and kept. But all of them are worth having someone look at, and we don't charge for the look."
         }

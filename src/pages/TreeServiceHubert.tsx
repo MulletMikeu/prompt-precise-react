@@ -1,4 +1,8 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
+
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
 
 export default function TreeServiceHubert() {
   return (
@@ -6,10 +10,30 @@ export default function TreeServiceHubert() {
       title="Tree Service in Hubert, NC"
       subtitle="Trusted Tree Removal, Trimming & Stump Grinding in Hubert, NC"
       slug="tree-service-hubert-nc"
+      faqPosition="early"
       credentialBlock
       description="Professional tree service in Hubert, NC. Expert tree removal, trimming, stump grinding, and storm cleanup. Free estimates from Godhans Tree Company."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Tree service in Hubert, NC helps keep your property safe, clean, and well-maintained. We provide expert tree removal, trimming, and stump grinding services with fast response times and free estimates for residents in the Hubert area."
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. This page had ZERO
+       * editorial outbound links before batch 1 — every link on it was a templated
+       * band or a service card. Same copy as the `text` entry it replaces, plus the
+       * local detail that makes each anchor relevant. Edit both or neither.
+       */
+      sectionBodies={{
+        2: (
+          <>
+            {"We know Hubert and the Swansboro-area terrain, and we focus on delivering safe, high-quality results with every job. Hubert sits on the coastal, sandy-loam side of the county, which is the half where a yard can look solid and give way under a loaded machine — see "}
+            <Link to="/tree-removal-near-house-jacksonville-nc" className={PROSE_LINK}>how we get to a trunk without rutting the lawn</Link>
+            {", "}
+            <Link to="/tree-removal-cost-north-carolina" className={PROSE_LINK}>what a removal costs here</Link>
+            {" and "}
+            <Link to="/tree-service-swansboro-nc" className={PROSE_LINK}>Swansboro</Link>
+            {"."}
+          </>
+        ),
+      }}
       sections={[
         {
           heading: "Local Tree Experts Serving Hubert, NC",

@@ -2,6 +2,60 @@ import ServicePage from './ServicePage';
 import { PRICING, YEAR_FOUNDED_LOCAL } from '../data/siteData';
 
 /**
+ * The page quotes a peer-reviewed paper and leans on a national standard, and
+ * had no outbound citation for either. Both are linked here rather than merely
+ * named, same pattern as the topping sources on /tree-trimming-jacksonville-nc.
+ *
+ * Deliberately NOT linked: the claim that scheduling a support-system
+ * inspection is the owner's responsibility. It is in the copy as our own
+ * guidance because no publicly readable source was found that states it, and
+ * attributing it to A300 without having checked the clause text would be
+ * inventing a citation. Confirm against the standard and attribute it then.
+ */
+function CablingSources() {
+  return (
+    <section id="cabling-sources" className="py-12 bg-gray-950 border-t border-gray-800">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <h2 className="text-2xl font-bold text-white mb-4">Sources</h2>
+        <ul className="space-y-5">
+          <li>
+            <a
+              href="https://auf.isa-arbor.com/content/28/4/187"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+            >
+              Kane &amp; Ryan (2002) — Discoloration and Decay Associated With Hardware Installation in Trees
+            </a>
+            <span className="block text-gray-400 text-base mt-1">
+              Arboriculture &amp; Urban Forestry 28(4):187&ndash;193. The source of the
+              quotation above: the effect is &ldquo;most notable in the longitudinal
+              direction&hellip;because compartmentalization is weakest in that
+              direction.&rdquo;
+            </span>
+          </li>
+          <li>
+            <a
+              href="https://www.tcia.org/Maint/iCore/Store/StoreLayouts/Item_Detail.aspx?iProductCode=ANSICON23&Category=ANSI"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
+            >
+              ANSI A300 Tree Care Standards (TCIA)
+            </a>
+            <span className="block text-gray-400 text-base mt-1">
+              Supplemental support systems &mdash; cabling, bracing, guying and propping
+              &mdash; are Clause 7. The 2023 consolidation replaced the former Part 3,
+              which is why this page cites the clause rather than a part number.
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/**
  * Cabling and bracing — the one page that owns supplemental support systems.
  *
  * Nothing else on the site covered this topic before, so there is no overlap to
@@ -20,9 +74,10 @@ export default function TreeCablingBracing() {
       title="Tree Cabling and Bracing in Jacksonville, NC"
       metaTitle="Tree Cabling & Bracing Jacksonville NC | Godhans"
       slug="tree-cabling-bracing-jacksonville-nc"
+      faqPosition="early"
       authorUpdated="2026-09-28"
       credentialBlock
-      description={`Tree cabling and bracing in Jacksonville, NC. Steel hardware or non-invasive synthetic systems, ${PRICING.cabling.typical} for a typical mature tree. Honest assessment first.`}
+      description={`Tree cabling and bracing in Jacksonville, NC. Steel or synthetic support systems, ${PRICING.cabling.typical} for a typical mature tree. Free honest assessment.`}
       ctaText="Call for a Free Assessment"
       quickAnswer={`Cabling and bracing add hardware to a tree that has a structural weakness — most often a split or weak union in a mature oak. A typical installation runs ${PRICING.cabling.typical}; large multi-stem trees needing several cables, or with difficult access, run ${PRICING.cabling.large}. It reduces risk. It does not make a defective tree safe, and sometimes reduction pruning or removal is the more honest answer.`}
       sections={[
@@ -32,19 +87,19 @@ export default function TreeCablingBracing() {
         },
         {
           heading: "Two Systems, Same Price — Your Call",
-          text: "There are two families of support system in common use, and they cost about the same here, so the decision is yours rather than a budget question.\n\nSTEEL CABLE WITH THROUGH-BOLT OR ANCHOR HARDWARE. The traditional system. Hardware passes through the stem and the cable runs between anchor points. It is strong, it is proven, and it is what our owner prefers — old school, and he will tell you so. The tradeoff is that it is invasive: it means drilling the stem.\n\nNON-INVASIVE SYNTHETIC SYSTEMS. Hollow-braid synthetic rope in a wide sling that wraps around each stem rather than penetrating it, installed with deliberate slack so the tree still moves and keeps building its own reaction wood. Cobra is the best-known brand; there are others. These have improved a great deal over the years, and on a tree we would rather not drill, they are a genuinely good answer.\n\nBoth are recognized approaches under the ANSI A300 tree care standards, which cover installation and maintenance of support systems including cabling, bracing and guying. We will walk you through both at the estimate and install whichever you choose."
+          text: "There are two families of support system in common use, and they cost about the same here, so the decision is yours rather than a budget question.\n\nSTEEL CABLE WITH THROUGH-BOLT OR ANCHOR HARDWARE. The traditional system. Hardware passes through the stem and the cable runs between anchor points. It is strong, it is proven, and it is what our owner prefers — old school, and he will tell you so. The tradeoff is that it is invasive: it means drilling the stem.\n\nNON-INVASIVE SYNTHETIC SYSTEMS. Hollow-braid synthetic rope in a wide sling that wraps around each stem rather than penetrating it, installed with deliberate slack so the tree still moves and keeps building its own reaction wood. Cobra is the best-known brand; there are others. These have improved a great deal over the years, and on a tree we would rather not drill, they are a genuinely good answer.\n\nBoth are recognized approaches under the ANSI A300 tree care standards, where supplemental support systems — cabling, bracing, guying and propping — are Clause 7. We will walk you through both at the estimate and install whichever you choose."
         },
         {
           heading: "Why Drilling Is a Real Tradeoff, Not Just a Preference",
-          text: "Worth being straight about the argument against the system we personally like, because you should hear both sides from the people installing it.\n\nResearch published in the International Society of Arboriculture's journal found that drilling holes in tree stems can facilitate discoloration and decay — most notably in the longitudinal direction, up and down the stem, because that is the direction in which a tree's compartmentalization is weakest. In other words, the tree walls off a wound sideways far better than it walls it off vertically.\n\nThat is the honest case for the synthetic systems, and it is why they exist. It is also not a reason to rule out steel: the hole is small relative to a mature stem, the hardware has a long track record, and a properly installed steel system on a sound stem is not a tree-health emergency. What it means is that the choice deserves a conversation rather than a default."
+          text: "Kane and Ryan, writing in Arboriculture & Urban Forestry in 2002, found that drilling holes in tree stems to install through-hardware is associated with discoloration and decay, and that the effect is “most notable in the longitudinal direction…because compartmentalization is weakest in that direction.” In other words, the tree walls off a wound sideways far better than it walls it off up and down the stem.\n\nWorth being straight about the argument against the system we personally like, because you should hear both sides from the people installing it.\n\nThat is the honest case for the synthetic systems, and it is why they exist. It is also not a reason to rule out steel: the hole is small relative to a mature stem, the hardware has a long track record, and a properly installed steel system on a sound stem is not a tree-health emergency. What it means is that the choice deserves a conversation rather than a default."
         },
         {
           heading: "Installed and Forgotten Is How These Fail",
-          text: "This is the part almost nobody is told at the sale, so we would rather lead with it.\n\nA support system is not a one-time purchase. ANSI A300 treats periodic inspection by an arborist as part of the system, and it puts the responsibility for scheduling those inspections on the tree owner — meaning you, not the company that installed it, unless you arrange otherwise. Industry guidance runs to an annual look at minimum, with dynamic synthetic systems generally wanting more frequent checks for tension, UV degradation, and any sign the sling is girdling the stem.\n\nWhat we see on uninspected systems is predictable. Cables go slack or, worse, stay tight while the tree grows around them. Bark overgrows hardware and wraps until the system is buried and can no longer be inspected, adjusted, or even properly assessed. At that point the system is not maintainable — it has to be cut out and a new one installed, which costs more than the inspections would have.\n\nSo: put it on a calendar. Inspections are a professional service of their own — if you would like us to handle them, ask and we will quote and schedule them. If you would rather have someone else do them, do that. Just do not let the system disappear into the tree."
+          text: "A support system is not a one-time purchase: plan on an inspection by an arborist at least once a year, and understand that scheduling it is the tree owner's job — yours, not the company's that installed it, unless you arrange otherwise. That is the part almost nobody is told at the sale, so we would rather lead with it.\n\nIndustry guidance runs to an annual look at minimum, with dynamic synthetic systems generally wanting more frequent checks for tension, UV degradation, and any sign the sling is girdling the stem.\n\nWhat we see on uninspected systems is predictable. Cables go slack or, worse, stay tight while the tree grows around them. Bark overgrows hardware and wraps until the system is buried and can no longer be inspected, adjusted, or even properly assessed. At that point the system is not maintainable — it has to be cut out and a new one installed, which costs more than the inspections would have.\n\nSo: put it on a calendar. Inspections are a professional service of their own — if you would like us to handle them, ask and we will quote and schedule them. If you would rather have someone else do them, do that. Just do not let the system disappear into the tree."
         },
         {
-          heading: "When We Will Tell You Not to Cable",
-          text: "Cabling reduces risk. It does not eliminate it, and it cannot fix a tree that is already failing.\n\nIf the stem is significantly decayed, hardware has nothing sound to anchor into and the system creates false confidence, which is worse than no system. If the whole tree is in decline, supporting one union does not change where it is heading. And if the target underneath is a bedroom, the honest math sometimes favors removal over a system that reduces — but does not remove — the chance of failure.\n\nThere is also a cheaper middle option people forget: reduction pruning. Taking weight off the ends of the leaders lowers the leverage on the weak union directly, and on some trees that does more for less money than hardware would. Often the right answer is both — reduce the weight, then support what is left.\n\nWhen a union looks questionable but the wood might be fine, resistograph testing gives a real answer about what is inside the stem before anyone spends money on hardware. We would rather drill a 3mm test hole and find out than sell you a cable on a guess."
+          heading: "Can a split tree be saved with cables instead of removal?",
+          text: "Often yes, and the tree we say yes to most is a healthy mature oak with one included-bark union. Cabling reduces risk; it does not eliminate it, and it cannot fix a tree that is already failing. Here is where we will tell you not to bother.\n\nIf the stem is significantly decayed, hardware has nothing sound to anchor into and the system creates false confidence, which is worse than no system. If the whole tree is in decline, supporting one union does not change where it is heading. And if the target underneath is a bedroom, the honest math sometimes favors removal over a system that reduces — but does not remove — the chance of failure.\n\nThere is also a cheaper middle option people forget: reduction pruning. Taking weight off the ends of the leaders lowers the leverage on the weak union directly, and on some trees that does more for less money than hardware would. Often the right answer is both — reduce the weight, then support what is left.\n\nWhen a union looks questionable but the wood might be fine, resistograph testing gives a real answer about what is inside the stem before anyone spends money on hardware. We would rather drill a 3mm test hole and find out than sell you a cable on a guess."
         },
         {
           heading: "What Cabling and Bracing Costs in Jacksonville, NC",
@@ -62,6 +117,7 @@ export default function TreeCablingBracing() {
         ],
         6: { href: "/tree-removal-jacksonville-nc", label: "If removal is the better call" },
       }}
+      caseStudy={<CablingSources />}
       faqs={[
         {
           question: "How much does tree cabling and bracing cost in Jacksonville, NC?",

@@ -29,6 +29,9 @@ const craneJpgSrcSet = `${crane480Jpg} 480w, ${crane800Jpg} 800w, ${crane1125Jpg
 const sitePrepSrcSet = `${sitePrep480} 480w, ${sitePrep800} 800w, ${sitePrep1200} 1200w`;
 const yardSrcSet = `${yardRestored480} 480w, ${yardRestored800} 800w, ${yardRestored1200} 1200w`;
 
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
+
 export default function EmergencyTreeService() {
   return (
     <ServicePage
@@ -36,6 +39,7 @@ export default function EmergencyTreeService() {
       metaTitle="Emergency Tree Service in Jacksonville, NC | Godhans"
       subtitle="24/7 Storm Damage & Tree Removal — Same-Day & Next-Day Availability"
       slug="emergency-tree-service-jacksonville-nc"
+      faqPosition="early"
       credentialBlock
       description="Fast emergency tree service in Jacksonville, NC — storm damage, leaning trees, and hazardous tree removal. 24/7 response from a fully insured local crew."
       ctaText="Call Now — Rapid Response"
@@ -53,10 +57,32 @@ export default function EmergencyTreeService() {
         alt: "Emergency tree removal crew in Jacksonville NC using a green crane to safely cut down a damaged pine tree near a home"
       }}
       quickAnswer="Emergency tree service in Jacksonville, NC means a real person answers at 2 a.m. and a crew is moving before the weather has finished. We handle fallen trees on houses, leaning trunks, hanging limbs and blocked driveways across Onslow County, with same-day and next-day availability — and on a tree-through-the-roof call the first job is stopping the water getting in."
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. The three city
+       * names in this sentence were unlinked while those pages were starved of
+       * in-sentence inbound links. Same copy; anchors added.
+       */
+      sectionBodies={{
+        0: (
+          <>
+            {"We respond across Jacksonville, "}
+            <Link to="/tree-service-richlands-nc" className={PROSE_LINK}>Richlands</Link>
+            {", "}
+            <Link to="/tree-service-hubert-nc" className={PROSE_LINK}>Hubert</Link>
+            {", "}
+            <Link to="/tree-service-sneads-ferry-nc" className={PROSE_LINK}>Sneads Ferry</Link>
+            {", "}
+            <Link to="/tree-service-swansboro-nc" className={PROSE_LINK}>Swansboro</Link>
+            {", and the rest of Onslow County, same day or next morning, to handle every type of tree emergency:\n\n• Emergency Tree Removal — fallen trees on homes, vehicles, fences, and driveways\n• Storm Cleanup — full debris removal, broken limbs, and downed branches\n• Leaning & Dangerous Tree Removal — trees that have shifted, cracked, or partially uprooted\n• Tree Risk Assessment — fast on-site evaluation to determine which trees pose immediate danger\n\nEvery job is handled by experienced crews with the right equipment to work safely around houses, power lines, and tight residential lots. Longer write-ups on all of it are in our "}
+            <Link to="/blog" className={PROSE_LINK}>tree care guides</Link>
+            {"."}
+          </>
+        ),
+      }}
       sections={[
         {
           heading: "Our Emergency Tree Services in Jacksonville, NC",
-          text: "Storms move fast — so do we. We respond across Jacksonville, Richlands, Hubert, and the rest of Onslow County to handle every type of tree emergency:\n\n• Emergency Tree Removal — fallen trees on homes, vehicles, fences, and driveways\n• Storm Cleanup — full debris removal, broken limbs, and downed branches\n• Leaning & Dangerous Tree Removal — trees that have shifted, cracked, or partially uprooted\n• Tree Risk Assessment — fast on-site evaluation to determine which trees pose immediate danger\n\nEvery job is handled by experienced crews with the right equipment to work safely around houses, power lines, and tight residential lots."
+          text: "We respond across Jacksonville, Richlands, Hubert, and the rest of Onslow County, same day or next morning, to handle every type of tree emergency:\n\n• Emergency Tree Removal — fallen trees on homes, vehicles, fences, and driveways\n• Storm Cleanup — full debris removal, broken limbs, and downed branches\n• Leaning & Dangerous Tree Removal — trees that have shifted, cracked, or partially uprooted\n• Tree Risk Assessment — fast on-site evaluation to determine which trees pose immediate danger\n\nEvery job is handled by experienced crews with the right equipment to work safely around houses, power lines, and tight residential lots."
         },
         {
           heading: "When to Call Us Immediately",
@@ -73,8 +99,8 @@ export default function EmergencyTreeService() {
           text: "We prioritize emergencies. Most calls are scheduled for the same day or the next morning, and active hazards (trees on homes, blocking access, or near power lines) get moved to the front of the line.\n\nCall us first — before the damage spreads, before water gets inside, and before a leaning tree decides to fall on its own."
         },
         {
-          heading: "What Emergency Tree Work Costs",
-          text: `Getting a tree off a structure is the most expensive work we do. Most tree-on-house emergencies run about ${PRICING.emergency.structure}, and occasionally more.
+          heading: "How much does emergency tree removal cost?",
+          text: `Most tree-on-house emergencies run about ${PRICING.emergency.structure}, and occasionally more. Getting a tree off a structure is the most expensive work we do.
 
 That number surprises people, so here is where it goes. Almost none of it is the tree:
 

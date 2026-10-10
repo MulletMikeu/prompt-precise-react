@@ -6,6 +6,7 @@ import spiderLift800 from '@/assets/spider-lift-tree-removal-jacksonville-nc-800
 import spiderLift1200 from '@/assets/spider-lift-tree-removal-jacksonville-nc-1200.webp';
 import { LazyImage } from '@/components/ui/LazyImage';
 import { BUSINESS_INFO } from '@/lib/constants';
+import { EQUIPMENT } from '@/data/siteData';
 
 const spiderLiftSrcSet = `${spiderLift480} 480w, ${spiderLift800} 800w, ${spiderLift1200} 1200w`;
 
@@ -72,7 +73,10 @@ export function PrecisionRemoval({ variant = 'light', heading, showImage = true 
               Spider Lift Advantage
             </h3>
             <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-              Tracked, lightweight, and able to fit through a standard gate. We reach 50+ feet up without parking a crane in your driveway or rutting up the lawn the way bucket trucks do.
+              Tracked, lightweight, and able to fit through a {EQUIPMENT.spiderLift.gate}. A{' '}
+              {EQUIPMENT.spiderLift.platformHeight} platform, about {EQUIPMENT.spiderLift.workingHeight} of
+              working reach and {EQUIPMENT.spiderLift.horizontalOutreach} of outreach — without parking a
+              crane in your driveway or rutting up the lawn the way bucket trucks do.
             </p>
           </div>
           <div className={`p-6 rounded-lg border-2 ${isDark ? 'bg-black border-gray-800' : 'bg-gray-50 border-gray-200'}`}>

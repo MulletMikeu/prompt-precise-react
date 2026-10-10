@@ -1,5 +1,10 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import StormInsuranceLead from '@/components/sections/StormInsuranceLead';
+import { SOURCES } from '@/data/siteData';
+
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
 
 export default function StormCleanup() {
   return (
@@ -7,6 +12,7 @@ export default function StormCleanup() {
       title="Storm Cleanup Jacksonville NC"
       subtitle="Fast Debris Removal & Downed Tree Extraction — Same-Day Response Available"
       slug="storm-cleanup-jacksonville-nc"
+      faqPosition="early"
       credentialBlock
       description="Storm cleanup in Jacksonville, NC. Fast response for downed trees, debris removal & hazardous limbs across Onslow County. Call 24/7 — Godhans Tree Company."
       ctaText="Call Now — 24/7 Response"
@@ -14,6 +20,48 @@ export default function StormCleanup() {
          fold on both. Do not edit it here — it lives in siteData. */
       leadBlock={<StormInsuranceLead />}
       quickAnswer="When a storm hits Onslow County, Godhans Tree Company is ready to move. We handle downed trees, scattered debris, hanging limbs, and structural damage — with same-day and next-day availability. Call us anytime and we'll dispatch an insured crew to clear the hazard and get your property safe again."
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. Same copy as the
+       * `text` entry it replaces, with anchors inside sentences that already
+       * named the destination. Feeds /debris-hauling-*, /commercial-* and
+       * /reviews, all of which an audit found at two or fewer in-sentence
+       * inbound links.
+       */
+      sectionBodies={{
+        0: (
+          <>
+            {"Eastern NC storms can hit hard and fast. We're on the ground quickly to handle every phase of the cleanup:\n\n• Downed tree removal from homes, fences, driveways, and vehicles\n• Full debris removal and haul-away\n• Broken limb and hanging branch clearing\n• Hazard tree assessment and removal\n• Driveway and road clearance\n• Debris and brush chipping\n• Insurance damage documentation support\n\nResidential and "}
+            <Link to="/commercial-tree-service-jacksonville-nc" className={PROSE_LINK}>commercial properties</Link>
+            {" — we handle both, and on a commercial site we schedule around your hours rather than through them. If the storm is over, the tree is already down and the pile is the whole problem, "}
+            <Link to="/debris-hauling-jacksonville-nc" className={PROSE_LINK}>debris hauling</Link>
+            {" prices on its own by the trailer. What customers mention most in our "}
+            <Link to="/reviews" className={PROSE_LINK}>Google reviews</Link>
+            {" is the cleanup, which is the half of storm work people do not think to ask about."}
+          </>
+        ),
+        // "Serving All of Onslow County" — six place names in a sentence, none
+        // of them linked, while each of those city pages was starved of
+        // in-sentence inbound links.
+        4: (
+          <>
+            {"We respond to storm calls across Jacksonville, "}
+            <Link to="/tree-service-richlands-nc" className={PROSE_LINK}>Richlands</Link>
+            {", "}
+            <Link to="/tree-service-swansboro-nc" className={PROSE_LINK}>Swansboro</Link>
+            {", "}
+            <Link to="/tree-service-sneads-ferry-nc" className={PROSE_LINK}>Sneads Ferry</Link>
+            {", "}
+            <Link to="/tree-service-hubert-nc" className={PROSE_LINK}>Hubert</Link>
+            {", "}
+            <Link to="/tree-service-surf-city-nc" className={PROSE_LINK}>Surf City</Link>
+            {", "}
+            <Link to="/tree-service-camp-lejeune-nc" className={PROSE_LINK}>Camp Lejeune</Link>
+            {", and all surrounding communities in Onslow County — the full list is on our "}
+            <Link to="/service-area" className={PROSE_LINK}>service area page</Link>
+            {". Our crews are local — we're not dispatching from Raleigh or Charlotte. When a storm hits here, we're ready here."}
+          </>
+        ),
+      }}
       sections={[
         {
           heading: "Storm Cleanup Services We Provide",
@@ -21,15 +69,15 @@ export default function StormCleanup() {
         },
         {
           heading: "When to Call Us Right Away",
-          text: "Some storm situations need immediate attention. Call us without waiting if:\n\n⚠ A tree or large limb has fallen on your home, garage, or vehicle\n⚠ A tree is blocking your driveway or emergency access\n⚠ Limbs are resting on or near power lines\n⚠ A tree is leaning at a new angle after the storm\n⚠ You see visible splits or cracks in trunk or major limbs\n\nLeaning trees and hung-up limbs can fall without warning — especially with wet, unstable soil after heavy rain. The sooner we assess it, the better.",
+          text: "Call us without waiting if:\n\n⚠ A tree or large limb has fallen on your home, garage, or vehicle\n⚠ A tree is blocking your driveway or emergency access\n⚠ Limbs are resting on or near power lines\n⚠ A tree is leaning at a new angle after the storm\n⚠ You see visible splits or cracks in trunk or major limbs\n\nLeaning trees and hung-up limbs can fall without warning — especially with wet, unstable soil after heavy rain. The sooner we assess it, the better.",
         },
         {
-          heading: "What Insurance Typically Covers After a Storm",
-          text: "This is the page where we keep all of it, so there is one accurate version rather than four half-versions scattered across the site. We are a tree company, not your insurer — none of this is advice about your specific policy, and your declarations page beats anything written here.\n\nWHEN A TREE DAMAGES A COVERED STRUCTURE. This is the case people mean when they ask. A homeowners policy generally responds when a tree hits the house, the garage, a fence or an outbuilding, and the work to get the tree off the structure and repair it is the covered part. Your deductible applies.\n\nWHEN A TREE FALLS AND HITS NOTHING. This is the answer that surprises people, so it is worth being blunt: a tree lying in your yard having damaged nothing is usually your problem, not the insurer's. The North Carolina Department of Insurance puts the standard limit plainly — the policy “will pay reasonable expense, up to $500 for any one loss, for the removal of trees from your premises provided that the tree has damaged a structure or blocked the driveway.” Note both halves of that condition. Damaged a structure, OR blocked the driveway. A healthy tree that came down across the back lawn in a thunderstorm and hit nothing typically meets neither.\n\nSo the $500 figure is not the cleanup budget for a big tree, and a mature hardwood on the ground is several times that in hauling alone. Check your own declarations page — some carriers write more than the standard, and a few write less.\n\nLIGHTNING IS USUALLY DIFFERENT. Lightning is typically a named peril on a homeowners policy in its own right, which is why a lightning-struck tree is often treated differently from one the wind pushed over. If lightning is what took your tree, say so explicitly when you open the claim rather than filing it as storm damage generally.\n\nDO NOT WAIT FOR THE ADJUSTER TO STOP ACTIVE DAMAGE. This is the most expensive mistake we see. If there is a hole in your roof and rain coming through it, the damage is getting worse by the hour, and every policy expects you to take reasonable steps to prevent further loss — not to sit under it waiting for an appointment. Photograph everything first, from several angles, before anybody moves anything. Then get the tree off and the opening covered. Photographs are what let you prove what the storm did versus what the next three days of rain did.\n\nWHAT WE DO ON OUR SIDE. We photograph the damage before we touch it, tarp openings as part of the emergency call, itemize the invoice so each line maps to something an adjuster can approve, bill your insurance directly, and talk to your adjuster. We have worked a lot of these claims in Onslow County and we know what documentation moves them along. What we will not do is tell you an outcome is guaranteed — that decision is the carrier's, and any tree company promising otherwise is promising something it does not control.",
+          heading: "Does homeowners insurance cover tree removal after a storm in North Carolina?",
+          text: "Generally yes when the tree has damaged a covered structure — the house, the garage, a fence or an outbuilding — and your deductible applies. When it has hit nothing, the North Carolina Department of Insurance describes the standard provision as paying up to $500 for any one loss. The mechanics of both are below.\n\nWe keep all of it on this page so there is one accurate version rather than four half-versions scattered across the site. We are a tree company, not your insurer — none of this is advice about your specific policy, and your declarations page beats anything written here.\n\nWHEN A TREE DAMAGES A COVERED STRUCTURE. This is the case people mean when they ask. A homeowners policy generally responds when a tree hits the house, the garage, a fence or an outbuilding, and the work to get the tree off the structure and repair it is the covered part. Your deductible applies.\n\nWHEN A TREE FALLS AND HITS NOTHING. This is the answer that surprises people, so it is worth being blunt: a tree lying in your yard having damaged nothing is usually your problem, not the insurer's. The North Carolina Department of Insurance puts the standard limit plainly — the policy “will pay reasonable expense, up to $500 for any one loss, for the removal of trees from your premises provided that the tree has damaged a structure or blocked the driveway.” Note both halves of that condition. Damaged a structure, OR blocked the driveway. A healthy tree that came down across the back lawn in a thunderstorm and hit nothing typically meets neither.\n\nSo the $500 figure is not the cleanup budget for a big tree, and a mature hardwood on the ground is several times that in hauling alone. Check your own declarations page — some carriers write more than the standard, and a few write less.\n\nLIGHTNING IS USUALLY DIFFERENT. Lightning is typically a named peril on a homeowners policy in its own right, which is why a lightning-struck tree is often treated differently from one the wind pushed over. If lightning is what took your tree, say so explicitly when you open the claim rather than filing it as storm damage generally.\n\nDO NOT WAIT FOR THE ADJUSTER TO STOP ACTIVE DAMAGE. This is the most expensive mistake we see. If there is a hole in your roof and rain coming through it, the damage is getting worse by the hour, and every policy expects you to take reasonable steps to prevent further loss — not to sit under it waiting for an appointment. Photograph everything first, from several angles, before anybody moves anything. Then get the tree off and the opening covered. Photographs are what let you prove what the storm did versus what the next three days of rain did.\n\nWHAT WE DO ON OUR SIDE. We photograph the damage before we touch it, tarp openings as part of the emergency call, itemize the invoice so each line maps to something an adjuster can approve, bill your insurance directly, and talk to your adjuster. We have worked a lot of these claims in Onslow County and we know what documentation moves them along. What we will not do is tell you an outcome is guaranteed — that decision is the carrier's, and any tree company promising otherwise is promising something it does not control.",
         },
         {
           heading: "My Neighbor's Tree Fell on My Property — Who Pays?",
-          text: "This is the single most common question we get after a storm, and the answer is usually not the one people are hoping for.\n\nTHE GENERAL RULE: YOUR POLICY, NOT THEIRS. A healthy tree blown down in a storm is treated as an act of nature. The property it lands on is the one that claims it — you file with your own homeowners insurance and handle the cleanup, even though the tree grew in someone else's yard. The Insurance Information Institute puts it plainly: you are insured no matter who owns the tree, and in most cases an insurer is not going to spend time working out where a tree or its branches originally came from. Same limits apply as anywhere else on this page, including the modest cap on removal itself.\n\nTHE EXCEPTION, AND IT IS A REAL ONE. If the tree was visibly dead, diseased or neglected, and the owner knew or reasonably should have known, that changes the picture — this is negligence rather than an act of nature, and the tree's owner may be liable. Poor maintenance is not something a homeowners policy is meant to cover. In practice your insurer may pay your claim and then pursue the neighbor's insurer to recover it, a process called subrogation; if that succeeds you can get your deductible back.\n\nWHAT THAT MEANS PRACTICALLY. If you have been looking at a dead tree leaning over your fence for two years, document it now, while it is still standing. Photographs with dates, and a written note to your neighbor, are worth considerably more than your recollection afterward. And if it is your tree that is dead, that is the cheapest possible moment to deal with it.\n\nNot legal or insurance advice; talk to your insurer. Your declarations page and your adjuster beat anything written here, and liability questions are for an attorney rather than a tree company.",
+          text: "Your policy, not theirs. A healthy tree blown down in a storm is treated as an act of nature, and the property it lands on is the one that claims it — which is usually not the answer people are hoping for. It is the most common question we get after a storm.\n\nTHE GENERAL RULE: YOUR POLICY, NOT THEIRS. The property it lands on is the one that claims it — you file with your own homeowners insurance and handle the cleanup, even though the tree grew in someone else's yard. The Insurance Information Institute puts it plainly: you are insured no matter who owns the tree, and in most cases an insurer is not going to spend time working out where a tree or its branches originally came from. Same limits apply as anywhere else on this page, including the $500 standard cap on removal itself.\n\nTHE EXCEPTION, AND IT IS A REAL ONE. If the tree was visibly dead, diseased or neglected, and the owner knew or reasonably should have known, that changes the picture — this is negligence rather than an act of nature, and the tree's owner may be liable. Poor maintenance is not something a homeowners policy is meant to cover. In practice your insurer may pay your claim and then pursue the neighbor's insurer to recover it, a process called subrogation; if that succeeds you can get your deductible back.\n\nWHAT THAT MEANS PRACTICALLY. If you have been looking at a dead tree leaning over your fence for two years, document it now, while it is still standing. Photographs with dates, and a written note to your neighbor, are worth considerably more than your recollection afterward. And if it is your tree that is dead, that is the cheapest possible moment to deal with it.\n\nNot legal or insurance advice; talk to your insurer. Your declarations page and your adjuster beat anything written here, and liability questions are for an attorney rather than a tree company.",
         },
         {
           heading: "Serving All of Onslow County",
@@ -47,12 +95,12 @@ export default function StormCleanup() {
               The standard tree-removal provision quoted above is described by the state
               regulator, not by us —{' '}
               <a
-                href="https://www.ncdoi.gov/consumers/homeowners-insurance/faqs-about-homeowners-insurance"
+                href={SOURCES.ncdoiHomeowners.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
               >
-                North Carolina Department of Insurance, homeowners insurance FAQs
+                {SOURCES.ncdoiHomeowners.label}
               </a>
               . Your own declarations page still governs your policy, and some carriers
               write more coverage than the standard.

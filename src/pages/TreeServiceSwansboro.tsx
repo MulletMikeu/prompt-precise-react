@@ -1,5 +1,9 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import { BUSINESS, YEAR_FOUNDED_LOCAL } from '../data/siteData';
+
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
 
 export default function TreeServiceSwansboro() {
   return (
@@ -7,12 +11,32 @@ export default function TreeServiceSwansboro() {
       title="Tree Service in Swansboro, NC"
       subtitle="Trusted Tree Removal, Trimming & Stump Grinding in Swansboro"
       slug="tree-service-swansboro-nc"
+      faqPosition="early"
       credentialBlock
       description="Tree service in Swansboro, NC: expert removal, trimming, stump grinding, and 24/7 storm cleanup. Free estimates from Godhans."
       ctaText="Call Now for a Free Estimate"
       quickAnswer="Swansboro's mature oaks, pines, and waterfront live oaks need expert care to stay safe and healthy. Godhans Tree Company provides professional tree removal, trimming, stump grinding, and 24/7 storm response throughout Swansboro, Cedar Point, and the Crystal Coast area."
       sectionLinks={{
         0: { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Permits, HOA approvals and shoreline rules in Onslow County" },
+      }}
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot. This page had ZERO
+       * editorial outbound links before batch 1 — every link on it was a templated
+       * band or a service card. Same copy as the `text` entry it replaces, plus the
+       * local detail that makes each anchor relevant. Edit both or neither.
+       */
+      sectionBodies={{
+        2: (
+          <>
+            {"Swansboro means live oaks, a historic district and waterfront lots — mature trees people want kept, close to houses that leave no room to drop anything — see "}
+            <Link to="/tree-cabling-bracing-jacksonville-nc" className={PROSE_LINK}>cabling and bracing a split fork</Link>
+            {", "}
+            <Link to="/resistograph-tree-testing-jacksonville-nc" className={PROSE_LINK}>measuring a trunk before anyone decides</Link>
+            {" and "}
+            <Link to="/tree-removal-near-house-jacksonville-nc" className={PROSE_LINK}>near-house removal pricing</Link>
+            {"."}
+          </>
+        ),
       }}
       sections={[
         {
@@ -21,7 +45,7 @@ export default function TreeServiceSwansboro() {
         },
         {
           heading: "Complete Tree Services in Swansboro",
-          text: "Our services include:\n\n• Tree Removal — including large oaks, pines, and hazard trees\n• Tree Trimming & Pruning — proper structural pruning that protects tree health\n• Stump Grinding — ground below grade, debris removed\n• 24/7 Emergency Tree Service — storm damage, fallen trees, hanging limbs"
+          text: "Our services include:\n\n• Tree Removal — including large oaks, pines, and hazard trees\n• Tree Trimming & Pruning — proper structural pruning that protects tree health\n• Stump Grinding — ground 10 inches below grade, debris removed\n• 24/7 Emergency Tree Service — storm damage, fallen trees, hanging limbs"
         },
         {
           heading: "Why Swansboro Homeowners Choose Godhans",

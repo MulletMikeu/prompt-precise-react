@@ -30,3 +30,7 @@ dist-ssr
 # Incremental build state from `tsc -b` (a typecheck leaves these behind;
 # the Vite build does not need them).
 *.tsbuildinfo
+
+# Local audit reports. Generated on request and kept out of the repo on the
+# owner ruling ("write the result to a LOCAL file only, not committed").
+audit/

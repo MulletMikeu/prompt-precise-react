@@ -464,11 +464,11 @@ export const SERVICES = [
     href: "/stump-grinding-jacksonville-nc",
     headline: "Gone to Ground Level. No Regrowth.",
     description:
-      "Full reclamation of your yard. We grind to ground level, haul all debris away, and leave you a flat, usable surface.",
+      `Full reclamation of your yard. Ground ${PRICING.stump.depthStandard} below grade as standard — deeper than the ${PRICING.stump.industryNormAdj} norm — so the spot takes sod, concrete or a replant. Grinding never removes every bit of root below grade; full excavation is a separate service.`,
     features: [
       "Ground 10+ inches below grade — deeper than the 6–8 inch norm",
       "Root flare grinding available",
-      "All grindings removed or spread as mulch",
+      "Most grindings hauled away or spread as mulch, your call",
       "Ready to replant or landscape immediately",
       "Single stumps or full-property clearing",
     ],
@@ -592,3 +592,64 @@ export const TRUST_STATS = [
   { value: "5.0", label: "Google Rating" },
   { value: "24/7", label: "Emergency Response" },
 ] as const;
+
+/**
+ * SOURCES - external authorities the site quotes, one binding each.
+ *
+ * The NC DOI link existed only inside /storm-cleanup-jacksonville-nc while three
+ * other pages made claims derived from the same provision with no citation at
+ * all. A URL that three pages depend on should not live in one page's JSX.
+ *
+ * Every entry here has been fetched and the quoted text confirmed against the
+ * live page. Do not add one without doing that.
+ */
+export const SOURCES = {
+  ncdoiHomeowners: {
+    url: "https://www.ncdoi.gov/consumers/homeowners-insurance/faqs-about-homeowners-insurance",
+    label: "North Carolina Department of Insurance, homeowners insurance FAQs",
+    /** Verbatim, confirmed on the live page 2026-10-10. */
+    quote:
+      "The homeowners policy will pay reasonable expense, up to $500 for any one loss, for the removal of trees from your premises provided that the tree has damaged a structure or blocked the driveway.",
+  },
+} as const;
+
+/**
+ * EQUIPMENT - machine specs, single source.
+ *
+ * Why this exists: the spider lift's reach was stated two different ways on two
+ * different sets of pages. Five places said "50+ feet" (including the spider
+ * lift page's own quick answer and FAQ, i.e. the page that owns the spec) while
+ * four said 90 feet - among them the itemised emergency invoices, which bill a
+ * "90 ft spider lift" at $145/hr, and the cost page's "most bucket trucks only
+ * reach 60-70 feet where we run a 90 foot lift". The understated figure made
+ * the machine read as WORSE than the bucket truck it replaces.
+ *
+ * Figures below are the owner's ruling, and they are three different numbers
+ * that a spec sheet keeps separate:
+ *   - platformHeight: how high the basket goes.
+ *   - workingHeight:  platform height plus a working person's reach, which is
+ *                     the number that decides whether a top can be reached.
+ *   - horizontalOutreach: how far out from the chassis it will reach, which is
+ *                     what actually decides a backyard job and had appeared
+ *                     nowhere on the site at all.
+ * Never collapse them into one "reach" figure, and never write "50+ feet" again.
+ */
+export const EQUIPMENT = {
+  spiderLift: {
+    platformHeight: "90 ft",
+    workingHeight: "95–96 ft",
+    horizontalOutreach: "50 ft",
+    /** Collapsed track width. Fits a standard 4 ft gate with room to spare. */
+    collapsedWidth: "about 36 inches",
+    gate: "standard 4-foot gate",
+  },
+  /**
+   * The machine the spider lift is being compared against. This range is used
+   * on three pages and is NOT sourced - see the note in the batch-1 report.
+   * Do not soften or delete it without the owner; it is his figure.
+   */
+  bucketTruck: {
+    weight: "25,000–40,000 lbs",
+    typicalReach: "60–70 feet",
+  },
+} as const;

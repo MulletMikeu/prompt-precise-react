@@ -130,8 +130,50 @@ interface ServicePageProps {
    * `priceBlock` above.
    */
   sectionFigures?: Record<number, ReactNode>;
+  /**
+   * Rich replacement for a section's `text`, keyed by the same positional index
+   * as `sectionFigures`. When present for index i, it renders INSTEAD of
+   * `sections[i].text`.
+   *
+   * Why this exists: `sections[].text` is a plain string, so a section body
+   * could not contain a link. Every "editorial" internal link on the site was
+   * therefore a button under the prose, a list item, or a card — an audit of
+   * all 38 prerendered pages found zero anchors inside any section's running
+   * text. A link inside a sentence, with the sentence as its context, is worth
+   * considerably more than the same href in a list, both to a reader deciding
+   * whether to follow it and to anything parsing the page.
+   *
+   * It renders into the SAME `whitespace-pre-line` container as the string
+   * form, so "\n\n" inside the JSX still makes a paragraph break and the
+   * rendered result is identical apart from the anchors. Write bodies as
+   * `<>{"…text\n\nmore "}<Link to="/x">anchor</Link>{" tail."}</>`.
+   *
+   * Optional and undefined on every page that does not pass it, which emits
+   * exactly what it emitted before — including the live A/B control, whose HTML
+   * was verified byte-identical across this change. Same discipline as
+   * `priceBlock` and `sectionFigures`: opt in, never retrofit by default.
+   */
+  sectionBodies?: Record<number, ReactNode>;
   sectionLinks?: Record<number, SectionLink | SectionLink[]>;
   faqs?: FaqItem[];
+  /**
+   * Where the FAQ block renders.
+   *
+   * 'late' (the default, and the only behaviour before this prop existed) puts
+   * it in template order: after the credential block, the hero/related-service
+   * cross-link bands and the guides list. Measured across the site that put
+   * every FAQ between 58% and 90% of the way down its page — behind two blocks
+   * of boilerplate links — even though the FAQs are the only question-phrased,
+   * schema-marked, directly quotable content on these pages.
+   *
+   * 'early' renders it immediately after `caseStudy` and before
+   * <WhyChooseGodhans/>, i.e. straight after the page's own prose.
+   *
+   * Default-off on purpose: flipping the default would move the FAQ on the live
+   * A/B control. The control and the treatment both keep 'late' until the test
+   * ends; everything else opts in.
+   */
+  faqPosition?: 'early' | 'late';
   /** Optional rich, semantic content rendered after the sections and before the FAQ
    *  (e.g. a case-study proof block). Full JSX so it can carry headings/links/figures. */
   caseStudy?: ReactNode;
@@ -203,7 +245,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return null;
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, priceBlock, sections, sectionFigures, sectionLinks, faqs, caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, priceBlock, sections, sectionFigures, sectionBodies, sectionLinks, faqs, faqPosition = 'late', caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
   const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -217,6 +259,38 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
       { "@type": "ListItem", "position": breadcrumbCategory ? 3 : 2, "name": title }
     ]
   };
+
+  /**
+   * One definition, rendered at whichever of the two slots `faqPosition`
+   * selects. Extracted so the two positions cannot drift apart: the markup an
+   * 'early' page emits is the same markup a 'late' page emits, which is what
+   * makes the control's output provably unchanged by this prop existing.
+   */
+  const faqBlock = faqs && faqs.length > 0 ? (
+    <section className="bg-black py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-6">
+          {faqs.map((faq, index) => (
+            <div key={index} className="border-b border-gray-800 pb-6">
+              <h3 className="text-white font-semibold text-lg mb-2">{faq.question}</h3>
+              <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+              {faq.link && (
+                <Link
+                  to={faq.link.href}
+                  className="inline-block mt-2 text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
+                >
+                  {faq.link.label}
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ) : null;
 
   return (
     <>
@@ -406,7 +480,10 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                       Undefined on every page that does not pass it, which emits
                       nothing at all — see the prop's note above. */}
                   {sectionFigures?.[index]}
-                  {section.text}
+                  {/* The rich body replaces the string when a page opts in; see
+                      `sectionBodies` above. Both render in this same container,
+                      so the only difference in the output is the anchors. */}
+                  {sectionBodies?.[index] ?? section.text}
                 </div>
                 {sectionLinks && sectionLinks[index] && (
                   <div className="mt-4 space-y-2">
@@ -427,6 +504,11 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
 
           {/* Case study / proof block (optional rich content) */}
           {caseStudy}
+
+          {/* FAQ, for pages that opted into faqPosition="early" — immediately
+              after the page's own prose, ahead of the shared trust and
+              cross-link bands. Identical markup either way. */}
+          {faqPosition === 'early' && faqBlock}
 
           {/* Shared WhyChooseGodhans block (single source; opt-in per page) */}
           {credentialBlock && <WhyChooseGodhans damageNoun={credentialDamageNoun} />}
@@ -555,32 +637,10 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
             </div>
           </section>
 
-          {/* FAQ Section */}
-          {faqs && faqs.length > 0 && (
-            <section className="bg-black py-16">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
-                  Frequently Asked Questions
-                </h2>
-                <div className="space-y-6">
-                  {faqs.map((faq, index) => (
-                    <div key={index} className="border-b border-gray-800 pb-6">
-                      <h3 className="text-white font-semibold text-lg mb-2">{faq.question}</h3>
-                      <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
-                      {faq.link && (
-                        <Link
-                          to={faq.link.href}
-                          className="inline-block mt-2 text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
-                        >
-                          {faq.link.label}
-                        </Link>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          )}
+          {/* FAQ Section — rendered here only when faqPosition is 'late' (the
+              default). See the prop's note: 'early' pages render it above,
+              directly after the prose. */}
+          {faqPosition === 'late' && faqBlock}
 
           {/* Other Cities We Serve (location pages only) */}
           {LOCATION_SLUGS.has(slug) && (

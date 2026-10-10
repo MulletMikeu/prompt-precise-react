@@ -19,22 +19,57 @@ const DESC = "Veteran-owned tree service in Jacksonville, NC. Tree removal, trim
  * carries it as an FAQPage entry, and duplicating an FAQ across pages risks both
  * losing the rich result. The cost guide owns the structured version.
  */
+/**
+ * The two questions, in one place, feeding BOTH the JSON-LD above and the
+ * visible block below.
+ *
+ * Why they are now visible: the answers always were — PROSE.license is in the
+ * hero paragraph and PROSE.financing is in the financing band — but the
+ * QUESTIONS existed only inside this JSON. Google's FAQPage guidance wants the
+ * question and the answer both present on the page, and a question that lives
+ * only in structured data is the pattern that gets a rich result withheld. An
+ * audit of all 38 pages found this was the site's only schema/visible mismatch;
+ * every ServicePage FAQ already matches verbatim because it serialises the same
+ * array it renders. This does the same thing.
+ */
+const HOME_FAQS = [
+  {
+    question: "Does North Carolina license tree contractors?",
+    answer: PROSE.license,
+  },
+  {
+    question: "Does Godhans offer financing?",
+    answer: PROSE.financing,
+  },
+] as const;
+
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Does North Carolina license tree contractors?",
-      acceptedAnswer: { "@type": "Answer", text: PROSE.license },
-    },
-    {
-      "@type": "Question",
-      name: "Does Godhans offer financing?",
-      acceptedAnswer: { "@type": "Answer", text: PROSE.financing },
-    },
-  ],
+  mainEntity: HOME_FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
 };
+
+function HomeFaq() {
+  return (
+    <section className="py-16" style={{ background: "#111111" }}>
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        <h2 className="text-2xl font-bold text-white mb-8">Frequently Asked Questions</h2>
+        <div className="space-y-6">
+          {HOME_FAQS.map((faq) => (
+            <div key={faq.question} className="border-b pb-6" style={{ borderColor: "#2A2A2A" }}>
+              <h3 className="text-white font-semibold text-lg mb-2">{faq.question}</h3>
+              <p className="leading-relaxed" style={{ color: "#C8C8C2" }}>{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -84,6 +119,7 @@ export default function HomePage() {
         <TrustSection />
         <ReviewsSection />
         <ServiceAreaSection />
+        <HomeFaq />
         <CTABanner />
       </main>
     </>

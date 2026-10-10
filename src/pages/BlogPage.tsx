@@ -28,8 +28,10 @@ const GUIDES = [
     desc: "Special considerations for removing trees close to structures — safety planning, equipment, and protecting your home.",
   },
   {
+    // The standalone trimming-vs-pruning guide 301s to the trimming page, which
+    // now carries the distinction as its own section. Card repointed.
     title: "Tree Trimming vs. Pruning: What's the Difference?",
-    href: "/tree-trimming-vs-pruning",
+    href: "/tree-trimming-jacksonville-nc",
     desc: "Trimming and pruning are often used interchangeably, but they serve different purposes. Here's what each actually means.",
   },
   {
@@ -37,15 +39,14 @@ const GUIDES = [
     href: "/leaning-tree-dangerous-after-storm",
     desc: "How to assess whether a leaning tree poses a real risk — signs to watch for and when it's time to call for removal.",
   },
+  // The "Tree Removal in Tight Spaces" card is gone: that page 301s into
+  // near-house, which already has its own card above and now carries the
+  // tight-access premium and the scenario list. Two cards pointing at one URL
+  // is not a second guide.
   {
-    title: "Tree Removal in Tight Spaces: Equipment & Techniques",
-    href: "/tree-removal-tight-spaces-jacksonville-nc",
-    desc: "Removing trees near fences, power lines, or structures requires specialized techniques. Here's how we handle complex jobs.",
-  },
-  {
-    title: "What Is Spider Lift Tree Removal?",
+    title: "Spider Lift Tree Removal: Reach, Width and Outreach",
     href: "/spider-lift-tree-removal-jacksonville-nc",
-    desc: "Spider lifts allow our crew to access difficult-to-reach trees with minimal ground disturbance. Learn when and why we use them.",
+    desc: "A 90 ft platform, about 95–96 ft of working reach and 50 ft of outreach, through a 4-foot gate. When we use it, and when a crane or a climb is the better answer.",
   },
 ];
 

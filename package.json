@@ -15,7 +15,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "brand": "node scripts/gen-brand.mjs",
-    "hero-images": "node scripts/gen-hero-images.mjs"
+    "hero-images": "node scripts/gen-hero-images.mjs",
+    "stamp-sitemap": "node scripts/stamp-sitemap.mjs",
+    "postbuild": "node scripts/stamp-sitemap.mjs"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",

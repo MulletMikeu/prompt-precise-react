@@ -1,5 +1,9 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import { CREDENTIAL, PRICING, YEAR_FOUNDED_LOCAL } from '../data/siteData';
+
+/** Shared anchor styling for the in-prose links in `sectionBodies` below. */
+const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
 
 /**
  * Retargeted (Sept 2026). This page and the homepage both targeted "Tree Service
@@ -16,10 +20,70 @@ export default function TreeServiceJacksonvilleNC() {
       metaTitle="Tree Company in Jacksonville, NC — Local Crew | Godhans"
       subtitle="The Local Crew, the Neighborhoods We Work, and the Questions We Get Most"
       slug="tree-service-jacksonville-nc"
+      faqPosition="early"
       credentialBlock
       description="Meet the Jacksonville, NC tree company behind the work: the local crew, the neighborhoods we cover, Camp Lejeune PCS scheduling, plus cost and permit answers."
       ctaText="Call Now"
       quickAnswer="Godhans Tree Company is a veteran-owned, family-operated tree company based in Jacksonville, NC. This page covers who shows up, the neighborhoods and base-adjacent properties we work in, the species and storm patterns specific to Onslow County, and straight answers on what jobs cost."
+      /**
+       * In-prose links, via ServicePage's `sectionBodies` slot.
+       *
+       * This is the site's biggest page (2,400+ editorial words) and before
+       * batch 1 it contained no anchor inside any sentence — every internal
+       * link on it was a templated band or a curated list. It is also the hub
+       * that the thin city pages and the under-linked service pages depend on
+       * for reach, so this is where the in-prose links pay best.
+       *
+       * Each body below is the same copy as the `text` entry it replaces, with
+       * anchors added in sentences that already named the destination. Edit both
+       * or neither: `text` remains the fallback.
+       */
+      sectionBodies={{
+        // "Areas We Serve Near Jacksonville, NC" — the ten city pages had two
+        // editorial inbound links each, both from a templated card grid. These
+        // are the first in-sentence links any of them have had.
+        8: (
+          <>
+            {"While Jacksonville is our home base, we proudly serve communities throughout Onslow County and beyond. Each of these has its own page, because the ground and the species change as you cross the county: "}
+            <Link to="/tree-service-richlands-nc" className={PROSE_LINK}>Richlands</Link>
+            {" inland on hard-pack clay, "}
+            <Link to="/tree-service-hubert-nc" className={PROSE_LINK}>Hubert</Link>
+            {" and "}
+            <Link to="/tree-service-swansboro-nc" className={PROSE_LINK}>Swansboro</Link>
+            {" on the coastal sandy side, "}
+            <Link to="/tree-service-sneads-ferry-nc" className={PROSE_LINK}>Sneads Ferry</Link>
+            {" and "}
+            <Link to="/tree-service-surf-city-nc" className={PROSE_LINK}>Surf City</Link>
+            {" out toward the water, "}
+            <Link to="/tree-service-camp-lejeune-nc" className={PROSE_LINK}>Camp Lejeune</Link>
+            {" for base-adjacent and PCS work, and "}
+            <Link to="/tree-service-maysville-nc" className={PROSE_LINK}>Maysville</Link>
+            {", "}
+            <Link to="/tree-service-beulaville-nc" className={PROSE_LINK}>Beulaville</Link>
+            {" and "}
+            <Link to="/tree-service-holly-ridge-nc" className={PROSE_LINK}>Holly Ridge</Link>
+            {" on the quieter, more wooded edges.\n\nNo matter where you are in the greater Jacksonville area, we can help with your tree service needs — and if you are not sure whether you are in range, call and ask."}
+          </>
+        ),
+        // "Storm Damage & Tree Safety Resources" — /blog had exactly one
+        // editorial inbound link site-wide, and this page lists five of its
+        // guides without ever linking the index that holds them.
+        9: (
+          <>
+            {"Living in coastal North Carolina means dealing with storms. We have put together a set of "}
+            <Link to="/blog" className={PROSE_LINK}>tree care guides</Link>
+            {" to keep you informed — what to do after storm damage, what removals cost, when a permit is needed, and how to read a leaning tree. If you would rather start from the service you think you need, the "}
+            <Link to="/services" className={PROSE_LINK}>full services overview</Link>
+            {" explains which of trimming, removal and grinding actually fixes which problem, and "}
+            <Link to="/commercial-tree-service-jacksonville-nc" className={PROSE_LINK}>commercial tree service</Link>
+            {" covers HOAs, apartment complexes and churches. Already cut it yourself and the pile got away from you? That is "}
+            <Link to="/debris-hauling-jacksonville-nc" className={PROSE_LINK}>debris hauling</Link>
+            {". And if you want to hear it from customers before you call, our "}
+            <Link to="/reviews" className={PROSE_LINK}>Google reviews</Link>
+            {" are worth the five minutes."}
+          </>
+        ),
+      }}
       sections={[
         {
           heading: "The Crew Behind Godhans Tree Company",
@@ -50,8 +114,8 @@ export default function TreeServiceJacksonvilleNC() {
           text: `North Carolina does not license tree contractors. There is no state tree-service license to ask for, which means anyone with a saw and a magnetic sign can call themselves a tree company here — and the word “licensed” on a truck door in this state means nothing in particular.\n\nSo here is what you can actually check, in the order we would check it.\n\n1. IS THE BUSINESS REGISTERED? Search the company name on the North Carolina Secretary of State business registry. You are looking for an active entity, not a dissolved one, and for the name on the quote to match the name on the registration. Ours is Godhans LLC, SoSID ${CREDENTIAL.sosId}, registered and active.\n\n2. GET THE CERTIFICATE OF INSURANCE FROM THE INSURER, NOT THE CONTRACTOR. This is the important one. A COI forwarded to you as a PDF by the company itself proves very little; a lapsed policy still produces a handsome certificate. Ask for it to be sent directly from their insurance agent or carrier to your email. Any legitimate company can arrange that with one phone call, and the ones that cannot are telling you something.\n\n3. CHECK THAT IT IS BOTH KINDS OF COVER. You want general liability, which pays if the tree or the equipment damages your property, AND workers' compensation, which matters because if an uninsured climber is hurt in your tree, the claim can find its way to your homeowners policy. One without the other is not covered work.\n\n4. CHECK THE MACHINES ARE ON THE POLICY. Liability cover does not automatically extend to every piece of equipment. Ask specifically whether the lift, the crane, the loader and the truck and trailer are individually covered. Ours are, including the spider lift.\n\n5. MATCH THE NAME TO THE CREW. If the quote comes from one company and a different crew in unmarked trucks turns up, the insurance you verified may not cover the people standing in your yard. We do not subcontract; the crew that quotes is the crew that works.`
         },
         {
-          heading: "Questions to Ask Before You Hire Anyone",
-          text: "Eight questions. The answers tell you more than the price does.\n\n1. ARE YOU INSURED FOR BOTH GENERAL LIABILITY AND WORKERS' COMP, AND WILL YOUR AGENT SEND ME THE CERTIFICATE DIRECTLY? Covered above. If there is one question on this list, it is this one.\n\n2. IS THE PRICE IN WRITING, AND WHAT EXACTLY DOES IT INCLUDE? Specifically: does it include the stump, and does it include hauling the wood away? Those two are where most “surprise” bills come from.\n\n3. WHO IS DOING THE WORK — YOUR CREW, OR A SUBCONTRACTOR? And if it is a subcontractor, whose insurance covers my property?\n\n4. HOW ARE YOU GETTING TO THE TREE, AND WHAT DOES THAT DO TO MY YARD? A company that has not thought about access has not finished the quote. On sandy ground the honest answer sometimes involves ground mats.\n\n5. WHAT HAPPENS IF THE PRICE CHANGES ONCE YOU START? The answer you want is that you hear about it before anything is cut, not on the invoice.\n\n6. HOW DO YOU KNOW THIS TREE NEEDS TO COME DOWN? A visual inspection is a legitimate answer for an obvious hazard. For a big hardwood that merely looks worrying, ask whether the trunk can be measured instead of estimated.\n\n7. WHAT IS YOUR PLAN FOR THE POWER DROP? If limbs are anywhere near the service line, the utility has to be sequenced in. A company that shrugs at this is a company to walk away from.\n\n8. WHAT DOES CLEANUP MEAN TO YOU? Get it concrete. Raked, blown, brush chipped, wood removed or stacked where you asked — or a pile left at the curb."
+          heading: "What questions should I ask before hiring a tree removal company?",
+          text: "Eight of them, and the answers tell you more than the price does. Start with insurance — both general liability and workers' comp, with the certificate sent by their agent rather than forwarded by them.\n\n1. ARE YOU INSURED FOR BOTH GENERAL LIABILITY AND WORKERS' COMP, AND WILL YOUR AGENT SEND ME THE CERTIFICATE DIRECTLY? Covered above. If there is one question on this list, it is this one.\n\n2. IS THE PRICE IN WRITING, AND WHAT EXACTLY DOES IT INCLUDE? Specifically: does it include the stump, and does it include hauling the wood away? Those two are where most “surprise” bills come from.\n\n3. WHO IS DOING THE WORK — YOUR CREW, OR A SUBCONTRACTOR? And if it is a subcontractor, whose insurance covers my property?\n\n4. HOW ARE YOU GETTING TO THE TREE, AND WHAT DOES THAT DO TO MY YARD? A company that has not thought about access has not finished the quote. On sandy ground the honest answer sometimes involves ground mats.\n\n5. WHAT HAPPENS IF THE PRICE CHANGES ONCE YOU START? The answer you want is that you hear about it before anything is cut, not on the invoice.\n\n6. HOW DO YOU KNOW THIS TREE NEEDS TO COME DOWN? A visual inspection is a legitimate answer for an obvious hazard. For a big hardwood that merely looks worrying, ask whether the trunk can be measured instead of estimated.\n\n7. WHAT IS YOUR PLAN FOR THE POWER DROP? If limbs are anywhere near the service line, the utility has to be sequenced in. A company that shrugs at this is a company to walk away from.\n\n8. WHAT DOES CLEANUP MEAN TO YOU? Get it concrete. Raked, blown, brush chipped, wood removed or stacked where you asked — or a pile left at the curb."
         },
         {
           heading: "Areas We Serve Near Jacksonville, NC",
@@ -88,7 +152,7 @@ export default function TreeServiceJacksonvilleNC() {
           { href: "/storm-damage-trees-guide", label: "What to Do After Storm Damage to Trees" },
           { href: "/tree-removal-cost-north-carolina", label: "How Much Does Tree Removal Cost in NC?" },
           { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Do You Need a Permit to Remove a Tree in NC?" },
-          { href: "/tree-trimming-vs-pruning", label: "Tree Trimming vs Pruning: What's the Difference?" },
+          { href: "/tree-trimming-jacksonville-nc", label: "Tree Trimming vs Pruning: What's the Difference?" },
           { href: "/leaning-tree-dangerous-after-storm", label: "Is a Leaning Tree Dangerous After a Storm?" }
         ]
       }}
@@ -103,20 +167,20 @@ export default function TreeServiceJacksonvilleNC() {
                 newlines and run-on indentation into the rendered text. Keep any
                 interpolated sentence on ONE source line. */}
             <p className="text-gray-300 text-lg leading-relaxed">
-              We would rather you ran those checks on us than took our word for any of it.
-              The registry is here:{' '}
+              {`We are ${CREDENTIAL.legalName}, SoSID ${CREDENTIAL.sosId}, active on the`}{' '}
               <a
                 href="https://www.sosnc.gov/online_services/search/by_title/_Business_Registration"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
               >
-                North Carolina Secretary of State business search
+                North Carolina Secretary of State business registry
               </a>
-              .
+              . We would rather you ran that check on us than took our word for any of it.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed mt-4">
-              {`We are ${CREDENTIAL.legalName}, SoSID ${CREDENTIAL.sosId}. For the insurance certificate, ask us and we will have our agent send it to you directly rather than forwarding you a PDF ourselves.`}
+              For the insurance certificate, ask us and we will have our agent send it to you
+              directly rather than forwarding you a PDF ourselves.
             </p>
           </div>
         </section>
