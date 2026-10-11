@@ -271,6 +271,7 @@ export default function StormDamageGuide() {
           { href: '/storm-cleanup-jacksonville-nc', label: 'Storm cleanup and insurance', blurb: 'The mitigation-versus-debris split, and why it decides what gets paid.' },
           { href: '/leaning-tree-dangerous-after-storm', label: 'Is a leaning tree dangerous after a storm?', blurb: 'Which leans are a problem, and which have been fine for twenty years.' },
           { href: '/resistograph-tree-testing-jacksonville-nc', label: 'Resistograph testing', blurb: 'Measuring how much sound wood is left before a storm finds out for you.' },
+          { href: '/pine-tree-problems-jacksonville-nc', label: 'Is my pine dying or dangerous?', blurb: 'Lightning browns 30 to 40 percent of a canopy and leaves spiral cracks — plus what beetle pitch tubes mean.' },
           /*
            * NO LINK TO /tree-removal-cost-north-carolina FROM THIS PAGE.
            * It is the treatment arm of the live A/B test and Ship D is barred

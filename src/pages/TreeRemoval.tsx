@@ -25,9 +25,6 @@ import {
   CLIMBER_ASCENDING,
   CLIMBER_TOPPING_PINE,
   CLIMBER_TOPPED_TREE,
-  PITCH_TUBES,
-  RICHLANDS_CRACKED_LIMB,
-  RICHLANDS_CANOPY_LIMB,
   SURF_CITY_HOLLOW,
   SURF_CITY_STUMP,
 } from '@/data/batch2Photos';
@@ -42,13 +39,6 @@ const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2
  * scripts/gen-hero-images.mjs.
  */
 const PHOTO_SIZES = '(min-width: 768px) 768px, 100vw';
-
-/**
- * Floated `sectionFigures` sit at w-72 (288px) from `md` up and span the
- * content column below it, so ~640 CSS px on a phone is the widest box.
- */
-const FIGURE_SIZES = '(min-width: 768px) 288px, calc(100vw - 2rem)';
-
 
 export default function TreeRemoval() {
   return (
@@ -66,49 +56,28 @@ export default function TreeRemoval() {
         webpSrcSet: removalWebpSrcSet,
         jpgSrcSet: removalJpgSrcSet,
         sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px',
-        width: 1200,
-        height: 960,
+        /* The real intrinsic pixels of the top variant (1125x900), not the
+           1200x960 this declared until Batch 5. Same 1.25 ratio either way, so
+           nothing reflowed — but the convention on this site is that
+           width/height are the actual file dimensions, and a declared size no
+           variant has is the kind of thing that becomes a real CLS bug the
+           moment someone changes the ladder. */
+        width: 1125,
+        height: 900,
         alt: `Tree removal in Jacksonville NC – real job-site photo by ${BUSINESS.name}.`,
         caption: 'Tree removal job-site — Jacksonville, NC',
         showCta: true,
       }}
       quickAnswer={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum. Most removals run ${PRICING.removal.most}, with large or hazardous trees at ${PRICING.removal.large}. ${PRICING.stories.sameTree}`}
-      /* Positional keys. Batch 1 deleted the two generic sections that used to
-         open the page; Batch 2 deleted "Affordable Tree Removal with No
-         Surprises" and added three (pine-size, pine brown-out, pine beetles),
-         so everything from the Bradford pear down moved by two. Current order:
+      /* Positional keys. Batch 5 replaced the two pine-health sections with a
+         single summary, so everything from the Bradford pear down moved UP by
+         one. Current order:
            0 when-to-remove · 1 how-long · 2 minimum · 3 pine+sweetgum ·
-           4 pine-size · 5 pine-brownout · 6 pine-beetles · 7 bradford-pear ·
-           8 sandy-ground · 9 weather · 10 builders · 11 service-areas
-         Recount this list against `sections` after ANY insertion — these keys
-         are positional and fail silently, landing a link under the wrong
-         heading rather than erroring. */
-      sectionFigures={{
-        // Beside the beetle text, because "sap oozing where there is no wound"
-        // is the one sign in that section a reader cannot picture from words.
-        6: (
-          <figure className="mb-6 md:float-right md:mb-4 md:ml-8 md:w-72">
-            <picture>
-              <source type="image/avif" srcSet={PITCH_TUBES.avifSrcSet} sizes={FIGURE_SIZES} />
-              <img
-                src={PITCH_TUBES.src}
-                srcSet={PITCH_TUBES.srcSet}
-                sizes={FIGURE_SIZES}
-                alt="Cream-colored blobs of hardened resin on pine bark — pitch tubes, pushed out by the tree where beetles bored in."
-                width={PITCH_TUBES.width}
-                height={PITCH_TUBES.height}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto rounded-lg border-2 border-gray-800"
-              />
-            </picture>
-            <figcaption className="mt-3 text-base leading-relaxed text-gray-400 whitespace-normal">
-              Pitch tubes on a pine trunk. The tree is pushing sap out at the boring
-              sites — defending itself, and telling you it is under attack.
-            </figcaption>
-          </figure>
-        ),
-      }}
+           4 pine-size · 5 pine-summary · 6 bradford-pear · 7 sandy-ground ·
+           8 weather · 9 builders · 10 service-areas
+         Recount this list against `sections` after ANY insertion or removal —
+         these keys are positional and fail silently, landing a link under the
+         wrong heading rather than erroring. */
       sectionLinks={{
         // 0 is "When Should You Remove a Tree?", which now carries the HOA and
         // waterfront line the deleted process section used to hold — so the
@@ -122,13 +91,16 @@ export default function TreeRemoval() {
         // 1 is the timing section; the crane-vs-lift comparison in it is the
         // natural hand-off to the spider lift page.
         1: { href: "/spider-lift-tree-removal-jacksonville-nc", label: "Why the spider lift is cutting in 30 minutes" },
-        // 8 is sandy-ground (was 6 before Batch 2's three pine sections).
-        8: [
+        // 5 is the pine summary left behind by Batch 5's split. This link is
+        // what makes the summary a summary rather than a truncation.
+        5: { href: "/pine-tree-problems-jacksonville-nc", label: "Is my pine dying or dangerous? Brown-out, beetles, lightning and overgrown limbs" },
+        // 7 is sandy-ground (was 8 before the Batch 5 split removed a section).
+        7: [
           { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How the spider lift stays off your lawn" },
           { href: "/residential-tree-service-jacksonville-nc", label: "What an estimate should include — including ground protection" },
         ],
-        // 9 is wind/lightning (was 7).
-        9: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
+        // 8 is wind/lightning (was 9).
+        8: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
       }}
       /**
        * In-prose links, via ServicePage's `sectionBodies` slot. Same copy as
@@ -176,10 +148,11 @@ export default function TreeRemoval() {
             {".\n\nInsurance work is billed differently, and deliberately so: those jobs get an itemized invoice after the work is done, line by line at North Carolina standard rates, rather than a single up-front number. That is what an adjuster needs to see to settle it."}
           </>
         ),
-        // 11 is "Service Areas for Tree Removal" (was 9). The city list was six
-        // place names in a sentence with no links. Each of those pages had two
-        // editorial inbound links before this, both from templated card grids.
-        11: (
+        // 10 is "Service Areas for Tree Removal" (was 11 before the Batch 5
+        // split). The city list was six place names in a sentence with no
+        // links. Each of those pages had two editorial inbound links before
+        // this, both from templated card grids.
+        10: (
           <>
             {"Godhans Tree Company removes trees across Jacksonville and all of Onslow County, including "}
             <Link to="/tree-service-camp-lejeune-nc" className={PROSE_LINK}>Camp Lejeune</Link>
@@ -228,23 +201,25 @@ export default function TreeRemoval() {
         },
         {
           /*
-           * Batch 2 item 4. Placed on this page rather than the resistograph
-           * or leaning-tree pages because pine already lives here — the
-           * pine+sweetgum section, the pine-size section above it and the
-           * lightning paragraph below are all on this page, and splitting the
-           * species across three pages would leave none of them owning it.
+           * Batch 5 (Ship G): the two pine-health sections that used to sit
+           * here — brown-out and beetles — moved to
+           * /pine-tree-problems-jacksonville-nc, taking their two FAQs, the
+           * pitch-tube figure and the two Richlands photographs with them.
            *
-           * The brown-out / hollow-hardwood contrast is doing deliberate work:
-           * it is the exact inverse of the argument on
-           * /resistograph-tree-testing-jacksonville-nc, and the two pages are
-           * meant to be read as a pair rather than as a contradiction.
+           * WHY. This page had absorbed content in every batch since Ship D
+           * and reached ~5,800 words and twelve images; by Ship F it was the
+           * only page on the site on the Lighthouse gate line (production
+           * median exactly 95 against a floor of 95, one run at 94). Pine
+           * health is also its own search intent rather than a subsection of
+           * what a removal costs.
+           *
+           * What is left is a summary that answers the question for someone
+           * who is not going to click, which is the point of a summary. Do
+           * not let it grow back into the full treatment — the figures live
+           * on the pine page now and two copies will drift.
            */
-          heading: "A browned-out pine is already gone — pines do not hide it the way hardwoods do",
-          text: "If a pine has browned out, the tree is dead. There is no treatment, and there is no waiting to see what spring does. That sounds harsh and it is actually the good news: a pine tells you the truth about itself. A hardwood can be hollow through the middle and still leaf out green every year, which is why we drill hardwoods and measure them. Pines do not give you that problem, because they do not give you that option.\n\nHEAVY NEEDLE SHED IS NOT BROWN-OUT. Pines drop their older needles on a cycle, and in our experience in Onslow County every three to five years that shed is heavy enough to frighten people — interior needles going brown and falling while the tips stay green. That is the tree renewing itself. Brown at the tips, or brown all through, is the other thing entirely.\n\nLIGHTNING BROWNS 30 TO 40 PERCENT OF THE CANOPY. It also dries the wood out along the path it took and leaves spiral cracks running down the trunk — the most recognizable signature there is. A struck pine often looks survivable for a season and is not.\n\nMOST PINE TROUBLE IS JUST OVERGROWN LIMBS. Before anyone reaches for disease, the ordinary answer is that the tree has grown limbs longer and heavier than the attachment can hold. That is a trimming conversation, not a removal.\n\nWHITE RESIN SEALING A CRACK IS A GOOD SIGN. It means the tree has the resources to defend itself and is spending them. The bad sign is the opposite and it catches people out: cut into a pine in summer and find no sap running, and you are looking at a tree that has nothing left to fight with.\n\nABOUT HALF OUR PINE REMOVALS ARE ALREADY DECIDED BEFORE WE ARRIVE. Roughly half are lightning, storm damage or visible decline — trees where the question has answered itself. The other half are worry: a healthy pine near a house, and an owner who would rather not find out the hard way. Both are legitimate reasons to call. They are just very different conversations, and we will tell you which one you are having."
-        },
-        {
-          heading: "Pine beetles: sawdust, small holes, and sap running where it should not",
-          text: "Bark beetles move in waves here — roughly two-year ones, in our experience, and the last two years have been quieter than usual. The one we see most is the southern pine beetle; we see Ips engravers less often. NC State Extension puts the same ordering more formally, calling southern pine beetle \"the worst pest of southern forests\" with potential for \"major destruction during outbreaks\", while Ips engravers \"are secondary pests\" whose \"populations typically do not become widespread as they do with southern pine beetle\".\n\nWHAT TO LOOK FOR. Fine sawdust at the base of the trunk or caught in the bark crevices. A lot of small holes rather than a few. And sap oozing out of the trunk in beads or blobs where there is no wound to explain it — those are pitch tubes, and Extension describes them exactly: \"Pitch tubes are an external sign of bark beetle infestation. This occurs when the tree, in an attempt to defend itself, extrudes sap as a beetle attempts to bore in.\"\n\nWhich is worth sitting with for a second, because it cuts against the resin rule above. Resin sealing a storm crack is a tree winning. Resin in tubes across the trunk is a tree under attack and telling you so.\n\nWHAT WE ACTUALLY ADVISE ON A BORDERLINE TREE. Keep a closer eye on it. That is the honest recommendation and it is deliberately not \"remove it now\" — a pine with a few pitch tubes is not automatically a dead pine, and we are not going to sell you a removal on the strength of some sap. Look at it monthly, and call us if the canopy starts to go."
+          heading: "Is your pine dying? The short version",
+          text: "If a pine has browned out, it is dead — there is no treatment, and that is the useful difference between pines and hardwoods. A hardwood can be hollow and still leaf out green, which is why we drill those; a pine does not give you that option.\n\nThe three things most often mistaken for a dying pine: a heavy needle-shed year, where the interior needles brown and drop while the tips stay green; limbs that have simply outgrown their attachment, which is the commonest pine problem we see and is a trimming job; and beetle pitch tubes on a tree whose canopy is still full, which is not automatically a death sentence.\n\nThe full version — what lightning does, what the beetle signs actually are, and what we advise on a borderline tree — is on its own page."
         },
         {
           heading: "The Third One: Bradford Pear",
@@ -649,14 +624,6 @@ export default function TreeRemoval() {
           answer: "Yes, tree removal can be hazardous without proper equipment and experience. That's why it's best handled by trained professionals."
         },
         {
-          question: "How do I know if my pine tree is dying?",
-          answer: "A pine will tell you, which is the useful difference between pines and hardwoods. If it has browned out, the tree is dead — there is no treatment and no point waiting for spring. A hardwood, by contrast, can be hollow inside and still leaf out green, which is why we drill those and measure them. Two things are commonly mistaken for a dying pine: a heavy needle-shed year, where interior needles brown and drop while the tips stay green, which in our experience happens every three to five years here; and overgrown limbs, which is the most common pine problem we see and is a trimming job rather than a removal. A pine that has been struck by lightning typically browns 30 to 40 percent of its canopy and shows spiral cracks down the trunk."
-        },
-        {
-          question: "What are the signs of pine beetles?",
-          answer: "Fine sawdust at the base of the trunk or in the bark crevices, a lot of small holes rather than a few, and sap oozing out in beads where there is no wound to explain it. Those beads are pitch tubes — NC State Extension describes them as the tree extruding sap as a beetle attempts to bore in. Around here we see the southern pine beetle more than Ips engravers, and infestations come in roughly two-year waves, with the last two years quieter than usual. If your tree is borderline, our honest advice is to keep a closer eye on it rather than remove it: a few pitch tubes is not a dead pine."
-        },
-        {
           question: "Is a free estimate the same as a tree inspection?",
           answer: `No, and the difference is worth knowing. If you are considering work — a removal, a trim, a stump — we come out, look at it and price it for free, with no obligation. A standalone arborist health and risk assessment is a different service and costs ${PRICING.inspection.assessment}, covering ${PRICING.inspection.assessmentScope} and stretching to ${PRICING.inspection.assessmentMaxTrees} on one visit. You are paying for a considered written opinion on whether your trees are safe and what they need, including the possibility that the answer is to leave them alone.`,
           link: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a paid assessment includes, and what testing costs →" }
@@ -685,16 +652,10 @@ export default function TreeRemoval() {
             alt: "A climber high in a partly topped tree, taking the spar down in sections.",
             caption: "Taking the spar down in sections, where nothing can be dropped.",
           },
-          {
-            ...RICHLANDS_CRACKED_LIMB,
-            alt: "A long split running the length of a pine limb directly above a house roof in Richlands, NC, seen from the lift.",
-            caption: "Richlands, NC — a wind-cracked limb directly over the house. Nobody knew it was there.",
-          },
-          {
-            ...RICHLANDS_CANOPY_LIMB,
-            alt: "A cracked pine limb up in the canopy at Richlands, NC, found during a canopy inspection.",
-            caption: "The same job. This is what a canopy inspection is for — you cannot see either of these from the ground.",
-          },
+          /* The two Richlands wind-cracked limb photographs moved to
+             /pine-tree-problems-jacksonville-nc with the pine-health sections
+             in Batch 5. They illustrate a canopy-inspection point, not a
+             removal one, and this page needed the weight off. */
         ],
       }}
       guides={{
