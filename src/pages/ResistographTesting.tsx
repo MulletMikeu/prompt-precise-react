@@ -346,6 +346,7 @@ export default function ResistographTesting() {
           { href: '/storm-cleanup-jacksonville-nc', label: 'Storm cleanup and insurance', blurb: 'What a homeowners policy typically covers when a tree comes down.' },
           { href: '/tree-cabling-bracing-jacksonville-nc', label: 'Cabling and bracing', blurb: 'If the wood tests sound, hardware can support the weak union instead of removing the tree.' },
           { href: '/neighbor-tree-problems-jacksonville-nc', label: "When the tree is your neighbor's", blurb: 'A measurement is the strongest thing to attach to a written notice — plus who can cut what, cited to NC law.' },
+          { href: '/pine-tree-problems-jacksonville-nc', label: 'Is my pine dying or dangerous?', blurb: 'Pines do not hide decay the way hardwoods do — which is the exact inverse of the argument on this page.' },
         ],
       }}
       finalCta={{

@@ -49,6 +49,83 @@ function LegalNotice() {
   );
 }
 
+/**
+ * A sample letter, added in Batch 5.
+ *
+ * WHY IT IS HERE. The single most actionable thing on this page is "put it in
+ * writing, dated, with photographs" — because North Carolina liability turns on
+ * what the tree's owner knew or should have known, and a letter is what turns
+ * "they never told me" into "they did". Advice that correct is still useless if
+ * the reader does not know how to start the sentence. This is the starting
+ * sentence.
+ *
+ * WHAT IT MUST NOT BECOME. No threats, no deadlines with consequences attached,
+ * no statement of what the neighbour is legally obliged to do, and no mention
+ * of liability, lawyers or insurance claims. The moment this reads as a legal
+ * letter it stops being the thing that works — which is a neighbour reading it,
+ * thinking "I didn't know", and dealing with the tree. It is also the moment we
+ * would be drafting legal documents for people, which we are not qualified to
+ * do and have said so at the top of the page.
+ *
+ * The owner's sequence is deliberate and the copy keeps it: arborist's opinion
+ * FIRST, letter second. A letter that says "I think it looks bad" is an
+ * opinion; one with an assessment attached is a record.
+ */
+function LetterTemplate() {
+  return (
+    <section id="letter" className="py-16 bg-black border-t border-gray-800">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+          A letter you can copy and adapt
+        </h2>
+        <p className="text-gray-300 text-lg leading-relaxed mb-4">
+          Get the arborist&rsquo;s opinion first, then write the letter. In that order —
+          a letter saying the tree looks bad to you is an opinion, and a letter with an
+          assessment and dated photographs attached is a record.
+        </p>
+        <p className="text-gray-300 text-lg leading-relaxed mb-6">
+          Keep it short and keep it friendly. The outcome you want is a neighbour who
+          deals with the tree, not a neighbour who digs in — and in our experience most
+          of these end with somebody saying they simply had not noticed.
+        </p>
+
+        <div className="rounded-lg border-2 border-gray-800 bg-gray-950 p-6 sm:p-8">
+          <p className="text-gray-400 text-sm uppercase tracking-widest font-semibold mb-6">
+            Sample — adapt everything in brackets
+          </p>
+          {/* whitespace-pre-line so the letter keeps its shape when copied. */}
+          <div className="text-gray-200 text-base leading-relaxed whitespace-pre-line font-mono">
+            {`[Date]
+
+Dear [neighbour's name],
+
+I'm writing about the [species, e.g. large pine] in your yard, near [where it is — e.g. the back corner by our fence].
+
+I had an arborist look at it on [date]. They found [what they actually found — e.g. the canopy is dead on the upper third / there's a split in the main fork / the soil on our side has lifted]. I've enclosed their assessment and a few photographs so you can see what they saw.
+
+I'm not trying to make this a problem between us — I'd just rather you knew, because from your side of the fence it may not be obvious. [If it applies: the part I'm most concerned about overhangs our driveway, where the children's bikes are.]
+
+Could you let me know by [a date two to three weeks out] what you'd like to do? I'm happy to talk it through, and if it's useful I can share the company's details — they were willing to speak to both of us.
+
+Thanks,
+[Your name]
+[Address, phone, email]`}
+          </div>
+        </div>
+
+        <p className="text-gray-400 text-base leading-relaxed mt-6">
+          <strong className="font-semibold text-white">This is a sample to adapt, not legal advice</strong>{' '}
+          and not a legal notice. It deliberately contains no threat, no deadline with a
+          consequence attached, and no claim about what your neighbour is obliged to do —
+          partly because we are not qualified to write those, and partly because that
+          version works less well. Keep a copy of what you send and the date you sent it.
+          If this becomes a dispute, that is the point to talk to an NC attorney.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function Sources() {
   const entries = [
     {
@@ -162,7 +239,7 @@ export default function NeighborTreeProblems() {
             <Link to="/resistograph-tree-testing-jacksonville-nc" className={PROSE_LINK}>arborist health and risk assessment</Link>
             {` runs ${PRICING.inspection.assessment}, covering ${PRICING.inspection.assessmentScope} and stretching to ${PRICING.inspection.assessmentMaxTrees} on one visit. Where the question is whether a trunk is sound rather than whether the canopy looks bad, `}
             <Link to="/resistograph-tree-testing-jacksonville-nc" className={PROSE_LINK}>resistograph testing</Link>
-            {` measures how much solid wood is actually left and gives you a number instead of an opinion — which is a considerably better thing to attach to a letter. If the problem is a lean rather than the canopy, `}
+            {` measures how much solid wood is actually left and gives you a number instead of an opinion — which is a considerably better thing to attach to a letter. There is a sample letter further down this page you can copy and adapt. If the problem is a lean rather than the canopy, `}
             <Link to="/leaning-tree-dangerous-after-storm" className={PROSE_LINK}>the signs that a lean is actually dangerous</Link>
             {` are worth reading first.\n\nOne thing we will not do is tell you the tree is dangerous because you would like it to be. If it measures sound, the assessment will say so, and you should want it to.`}
           </>
@@ -186,7 +263,12 @@ export default function NeighborTreeProblems() {
           </>
         ),
       }}
-      caseStudy={<Sources />}
+      caseStudy={
+        <>
+          <LetterTemplate />
+          <Sources />
+        </>
+      }
       faqs={[
         {
           question: "Can I cut my neighbor's tree branches that hang over my property in North Carolina?",
@@ -221,6 +303,7 @@ export default function NeighborTreeProblems() {
           { href: '/resistograph-tree-testing-jacksonville-nc', label: 'Resistograph testing and arborist assessments', blurb: 'Measuring what is left inside a trunk, and what a written assessment costs.' },
           { href: '/leaning-tree-dangerous-after-storm', label: 'Is a leaning tree dangerous after a storm?', blurb: 'Which leans matter, and why a lifted root plate ends the conversation.' },
           { href: '/tree-removal-near-house-jacksonville-nc', label: 'Tree removal near a house', blurb: 'What changes when position, not size, sets the price.' },
+          { href: '/pine-tree-problems-jacksonville-nc', label: "Is the neighbor's pine dying?", blurb: 'Brown-out, beetles and lightning — how to describe what is actually wrong with it in your letter.' },
         ],
       }}
       relatedServices={[

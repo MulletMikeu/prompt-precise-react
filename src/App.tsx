@@ -184,6 +184,7 @@ export const routes: RouteRecord[] = [
       { path: "do-you-need-a-permit-to-remove-a-tree-nc", lazy: page(() => import("./pages/TreeRemovalPermitNC")) },
       { path: "leaning-tree-dangerous-after-storm", lazy: page(() => import("./pages/LeaningTreeDangerous")) },
       { path: "neighbor-tree-problems-jacksonville-nc", lazy: page(() => import("./pages/NeighborTreeProblems")) },
+      { path: "pine-tree-problems-jacksonville-nc", lazy: page(() => import("./pages/PineTreeProblems")) },
       { path: "resistograph-tree-testing-jacksonville-nc", lazy: page(() => import("./pages/ResistographTesting")) },
       { path: "tree-cabling-bracing-jacksonville-nc", lazy: page(() => import("./pages/TreeCablingBracing")) },
       { path: "debris-hauling-jacksonville-nc", lazy: page(() => import("./pages/DebrisHauling")) },
