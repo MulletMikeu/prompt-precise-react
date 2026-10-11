@@ -20,6 +20,68 @@ is the narrative one.
 
 ---
 
+## 2026-10-11 — Ship G, arm guard + pine page split (non-test)
+
+**Pushed** 2026-10-11 23:33:00 UTC · **confirmed serving** 23:39:11 UTC
+**Commits:** `a4727c2` → `cf111dc` (merge) → `4cbded0` (IndexNow state)
+**Shared record:** `ships/2026-10-11-ship-g.md`
+
+First ship on 2026-10-11. One page added, five changed; sitemap 36 → 37.
+Neither arm moved. Lighthouse production median of 5: **96–97 perf, a11y 100
+on all six.** IndexNow took 6.
+
+**THE ARM GUARD IS NOW A MECHANISM, NOT A HABIT.** `scripts/check-arms.mjs`
+runs in `postbuild`, so the build fails with exit 1 if either arm's rendered
+HTML or inbound link count — editorial or total — differs from the committed
+baseline in `scripts/arm-baseline.json` (seeded at treatment 13/23, control
+9/23). Proved failing (a deliberate cost-page link: *"editorial 13 -> 13, total
+23 -> 24"*) and passing, and then proved a third time by the Vercel production
+build running it and succeeding.
+
+Note what the failing case caught: **editorial stayed at 13 and only total
+moved**, because a guides-list link is classified templated. A guard watching
+only the editorial count would have missed it.
+
+Three separate opt-in flags rather than one `--force`, because "I meant to edit
+the arm" and "I meant to change what links at it" are different intentions.
+`--allow-control-change` should essentially never be used — `DECISIONS.md`
+holds the stump page to Nov 1. **The script is dated for deletion after
+2026-12-01**; a guard outliving the thing it guards becomes a flag people pass
+without reading.
+
+**PINE SPLIT.** The two pine-health sections, their FAQs, the pitch-tube photo
+and the two Richlands photos moved verbatim to
+`/pine-tree-problems-jacksonville-nc`. Every owner figure is byte-identical to
+Ship D, including the three unsourced ones, still marked as our experience. The
+removal page drops 5,646 → 4,832 words and 16 → 13 images, and goes from
+**median 95 with a run at 94 to median 97 with no run below the floor.** Target
+met — though the lowest run is still exactly 95, and the reason is no longer
+this page: Lighthouse's only material opportunity on it is
+`unused-javascript: 290 ms`, which is the shared bundle.
+
+**NEIGHBOR LETTER.** A copy-paste sample on the neighbour page, with bracketed
+placeholders, the arborist's findings and date, photos enclosed, and a reply
+date. Checked programmatically to contain no "liable", "lawsuit", "legal
+action", "negligence", "insurance" or "claim", and no deadline with a
+consequence attached — the threatening version reads as a legal letter, works
+less well, and is not something a tree company should be drafting.
+
+**One process bug worth carrying forward.** `stamp-sitemap` takes its date from
+the last commit, not the clock — so building before committing stamps the new
+fingerprints with the *previous* commit's date. Every prior ship shared a
+calendar day with its predecessor so it never showed; today five of six pages
+were first stamped 2026-10-10. Fixed by resetting the fingerprint record and
+rebuilding after the commit. **On any ship that crosses midnight UTC from the
+last one, commit first and build second.**
+
+**Audit D1 is closed.** It lives in `audit/sitewide-structure-audit-2026-10-10.md`
+(gitignored), not the shared folder, which is why Ship F could not read it. Its
+recommended replacement was the exact sentence the page already carries, so D1
+was satisfied; Ship F's deletion of the duplicated restatement was the right
+residual defect.
+
+---
+
 ## 2026-10-10 — Ship F, neighbor tree problems page (non-test)
 
 **Pushed** 2026-10-10 21:06:37 UTC · **confirmed serving** 21:12:23 UTC
