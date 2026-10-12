@@ -1,6 +1,6 @@
 {
   "_comment": "Fingerprints of each URL's rendered content at the last `npm run indexnow`. Generated — do not hand-edit. Asset hashes, the SSG hash, comments and whitespace are normalised out, so a font/bundle/comment-only ship leaves these unchanged and submits nothing. COMMIT THIS FILE: without it a fresh clone has no baseline and the next run would submit every URL. See the header of scripts/indexnow.mjs.",
-  "updated": "2026-10-11",
+  "updated": "2026-10-12",
   "fingerprints": {
     "https://godhans.com/": "11ae4d4fa54bdda5cb8fb747c947f3725c11bc00d5d7ed66209dbfe1e1bba87a",
     "https://godhans.com/services": "89d4a272cf876c9667e32b8aff7d192ea8d126fc2dc38638f198e898d2865227",
@@ -11,7 +11,7 @@
     "https://godhans.com/blog": "a8f4c9534412bd689ef8a8a88194a167deb0d41bf8558d5e0b2f738b1b07167b",
     "https://godhans.com/privacy-policy": "24de0d3a192d378873ba47c5c8f09a5be8448bc5a39c920410eb44d2fc95a2b6",
     "https://godhans.com/terms-of-service": "f6ac9f5f340356a6746465f075df8718bae556a4123850487b909726662f4eae",
-    "https://godhans.com/tree-service-jacksonville-nc": "84f54a01d79a8d1e8b676bcf03a2c8218d23e5baa566c9652a0e788db57261a1",
+    "https://godhans.com/tree-service-jacksonville-nc": "1cb04df0b3788dda27b79fdfa6a4f79bd2af806445a2d369a1c6be420711787f",
     "https://godhans.com/tree-removal-jacksonville-nc": "d8e0b4eb8faeadec658489e7bab2eefd554ee884582e6346add948dbe1d1f6ec",
     "https://godhans.com/tree-trimming-jacksonville-nc": "9b789dc24a8627b5aa0e69b1a674c4aaaeaa569edc4dab778bc33d44d010d1ee",
     "https://godhans.com/stump-grinding-jacksonville-nc": "f7753470c62bb5bd2ecce1ce4d0c0e4c0d0e64da6ebc3cc8416429599afa525a",
@@ -19,11 +19,11 @@
     "https://godhans.com/spider-lift-tree-removal-jacksonville-nc": "de3bb42122ed4d906a812188c405176d36905bb23c02efea8f1f73a21fba17d5",
     "https://godhans.com/commercial-tree-service-jacksonville-nc": "43628d16accbe3ef3d08945cf70988594eace94fab4ca064c6bc41d3069e8222",
     "https://godhans.com/residential-tree-service-jacksonville-nc": "1c5be7eb84040a80f0c64865b80a7fcf93f00267e7c7a514d39f119b0e601b12",
-    "https://godhans.com/tree-service-hubert-nc": "ed07d690c8115a6f237c4af0e4d1d73161d5c3bcdef979176dca0ec6babbc8c9",
-    "https://godhans.com/tree-service-richlands-nc": "191d0018debe62d62fe7d7a54f4af894c8f03447ed9f83577ce264ccff5ea50f",
-    "https://godhans.com/tree-service-swansboro-nc": "6860f565fd528d32c65cf13bcbcf7c61363c8050f0a3041cd75ee56fcf0cb4d8",
-    "https://godhans.com/tree-service-sneads-ferry-nc": "bdd55b5a9d3b439dbe387a45edf649124239b4b59ba00782ebf472d5c4e9acfd",
-    "https://godhans.com/tree-service-camp-lejeune-nc": "1def1ba4c6a9689957563c55f3f1772208efdc354a5e2ed9d4d56a1450747c60",
+    "https://godhans.com/tree-service-hubert-nc": "5e9cb593147832413d8576476aa608fcb67d5ee0acb1c0dd73318f58a9008f9c",
+    "https://godhans.com/tree-service-richlands-nc": "6c85039c05356ed6d456cd5cc71f2f7b61d7c7679576bc19bd1622492e709c77",
+    "https://godhans.com/tree-service-swansboro-nc": "9ec4735df409e3442c0ea70b889d9ad2fdf367a67e818604656b5acbcb6d3dd1",
+    "https://godhans.com/tree-service-sneads-ferry-nc": "697ae725d02d49857f51c580f5ed1ac017efe0336d54e3f5a40ec6b2769b6eb7",
+    "https://godhans.com/tree-service-camp-lejeune-nc": "e1160dad6d33d0f3e38279a1b05e886176b7a3284590e51fd70b55689d18448f",
     "https://godhans.com/storm-cleanup-jacksonville-nc": "131b33d8ef67237e36780b282656f50bcb48f4615485d4cad946af3bc605f125",
     "https://godhans.com/storm-damage-trees-guide": "6aaf6cae916a574754ca66e1a24d708af2c465612c3aa1d08b953e6a4b48ab64",
     "https://godhans.com/tree-removal-cost-north-carolina": "43f6b5cbbea5f1355014af1b2aad58a8d845a79da2d78c9cfa4aeb662be2fec9",
@@ -35,9 +35,9 @@
     "https://godhans.com/resistograph-tree-testing-jacksonville-nc": "735a8aceb4aacf535a1bd16543db19ecbff5ffc25d9a34cde4a370525115a0a1",
     "https://godhans.com/tree-cabling-bracing-jacksonville-nc": "c2c5c2b3fd2d6436d56dd8f04d20f2b9d724c76fe85dcdffba023f547c365d85",
     "https://godhans.com/debris-hauling-jacksonville-nc": "828b477ca374c1cd1ddf216814226a9a2c607e16bf730a585545800d5241fa01",
-    "https://godhans.com/tree-service-maysville-nc": "903dbc0134f8d438c50438e7a3181c2278fd1839829411738d9a075e4003a572",
-    "https://godhans.com/tree-service-beulaville-nc": "4fdfba2c1dba90230b4b13390f4254f9d206fb14df3610c9e83e7e74e5da58f7",
-    "https://godhans.com/tree-service-holly-ridge-nc": "96fbfd7f03ff97814662c4fd38eda6eccee38a3dc78b2c5087d199963c298410",
-    "https://godhans.com/tree-service-surf-city-nc": "65b2181f74846c2826db0199daf74910ee893013b7e33e9a409e5cc7042eccae"
+    "https://godhans.com/tree-service-maysville-nc": "0820499547f80e395e87c237ee8c7e43739b6fe1fe094b0cbd4ab27539642879",
+    "https://godhans.com/tree-service-beulaville-nc": "c901e4a9c7e90ee61b425bea24b16f97ada7d8463613546a7503481d46007f58",
+    "https://godhans.com/tree-service-holly-ridge-nc": "b6f8bdd1534d6f9020f42eb9606585b9f51720b69aac816ee6261889424a873f",
+    "https://godhans.com/tree-service-surf-city-nc": "97322838fe17e302eae04d9d20ea3fb05935eef546d1f16ac5f4ca86e44497d6"
   }
 }
