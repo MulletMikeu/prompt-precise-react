@@ -20,6 +20,56 @@ is the narrative one.
 
 ---
 
+## 2026-10-12 — Ship H, bundle analysed + pine links (non-test)
+
+**Pushed** 2026-10-12 00:16:27 UTC · **confirmed serving** 00:22:40 UTC
+**Commits:** `0a8cf4c` → `d2018ae` (merge) → `cc40e36` (IndexNow state)
+**Shared record:** `ships/2026-10-12-ship-h.md`
+
+Ten pages changed, none added. Arm guard passed on every build. IndexNow took
+10. Lighthouse production median of 5: **96–99 perf, a11y 100** across home,
+removal, the cost arm (measured only), spider lift, a city page and the pine
+page.
+
+**THE BUNDLE RECOMMENDATION I MADE IN SHIP G WAS WRONG, AND I AM NOT SHIPPING
+A FIX FOR IT.** I cited `unused-javascript ~290 ms` as the binding constraint.
+Re-measured: the removal page loses **2.8 weighted points in total** — LCP 1.3,
+FCP 1.2, SI 0.3 — with **TBT 10 ms and CLS 0, both scoring 100**. Those two are
+55% of the weighting, so JavaScript is not costing the page anything
+measurable. Every byte-level audit already passes at zero savings (unused CSS,
+unminified CSS/JS, legacy JS, responsive images), there are no render-blocking
+resources, and TTFB is 35 ms. lucide is tree-shaken to four icons, route
+splitting is in place, and analytics is already deferred past load + idle and
+appears in zero prerendered HTML.
+
+The biggest unused-JS item is **Google's tag at 177 KiB transferred — nearly
+twice all our own JS combined (90 KiB)** — already as late as it can load
+without losing measurement.
+
+One real inefficiency found and deliberately **not** shipped: `batch2Photos` is
+a 20 KiB chunk shared by 8 route chunks, so a page showing one photo downloads
+thirty photos' URLs. Off the critical path, ~5 KiB gzipped, and splitting it
+trades cache reuse for per-page size. Quantified in the record for John to
+call.
+
+**Arm hash-churn confirmed empirically rather than asserted,** as the batch
+asked. The `app` chunk hash changed this ship (`BsNMaeXg` → `7AIF2ZSe`), so
+both arms' **raw** HTML differs from production — and both arms' **normalised**
+fingerprints are unchanged (`deccdc61129c42db` / `37e882d124b2d7ac`, the same
+since Ship C). The guard absorbs artefact churn and still catches real change.
+
+**Pine links:** all ten city pages now carry one natural in-sentence link to
+the pine page, which went from 5 to 15 inbound. `LocationPage`'s `why` entries
+became `ReactNode` so a paragraph can hold an anchor; plain strings render
+exactly as before.
+
+**Dating:** this record is 2026-10-12 (UTC serve time); the sitemap stamps
+2026-10-11 because `stamp-sitemap` uses the commit's local date (20:15 EDT).
+Both true of different clocks. The Ship G midnight rule was followed — commit
+first, build second.
+
+---
+
 ## 2026-10-11 — Ship G, arm guard + pine page split (non-test)
 
 **Pushed** 2026-10-11 23:33:00 UTC · **confirmed serving** 23:39:11 UTC
