@@ -39,6 +39,16 @@ export default function TreeServiceJacksonvilleNC() {
        * or neither: `text` remains the fallback.
        */
       sectionBodies={{
+        /* 3 is "The Trees That Grow Here — and How They Fail". Same copy as
+           the `text` entry it replaces, with one anchor added inside the
+           sentence that already names the distinction. Edit both or neither. */
+        3: (
+          <>
+            {"Local species drive most of what we see:\n\n• Loblolly and longleaf pine — the tall, top-heavy majority of Jacksonville's canopy. They snap rather than uproot, and a dead-topped pine near a roof is the single most common emergency call we get.\n• Water oak — fast-growing, short-lived, and notorious for rotting from the inside while looking healthy. Many of the water oaks planted in 1960s subdivisions are now at the end of their span.\n• Live oak and southern magnolia — heavy, wide-spreading, and they push roots far past the trunk line, which is what complicates both trimming and stump work.\n• Sweetgum — aggressive surface roots and brittle limbs that come down in wind.\n\nKnowing which one you have changes the recommendation. A leaning pine and a leaning water oak are not the same risk, and we don't quote them the same way — and "}
+            <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK}>a pine will show you what is wrong with it where an oak will not</Link>
+            {"."}
+          </>
+        ),
         // "Areas We Serve Near Jacksonville, NC" — the ten city pages had two
         // editorial inbound links each, both from a templated card grid. These
         // are the first in-sentence links any of them have had.

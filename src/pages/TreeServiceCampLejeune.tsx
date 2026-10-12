@@ -30,7 +30,9 @@ export default function TreeServiceCampLejeune() {
             <Link to="/stump-grinding-jacksonville-nc" className={PROSE_LINK}>stump grinding before a walkthrough</Link>
             {" and "}
             <Link to="/tree-service-jacksonville-nc" className={PROSE_LINK}>how to verify a tree company in North Carolina</Link>
-            {"."}
+            {". The stand-grown pines along the base boundary are the ones we are called to most after a storm, and "}
+            <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK}>a browned-out pine is already past saving</Link>
+            {" — worth knowing before a move-out inspection rather than after."}
           </>
         ),
       }}
