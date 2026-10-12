@@ -52,7 +52,9 @@ export default function TreeServiceHubert() {
             <Link to="/tree-removal-cost-north-carolina" className={PROSE_LINK}>what a removal costs here</Link>
             {". Next door, "}
             <Link to="/tree-service-swansboro-nc" className={PROSE_LINK}>Swansboro</Link>
-            {" is the same ground and the same species."}
+            {" is the same ground and the same species — and if one of your pines has started browning out or showing sap where there is no wound, "}
+            <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK}>that is worth identifying before you book a removal</Link>
+            {"."}
           </>
         ),
       }}

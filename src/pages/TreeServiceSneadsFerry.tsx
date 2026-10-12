@@ -32,8 +32,10 @@ export default function TreeServiceSneadsFerry() {
             <Link to="/storm-cleanup-jacksonville-nc" className={PROSE_LINK}>what insurance covers after a storm</Link>
             {", "}
             <Link to="/tree-removal-cost-north-carolina" className={PROSE_LINK}>what a removal costs here</Link>
-            {" and "}
+            {", "}
             <Link to="/spider-lift-tree-removal-jacksonville-nc" className={PROSE_LINK}>the lift that stays off a soft lawn</Link>
+            {", and — since the salt wind out here is hardest on the pines — "}
+            <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK}>how to tell a dying pine from one having a heavy shed year</Link>
             {"."}
           </>
         ),

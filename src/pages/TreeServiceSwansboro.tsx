@@ -37,7 +37,9 @@ export default function TreeServiceSwansboro() {
             <Link to="/resistograph-tree-testing-jacksonville-nc" className={PROSE_LINK}>measuring a trunk before anyone decides</Link>
             {" is how that call gets made. If it does have to come out, "}
             <Link to="/tree-removal-near-house-jacksonville-nc" className={PROSE_LINK}>near-house removal pricing</Link>
-            {" is the band most Swansboro jobs land in.\n\nOne local note worth more than any of the above: HOA approval for tree work comes up more often around Swansboro than anywhere else we work. Check your covenants before you schedule, not after."}
+            {" is the band most Swansboro jobs land in. The pines are a different question from the oaks — "}
+            <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK}>a pine shows you its condition rather than hiding it</Link>
+            {", so it is usually the quicker of the two to settle.\n\nOne local note worth more than any of the above: HOA approval for tree work comes up more often around Swansboro than anywhere else we work. Check your covenants before you schedule, not after."}
           </>
         ),
       }}

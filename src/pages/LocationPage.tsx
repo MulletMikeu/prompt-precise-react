@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
 import { BUSINESS, CITY_JOBS, PRICING, SITE_URL, YEAR_FOUNDED_LOCAL } from "../data/siteData";
@@ -51,7 +52,14 @@ interface CityJob {
 
 interface CityCopy {
   lead: string;
-  why: string[];
+  /**
+   * ReactNode rather than string since Batch 6, so a paragraph can carry an
+   * in-sentence <Link>. The renderer already dropped these straight into a
+   * <p>, so nothing changed about how they are output — a plain string still
+   * behaves exactly as before, which is what keeps the untouched cities
+   * byte-identical.
+   */
+  why: ReactNode[];
   /** Named explicitly because three of these towns are NOT in Onslow County. */
   county: string;
   job?: CityJob;
@@ -93,6 +101,10 @@ interface CityCopy {
  * story at length and should not be made to do double duty as a meta string.
  * Reads from CITY_JOBS so a price correction lands in one place.
  */
+/** In-prose anchor styling, matching the ServicePage-backed pages. */
+const PROSE_LINK = "underline underline-offset-2 font-semibold";
+const PROSE_LINK_STYLE = { color: "var(--red-text)" };
+
 const CITY_JOB_SUMMARY: Record<string, string> = {
   "Holly Ridge": CITY_JOBS.hollyRidge.summary,
   Maysville: CITY_JOBS.maysville.summary,
@@ -153,7 +165,11 @@ const CITY_CONTENT: Record<string, CityCopy> = {
       },
     ],
     why: [
-      "Maysville sits on the quieter, more wooded side of our service area, and the tree work reflects it — big hardwoods close to farmhouses, pines along property lines, and plenty of acreage where getting to the trunk is half the job.",
+      <>
+        {"Maysville sits on the quieter, more wooded side of our service area, and the tree work reflects it — big hardwoods close to farmhouses, pines along property lines, and plenty of acreage where getting to the trunk is half the job. If one of those pines has started "}
+        <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK} style={PROSE_LINK_STYLE}>browning out or dropping an unusual amount of needle</Link>
+        {", that is worth reading about before you decide it has to come down."}
+      </>,
       `We have worked Onslow and Jones County since ${YEAR_FOUNDED_LOCAL}, and on this side of the river that mostly means knowing which yards will carry a machine and which will not.`,
     ],
   },
@@ -207,7 +223,11 @@ const CITY_CONTENT: Record<string, CityCopy> = {
       },
     ],
     why: [
-      "Beulaville is farm and timber country, and the trees match it — mature pines and hardwoods on large lots, usually with something expensive parked underneath them.",
+      <>
+        {"Beulaville is farm and timber country, and the trees match it — mature pines and hardwoods on large lots, usually with something expensive parked underneath them. Pines are the ones worth watching, because "}
+        <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK} style={PROSE_LINK_STYLE}>a pine does not hide its condition the way a hardwood does</Link>
+        {"."}
+      </>,
       `We have served Duplin and Onslow County since ${YEAR_FOUNDED_LOCAL}, and the Floyd and Florence high-water marks are still the reference points people here use when they talk about a bad storm.`,
     ],
   },
@@ -266,7 +286,11 @@ const CITY_CONTENT: Record<string, CityCopy> = {
       },
     ],
     why: [
-      "Holly Ridge sits in hurricane country, and it shapes the work: shallow-rooted pines in sand, and a storm season that finds the weak ones every year.",
+      <>
+        {"Holly Ridge sits in hurricane country, and it shapes the work: shallow-rooted pines in sand, and a storm season that finds the weak ones every year. Telling a weak one from a healthy one is mostly "}
+        <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK} style={PROSE_LINK_STYLE}>knowing what brown-out, beetles and a lightning scar actually look like</Link>
+        {"."}
+      </>,
       `We have worked this coastal stretch of Onslow County since ${YEAR_FOUNDED_LOCAL}, which mostly means we have already seen which trees on your street come down first.`,
     ],
   },
@@ -319,7 +343,11 @@ const CITY_CONTENT: Record<string, CityCopy> = {
       },
     ],
     why: [
-      "Surf City is tight-access work: vacation and rental homes packed close, little room to drop anything, and salt-hardened oaks and pines that take a beating every season.",
+      <>
+        {"Surf City is tight-access work: vacation and rental homes packed close, little room to drop anything, and salt-hardened oaks and pines that take a beating every season. The oaks hide what is wrong with them; "}
+        <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK} style={PROSE_LINK_STYLE}>the pines tell you</Link>
+        {", which makes them the easier of the two to judge from the ground."}
+      </>,
       "A good share of our island calls come from owners managing a property from somewhere else, so we photograph what we find and send it rather than describing it over the phone.",
     ],
   },

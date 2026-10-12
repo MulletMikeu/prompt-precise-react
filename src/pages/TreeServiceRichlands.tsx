@@ -34,7 +34,9 @@ export default function TreeServiceRichlands() {
             <Link to="/tree-removal-jacksonville-nc" className={PROSE_LINK}>how long a removal actually takes</Link>
             {". When a storm does come through, "}
             <Link to="/emergency-tree-service-jacksonville-nc" className={PROSE_LINK}>24/7 storm response</Link>
-            {" covers Richlands the same as everywhere else we work."}
+            {" covers Richlands the same as everywhere else we work. The even-aged pine in the newer developments out this way is its own topic — "}
+            <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK}>what brown-out, beetles and lightning actually look like on a pine</Link>
+            {"."}
           </>
         ),
       }}
