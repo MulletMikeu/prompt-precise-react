@@ -20,6 +20,129 @@ is the narrative one.
 
 ---
 
+## 2026-10-24 — Ship J, /services triage + review count 30 (⚠ BOTH ARMS MOVED)
+
+**Pushed** 2026-10-24 13:44:08 UTC · **confirmed serving** 13:49:33 UTC
+**Commits:** `5bc64d9` → `0959adb` (sitemap + arm baseline) → `9105e25` (merge) → `fb6857a` (IndexNow state)
+**Shared record:** `ships/2026-10-24-ship-j.md`
+
+27 of 37 pages changed. IndexNow took 27. Lighthouse production median of 5:
+**96–99 perf, a11y 100, CLS 0** on all six measured. `/services` scored **99**,
+the highest recorded on this site, while gaining 371 words.
+
+**THE ARM GUARD FAILED THIS BUILD AND IT WAS RIGHT TO.** The batch's item 4 was
+"change the review count 27 → 30" — the trivial item. That integer renders inside
+`ServicePage`'s shared reviews band, which every one of the 21 ServicePage-backed
+pages emits, **including both A/B arms**. Nothing in the batch mentioned the arms
+and nothing in `siteData.ts` hints the count reaches them. A guard built one ship
+ago caught the consequence of a ruling made this ship, before production.
+
+The delta was then isolated character by character against live production rather
+than described from the diff. **One integer, one place, each arm:** `Read all
+<!-- -->27<!-- --> Google reviews` → `30`. Both arms identical in length before
+and after — 57,849 and 44,247 characters — because both counts are two digits.
+Nothing else on either page differs. Inbound links unchanged at 13/23 and 9/23.
+
+Allowed because `DECISIONS-addendum-2026-10-24-john.md` rules that "any
+snippet/page stating a count uses 30", which is dated after the Nov 1 freeze and
+is categorical. Both alternatives were worse: freezing the arms at 27 publishes a
+number we know is false on two live pages, and special-casing the arms inside a
+shared template to render a stale count is a conditional nobody will remember is
+there. Baseline reseeded with both flags and committed with the ship, per the
+guard's own documented procedure.
+
+**Allowed and safe are different questions, and the answer to the second is the
+symmetry.** The same edit, in the same shared sentence, on both arms — so it
+cannot move one relative to the other, unlike Ship B's treatment-only sentence
+removal. And it sits in the band `check-arms.mjs` itself classifies as TEMPLATED
+(`scripts/check-arms.mjs:98`), i.e. site chrome, not either arm's argument.
+
+**One side effect Ricky needs: the control's `lastmod` moved off 2026-09-28 for
+the first time since the test began.** Both arms now read 2026-10-24. That
+removes the asymmetry Ship A created — by telling crawlers both arms changed on
+the same day. §3.6 of the shared record is a paste-ready readout note.
+
+**AND I CREATED AN INDEXNOW ASYMMETRY, THEN FIXED IT.** The content selector
+picked both arms; `indexnow.mjs` dropped only the control, printing its own
+warning that "pinging one arm and not the other is a change to the experiment."
+**That exclusion assumes the treatment is the arm that changes** — on a symmetric
+change it produces exactly the asymmetry it exists to prevent. The batch had
+already fired, so the control was submitted on its own twenty seconds later with
+`--include-ab-control`: both arms pinged, same day, same change. The script's
+header now records the rule — symmetric change, ping both or neither; asymmetric,
+ping neither and write down why.
+
+**THE THIRTEENTH PLACE THE COUNT LIVED.** One line in `siteData` carries it to
+twelve rendered locations. It did not carry to `ServicesPage.tsx:157`, which had
+a hardcoded `27 Google reviews` — the only place on the site that retyped the
+number, which `siteData`'s own note forbids and `README` lists as single-source.
+It would still have said 27 today. Now interpolated, README's table gained the
+row, and a hardcoded `$1,500–$2,500` in the same file moved to
+`PRICING.cabling.typical` (no rendered change; the values already agreed).
+**A single-source rule only works if it has no exceptions, and this one was
+silently broken.**
+
+**/SERVICES.** 1,195 impressions and zero clicks at position 28.8 — the
+4th-highest impression count on the site. New title and description; the old one
+was a comma-list of ten offerings. **The geo stays out, and Ship I's "lead with
+the service plus Jacksonville, NC" template is deliberately not applied here** —
+this page's title used to carry the geo and that is what put three pages on one
+head term. The title leads with the decision instead, which is also the page's
+own first H2.
+
+The symptom table the batch asked for: eleven rows, symptom → answer → page, as a
+`<dl>`. The existing prose was good but organised by *service*, so a reader with
+"my tree is leaning" had to read four paragraphs and map it themselves. Every
+symptom already appears somewhere on the site and the sources are listed above
+the data. **Row 5 is the one worth keeping — a pine shedding interior needles
+with green tips is probably nothing.** It is the only row whose answer is "you do
+not need us", and a triage table that routes every symptom to a paid service is a
+price list wearing a diagnosis costume.
+
+"A stump left behind" is the obvious twelfth row and is absent on purpose: its
+answer is the control arm, already linked twice from this page, and a third link
+would have failed the build. Add it after 2026-12-01.
+
+**THE HUB'S SECOND SENTENCE WAS THE PROBLEM, NOT ITS FIRST.** 1,257 impressions,
+one click, position 33.0 — the worst ratio of any substantial page. Sentence one
+already answered the query (entity, credential, city). Sentence two was *"This
+page covers who shows up, the neighborhoods…"* — a table of contents, which the
+answer-first rule bars. Replaced with the page's own strongest claim, already
+made in its FAQ: the crew that quotes is the crew that does it, so the insurance
+you verify covers the people in your yard. H1 and metaTitle keep "Tree Company in
+Jacksonville, NC" exactly — this page was moved **off** the head term on purpose
+in September and putting it back would undo that.
+
+**EMERGENCY.** metaTitle drops the "in" the H1 carries: the query has no
+preposition, so dropping it matches exactly and buys the 24/7 hook its room. The
+old description was true and interchangeable — every competitor says 24/7. The
+page's own quickAnswer has always said a real person answers at 2 a.m., which is
+the concrete version. Insurance deliberately absent: no room for the hedged
+sentence, and `/storm-cleanup-*` owns that answer.
+
+**THE CONTROL'S LIGHTHOUSE IS BIMODAL, AND IT IS NOT THIS SHIP.** Two runs at
+82/81 against three at 96–98, so it got five more: every run is either ~98 at LCP
+2.0 s or ~82 at LCP 4.3–4.5 s, nothing between, TBT and CLS flat. A factor-2.2
+LCP split with everything else stable is a hero-image cache miss, not a page
+problem — and the control's entire content delta this ship is one digit. Median
+96 passes. Recorded rather than smoothed, the way Ship D recorded the same shape
+on the trimming page. **Worth a dedicated look before the 2026-12-01 readout has
+to explain a control scoring 82 one load in three.**
+
+**Correction carried out.** Ship I's claim that the stump link "is the 12 GA4 404
+views" was wrong — see the correction appended to that entry below. Fixed in
+`check-links.mjs`'s header, its allow-list reason, the Ship I entry, and the
+shared Ship I record.
+
+**Also shipped outside the repo:** `DECISIONS-addendum-2026-10-24.md`, a new file
+that touches neither `DECISIONS.md` nor John's addendum, closing audit item **B5**
+as *keep and fix* — the audit gated it on "is `/services` earning anything in
+GSC?" and 1,195 impressions answers it without Michael. B1, B3 and B4 recorded
+closed there too. **The pattern: an audit item gated on a number closes when the
+number arrives, not when the owner is asked.**
+
+---
+
 ## 2026-10-24 — Ship I, snippets + the link guard (non-test)
 
 **Pushed** 2026-10-24 04:33:48 UTC · **confirmed serving** 04:39:00 UTC
