@@ -103,7 +103,12 @@ export const BUSINESS = {
   // The ONLY place a review count lives. Every visible count, the /reviews
   // meta description, and the hero chip read from here — see the list in
   // README under "Review count". Update this when the Google total moves.
-  reviewCount: 27,
+  // 27 -> 30 in Ship J (2026-10-24), on the owner ruling in
+  // godhans-shared/DECISIONS-addendum-2026-10-24-john.md, and independently
+  // confirmed the same day against the live Google Business Profile: the
+  // knowledge panel reads "30 Google reviews" at "5.0". Both numbers were
+  // checked, not just the one that changed.
+  reviewCount: 30,
   reviewRating: "5.0",
   primaryCity: "Jacksonville, NC",
   county: "Onslow County",

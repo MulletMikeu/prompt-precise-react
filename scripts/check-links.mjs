@@ -17,13 +17,26 @@
  * the path to the client router, which finds no match, falls through to
  * `path: "*"` and renders NotFound. Nothing ever reaches Vercel, so the 301
  * never fires. The visitor gets a 404 page; the server-side check passes.
+ * Reproduced twice by clicking it.
  *
- * It then showed up in the data and nobody connected it: GSC's deep audit on
- * 2026-10-23 recorded 12 GA4 views of "404 Not Found | Godhans Tree Company"
- * in 7 days and attributed them to a malformed double-slash URL, which was
- * already fixed and returning 308. The real source was one anchor in a guides
- * list, because `Analytics()` in src/App.tsx fires trackPageView on every
- * client-side navigation — including the one that lands on NotFound.
+ * ── CORRECTED 2026-10-24 ───────────────────────────────────────────────────
+ *
+ * This file originally claimed the bug was the source of the 12 GA4 views of
+ * "404 Not Found | Godhans Tree Company" that GSC's deep audit reported. THAT
+ * WAS WRONG, and so was the deep audit's own explanation for them.
+ * `godhans-shared/audits/ga4-404-2026-10-24.md` traced all 20 404 views across
+ * 28 days: every one is bot traffic requesting old expired-domain URLs, and
+ * NONE has the stump page as a referrer. See
+ * `audits/correction-404-2026-10-24.md`.
+ *
+ * So the bug is real and reachable but has not been shown to have reached a
+ * real visitor. That lowers its urgency; it does not change whether it should
+ * exist. A link that renders a 404 for anyone who clicks it is a defect on its
+ * own terms, which is the case for this guard — and the guard is worth more as
+ * a thing that cannot regress than as a thing that fixed a measured number.
+ *
+ * Keep the two claims separate in anything written from here: "a link that
+ * 404s on click" is verified; "the 404 pageviews came from it" is not.
  *
  * ── WHY IT IS NOT PART OF check-arms.mjs ───────────────────────────────────
  *
@@ -80,10 +93,12 @@ const ALLOWED = {
       'anchor on the control arm. The control is frozen by DECISIONS.md until 2026-11-01 ' +
       'and by check-arms.mjs until the A/B test reads out on 2026-12-01, so editing the ' +
       'page to fix it would move the control mid-test. This is the ONE link this guard ' +
-      'was written to catch, and it is allow-listed rather than fixed on the owner ruling. ' +
-      'Googlebot gets a clean 301; a visitor who clicks it gets the 404 page. When the ' +
-      'control unfreezes, repoint it to /tree-removal-near-house-jacksonville-nc and ' +
-      'delete this entry.',
+      'was written to catch, and it is allow-listed rather than fixed on the owner ruling ' +
+      'in DECISIONS-addendum-2026-10-24-john.md: fix it with the Nov 1 control edit. ' +
+      'Googlebot gets a clean 301; a visitor who clicks it gets the 404 page — reproduced, ' +
+      'but GA4 shows no real visitor has hit it (the 404 pageviews were bots on old ' +
+      'expired-domain URLs; see the correction note in the header). When the control ' +
+      'unfreezes, repoint it to /tree-removal-near-house-jacksonville-nc and delete this.',
   },
 };
 

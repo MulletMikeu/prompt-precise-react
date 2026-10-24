@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
-import { CREDENTIAL, PRICING, YEAR_FOUNDED_LOCAL } from '../data/siteData';
+import { BUSINESS, CREDENTIAL, PRICING, YEAR_FOUNDED_LOCAL } from '../data/siteData';
 
 /** Shared anchor styling for the in-prose links in `sectionBodies` below. */
 const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold";
@@ -17,14 +17,42 @@ export default function TreeServiceJacksonvilleNC() {
   return (
     <ServicePage
       title="Tree Company in Jacksonville, NC"
-      metaTitle="Tree Company in Jacksonville, NC — Local Crew | Godhans"
+      /**
+       * Ship J. 1,257 impressions and ONE click at position 33.0 — the worst
+       * clicks-per-impression ratio of any substantial page on the site.
+       *
+       * H1 and metaTitle keep "Tree Company in Jacksonville, NC" exactly, for
+       * the reason in the retargeting note above: the homepage owns "tree
+       * service jacksonville nc" and this page was moved OFF that term on
+       * purpose when it sat stuck at ~28 against the homepage's ~5. Putting it
+       * back would undo a deliberate fix. What changed is the hook — "Local
+       * Crew" said nothing, and veteran-owned is the one claim in this market
+       * that cannot be copied.
+       *
+       * The description now leads with the same thing and carries the figures
+       * a reader can check: the founding year, the rating and its denominator,
+       * and PCS scheduling, which is the genuinely differentiated offer in a
+       * Camp Lejeune town and appears eight times on this page.
+       */
+      metaTitle="Tree Company in Jacksonville, NC — Veteran-Owned | Godhans"
       subtitle="The Local Crew, the Neighborhoods We Work, and the Questions We Get Most"
       slug="tree-service-jacksonville-nc"
       faqPosition="early"
       credentialBlock
-      description="Meet the Jacksonville, NC tree company behind the work: the local crew, the neighborhoods we cover, Camp Lejeune PCS scheduling, plus cost and permit answers."
+      description={`The Jacksonville, NC crew behind the work: veteran-owned since ${YEAR_FOUNDED_LOCAL}, rated ${BUSINESS.reviewRating} across ${BUSINESS.reviewCount} Google reviews, Camp Lejeune PCS scheduling, free estimates.`}
       ctaText="Call Now"
-      quickAnswer="Godhans Tree Company is a veteran-owned, family-operated tree company based in Jacksonville, NC. This page covers who shows up, the neighborhoods and base-adjacent properties we work in, the species and storm patterns specific to Onslow County, and straight answers on what jobs cost."
+      /**
+       * Sentence one answers "who is the tree service in Jacksonville, NC" —
+       * entity, credential, city — which is what the batch asked be checked.
+       *
+       * What was wrong was sentence TWO: "This page covers who shows up, the
+       * neighborhoods..." is a table of contents, and the standing answer-first
+       * rule bars lead-in sentences. A reader who landed here from a search
+       * does not want to be told what the page contains; they want the next
+       * fact. It now states the two things that actually distinguish this crew,
+       * both already claimed further down the page.
+       */
+      quickAnswer={`Godhans Tree Company is a veteran-owned, family-operated tree company based in Jacksonville, NC, working Onslow County since ${YEAR_FOUNDED_LOCAL} and rated ${BUSINESS.reviewRating} across ${BUSINESS.reviewCount} Google reviews. The crew that quotes your job is the crew that does it — we do not subcontract, which means the insurance you verify is the insurance covering the people standing in your yard.`}
       /**
        * In-prose links, via ServicePage's `sectionBodies` slot.
        *

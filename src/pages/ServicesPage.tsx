@@ -1,6 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
-import { BUSINESS } from "../data/siteData";
+import { BUSINESS, PRICING } from "../data/siteData";
 import { PROSE } from "../data/homepageCopy";
 
 /**
@@ -17,9 +17,129 @@ import { PROSE } from "../data/homepageCopy";
  * /tree-service-jacksonville-nc owns the local-crew intent. Do not put
  * "Jacksonville" back in the title.
  */
-const TITLE = "All Tree Services We Offer | Godhans Tree Company";
-const DESC = `Every service we offer: removal, trimming, stump grinding, emergency response, storm cleanup, debris hauling and testing. Free estimates — ${BUSINESS.phone}.`;
+/**
+ * Head copy rewritten in Ship J. 1,195 impressions, ZERO clicks, position 28.8
+ * over three months — the 4th-highest impression count on the site and the
+ * worst conversion of any of them.
+ *
+ * The old description was a comma-list of ten offerings, which is the same
+ * failure Ship I fixed on four other pages: nothing in it a reader could act
+ * on, and nothing a competitor could not also write. The replacement sells the
+ * one thing this page is for — deciding — and names three symptoms it actually
+ * answers below, so the snippet and the landing section make the same promise.
+ *
+ * THE GEO STAYS OUT, per the standing ruling in the note above: the homepage
+ * owns "tree service jacksonville nc" and /tree-service-jacksonville-nc owns
+ * the local-crew intent. Ship I's template was "lead with the service plus
+ * Jacksonville, NC" and it is deliberately NOT applied here — doing so would
+ * re-create the three-pages-on-one-head-term problem that putting the geo in
+ * this title caused in the first place. The title leads with the decision
+ * instead, which is also the page's own first H2.
+ *
+ * The H1 is untouched, as in Ship I. "All Tree Services We Offer" is the
+ * honest label for the tile grid and is already geo-free.
+ */
+const TITLE = "Which Tree Service Do You Need? | Godhans Tree Company";
+const DESC = "Trimming keeps a tree, removal ends it, grinding cleans up after. Leaning trunk, limbs on the roof, mushrooms at the base — match the symptom to the job.";
 const CANONICAL = "https://godhans.com/services";
+
+/**
+ * Symptom -> service triage, the answer-first half of "Which service do you
+ * actually need?".
+ *
+ * The prose below this already explained the three services well, but it was
+ * organised by SERVICE — a reader arriving with "my tree is leaning" had to
+ * read four paragraphs and do the mapping themselves. This table inverts it:
+ * you start from what you can see from the driveway and it tells you the job.
+ *
+ * EVERY SYMPTOM HERE IS ALREADY STATED SOMEWHERE ON THIS SITE. Sources, so a
+ * later edit can check rather than guess:
+ *   lean after a storm, heaved soil, mushrooms at the base, big dead limbs,
+ *   dead top on a pine, limbs on the roof  -> /residential-tree-service-* §6
+ *   brown-out means dead, interior needle shed is normal                 -> /pine-tree-problems-*
+ *   Armillaria: clustered yellow-orange mushrooms at the base            -> /tree-removal-* decay block, cited to NC State Extension
+ *   split fork held by cabling rather than removed                       -> /tree-cabling-bracing-*
+ *   hollow hardwood that still leafs out green, measured not guessed     -> /resistograph-*
+ *   tree on the house, tarp the opening first                            -> /emergency-*
+ *   a pile you already cut, priced by the trailer                        -> /debris-hauling-*
+ * No new claim, no new figure.
+ *
+ * NO LINK TO EITHER A/B ARM. "A stump left behind" is deliberately absent even
+ * though it is the obvious twelfth row: its answer is /stump-grinding-*, the
+ * control arm, whose inbound link count is frozen in scripts/arm-baseline.json
+ * until 2026-12-01. This page already links it from the tile grid and from the
+ * prose below, and a third link would fail the build. The stump is a follow-on
+ * to a removal rather than a symptom you diagnose, so the prose below is the
+ * right place for it and it stays there. Add the row after the test reads out.
+ */
+const TRIAGE: { symptom: string; answer: string; href: string; label: string }[] = [
+  {
+    symptom: "A lean that appeared, or got worse, after a storm",
+    answer: "Removal, usually — and the thing that decides it is whether the soil at the base has lifted",
+    href: "/leaning-tree-dangerous-after-storm",
+    label: "is a leaning tree dangerous?",
+  },
+  {
+    symptom: "Cracked or heaved soil, or a lifting root plate, around the trunk",
+    answer: "Removal. The part of the tree holding it up is the part that has moved",
+    href: "/tree-removal-jacksonville-nc",
+    label: "what makes a tree hazardous",
+  },
+  {
+    symptom: "Clustered yellow-orange mushrooms at the base after rain",
+    answer: "Removal. NC State Extension lists these among the signs of Armillaria root rot",
+    href: "/tree-removal-jacksonville-nc",
+    label: "how we tell if a tree is actually rotten",
+  },
+  {
+    symptom: "A pine that has gone brown",
+    answer: "Removal. A browned-out pine is already dead — there is no treatment, and that is the useful difference between pines and hardwoods",
+    href: "/pine-tree-problems-jacksonville-nc",
+    label: "is my pine dying or dangerous?",
+  },
+  {
+    symptom: "A pine dropping interior needles while the tips stay green",
+    answer: "Probably nothing. That is the normal heavy-shed cycle and it gets mistaken for a dying tree more than anything else we see",
+    href: "/pine-tree-problems-jacksonville-nc",
+    label: "brown-out versus a shed year",
+  },
+  {
+    symptom: "Limbs resting on the roof, or rubbing the siding",
+    answer: "Trimming. The tree is sound; the problem is its reach",
+    href: "/tree-trimming-jacksonville-nc",
+    label: "how we actually trim a tree",
+  },
+  {
+    symptom: "Large dead limbs hanging in the canopy",
+    answer: "Trimming. Deadwood comes out whatever else is decided — it is not a judgment call",
+    href: "/tree-trimming-jacksonville-nc",
+    label: "what a proper prune removes",
+  },
+  {
+    symptom: "A split fork or weak union on a tree worth keeping",
+    answer: `Cabling and bracing at ${PRICING.cabling.typical} for a typical mature tree, which is frequently cheaper than losing the tree`,
+    href: "/tree-cabling-bracing-jacksonville-nc",
+    label: "cabling and bracing",
+  },
+  {
+    symptom: "Looks healthy, but you think it might be hollow",
+    answer: "Testing before anyone decides. A hardwood can be hollow and still leaf out green, so this one gets measured rather than guessed at",
+    href: "/resistograph-tree-testing-jacksonville-nc",
+    label: "resistograph testing",
+  },
+  {
+    symptom: "A tree already on the house, or across the drive",
+    answer: "Emergency, not a removal. The first job is stopping the water getting in",
+    href: "/emergency-tree-service-jacksonville-nc",
+    label: "24/7 emergency tree service",
+  },
+  {
+    symptom: "A pile of limbs you already cut yourself",
+    answer: "Debris hauling, which prices on its own by the trailer rather than as part of a removal",
+    href: "/debris-hauling-jacksonville-nc",
+    label: "debris hauling",
+  },
+];
 
 const SERVICES = [
   {
@@ -111,7 +231,35 @@ export default function ServicesPage() {
             <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
               Trimming keeps a tree, removal ends it, and grinding cleans up after removal. Most
               people call us knowing something is wrong with a tree and not knowing which of those
-              three fixes it, so here is how to tell.
+              three fixes it, so start from what you can see from the driveway.
+            </p>
+
+            {/* Ship J: the symptom table. See the note on TRIAGE above for where
+                every symptom already appears on the site, and for why "a stump
+                left behind" is not a row. A <dl> rather than a table because
+                these are term/definition pairs, not tabular data — it reads
+                correctly in a screen reader and needs no column headers. */}
+            <dl className="mb-8 divide-y" style={{ borderColor: "#2A2A2A" }}>
+              {TRIAGE.map((row) => (
+                <div key={row.symptom + row.href} className="py-4">
+                  <dt className="text-base font-semibold text-white">{row.symptom}</dt>
+                  <dd className="text-base leading-relaxed mt-1" style={{ color: "#C8C8C2" }}>
+                    {row.answer}.{' '}
+                    <Link
+                      to={row.href}
+                      className="font-semibold underline underline-offset-2"
+                      style={{ color: "var(--red-text)" }}
+                    >
+                      {row.label}
+                    </Link>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
+              The longer version of the same three choices, and why species decides more of it than
+              size does:
             </p>
             <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
               <Link to="/tree-trimming-jacksonville-nc" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>Trimming</Link>{' '}
@@ -121,7 +269,7 @@ export default function ServicesPage() {
               well to a hard prune and fill back in, which is why a good crew will try to save one
               before removing it. If the weak point is a split fork rather than the shape,{' '}
               <Link to="/tree-cabling-bracing-jacksonville-nc" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>cabling and bracing</Link>{' '}
-              runs $1,500–$2,500 and is often the cheaper answer than losing the tree.
+              runs {PRICING.cabling.typical} and is often the cheaper answer than losing the tree.
             </p>
             <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
               <Link to="/tree-removal-jacksonville-nc" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>Removal</Link>{' '}
@@ -154,7 +302,11 @@ export default function ServicesPage() {
               tell you if a tree can be kept. If you want to vet us first, the{' '}
               <Link to="/tree-service-jacksonville-nc" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>eight questions to ask before hiring anyone</Link>{' '}
               are on our Jacksonville page, and our{' '}
-              <Link to="/reviews" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>27 Google reviews</Link>{' '}
+              {/* Ship J: was a hardcoded "27 Google reviews" — the one place on the
+                  site that retyped the count instead of reading BUSINESS.reviewCount,
+                  which siteData's own note forbids and README lists as the single
+                  source. It would have still said 27 after the count moved to 30. */}
+              <Link to="/reviews" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>{BUSINESS.reviewCount} Google reviews</Link>{' '}
               are worth reading before you call. Longer pieces live in our{' '}
               <Link to="/blog" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>tree care guides</Link>.
             </p>
