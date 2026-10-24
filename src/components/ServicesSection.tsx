@@ -118,12 +118,52 @@ export default function ServicesSection() {
               a different spider-lift shot. */}
         </div>
 
+        {/* Ship I — the four owner pages the homepage was only linking from a
+            card tile.
+            WHY. The grid above links all six services, but a card is a tile:
+            the anchor is the service name on its own, inside a templated
+            component, and an audit of the whole site found the homepage's only
+            in-prose service anchors were the commercial and residential pair
+            below. Meanwhile the homepage ranks ~4th for nearly every money
+            query while the page that should own each one ranks 40th–65th. This
+            sentence is the homepage pointing down at the four owners it was
+            competing with instead.
+            ANCHOR RULES. Each anchor is the query family, not the page title,
+            and each one is unique on this page — "commercial tree service in
+            Jacksonville" below is reserved (see its note) and is not reused
+            here. Four anchors in one sentence is the limit; if a fifth is ever
+            wanted it belongs in its own sentence, not appended to this list.
+            WHAT IS DELIBERATELY ABSENT. No link to
+            /tree-removal-cost-north-carolina. That page is the live A/B
+            treatment arm, its inbound link count is frozen in
+            scripts/arm-baseline.json until 2026-12-01, and the homepage already
+            carries one in-sentence link to it from the hero. */}
+        <p className="font-body text-base leading-relaxed mt-8" style={{ color: "#888888" }}>
+          Most calls are one of four jobs:{' '}
+          <Link to="/tree-removal-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
+            hazardous and large tree removal
+          </Link>
+          {', '}
+          <Link to="/tree-trimming-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
+            tree trimming
+          </Link>
+          {' '}before hurricane season,{' '}
+          <Link to="/emergency-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
+            24/7 emergency tree service
+          </Link>
+          {' '}when something is already on the house, and{' '}
+          <Link to="/storm-cleanup-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
+            storm cleanup
+          </Link>
+          {' '}once the wind has passed.
+        </p>
+
         {/* Commercial & residential split, directly under the grid.
             The commercial anchor text is fixed at "commercial tree service in
             Jacksonville" — the site already ranks #1 on non-geo commercial
             terms, so this anchor is deliberate and must not be varied or
             duplicated elsewhere on the homepage. */}
-        <p className="font-body text-base leading-relaxed mt-8" style={{ color: "#888888" }}>
+        <p className="font-body text-base leading-relaxed mt-4" style={{ color: "#888888" }}>
           Commercial &amp; Residential: we handle{' '}
           <Link to="/commercial-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
             commercial tree service in Jacksonville

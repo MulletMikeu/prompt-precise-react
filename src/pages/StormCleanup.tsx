@@ -10,11 +10,33 @@ export default function StormCleanup() {
   return (
     <ServicePage
       title="Storm Cleanup Jacksonville NC"
+      /**
+       * Ship I. H1 unchanged — "Storm Cleanup Jacksonville NC" is the exact
+       * query form for this family and the comma-less version is deliberate.
+       *
+       * The old description was not bad, it was just interchangeable: fast
+       * response, debris, hazardous limbs, call 24/7. What it left out is the
+       * single thing this page owns and no competitor snippet in this market
+       * says — that we bill the carrier directly. 493 impressions, zero clicks.
+       *
+       * INSURANCE WORDING. `DECISIONS.md` (2026-10-10) requires the hedge
+       * "doing everything we can so your cost stays at your normal deductible"
+       * on any claim about what insurance will cost the customer, and forbids
+       * "pay nothing", "waive", "guaranteed" and "deductible and nothing else".
+       * The full hedged sentence is 139 characters and cannot share a 155-char
+       * description with anything else, so this uses only its first clause —
+       * which states what WE do and makes no claim at all about the customer's
+       * cost or the carrier's decision, so there is nothing for the hedge to
+       * qualify. The hedged sentence itself is unchanged and still renders in
+       * full in STORM_LEAD above the fold and in the FAQ below. Do not add a
+       * cost or outcome word to this string without bringing the hedge with it.
+       */
+      metaTitle="Storm Cleanup Jacksonville NC — 24/7 Response | Godhans"
       subtitle="Fast Debris Removal & Downed Tree Extraction — Same-Day Response Available"
       slug="storm-cleanup-jacksonville-nc"
       faqPosition="early"
       credentialBlock
-      description="Storm cleanup in Jacksonville, NC. Fast response for downed trees, debris removal & hazardous limbs across Onslow County. Call 24/7 — Godhans Tree Company."
+      description="Storm cleanup in Jacksonville, NC — 24/7 response for downed trees and hazardous limbs. We bill your insurance directly and work with your adjuster."
       ctaText="Call Now — 24/7 Response"
       /* Same approved STORM_LEAD wording as the emergency page, above the
          fold on both. Do not edit it here — it lives in siteData. */

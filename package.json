@@ -18,7 +18,8 @@
     "hero-images": "node scripts/gen-hero-images.mjs",
     "stamp-sitemap": "node scripts/stamp-sitemap.mjs",
     "check-arms": "node scripts/check-arms.mjs",
-    "postbuild": "node scripts/stamp-sitemap.mjs && node scripts/check-arms.mjs"
+    "check-links": "node scripts/check-links.mjs",
+    "postbuild": "node scripts/stamp-sitemap.mjs && node scripts/check-links.mjs && node scripts/check-arms.mjs"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",

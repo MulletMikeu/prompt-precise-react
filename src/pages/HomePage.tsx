@@ -1,14 +1,33 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import HeroCompare from "../components/HeroCompare";
 import { PROSE } from "../data/homepageCopy";
+import { BUSINESS, PRICING } from "../data/siteData";
 import ServicesSection from "../components/ServicesSection";
 import TrustSection from "../components/TrustSection";
 import ReviewsSection from "../components/ReviewsSection";
 import ServiceAreaSection from "../components/ServiceAreaSection";
 import CTABanner from "../components/CTABanner";
 
-const TITLE = "Tree Service Jacksonville NC | Godhans Tree Company";
-const DESC = "Veteran-owned tree service in Jacksonville, NC. Tree removal, trimming, stump grinding & 24/7 emergency service. Fully insured. Free estimates.";
+/**
+ * Head copy for the homepage, rewritten in Ship I.
+ *
+ * The brief was the zero-click problem: this page ranks ~4th for nearly every
+ * money query and converts 1.0% of 9,028 impressions. The old pair said nothing
+ * a competitor could not also say — the title was the head term plus the brand,
+ * and the description was a list of the four services.
+ *
+ * So TITLE keeps the exact-match head term in front (that part was working) and
+ * spends the middle slot on the one claim no competitor here can copy, and DESC
+ * trades the service list for four specifics a reader can act on: a price floor,
+ * the rating and its denominator, the hours, and the estimate being free.
+ *
+ * Every figure is interpolated, never typed. `BUSINESS.reviewCount` is the only
+ * place a review count lives on this site (see its note in siteData) and the
+ * rating and the removal floor are the same constants the page body renders —
+ * so a meta description can no longer drift from what a visitor actually sees.
+ */
+const TITLE = "Tree Service Jacksonville NC | Veteran-Owned | Godhans";
+const DESC = `Veteran-owned tree service in Jacksonville, NC. Removals from ${PRICING.removal.minimum}, rated ${BUSINESS.reviewRating} across ${BUSINESS.reviewCount} Google reviews, 24/7 response, fully insured. Free estimates.`;
 
 /**
  * Answers are verbatim sentences from PROSE (src/data/homepageCopy.ts), rendered on
