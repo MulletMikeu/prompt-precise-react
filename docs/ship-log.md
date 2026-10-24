@@ -54,15 +54,23 @@ makes one — it calls `preventDefault`, the client router matches nothing, fall
 through to `path: "*"` and renders `NotFound`. Nothing reaches Vercel, so the
 301 never fires. The visitor gets a 404 page and every server-side check passes.
 
-It had already shown up in the data and been misattributed: the deep audit
-recorded 12 GA4 views of the 404 page title in 7 days and blamed
-`https://godhans.com//`, which has returned 308 since 2026-09-27. `Analytics()`
-fires `trackPageView` on every client-side navigation, including the one that
-lands on `NotFound` — one anchor in one guides list produces exactly that
-signature. Proved failing twice (the real link, and a synthetic dead href) and
-passing. The real one is **allow-listed, not fixed**: it sits on the control arm,
-which `DECISIONS.md` freezes to Nov 1. Entry carries a reason, the ship and a
-review date, and a stale-entry warning fires if it ever stops being broken.
+Proved failing twice (the real link, and a synthetic dead href) and passing. The
+real one is **allow-listed, not fixed**: it sits on the control arm, which
+`DECISIONS.md` freezes to Nov 1. Entry carries a reason, the ship and a review
+date, and a stale-entry warning fires if it ever stops being broken.
+
+> **CORRECTION, 2026-10-24 (added in Ship J).** This entry originally said the
+> bug "is the 12 GA4 404 views" the deep audit reported. **That was wrong.**
+> `audits/ga4-404-2026-10-24.md` traced all 20 404 views across 28 days: every
+> one is bot traffic requesting old expired-domain URLs, and none has the stump
+> page as a referrer. The deep audit's own explanation — the double-slash URL —
+> was also wrong; that returns 308. So the link bug is real and reproducible by
+> clicking, but **it has not been shown to have reached a real visitor**, and the
+> 404 pageviews have a third cause that needs nothing from us. The guard is
+> still worth having: a link that 404s on click is a defect on its own terms.
+> I had a verified mechanism and an unexplained number and joined them without
+> evidence. Keep the two claims apart. See
+> `audits/correction-404-2026-10-24.md`.
 
 **A sibling script rather than part of `check-arms.mjs`, on purpose.** That file
 carries a dated instruction to be deleted after 2026-12-01 — and it should be,

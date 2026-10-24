@@ -90,6 +90,7 @@ follows automatically — do not retype it anywhere:
 | `/reviews` "Read All N Reviews on Google" link | `src/pages/ReviewsPage.tsx` |
 | `/reviews` body ("Read enough of N reviews…") | `src/pages/ReviewsPage.tsx` |
 | "Read all N Google reviews" on all 21 service/city pages | `src/pages/ServicePage.tsx` |
+| `/services` triage closing ("our N Google reviews") | `src/pages/ServicesPage.tsx` |
 
 `BUSINESS.reviewRating` works the same way. Neither appears in structured data
 any more — see the note in `src/components/BusinessSchema.tsx` on why the

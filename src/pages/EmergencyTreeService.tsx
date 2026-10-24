@@ -36,12 +36,31 @@ export default function EmergencyTreeService() {
   return (
     <ServicePage
       title="Emergency Tree Service in Jacksonville, NC"
-      metaTitle="Emergency Tree Service in Jacksonville, NC | Godhans"
+      /**
+       * Ship J. 1,046 impressions, 2 clicks, position 35.9.
+       *
+       * H1 unchanged. The metaTitle drops the "in" the H1 carries, on purpose:
+       * the query is "emergency tree service jacksonville nc", with no
+       * preposition, and dropping it both matches that exactly and buys the
+       * room for the 24/7 hook. Same call Ship I made on storm cleanup.
+       *
+       * The description's old hook — "24/7 response from a fully insured local
+       * crew" — is true and completely interchangeable. Every competitor says
+       * 24/7. What they do not say, and what this page's own quickAnswer has
+       * always said, is that a real person picks up at 2 a.m. That is the
+       * concrete version of the same claim, and the tarp line is the one detail
+       * that tells a homeowner we know what the actual emergency is.
+       *
+       * INSURANCE: deliberately absent. The hedge rule in DECISIONS.md applies
+       * to any cost or outcome claim, and there is no room here for the hedged
+       * sentence. The insurance answer lives on /storm-cleanup-*, which owns it.
+       */
+      metaTitle="Emergency Tree Service Jacksonville, NC — 24/7 | Godhans"
       subtitle="24/7 Storm Damage & Tree Removal — Same-Day & Next-Day Availability"
       slug="emergency-tree-service-jacksonville-nc"
       faqPosition="early"
       credentialBlock
-      description="Fast emergency tree service in Jacksonville, NC — storm damage, leaning trees, and hazardous tree removal. 24/7 response from a fully insured local crew."
+      description="Emergency tree service in Jacksonville, NC — a real person answers at 2 a.m. Trees on houses, leaning trunks, blocked drives. We tarp before we leave."
       ctaText="Call Now — Rapid Response"
       /* Above the hero image on purpose: someone with a tree through their
          roof should not have to scroll to learn that we tarp the opening and
