@@ -98,6 +98,21 @@ const CONTENT_STATE = path.join(ROOT, 'scripts', 'indexnow-content.json');
  *
  * REMOVE THIS (and --include-ab-control with it) WHEN THE TEST ENDS. Until
  * then every run prints the exclusion so it cannot quietly outlive the test.
+ *
+ * ── THE CASE THIS RULE GETS WRONG (found in Ship J, 2026-10-24) ────────────
+ *
+ * The exclusion assumes the treatment is the arm that changes. When something
+ * changes BOTH arms identically — Ship J moved the review count 27 -> 30, which
+ * renders in the shared ServicePage band on every service page including both
+ * arms — the content selector picks both, this filter drops only the control,
+ * and the result is the treatment pinged and the control not. That is exactly
+ * the asymmetry the rule above exists to prevent, produced by the rule itself.
+ *
+ * Ship J handled it by submitting the control separately with
+ * --include-ab-control about twenty seconds later, so both arms were pinged on
+ * the same day with the same change. If you hit this again: the test is whether
+ * the change is symmetric across the arms. Symmetric change -> ping both or
+ * neither. Asymmetric change -> ping neither, and record why.
  */
 const AB_CONTROL = `${ORIGIN}/stump-grinding-jacksonville-nc`;
 /** IndexNow caps a single batch at 10,000 URLs; we are nowhere near it. */
