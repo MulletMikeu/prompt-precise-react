@@ -44,11 +44,23 @@ export default function TreeRemoval() {
   return (
     <ServicePage
       title="Tree Removal in Jacksonville, NC"
+      /**
+       * Ship I. The H1 above is untouched — it is already the exact query
+       * wording and it ranks. What was failing is the snippet: this page took
+       * 940 impressions and zero clicks at position 46.5, behind a description
+       * ("Professional tree removal services … Safe, efficient, and fully
+       * insured") that was four adjectives and no information.
+       *
+       * Both now lead with a figure the page actually carries. The minimum and
+       * the band are interpolated from PRICING, so the snippet cannot promise a
+       * price the body contradicts.
+       */
+      metaTitle={`Tree Removal in Jacksonville, NC — From ${PRICING.removal.minimum} | Godhans`}
       subtitle="Safe, Insured Tree Removal — Free Estimates"
       slug="tree-removal-jacksonville-nc"
       faqPosition="early"
       credentialBlock
-      description="Professional tree removal services in Jacksonville, NC. Safe, efficient, and fully insured. Call Godhans Tree Company for a free estimate."
+      description={`Tree removal in Jacksonville, NC from an ${PRICING.removal.minimum} minimum; most run ${PRICING.removal.most}. Free written estimate, fully insured, and every stick hauled away.`}
       ctaText="Call Now for a Free Estimate"
       heroImage={{
         src: removal1125Jpg,
@@ -71,10 +83,12 @@ export default function TreeRemoval() {
       quickAnswer={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum. Most removals run ${PRICING.removal.most}, with large or hazardous trees at ${PRICING.removal.large}. ${PRICING.stories.sameTree}`}
       /* Positional keys. Batch 5 replaced the two pine-health sections with a
          single summary, so everything from the Bradford pear down moved UP by
-         one. Current order:
-           0 when-to-remove · 1 how-long · 2 minimum · 3 pine+sweetgum ·
-           4 pine-size · 5 pine-summary · 6 bradford-pear · 7 sandy-ground ·
-           8 weather · 9 builders · 10 service-areas
+         one; Ship I then inserted the hazardous and large-tree sections at 1
+         and 2, moving everything from the timing section down by TWO. Current
+         order:
+           0 when-to-remove · 1 hazardous · 2 large · 3 how-long · 4 minimum ·
+           5 pine+sweetgum · 6 pine-size · 7 pine-summary · 8 bradford-pear ·
+           9 sandy-ground · 10 weather · 11 builders · 12 service-areas
          Recount this list against `sections` after ANY insertion or removal —
          these keys are positional and fail silently, landing a link under the
          wrong heading rather than erroring. */
@@ -88,19 +102,27 @@ export default function TreeRemoval() {
           // near-house in this batch. Repointed rather than dropped.
           { href: "/tree-removal-near-house-jacksonville-nc", label: "How we rig a removal in a tight space beside the house" },
         ],
-        // 1 is the timing section; the crane-vs-lift comparison in it is the
-        // natural hand-off to the spider lift page.
-        1: { href: "/spider-lift-tree-removal-jacksonville-nc", label: "Why the spider lift is cutting in 30 minutes" },
-        // 5 is the pine summary left behind by Batch 5's split. This link is
-        // what makes the summary a summary rather than a truncation.
-        5: { href: "/pine-tree-problems-jacksonville-nc", label: "Is my pine dying or dangerous? Brown-out, beetles, lightning and overgrown limbs" },
-        // 7 is sandy-ground (was 8 before the Batch 5 split removed a section).
-        7: [
+        // 1 is the new hazardous section. It names two measurement answers in
+        // its closing paragraph ("the second half of that is measurable", "we
+        // drill them instead of guessing") and these are the pages that hold
+        // them, so the links keep a promise the prose makes.
+        1: [
+          { href: "/resistograph-tree-testing-jacksonville-nc", label: "How we measure decay in a standing hardwood instead of guessing" },
+          { href: "/pine-tree-problems-jacksonville-nc", label: "Brown-out, beetles and lightning: what each one means on a pine" },
+        ],
+        // 3 is the timing section (was 1); the crane-vs-lift comparison in it
+        // is the natural hand-off to the spider lift page.
+        3: { href: "/spider-lift-tree-removal-jacksonville-nc", label: "Why the spider lift is cutting in 30 minutes" },
+        // 7 is the pine summary left behind by Batch 5's split (was 5). This
+        // link is what makes the summary a summary rather than a truncation.
+        7: { href: "/pine-tree-problems-jacksonville-nc", label: "Is my pine dying or dangerous? Brown-out, beetles, lightning and overgrown limbs" },
+        // 9 is sandy-ground (was 7, and 8 before the Batch 5 split).
+        9: [
           { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How the spider lift stays off your lawn" },
           { href: "/residential-tree-service-jacksonville-nc", label: "What an estimate should include — including ground protection" },
         ],
-        // 8 is wind/lightning (was 9).
-        8: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
+        // 10 is wind/lightning (was 8, and 9 before the split).
+        10: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
       }}
       /**
        * In-prose links, via ServicePage's `sectionBodies` slot. Same copy as
@@ -122,7 +144,27 @@ export default function TreeRemoval() {
           </>
         ),
         /*
-         * Index 2 is now "Why We Have an $800 Minimum". It used to be
+         * Index 1 is Ship I's hazardous section. Same copy as its `text`
+         * entry, with one anchor inside the closing sentence that already
+         * named the destination — edit both or neither.
+         *
+         * The anchor is the cross-link the batch asked for: /emergency-… keeps
+         * its own "Hazardous Tree Removal in Jacksonville, NC" section, which
+         * is NOT moved here. That page answers hazardous-when-it-has-already-
+         * happened; this one answers hazardous-while-it-is-still-standing.
+         * ServicePage gives section headings no `id`, so this links to the page
+         * rather than to a fragment — adding ids would mean editing
+         * ServicePage, which renders both A/B arms and would trip the guard.
+         */
+        1: (
+          <>
+            {"Two things at once, and the second one is what people leave out: a defect that makes failure likely, and something underneath it worth protecting. A hollow oak in the middle of a field is not a hazard tree. The same oak eight feet from a bedroom wall is.\n\nTHE DEFECTS WE ACTUALLY FIND, roughly in order of how often:\n\n• LIMBS THAT HAVE OUTGROWN THEIR ATTACHMENT. The commonest by a wide margin, and the reason pine and sweetgum lead our invoices — long, heavy limbs extending well past what the attachment can support, on two species that leave a crew very few safe pruning options once it has happened.\n\n• A LIGHTNING-STRUCK PINE. Lightning is the number one non-wind cause of the failures we get called to, and tall pines take most of the strikes for the obvious reason. A struck pine often looks survivable and is not.\n\n• A BROWNED-OUT PINE. No treatment, and no second opinion worth paying for. A pine that has browned out is dead.\n\n• FUSIFORM RUST GALLS. The galls are built-in break points. A limb carrying one does not fail at random — it fails at the gall.\n\n• A BRADFORD PEAR WITH TIGHT CROTCHES. NC State Extension says the cultivar “develops tight crotches that are likely to be split in half by heavy wind and rainstorms,” and that is what we see. A mature pear splitting down the fork is one of the few failures we would call genuinely unpredictable.\n\n• ROOT TROUBLE AT THE BASE. White mycelial fans under the bark, black string-like rhizomorphs around the base, clusters of yellow-orange mushrooms nearby — Extension's Armillaria signs. When those are present, the part of the tree holding it up is the part that is failing.\n\nTHE HARD PART IS THAT A HAZARD DOES NOT HAVE TO LOOK LIKE ONE. The worst tree we have taken down was still standing and still looked like a tree: a 105-foot tulip poplar eight feet from a client's house. On a 56-inch trunk, the sound outer wood was six inches on the good side and four on the bad. The rest was shell. A hardwood can be hollow and still leaf out green, which is why we drill them instead of guessing — a pine will tell you it is dead, a hardwood will not.\n\nSo the useful question is rarely “is my tree hazardous.” It is “what is underneath it, and how sure are we” — and the second half of that is measurable. If the tree is already down on the house or across the drive, it has stopped being a removal: that is "}
+            <Link to="/emergency-tree-service-jacksonville-nc" className={PROSE_LINK}>emergency work</Link>
+            {", it is priced differently, and it has its own page."}
+          </>
+        ),
+        /*
+         * Index 4 (was 2) is "Why We Have an $800 Minimum". It used to be
          * "Affordable Tree Removal with No Surprises", which Batch 2 removed —
          * it opened with "Tree removal costs vary based on tree size, location,
          * and complexity", which answers nothing and broke the answer-first
@@ -135,7 +177,7 @@ export default function TreeRemoval() {
          * link-bearing sentences moved here — onto the section that is actually
          * about what a removal costs — and the filler is what was dropped.
          */
-        2: (
+        4: (
           <>
             {`${PRICING.stories.mobilization}\n\nWhat our customers mention most in our `}
             <Link to="/reviews" className={PROSE_LINK}>Google reviews</Link>
@@ -148,11 +190,11 @@ export default function TreeRemoval() {
             {".\n\nInsurance work is billed differently, and deliberately so: those jobs get an itemized invoice after the work is done, line by line at North Carolina standard rates, rather than a single up-front number. That is what an adjuster needs to see to settle it."}
           </>
         ),
-        // 10 is "Service Areas for Tree Removal" (was 11 before the Batch 5
-        // split). The city list was six place names in a sentence with no
-        // links. Each of those pages had two editorial inbound links before
-        // this, both from templated card grids.
-        10: (
+        // 12 is "Service Areas for Tree Removal" (was 10 before Ship I's two
+        // insertions, and 11 before the Batch 5 split). The city list was six
+        // place names in a sentence with no links. Each of those pages had two
+        // editorial inbound links before this, both from templated card grids.
+        12: (
           <>
             {"Godhans Tree Company removes trees across Jacksonville and all of Onslow County, including "}
             <Link to="/tree-service-camp-lejeune-nc" className={PROSE_LINK}>Camp Lejeune</Link>
@@ -182,6 +224,36 @@ export default function TreeRemoval() {
         {
           heading: "When Should You Remove a Tree?",
           text: "You may need tree removal if:\n\n• The tree is dead or dying\n• Storm damage has weakened the structure\n• The tree is leaning dangerously toward your home\n• Roots are damaging your foundation or driveway\n• Branches are falling or pose a safety risk\n• The tree is overcrowding your yard or blocking sunlight\n\nIf you're unsure, we can inspect your tree and recommend the best solution. And if your property sits in an HOA or backs up to water, we'll flag anything that needs approval at the estimate, before the job goes on the schedule."
+        },
+        /*
+         * Ship I, items 1 and 2 of two new sections. They sit here — second and
+         * third, directly under "When Should You Remove a Tree?" and ahead of
+         * the timing section — because this page is the designated owner of the
+         * "hazardous / large / dead tree removal" query family and owned
+         * nothing answering either word. "What counts as a large tree?" also
+         * has to precede "How long does it take to remove a LARGE tree?" for
+         * the page to read in order.
+         *
+         * SOURCING RULE FOR BOTH. Every figure and every claim below already
+         * appears elsewhere on this same page or in DECISIONS.md. Nothing came
+         * from /tree-removal-cost-north-carolina — that is the live A/B
+         * treatment arm, and the batch bars borrowing from it. In particular
+         * `PRICING.stories.photoLimit` would have fit the large-tree section
+         * perfectly and was NOT used, because it renders only on the cost page.
+         *
+         * NO PRICES. Neither section states a dollar figure. The bands are
+         * already in this page's quickAnswer and in the minimum section, and
+         * restating them inside the section that owns "hazardous" is how a page
+         * starts competing with itself — which is the defect audit item B3
+         * found on the trimming page.
+         */
+        {
+          heading: "What makes a tree hazardous?",
+          text: "Two things at once, and the second one is what people leave out: a defect that makes failure likely, and something underneath it worth protecting. A hollow oak in the middle of a field is not a hazard tree. The same oak eight feet from a bedroom wall is.\n\nTHE DEFECTS WE ACTUALLY FIND, roughly in order of how often:\n\n• LIMBS THAT HAVE OUTGROWN THEIR ATTACHMENT. The commonest by a wide margin, and the reason pine and sweetgum lead our invoices — long, heavy limbs extending well past what the attachment can support, on two species that leave a crew very few safe pruning options once it has happened.\n\n• A LIGHTNING-STRUCK PINE. Lightning is the number one non-wind cause of the failures we get called to, and tall pines take most of the strikes for the obvious reason. A struck pine often looks survivable and is not.\n\n• A BROWNED-OUT PINE. No treatment, and no second opinion worth paying for. A pine that has browned out is dead.\n\n• FUSIFORM RUST GALLS. The galls are built-in break points. A limb carrying one does not fail at random — it fails at the gall.\n\n• A BRADFORD PEAR WITH TIGHT CROTCHES. NC State Extension says the cultivar “develops tight crotches that are likely to be split in half by heavy wind and rainstorms,” and that is what we see. A mature pear splitting down the fork is one of the few failures we would call genuinely unpredictable.\n\n• ROOT TROUBLE AT THE BASE. White mycelial fans under the bark, black string-like rhizomorphs around the base, clusters of yellow-orange mushrooms nearby — Extension's Armillaria signs. When those are present, the part of the tree holding it up is the part that is failing.\n\nTHE HARD PART IS THAT A HAZARD DOES NOT HAVE TO LOOK LIKE ONE. The worst tree we have taken down was still standing and still looked like a tree: a 105-foot tulip poplar eight feet from a client's house. On a 56-inch trunk, the sound outer wood was six inches on the good side and four on the bad. The rest was shell. A hardwood can be hollow and still leaf out green, which is why we drill them instead of guessing — a pine will tell you it is dead, a hardwood will not.\n\nSo the useful question is rarely “is my tree hazardous.” It is “what is underneath it, and how sure are we” — and the second half of that is measurable. If the tree is already down on the house or across the drive, it has stopped being a removal: that is emergency work, it is priced differently, and it has its own page."
+        },
+        {
+          heading: "What counts as a large tree?",
+          text: "About thirty inches through the trunk. Not a height.\n\nOn our invoices “large” is a diameter, because diameter is what decides the crew, the equipment and the number of days. The big pine on our schedule is 80 to 90 feet at two and a half to three feet through — thirty to thirty-six inches — and that is the tree that runs a day to a day and a half. Below it, most trees in an open yard are an afternoon. Above it, you are into the jobs where nothing can be dropped and every piece has to be rigged.\n\nHeight is the number everybody quotes and the least useful one we get. The most expensive removal we have ever done was a 105-foot tulip poplar, and its height is not why: it measured 56 inches through, it was dead-topped and rotting, and it stood eight feet from the house. There is a section further down on why a taller pine is frequently the cheaper day.\n\nTWO MEASURES OF LARGE THAT MATTER MORE THAN THE TAPE ON THE TRUNK:\n\n• THE LOG SIZE. How many pieces come out of the trunk, how heavy each one is, and how many truck runs they make. This is the figure that turns a one-day job into two.\n\n• THE STUMP. A red oak we removed in central Jacksonville left a stump about five feet across at the cut, and the stump alone took all day — longer than the tree did.\n\nSo when we say large we mean roughly thirty inches and up at the trunk, with the canopy spread and the access on top of it. That is a measurement taken standing next to the tree, which is the whole reason we come and look before we give you a number."
         },
         {
           heading: "How long does it take to remove a large tree?",

@@ -15,7 +15,11 @@ export default function ResidentialTreeService() {
       slug="residential-tree-service-jacksonville-nc"
       faqPosition="early"
       credentialBlock
-      description={`Residential tree service in Jacksonville, NC. We protect the house, lawn, fence, and septic field, haul every stick away, quote from measurements — from ${PRICING.removal.minimum}.`}
+      /* Ship I: 158 characters, over the 155 cap. "fence, " came out rather
+         than the price, because the price is the hook and the fence is the
+         third item in a list of four that the body covers in full anyway
+         ("the lawn, fence, driveway, and septic field"). 150 now. */
+      description={`Residential tree service in Jacksonville, NC. We protect the house, lawn and septic field, haul every stick away, quote from measurements — from ${PRICING.removal.minimum}.`}
       ctaText="Call for a Free Estimate"
       quickAnswer="Residential tree work is judged on two things: whether the tree came down safely, and what your yard looks like when the trucks leave. Godhans Tree Company handles removal, trimming, and stump grinding for homeowners across Jacksonville and Onslow County — with the lawn, fence, driveway, and septic field treated as part of the job rather than acceptable collateral."
       /**

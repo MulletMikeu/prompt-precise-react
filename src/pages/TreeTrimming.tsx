@@ -22,11 +22,24 @@ export default function TreeTrimming() {
   return (
     <ServicePage
       title="Tree Trimming in Jacksonville, NC"
+      /**
+       * Ship I. H1 unchanged. The old description ("Expert tree trimming and
+       * pruning … Healthy growth, safer canopies, clean cleanup") was the worst
+       * snippet on the site by the numbers: 704 impressions, zero clicks,
+       * position 65.4, and not one fact in it.
+       *
+       * The replacement spends its characters on the two things this page is
+       * actually unusual for — a published price floor, and the refusal to top
+       * a tree, which the body states outright ("WHAT WE WILL NOT DO IS TOP A
+       * TREE") and sources to Penn State Extension and ISA. Both the window
+       * ("dormant-season") and the no-lift band are the body's own claims.
+       */
+      metaTitle={`Tree Trimming in Jacksonville, NC — From ${PRICING.trimming.minimum} | Godhans`}
       subtitle="Professional Tree Trimming & Pruning to Keep Your Trees Healthy and Safe"
       slug="tree-trimming-jacksonville-nc"
       faqPosition="early"
       credentialBlock
-      description="Expert tree trimming and pruning in Jacksonville, NC. Healthy growth, safer canopies, clean cleanup. Fully insured, free estimates."
+      description={`Tree trimming in Jacksonville, NC from an ${PRICING.trimming.minimum} minimum — ${PRICING.trimming.standard} with no lift needed. Dormant-season pruning, no topping, free estimates.`}
       ctaText="Call Now for a Free Estimate"
       heroImage={{
         src: trim1200Jpg,

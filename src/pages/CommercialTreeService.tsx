@@ -70,7 +70,11 @@ export default function CommercialTreeService() {
       // Commercial buyers may not own a home on the site at all — the shared
       // insurance sentence reads "damages your property" here.
       credentialDamageNoun="property"
-      description="Commercial tree service in Jacksonville, NC for HOAs, apartment complexes, churches, and storefronts. $2M liability, COI on request, work around your hours."
+      /* Ship I: 156 characters, one over the 155 cap. Fixed by punctuation
+         rather than content — " for " became " — " and the Oxford comma went.
+         Nothing was dropped: all four audiences and all three proof points
+         survive. 153 now. */
+      description="Commercial tree service in Jacksonville, NC — HOAs, apartment complexes, churches and storefronts. $2M liability, COI on request, work around your hours."
       ctaText="Call for a Commercial Estimate"
       quickAnswer="Godhans Tree Company handles commercial tree removal, trimming, and stump grinding across Jacksonville and Onslow County — for HOAs, apartment complexes, churches, retail storefronts, and the property managers who answer for all of them. We carry $2M general liability with every machine individually insured, provide certificates of insurance for vendor onboarding, and schedule around your business hours rather than through them."
       sections={[
