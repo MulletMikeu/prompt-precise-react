@@ -20,6 +20,123 @@ is the narrative one.
 
 ---
 
+## 2026-10-24 — Ship I, snippets + the link guard (non-test)
+
+**Pushed** 2026-10-24 04:33:48 UTC · **confirmed serving** 04:39:00 UTC
+**Commits:** `30aebe7` → `74750e4` (sitemap) → `ea1c784` (merge) → `c69271d` (IndexNow state)
+**Shared record:** `ships/2026-10-24-ship-i.md`
+
+Six of 37 pages changed, none added. Both guards passed in `postbuild`. IndexNow
+took 6. Lighthouse production median of 5: **96–98 perf, a11y 100, CLS 0 on all
+six**, and **not one run below 95**.
+
+**Twelve days passed between Ship H and this one, and the gap is the story.**
+Batch 7 was written 2026-10-13 off `zero-click-2026-10-13.md`, whose window
+closes on Oct 11 — so it was scoped from a dataset that could not see Ships G or
+H, which had about seven hours of exposure in it. A read-only change-history
+audit on 2026-10-23 found three of its six items already done or impossible:
+the owner pages have had exact-match H1s since 2026-09-03, review markup was
+deliberately removed on 2026-09-27/28, and `blog.godhans.com` is NXDOMAIN so no
+`vercel.json` rule can reach it. Batch 7 v2 is the rescope. **The lesson is
+cheap and worth keeping: an audit's window has to be stated relative to the last
+ship, or work gets scoped against a site that no longer exists.**
+
+**THE REAL FIND IS A 150-LINE SCRIPT.** `scripts/check-links.mjs`, now in
+`postbuild` ahead of `check-arms`, fails the build if any internal href in
+`dist/` resolves to neither a prerendered route nor a real file. It separates
+`dead` from `redirect-only`, and `redirect-only` is the class nobody caught:
+
+Ship A's own record reasoned that the control's stale link to
+`/tree-removal-tight-spaces-jacksonville-nc` was fine because *"a 301
+resolves."* **That is true for Googlebot and false for a human being.**
+`vercel.json` redirects run on an HTTP request; a react-router `<Link>` never
+makes one — it calls `preventDefault`, the client router matches nothing, falls
+through to `path: "*"` and renders `NotFound`. Nothing reaches Vercel, so the
+301 never fires. The visitor gets a 404 page and every server-side check passes.
+
+It had already shown up in the data and been misattributed: the deep audit
+recorded 12 GA4 views of the 404 page title in 7 days and blamed
+`https://godhans.com//`, which has returned 308 since 2026-09-27. `Analytics()`
+fires `trackPageView` on every client-side navigation, including the one that
+lands on `NotFound` — one anchor in one guides list produces exactly that
+signature. Proved failing twice (the real link, and a synthetic dead href) and
+passing. The real one is **allow-listed, not fixed**: it sits on the control arm,
+which `DECISIONS.md` freezes to Nov 1. Entry carries a reason, the ship and a
+review date, and a stale-entry warning fires if it ever stops being broken.
+
+**A sibling script rather than part of `check-arms.mjs`, on purpose.** That file
+carries a dated instruction to be deleted after 2026-12-01 — and it should be,
+for the reason Ship G gave. This check has nothing to do with the test and must
+outlive it. **Delete `check-arms.mjs` after the readout. Keep `check-links.mjs`.**
+
+**SNIPPETS.** Rewrote title and meta on the four pages still carrying
+pre-September generic copy — `/`, `/tree-removal-*`, `/tree-trimming-*`,
+`/storm-cleanup-*` — between them 11,165 impressions and 92 clicks, 91 of which
+are the homepage. Every H1 untouched: they are already the exact query wording
+and they rank. Also brought `/residential-` (158) and `/commercial-` (156) under
+the 155 cap, both set by the commit whose job was trimming them. Every figure is
+interpolated from `PRICING`/`BUSINESS` rather than typed, so a description can
+no longer drift from what the body renders — the homepage's review count now
+reads from `BUSINESS.reviewCount` as that constant's note has always required.
+
+The storm-cleanup description uses only the first clause of the approved
+insurance sentence. `DECISIONS.md` requires the "normal deductible" hedge on any
+claim about what insurance costs the customer; the full hedged sentence is 139
+characters and cannot share a 155-character meta. The clause used makes no cost
+or outcome claim, so there is nothing for the hedge to qualify, and the hedged
+sentence still renders in full in `STORM_LEAD` and the FAQ. Ruling applied and
+cited rather than re-asked, per RULESET §II.
+
+**HAZARDOUS AND LARGE.** Two answer-first sections on
+`/tree-removal-jacksonville-nc` at positions 1 and 2, so "What counts as a large
+tree?" precedes "How long does it take to remove a **large** tree?". Every
+figure already appears on that page or in `DECISIONS.md`.
+`PRICING.stories.photoLimit` would have fitted the large-tree section almost
+perfectly and was **deliberately not used** — a grep confirmed it renders only on
+the treatment arm. Neither section states a dollar figure: the bands are already
+in the page's `quickAnswer`, and restating them inside the section that owns
+"hazardous" is the self-cannibalisation audit item B3 found on the trimming page.
+Cross-links to `/emergency-*` without moving its hazardous section — the two now
+split the word cleanly between still-standing and already-happened.
+
+`sectionLinks` and `sectionBodies` are positional and fail silently, so both maps
+were remapped (links 1,5,7,8 → 3,7,9,10; bodies 2,10 → 4,12; new entries at 1)
+and the result verified by listing every link under every H2 in the built HTML.
+
+**THE PERF MEASUREMENT, WHICH FOUND NOTHING AND WAS STILL THE RIGHT CALL.** Those
+sections put the removal page back to 5,623 words — above the ~5,800 mark where
+Ship F called it the only page without Lighthouse margin, and the reason Ship G
+split it. So the pre-ship commit was built in a separate worktree and both builds
+were measured on the same localhost, five runs each: **perf 93, LCP 2.8 s, FCP
+2.3 s, SI 2.3 s, TBT 0 ms, CLS 0 — identical on all six values across all ten
+runs.** Ship I's cost on that page is zero, and production went 95 → 96. TBT and
+CLS already score 100 and are 55% of the weighting; +8 KiB of HTML is ~2 KiB
+gzipped. Same discipline as Ship H's retraction, opposite outcome: there was
+nothing to retract.
+
+**HOMEPAGE LINKS DOWN.** Four in-prose anchors added — hazardous and large tree
+removal, tree trimming, 24/7 emergency tree service, storm cleanup — which were
+card-tile-only before. Card tiles stay. **No link to the cost page added or
+moved.** Batch 7's other half of that item, shortening homepage copy that
+duplicates the service pages, is moot and the record says so rather than
+claiming it: at 1,029 words the homepage is already the leanest page on the site.
+
+**Both arms verified live-identical after deploy** — treatment
+`51a887ddceb6c437` 13/23, control `813b86cb98c9b4cc` 9/23, `lastmod` unmoved at
+2026-10-10 and 2026-09-28, both excluded from IndexNow by the fingerprint
+selector. No treatment copy changed, so the exposure windows are untouched: v3
+since 2026-10-10 18:14:33 UTC, ongoing.
+
+**Also shipped outside the repo.** `audits/blog-subdomain-steps.md` — the exact
+CNAME, the Vercel steps and a ready-to-paste host-scoped redirect block for all
+five dead blog URLs, deliberately **not** committed, because a host rule for a
+host that cannot reach Vercel is dead config that reads as though it works. And
+`audit/sitewide-structure-audit-2026-10-10.md` and
+`audit/zero-citation-audit-2026-10-10.md` copied into the shared folder,
+SHA-256-verified: `audit/` is gitignored, and Ship F lost time to exactly that.
+
+---
+
 ## 2026-10-12 — Ship H, bundle analysed + pine links (non-test)
 
 **Pushed** 2026-10-12 00:16:27 UTC · **confirmed serving** 00:22:40 UTC
