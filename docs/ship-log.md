@@ -20,6 +20,97 @@ is the narrative one.
 
 ---
 
+## 2026-10-24 — Ship K, recover eight old URLs with backlinks (config only)
+
+**Pushed** 2026-10-24 14:35:32 UTC · **confirmed serving** 14:40:06 UTC
+**Commits:** `864ed89` → `2a3658a` (merge)
+**Shared record:** `ships/2026-10-24-ship-k.md`
+
+**Zero of 37 pages changed.** `vercel.json` plus one new doc. Both guards passed
+on the first build with no flags. **Both arms untouched** — treatment
+`663bb34eaad8cf1a` 13/23, control `3b0a6eeb2b061cba` 9/23, identical to the
+Ship J baseline, re-verified live after deploy. No `lastmod` moved.
+
+Eight URLs from `audits/semrush-broken-pages-2026-10-24.md` were returning 404
+while carrying **4 backlinks from 2 referring domains each** — 32 backlinks
+landing on nothing. They now 301 to pages that answer them.
+
+**TARGETS WERE CHOSEN BY READING THE DESTINATION PAGES, and two of the suggested
+ones were wrong for the same reason: the obvious page did not contain the
+content.** `/common-tree-pests-and-diseases-in-eastern-north-carolina` was
+suggested for the pine page, which has **zero** mentions of rust, root rot or
+canker and cites only the pine-beetle source; it goes to
+`/tree-removal-jacksonville-nc`, which covers fusiform rust, southern pine
+beetle, Ips engravers, Armillaria, Biscogniauxia canker and Bradford pear and
+cites **both** NC State Extension pest/disease pages. And
+`/10-questions-…-hiring-a-tree-removal-company` goes to the hub, not the removal
+page, because the hub carries the literal H2 "What questions should I ask before
+hiring a tree removal company?" plus two more sections on the same topic.
+
+`/how-to-increase-home-value-by-adding-trees` is the weakest of the eight and the
+record says so instead of dressing it up: "home value" and "property value"
+appear zero times on this site and we do not plant trees. If those backlinks ever
+matter, the answer is a page, not a cleverer redirect.
+
+**ONE SOURCE PER URL, NOT TWO, AND THAT IS MEASURED.** `trailingSlash: false`
+normalises before user redirects fire — `/meet-the-owners/` → 308 →
+`/meet-the-owners` → 301 → `/about` — so a source carrying a trailing slash is
+**unreachable**. Eight rules cover sixteen forms. Adding the slash variants would
+have been dead config that reads as though it works.
+
+**THE GUARD WOULD NOT HAVE CAUGHT THE ONE I GOT WRONG ON PURPOSE.**
+`/tree-stump-removal-vs-stump-grinding-which-is-better` belongs on the stump
+page, which is the control arm. A redirect **destination is not an inbound
+link**, so `check-arms.mjs` counts nothing and would have passed — while a
+backlinked URL's equity flowed to one arm and not the other, mid-test. Same shape
+as Ship A's asymmetric inbound links. It points at `/tree-removal-jacksonville-nc`
+until 2026-12-01 and is recorded in two places that are not the guard:
+`docs/redirects.md` Block 3 and a dated action in
+`godhans-shared/DECISIONS-addendum-2026-10-24.md`.
+
+**TWO AUDITS LOOKED LIKE THEY DISAGREED AND DID NOT.**
+`audits/ga4-404-2026-10-24.md` says leave all ten of its 404ing URLs dead,
+because redirecting expired-domain spam would import a content farm's history.
+Two of this ship's eight are on that list. **The deciding fact is referring
+domains, which that audit did not have:** the seven foreign-topic content-farm
+paths have none and stay 404ing; `/is-it-okay-to-prune-trees-in-spring` and
+`/signs-that-your-tree-is-dead` have real referring domains, which makes them
+former pages of this site rather than scraper noise. `/winter-tree-pruning`, the
+third tree-topic URL, has no backlinks and stays dead. That audit's
+recommendation stands as written for the URLs it was actually about.
+
+**READ-ONLY SWEEP, AND IT IS A CLEAN NEGATIVE.** Ship J suspected there might be
+more internal links pointing at redirect sources. There is **exactly one** across
+all 38 pages and all 38 literal redirect sources: the already-known stump-page
+"Tree work in tight spaces" link. Question closed. Also flagged: two pre-existing
+rules (`/services/stump-grinding`, `/stump-grinding`) point **at** the control
+arm, and no internal link points at either source, so no internal equity is being
+routed into an arm mid-test.
+
+**http → https is a 308, not a 301, and that is not ours to change.** The batch
+asked me to confirm a 301. Production does `http://godhans.com/` → **308** →
+`https://godhans.com/` → 200. Both are permanent and both pass equity; Vercel's
+HTTPS upgrade is not settable from `vercel.json`. The substance passes and the
+status code is recorded accurately. `/cgi-sys/suspendedpage.cgi` → `/` was
+**already shipped** and was verified rather than re-added.
+
+**IndexNow submitted 0 of 37, which is correct twice over:** no page's content
+changed, and the redirect sources are not sitemap URLs — verified — so there is
+nothing to re-crawl. Search engines find these by following the 32 backlinks,
+which a ping does not accelerate. **Lighthouse was not run, deliberately:** zero
+pages were touched, and on this site a spurious run could easily have shown a
+"regression" caused by the control's known bimodal hero-image cache behaviour.
+
+**New `docs/redirects.md`.** `vercel.json` must be valid JSON so it cannot carry
+comments, and it had reached 42 rules with no written reason for any of them —
+same convention `docs/index-html.md` already established. It records the measured
+platform behaviour, all six blocks, the Dec 1 action beside the rule it applies
+to, and that the three `treetrimmersnc.online` host rules are **dead config**:
+that domain resolves to Cloudflare and already 301s to the apex itself, so those
+rules never fire.
+
+---
+
 ## 2026-10-24 — Ship J, /services triage + review count 30 (⚠ BOTH ARMS MOVED)
 
 **Pushed** 2026-10-24 13:44:08 UTC · **confirmed serving** 13:49:33 UTC
