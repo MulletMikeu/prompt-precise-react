@@ -5,6 +5,7 @@ import path from "path";
 // `ssgOptions`, and TypeScript only loads that augmentation if the module is
 // referenced here.
 import type {} from "vite-react-ssg";
+import { HERO_IMAGE_SIZES, heroSrcset } from "./src/data/heroImage";
 
 /**
  * Font faces to preload on specific routes only.
@@ -30,9 +31,23 @@ import type {} from "vite-react-ssg";
  * to this map only with an above-the-fold element to point at.
  */
 const ROUTE_FONT_PRELOADS: Record<string, string[]> = {
-  // The hero .text-display-2xl is the LCP element on the homepage and Barlow
-  // Condensed 800 is the only face that renders it.
+  // The homepage H1 over the hero photo (.home-hero-h1) is set in Barlow
+  // Condensed 800 — the only face that renders it.
   "/": ["/fonts/barlow-condensed-800.woff2"],
+};
+
+/**
+ * Responsive image preloads for a route's LCP photo, same rules as the font
+ * map above (one tag, emitted here because helmet would emit it twice).
+ * `type` makes browsers without AVIF skip the preload rather than fetch a file
+ * they cannot decode; they fall back to the <img>'s WebP srcset as normal.
+ * The srcset and sizes come from src/data/heroImage.ts — the same constants
+ * HomeHero renders — so the preloaded candidate is the one the <img> picks.
+ */
+const ROUTE_IMAGE_PRELOADS: Record<string, string[]> = {
+  "/": [
+    `<link rel="preload" as="image" type="image/avif" imagesrcset="${heroSrcset("avif")}" imagesizes="${HERO_IMAGE_SIZES}" fetchpriority="high">`,
+  ],
 };
 
 /**
@@ -43,15 +58,20 @@ const ROUTE_FONT_PRELOADS: Record<string, string[]> = {
  * fails.
  */
 function addRouteFontPreloads(route: string, html: string): string {
-  const hrefs = ROUTE_FONT_PRELOADS[route] ?? ROUTE_FONT_PRELOADS[route === "" ? "/" : route];
-  if (!hrefs?.length) return html;
+  const key = route === "" ? "/" : route;
+  const hrefs = ROUTE_FONT_PRELOADS[route] ?? ROUTE_FONT_PRELOADS[key] ?? [];
+  const images = ROUTE_IMAGE_PRELOADS[route] ?? ROUTE_IMAGE_PRELOADS[key] ?? [];
+  if (!hrefs.length && !images.length) return html;
 
-  const tags = hrefs
-    // Belt and braces: if index.html ever preloads one of these itself, do not
-    // emit a second copy of it here.
-    .filter((href) => !html.includes(`href="${href}"`))
-    .map((href) => `<link rel="preload" as="font" type="font/woff2" href="${href}" crossorigin>`)
-    .join("");
+  const tags =
+    // The LCP image first: it is the larger fetch and the one LCP waits on.
+    images.join("") +
+    hrefs
+      // Belt and braces: if index.html ever preloads one of these itself, do not
+      // emit a second copy of it here.
+      .filter((href) => !html.includes(`href="${href}"`))
+      .map((href) => `<link rel="preload" as="font" type="font/woff2" href="${href}" crossorigin>`)
+      .join("");
   if (!tags) return html;
 
   const anchor = /<link\s+rel="preload"\s+as="font"[^>]*>/i;

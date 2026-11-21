@@ -55,6 +55,19 @@ const AVIF = { quality: 50, effort: 6 };
  */
 const IMAGES = [
   {
+    // Homepage photo hero (Ship L). Same master as the why-us band below, but
+    // uncropped: the hero box is ~2.5:1 on desktop and ~1:1 on a phone, so no
+    // single pre-crop suits both, and the CSS object-position in index.css
+    // (.home-hero-img) frames the lift bucket and both crew members per
+    // breakpoint instead. `avif` is lowered from the shared default so the
+    // 1920 step stays under the 200 KB budget for an LCP image.
+    base: "godhans-crew-spider-lift-skid-steer-stump-grinder-jacksonville-nc",
+    src: "scripts/image-src/IMG_2034.JPEG",
+    widths: [768, 1280, 1920],
+    avif: { quality: 27, effort: 6 },
+    webp: { quality: 60, effort: 6 },
+  },
+  {
     // 16:9 rather than the 4:3 default: this one fills the why-us band, and a
     // centred 16:9 window keeps the overhead lift bucket that a taller crop
     // would leave in but a 16:6 band would have cut.
@@ -186,8 +199,8 @@ async function main() {
       const extract = image.extract ?? null;
 
       for (const [ext, opts] of [
-        ["avif", AVIF],
-        ["webp", WEBP],
+        ["avif", image.avif ?? AVIF],
+        ["webp", image.webp ?? WEBP],
       ]) {
         const name = `${image.base}-${width}.${ext}`;
         const outPath = path.join(OUT_DIR, name);

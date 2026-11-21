@@ -82,7 +82,9 @@ follows automatically — do not retype it anywhere:
 
 | Where it appears | File |
 | --- | --- |
-| Homepage hero trust chip ("N Reviews") | `src/components/HeroCompare.tsx` |
+| Homepage trust banner ("5.0★ — N Google reviews") | `src/components/TrustBanner.tsx` |
+| Homepage meta description ("5.0★ on N Google reviews") | `src/pages/HomePage.tsx` |
+| `/tree-service-jacksonville-nc` meta description and body ("rated 5.0 across N Google reviews") | `src/pages/TreeServiceJacksonvilleNC.tsx` |
 | Homepage reviews heading ("N Google Reviews") | `src/components/ReviewsSection.tsx` |
 | Homepage "Read All N Reviews on Google" link | `src/components/ReviewsSection.tsx` |
 | `/reviews` heading ("N Google Reviews") | `src/pages/ReviewsPage.tsx` |
