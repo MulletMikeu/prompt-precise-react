@@ -1,13 +1,13 @@
 {
   "tree-removal-cost-north-carolina": {
     "label": "treatment",
-    "fingerprint": "663bb34eaad8cf1a",
-    "editorialInbound": 13,
-    "totalInbound": 23
+    "fingerprint": "cff7c93dcb2160e0",
+    "editorialInbound": 12,
+    "totalInbound": 22
   },
   "stump-grinding-jacksonville-nc": {
     "label": "control",
-    "fingerprint": "3b0a6eeb2b061cba",
+    "fingerprint": "a7080864c8d4e929",
     "editorialInbound": 9,
     "totalInbound": 23
   }
