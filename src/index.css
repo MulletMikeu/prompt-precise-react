@@ -1171,3 +1171,40 @@
 .home-local-list { list-style: disc; padding-left: 1.25rem; margin: 0.75rem 0 1rem; }
 .home-local-list li + li { margin-top: 0.5rem; }
 .home-local-link { color: var(--red-text); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Ship N: job-photo row + mid-page CTA inside HomeLocal. Phones: a swipe strip
+   (82% cells, snap), one 4/3 row instead of three stacked. 640px+: 3 across. */
+.home-local-photos {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 82%;
+  gap: 0.5rem;
+  margin: 2rem 0 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+}
+.home-local-photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #111111;
+  scroll-snap-align: start;
+}
+@media (min-width: 640px) {
+  .home-local-photos {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #1A1A1A;
+    overflow: visible;
+  }
+}
+.home-local-cta { margin: 1.75rem 0 0; }
+.home-local .home-local-cta-line { color: #FFFFFF; font-weight: 600; margin: 0 0 0.875rem; }
+.home-local-cta-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.875rem 1.5rem; }
+
+/* The navbar is fixed (64px, plus the 24/7 strip from md), so stop the CTA's
+   scroll short of it instead of tucking the card's first line under it. */
+#estimate { scroll-margin-top: 5rem; }
+@media (min-width: 768px) { #estimate { scroll-margin-top: 7rem; } }

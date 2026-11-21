@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { BUSINESS, CITY_JOBS, CREDENTIAL } from "../data/siteData";
 
@@ -19,9 +20,61 @@ import { BUSINESS, CITY_JOBS, CREDENTIAL } from "../data/siteData";
  * deliberately leave out the figures their source pages carry.
  *
  * Each paragraph is a single string so SSR emits one text node per paragraph.
+ *
+ * Ship N: the three-photo job row moved here from ServicesSection (not
+ * duplicated), followed by a mid-page CTA that scrolls to the hero form.
  */
 
 const LINK = "home-local-link";
+
+/**
+ * Below 640px the row is a horizontal swipe strip with each cell at 82% of the
+ * container, so a ~390px phone requests ~300px; from 640px it is three across
+ * inside `.container-brand` (max-width 1280px, padding clamped to 3rem), so past
+ * a 1280px viewport each cell is a fixed (1280 - 96) / 3 ≈ 394px.
+ */
+const PHOTO_SIZES = "(min-width: 1280px) 394px, (min-width: 640px) 33vw, 82vw";
+
+/** Widths that scripts/gen-images.mjs emits, minus any above a master's own width. */
+const PHOTOS = [
+  {
+    base: "pine-spar-rigging-tree-removal-jacksonville-nc",
+    alt: "Sectioned pine spar rigged for lowering during a tree removal in Jacksonville, NC",
+    widths: [480, 768, 1024, 1280],
+  },
+  {
+    base: "stump-grinding-operator-jacksonville-nc",
+    alt: "Godhans operator grinding a large oak stump in Jacksonville, NC",
+    widths: [480, 768, 1024, 1280],
+  },
+  {
+    base: "spider-lift-tight-backyard-jacksonville-nc",
+    alt: "Compact spider lift set up in a tight fenced backyard for tree removal in Jacksonville, NC",
+    widths: [480, 768, 1024, 1280],
+  },
+];
+
+const srcSet = (photo: (typeof PHOTOS)[number], ext: string) =>
+  photo.widths.map((w) => `/images/${photo.base}-${w}.${ext} ${w}w`).join(", ");
+
+/**
+ * The href is a real "#estimate" anchor so it works before hydration. With JS,
+ * scroll smoothly to the hero form card and focus the first control of the step
+ * that is showing (step 1: the first service chip; step 2: Name). preventScroll
+ * on focus stops the browser jumping and cutting the smooth scroll short.
+ */
+function goToEstimate(e: MouseEvent<HTMLAnchorElement>) {
+  const card = document.getElementById("estimate");
+  if (!card) return;
+  e.preventDefault();
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  card.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  const first = card.querySelector<HTMLElement>(
+    ":is(.hq-step1, .hq-step2):not([hidden]) :is(input, select, textarea)",
+  );
+  if (!first) card.setAttribute("tabindex", "-1");
+  (first ?? card).focus({ preventScroll: true });
+}
 
 const NEIGHBORHOODS = [
   "Northwoods and Brynn Marr — mature hardwoods planted close to mid-century houses, usually a backyard job with a fence line to work around",
@@ -55,6 +108,42 @@ export default function HomeLocal() {
           <Link to="/spider-lift-tree-removal-jacksonville-nc" className={LINK}>how the spider lift gets into gate-only backyards</Link>
           {" is the reason a fenced yard is not a problem."}
         </p>
+
+        {/* Job photos. Variants come from scripts/gen-images.mjs, pre-cropped to
+            the same 4/3 box these render in. Swipe strip on phones (shorter
+            than a stack, nothing cropped), three across from 640px. */}
+        <div className="home-local-photos" role="region" aria-label="Job photos" tabIndex={0}>
+          {PHOTOS.map((photo) => (
+            <div key={photo.base} className="home-local-photo">
+              <picture>
+                <source type="image/avif" srcSet={srcSet(photo, "avif")} sizes={PHOTO_SIZES} />
+                <img
+                  src={`/images/${photo.base}-768.webp`}
+                  srcSet={srcSet(photo, "webp")}
+                  sizes={PHOTO_SIZES}
+                  alt={photo.alt}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width="1024"
+                  height="768"
+                />
+              </picture>
+            </div>
+          ))}
+        </div>
+
+        <div className="home-local-cta">
+          <p className="home-local-cta-line">Want Mike to look at your tree?</p>
+          <div className="home-local-cta-actions">
+            <a href="#estimate" onClick={goToEstimate} className="btn-primary">
+              Schedule with Mike Today
+            </a>
+            <a href={BUSINESS.phoneHref} className={LINK}>
+              {`or call ${BUSINESS.phone} — we answer ${BUSINESS.hoursShort}`}
+            </a>
+          </div>
+        </div>
 
         <h2 className="home-local-h2">Camp Lejeune and military families</h2>
         <p>
