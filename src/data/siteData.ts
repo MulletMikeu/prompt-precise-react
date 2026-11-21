@@ -108,8 +108,14 @@ export const BUSINESS = {
   // confirmed the same day against the live Google Business Profile: the
   // knowledge panel reads "30 Google reviews" at "5.0". Both numbers were
   // checked, not just the one that changed.
-  reviewCount: 30,
+  // 30 -> 33 in Ship L (2026-11-21), on the owner's job prompt
+  // godhans-shared/prompts/homepage-hero-v1.md. NOT independently re-checked
+  // against the live profile in that ship — see ships/2026-11-21-ship-l.md.
+  reviewCount: 33,
   reviewRating: "5.0",
+  // Same rule as reviewCount: the only place the job total lives. Read by the
+  // homepage hero form card and intro, TRUST_STATS and CREDENTIAL.bullets.
+  jobsCompleted: "3,500+",
   primaryCity: "Jacksonville, NC",
   county: "Onslow County",
   social: {
@@ -455,7 +461,7 @@ export const CREDENTIAL = {
   bullets: [
     "Veteran-owned & disabled-veteran-owned",
     "Family-operated — you talk to the people doing the work",
-    `Serving ${BUSINESS.county} since ${BUSINESS.founded} — 3,500+ jobs`,
+    `Serving ${BUSINESS.county} since ${BUSINESS.founded} — ${BUSINESS.jobsCompleted} jobs`,
     "$2M general liability + workers' comp; every machine individually insured",
     "Godhans LLC — registered & active with the NC Secretary of State (SoSID 1961439)",
   ],
@@ -648,11 +654,14 @@ export const REVIEWS = [
 ] as const;
 
 
+// Every value reads from BUSINESS. These were hard-coded strings ("13+",
+// "3,500+", "5.0"), which made BUSINESS a second source for the same three
+// facts and left "13+" to go stale on 1 January 2027.
 export const TRUST_STATS = [
-  { value: "13+", label: "Years in Business" },
-  { value: "3,500+", label: "Jobs Completed" },
-  { value: "5.0", label: "Google Rating" },
-  { value: "24/7", label: "Emergency Response" },
+  { value: `${BUSINESS.yearsInBusiness}+`, label: "Years in Business" },
+  { value: BUSINESS.jobsCompleted, label: "Jobs Completed" },
+  { value: BUSINESS.reviewRating, label: "Google Rating" },
+  { value: BUSINESS.hoursShort, label: "Emergency Response" },
 ] as const;
 
 /**

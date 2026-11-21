@@ -1,8 +1,14 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { useForm, ValidationError } from '@formspree/react';
+import { useState, type FormEvent } from 'react';
+import { ValidationError } from '@formspree/react';
 import { BUSINESS_INFO } from '@/lib/constants';
 import { BUSINESS } from '@/data/siteData';
-import { trackEvent } from '@/lib/analytics';
+import {
+  Honeypot,
+  PhoneConsentLine,
+  useQuoteSubmission,
+  validateName,
+  validatePhone,
+} from './quoteFormCore';
 
 interface QuickQuoteFormProps {
   /** Optional source identifier sent to Formspree (e.g. page slug) */
@@ -34,26 +40,8 @@ type SmsConsent = { customerCare: boolean; marketing: boolean; decline: boolean 
 
 const NO_SMS_CONSENT: SmsConsent = { customerCare: false, marketing: false, decline: false };
 
-/**
- * Spam controls. There were none before this — the form relied entirely on
- * Formspree's built-in filtering.
- *
- * `_gotcha` is Formspree's honeypot convention: a field no human can see, which
- * Formspree silently discards the submission for if it arrives filled. It is
- * positioned off-screen rather than `display: none` — the crawlers worth
- * catching skip anything explicitly hidden — and carries tabIndex={-1} plus
- * aria-hidden so keyboard and screen-reader users never reach it.
- *
- * MIN_FILL_MS is the second gate: a scripted POST fills and submits in
- * milliseconds, where a person typing a name, phone, address and service takes
- * seconds. Tripping it is recoverable, not fatal — a human who somehow beats the
- * clock gets a short "look it over and submit again" notice, and the second
- * attempt is always past the threshold. It fails OPEN: before the mount effect
- * runs (and during SSG prerender) the reference time is 0, which makes the
- * elapsed time enormous and lets the submit through.
- */
-const HONEYPOT_FIELD = '_gotcha';
-const MIN_FILL_MS = 2500;
+/* Spam controls (honeypot + MIN_FILL_MS), the Formspree form id and the
+   generate_lead event live in ./quoteFormCore, shared with HeroQuoteForm. */
 
 /** Fields we validate, in DOM order — the order decides which one gets focus
     when a submit is rejected. `message` is optional and never validated. */
@@ -63,21 +51,17 @@ type Errors = Partial<Record<RequiredField, string>>;
 
 /* The form is noValidate, so nothing here duplicates a native check — without
    this the browser stays silent and the first feedback on an empty or
-   mistyped field is a Formspree round-trip. Phone is counted in digits rather
-   than pattern-matched so that (618) 704-4861, 618-704-4861 and 6187044861 are
-   all accepted and only a genuinely short number is rejected. */
+   mistyped field is a Formspree round-trip. Name and phone rules are shared
+   with HeroQuoteForm via ./quoteFormCore. */
 function validate(data: FormData): Errors {
   const errors: Errors = {};
   const value = (field: string) => String(data.get(field) ?? '').trim();
 
-  if (!value('name')) errors.name = 'Please enter your name.';
+  const nameError = validateName(value('name'));
+  if (nameError) errors.name = nameError;
 
-  const phone = value('phone');
-  if (!phone) {
-    errors.phone = 'Please enter a phone number so we can reach you.';
-  } else if (phone.replace(/\D/g, '').length < 10) {
-    errors.phone = 'Please enter a complete phone number, including area code.';
-  }
+  const phoneError = validatePhone(value('phone'));
+  if (phoneError) errors.phone = phoneError;
 
   if (!value('address')) errors.address = 'Please enter the service address.';
   if (!value('service')) errors.service = 'Please choose the service you need.';
@@ -86,7 +70,7 @@ function validate(data: FormData): Errors {
 }
 
 export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullOptIn = false }: QuickQuoteFormProps) {
-  const [state, handleSubmit] = useForm('xkokzrjp');
+  const { state, submit, tooFast, setTooFast } = useQuoteSubmission({ source, formId: 'quick-quote' });
   const [errors, setErrors] = useState<Errors>({});
   // Stays false until the first submit attempt so we don't flag fields the
   // visitor has not reached yet; after that, edits re-check on every change.
@@ -94,28 +78,6 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
   // Never validated and never required: consent is not a condition of purchase,
   // so leaving all three boxes alone is a valid, submittable state.
   const [smsConsent, setSmsConsent] = useState<SmsConsent>(NO_SMS_CONSENT);
-  // Set on mount, so it measures how long the visitor has had the form open.
-  // Stays 0 through SSG prerender and the first client render — see MIN_FILL_MS.
-  const openedAt = useRef(0);
-  const [tooFast, setTooFast] = useState(false);
-
-  useEffect(() => {
-    openedAt.current = Date.now();
-  }, []);
-
-  // The conversion. Fired on the SUCCESS state rather than in onSubmit, so it
-  // only counts submissions Formspree actually accepted — a network failure or
-  // a server-side rejection must not look like a lead. `state.succeeded` goes
-  // false -> true exactly once, so this cannot double-count.
-  // No-ops unless VITE_GA_MEASUREMENT_ID is set; queues if gtag.js is still
-  // loading.
-  useEffect(() => {
-    if (!state.succeeded) return;
-    trackEvent('generate_lead', {
-      form_source: source ?? 'unknown',
-      form_id: 'quick-quote',
-    });
-  }, [state.succeeded, source]);
 
   // The two Yes boxes and the No box are contradictory answers to one question,
   // so each side clears the other. They are checkboxes rather than radios on
@@ -189,16 +151,9 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
       return;
     }
 
-    // Checked only once the fields are valid, so the notice can never appear
-    // alongside a field error and compete with it for attention.
-    if (Date.now() - openedAt.current < MIN_FILL_MS) {
-      event.preventDefault();
-      setTooFast(true);
-      return;
-    }
-
-    setTooFast(false);
-    handleSubmit(event);
+    // The MIN_FILL_MS gate runs inside submit(), only once the fields are
+    // valid, so its notice can never appear alongside a field error.
+    submit(event);
   };
 
   // Form-level so one handler covers every control: clears each message as
@@ -248,29 +203,7 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
               <form onSubmit={onSubmit} onChange={onChange} className="space-y-4" noValidate>
                 {source && <input type="hidden" name="page-source" value={source} />}
 
-                {/* Honeypot — see HONEYPOT_FIELD. Off-screen rather than hidden,
-                    unreachable by tab, and invisible to screen readers. Never
-                    `required`: a human must be able to submit with it empty. */}
-                <div
-                  aria-hidden="true"
-                  style={{
-                    position: 'absolute',
-                    width: 1,
-                    height: 1,
-                    overflow: 'hidden',
-                    clip: 'rect(0 0 0 0)',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  <label htmlFor="qq-gotcha">Leave this field empty</label>
-                  <input
-                    id="qq-gotcha"
-                    type="text"
-                    name={HONEYPOT_FIELD}
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                </div>
+                <Honeypot idPrefix="qq" />
 
                 <p className="text-sm text-gray-500">
                   Fields marked <span className="text-red-600">*</span> are required.
@@ -335,10 +268,7 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
                       By submitting, you agree that we may call you about your request. Text messaging is optional — your choices below control it.
                     </p>
                   ) : (
-                    <p id="qq-phone-consent" className="text-sm text-gray-500 mt-2">
-                      By submitting, you agree to receive service-related calls and texts
-                      about your request from {BUSINESS_INFO.name}. Reply STOP anytime to opt out.
-                    </p>
+                    <PhoneConsentLine id="qq-phone-consent" className="text-sm text-gray-500 mt-2" />
                   )}
                 </div>
 

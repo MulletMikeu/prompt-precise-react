@@ -1,7 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
-import HeroCompare from "../components/HeroCompare";
-import { PROSE } from "../data/homepageCopy";
-import { BUSINESS, PRICING } from "../data/siteData";
+import { BUSINESS } from "../data/siteData";
+import HomeHero from "../components/HomeHero";
 import ServicesSection from "../components/ServicesSection";
 import TrustSection from "../components/TrustSection";
 import ReviewsSection from "../components/ReviewsSection";
@@ -9,86 +8,27 @@ import ServiceAreaSection from "../components/ServiceAreaSection";
 import CTABanner from "../components/CTABanner";
 
 /**
- * Head copy for the homepage, rewritten in Ship I.
+ * Homepage, rebuilt in Ship L (2026-11-21): photo hero + two-step estimate form.
+ * The trust banner that followed the hero was removed in the v3 polish; its
+ * lead claim (jobs completed) is now the first line of the form card.
  *
- * The brief was the zero-click problem: this page ranks ~4th for nearly every
- * money query and converts 1.0% of 9,028 impressions. The old pair said nothing
- * a competitor could not also say — the title was the head term plus the brand,
- * and the description was a list of the four services.
+ * Pricing and the FAQ were taken OFF this page on the owner's ruling. The
+ * comparison table (HeroCompare), the price paragraph (homepageCopy.ts), the
+ * cost-breakdown link, the financing band and the two-question FAQ with its
+ * FAQPage JSON-LD are no longer rendered here. Pricing lives on
+ * /tree-removal-cost-north-carolina and the service pages; FAQ answers live on
+ * the service pages. HeroCompare.tsx and homepageCopy.ts are left in the repo —
+ * PROSE is still read by /contact, /services, /residential-… and /terms.
  *
- * So TITLE keeps the exact-match head term in front (that part was working) and
- * spends the middle slot on the one claim no competitor here can copy, and DESC
- * trades the service list for four specifics a reader can act on: a price floor,
- * the rating and its denominator, the hours, and the estimate being free.
- *
- * Every figure is interpolated, never typed. `BUSINESS.reviewCount` is the only
- * place a review count lives on this site (see its note in siteData) and the
- * rating and the removal floor are the same constants the page body renders —
- * so a meta description can no longer drift from what a visitor actually sees.
+ * TITLE is unchanged from Ship I: the exact-match head term in front, then the
+ * one claim no competitor here can copy. DESC dropped its price floor; every
+ * figure in it is interpolated from BUSINESS, never typed.
  */
 const TITLE = "Tree Service Jacksonville NC | Veteran-Owned | Godhans";
-const DESC = `Veteran-owned tree service in Jacksonville, NC. Removals from ${PRICING.removal.minimum}, rated ${BUSINESS.reviewRating} across ${BUSINESS.reviewCount} Google reviews, 24/7 response, fully insured. Free estimates.`;
+const DESC = `Veteran-owned tree service in Jacksonville, NC. ${BUSINESS.jobsCompleted} jobs in ${BUSINESS.county} since ${BUSINESS.founded}, ${BUSINESS.reviewRating}★ on ${BUSINESS.reviewCount} Google reviews. Open ${BUSINESS.hoursShort} — free estimates.`;
 
-/**
- * Answers are verbatim sentences from PROSE (src/data/homepageCopy.ts), rendered on
- * the page — structured data must not assert anything a visitor cannot read.
- *
- * The cost question is deliberately absent even though the figures appear in the
- * hero paragraph and the comparison table: /tree-removal-cost-north-carolina already
- * carries it as an FAQPage entry, and duplicating an FAQ across pages risks both
- * losing the rich result. The cost guide owns the structured version.
- */
-/**
- * The two questions, in one place, feeding BOTH the JSON-LD above and the
- * visible block below.
- *
- * Why they are now visible: the answers always were — PROSE.license is in the
- * hero paragraph and PROSE.financing is in the financing band — but the
- * QUESTIONS existed only inside this JSON. Google's FAQPage guidance wants the
- * question and the answer both present on the page, and a question that lives
- * only in structured data is the pattern that gets a rich result withheld. An
- * audit of all 38 pages found this was the site's only schema/visible mismatch;
- * every ServicePage FAQ already matches verbatim because it serialises the same
- * array it renders. This does the same thing.
- */
-const HOME_FAQS = [
-  {
-    question: "Does North Carolina license tree contractors?",
-    answer: PROSE.license,
-  },
-  {
-    question: "Does Godhans offer financing?",
-    answer: PROSE.financing,
-  },
-] as const;
-
-const FAQ_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: HOME_FAQS.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
-  })),
-};
-
-function HomeFaq() {
-  return (
-    <section className="py-16" style={{ background: "#111111" }}>
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-white mb-8">Frequently Asked Questions</h2>
-        <div className="space-y-6">
-          {HOME_FAQS.map((faq) => (
-            <div key={faq.question} className="border-b pb-6" style={{ borderColor: "#2A2A2A" }}>
-              <h3 className="text-white font-semibold text-lg mb-2">{faq.question}</h3>
-              <p className="leading-relaxed" style={{ color: "#C8C8C2" }}>{faq.answer}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+/** One string, so SSR emits one text node (no <!-- --> splits) — no prices. */
+const INTRO = `Godhans Tree Company is a veteran-owned tree service in Jacksonville, NC. Since ${BUSINESS.founded} we've completed ${BUSINESS.jobsCompleted} jobs across ${BUSINESS.county} — removals, trimming, stump grinding and 24/7 storm work — with our own crew and a 90-ft spider lift for the trees others can't reach.`;
 
 export default function HomePage() {
   return (
@@ -97,48 +37,29 @@ export default function HomePage() {
         <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://godhans.com/" />
-        {/* No image preload: the hero no longer has a background photo, so the LCP
-            element is the display H2. The face that renders it, Barlow Condensed
-            800, now carries the LCP directly — and it IS preloaded for this
-            page, but not from here and not from index.html.
-
-            index.html is shared by all 38 prerendered pages, so the preload tag
-            it used to carry fetched that file at highest priority on every one
-            of them. An audit of the computed (font-family, font-weight) pair on
-            every text node of every route found weight 800 used on exactly two:
-            this page's hero, and one decorative aria-hidden quote mark on
-            /reviews. On the other 36 it was a 22 KB high-priority download of a
-            face nothing on the page renders, competing for mobile bandwidth
-            with the stylesheet and with Condensed 700 — the face those pages'
-            H1 actually needs.
-
-            It is deliberately NOT a tag in THIS Helmet, which is the obvious
-            place and is wrong: react-helmet-async dedupes
-            `link rel="canonical"` but not `link rel="preload"`, and
-            vite-react-ssg renders each page twice against a single provider, so
-            a preload declared here lands in the emitted HTML TWICE. That was
-            measured here, not assumed. It lives in ROUTE_FONT_PRELOADS in
-            vite.config.ts instead, applied by the same onPageRendered hook that
-            hoists `meta charset`.
-
-            /reviews deliberately gets none: a below-the-fold decorative glyph
-            is precisely what the metric-matched fallback faces in src/index.css
-            exist to cover, and its swap cannot move the LCP. */}
+        {/* Preloads for this page (the hero AVIF srcset and Barlow Condensed
+            800 for the H1) are deliberately NOT declared here: helmet does not
+            dedupe rel="preload" and vite-react-ssg renders each page twice, so
+            a preload in this Helmet ships twice. They are added once, by the
+            onPageRendered hook in vite.config.ts. */}
         <meta property="og:title" content={TITLE} />
         <meta property="og:description" content={DESC} />
         <meta property="og:url" content="https://godhans.com/" />
         <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESC} />
-        <script type="application/ld+json">{JSON.stringify(FAQ_SCHEMA)}</script>
       </Helmet>
 
       <main id="main-content">
-        <HeroCompare />
+        <HomeHero />
+        <section className="home-intro" aria-label="About Godhans Tree Company">
+          <div className="container-brand">
+            <p className="home-intro-text">{INTRO}</p>
+          </div>
+        </section>
         <ServicesSection />
-        <TrustSection />
         <ReviewsSection />
         <ServiceAreaSection />
-        <HomeFaq />
+        <TrustSection />
         <CTABanner />
       </main>
     </>

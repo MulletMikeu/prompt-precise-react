@@ -1,8 +1,8 @@
-import { BUSINESS, TRUST_STATS } from "../data/siteData";
+import { BUSINESS } from "../data/siteData";
 
-// Insured / 24-7 Response / Free Estimates were dropped when the homepage hero
-// gained the comparison table and trust-chip strip, which state all three above
-// the fold. What is left is what the hero does NOT already say.
+// Insured / 24-7 Response / Free Estimates are not repeated here: the trust
+// banner under the hero states them above the fold. What is left is what the
+// hero does NOT already say.
 const TRUST_BLOCKS = [
   {
     label: "Veteran-Owned & Operated",
@@ -27,25 +27,11 @@ export default function TrustSection() {
     >
       <div className="container-brand">
 
-        {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px mb-20" style={{ background: "#2A2A2A" }}>
-          {TRUST_STATS.map((stat) => (
-            <div key={stat.label} className="text-center py-10 px-6" style={{ background: "#111111" }}>
-              <p
-                className="font-display font-extrabold mb-2"
-                style={{ fontSize: "clamp(2rem,5vw,3.5rem)", color: "var(--red-text)", lineHeight: 1 }}
-              >
-                {stat.value}
-              </p>
-              <p
-                className="font-body text-sm uppercase tracking-widest"
-                style={{ color: "#888888", letterSpacing: "0.1em" }}
-              >
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
+        {/* Ship L: the stats row that used to open this section is gone — the
+            jobs total is the first line of the hero form card, and the hours
+            and rating are in the hero subline.
+            So is the why-us band photo at the bottom: it was the same job
+            photo the hero now leads with. */}
 
         {/* Header */}
         <div className="grid md:grid-cols-2 gap-12 items-start mb-14">
@@ -94,29 +80,6 @@ export default function TrustSection() {
           ))}
         </div>
 
-        {/* Why-us band photo. 16:9 to match the generated crop exactly, so the
-            width/height attributes are honest and object-cover has nothing to
-            trim — no CLS regardless of when it loads. */}
-        <div className="mt-px relative overflow-hidden" style={{ aspectRatio: "16/9", background: "#111111" }}>
-          <picture className="absolute inset-0 block w-full h-full">
-            <source
-              type="image/avif"
-              srcSet="/images/godhans-crew-skid-steer-jacksonville-nc-480.avif 480w, /images/godhans-crew-skid-steer-jacksonville-nc-768.avif 768w, /images/godhans-crew-skid-steer-jacksonville-nc-1024.avif 1024w, /images/godhans-crew-skid-steer-jacksonville-nc-1280.avif 1280w"
-              sizes="(min-width: 1280px) 1184px, 100vw"
-            />
-            <img
-              src="/images/godhans-crew-skid-steer-jacksonville-nc-768.webp"
-              srcSet="/images/godhans-crew-skid-steer-jacksonville-nc-480.webp 480w, /images/godhans-crew-skid-steer-jacksonville-nc-768.webp 768w, /images/godhans-crew-skid-steer-jacksonville-nc-1024.webp 1024w, /images/godhans-crew-skid-steer-jacksonville-nc-1280.webp 1280w"
-              sizes="(min-width: 1280px) 1184px, 100vw"
-              alt="Godhans crew running a skid steer and spider lift during a tree removal in Jacksonville, NC"
-              className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-              width="1280"
-              height="720"
-            />
-          </picture>
-        </div>
       </div>
     </section>
   );

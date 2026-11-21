@@ -878,3 +878,276 @@
   ::-webkit-scrollbar-thumb { background: var(--gray-light); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--red); }
 }
+
+/* ─── Homepage photo hero and two-step form (Ship L) ────────────────────────
+   Presentation only. Nothing here animates on load or starts at opacity 0:
+   the photo is the LCP element and the H1 over it must paint with first paint.
+
+   Layout contract (no CLS): the photo box height is fixed per breakpoint in
+   vh, clamped; the form card's overlap is a margin derived from the same
+   clamp. Nothing waits on the image or measures anything.
+
+   Framing: the master is 4:3. The lift bucket sits ~24-36% down and ~25%
+   across; the skid-steer driver ~44-62% down, ~55% across; the grinder
+   operator ~48-60% down, ~91% across; open lawn below ~64%.
+   - Below 1024px the box is height-bound (cover crops the sides), so the
+     object-position x keeps the window from the bucket to the grinder, and
+     the H1 sits on the lawn at the bottom.
+   - From 1024px the box is width-bound (cover crops top and bottom), so the
+     object-position y frames the bucket-to-crew band, the H1 starts below the
+     bucket (top: 32%), and the form card covers the bottom quarter, which is
+     lawn. Keep the H1 at max-width 8.5em so it wraps before the driver. */
+.home-hero {
+  background: #0A0A0A;
+  padding-top: 4rem; /* fixed navbar: 64px below md */
+}
+
+.home-hero-media {
+  position: relative;
+  overflow: hidden;
+  height: clamp(300px, 45vh, 520px);
+  background: #26331F; /* average foliage tone, shown until the photo decodes */
+}
+
+.home-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 78% 50%;
+}
+
+.home-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.45) 32%, rgba(0, 0, 0, 0) 58%);
+}
+
+.home-hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1rem;
+}
+
+.home-hero-h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+  max-width: 8.5em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+.home-hero-sub {
+  margin-top: 0.6rem;
+  color: #F0F0EA;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.3vw, 1.125rem);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+.home-hero-form {
+  position: relative;
+  z-index: 2;
+  padding-top: 0.75rem;
+  padding-bottom: 2rem;
+}
+
+.home-hero-call {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .home-hero { padding-top: 6rem; } /* fixed navbar: 32px red bar + 64px */
+  .home-hero-media { height: clamp(380px, 55vh, 640px); }
+  .home-hero-img { object-position: 60% 50%; }
+}
+
+@media (min-width: 1024px) {
+  .home-hero-media { height: clamp(460px, 65vh, 780px); }
+  .home-hero-img { object-position: 50% 46%; }
+  .home-hero-shade {
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.45) 30%, rgba(0, 0, 0, 0) 56%),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 28%);
+  }
+  .home-hero-copy { top: 32%; bottom: auto; }
+  .home-hero-call { display: none; }
+  .home-hero-form {
+    margin-top: calc(clamp(460px, 65vh, 780px) * -0.25);
+    padding-top: 0;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* Two-step estimate form (HeroQuoteForm.tsx). Light card on the dark page. */
+.hq-wrap { max-width: 1200px; margin: 0 auto; }
+
+.hq-card {
+  background: #FAFAF7;
+  color: #1A1A1A;
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  padding: 1.25rem;
+}
+
+/* First line of the card: bold body face, between the labels (0.95rem) and
+   the title (1.5-2rem). Plain text, no icon. */
+.hq-proof {
+  margin-bottom: 0.6rem;
+  font-weight: 800;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.3;
+  color: #111111;
+}
+
+.hq-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.hq-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  color: #111111;
+}
+
+.hq-step { font-size: 0.875rem; font-weight: 600; color: #555550; }
+.hq-step:focus { outline: none; }
+
+.hq-grid { display: grid; grid-template-columns: 1fr; gap: 1rem 2rem; }
+.hq-span-2 { grid-column: 1 / -1; }
+
+.hq-group { border: 0; margin: 0; padding: 0; min-width: 0; }
+
+.hq-legend {
+  display: block;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #222222;
+}
+
+.hq-req { color: var(--red); }
+.hq-opt { font-weight: 400; color: #5C5C57; }
+
+.hq-chip-label { position: relative; display: inline-flex; }
+
+/* Visually hidden but still focusable and still a real radio. */
+.hq-chip-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+}
+
+.hq-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 2px solid #C9C9C2;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.hq-chip-label:hover .hq-chip { border-color: #77776F; }
+.hq-chip-input:checked + .hq-chip { background: var(--red); border-color: var(--red); color: #FFFFFF; }
+.hq-chip-input:focus-visible + .hq-chip { outline: 3px solid #1A1A1A; outline-offset: 2px; }
+
+.hq-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.65rem 0.9rem;
+  font-size: 1rem;
+  color: #111111;
+  background: #FFFFFF;
+  border: 2px solid #C9C9C2;
+  border-radius: 10px;
+}
+.hq-input:focus { border-color: var(--red); outline: 2px solid var(--red); outline-offset: 1px; }
+.hq-textarea { resize: vertical; }
+
+.hq-error { color: #B00020; font-size: 0.875rem; margin-top: 0.35rem; }
+
+.hq-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.25rem;
+}
+.hq-actions-2 { justify-content: space-between; }
+
+.hq-emergency { flex: 1 1 260px; color: #B00020; font-weight: 700; }
+.hq-emergency .hq-tel { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+.hq-next { justify-content: center; min-height: 48px; }
+
+.hq-back {
+  background: none;
+  border: 0;
+  min-height: 44px;
+  padding: 0 0.25rem;
+  color: #333333;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.hq-consent { font-size: 0.8rem; color: #55554F; margin-top: 1rem; }
+
+.hq-tel { font-weight: 700; color: var(--red); white-space: nowrap; }
+
+.hq-success { text-align: center; padding: 1.5rem 0; }
+.hq-success-call { margin-top: 0.75rem; font-size: 1.1rem; color: #333333; }
+
+.hq-under { text-align: center; margin-top: 1rem; font-size: 0.95rem; color: #C8C8C2; }
+.hq-under .hq-tel { color: var(--red-text); }
+
+@media (max-width: 767px) {
+  .hq-next { width: 100%; }
+  .hq-actions-2 .hq-next { width: auto; flex: 1 1 auto; }
+}
+
+@media (min-width: 768px) {
+  .hq-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .hq-card { padding: 1.75rem 2rem 2rem; }
+}
+
+/* Homepage intro paragraph (HomePage.tsx), between the hero and the cards. */
+.home-intro { background: #0A0A0A; padding: clamp(2.5rem, 5vw, 4rem) 0 0; }
+.home-intro-text {
+  max-width: 62ch;
+  color: #C8C8C2;
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  line-height: 1.6;
+}
