@@ -310,10 +310,15 @@ const headDate = lastCommitDate('.') ?? new Date().toISOString().slice(0, 10);
  * Absent on a fresh checkout and for any URL added since, which is exactly what
  * the git-derived seed is for.
  */
+// `uniformAllowedFor` is stamp-sitemap's dated acknowledgement of a genuine
+// site-wide change (see the header of scripts/stamp-sitemap.mjs). It is
+// honoured by the collapse check below only for that exact date.
+let uniformAllowedFor = null;
 const recorded = (() => {
   if (!fs.existsSync(CONTENT_STATE)) return {};
   try {
     const parsed = JSON.parse(fs.readFileSync(CONTENT_STATE, 'utf8'));
+    uniformAllowedFor = parsed?.uniformAllowedFor ?? null;
     return parsed && typeof parsed === 'object' && parsed.pages ? parsed.pages : {};
   } catch {
     console.warn('[gen-sitemap] scripts/sitemap-content.json unreadable; seeding every date from git');
@@ -393,7 +398,9 @@ console.log(`[gen-sitemap] dates: ${entries.length - seeded} from recorded conte
  * for "the dating logic collapsed", not an assertion about how often the site
  * is edited.
  */
-if (spread.length < 2 && entries.length > 4) {
+if (spread.length < 2 && entries.length > 4 && uniformAllowedFor === spread[0]) {
+  console.log(`[gen-sitemap] every URL is ${spread[0]} — acknowledged as a real site-wide change (uniformAllowedFor in scripts/sitemap-content.json).`);
+} else if (spread.length < 2 && entries.length > 4) {
   die(
     `every one of the ${entries.length} URLs got the same lastmod (${spread[0]}).\n` +
     `That is the collapse this script is supposed to prevent: a change to a module\n` +
