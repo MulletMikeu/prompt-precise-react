@@ -21,10 +21,7 @@ export default function TreeServiceRichlands() {
        * band or a service card. Same copy as the `text` entry it replaces, plus the
        * local detail that makes each anchor relevant. Edit both or neither.
        */
-      /* Rewritten in Batch 3 to match the new section 2. The three anchors are
-         unchanged in number and destination — one points at
-         /tree-removal-cost-north-carolina, the live A/B treatment arm, and
-         Ship E may neither add nor remove links to it. Leave it exactly here. */
+      /* Rewritten in Batch 3 to match the new section 2. */
       sectionBodies={{
         2: (
           <>
@@ -94,12 +91,6 @@ export default function TreeServiceRichlands() {
           question: "Do you offer emergency tree service in Richlands?",
           answer: "Yes, 24/7. Richlands is inland so it sees less surge and salt than the coastal towns, but it still gets the wind and the saturated-ground failures that follow a long wet spell.",
         },
-      ]}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
       ]}
       finalCta={{
         heading: "Get Tree Service in Richlands, NC Today",

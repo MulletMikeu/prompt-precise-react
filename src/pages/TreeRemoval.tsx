@@ -119,7 +119,7 @@ export default function TreeRemoval() {
         // 9 is sandy-ground (was 7, and 8 before the Batch 5 split).
         9: [
           { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How the spider lift stays off your lawn" },
-          { href: "/residential-tree-service-jacksonville-nc", label: "What an estimate should include — including ground protection" },
+          { href: "/", label: "What an estimate should include — including ground protection" },
         ],
         // 10 is wind/lightning (was 8, and 9 before the split).
         10: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
@@ -153,8 +153,7 @@ export default function TreeRemoval() {
          * is NOT moved here. That page answers hazardous-when-it-has-already-
          * happened; this one answers hazardous-while-it-is-still-standing.
          * ServicePage gives section headings no `id`, so this links to the page
-         * rather than to a fragment — adding ids would mean editing
-         * ServicePage, which renders both A/B arms and would trip the guard.
+         * rather than to a fragment.
          */
         1: (
           <>
@@ -235,11 +234,7 @@ export default function TreeRemoval() {
          * the page to read in order.
          *
          * SOURCING RULE FOR BOTH. Every figure and every claim below already
-         * appears elsewhere on this same page or in DECISIONS.md. Nothing came
-         * from /tree-removal-cost-north-carolina — that is the live A/B
-         * treatment arm, and the batch bars borrowing from it. In particular
-         * `PRICING.stories.photoLimit` would have fit the large-tree section
-         * perfectly and was NOT used, because it renders only on the cost page.
+         * appears elsewhere on this same page or in DECISIONS.md.
          *
          * NO PRICES. Neither section states a dollar figure. The bands are
          * already in this page's quickAnswer and in the minimum section, and
@@ -756,11 +751,6 @@ export default function TreeRemoval() {
           }
         ]
       }}
-      relatedServices={[
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-      ]}
       finalCta={{
         heading: "Get a Free Tree Removal Estimate Today",
         text: "If you need professional tree removal in Jacksonville, NC, we're here to help. Contact us today for a fast, free estimate and let our team handle the job safely and efficiently.",

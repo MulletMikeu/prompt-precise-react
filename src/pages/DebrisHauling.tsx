@@ -66,8 +66,8 @@ export default function DebrisHauling() {
       ]}
       sectionLinks={{
         2: [
-          { href: '/residential-tree-service-jacksonville-nc', label: 'What an estimate should include — so the wood isn\'t a surprise' },
-          { href: '/storm-cleanup-jacksonville-nc', label: 'Storm cleanup in Jacksonville, NC' },
+          { href: '/', label: 'What an estimate should include — so the wood isn\'t a surprise' },
+          { href: '/emergency-tree-service-jacksonville-nc', label: 'Emergency tree service and storm cleanup in Jacksonville, NC' },
         ],
         3: { href: '/tree-removal-jacksonville-nc', label: 'Tree removal in Jacksonville, NC — cutting and hauling quoted together' },
       }}
@@ -91,18 +91,13 @@ export default function DebrisHauling() {
         {
           question: 'Will the trailer damage my yard?',
           answer: 'On the sandy side of the county it can, and we will tell you at the quote rather than after. A loaded trailer is heavier than a lawn tends to look, and grass tears when you turn on it. Where the route crosses grass we offer ground mats for a small added cost.',
-          link: { href: '/residential-tree-service-jacksonville-nc', label: 'How we protect the lawn, driveway and septic field' },
+          link: { href: '/spider-lift-tree-removal-jacksonville-nc', label: 'How the spider lift keeps a truck off your lawn' },
         },
-      ]}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Storm Cleanup', href: '/storm-cleanup-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
       ]}
       guides={{
         heading: 'Before You Book',
         links: [
-          { href: '/residential-tree-service-jacksonville-nc', label: 'What an estimate should include', blurb: 'The checklist that stops "who hauls the wood?" from becoming an argument.' },
+          { href: '/', label: 'What an estimate should include', blurb: 'The checklist that stops "who hauls the wood?" from becoming an argument.' },
           { href: '/tree-removal-cost-north-carolina', label: 'Tree removal cost in North Carolina', blurb: 'Where hauling sits inside the price of a full removal.' },
         ],
       }}

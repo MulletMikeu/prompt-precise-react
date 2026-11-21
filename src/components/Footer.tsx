@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { BUSINESS, SERVICES, SERVICE_CITIES, NAV_LINKS } from "../data/siteData";
 
 const CITY_PAGE_MAP: Record<string, string> = {
-  "jacksonville-nc": "/tree-service-jacksonville-nc",
+  "jacksonville-nc": "/",
   "hubert-nc": "/tree-service-hubert-nc",
   "richlands-nc": "/tree-service-richlands-nc",
   "swansboro-nc": "/tree-service-swansboro-nc",

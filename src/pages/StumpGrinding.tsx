@@ -112,19 +112,14 @@ export default function StumpGrinding() {
             blurb: "What's required on residential property, and where the exceptions are."
           },
           {
-            href: "/tree-removal-tight-spaces-jacksonville-nc",
+            // Was /tree-removal-tight-spaces-jacksonville-nc, 301'd into this
+            // page in Ship A; pointed straight at it in Ship M.
+            href: "/tree-removal-near-house-jacksonville-nc",
             label: "Tree work in tight spaces",
             blurb: "How we get a machine into a fenced backyard without taking the fence apart."
           }
         ]
       }}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-        { label: 'Debris Hauling', href: '/debris-hauling-jacksonville-nc' },
-        { label: 'Residential Tree Service', href: '/residential-tree-service-jacksonville-nc' },
-      ]}
       finalCta={{
         heading: "Remove That Stump Today",
         text: "Don't let an old tree stump take up space in your yard. Our stump grinding service in Jacksonville, NC is fast, affordable, and effective. Contact us today for a free estimate.",

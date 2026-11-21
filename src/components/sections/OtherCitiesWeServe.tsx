@@ -4,7 +4,8 @@ import { MapPin } from 'lucide-react';
 const CITIES = [
   {
     name: 'Jacksonville, NC',
-    slug: 'tree-service-jacksonville-nc',
+    // The homepage since Ship M (the Jacksonville hub 301s to "/").
+    slug: '',
     description: 'Our home base — full tree service across Onslow County.',
   },
   {

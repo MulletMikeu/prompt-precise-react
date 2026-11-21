@@ -111,7 +111,7 @@ export interface EmergencyInvoice {
  * useful thing a homeowner can understand about one of these bills: emergency
  * MITIGATION (getting the tree off and the hole covered) is generally not what
  * the small tree-debris sublimit applies to, while DEBRIS HAUL-AWAY generally
- * is. See /storm-cleanup-jacksonville-nc for how that works.
+ * is. See the insurance section of /emergency-tree-service-jacksonville-nc.
  *
  * Every row here has been checked: qty x rate = amount, rows sum to the section
  * subtotal, and the subtotals sum to the total.

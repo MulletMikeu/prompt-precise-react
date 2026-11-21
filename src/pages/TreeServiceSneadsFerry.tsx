@@ -29,7 +29,7 @@ export default function TreeServiceSneadsFerry() {
         2: (
           <>
             {"There has been a ferry across the New River here since at least 1728, and the oldest part of the village is still laid out around the landing rather than a road grid — narrow lots running toward the water, very little working space beside a house, and soft ground on the last stretch to a waterfront trunk.\n\nCoastal storms, salt air and sandy soil are the three things that decide tree work out here, and we have been working it since 2013. Sandy ground carries weight right up until it does not — see "}
-            <Link to="/storm-cleanup-jacksonville-nc" className={PROSE_LINK}>what insurance covers after a storm</Link>
+            <Link to="/emergency-tree-service-jacksonville-nc" className={PROSE_LINK}>what insurance covers after a storm</Link>
             {", "}
             <Link to="/tree-removal-cost-north-carolina" className={PROSE_LINK}>what a removal costs here</Link>
             {", "}
@@ -92,12 +92,6 @@ export default function TreeServiceSneadsFerry() {
           question: "Do shoreline rules affect cutting a tree on my waterfront lot?",
           answer: "They can, and the distinction is the one people get wrong: taking down a single tree is treated very differently from clearing ground. CAMA's reach is tied to development, which includes clearing as an adjunct of construction. One dead pine in a yard is generally not that; clearing to build near the water is. Worth settling before the job is scheduled rather than after.",
         },
-      ]}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
       ]}
       finalCta={{
         heading: "Schedule Tree Service in Sneads Ferry, NC",

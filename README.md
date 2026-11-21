@@ -84,14 +84,13 @@ follows automatically — do not retype it anywhere:
 | --- | --- |
 | Homepage hero subline ("5.0 on N Google reviews") | `src/components/HomeHero.tsx` |
 | Homepage meta description ("5.0★ on N Google reviews") | `src/pages/HomePage.tsx` |
-| `/tree-service-jacksonville-nc` meta description and body ("rated 5.0 across N Google reviews") | `src/pages/TreeServiceJacksonvilleNC.tsx` |
 | Homepage reviews heading ("N Google Reviews") | `src/components/ReviewsSection.tsx` |
 | Homepage "Read All N Reviews on Google" link | `src/components/ReviewsSection.tsx` |
 | `/reviews` heading ("N Google Reviews") | `src/pages/ReviewsPage.tsx` |
 | `/reviews` meta description ("N verified reviews") | `src/pages/ReviewsPage.tsx` |
 | `/reviews` "Read All N Reviews on Google" link | `src/pages/ReviewsPage.tsx` |
 | `/reviews` body ("Read enough of N reviews…") | `src/pages/ReviewsPage.tsx` |
-| "Read all N Google reviews" on all 21 service/city pages | `src/pages/ServicePage.tsx` |
+| "Read all N Google reviews" on all 18 service/city pages | `src/pages/ServicePage.tsx` |
 | `/services` triage closing ("our N Google reviews") | `src/pages/ServicesPage.tsx` |
 
 `BUSINESS.reviewRating` works the same way. Neither appears in structured data
@@ -180,11 +179,6 @@ Because it compares against the last submission, the baseline is committed:
 result**, or a fresh clone has no baseline and the next run submits everything.
 It reads `dist/`, so build first; a stale `dist/` is the one thing that makes
 this lie, and the script fails loudly if `dist/` is missing or incomplete.
-
-**The live A/B control is excluded from every selection mode**, including
-`--all` and an explicit `--urls` that names it. Pinging one arm of a running
-test and not the other is a change to the experiment. `--include-ab-control`
-overrides it; delete `AB_CONTROL` from the script when the test ends.
 
 `--urls` remains the escape hatch for naming pages by hand, and `--since` keeps
 the old date behaviour for when you genuinely want it.

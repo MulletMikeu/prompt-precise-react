@@ -36,12 +36,7 @@ export default function TreeServiceHubert() {
        * band or a service card. Same copy as the `text` entry it replaces, plus the
        * local detail that makes each anchor relevant. Edit both or neither.
        *
-       * Batch 3 rewrote section 2, so this body was rewritten to match it. The
-       * THREE anchors are deliberately unchanged in number and destination:
-       * one of them points at /tree-removal-cost-north-carolina, which is the
-       * live A/B treatment arm. Ship E may neither add nor remove links to that
-       * page, so this link stays exactly as it is — do not drop it to tidy the
-       * sentence, and do not add a second one.
+       * Batch 3 rewrote section 2, so this body was rewritten to match it.
        */
       sectionBodies={{
         2: (
@@ -126,12 +121,6 @@ export default function TreeServiceHubert() {
           </div>
         </section>
       }
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-      ]}
       finalCta={{
         heading: "Schedule Tree Service in Hubert, NC",
         text: "Need professional tree service in Hubert, NC? Contact us today for a free estimate and fast, reliable service.",

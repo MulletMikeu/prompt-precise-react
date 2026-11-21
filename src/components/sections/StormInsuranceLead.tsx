@@ -2,7 +2,8 @@ import { BUSINESS, STORM_LEAD } from '@/data/siteData';
 
 /**
  * The storm / insurance lead block, above the fold on
- * /emergency-tree-service-jacksonville-nc and /storm-cleanup-jacksonville-nc.
+ * /emergency-tree-service-jacksonville-nc (the storm-cleanup page that also
+ * rendered it was merged there in Ship M and 301s to it).
  *
  * The body copy lives in STORM_LEAD (siteData) rather than here, because it is
  * approved wording that must be byte-identical on both pages. Do not edit it in

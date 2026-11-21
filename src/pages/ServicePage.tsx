@@ -19,7 +19,6 @@ import type { DamageNoun } from '@/data/siteData';
 const HERO_SIZES = '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px';
 
 const LOCATION_SLUGS = new Set([
-  'tree-service-jacksonville-nc',
   'tree-service-camp-lejeune-nc',
   'tree-service-swansboro-nc',
   'tree-service-sneads-ferry-nc',
@@ -36,11 +35,6 @@ interface FaqItem {
    * structured data must stay plain text.
    */
   link?: SectionLink;
-}
-
-interface RelatedService {
-  label: string;
-  href: string;
 }
 
 interface SectionLink {
@@ -182,9 +176,8 @@ interface ServicePageProps {
    * 'early' renders it immediately after `caseStudy` and before
    * <WhyChooseGodhans/>, i.e. straight after the page's own prose.
    *
-   * Default-off on purpose: flipping the default would move the FAQ on the live
-   * A/B control. The control and the treatment both keep 'late' until the test
-   * ends; everything else opts in.
+   * 'late' stays the default so pages that never opted in render exactly as
+   * they did; move a page to 'early' deliberately, one page at a time.
    */
   faqPosition?: 'early' | 'late';
   /** Optional rich, semantic content rendered after the sections and before the FAQ
@@ -206,7 +199,6 @@ interface ServicePageProps {
    * feeds them from the service pages that actually rank.
    */
   guides?: { heading?: string; intro?: string; links: GuideLink[] };
-  relatedServices?: RelatedService[];
   heroImage?: {
     src: string;
     alt: string;
@@ -231,7 +223,7 @@ interface ServicePageProps {
  * Middle breadcrumb crumb, or null for a two-crumb trail.
  *
  * Every label here MUST resolve to a page that actually is that category. All
- * three labels used to point at /tree-service-jacksonville-nc — a city page
+ * three labels used to point at /tree-service-jacksonville-nc (since retired) — a city page
  * titled "Tree Company in Jacksonville, NC" — so 20 pages asserted a
  * Services/Locations/Resources hierarchy the site does not have. Now "Services"
  * goes to /services and "Locations" goes to /service-area, both of which are
@@ -244,21 +236,19 @@ interface ServicePageProps {
  * middle level. Give them a real hub later and add the branch back.
  */
 function getBreadcrumbCategory(slug: string): { name: string; slug: string } | null {
-  // The Jacksonville hub sits directly under Home.
-  if (slug === 'tree-service-jacksonville-nc') return null;
   if (slug.startsWith('tree-service-')) {
     return { name: 'Service Area', slug: 'service-area' };
   }
   if (
     slug.includes('removal') || slug.includes('trimming') || slug.includes('grinding') ||
-    slug.includes('emergency') || slug.startsWith('commercial-') || slug.startsWith('residential-')
+    slug.includes('emergency') || slug.startsWith('commercial-')
   ) {
     return { name: 'Services', slug: 'services' };
   }
   return null;
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, priceBlock, sections, sectionFigures, sectionBodies, sectionLinks, faqs, faqPosition = 'late', caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, relatedServices, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, priceBlock, sections, sectionFigures, sectionBodies, sectionLinks, faqs, faqPosition = 'late', caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, heroImage, gallery }: ServicePageProps) {
   const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -586,46 +576,14 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
             </section>
           )}
 
-          {/* Jacksonville NC Hub Link */}
-          {slug !== 'tree-service-jacksonville-nc' && (
-            <section className="bg-gray-950 py-12 border-t border-gray-800">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                <h2 className="text-2xl font-bold text-white mb-4">
-                  {slug.startsWith('tree-service-') ? 'Serving Jacksonville and Surrounding Areas' : 'Tree Service in Jacksonville, NC'}
-                </h2>
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  {slug.startsWith('tree-service-')
-                    ? 'We are proud to serve the greater Jacksonville, NC area with professional tree care. Our team provides fast, reliable service across Onslow County. Learn more about our '
-                    : 'Looking for local tree experts in Jacksonville? We provide professional tree care throughout Jacksonville, NC and surrounding communities. Visit our '}
-                  <Link to="/tree-service-jacksonville-nc" className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold">
-                    {slug.startsWith('tree-service-') ? 'Jacksonville tree service' : 'tree service in Jacksonville NC'}
-                  </Link>
-                  {' '}page for more details on the services we offer in your area.
-                </p>
-              </div>
-            </section>
-          )}
-
-          {/* Related Services (Internal Linking) */}
-          {relatedServices && relatedServices.length > 0 && (
-            <section className="bg-black py-12 border-t border-gray-800">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                <h2 className="text-2xl font-bold text-white mb-4">Other Services We Offer</h2>
-                <p className="text-gray-300 text-lg mb-6">
-                  We also provide professional{' '}
-                  {relatedServices.map((service, i) => (
-                    <span key={service.href}>
-                      {i > 0 && (i === relatedServices.length - 1 ? ' and ' : ', ')}
-                      <Link to={service.href} className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors">
-                        {service.label.toLowerCase()}
-                      </Link>
-                    </span>
-                  ))}
-                  {' '}services in Jacksonville, NC and surrounding areas.
-                </p>
-              </div>
-            </section>
-          )}
+          {/* Ship M (2026-11-21) deleted two template blocks that sat here:
+              the "Tree Service in Jacksonville, NC" paragraph that linked the
+              exact-match anchor "tree service in Jacksonville NC" (or
+              "Jacksonville tree service" on town pages) to the hub from 23
+              pages, and the "Other Services We Offer" sentence that rendered
+              "…emergency tree service services". The hub now 301s to "/",
+              and every page links its related services in its own body,
+              sectionLinks and guides list. */}
 
           {/* Guides & Pricing (internal links out to the guide/specialty pages),
               plus the standing link to /reviews.

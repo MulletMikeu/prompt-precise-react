@@ -128,10 +128,8 @@ const CITY_CONTENT: Record<string, CityCopy> = {
       photo: MAYSVILLE_CLIMBER,
       alt: "A climber working high in a large limbed-out pine at Maysville, NC, with the rigging rope running down to the ground.",
       caption: "Climbed rather than lifted, because the septic field ruled out driving anything in.",
-      /* NOT /tree-removal-cost-north-carolina, however well it fits: that is
-         the live A/B treatment arm and Ship E may neither add nor remove links
-         to it. The removal page carries the same diameter-not-height argument
-         and is not an arm. Revisit after the test ends (Dec 1). */
+      /* The removal page carries the same diameter-not-height argument as the
+         cost page, alongside the job types that set it. */
       link: { href: "/tree-removal-jacksonville-nc", label: "Why diameter and access, not height, set a removal price" },
     },
     facts: [

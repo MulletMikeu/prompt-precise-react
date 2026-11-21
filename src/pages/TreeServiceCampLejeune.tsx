@@ -29,7 +29,7 @@ export default function TreeServiceCampLejeune() {
             {", "}
             <Link to="/stump-grinding-jacksonville-nc" className={PROSE_LINK}>stump grinding before a walkthrough</Link>
             {" and "}
-            <Link to="/tree-service-jacksonville-nc" className={PROSE_LINK}>how to verify a tree company in North Carolina</Link>
+            <Link to="/" className={PROSE_LINK}>how to verify a tree company in North Carolina</Link>
             {". The stand-grown pines along the base boundary are the ones we are called to most after a storm, and "}
             <Link to="/pine-tree-problems-jacksonville-nc" className={PROSE_LINK}>a browned-out pine is already past saving</Link>
             {" — worth knowing before a move-out inspection rather than after."}
@@ -91,12 +91,6 @@ export default function TreeServiceCampLejeune() {
           question: "Why do the trees along the base boundary come down more often?",
           answer: "In our experience it is because they grew up sheltered and were then exposed. A pine that developed inside a stand is drawn tall with its live crown high on the stem; when the houses went in and one side of that stand was opened up, those boundary trees were left carrying wind they never grew to handle. They are disproportionately the ones we get called to after a storm.",
         },
-      ]}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
       ]}
       finalCta={{
         heading: "Tree Service for Camp Lejeune Families",

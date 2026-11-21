@@ -254,12 +254,6 @@ export default function TreeRemovalCost() {
         text: 'We walk the site, price the crew-days and the equipment it actually needs, and put the number in writing. Free estimates in Jacksonville and surrounding areas.',
         buttonText: 'Call Now',
       }}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-      ]}
     />
   );
 }

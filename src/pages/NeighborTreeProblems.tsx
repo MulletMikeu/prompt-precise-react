@@ -247,7 +247,7 @@ export default function NeighborTreeProblems() {
         2: (
           <>
             {`Each owner is responsible for what ends up on their own property. If it landed in your yard, it is generally yours to deal with.\n\nThat is the answer nobody wants, and it follows from how the liability rule works. A North Carolina firm states the healthy-tree case plainly: "${SOURCES.wardSmithFallenTree.healthy}" If the tree was sound and the wind took it, there is usually no negligence to point at, and no negligence means no bill to send next door.\n\nTHE INSURANCE SIDE IS WORSE THAN PEOPLE EXPECT. A tree lying across your lawn having damaged nothing is frequently not a claim at all. The North Carolina Department of Insurance describes the standard provision as paying "${SOURCES.ncdoiHomeowners.quote}" Note both halves of that condition — damaged a structure, OR blocked the driveway. A healthy tree down across the back lawn typically meets neither, and $500 does not go far on a mature hardwood.\n\nIF IT DID HIT SOMETHING, the picture changes: your own policy generally responds, regardless of whose tree it was. The Insurance Information Institute puts it in four words — "${SOURCES.iiiTreeFalls.quote}" Your insurer may then pursue the neighbor's insurer to recover, which is called subrogation, and if that works you can get your deductible back. That is far more likely where the tree was visibly dead and had been reported. `}
-            <Link to="/storm-cleanup-jacksonville-nc" className={PROSE_LINK}>The full account of what a policy covers after a storm</Link>
+            <Link to="/emergency-tree-service-jacksonville-nc" className={PROSE_LINK}>The full account of what a policy covers after a storm</Link>
             {` is on one page so there is a single accurate version of it.\n\nWHICH IS WHY THE LETTER IN QUESTION 2 IS THE WHOLE GAME. The difference between "a tree fell" and "a tree they were warned about fell" is the difference between your deductible and theirs.\n\nOUR PRACTICE. We will clear what is on your property and quote it as its own job — see `}
             <Link to="/debris-hauling-jacksonville-nc" className={PROSE_LINK}>debris hauling</Link>
             {` for what that costs when the tree is already down and the pile is the entire problem.`}
@@ -299,19 +299,13 @@ export default function NeighborTreeProblems() {
         heading: 'Related',
         intro: 'The pages behind the answers above:',
         links: [
-          { href: '/storm-cleanup-jacksonville-nc', label: 'Storm cleanup and what insurance covers', blurb: 'The full account of the $500 provision, the debris sublimit, and subrogation.' },
+          { href: '/emergency-tree-service-jacksonville-nc', label: 'Emergency, storm cleanup and what insurance covers', blurb: 'The full account of the $500 provision, the debris sublimit, and subrogation.' },
           { href: '/resistograph-tree-testing-jacksonville-nc', label: 'Resistograph testing and arborist assessments', blurb: 'Measuring what is left inside a trunk, and what a written assessment costs.' },
           { href: '/leaning-tree-dangerous-after-storm', label: 'Is a leaning tree dangerous after a storm?', blurb: 'Which leans matter, and why a lifted root plate ends the conversation.' },
           { href: '/tree-removal-near-house-jacksonville-nc', label: 'Tree removal near a house', blurb: 'What changes when position, not size, sets the price.' },
           { href: '/pine-tree-problems-jacksonville-nc', label: "Is the neighbor's pine dying?", blurb: 'Brown-out, beetles and lightning — how to describe what is actually wrong with it in your letter.' },
         ],
       }}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Debris Hauling', href: '/debris-hauling-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-      ]}
       finalCta={{
         heading: 'Not Sure Whose Tree Problem It Is?',
         text: 'We will come and look, tell you honestly what the tree needs, and talk to the other household if that is what it takes. Free estimates across Jacksonville and Onslow County.',

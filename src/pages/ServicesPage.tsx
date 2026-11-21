@@ -8,13 +8,14 @@ import { PROSE } from "../data/homepageCopy";
  *
  * It used to be titled "Tree Services in Jacksonville, NC", which put it in
  * direct competition with the homepage — whose whole job is "tree service
- * jacksonville nc" — and with /tree-service-jacksonville-nc, which is the local
- * crew / trust hub. Three pages on one head term is two too many.
+ * jacksonville nc" — and with /tree-service-jacksonville-nc, then the local
+ * crew / trust hub (folded into the homepage in Ship M). Three pages on one
+ * head term is two too many.
  *
  * So the geo is deliberately out of the title, the H1 and the description here.
  * This page exists to route people to the right service page and to be the honest
- * target of the "Services" breadcrumb; the homepage owns the head term and
- * /tree-service-jacksonville-nc owns the local-crew intent. Do not put
+ * target of the "Services" breadcrumb; the homepage owns the head term and,
+ * since Ship M, the local-crew intent too. Do not put
  * "Jacksonville" back in the title.
  */
 /**
@@ -29,8 +30,8 @@ import { PROSE } from "../data/homepageCopy";
  * answers below, so the snippet and the landing section make the same promise.
  *
  * THE GEO STAYS OUT, per the standing ruling in the note above: the homepage
- * owns "tree service jacksonville nc" and /tree-service-jacksonville-nc owns
- * the local-crew intent. Ship I's template was "lead with the service plus
+ * owns "tree service jacksonville nc" and (since Ship M) the local-crew
+ * intent. Ship I's template was "lead with the service plus
  * Jacksonville, NC" and it is deliberately NOT applied here — doing so would
  * re-create the three-pages-on-one-head-term problem that putting the geo in
  * this title caused in the first place. The title leads with the decision
@@ -55,7 +56,7 @@ const CANONICAL = "https://godhans.com/services";
  * EVERY SYMPTOM HERE IS ALREADY STATED SOMEWHERE ON THIS SITE. Sources, so a
  * later edit can check rather than guess:
  *   lean after a storm, heaved soil, mushrooms at the base, big dead limbs,
- *   dead top on a pine, limbs on the roof  -> /residential-tree-service-* §6
+ *   dead top on a pine, limbs on the roof  -> (was /residential-tree-service-* §6, retired in Ship M)
  *   brown-out means dead, interior needle shed is normal                 -> /pine-tree-problems-*
  *   Armillaria: clustered yellow-orange mushrooms at the base            -> /tree-removal-* decay block, cited to NC State Extension
  *   split fork held by cabling rather than removed                       -> /tree-cabling-bracing-*
@@ -64,13 +65,9 @@ const CANONICAL = "https://godhans.com/services";
  *   a pile you already cut, priced by the trailer                        -> /debris-hauling-*
  * No new claim, no new figure.
  *
- * NO LINK TO EITHER A/B ARM. "A stump left behind" is deliberately absent even
- * though it is the obvious twelfth row: its answer is /stump-grinding-*, the
- * control arm, whose inbound link count is frozen in scripts/arm-baseline.json
- * until 2026-12-01. This page already links it from the tile grid and from the
- * prose below, and a third link would fail the build. The stump is a follow-on
- * to a removal rather than a symptom you diagnose, so the prose below is the
- * right place for it and it stays there. Add the row after the test reads out.
+ * "A stump left behind" is not a row: the stump is a follow-on to a removal
+ * rather than a symptom you diagnose, and this page already links
+ * /stump-grinding-* from the tile grid and from the prose below.
  */
 const TRIAGE: { symptom: string; answer: string; href: string; label: string }[] = [
   {
@@ -158,24 +155,14 @@ const SERVICES = [
     desc: "Stumps ground 10 inches below grade as standard. Grindings hauled away. Ready to replant or landscape — grinding is not full excavation.",
   },
   {
-    name: "Emergency Tree Service",
+    name: "Emergency & Storm Cleanup",
     href: "/emergency-tree-service-jacksonville-nc",
-    desc: "True 24/7 response for storm damage, fallen trees, and hazardous situations. We answer day and night.",
-  },
-  {
-    name: "Storm Cleanup",
-    href: "/storm-cleanup-jacksonville-nc",
-    desc: "Fast debris removal after storms. Downed tree extraction, limb and brush cleanup, same or next day.",
+    desc: "True 24/7 response for fallen trees and hazardous situations, then the storm cleanup after — debris, limbs and brush, same or next day.",
   },
   {
     name: "Commercial Tree Service",
     href: "/commercial-tree-service-jacksonville-nc",
-    desc: "HOAs, apartment complexes, churches, and storefronts. $2M liability, COI on request, scheduled around your hours.",
-  },
-  {
-    name: "Residential Tree Service",
-    href: "/residential-tree-service-jacksonville-nc",
-    desc: "Homeowner tree work with the lawn, fence, driveway, and septic field protected — and every stick hauled away.",
+    desc: "HOAs, property managers, apartment complexes, churches and businesses. $2M liability, COI on request, scheduled around your hours.",
   },
   {
     name: "Debris Hauling",
@@ -299,9 +286,9 @@ export default function ServicesPage() {
             </p>
             <p className="text-base leading-relaxed" style={{ color: "#C8C8C2" }}>
               Not sure which one you're looking at? That's what the free estimate is for — we'll
-              tell you if a tree can be kept. If you want to vet us first, the{' '}
-              <Link to="/tree-service-jacksonville-nc" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>eight questions to ask before hiring anyone</Link>{' '}
-              are on our Jacksonville page, and our{' '}
+              tell you if a tree can be kept. If you want to vet us first,{' '}
+              <Link to="/" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>what to check before hiring anyone</Link>{' '}
+              is on our homepage, and our{' '}
               {/* Ship J: was a hardcoded "27 Google reviews" — the one place on the
                   site that retyped the count instead of reading BUSINESS.reviewCount,
                   which siteData's own note forbids and README lists as the single

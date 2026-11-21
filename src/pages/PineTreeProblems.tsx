@@ -35,11 +35,6 @@ const FIGURE_SIZES = '(min-width: 768px) 288px, calc(100vw - 2rem)';
  * section and the pine-size section (85-90 ft cap, diameter not height). Both
  * are pricing arguments rather than health ones, and the removal page is where
  * a reader meets them.
- *
- * NO LINK TO /tree-removal-cost-north-carolina FROM THIS PAGE. It is the live
- * A/B treatment arm, frozen until 2026-12-01, and scripts/check-arms.mjs will
- * fail the build if a link to it appears. Point cost anchors at the removal
- * page instead.
  */
 export default function PineTreeProblems() {
   return (
@@ -217,12 +212,6 @@ export default function PineTreeProblems() {
           { href: '/neighbor-tree-problems-jacksonville-nc', label: "When the pine is your neighbor's", blurb: 'Who can cut what, and why a written notice matters if it later fails.' },
         ],
       }}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-        { label: 'Resistograph Tree Testing', href: '/resistograph-tree-testing-jacksonville-nc' },
-      ]}
       finalCta={{
         heading: 'Not Sure What Your Pine Is Doing?',
         text: 'Send us a photo or give us a call. If it is a heavy shed year we will tell you that and charge you nothing — we would rather say so than sell you a removal.',

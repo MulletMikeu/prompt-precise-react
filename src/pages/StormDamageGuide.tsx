@@ -68,7 +68,7 @@ export default function StormDamageGuide() {
             {"\n• Support a weak union rather than losing the whole tree — "}
             <Link to="/tree-cabling-bracing-jacksonville-nc" className={PROSE_LINK}>cabling and bracing</Link>
             {"\n• Settle what your policy covers before you need to know — "}
-            <Link to="/storm-cleanup-jacksonville-nc" className={PROSE_LINK}>storm cleanup and insurance</Link>
+            <Link to="/emergency-tree-service-jacksonville-nc" className={PROSE_LINK}>storm cleanup and insurance</Link>
             {"\n• And if one is already leaning, that is its own question — "}
             <Link to="/leaning-tree-dangerous-after-storm" className={PROSE_LINK}>is a leaning tree dangerous after a storm?</Link>
             {"\n\nNone of this makes a tree storm-proof. What it does is remove the failures that were predictable, which in our experience is most of them."}
@@ -250,7 +250,7 @@ export default function StormDamageGuide() {
         {
           question: 'Is storm damage tree removal covered by insurance?',
           answer: 'Often, if the tree damaged a structure. We bill your insurance directly and work with your adjuster, doing everything we can so your cost stays at your normal deductible. Ask for the estimate split between emergency mitigation and debris removal — the small tree-debris sublimit on a homeowner policy generally applies to the debris side and generally does not apply to the mitigation side. A tree that fell in the yard and hit nothing is frequently not covered at all.',
-          link: { href: '/storm-cleanup-jacksonville-nc', label: 'What a policy typically covers after a storm →' },
+          link: { href: '/emergency-tree-service-jacksonville-nc', label: 'What a policy typically covers after a storm →' },
         },
         {
           question: 'Can a storm-damaged tree be saved?',
@@ -267,20 +267,12 @@ export default function StormDamageGuide() {
         intro: 'The pages that cover each piece of this in full:',
         links: [
           { href: '/tree-trimming-jacksonville-nc', label: 'Tree trimming and weight reduction', blurb: 'What we take off, what it costs, and why we will not top a tree.' },
-          { href: '/emergency-tree-service-jacksonville-nc', label: 'Emergency tree service', blurb: 'A tree already on the structure — response, tarping, and what it prices at.' },
-          { href: '/storm-cleanup-jacksonville-nc', label: 'Storm cleanup and insurance', blurb: 'The mitigation-versus-debris split, and why it decides what gets paid.' },
+          { href: '/emergency-tree-service-jacksonville-nc', label: 'Emergency tree service and storm cleanup', blurb: 'A tree already on the structure — response, tarping, what it prices at, and the mitigation-versus-debris split that decides what insurance pays.' },
           { href: '/leaning-tree-dangerous-after-storm', label: 'Is a leaning tree dangerous after a storm?', blurb: 'Which leans are a problem, and which have been fine for twenty years.' },
           { href: '/resistograph-tree-testing-jacksonville-nc', label: 'Resistograph testing', blurb: 'Measuring how much sound wood is left before a storm finds out for you.' },
           { href: '/pine-tree-problems-jacksonville-nc', label: 'Is my pine dying or dangerous?', blurb: 'Lightning browns 30 to 40 percent of a canopy and leaves spiral cracks — plus what beetle pitch tubes mean.' },
-          /*
-           * NO LINK TO /tree-removal-cost-north-carolina FROM THIS PAGE.
-           * It is the treatment arm of the live A/B test and Ship D is barred
-           * from adding or removing links to it — a link here would change the
-           * arm's inbound profile mid-test even though its HTML is untouched,
-           * which is precisely the confound Ship A created by accident. The
-           * obvious editorial target for "what does this cost" is therefore
-           * the near-house page instead. Revisit after the test ends (Dec 1).
-           */
+          /* "What does this cost" after a storm is usually a tree near the
+             house, so the near-house page is the cost link here. */
           { href: '/tree-removal-near-house-jacksonville-nc', label: 'Removing a tree close to the house', blurb: 'The tight-access premium, and what changes when position sets the price.' },
         ],
       }}
@@ -289,12 +281,6 @@ export default function StormDamageGuide() {
         text: 'Late February through early April is the window. Free estimates across Jacksonville and Onslow County — and if your trees are fine, we will tell you that too.',
         buttonText: 'Call Now',
       }}
-      relatedServices={[
-        { label: "Emergency Tree Service", href: "/emergency-tree-service-jacksonville-nc" },
-        { label: "Tree Removal", href: "/tree-removal-jacksonville-nc" },
-        { label: "Tree Trimming", href: "/tree-trimming-jacksonville-nc" },
-        { label: "Storm Cleanup", href: "/storm-cleanup-jacksonville-nc" }
-      ]}
     />
   );
 }

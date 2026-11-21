@@ -38,13 +38,11 @@
  * Keep the two claims separate in anything written from here: "a link that
  * 404s on click" is verified; "the 404 pageviews came from it" is not.
  *
- * ── WHY IT IS NOT PART OF check-arms.mjs ───────────────────────────────────
+ * ── WHY IT WAS NEVER PART OF check-arms.mjs ────────────────────────────────
  *
- * The batch offered either. check-arms.mjs carries a dated instruction to be
- * DELETED after 2026-12-01 when the A/B test reads out, and it should be — a
- * guard that outlives the thing it guards becomes a flag people pass without
- * reading. This check has nothing to do with the test and must outlive it, so
- * folding it in would quietly delete it in six weeks.
+ * check-arms.mjs guarded the A/B test and was deleted in Ship M (2026-11-21)
+ * when the owner ended the test. This check has nothing to do with the test,
+ * which is why it was kept separate and outlives it.
  *
  * ── WHAT IT CHECKS ─────────────────────────────────────────────────────────
  *
@@ -83,24 +81,10 @@ const VERCEL = path.join(ROOT, 'vercel.json');
  * Keyed by href. `from` is the page that carries it, so a fix can be verified
  * against the right file, and `review` is when this entry must be revisited.
  */
-const ALLOWED = {
-  '/tree-removal-tight-spaces-jacksonville-nc': {
-    from: '/stump-grinding-jacksonville-nc',
-    added: '2026-10-24 (Ship I)',
-    review: '2026-11-01',
-    reason:
-      'Ship A 301d this URL into /tree-removal-near-house-jacksonville-nc but left the ' +
-      'anchor on the control arm. The control is frozen by DECISIONS.md until 2026-11-01 ' +
-      'and by check-arms.mjs until the A/B test reads out on 2026-12-01, so editing the ' +
-      'page to fix it would move the control mid-test. This is the ONE link this guard ' +
-      'was written to catch, and it is allow-listed rather than fixed on the owner ruling ' +
-      'in DECISIONS-addendum-2026-10-24-john.md: fix it with the Nov 1 control edit. ' +
-      'Googlebot gets a clean 301; a visitor who clicks it gets the 404 page — reproduced, ' +
-      'but GA4 shows no real visitor has hit it (the 404 pageviews were bots on old ' +
-      'expired-domain URLs; see the correction note in the header). When the control ' +
-      'unfreezes, repoint it to /tree-removal-near-house-jacksonville-nc and delete this.',
-  },
-};
+// Empty since Ship M (2026-11-21): the one entry — the stump page's link to
+// the 301'd /tree-removal-tight-spaces-jacksonville-nc, parked while the A/B
+// control was frozen — was fixed at the source.
+const ALLOWED = {};
 
 /** Internal = same-origin path. Skips mailto:, tel:, http(s):, protocol-relative and bare fragments. */
 const isInternal = (href) =>

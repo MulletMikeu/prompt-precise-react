@@ -68,15 +68,6 @@ const IMAGES = [
     webp: { quality: 60, effort: 6 },
   },
   {
-    // 16:9 rather than the 4:3 default: this one fills the why-us band, and a
-    // centred 16:9 window keeps the overhead lift bucket that a taller crop
-    // would leave in but a 16:6 band would have cut.
-    base: "godhans-crew-skid-steer-jacksonville-nc",
-    src: "scripts/image-src/IMG_2034.JPEG",
-    widths: [480, 768, 1024, 1280],
-    aspect: [16, 9],
-  },
-  {
     base: "spider-lift-full-extension-over-house-jacksonville-nc",
     src: "scripts/image-src/IMG_2031.JPEG",
     widths: [480, 768, 1024, 1280],

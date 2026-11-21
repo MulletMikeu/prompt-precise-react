@@ -9,7 +9,7 @@ const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2
  * The page had zero outbound citations while quoting a figure from a state
  * regulator second-hand ("a few hundred dollars"). The figure is now the actual
  * $500 and the regulator is linked, reading the URL from SOURCES so it cannot
- * drift from the version on /storm-cleanup-jacksonville-nc.
+ * drift from the version on the emergency page's insurance section.
  */
 function PageSources() {
   return (
@@ -151,10 +151,10 @@ export default function LeaningTreeDangerous() {
         {
           question: "Will insurance cover tree removal after a storm?",
           // Deliberately short and pointed at the hub. This answer used to be a
-          // third partial version of the same explanation; /storm-cleanup-* now
+          // third partial version of the same explanation; the emergency page now
           // owns the topic so there is one accurate account of it.
           answer: "Generally when the tree has damaged a covered structure, and your deductible applies. A tree that came down and hit nothing is usually your cost — the North Carolina Department of Insurance describes the standard provision as paying up to $500 for any one loss, and only where the tree damaged a structure or blocked the driveway. Photograph everything before anything is moved. We keep the full explanation on one page so it stays accurate.",
-          link: { href: "/storm-cleanup-jacksonville-nc", label: "What insurance typically covers after a storm" }
+          link: { href: "/emergency-tree-service-jacksonville-nc", label: "What insurance typically covers after a storm" }
         },
         {
           question: "Can I remove a dangerous tree myself?",
@@ -181,14 +181,8 @@ export default function LeaningTreeDangerous() {
         {
           question: "Do you bill insurance directly?",
           answer: "Yes. We bill your insurance directly and work with your adjuster, doing everything we can so your cost stays at your normal deductible. Direct billing applies to mitigation work — a tree on the house or on another covered structure, where getting it off and tarping the opening is what stops the damage getting worse. A yard tree that came down and hit nothing is a different matter and frequently is not covered at all, so we will tell you which of the two you have before we start rather than after.",
-          link: { href: "/storm-cleanup-jacksonville-nc", label: "What insurance typically covers after a storm" }
+          link: { href: "/emergency-tree-service-jacksonville-nc", label: "What insurance typically covers after a storm" }
         }
-      ]}
-      relatedServices={[
-        { label: "Emergency Tree Service", href: "/emergency-tree-service-jacksonville-nc" },
-        { label: "Tree Removal", href: "/tree-removal-jacksonville-nc" },
-        { label: "Storm Cleanup", href: "/storm-cleanup-jacksonville-nc" },
-        { label: "Resistograph Tree Testing", href: "/resistograph-tree-testing-jacksonville-nc" }
       ]}
       finalCta={{
         heading: "Don't Wait — Get Emergency Tree Help Now",
