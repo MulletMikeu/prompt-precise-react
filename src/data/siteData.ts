@@ -431,7 +431,7 @@ export const PRICING = {
 
 /**
  * The storm / insurance lead block, rendered above the fold on BOTH
- * /emergency-tree-service-jacksonville-nc and /storm-cleanup-jacksonville-nc.
+ * /emergency-tree-service-jacksonville-nc (storm cleanup was merged into it in Ship M).
  *
  * One constant, two pages, so the two can never drift — and so this exact
  * wording is the only version of it anywhere. It is approved copy: do NOT
@@ -546,41 +546,24 @@ export const SERVICES = [
   },
   {
     id: "emergency-tree-service",
-    name: "Emergency Tree Service",
+    // Ship M (2026-11-21): one 24/7 page. The separate storm-cleanup entry
+    // and page were merged in here; /storm-cleanup-jacksonville-nc 301s to it.
+    name: "Emergency & Storm Cleanup",
     slug: "emergency-tree-service",
     href: "/emergency-tree-service-jacksonville-nc",
     headline: "24/7 Emergency Response. We Answer.",
     description:
-      "Fallen tree on your roof? Blocking your driveway? Hanging over your power lines? We respond around the clock — no voicemail, no delay.",
+      "Fallen tree on your roof? Blocking your driveway? Downed trees and debris after a storm? We respond around the clock — no voicemail — and clean up after.",
     features: [
       "True 24/7 response — nights, weekends, holidays",
-      "Storm damage assessment and removal",
       "Fallen tree extraction from structures",
-      "Hazard limb removal",
-      "Driveway and road clearance",
-    ],
-    metaTitle: "Emergency Tree Service Jacksonville NC | Godhans",
-    metaDesc:
-      `24/7 emergency tree service in Jacksonville, NC. We answer when others don't. Call now: ${BUSINESS.phone}.`,
-  },
-  {
-    id: "storm-cleanup",
-    name: "Storm Cleanup",
-    slug: "storm-cleanup",
-    href: "/storm-cleanup-jacksonville-nc",
-    headline: "After the Storm, We Clean Up Fast.",
-    description:
-      "Eastern NC storms hit hard. We move faster. Downed trees, scattered debris, hanging limbs — full cleanup, same or next day.",
-    features: [
       "Debris removal and haul-away",
-      "Downed tree extraction",
-      "Limb and brush cleanup",
+      "Hazard limb removal",
       "Storm damage documentation support",
-      "Residential and commercial properties",
     ],
-    metaTitle: "Storm Cleanup Jacksonville NC | Godhans Tree Company",
+    metaTitle: "Emergency Tree Service & Storm Cleanup Jacksonville NC | Godhans",
     metaDesc:
-      `Storm damage cleanup in Jacksonville, NC. Fast response, full debris removal. Call 24/7: ${BUSINESS.phone}.`,
+      `24/7 emergency tree service and storm cleanup in Jacksonville, NC. Call now: ${BUSINESS.phone}.`,
   },
   {
     id: "debris-hauling",
@@ -600,6 +583,27 @@ export const SERVICES = [
     metaTitle: "Debris Hauling Jacksonville NC | Godhans Tree Company",
     metaDesc:
       `Organic debris hauling in Jacksonville, NC — trees, brush, and leaves. Priced by the trailer. Free estimates — ${BUSINESS.phone}.`,
+  },
+  {
+    // Ship M: added so the footer services list and the homepage grid carry
+    // the commercial page (residential was folded into the homepage).
+    id: "commercial-tree-service",
+    name: "Commercial Tree Service",
+    slug: "commercial-tree-service",
+    href: "/commercial-tree-service-jacksonville-nc",
+    headline: "HOAs, Property Managers, Churches & Businesses.",
+    description:
+      "HOAs, property managers, apartment complexes, churches and businesses. COI for vendor onboarding, work scheduled around your hours.",
+    features: [
+      "Certificates of insurance for vendor onboarding",
+      "Scheduled around business hours",
+      "Hazard trees near parking and buildings",
+      "Recurring maintenance agreements",
+      "24/7 storm response for properties",
+    ],
+    metaTitle: "Commercial Tree Service Jacksonville NC | Godhans",
+    metaDesc:
+      `Commercial tree service in Jacksonville, NC for HOAs, property managers and businesses. Call ${BUSINESS.phone}.`,
   },
 ] as const;
 
@@ -667,7 +671,7 @@ export const TRUST_STATS = [
 /**
  * SOURCES - external authorities the site quotes, one binding each.
  *
- * The NC DOI link existed only inside /storm-cleanup-jacksonville-nc while three
+ * The NC DOI link existed only inside the old storm-cleanup page while three
  * other pages made claims derived from the same provision with no citation at
  * all. A URL that three pages depend on should not live in one page's JSX.
  *

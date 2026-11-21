@@ -18,9 +18,9 @@ const NOT_FOUND_LINKS = [
     blurb: "Tree on the house? This is the page, and a real person answers.",
   },
   {
-    href: "/tree-service-jacksonville-nc",
+    href: "/",
     label: "The Jacksonville crew, and how to vet a tree company",
-    blurb: "Eight questions to ask before hiring anyone, and how to verify insurance.",
+    blurb: "What to check before hiring anyone, and how to verify insurance.",
   },
   {
     href: "/contact",

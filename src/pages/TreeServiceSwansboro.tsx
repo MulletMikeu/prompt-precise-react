@@ -115,12 +115,6 @@ export default function TreeServiceSwansboro() {
           answer: `We run 24/7 emergency response and Swansboro is close to the shop. Most storm calls here are responded to within hours. Call ${BUSINESS.phone} any time — and treat any downed line as live until the utility says otherwise.`,
         },
       ]}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-      ]}
       finalCta={{
         heading: "Schedule Tree Service in Swansboro, NC",
         text: "Need professional tree service in Swansboro? Contact Godhans today for a free estimate and reliable, careful tree care.",

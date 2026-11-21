@@ -108,7 +108,7 @@ export function PrecisionRemoval({ variant = 'light', heading, showImage = true 
             <Link to="/emergency-tree-service-jacksonville-nc" className="hover:underline underline-offset-2">
               Emergency Tree Service →
             </Link>
-            <Link to="/tree-service-jacksonville-nc#contact" className="hover:underline underline-offset-2">
+            <Link to="/contact" className="hover:underline underline-offset-2">
               Contact Us →
             </Link>
           </div>

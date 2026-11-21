@@ -109,12 +109,6 @@ export default function SpiderLiftRemoval() {
           { href: "/emergency-tree-service-jacksonville-nc", label: "Emergency tree service", blurb: "Where the lift bills at $145/hr on an itemised storm invoice." },
         ],
       }}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-      ]}
       finalCta={{
         heading: "Tree a Truck Can't Reach?",
         text: "Tell us where it is and what is around it. We will tell you whether it is a lift job, a climb, or both — and give you a written number before anything is cut.",

@@ -7,7 +7,7 @@ const DESC = "Godhans Tree Company serves Jacksonville, NC and Onslow County wit
 const CANONICAL = "https://godhans.com/service-area";
 
 const CITY_PAGE_MAP: Record<string, string> = {
-  "jacksonville-nc": "/tree-service-jacksonville-nc",
+  "jacksonville-nc": "/",
   "hubert-nc": "/tree-service-hubert-nc",
   "richlands-nc": "/tree-service-richlands-nc",
   "swansboro-nc": "/tree-service-swansboro-nc",

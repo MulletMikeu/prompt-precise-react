@@ -122,13 +122,6 @@ export default function TreeRemovalNearHouse() {
             },
           ],
         }}
-        relatedServices={[
-          { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-          { label: 'Spider Lift Tree Removal', href: '/spider-lift-tree-removal-jacksonville-nc' },
-          { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-          { label: 'Residential Tree Service', href: '/residential-tree-service-jacksonville-nc' },
-          { label: 'Resistograph Tree Testing', href: '/resistograph-tree-testing-jacksonville-nc' },
-        ]}
         finalCta={{
           heading: "Tree Too Close to Your House?",
           text: "Don't wait for a storm. Get a free on-site estimate from Godhans — we'll tell you honestly whether it needs to come down and how we'll do it safely.",

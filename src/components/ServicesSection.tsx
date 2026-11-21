@@ -109,11 +109,10 @@ export default function ServicesSection() {
             </Link>
           ))}
 
-          {/* No filler cell here any more. SERVICES used to have five entries,
-              which left the sixth slot of the 3-column grid empty at lg, and a
-              photo filled it. Debris Hauling is the sixth service, so the grid
-              is now exactly 2 rows x 3 and a seventh cell would orphan itself on
-              a third row. The spider-lift-over-house photo that used to sit here
+          {/* No filler cell. SERVICES has six entries (Ship M merged storm
+              cleanup into emergency and added commercial), so the grid is
+              exactly 2 rows x 3 and a seventh cell would orphan itself on a
+              third row. The spider-lift-over-house photo that used to sit here
               is no longer on the homepage; the gallery strip below still carries
               a different spider-lift shot. */}
         </div>
@@ -130,16 +129,14 @@ export default function ServicesSection() {
             competing with instead.
             ANCHOR RULES. Each anchor is the query family, not the page title,
             and each one is unique on this page — "commercial tree service in
-            Jacksonville" below is reserved (see its note) and is not reused
-            here. Four anchors in one sentence is the limit; if a fifth is ever
+            Jacksonville" is the commercial card's and is not reused here.
+            Four anchors in one sentence is the limit; if a fifth is ever
             wanted it belongs in its own sentence, not appended to this list.
-            WHAT IS DELIBERATELY ABSENT. No link to
-            /tree-removal-cost-north-carolina. That page is the live A/B
-            treatment arm, its inbound link count is frozen in
-            scripts/arm-baseline.json until 2026-12-01, and the homepage already
-            carries one in-sentence link to it from the hero. */}
+            No link to /tree-removal-cost-north-carolina here: the homepage
+            carries no prices (owner ruling, Ship L), and the cost page is
+            reached from the service pages. */}
         <p className="font-body text-base leading-relaxed mt-8" style={{ color: "#888888" }}>
-          Most calls are one of four jobs:{' '}
+          Most calls are one of three jobs:{' '}
           <Link to="/tree-removal-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
             hazardous and large tree removal
           </Link>
@@ -147,33 +144,17 @@ export default function ServicesSection() {
           <Link to="/tree-trimming-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
             tree trimming
           </Link>
-          {' '}before hurricane season,{' '}
+          {' '}before hurricane season, and{' '}
           <Link to="/emergency-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
-            24/7 emergency tree service
+            24/7 emergency tree service and storm cleanup
           </Link>
-          {' '}when something is already on the house, and{' '}
-          <Link to="/storm-cleanup-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
-            storm cleanup
-          </Link>
-          {' '}once the wind has passed.
+          {' '}when something is already on the house or the wind has just passed.
         </p>
 
-        {/* Commercial & residential split, directly under the grid.
-            The commercial anchor text is fixed at "commercial tree service in
-            Jacksonville" — the site already ranks #1 on non-geo commercial
-            terms, so this anchor is deliberate and must not be varied or
-            duplicated elsewhere on the homepage. */}
-        <p className="font-body text-base leading-relaxed mt-4" style={{ color: "#888888" }}>
-          Commercial &amp; Residential: we handle{' '}
-          <Link to="/commercial-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
-            commercial tree service in Jacksonville
-          </Link>
-          {' '}for HOAs, apartment complexes, churches, and storefronts — and{' '}
-          <Link to="/residential-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
-            residential tree service
-          </Link>
-          {' '}for homeowners across Onslow County.
-        </p>
+        {/* Ship M: the commercial/residential sentence that sat here is gone.
+            Residential 301s to "/" (this page), and commercial is now a card in
+            the grid above, whose anchor already reads "Commercial Tree Service
+            in Jacksonville, NC" — a second link to it here would repeat it. */}
 
         {/* Job photo gallery.
             Variants come from scripts/gen-images.mjs, pre-cropped to the same 4/3 box

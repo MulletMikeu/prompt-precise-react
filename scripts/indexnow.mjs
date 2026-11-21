@@ -88,33 +88,6 @@ const DEFAULT_WINDOW_DAYS = 7;
 /** Committed record of what each URL's rendered content looked like last time. */
 const CONTENT_STATE = path.join(ROOT, 'scripts', 'indexnow-content.json');
 
-/**
- * The A/B test control. Pinging it is not merely wasteful, it is a confound:
- * the live test compares /tree-removal-cost-north-carolina against this page,
- * and asking Bing to re-crawl one arm and not the other is a change to the
- * experiment. The brief for every ship so far has said "never submit the
- * control URL", so it is enforced here rather than left to whoever is typing
- * the command at 2am.
- *
- * REMOVE THIS (and --include-ab-control with it) WHEN THE TEST ENDS. Until
- * then every run prints the exclusion so it cannot quietly outlive the test.
- *
- * ── THE CASE THIS RULE GETS WRONG (found in Ship J, 2026-10-24) ────────────
- *
- * The exclusion assumes the treatment is the arm that changes. When something
- * changes BOTH arms identically — Ship J moved the review count 27 -> 30, which
- * renders in the shared ServicePage band on every service page including both
- * arms — the content selector picks both, this filter drops only the control,
- * and the result is the treatment pinged and the control not. That is exactly
- * the asymmetry the rule above exists to prevent, produced by the rule itself.
- *
- * Ship J handled it by submitting the control separately with
- * --include-ab-control about twenty seconds later, so both arms were pinged on
- * the same day with the same change. If you hit this again: the test is whether
- * the change is symmetric across the arms. Symmetric change -> ping both or
- * neither. Asymmetric change -> ping neither, and record why.
- */
-const AB_CONTROL = `${ORIGIN}/stump-grinding-jacksonville-nc`;
 /** IndexNow caps a single batch at 10,000 URLs; we are nowhere near it. */
 const MAX_URLS = 10_000;
 
@@ -129,7 +102,6 @@ const dryRun = has('--dry-run');
 const all = has('--all');
 const since = valueOf('--since');
 const urlsArg = valueOf('--urls');
-const includeAbControl = has('--include-ab-control');
 
 const fail = (msg) => {
   console.error(`\n[indexnow] ${msg}\n`);
@@ -262,19 +234,6 @@ if (!explicit && !all && !cutoff) {
 // lastmod is YYYY-MM-DD, so a string compare is a date compare.
 let selected = explicit ?? contentSelected ?? entries.filter((e) => all || e.lastmod >= cutoff);
 
-// The A/B control is removed from EVERY selection mode, including --all and an
-// explicit --urls that names it: the one thing no ship has ever wanted is to
-// ping that page. --include-ab-control is the deliberate override.
-if (!includeAbControl) {
-  const before = selected.length;
-  selected = selected.filter((e) => e.loc !== AB_CONTROL);
-  if (selected.length !== before) {
-    console.log(`[indexnow] EXCLUDED the live A/B control: ${AB_CONTROL}`);
-    console.log('           Pinging one arm and not the other is a change to the experiment.');
-    console.log('           Pass --include-ab-control once the test has ended (and delete AB_CONTROL).');
-  }
-}
-
 // A URL that is not on the canonical apex host would be silently dropped by the
 // endpoint, so refuse rather than half-submit.
 const offHost = selected.filter((e) => !e.loc.startsWith(`${ORIGIN}/`) && e.loc !== `${ORIGIN}/`);
@@ -325,9 +284,9 @@ const payload = {
  *
  * Written for ALL sitemap URLs, not just the submitted ones: this file answers
  * "what did production look like when we last reconciled", which is a different
- * question from "what did we ping". The A/B control in particular is never
- * submitted but still needs its fingerprint tracked, or it would be reported as
- * changed forever.
+ * question from "what did we ping". A URL left out of a submission (an
+ * explicit --urls run, say) still needs its fingerprint tracked, or it would be
+ * reported as changed forever.
  */
 function writeContentState(fingerprints) {
   const body = {

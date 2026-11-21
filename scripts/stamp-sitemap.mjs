@@ -43,6 +43,24 @@
  * gets deployed) and public/sitemap.xml (what gets committed) so the two agree.
  *
  *   npm run stamp-sitemap -- --dry-run    # report, write nothing
+ *
+ * ── A GENUINE SITE-WIDE CHANGE (added Ship M, 2026-11-21) ──────────────────
+ *
+ * The collapse guard below fails the build when every URL ends up on one
+ * lastmod. That is almost always a fingerprinting bug — but not always. Ship M
+ * changed the footer (its services list and the Jacksonville link), so every
+ * page's rendered content really did move on the same day, and the guard then
+ * fails EVERY later build too, because it checks the resulting dates rather
+ * than what caused them.
+ *
+ * The override is deliberate and dated, so it cannot hide a future bug:
+ *
+ *   node scripts/stamp-sitemap.mjs --allow-uniform    # after a real build
+ *
+ * records `uniformAllowedFor: <that date>` in scripts/sitemap-content.json,
+ * which is committed. The guard then passes ONLY while every lastmod equals
+ * that exact date. The first later build that stamps any page with a newer
+ * date has a spread of two again, and the field is dropped on that write.
  */
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -57,6 +75,7 @@ const DIST_SITEMAP = path.join(DIST, 'sitemap.xml');
 const STATE = path.join(ROOT, 'scripts/sitemap-content.json');
 
 const dryRun = process.argv.slice(2).some((a) => a === '--dry-run' || a === '-n');
+const allowUniform = process.argv.slice(2).includes('--allow-uniform');
 
 const die = (msg) => {
   console.error(`\n[stamp-sitemap] ${msg}\n`);
@@ -165,11 +184,21 @@ const rewritten = sitemapXml.replace(
 const spread = [...new Set(Object.values(next.pages).map((p) => p.lastmod))].sort();
 console.log(`[stamp-sitemap] lastmod values in use (${spread.length}): ${spread.join(', ')}`);
 
-if (spread.length < 2 && urls.length > 4) {
+// See "A GENUINE SITE-WIDE CHANGE" in the header.
+const acknowledged = prior.uniformAllowedFor;
+if (spread.length < 2 && urls.length > 4 && allowUniform) {
+  next.uniformAllowedFor = spread[0];
+  console.log(`[stamp-sitemap] --allow-uniform: every URL is ${spread[0]}; recorded as acknowledged. COMMIT scripts/sitemap-content.json.`);
+} else if (spread.length < 2 && urls.length > 4 && acknowledged === spread[0]) {
+  next.uniformAllowedFor = acknowledged;
+  console.log(`[stamp-sitemap] every URL is ${spread[0]} — acknowledged as a real site-wide change (uniformAllowedFor in the state file).`);
+} else if (spread.length < 2 && urls.length > 4) {
   die(
     `every one of the ${urls.length} URLs ended up with the same lastmod (${spread[0]}).\n` +
     `That is the collapse this script exists to prevent. Check the fingerprinting\n` +
-    `in scripts/lib/content-fingerprint.mjs before shipping.`,
+    `in scripts/lib/content-fingerprint.mjs before shipping. If every page really\n` +
+    `did change (a site-wide footer edit, say), run with --allow-uniform and commit\n` +
+    `the state file — see the header.`,
   );
 }
 

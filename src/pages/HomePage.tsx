@@ -1,6 +1,7 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { BUSINESS } from "../data/siteData";
 import HomeHero from "../components/HomeHero";
+import HomeLocal from "../components/HomeLocal";
 import ServicesSection from "../components/ServicesSection";
 import TrustSection from "../components/TrustSection";
 import ReviewsSection from "../components/ReviewsSection";
@@ -20,12 +21,16 @@ import CTABanner from "../components/CTABanner";
  * the service pages. HeroCompare.tsx and homepageCopy.ts are left in the repo —
  * PROSE is still read by /contact, /services, /residential-… and /terms.
  *
+ * Ship M (2026-11-21): the Jacksonville hub's local content now renders here
+ * (<HomeLocal/>, between the intro and the service cards) and the hub 301s to
+ * "/", as does the retired residential page. The "★" left the description.
+ *
  * TITLE is unchanged from Ship I: the exact-match head term in front, then the
  * one claim no competitor here can copy. DESC dropped its price floor; every
  * figure in it is interpolated from BUSINESS, never typed.
  */
 const TITLE = "Tree Service Jacksonville NC | Veteran-Owned | Godhans";
-const DESC = `Veteran-owned tree service in Jacksonville, NC. ${BUSINESS.jobsCompleted} jobs in ${BUSINESS.county} since ${BUSINESS.founded}, ${BUSINESS.reviewRating}★ on ${BUSINESS.reviewCount} Google reviews. Open ${BUSINESS.hoursShort} — free estimates.`;
+const DESC = `Veteran-owned tree service in Jacksonville, NC. ${BUSINESS.jobsCompleted} jobs in ${BUSINESS.county} since ${BUSINESS.founded}, rated ${BUSINESS.reviewRating} on ${BUSINESS.reviewCount} Google reviews. Open ${BUSINESS.hoursShort} — free estimates.`;
 
 /** One string, so SSR emits one text node (no <!-- --> splits) — no prices. */
 const INTRO = `Godhans Tree Company is a veteran-owned tree service in Jacksonville, NC. Since ${BUSINESS.founded} we've completed ${BUSINESS.jobsCompleted} jobs across ${BUSINESS.county} — removals, trimming, stump grinding and 24/7 storm work — with our own crew and a 90-ft spider lift for the trees others can't reach.`;
@@ -56,6 +61,7 @@ export default function HomePage() {
             <p className="home-intro-text">{INTRO}</p>
           </div>
         </section>
+        <HomeLocal />
         <ServicesSection />
         <ReviewsSection />
         <ServiceAreaSection />

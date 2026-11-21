@@ -271,12 +271,6 @@ export default function TreeRemovalPermitNC() {
         text: "If you're unsure about tree removal requirements or need professional service, contact us today. We provide safe, reliable tree removal in Jacksonville and surrounding areas.",
         buttonText: "Call Now"
       }}
-      relatedServices={[
-        { label: "Tree Removal", href: "/tree-removal-jacksonville-nc" },
-        { label: "Tree Trimming", href: "/tree-trimming-jacksonville-nc" },
-        { label: "Stump Grinding", href: "/stump-grinding-jacksonville-nc" },
-        { label: "Emergency Tree Service", href: "/emergency-tree-service-jacksonville-nc" }
-      ]}
     />
   );
 }

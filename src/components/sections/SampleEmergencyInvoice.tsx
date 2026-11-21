@@ -105,7 +105,7 @@ export default function SampleEmergencyInvoice() {
         {/* The Section B notes above cite a $500-per-loss debris sublimit. That
             figure is the state regulator's, so it gets the regulator's link
             rather than sitting on the page unsourced. Reads from SOURCES so this
-            page and /storm-cleanup-* cannot end up on different URLs. */}
+            page and the emergency page's own insurance source cannot drift. */}
         <p className="text-gray-400 text-sm leading-relaxed mt-4 pl-4">
           The $500-per-loss debris figure is the standard provision as described by the{' '}
           <a
@@ -121,7 +121,7 @@ export default function SampleEmergencyInvoice() {
 
         <p className="mt-6">
           <Link
-            to="/storm-cleanup-jacksonville-nc"
+            to="/emergency-tree-service-jacksonville-nc#storm-insurance"
             className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
           >
             How insurance handles tree removal →

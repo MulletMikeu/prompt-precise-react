@@ -1151,3 +1151,23 @@
   font-size: clamp(1.1rem, 1.8vw, 1.35rem);
   line-height: 1.6;
 }
+
+/* Homepage local content (HomeLocal.tsx, Ship M), between the intro and the
+   service cards. Same dark band and reading measure as .home-intro. */
+.home-local { background: #0A0A0A; padding: clamp(2rem, 4vw, 3rem) 0 clamp(2.5rem, 5vw, 4rem); }
+.home-local p,
+.home-local-list { color: #C8C8C2; font-size: 1.05rem; line-height: 1.7; max-width: 66ch; }
+.home-local p + p { margin-top: 1rem; }
+.home-local-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.1;
+  margin: 2.5rem 0 1rem;
+}
+.home-local-h2:first-child { margin-top: 0; }
+.home-local-list { list-style: disc; padding-left: 1.25rem; margin: 0.75rem 0 1rem; }
+.home-local-list li + li { margin-top: 0.5rem; }
+.home-local-link { color: var(--red-text); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }

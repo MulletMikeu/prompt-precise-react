@@ -333,17 +333,12 @@ export default function ResistographTesting() {
           answer: 'In our experience mature maples almost always carry some heartwood rot, and water oaks show a decent amount of rot on the resistograph roughly seven or eight times in ten. Live oaks rarely rot. We suspect the high water table here is part of the reason, though that is a pattern in our own results rather than a studied conclusion.',
         },
       ]}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Tree Trimming', href: '/tree-trimming-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-      ]}
       guides={{
         heading: 'Related Guides',
         links: [
           { href: '/tree-removal-near-house-jacksonville-nc', label: 'Tree removal near a house', blurb: 'What changes when the tree is close enough that position sets the price.' },
           { href: '/leaning-tree-dangerous-after-storm', label: 'Is a leaning tree dangerous after a storm?', blurb: 'The signs that mean act now, and the ones that mean watch it.' },
-          { href: '/storm-cleanup-jacksonville-nc', label: 'Storm cleanup and insurance', blurb: 'What a homeowners policy typically covers when a tree comes down.' },
+          { href: '/emergency-tree-service-jacksonville-nc', label: 'Storm cleanup and insurance', blurb: 'What a homeowners policy typically covers when a tree comes down.' },
           { href: '/tree-cabling-bracing-jacksonville-nc', label: 'Cabling and bracing', blurb: 'If the wood tests sound, hardware can support the weak union instead of removing the tree.' },
           { href: '/neighbor-tree-problems-jacksonville-nc', label: "When the tree is your neighbor's", blurb: 'A measurement is the strongest thing to attach to a written notice — plus who can cut what, cited to NC law.' },
           { href: '/pine-tree-problems-jacksonville-nc', label: 'Is my pine dying or dangerous?', blurb: 'Pines do not hide decay the way hardwoods do — which is the exact inverse of the argument on this page.' },

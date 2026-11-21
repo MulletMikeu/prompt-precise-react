@@ -327,13 +327,6 @@ export default function TreeTrimming() {
           }
         ]
       }}
-      relatedServices={[
-        { label: 'Tree Removal', href: '/tree-removal-jacksonville-nc' },
-        { label: 'Stump Grinding', href: '/stump-grinding-jacksonville-nc' },
-        { label: 'Emergency Tree Service', href: '/emergency-tree-service-jacksonville-nc' },
-        { label: 'Resistograph Tree Testing', href: '/resistograph-tree-testing-jacksonville-nc' },
-        { label: 'Commercial Tree Service', href: '/commercial-tree-service-jacksonville-nc' },
-      ]}
       finalCta={{
         heading: "Schedule Your Tree Trimming Service Today",
         text: "Keep your trees healthy, safe, and looking their best with professional tree trimming services in Jacksonville, NC. Contact us today for a free estimate.",

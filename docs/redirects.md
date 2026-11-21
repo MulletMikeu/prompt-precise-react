@@ -33,10 +33,10 @@ Three consequences:
    is that 308 preserves the request method. If someone asks you to "make http
    301", the honest answer is that it already redirects permanently and the status
    code is not ours to set.
-3. **A redirect destination is not an inbound link.** The arm guard
-   (`scripts/check-arms.mjs`) counts `<a href>` in the built HTML. Pointing a
-   redirect at a page does not move its inbound-link count, which is why the
-   blocks below can safely target pages the guard watches.
+3. **A redirect destination is not an inbound link.** Pointing a redirect at a
+   page does not change any `<a href>` in the built HTML. (This mattered while
+   `scripts/check-arms.mjs` guarded the A/B test; that guard was deleted in
+   Ship M, 2026-11-21, when the owner ended the test.)
 
 ---
 
@@ -67,34 +67,14 @@ say, not by slug similarity:
 
 | Old URL | Target | Why this page |
 |---|---|---|
-| `/10-questions-you-need-to-ask-before-hiring-a-tree-removal-company` | `/tree-service-jacksonville-nc` | Carries the literal H2 "What questions should I ask before hiring a tree removal company?" (eight questions), plus "How to Verify a Tree Company in North Carolina" and "Check Us First". Three sections on the old post's exact topic. |
+| `/10-questions-you-need-to-ask-before-hiring-a-tree-removal-company` | `/` | Was `/tree-service-jacksonville-nc`, which carried the eight questions. Ship M (2026-11-21) folded that hub into the homepage, which now carries its "check us before you hire anyone" section; re-pointed straight at `/` so there is no chain through the hub's own 301. |
 | `/7-top-reasons-to-hire-a-professional-tree-trimmer` | `/tree-trimming-jacksonville-nc` | The trimming owner page. |
 | `/common-tree-pests-and-diseases-in-eastern-north-carolina` | `/tree-removal-jacksonville-nc` | The only page covering pests **and** diseases across species: fusiform rust, southern pine beetle, Ips engravers, Armillaria root rot, Biscogniauxia/Hypoxylon canker, Bradford pear — and it cites **both** NC State Extension pest/disease pages. `/pine-tree-problems-*` was the obvious guess and is wrong: it has zero mentions of rust, root rot or canker and cites only the pine-beetle page. |
 | `/how-to-increase-home-value-by-adding-trees` | `/tree-trimming-jacksonville-nc` | **The weakest of the eight, and knowingly so.** Nothing on this site is about planting trees or property value — "home value" and "property value" appear zero times. Trimming is the service that keeps an existing tree healthy, and "Why We Don't Rush to Cut Oaks" is the nearest thing to an argument for preserving a mature tree. If these backlinks ever matter, the real answer is a page on tree value, not a better redirect. |
 | `/is-it-okay-to-prune-trees-in-spring` | `/tree-trimming-jacksonville-nc` | Near-exact. That page answers "When is the best time of year to trim trees in North Carolina?" with the dormant-season window **and** explicitly corrects the spring/oak-wilt misconception the old title implies. |
 | `/signs-that-your-tree-is-dead` | `/pine-tree-problems-jacksonville-nc` | The site's dedicated dying/dead-tree diagnostic page; its H1 "Is my pine tree dying or dangerous?" is the closest title-level match, and its first H2 is "A browned-out pine is already gone". `/tree-removal-*`'s newer "What makes a tree hazardous?" section was considered — it is species-agnostic where this is pine-specific — but pine and sweetgum are #1 and #2 on our invoices, so a local "is my tree dead" is usually a pine, and the pine page links onward to the removal page anyway. |
 | `/the-complete-tree-removal-guide-for-homeowners` | `/tree-removal-jacksonville-nc` | The removal owner page, 5,623 words. |
-| `/tree-stump-removal-vs-stump-grinding-which-is-better` | `/tree-removal-jacksonville-nc` | ⚠ **TEMPORARY — see below.** |
-
-### ⚠ `/tree-stump-removal-vs-stump-grinding-which-is-better` must be re-pointed after 2026-12-01
-
-**The correct target is `/stump-grinding-jacksonville-nc`**, which owns stump
-grinding, the grinding-versus-full-excavation distinction and the depth figures.
-It is the **control arm** of the live A/B test, so it is off limits until the test
-reads out on 2026-12-01.
-
-Pointing a redirect at it would not have tripped `check-arms.mjs` — a redirect
-destination is not an inbound link — but it would have fed a backlinked URL's
-equity to one arm and not the other, mid-test, which is the same class of
-confound as Ship A's asymmetric inbound links. So it goes to
-`/tree-removal-jacksonville-nc` for now, which carries the stump content the
-removal page needs anyway (the $6,500 red oak whose five-foot stump took longer
-than the tree).
-
-**After 2026-12-01: change this one rule's destination to
-`/stump-grinding-jacksonville-nc` and delete this paragraph.** Recorded in
-`godhans-shared/DECISIONS-addendum-2026-10-24.md` as well, so it does not depend
-on anyone reading this file.
+| `/tree-stump-removal-vs-stump-grinding-which-is-better` | `/stump-grinding-jacksonville-nc` | Owns stump grinding and the grinding-versus-excavation distinction. Parked on the removal page while the stump page was the A/B control; re-pointed in Ship M when the test ended. |
 
 ### What is deliberately NOT redirected
 
@@ -128,17 +108,37 @@ on 2026-07-15 (`7f87c9e`) because the business does not offer it. The
 `/land-clearing-*` URL still earns ~30 impressions at position 11.2, which is an
 open owner question, not a redirect problem.
 
+`/locations/maysville-nc`, `/locations/beulaville-nc` and
+`/locations/holly-ridge-nc` went to the Jacksonville hub until Ship M
+(2026-11-21), from before those towns had pages. They now go to
+`/tree-service-{maysville,beulaville,holly-ridge}-nc`. `/locations/jacksonville-nc`
+goes to `/` (the hub it used to target was folded into the homepage), and
+`/services/storm-cleanup` goes straight to the emergency page.
+
 ## Block 5 — consolidated and renamed pages
 
 `/tree-removal-tight-spaces*` → `/tree-removal-near-house-jacksonville-nc` and
 `/tree-trimming-vs-pruning` → `/tree-trimming-jacksonville-nc`, both from Ship A
 (2026-10-10), plus older renames.
 
-⚠ **`/tree-removal-tight-spaces-jacksonville-nc` is still linked from
-`/stump-grinding-jacksonville-nc`'s guides list**, and that link 404s on click
-because a react-router `<Link>` never makes the HTTP request the redirect needs.
-It is allow-listed in `scripts/check-links.mjs` and scheduled to be fixed with
-the Nov 1 control edit. See that file's header.
+The stump page's guides-list link to `/tree-removal-tight-spaces-jacksonville-nc`
+(which 404'd on click, because a react-router `<Link>` never makes the HTTP
+request a redirect needs) was pointed straight at
+`/tree-removal-near-house-jacksonville-nc` in Ship M, and its
+`scripts/check-links.mjs` allow-list entry deleted.
+
+### Ship M consolidation (2026-11-21) — one page per intent
+
+Owner rulings 2026-11-21. Each page's unique content was moved before its 301:
+
+| Old URL | Target | What moved |
+|---|---|---|
+| `/tree-service-jacksonville-nc` | `/` | The local-crew, neighborhoods, Camp Lejeune/PCS, local-species and storm-pattern copy, and a condensed "check us before you hire anyone" section, now on the homepage. |
+| `/storm-cleanup-jacksonville-nc` | `/emergency-tree-service-jacksonville-nc` | The storm-cleanup scope, the after-storm process and the insurance-billing account, now a section of the emergency page. |
+| `/residential-tree-service-jacksonville-nc` | `/` | Homeowner intent is the homepage's. Its links were re-pointed to `/` or to the specific service the anchor names. |
+
+All three are sources here, never destinations, and every other rule that used
+to target one of them now targets the final page directly — no chains.
 
 ## Block 6 — `/meet-the-owners` → `/about`
 

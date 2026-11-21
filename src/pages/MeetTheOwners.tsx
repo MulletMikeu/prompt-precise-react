@@ -306,9 +306,7 @@ export default function MeetTheOwners() {
                     bee hive, and the pine going out over the fence rather than
                     simply being "boxed in". NO PRICES here on purpose: the figures
                     live on the removal page, and a fourth copy of them is a fourth
-                    thing to keep in step. The three links in this paragraph are
-                    unchanged in number and destination; one points at the live A/B
-                    treatment arm, which Ship E may not add or remove links to. */}
+                    thing to keep in step. */}
                 {' '}— the pair at Gene Circle, a 105-foot tulip poplar eight feet off a house with
                 a bee hive sixty feet up inside it, and a 120-foot pine boxed in behind a shed that
                 had to be rigged out over the fence into the neighbor&rsquo;s yard — and measuring a
@@ -443,7 +441,7 @@ export default function MeetTheOwners() {
             {/* Internal link back to hub */}
             <div className="mt-10 pt-6 border-t border-gray-800">
               <Link
-                to="/tree-service-jacksonville-nc"
+                to="/"
                 className="text-red-500 hover:text-red-400 font-medium"
               >
                 ← Explore our Jacksonville, NC tree services

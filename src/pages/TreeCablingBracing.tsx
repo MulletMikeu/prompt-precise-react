@@ -181,12 +181,6 @@ export default function TreeCablingBracing() {
           { href: "/tree-removal-cost-north-carolina", label: "Tree Removal Cost Guide", blurb: "Real numbers, if removal turns out to be the honest answer." },
         ],
       }}
-      relatedServices={[
-        { label: "Tree Trimming", href: "/tree-trimming-jacksonville-nc" },
-        { label: "Resistograph Testing", href: "/resistograph-tree-testing-jacksonville-nc" },
-        { label: "Tree Removal", href: "/tree-removal-jacksonville-nc" },
-        { label: "Emergency Tree Service", href: "/emergency-tree-service-jacksonville-nc" }
-      ]}
       finalCta={{
         heading: "Get a Free Cabling and Bracing Assessment",
         text: "Have an oak with a split fork or two leaders pulling apart? We will look at it, tell you honestly whether hardware is worth the money, and price both system types if it is.",
