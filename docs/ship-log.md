@@ -20,6 +20,50 @@ is the narrative one.
 
 ---
 
+## 2026-11-21 — Ship M, one page per intent (hub, storm cleanup, residential consolidated)
+
+**Merged** 2026-11-21 20:44:28 UTC · **production deploy succeeded** 20:51:14 UTC ·
+**confirmed serving** 20:53:24 UTC (godhans.com `/` shows "The crew behind Godhans")
+**Commits:** `c5bd787`, `3a216db` → `1d7dd6f` (merge, PR #16)
+**Shared record:** `ships/2026-11-21-ship-m.md`
+
+**The A/B test is over and its machinery is gone:** `check-arms.mjs`, its
+baseline, the `AB_CONTROL` exclusion in `indexnow.mjs` and the "frozen" comments.
+The header of this file still describes the test; it is history now.
+
+**Retired URLs, all 301:**
+- `/tree-service-jacksonville-nc` → `/`
+- `/residential-tree-service-jacksonville-nc` → `/`
+- `/storm-cleanup-jacksonville-nc` → `/emergency-tree-service-jacksonville-nc`
+- Seven older redirects re-pointed straight at their final page: 41 rules, 0 chains.
+
+**Content:**
+- `/` gains the hub's local section (`HomeLocal.tsx`, about 873 words). Hero and
+  form from Ship L unchanged. Still no prices and no FAQ.
+- The emergency page absorbs storm cleanup: new title and H1, insurance and
+  neighbour sections, 11 merged FAQs.
+- The commercial page is rewritten for HOAs, property managers and businesses.
+  No prices. Land clearing is described as tree work only.
+- The "Other Services We Offer" and hub-link template blocks are removed from
+  every service page. Commercial joins the footer and the homepage service grid.
+
+**Sitemap:** 37 → 34 URLs. The footer change moved every page's content on the
+same day, so `scripts/sitemap-content.json` carries the dated acknowledgement
+`uniformAllowedFor: "2026-11-21"`. It drops itself on the first later build that
+stamps a newer date.
+
+**Production checks at 20:53 UTC:** the three retired URLs return 301 with the
+`Location` above; emergency and commercial return 200; the live sitemap has 34 URLs.
+
+**IndexNow** was run at 20:53 UTC after the deploy: HTTP 200, **34 URLs
+accepted**, the whole sitemap, as expected for a footer change.
+`scripts/indexnow-content.json` committed. The three retired URLs are not in the
+sitemap and were not submitted.
+
+**Not done:** sitemap resubmission in Search Console (owner, manual).
+
+---
+
 ## 2026-11-21 — Ship L, homepage photo hero + two-step estimate form (⚠ BOTH ARMS MOVED; test ended)
 
 **Merged** 2026-11-21 15:28:04 UTC · **production deploy succeeded** 15:33:20 UTC ·
