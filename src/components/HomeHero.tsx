@@ -46,7 +46,7 @@ export default function HomeHero() {
             Tree Service in Jacksonville, NC
           </h1>
           <p className="home-hero-sub">
-            {`Veteran-owned · Open ${BUSINESS.hoursShort} · Serving ${BUSINESS.county} since ${BUSINESS.founded}`}
+            {`Veteran-owned · Open ${BUSINESS.hoursShort} · ${BUSINESS.reviewRating} on ${BUSINESS.reviewCount} Google reviews`}
           </p>
         </div>
       </div>

@@ -13,7 +13,7 @@
 export const HERO_IMAGE_BASE =
   "/images/godhans-crew-spider-lift-skid-steer-stump-grinder-jacksonville-nc";
 
-export const HERO_IMAGE_WIDTHS = [768, 1280, 1920] as const;
+export const HERO_IMAGE_WIDTHS = [768, 1024, 1280, 1920] as const;
 
 /** Intrinsic size of the largest variant (the master is 4:3). */
 export const HERO_IMAGE_WIDTH = 1920;

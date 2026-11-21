@@ -114,7 +114,7 @@ export const BUSINESS = {
   reviewCount: 33,
   reviewRating: "5.0",
   // Same rule as reviewCount: the only place the job total lives. Read by the
-  // homepage trust banner and intro, TRUST_STATS and CREDENTIAL.bullets.
+  // homepage hero form card and intro, TRUST_STATS and CREDENTIAL.bullets.
   jobsCompleted: "3,500+",
   primaryCity: "Jacksonville, NC",
   county: "Onslow County",

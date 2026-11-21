@@ -1,7 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { BUSINESS } from "../data/siteData";
 import HomeHero from "../components/HomeHero";
-import TrustBanner from "../components/TrustBanner";
 import ServicesSection from "../components/ServicesSection";
 import TrustSection from "../components/TrustSection";
 import ReviewsSection from "../components/ReviewsSection";
@@ -9,8 +8,9 @@ import ServiceAreaSection from "../components/ServiceAreaSection";
 import CTABanner from "../components/CTABanner";
 
 /**
- * Homepage, rebuilt in Ship L (2026-11-21): photo hero + two-step estimate form
- * + trust banner.
+ * Homepage, rebuilt in Ship L (2026-11-21): photo hero + two-step estimate form.
+ * The trust banner that followed the hero was removed in the v3 polish; its
+ * lead claim (jobs completed) is now the first line of the form card.
  *
  * Pricing and the FAQ were taken OFF this page on the owner's ruling. The
  * comparison table (HeroCompare), the price paragraph (homepageCopy.ts), the
@@ -51,7 +51,6 @@ export default function HomePage() {
 
       <main id="main-content">
         <HomeHero />
-        <TrustBanner />
         <section className="home-intro" aria-label="About Godhans Tree Company">
           <div className="container-brand">
             <p className="home-intro-text">{INTRO}</p>

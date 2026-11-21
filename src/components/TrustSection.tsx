@@ -28,7 +28,8 @@ export default function TrustSection() {
       <div className="container-brand">
 
         {/* Ship L: the stats row that used to open this section is gone — the
-            same four facts now sit in <TrustBanner/> directly under the hero.
+            jobs total is the first line of the hero form card, and the hours
+            and rating are in the hero subline.
             So is the why-us band photo at the bottom: it was the same job
             photo the hero now leads with. */}
 

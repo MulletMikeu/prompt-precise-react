@@ -63,7 +63,7 @@ const IMAGES = [
     // 1920 step stays under the 200 KB budget for an LCP image.
     base: "godhans-crew-spider-lift-skid-steer-stump-grinder-jacksonville-nc",
     src: "scripts/image-src/IMG_2034.JPEG",
-    widths: [768, 1280, 1920],
+    widths: [768, 1024, 1280, 1920],
     avif: { quality: 27, effort: 6 },
     webp: { quality: 60, effort: 6 },
   },

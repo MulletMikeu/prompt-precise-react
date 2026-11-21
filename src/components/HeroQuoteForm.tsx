@@ -212,6 +212,11 @@ export default function HeroQuoteForm() {
   return (
     <div className="hq-wrap">
       <div className="hq-card">
+        {/* Outside the step containers, so it is the first line on step 1,
+            step 2 and the success message alike. */}
+        <p className="hq-proof">
+          {`${BUSINESS.jobsCompleted} jobs completed in ${BUSINESS.county} since ${BUSINESS.founded}`}
+        </p>
         {state.succeeded ? (
           <div className="hq-success" role="status">
             <h2 className="hq-title">Got it — Michael or James will call you shortly.</h2>
@@ -236,18 +241,10 @@ export default function HeroQuoteForm() {
             </div>
 
             <div hidden={step !== 1} className="hq-step1">
+              {/* Order is the spec's: the two required questions first, then the
+                  optional ones. 2 columns from 768px: service spans both, then
+                  town | emergency, then timeline | tree count. */}
               <div className="hq-grid">
-                <ChipGroup
-                  name="emergency"
-                  legend={QUESTIONS.emergency.legend}
-                  options={QUESTIONS.emergency.options}
-                  onPick={setEmergency}
-                />
-                <ChipGroup
-                  name="timeline"
-                  legend={QUESTIONS.timeline.legend}
-                  options={QUESTIONS.timeline.options}
-                />
                 <div className="hq-span-2">
                   <ChipGroup
                     name="service"
@@ -257,11 +254,6 @@ export default function HeroQuoteForm() {
                     error={errors.service}
                   />
                 </div>
-                <ChipGroup
-                  name="tree_count"
-                  legend={QUESTIONS.tree_count.legend}
-                  options={QUESTIONS.tree_count.options}
-                />
                 <div className="hq-group">
                   <label htmlFor="hq-town" className="hq-legend">
                     Which town?<span className="hq-req"> *</span>
@@ -289,6 +281,22 @@ export default function HeroQuoteForm() {
                     </p>
                   )}
                 </div>
+                <ChipGroup
+                  name="emergency"
+                  legend={QUESTIONS.emergency.legend}
+                  options={QUESTIONS.emergency.options}
+                  onPick={setEmergency}
+                />
+                <ChipGroup
+                  name="timeline"
+                  legend={QUESTIONS.timeline.legend}
+                  options={QUESTIONS.timeline.options}
+                />
+                <ChipGroup
+                  name="tree_count"
+                  legend={QUESTIONS.tree_count.legend}
+                  options={QUESTIONS.tree_count.options}
+                />
               </div>
 
               <div className="hq-actions">
@@ -298,7 +306,7 @@ export default function HeroQuoteForm() {
                   </p>
                 )}
                 <button type="button" onClick={goNext} className="btn-primary hq-next">
-                  Next ›
+                  Next
                 </button>
               </div>
             </div>
@@ -384,7 +392,7 @@ export default function HeroQuoteForm() {
 
               <div className="hq-actions hq-actions-2">
                 <button type="button" onClick={goBack} className="hq-back">
-                  ‹ Back
+                  Back
                 </button>
                 <button type="submit" disabled={state.submitting} className="btn-primary hq-next">
                   {state.submitting ? 'Sending…' : 'Get My Free Estimate'}
