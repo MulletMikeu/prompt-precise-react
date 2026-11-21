@@ -20,6 +20,64 @@ is the narrative one.
 
 ---
 
+## 2026-11-21 — Ship L, homepage photo hero + two-step estimate form (⚠ BOTH ARMS MOVED; test ended)
+
+**Merged** 2026-11-21 15:28:04 UTC · **production deploy succeeded** 15:33:20 UTC ·
+**confirmed serving** 15:33:41 UTC (godhans.com `/`, `/reviews`,
+`/tree-removal-jacksonville-nc` fetched and checked)
+**Commits:** `05288e7`, `85ba945`, `efca2df` → `f542622` (merge, PR #15)
+**Shared record:** `ships/2026-11-21-ship-l.md`
+
+**Owner ruling 2026-11-21: the A/B test has ended.** The prompt says so. It is not
+yet in `DECISIONS.md`, which only the owner edits. Both arms moved in this ship:
+- **Review count 30 → 33** on every page that shows it, the control included.
+- **Treatment inbound links 13 → 12**, because the homepage no longer links it
+  from a pricing block.
+
+The guard baseline was re-seeded with all three allow flags. It is now treatment
+`cff7c93dcb2160e0` 12/22 and control `a7080864c8d4e929` 9/23.
+`check-arms.mjs` is kept, on the owner's instruction.
+
+**Homepage only, apart from the review count.**
+- **Hero:** a full-width job photo hero with the H1 "Tree Service in
+  Jacksonville, NC" and the subline "Veteran-owned · Open 24/7 · 5.0 on 33 Google
+  reviews".
+- **Form:** a two-step estimate form over the photo. It uses the same Formspree
+  submission path as QuickQuoteForm, through `quoteFormCore.tsx`, and
+  QuickQuoteForm's output is byte-identical. The card's first line is
+  "3,500+ jobs completed in Onslow County since 2013".
+- **Removed from `/`:** pricing, financing, the FAQ and the FAQPage JSON-LD.
+- **Intro and meta:** a new intro and meta description. The title is unchanged.
+- **Trust banner:** added in v1 and deleted in the v3 polish.
+- **Other pages:** a text diff against a build of `main` showed only 30 → 33 on
+  26 pages. Every other page was byte-identical.
+
+**Hero image:** AVIF and WebP at 768/1024/1280/1920, with EXIF and GPS stripped.
+The 1920 AVIF is 181 KB. The AVIF srcset is preloaded on `/` only.
+
+**Lighthouse (mobile, local, `/`):**
+- v1: 92 performance, LCP 2,883 ms.
+- v3: median 94, LCP 2,582 ms, CLS 0, TBT 0.
+- v3 runs are bimodal: about 1.75 s or about 2.6 s, tracking FCP (stylesheet and
+  font timing).
+- Inlining critical CSS is the next LCP lever.
+
+**IndexNow** was run at 15:34 UTC after the deploy:
+- HTTP 200, **26 URLs accepted**: `/` and the 25 non-control review-count pages.
+- **The control `/stump-grinding-jacksonville-nc` was excluded** by `AB_CONTROL`,
+  as the script still requires. Its new fingerprint was nevertheless written to
+  `scripts/indexnow-content.json`, so a default run will **not** submit it later.
+- With the test over, send it by hand:
+  `npm run indexnow -- --urls=/stump-grinding-jacksonville-nc --include-ab-control`.
+  Then delete `AB_CONTROL`.
+
+**Not verified:**
+- **Review count:** 33 was not re-checked against the live Google profile.
+- **Live form test:** no real Formspree submission has been made from production
+  or the preview yet.
+
+---
+
 ## 2026-10-24 — Ship K, recover eight old URLs with backlinks (config only)
 
 **Pushed** 2026-10-24 14:35:32 UTC · **confirmed serving** 14:40:06 UTC
