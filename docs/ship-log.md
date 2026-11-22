@@ -20,6 +20,35 @@ is the narrative one.
 
 ---
 
+## 2026-11-22 — Ship N, homepage photo row into the local section + mid-page CTA
+
+**Merged** 2026-11-22 00:01:04 UTC · **production deploy succeeded** 00:05:51 UTC ·
+**confirmed serving** 00:06:11 UTC (godhans.com `/` shows "Schedule with Mike Today")
+**Commits:** `dcf80a4` → `bf28a39` (merge, PR #17)
+**Shared record:** `ships/2026-11-21-ship-n.md`
+
+**Homepage only.**
+- The three-photo job row moved out of the services section and into HomeLocal,
+  between the neighborhoods block and "Camp Lejeune and military families".
+  Still 3 across on desktop; on phones it is a swipe row instead of a stack.
+- Under it, a CTA: "Want Mike to look at your tree?", a "Schedule with Mike Today"
+  button that smooth-scrolls to the hero form card (`#estimate`) and focuses its
+  first field, and the tap-to-call link "or call (618) 704-4861 — we answer 24/7".
+
+**Lighthouse (mobile, local, `/`, median of 3):** 93, LCP 2,679 ms, CLS 0. A
+same-session `main` re-run was 94 / 2,589 ms. The ~90 ms comes from the photos
+now falling inside Chrome's lazy-load distance on a 412 px phone, so 162 KB of
+photos load during the test. The hero itself is unchanged.
+
+**Production check at 00:06 UTC:** `/` has one `id="estimate"`, one photo row,
+and no job photos left in `#services`.
+
+**IndexNow** was run at 00:06 UTC after the deploy: HTTP 200, **1 URL accepted**
+(`/`), as expected for a homepage-only ship. `scripts/indexnow-content.json`
+committed. The sitemap `lastmod` for `/` stays 2026-11-21 (the commit date).
+
+---
+
 ## 2026-11-21 — Ship M, one page per intent (hub, storm cleanup, residential consolidated)
 
 **Merged** 2026-11-21 20:44:28 UTC · **production deploy succeeded** 20:51:14 UTC ·

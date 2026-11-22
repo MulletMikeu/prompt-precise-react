@@ -1,8 +1,8 @@
 {
   "_comment": "Fingerprints of each URL's rendered content at the last `npm run indexnow`. Generated — do not hand-edit. Asset hashes, the SSG hash, comments and whitespace are normalised out, so a font/bundle/comment-only ship leaves these unchanged and submits nothing. COMMIT THIS FILE: without it a fresh clone has no baseline and the next run would submit every URL. See the header of scripts/indexnow.mjs.",
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "fingerprints": {
-    "https://godhans.com/": "9728cb649ad58853c1c8410f32005afa9036569883e53ac233a9bcd07d89d676",
+    "https://godhans.com/": "9ab5b1aea4f00d77204a04340345fb46d113b411fc696d37b96a96c5adfcd402",
     "https://godhans.com/services": "80741475040c90d4942594dde26a15dfc5bb9f0ab44a5c80a0aaddcfda2cddc0",
     "https://godhans.com/about": "93cc32cc8d96e3f7371d4c441c0106076efb5268f6479c2cd1c34581fd4a5e02",
     "https://godhans.com/contact": "fc9cbf3529ed2f017676b04b6a2571dfd1eb3684072681487b3cb668e1fac859",
