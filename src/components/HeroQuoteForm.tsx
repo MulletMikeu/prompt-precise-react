@@ -211,7 +211,8 @@ export default function HeroQuoteForm() {
 
   return (
     <div className="hq-wrap">
-      <div className="hq-card">
+      {/* id: the scroll target for HomeLocal's "Schedule with Mike Today". */}
+      <div id="estimate" className="hq-card">
         {/* Outside the step containers, so it is the first line on step 1,
             step 2 and the success message alike. */}
         <p className="hq-proof">

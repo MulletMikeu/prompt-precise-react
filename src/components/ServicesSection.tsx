@@ -1,36 +1,6 @@
 import { Link } from "react-router-dom";
 import { BUSINESS, SERVICES } from "../data/siteData";
 
-/**
- * The gallery is one column below Tailwind's `sm` (640px) and three columns
- * above it, inside `.container-brand` (max-width 1280px, padding clamped to
- * 3rem). So past a 1280px viewport each cell is a fixed (1280 - 96) / 3 ≈ 394px
- * and `33vw` would over-request by ~60%.
- */
-const GALLERY_SIZES = "(min-width: 1280px) 394px, (min-width: 640px) 33vw, 100vw";
-
-/** Widths that scripts/gen-images.mjs emits, minus any above a master's own width. */
-const GALLERY = [
-  {
-    base: "pine-spar-rigging-tree-removal-jacksonville-nc",
-    alt: "Sectioned pine spar rigged for lowering during a tree removal in Jacksonville, NC",
-    widths: [480, 768, 1024, 1280],
-  },
-  {
-    base: "stump-grinding-operator-jacksonville-nc",
-    alt: "Godhans operator grinding a large oak stump in Jacksonville, NC",
-    widths: [480, 768, 1024, 1280],
-  },
-  {
-    base: "spider-lift-tight-backyard-jacksonville-nc",
-    alt: "Compact spider lift set up in a tight fenced backyard for tree removal in Jacksonville, NC",
-    widths: [480, 768, 1024, 1280],
-  },
-];
-
-const srcSet = (photo: (typeof GALLERY)[number], ext: string) =>
-  photo.widths.map((w) => `/images/${photo.base}-${w}.${ext} ${w}w`).join(", ");
-
 export default function ServicesSection() {
   return (
     <section
@@ -113,8 +83,8 @@ export default function ServicesSection() {
               cleanup into emergency and added commercial), so the grid is
               exactly 2 rows x 3 and a seventh cell would orphan itself on a
               third row. The spider-lift-over-house photo that used to sit here
-              is no longer on the homepage; the gallery strip below still carries
-              a different spider-lift shot. */}
+              is no longer on the homepage; the job-photo row in HomeLocal still
+              carries a different spider-lift shot. */}
         </div>
 
         {/* Ship I — the four owner pages the homepage was only linking from a
@@ -156,29 +126,8 @@ export default function ServicesSection() {
             the grid above, whose anchor already reads "Commercial Tree Service
             in Jacksonville, NC" — a second link to it here would repeat it. */}
 
-        {/* Job photo gallery.
-            Variants come from scripts/gen-images.mjs, pre-cropped to the same 4/3 box
-            these render in. `widths` there must stay in sync with GALLERY_WIDTHS. */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px mt-px" style={{ background: "#1A1A1A" }}>
-          {GALLERY.map((photo) => (
-            <div key={photo.base} className="relative overflow-hidden" style={{ aspectRatio: "4/3", background: "#111111" }}>
-              <picture>
-                <source type="image/avif" srcSet={srcSet(photo, "avif")} sizes={GALLERY_SIZES} />
-                <img
-                  src={`/images/${photo.base}-768.webp`}
-                  srcSet={srcSet(photo, "webp")}
-                  sizes={GALLERY_SIZES}
-                  alt={photo.alt}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                  width="1024"
-                  height="768"
-                />
-              </picture>
-            </div>
-          ))}
-        </div>
+        {/* Ship N: the three-photo job gallery that sat here moved into
+            HomeLocal, under the neighborhoods block, with the mid-page CTA. */}
 
         {/* Bottom CTA */}
         <div className="mt-12 text-center">
