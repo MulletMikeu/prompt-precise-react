@@ -8,7 +8,7 @@ import { AUTHOR, BUSINESS, BUSINESS_ID, CREDENTIAL, JAMES, SITE_URL, WEBSITE_ID 
  * structured data to point at without a second hardcoded copy of the filename.
  */
 const MICHAEL_PHOTO_SRC = '/images/owner-michael-godhans-jacksonville-nc.webp';
-const JAMES_PHOTO_SRC = '/images/owner-james-godhans-tree-service-jacksonville-nc.jpg';
+const JAMES_PHOTO_SRC = '/images/james-godbersen-crew-leader-stump-grinding-jacksonville-nc.jpg';
 
 // === EDITABLE PHOTO FIELDS (Michael) ===
 /*
@@ -30,14 +30,15 @@ const MICHAEL_PHOTO_HEIGHT = 1408;
 // === END EDITABLE PHOTO FIELDS ===
 
 // === EDITABLE PHOTO FIELDS (James) ===
-// Same override as Michael's above — full name, real role. He is co-owner, so
-// the old "owner of" was wrong on top of being nameless.
-const JAMES_PHOTO_ALT = `${JAMES.name}, co-owner of ${BUSINESS.name} in Jacksonville, NC.`;
+// Owner wording, Ship O (2026-11-23). He is the crew leader, not an owner; the
+// photo shows him on the stump grinder, which is what the filename says too.
+const JAMES_PHOTO_ALT = `${JAMES.name}, ${JAMES.role.toLowerCase()} at ${BUSINESS.name}, stump grinding in Jacksonville NC`;
 // Editable caption — leave empty to hide.
 const JAMES_PHOTO_CAPTION = '';
 // Optional EXIF / GEO data — leave empty to hide.
 const JAMES_PHOTO_EXIF = '';
-// Intrinsic dimensions (used to reserve aspect ratio and prevent CLS)
+// Intrinsic dimensions (used to reserve aspect ratio and prevent CLS). The
+// .jpg is 1024 x 1536; 1200 x 1800 is the same 2:3 ratio.
 const JAMES_PHOTO_WIDTH = 1200;
 const JAMES_PHOTO_HEIGHT = 1800;
 // === END EDITABLE PHOTO FIELDS ===
@@ -51,9 +52,12 @@ const PAGE_URL = `${SITE_URL}/about`;
  *
  * Both now name both men in full. "Michael and James" gave a search engine
  * nothing it could resolve to a person, which is the entire job of this page.
+ * Michael is the single owner; James is the crew leader (owner ruling
+ * 2026-11-23). The old "Brothers, USMC veterans" claimed James's service,
+ * which is not among the facts Michael supplied, so it is gone.
  */
 const PAGE_TITLE = 'About Godhans Tree Company | Jacksonville, NC';
-const PAGE_DESCRIPTION = `${AUTHOR.name} (${AUTHOR.role.toLowerCase()}) and ${JAMES.name} (${JAMES.role.toLowerCase()}) run ${BUSINESS.name} in ${BUSINESS.primaryCity}. Brothers, USMC veterans, ${BUSINESS.county} since ${BUSINESS.founded}.`;
+const PAGE_DESCRIPTION = `Meet ${AUTHOR.name}, USMC veteran and ${AUTHOR.role.toLowerCase()} of ${BUSINESS.name}, and his brother ${JAMES.name}, our ${JAMES.role.toLowerCase()}. ${BUSINESS.county} since ${BUSINESS.founded}.`;
 
 // === EDITABLE CONTENT FIELDS ===
 /*
@@ -79,11 +83,20 @@ const OWNER_MICHAEL = {
   bio: 'Michael is a USMC Veteran with a passion for tree health and high-risk technical removals. He specializes in assisting clients and other tree companies with complicated and hazardous tree operations. Michael enjoys spending his days 80 feet in the air — an office with great views and fresh air — and takes pride in delivering safe, precise, and professional work on every job.',
 };
 
+/*
+ * James, rewritten in Ship O (2026-11-23) from the facts Michael supplied and
+ * nothing else: his brother, with the business since day one, crew leader,
+ * first in and last out, runs the big trucks and equipment, in charge of
+ * cleanups, ground operations and the crew. The quote is Michael's own
+ * description of him. Do not add years, certifications or anything else
+ * without a new ruling.
+ */
 const OWNER_BROTHER = {
   name: JAMES.name,
   role: JAMES.role,
-  knowsAbout: ['Heavy equipment operation', 'Ground operations'],
-  bio: 'James is a heavy equipment expert and the head of ground operations. He ensures every job is completed safely, efficiently, and with full respect for the client\u2019s property. James prioritizes the preservation of landscaping, structures, and surrounding areas while maintaining smooth, coordinated operations from the ground up.',
+  knowsAbout: ['Heavy equipment operation', 'Ground operations', 'Job-site cleanup'],
+  bio: 'James is Michael’s brother, and he has been with the business since day one. He is our crew leader: the first one in and the last one out. He runs all the big trucks and equipment, and he is in charge of cleanups, ground operations and the crew.',
+  quote: 'He’s the hardest-working and nicest person you’ll meet.',
 };
 // === END EDITABLE CONTENT FIELDS ===
 
@@ -352,7 +365,7 @@ export default function MeetTheOwners() {
               </figure>
             </section>
 
-            {/* James — Owner Photo */}
+            {/* James — crew leader photo */}
             <section aria-label={`Photo of ${JAMES.name}`} className="mb-8">
               <figure className="m-0">
                 <div
@@ -362,12 +375,12 @@ export default function MeetTheOwners() {
                   <picture className="absolute inset-0 block h-full w-full">
                     <source
                       type="image/avif"
-                      srcSet="/images/owner-james-godhans-tree-service-jacksonville-nc-512.avif 512w, /images/owner-james-godhans-tree-service-jacksonville-nc-768.avif 768w, /images/owner-james-godhans-tree-service-jacksonville-nc-1024.avif 1024w"
+                      srcSet="/images/james-godbersen-crew-leader-stump-grinding-jacksonville-nc-512.avif 512w, /images/james-godbersen-crew-leader-stump-grinding-jacksonville-nc-768.avif 768w, /images/james-godbersen-crew-leader-stump-grinding-jacksonville-nc-1024.avif 1024w"
                       sizes="(min-width: 768px) 768px, 100vw"
                     />
                     <source
                       type="image/webp"
-                      srcSet="/images/owner-james-godhans-tree-service-jacksonville-nc-512.webp 512w, /images/owner-james-godhans-tree-service-jacksonville-nc-768.webp 768w, /images/owner-james-godhans-tree-service-jacksonville-nc-1024.webp 1024w"
+                      srcSet="/images/james-godbersen-crew-leader-stump-grinding-jacksonville-nc-512.webp 512w, /images/james-godbersen-crew-leader-stump-grinding-jacksonville-nc-768.webp 768w, /images/james-godbersen-crew-leader-stump-grinding-jacksonville-nc-1024.webp 1024w"
                       sizes="(min-width: 768px) 768px, 100vw"
                     />
                     <img
@@ -392,7 +405,7 @@ export default function MeetTheOwners() {
               </figure>
             </section>
 
-            {/* Owner: Brother */}
+            {/* Crew leader: James */}
             <section aria-labelledby="owner-brother" className="mb-10">
               <h2 id="owner-brother" className="text-2xl font-bold mb-2">
                 {OWNER_BROTHER.name || '[Brother name — add via OWNER_BROTHER.name]'}
@@ -407,6 +420,14 @@ export default function MeetTheOwners() {
               ) : (
                 <p className="text-gray-400 italic">[Bio — add via OWNER_BROTHER.bio]</p>
               )}
+              <figure className="mt-5 border-l-4 border-red-500 pl-4">
+                <blockquote className="text-gray-200 text-lg leading-relaxed">
+                  <p>&ldquo;{OWNER_BROTHER.quote}&rdquo;</p>
+                </blockquote>
+                <figcaption className="mt-2 text-sm text-gray-400">
+                  &mdash; {AUTHOR.name}, {AUTHOR.role.toLowerCase()}
+                </figcaption>
+              </figure>
             </section>
 
             {/* Credentials.

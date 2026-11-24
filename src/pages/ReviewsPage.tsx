@@ -1,5 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
+import HubBreadcrumb from "../components/HubBreadcrumb";
 import { BUSINESS, REVIEWS } from "../data/siteData";
 
 const TITLE = "Customer Reviews | Godhans Tree Company Jacksonville, NC";
@@ -53,6 +54,7 @@ export default function ReviewsPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
+            <HubBreadcrumb name="Reviews" path="/reviews" />
             <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>Customer Reviews</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">What Jacksonville Is Saying</h1>
             <div className="flex items-center gap-4">
@@ -133,7 +135,7 @@ export default function ReviewsPage() {
               <blockquote className="text-base leading-relaxed mb-2 pl-4" style={{ color: "#C8C8C2", borderLeft: "3px solid var(--red)" }}>
                 "great service and really good prices"
               </blockquote>
-              {/* "(customer)" is not decoration. One of the two co-owners is
+              {/* "(customer)" is not decoration. Our crew leader is
                   also named James, and an unqualified "— James" under a
                   five-star quote reads as the company praising itself. We do
                   not know this customer's surname or initial and will not

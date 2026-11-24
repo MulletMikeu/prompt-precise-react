@@ -4,7 +4,7 @@ import { AUTHOR, BUSINESS, BUSINESS_ID, JAMES, SITE_URL, WEBSITE_ID } from '../d
 const ABOUT_URL = `${SITE_URL}/about`;
 
 /**
- * Lean Person stubs for the two owners, so LocalBusiness.founder and
+ * Lean Person stubs for the owner and the crew leader, so LocalBusiness.founder and
  * .employee below point at nodes that actually exist in this @graph on every
  * page rather than at bare @ids nothing defines.
  *
@@ -84,8 +84,8 @@ const businessSchema = {
   ],
   priceRange: '$$$',
   foundingDate: String(BUSINESS.founded),
-  // Michael founded the company; both brothers own and work in it. These are
-  // @id references, not inline copies — the nodes are in the same @graph below,
+  // Michael is the single owner and founder; James (crew leader) is an
+  // employee — owner ruling 2026-11-23. These are @id references, not inline copies — the nodes are in the same @graph below,
   // and the full versions are on /about under the same @ids.
   founder: { '@id': AUTHOR.personId },
   employee: [{ '@id': AUTHOR.personId }, { '@id': JAMES.personId }],
@@ -112,7 +112,17 @@ const businessSchema = {
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Storm Cleanup' } },
     ],
   },
-  sameAs: [BUSINESS.social.facebook, BUSINESS.social.youtube],
+  // Organization completeness (Ship O): GBP, Facebook, YouTube and the four
+  // directory profiles. Every URL is a final, browser-checked URL in siteData.
+  sameAs: [
+    BUSINESS.gbpUrl,
+    BUSINESS.social.facebook,
+    BUSINESS.social.youtube,
+    BUSINESS.social.yelp,
+    BUSINESS.social.bbb,
+    BUSINESS.social.houzz,
+    BUSINESS.social.nextdoor,
+  ],
 };
 
 /**

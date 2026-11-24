@@ -138,7 +138,7 @@ function OnslowPermitSection() {
             satisfy a site plan, on a commercial lot or in a newer subdivision, it isn't simply
             the owner's to take out. For a specific lot,{' '}
             <a
-              href="https://www.jacksonvillenc.gov/Directory.aspx?did=49"
+              href="https://www.jacksonvillenc.gov/m/directory/department?did=49"
               target="_blank"
               rel="noopener noreferrer"
               className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold"
@@ -204,6 +204,7 @@ export default function TreeRemovalPermitNC() {
       slug="do-you-need-a-permit-to-remove-a-tree-nc"
       faqPosition="early"
       authorUpdated="2026-09-28"
+      datePublished="2026-04-06"
       description="Most NC homeowners do not need a permit to remove a tree on private property, but city or county rules may apply. Check local guidelines first."
       quickAnswer="In most cases, you do not need a permit to remove a tree on private property in North Carolina. However, local city or county regulations may apply, especially for protected trees or certain areas, so it's important to check local guidelines before removing a tree."
       /**

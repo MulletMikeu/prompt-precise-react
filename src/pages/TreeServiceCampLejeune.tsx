@@ -79,6 +79,10 @@ export default function TreeServiceCampLejeune() {
           </div>
         </section>
       }
+      sectionLinks={{
+        // Ship O: the paperwork section is the natural place for the permit guide.
+        2: { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Do you need a permit to remove a tree in North Carolina?" },
+      }}
       faqs={[
         { question: "Do you offer a military discount?", answer: "Yes — we offer a military discount for active duty, retired, and veteran families. Just mention it when you call for your free estimate." },
         { question: "Can you provide proof of insurance for base housing or landlords?", answer: "Absolutely. We're fully insured and bondable for commercial work, and we'll provide a current certificate of insurance on request before any work begins." },

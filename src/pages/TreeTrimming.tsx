@@ -292,6 +292,11 @@ export default function TreeTrimming() {
           text: "Tree trimming costs depend on the size of the tree and the amount of work required. We offer free estimates and transparent pricing so you know exactly what to expect."
         }
       ]}
+      sectionLinks={{
+        // Ship O: contextual links to the guide articles.
+        0: { href: "/neighbor-tree-problems-jacksonville-nc", label: "Limbs over the property line: what you can trim on a neighbor's tree" },
+        4: { href: "/storm-damage-trees-guide", label: "Hurricane prep for trees: what to book, and when" },
+      }}
       faqs={[
         {
           question: "Will you top my tree to reduce its height?",

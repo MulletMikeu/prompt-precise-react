@@ -15,7 +15,7 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 /**
  * The two named people behind the company, and the only source for either
  * name, role or Person @id. Nothing may retype "Michael Godbersen", "Owner",
- * "James Godbersen" or "Co-Owner" as a literal again: the visible H2s on
+ * "James Godbersen" or "Crew Leader" as a literal again: the visible H2s on
  * /about, the portrait alt text, the author byline on the guide pages and every
  * Person node in the structured data all read from here.
  *
@@ -30,9 +30,10 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
  *     on /about rather than duplicating.
  *
  * AUTHOR is Michael specifically because he is the sole author of the site's
- * content. James is co-owner and does not author pages, which is why only
- * AUTHOR feeds <AuthorByline/>. Do not add a third person here — no one else
- * is an owner or an author of this site.
+ * content. James is the crew leader and does not author pages, which is why
+ * only AUTHOR feeds <AuthorByline/>. Michael is the single owner and founder
+ * (owner ruling 2026-11-23, godhans-shared/DECISIONS-addendum-2026-11-23.md);
+ * James was listed as "Co-Owner" until Ship O and must not be again.
  */
 export const AUTHOR = {
   name: "Michael Godbersen",
@@ -40,10 +41,10 @@ export const AUTHOR = {
   personId: `${SITE_URL}/about#michael`,
 } as const;
 
-/** Co-owner. Named but never an author — see the note on AUTHOR. */
+/** Crew leader, Michael's brother. Named but never an author — see the note on AUTHOR. */
 export const JAMES = {
   name: "James Godbersen",
-  role: "Co-Owner",
+  role: "Crew Leader",
   personId: `${SITE_URL}/about#james`,
 } as const;
 
@@ -122,10 +123,23 @@ export const BUSINESS = {
     // Facebook's canonical profile URL, not the /profile.php?id= form — that
     // one 301s here, and `sameAs` should name the destination rather than a
     // redirect hop.
-    facebook: "https://www.facebook.com/people/Godhans/100057407111124/",
+    // Ship O (2026-11-23): the page's vanity URL since 2026-10-26 (see
+    // godhans-shared/DECISIONS-addendum-2026-10-26-citations.md). Verified in a
+    // browser the same day.
+    facebook: "https://www.facebook.com/godhanstreecompany",
     youtube: "https://www.youtube.com/@Godhanstree",
+    // Directory profiles, each opened and checked in a browser 2026-11-23.
+    // Final URLs, not redirect hops. Used for LocalBusiness.sameAs.
+    yelp: "https://www.yelp.com/biz/godhans-tree-company-jacksonville-2",
+    bbb: "https://www.bbb.org/us/nc/jacksonville/profile/tree-service/godhans-0593-90334103",
+    houzz: "https://www.houzz.com/professionals/tree-services/godhans-tree-company-pfvwus-pf~257203744",
+    nextdoor: "https://nextdoor.com/pages/godhans-jacksonville-nc/",
   },
-  gbpUrl: "https://g.page/godhans",
+  // Was https://g.page/godhans, a retired short-link that 301s to a Google
+  // *search* for "godhans", not to the profile. The CID is the one in the
+  // /service-area map embed (0x6af5edd22ef362ab); it opens the Godhans Tree
+  // Company place at 4445 Gum Branch Rd (checked in a browser 2026-11-23).
+  gbpUrl: "https://www.google.com/maps?cid=7707327824301089451",
   credentials: [
     "$2M Liability & Workers' Comp — Insured",
     "Every Machine Individually Insured",

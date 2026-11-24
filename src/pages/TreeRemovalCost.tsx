@@ -140,9 +140,10 @@ export default function TreeRemovalCost() {
       title="How Much Does Tree Removal Cost in North Carolina? (2026 Guide)"
       metaTitle="Tree Removal Cost in North Carolina (2026 Guide)"
       slug="tree-removal-cost-north-carolina"
-      description={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum; most jobs run ${PRICING.removal.most} and large or hazardous trees ${PRICING.removal.large}. Our real price bands, itemized.`}
+      description={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum; most jobs run ${PRICING.removal.most} and large or hazardous trees ${PRICING.removal.large}. Real price bands.`}
       quickAnswer={PRICING.removal.summary}
       authorUpdated={SHIP_DATE}
+      datePublished="2026-04-06"
       priceBlock={<RemovalPriceTable />}
       /* Positional key, same indexing as sectionLinks below: 1 is the pine
          ladder. The figure renders inside that section's prose block so it

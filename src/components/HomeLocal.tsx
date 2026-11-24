@@ -150,10 +150,12 @@ export default function HomeLocal() {
           {"A large share of our customers are Marines, sailors and their families, and the scheduling is genuinely different. PCS timelines don't flex: tell us the date you have to be out and we'll work backward from it, including the stump, so the yard is clear for the walkthrough."}
         </p>
         <p>
-          {"Properties along the fence line and in the housing areas off Piney Green and Brewster Boulevard can mean gate access, escort requirements and equipment that has to fit through a standard gate. We plan for that up front instead of discovering it on the morning of the job. We offer military discounts for Camp Lejeune families, and we document the work for landlords and property managers who want proof it was done to standard. More on "}
+          {"Properties along the fence line and in the housing areas off Piney Green and Brewster Boulevard can mean gate access, escort requirements and equipment that has to fit through a standard gate. We plan for that up front instead of discovering it on the morning of the job. We document the work for landlords and property managers who want proof it was done to standard. More on "}
           <Link to="/tree-service-camp-lejeune-nc" className={LINK}>tree work at Camp Lejeune</Link>
           {"."}
         </p>
+        {/* Owner wording, Ship O (2026-11-23). Exact text; do not rephrase. */}
+        <p className="font-semibold">10% off tree removals for military and first responders</p>
 
         <h2 className="home-local-h2">Recent jobs close to home</h2>
         <ul className="home-local-list">

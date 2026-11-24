@@ -197,6 +197,7 @@ export default function NeighborTreeProblems() {
       slug="neighbor-tree-problems-jacksonville-nc"
       faqPosition="early"
       authorUpdated="2026-10-10"
+      datePublished="2026-10-10"
       credentialBlock
       description="Can you cut a neighbor's overhanging branches in NC? Who pays when their tree falls? Six answers, each cited to North Carolina law, plus how we handle it."
       ctaText="Call for a Free Estimate"
