@@ -12,9 +12,9 @@ export default function TreeServiceCampLejeune() {
       slug="tree-service-camp-lejeune-nc"
       faqPosition="early"
       credentialBlock
-      description="Tree service for Camp Lejeune families: removal, trimming, stump grinding, and 24/7 storm cleanup. Military discounts and free estimates."
+      description="Tree service for Camp Lejeune families: removal, trimming, stump grinding, 24/7 storm cleanup. 10% off tree removals for military and first responders."
       ctaText="Call Now for a Free Estimate"
-      quickAnswer="Godhans Tree Company proudly serves Camp Lejeune military families and surrounding base housing communities with expert tree removal, trimming, stump grinding, and 24/7 emergency response. We offer military discounts, fast turnaround for PCS moves, and fully insured work that meets base property standards."
+      quickAnswer="Godhans Tree Company proudly serves Camp Lejeune military families and surrounding base housing communities with expert tree removal, trimming, stump grinding, and 24/7 emergency response. We offer 10% off tree removals for military and first responders, fast turnaround for PCS moves, and fully insured work that meets base property standards."
       /**
        * In-prose links, via ServicePage's `sectionBodies` slot. This page had ZERO
        * editorial outbound links before batch 1 — every link on it was a templated
