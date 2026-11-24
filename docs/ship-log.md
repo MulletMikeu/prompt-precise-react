@@ -20,6 +20,26 @@ is the narrative one.
 
 ---
 
+## 2026-11-23 — Ship P, Tree Talk with Mike + Community Caution box
+
+**Merged** 2026-11-24 01:30:49 UTC · **production deploy succeeded** 01:35:34 UTC ·
+**confirmed serving** 01:35:47 UTC (`/tree-talk` and the article return 200)
+**Commits:** `bedb8bc` → `a08bfdf` (merge, PR #19)
+**Shared record:** `ships/2026-11-23-ship-p.md`
+
+- New `/tree-talk` section page and article #1 `/tree-talk/summer-storms-not-hurricanes`
+  (owner-approved text, verified word for word against the draft). Article +
+  BreadcrumbList; Rich Results Test: 4 valid items.
+- `CommunityCaution` box on `/`, emergency and trimming pages; ServicePage gains `notice`.
+- Free annual tree inspection added as an offer (footer, credentials, schema Offer).
+- Camp Lejeune FAQ + CTA: "10% off tree removals for military and first responders".
+- Footer: "Tree Talk with Mike" after Blog, so every page's content moved.
+
+**Sitemap:** 36 URLs, all 2026-11-23. **IndexNow** at 01:37 UTC: HTTP 200,
+**36 URLs accepted** (2 new + 34 footer). `scripts/indexnow-content.json` committed.
+
+---
+
 ## 2026-11-23 — Ship O, Ahrefs audit fixes (site-wide)
 
 **Merged** 2026-11-24 00:46:37 UTC · **production deploy succeeded** 00:51:15 UTC ·
