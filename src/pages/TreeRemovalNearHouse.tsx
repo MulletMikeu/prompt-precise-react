@@ -28,6 +28,7 @@ export default function TreeRemovalNearHouse() {
            /tree-removal-tight-spaces-jacksonville-nc consolidation, which pushed
            everything from the old 2 down by one. Re-check if a section moves. */
         sectionLinks={{
+          0: { href: "/leaning-tree-dangerous-after-storm", label: "When a tree leaning toward the house is an emergency" },
           1: { href: "/tree-removal-cost-north-carolina", label: "Full tree removal cost breakdown for North Carolina" },
           3: { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How the spider lift reaches trunks a truck cannot" },
         }}
@@ -63,7 +64,7 @@ export default function TreeRemovalNearHouse() {
           },
           {
             heading: "Why Homeowners Trust Godhans for This Work",
-            text: `✔ Fully insured — every machine individually covered\n✔ Certificate of insurance available before work begins\n✔ Spider lift for tight access — no truck on the lawn\n✔ Near-structure removals in Onslow County since ${YEAR_FOUNDED_LOCAL}\n✔ Free, no-pressure on-site estimates\n✔ Same-day storm response if the tree is already on the house`
+            text: `• Fully insured — every machine individually covered\n• Certificate of insurance available before work begins\n• Spider lift for tight access — no truck on the lawn\n• Near-structure removals in Onslow County since ${YEAR_FOUNDED_LOCAL}\n• Free, no-pressure on-site estimates\n• Same-day storm response if the tree is already on the house`
           }
         ]}
         faqs={[

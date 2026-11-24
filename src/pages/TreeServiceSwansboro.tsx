@@ -18,6 +18,7 @@ export default function TreeServiceSwansboro() {
       quickAnswer="Swansboro's mature oaks, pines, and waterfront live oaks need expert care to stay safe and healthy. Godhans Tree Company provides professional tree removal, trimming, stump grinding, and 24/7 storm response throughout Swansboro, Cedar Point, and the Crystal Coast area."
       sectionLinks={{
         0: { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Permits, HOA approvals and shoreline rules in Onslow County" },
+        1: { href: "/storm-damage-trees-guide", label: "Getting your trees ready before the next hurricane" },
       }}
       /**
        * In-prose links, via ServicePage's `sectionBodies` slot. This page had ZERO
@@ -64,12 +65,12 @@ export default function TreeServiceSwansboro() {
             <ul className="space-y-5">
               <li>
                 <a
-                  href="https://soilseries.sc.egov.usda.gov/OSD_Docs/O/ONSLOW.html"
+                  href="https://soilseries.sc.egov.usda.gov/osdname.aspx"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors font-semibold text-lg"
                 >
-                  USDA NRCS — Official Series Description, ONSLOW series
+                  USDA NRCS — Official Series Descriptions (look up the ONSLOW series)
                 </a>
                 <span className="block text-gray-400 text-base mt-1">
                   The type location 0.6 mile southwest of Swansboro, the taxonomic class,

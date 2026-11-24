@@ -45,8 +45,9 @@ export default function PineTreeProblems() {
       slug="pine-tree-problems-jacksonville-nc"
       faqPosition="early"
       authorUpdated="2026-10-11"
+      datePublished="2026-10-11"
       credentialBlock
-      description="A browned-out pine is already dead. Heavy needle shed is not. How to tell the difference, what pitch tubes mean, and what we actually advise on a borderline pine."
+      description="A browned-out pine is already dead; heavy needle shed is not. A Jacksonville, NC guide to pitch tubes, beetles and borderline pines."
       ctaText="Call for a Free Estimate"
       quickAnswer="Pines do not hide sickness the way hardwoods do, which is the useful thing about them. If a pine has browned out, it is dead — there is no treatment. Heavy needle shed every three to five years is not brown-out: that is interior needles going brown while the tips stay green. Lightning browns 30 to 40 percent of a canopy and leaves spiral cracks. And most pine trouble is not disease at all — it is limbs that have outgrown their attachment, which is a trimming job."
       sections={[

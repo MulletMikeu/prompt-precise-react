@@ -49,8 +49,9 @@ export default function StormDamageGuide() {
       slug="storm-damage-trees-guide"
       faqPosition="early"
       authorUpdated="2026-10-10"
+      datePublished="2026-04-06"
       credentialBlock
-      description={`Hurricane tree prep in Onslow County: book late February to early April, ${PRICING.trimming.weightReductionOverRoof} for weight reduction over a roof. Plus what to do the hour after a tree comes down.`}
+      description={`Hurricane tree prep in Onslow County: book late February to early April, ${PRICING.trimming.weightReductionOverRoof} to lighten limbs over a roof, and what to do after a tree falls.`}
       quickAnswer={`Book hurricane prep between late February and early April — after the worst of winter, before the season opens on June 1, and while the schedule is still open. Weight reduction over a roof typically runs ${PRICING.trimming.weightReductionOverRoof}; one to three low limbs is ${PRICING.trimming.fewLowLimbs}. If a tree is already down: stay away from it, assume every line is live, photograph everything before anything moves, and call.`}
       /* Positional keys against `sections` below:
            0 when-to-book · 1 what-prep-costs · 2 the-stressed-tree ·

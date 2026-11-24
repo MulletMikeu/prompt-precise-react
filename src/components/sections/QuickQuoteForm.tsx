@@ -195,7 +195,7 @@ export function QuickQuoteForm({ source, defaultService, variant = 'dark', fullO
                   href={`tel:${BUSINESS_INFO.phone.tel}`}
                   className="inline-block bg-brand-red text-white px-6 py-3 rounded-lg font-bold hover:bg-brand-red-dark transition-colors"
                 >
-                  📞 Call Now: {BUSINESS_INFO.phone.display}
+                  Call Now: {BUSINESS_INFO.phone.display}
                 </a>
               </div>
             ) : (

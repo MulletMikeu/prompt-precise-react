@@ -96,7 +96,7 @@ export function PrecisionRemoval({ variant = 'light', heading, showImage = true 
             href={`tel:${BUSINESS_INFO.phone.tel}`}
             className="bg-brand-red text-white px-8 py-4 rounded-lg font-bold hover:bg-brand-red-dark transition-all duration-300 shadow-lg inline-flex items-center gap-2 text-lg mb-4"
           >
-            📞 Free Estimate — Call {BUSINESS_INFO.phone.display}
+            Free Estimate — Call {BUSINESS_INFO.phone.display}
           </a>
           <p className={`text-sm mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
             Fully insured — every machine individually covered — and experienced with tight-access removals. No-pressure on-site quote.

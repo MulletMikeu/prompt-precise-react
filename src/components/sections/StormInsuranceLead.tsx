@@ -33,7 +33,6 @@ export default function StormInsuranceLead() {
           href={BUSINESS.phoneHref}
           className="mt-6 inline-flex items-center gap-2 bg-white text-brand-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
         >
-          <span aria-hidden="true">📞</span>
           {STORM_LEAD.ctaLabel}
         </a>
       </div>

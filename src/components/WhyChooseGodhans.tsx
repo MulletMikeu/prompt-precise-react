@@ -66,7 +66,7 @@ export default function WhyChooseGodhans({ damageNoun }: { damageNoun?: DamageNo
           >
             Meet Michael and James
           </Link>
-          {' '}— the brothers who own the company and run the crew.
+          {' '}— the owner, and his brother who leads the crew.
         </p>
       </div>
     </section>

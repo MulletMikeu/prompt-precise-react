@@ -109,6 +109,8 @@ export default function TreeRemoval() {
         1: [
           { href: "/resistograph-tree-testing-jacksonville-nc", label: "How we measure decay in a standing hardwood instead of guessing" },
           { href: "/pine-tree-problems-jacksonville-nc", label: "Brown-out, beetles and lightning: what each one means on a pine" },
+          // Ship O: the hazardous tree is often next door.
+          { href: "/neighbor-tree-problems-jacksonville-nc", label: "When the hazardous tree is your neighbor's: who can cut and who pays" },
         ],
         // 3 is the timing section (was 1); the crane-vs-lift comparison in it
         // is the natural hand-off to the spider lift page.
@@ -122,7 +124,14 @@ export default function TreeRemoval() {
           { href: "/", label: "What an estimate should include — including ground protection" },
         ],
         // 10 is wind/lightning (was 8, and 9 before the split).
-        10: { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
+        // Ship O added the two storm guides to the wind section.
+        10: [
+          { href: "/resistograph-tree-testing-jacksonville-nc", label: "What a lightning strike does inside a pine" },
+          { href: "/leaning-tree-dangerous-after-storm", label: "Is a leaning tree dangerous after a storm?" },
+          { href: "/storm-damage-trees-guide", label: "Hurricane prep for trees, and what to do after storm damage" },
+        ],
+        // 11 is builders and new construction (Ship O).
+        11: { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Tree permits and the Jacksonville development rules" },
       }}
       /**
        * In-prose links, via ServicePage's `sectionBodies` slot. Same copy as

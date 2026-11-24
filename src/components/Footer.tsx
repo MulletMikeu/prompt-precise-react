@@ -24,9 +24,10 @@ export default function Footer() {
 
           <div>
             <Link to="/" className="inline-flex items-center gap-3 mb-6">
-              <div className="w-9 h-9 flex items-center justify-center font-bold text-white" style={{ background: "var(--red)" }} aria-hidden="true">G</div>
+              {/* CSS-drawn "G" + {" "} between the spans: see the note in Navbar.tsx. */}
+              <div className="w-9 h-9 flex items-center justify-center font-bold text-white before:content-['G']" style={{ background: "var(--red)" }} aria-hidden="true" />
               <div className="leading-none">
-                <span className="block font-bold text-white uppercase" style={{ fontSize: "1.15rem" }}>Godhans</span>
+                <span className="block font-bold text-white uppercase" style={{ fontSize: "1.15rem" }}>Godhans</span>{" "}
                 <span className="block text-xs tracking-widest uppercase" style={{ color: "#888888" }}>Tree Company</span>
               </div>
             </Link>
@@ -56,6 +57,11 @@ export default function Footer() {
                   <Link to={s.href} className="text-sm" style={{ color: "#888888" }}>{s.name}</Link>
                 </li>
               ))}
+              {/* Ship O: footer-only, so the homepage service grid (which also
+                  reads SERVICES) is unchanged. */}
+              <li>
+                <Link to="/spider-lift-tree-removal-jacksonville-nc" className="text-sm" style={{ color: "#888888" }}>Spider Lift Tree Removal</Link>
+              </li>
             </ul>
           </div>
 

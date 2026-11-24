@@ -105,6 +105,18 @@ interface CityCopy {
 const PROSE_LINK = "underline underline-offset-2 font-semibold";
 const PROSE_LINK_STYLE = { color: "var(--red-text)" };
 
+/**
+ * Meta-description versions of the job summaries (Ship O): the same jobs,
+ * shortened so the description stays under ~155 characters. No new facts —
+ * each is a cut-down of the CITY_JOBS summary next to it.
+ */
+const CITY_JOB_META: Record<string, string> = {
+  "Holly Ridge": "a 60 foot pine over the corner of a house",
+  Maysville: "a very large pine beside a garage and a septic field",
+  Beulaville: "a tree through a barn roof, craned out",
+  "Surf City": "an oak with heartwood rot near the ocean",
+};
+
 const CITY_JOB_SUMMARY: Record<string, string> = {
   "Holly Ridge": CITY_JOBS.hollyRidge.summary,
   Maysville: CITY_JOBS.maysville.summary,
@@ -261,8 +273,11 @@ const CITY_CONTENT: Record<string, CityCopy> = {
       },
       {
         text:
-          "The town's size today is a direct consequence of Camp Davis. When the War Department announced the installation in December 1940, Holly Ridge had a population of 28. The camp grew to more than 45,000 acres and around 20,000 officers and men, one of the Army's seven antiaircraft artillery training centers of the Second World War, before being ordered closed on September 2, 1944.",
-        source: { url: "https://hollyridgenc.gov/history", label: "Town of Holly Ridge — History" },
+          "The town's size today is a direct consequence of Camp Davis. When the War Department announced the installation in December 1940, Holly Ridge had a population of 28. By May 1941 the camp had 978 buildings and an airfield, and as an Army antiaircraft and coast artillery training center it remained a hub of activity until it closed in 1944.",
+        // Ship O: the town's /history page is gone (404). Re-sourced to the
+        // state marker essay, and the sentence trimmed to what that source
+        // says (acreage, troop count and the "seven centers" claim are not in it).
+        source: { url: "https://www.dncr.nc.gov/blog/2023/12/07/camp-davis-c-65", label: "NC Department of Natural and Cultural Resources — Camp Davis historical marker (C-65)" },
       },
       {
         text:
@@ -377,7 +392,7 @@ export default function LocationPage({ city }: LocationPageProps) {
    * most useful thing a search result can show and no other town can show it.
    */
   const description = content.job
-    ? `Tree removal, trimming and stump grinding in ${city}, NC (${content.county}). A real local job: ${content.job.price} for ${CITY_JOB_SUMMARY[city] ?? "a removal here"}. Free estimates.`
+    ? `Tree removal, trimming and stump grinding in ${city}, NC. A real local job: ${content.job.price} for ${CITY_JOB_META[city] ?? CITY_JOB_SUMMARY[city] ?? "a removal here"}. Free estimates.`
     : `Tree removal, trimming, stump grinding and 24/7 emergency tree service in ${city}, NC (${content.county}). Free estimates from Godhans Tree Company.`;
 
   // These four city pages had no BreadcrumbList at all, unlike the six

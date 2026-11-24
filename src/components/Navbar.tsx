@@ -47,17 +47,19 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           <Link to="/" className="flex items-center gap-3 flex-shrink-0">
+            {/* The "G" is drawn by CSS (before:content), not a text node, so
+                crawlers and screen readers read the link as exactly "Godhans
+                Tree Company" instead of "GGodhansTree Company". The {" "}
+                between the two block spans is that space; block layout hides it. */}
             <div
-              className="w-9 h-9 flex items-center justify-center text-white text-lg font-bold"
+              className="w-9 h-9 flex items-center justify-center text-white text-lg font-bold before:content-['G']"
               style={{ background: "var(--red)" }}
               aria-hidden="true"
-            >
-              G
-            </div>
+            />
             <div className="leading-none">
               <span className="block font-bold text-white uppercase" style={{ fontSize: "1.25rem" }}>
                 Godhans
-              </span>
+              </span>{" "}
               <span className="block text-xs tracking-widest uppercase" style={{ color: "#888888" }}>
                 Tree Company
               </span>

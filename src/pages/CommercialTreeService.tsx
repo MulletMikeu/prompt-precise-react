@@ -95,7 +95,7 @@ export default function CommercialTreeService() {
     <ServicePage
       sectionBodies={SECTION_BODIES}
       title="Commercial Tree Service for HOAs, Property Managers & Businesses in Jacksonville, NC"
-      metaTitle="Commercial Tree Service Jacksonville NC — HOAs & Property Managers | Godhans"
+      metaTitle="Commercial Tree Service Jacksonville NC | HOAs | Godhans"
       subtitle="HOAs, Property Managers, Apartment Complexes, Churches & Businesses"
       slug="commercial-tree-service-jacksonville-nc"
       faqPosition="early"

@@ -1,5 +1,6 @@
 import { Head as Helmet } from 'vite-react-ssg';
 import { Link } from "react-router-dom";
+import HubBreadcrumb from "../components/HubBreadcrumb";
 import { BUSINESS } from "../data/siteData";
 
 const TITLE = "Tree Care Blog | Tips & Resources | Godhans Tree Company";
@@ -67,6 +68,7 @@ export default function BlogPage() {
       <main id="main-content" className="pt-20">
         <section className="py-20" style={{ background: "#111111" }}>
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
+            <HubBreadcrumb name="Blog" path="/blog" />
             <p className="font-body text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--red-text)", letterSpacing: "0.12em" }}>Resources</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Tree Care Guides</h1>
             <p className="text-lg leading-relaxed" style={{ color: "#C8C8C2" }}>

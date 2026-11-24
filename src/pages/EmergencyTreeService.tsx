@@ -63,7 +63,7 @@ export default function EmergencyTreeService() {
        * The hedged sentence DECISIONS.md requires on any cost/outcome claim
        * renders in full in STORM_LEAD above the fold and in the FAQ.
        */
-      metaTitle="Emergency Tree Service & Storm Cleanup — Jacksonville NC 24/7 | Godhans"
+      metaTitle="Emergency Tree & Storm Cleanup Jacksonville NC | Godhans"
       subtitle="Trees on Houses, Storm Debris & Downed Limbs — Same-Day & Next-Day Availability"
       slug="emergency-tree-service-jacksonville-nc"
       faqPosition="early"
@@ -128,7 +128,7 @@ export default function EmergencyTreeService() {
         },
         {
           heading: "When to Call Us Immediately",
-          text: "If you see any of these warning signs, do not wait — call us right away:\n\n⚠ A tree has fallen on your home, garage, vehicle, or fence\n⚠ A tree is leaning at a new angle after a storm\n⚠ Visible cracks or splits in the trunk or major limbs\n⚠ Soil heaving or exposed roots near the base of a tree\n⚠ Large broken limbs hanging in the canopy (\"widow makers\")\n⚠ Branches resting on or near power lines\n⚠ A tree blocking your driveway, road, or emergency access\n\nThese situations can get worse quickly — especially with rain, wind, or saturated soil. Faster response means less property damage."
+          text: "If you see any of these warning signs, do not wait — call us right away:\n\n• A tree has fallen on your home, garage, vehicle, or fence\n• A tree is leaning at a new angle after a storm\n• Visible cracks or splits in the trunk or major limbs\n• Soil heaving or exposed roots near the base of a tree\n• Large broken limbs hanging in the canopy (\"widow makers\")\n• Branches resting on or near power lines\n• A tree blocking your driveway, road, or emergency access\n\nThese situations can get worse quickly — especially with rain, wind, or saturated soil. Faster response means less property damage."
         },
         /* No hardcoded credential section here. This page passes
            `credentialBlock`, which renders <WhyChooseGodhans/> with

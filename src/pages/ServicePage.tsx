@@ -7,7 +7,7 @@ import { QuickQuoteForm } from '@/components/sections/QuickQuoteForm';
 import { LazyImage } from '@/components/ui/LazyImage';
 import WhyChooseGodhans from '@/components/WhyChooseGodhans';
 import { BUSINESS_INFO } from '@/lib/constants';
-import { BUSINESS, SITE_URL } from '@/data/siteData';
+import { AUTHOR, BUSINESS, BUSINESS_ID, SITE_URL } from '@/data/siteData';
 import type { DamageNoun } from '@/data/siteData';
 
 /**
@@ -105,6 +105,13 @@ interface ServicePageProps {
    * on purpose (see the note in <AuthorByline/>).
    */
   authorUpdated?: string;
+  /**
+   * Opt-in Article JSON-LD (Ship O). The date the page's file first appeared in
+   * git (`git log --follow --diff-filter=A`), as YYYY-MM-DD. Only takes effect
+   * together with `authorUpdated`, which becomes dateModified so the schema and
+   * the visible byline cannot disagree. Set on the six guide articles only.
+   */
+  datePublished?: string;
   /**
    * Rich content rendered between the quick answer and the first section.
    *
@@ -248,7 +255,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return null;
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, priceBlock, sections, sectionFigures, sectionBodies, sectionLinks, faqs, faqPosition = 'late', caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, datePublished, priceBlock, sections, sectionFigures, sectionBodies, sectionLinks, faqs, faqPosition = 'late', caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, heroImage, gallery }: ServicePageProps) {
   const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -262,6 +269,24 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
       { "@type": "ListItem", "position": breadcrumbCategory ? 3 : 2, "name": title }
     ]
   };
+
+  /**
+   * Article node for the guide pages. Author is the same Person @id that
+   * BusinessSchema stubs and /about fills in; publisher is the LocalBusiness
+   * @id. Image is the page hero when there is one, else the site OG image.
+   */
+  const articleSchema = datePublished && authorUpdated ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": authorUpdated,
+    "author": { "@type": "Person", "@id": AUTHOR.personId, "name": AUTHOR.name, "url": `${SITE_URL}/about` },
+    "publisher": { "@id": BUSINESS_ID },
+    "image": heroImage?.src ? `${SITE_URL}${heroImage.src}` : `${SITE_URL}/og-image-v2.jpg`,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+  } : null;
 
   /**
    * One definition, rendered at whichever of the two slots `faqPosition`
@@ -326,6 +351,11 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbSchema)}
         </script>
+        {articleSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(articleSchema).replace(/\$/g, '\\u0024')}
+          </script>
+        )}
         {faqs && faqs.length > 0 && (
           <script type="application/ld+json">
             {JSON.stringify({
@@ -365,7 +395,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                   href={`tel:${BUSINESS_INFO.phone.tel}`}
                   className="bg-brand-red text-white px-8 py-4 rounded-lg font-bold hover:bg-brand-red-dark transition-all duration-300 shadow-lg inline-flex items-center gap-2 text-lg"
                 >
-                  📞 {ctaText || `Call ${BUSINESS_INFO.phone.display}`}
+                  {ctaText || `Call ${BUSINESS_INFO.phone.display}`}
                 </a>
               </div>
             </div>
@@ -424,7 +454,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                           and still reads dimmer than the gray-300 caption it
                           sits under, so the hierarchy survives the fix. */}
                       {heroImage.geo && (
-                        <span className="block text-gray-400 text-xs mt-1">📍 {heroImage.geo}</span>
+                        <span className="block text-gray-400 text-xs mt-1">{heroImage.geo}</span>
                       )}
                     </figcaption>
                   )}
@@ -445,7 +475,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                       href={`tel:${BUSINESS_INFO.phone.tel}`}
                       className="w-full sm:w-auto bg-white text-brand-red px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors text-lg text-center inline-flex items-center justify-center gap-2"
                     >
-                      📞 Call {BUSINESS_INFO.phone.display}
+                      Call {BUSINESS_INFO.phone.display}
                     </a>
                   </div>
                 )}
@@ -686,7 +716,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
                 href={`tel:${BUSINESS_INFO.phone.tel}`}
                 className="bg-white text-brand-red px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors inline-flex items-center gap-2 text-lg"
               >
-                📞 {finalCta?.buttonText || `Call ${BUSINESS_INFO.phone.display}`}
+                {finalCta?.buttonText || `Call ${BUSINESS_INFO.phone.display}`}
               </a>
             </div>
           </section>
