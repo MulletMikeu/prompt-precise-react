@@ -20,6 +20,29 @@ is the narrative one.
 
 ---
 
+## 2026-11-23 — Ship O, Ahrefs audit fixes (site-wide)
+
+**Merged** 2026-11-24 00:46:37 UTC · **production deploy succeeded** 00:51:15 UTC ·
+**confirmed serving** 00:51:42 UTC (godhans.com `/` shows "10% off tree removals for military and first responders")
+**Commits:** `edb6725`, `7c23230` → `d5a0576` (merge, PR #18)
+**Shared record:** `ships/2026-11-23-ship-o.md`
+
+- Header/footer logo reads exactly "Godhans Tree Company" (CSS-drawn "G"). No visual change.
+- Homepage military line replaced with the owner's exact wording.
+- James Godbersen is Crew Leader, not co-owner (owner ruling 2026-11-23): /about
+  section, Person jobTitle, llms.txt, photo renamed + 301 from the old path.
+- Article JSON-LD on the six guides; LocalBusiness `sameAs` completed; BreadcrumbList
+  + visible trail on /blog, /services, /reviews, /service-area. Validator: 0 errors.
+- Dead/redirecting outbound links fixed (Holly Ridge history, USDA OSD, Jacksonville
+  directory, g.page); 7 descriptions + 2 titles trimmed; 11 contextual links into the
+  guides; spider lift in the footer; home-value URL now 301s to `/blog`; CTA emoji removed.
+
+**Sitemap:** all 34 URLs 2026-11-23, acknowledged with `--allow-uniform` (header and
+footer changed every page). **IndexNow** at 00:52 UTC: HTTP 200, **34 URLs accepted**.
+`scripts/indexnow-content.json` committed.
+
+---
+
 ## 2026-11-22 — Ship N, homepage photo row into the local section + mid-page CTA
 
 **Merged** 2026-11-22 00:01:04 UTC · **production deploy succeeded** 00:05:51 UTC ·
