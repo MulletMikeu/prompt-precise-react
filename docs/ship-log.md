@@ -20,6 +20,19 @@ is the narrative one.
 
 ---
 
+## 2026-11-23 — Ship Q, Camp Lejeune discount wording
+
+**Merged** 2026-11-24 01:53:47 UTC · **production deploy succeeded** 02:00:30 UTC ·
+**confirmed serving** 02:00:46 UTC
+**Commits:** `664c780` → `8c42506` (merge, PR #20)
+**Shared record:** `ships/2026-11-23-ship-q.md`
+
+`/tree-service-camp-lejeune-nc` only: the meta description and the opening quick
+answer now say "10% off tree removals for military and first responders". IndexNow:
+1 URL accepted.
+
+---
+
 ## 2026-11-23 — Ship P, Tree Talk with Mike + Community Caution box
 
 **Merged** 2026-11-24 01:30:49 UTC · **production deploy succeeded** 01:35:34 UTC ·
