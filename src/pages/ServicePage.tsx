@@ -190,6 +190,12 @@ interface ServicePageProps {
   /** Optional rich, semantic content rendered after the sections and before the FAQ
    *  (e.g. a case-study proof block). Full JSX so it can carry headings/links/figures. */
   caseStudy?: ReactNode;
+  /**
+   * Opt-in short note rendered after the page's own prose sections, before
+   * `caseStudy` (Ship P: the Community Caution box on the emergency and
+   * trimming pages). Undefined everywhere else, so no other page's output moves.
+   */
+  notice?: ReactNode;
   /** When true, renders the shared <WhyChooseGodhans/> (single-source trust block). */
   credentialBlock?: boolean;
   /**
@@ -255,7 +261,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return null;
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, datePublished, priceBlock, sections, sectionFigures, sectionBodies, sectionLinks, faqs, faqPosition = 'late', caseStudy, credentialBlock, credentialDamageNoun, finalCta, guides, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, datePublished, priceBlock, sections, sectionFigures, sectionBodies, sectionLinks, faqs, faqPosition = 'late', caseStudy, notice, credentialBlock, credentialDamageNoun, finalCta, guides, heroImage, gallery }: ServicePageProps) {
   const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -534,6 +540,12 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
               </div>
             </section>
           ))}
+
+          {notice && (
+            <section className="py-10">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">{notice}</div>
+            </section>
+          )}
 
           {/* Case study / proof block (optional rich content) */}
           {caseStudy}

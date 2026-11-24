@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { BUSINESS, SERVICES, SERVICE_CITIES, NAV_LINKS } from "../data/siteData";
 
@@ -89,12 +90,25 @@ export default function Footer() {
             <h2 className="font-bold uppercase text-white mb-6" style={{ fontSize: "0.8rem", letterSpacing: "0.12em" }}>Quick Links</h2>
             <ul className="list-none m-0 p-0 flex flex-col gap-2.5 mb-10">
               {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link to={link.href} className="text-sm" style={{ color: "#888888" }}>{link.label}</Link>
-                </li>
+                <Fragment key={link.href}>
+                  <li>
+                    <Link to={link.href} className="text-sm" style={{ color: "#888888" }}>{link.label}</Link>
+                  </li>
+                  {/* Ship P: Tree Talk sits next to Blog in the footer only —
+                      the main nav has no room for an eighth item at lg. */}
+                  {link.href === "/blog" && (
+                    <li>
+                      <Link to="/tree-talk" className="text-sm" style={{ color: "#888888" }}>Tree Talk with Mike</Link>
+                    </li>
+                  )}
+                </Fragment>
               ))}
               <li>
                 <Link to="/contact" className="text-sm" style={{ color: "var(--red-text)" }}>Get Free Estimate</Link>
+              </li>
+              {/* Ship P: standing offer, owner-approved 2026-11-23. */}
+              <li>
+                <a href="/#estimate" className="text-sm" style={{ color: "var(--red-text)" }}>Free Annual Tree Inspection</a>
               </li>
             </ul>
             <div className="p-4" style={{ border: "1px solid #1A1A1A", background: "#0A0A0A" }}>
