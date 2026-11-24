@@ -7,6 +7,7 @@ import TrustSection from "../components/TrustSection";
 import ReviewsSection from "../components/ReviewsSection";
 import ServiceAreaSection from "../components/ServiceAreaSection";
 import CTABanner from "../components/CTABanner";
+import CommunityCaution from "../components/CommunityCaution";
 
 /**
  * Homepage, rebuilt in Ship L (2026-11-21): photo hero + two-step estimate form.
@@ -62,6 +63,12 @@ export default function HomePage() {
           </div>
         </section>
         <HomeLocal />
+        {/* Ship P: after the local section, well below the hero and its form. */}
+        <section style={{ background: "#0A0A0A" }} className="pb-12">
+          <div className="container-brand">
+            <CommunityCaution className="max-w-3xl" />
+          </div>
+        </section>
         <ServicesSection />
         <ReviewsSection />
         <ServiceAreaSection />

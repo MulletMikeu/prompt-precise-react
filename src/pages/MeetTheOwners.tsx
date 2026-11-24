@@ -54,7 +54,9 @@ const PAGE_URL = `${SITE_URL}/about`;
  * nothing it could resolve to a person, which is the entire job of this page.
  * Michael is the single owner; James is the crew leader (owner ruling
  * 2026-11-23). The old "Brothers, USMC veterans" claimed James's service,
- * which is not among the facts Michael supplied, so it is gone.
+ * which is not among the facts Michael supplied, so it is gone. Owner ruling
+ * (Ship P, 2026-11-23): James is NOT a veteran of any branch. Never attach a
+ * veteran claim to him.
  */
 const PAGE_TITLE = 'About Godhans Tree Company | Jacksonville, NC';
 const PAGE_DESCRIPTION = `Meet ${AUTHOR.name}, USMC veteran and ${AUTHOR.role.toLowerCase()} of ${BUSINESS.name}, and his brother ${JAMES.name}, our ${JAMES.role.toLowerCase()}. ${BUSINESS.county} since ${BUSINESS.founded}.`;

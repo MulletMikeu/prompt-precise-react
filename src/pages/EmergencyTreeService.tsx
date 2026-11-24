@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import CommunityCaution from "../components/CommunityCaution";
 import ServicePage from './ServicePage';
 import { BUSINESS, PRICING, SOURCES } from '@/data/siteData';
 import StormInsuranceLead from '@/components/sections/StormInsuranceLead';
@@ -35,6 +36,7 @@ const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2
 export default function EmergencyTreeService() {
   return (
     <ServicePage
+      notice={<CommunityCaution />}
       title="24/7 Emergency Tree Service & Storm Cleanup in Jacksonville, NC"
       /**
        * Ship J. 1,046 impressions, 2 clicks, position 35.9.

@@ -110,6 +110,8 @@ const businessSchema = {
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Stump Grinding' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Emergency Tree Service' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Storm Cleanup' } },
+      // Standing free offer, owner-approved 2026-11-23 (Ship P).
+      { '@type': 'Offer', price: '0', priceCurrency: 'USD', itemOffered: { '@type': 'Service', name: 'Free Annual Tree Inspection' } },
     ],
   },
   // Organization completeness (Ship O): GBP, Facebook, YouTube and the four

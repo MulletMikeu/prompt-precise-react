@@ -84,7 +84,8 @@ export default function TreeServiceCampLejeune() {
         2: { href: "/do-you-need-a-permit-to-remove-a-tree-nc", label: "Do you need a permit to remove a tree in North Carolina?" },
       }}
       faqs={[
-        { question: "Do you offer a military discount?", answer: "Yes — we offer a military discount for active duty, retired, and veteran families. Just mention it when you call for your free estimate." },
+        // Ship P: owner wording, matches the homepage exactly.
+        { question: "Do you offer a military discount?", answer: "Yes — 10% off tree removals for military and first responders. Just mention it when you call for your free estimate." },
         { question: "Can you provide proof of insurance for base housing or landlords?", answer: "Absolutely. We're fully insured and bondable for commercial work, and we'll provide a current certificate of insurance on request before any work begins." },
         { question: "How fast can you schedule for a PCS move?", answer: "We prioritize military families on tight timelines: our lead time is typically 1–2 weeks, inside the two-to-three-week PCS window most families are working against. Emergency situations are handled same-day." },
         {
@@ -98,7 +99,7 @@ export default function TreeServiceCampLejeune() {
       ]}
       finalCta={{
         heading: "Tree Service for Camp Lejeune Families",
-        text: "Need fast, reliable tree service near Camp Lejeune? Contact Godhans today for a free estimate and military discount.",
+        text: "Need fast, reliable tree service near Camp Lejeune? Contact Godhans today for a free estimate. 10% off tree removals for military and first responders.",
         buttonText: "Call Now"
       }}
     />

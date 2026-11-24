@@ -147,6 +147,8 @@ export const BUSINESS = {
     "Veteran-Owned & Disabled-Veteran Owned",
     "24/7 Emergency Response",
     "Free Estimates",
+    // Standing offer, owner-approved 2026-11-23 (Ship P).
+    "Free Annual Tree Inspection",
   ],
 } as const;
 

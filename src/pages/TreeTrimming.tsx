@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import CommunityCaution from "../components/CommunityCaution";
 import ServicePage from './ServicePage';
 import { BUSINESS, EQUIPMENT, PRICING } from '../data/siteData';
 import trim480Avif from '@/assets/tree-trimming-jacksonville-nc-godhans-480.avif';
@@ -21,6 +22,7 @@ const PROSE_LINK = "text-red-500 hover:text-red-400 underline underline-offset-2
 export default function TreeTrimming() {
   return (
     <ServicePage
+      notice={<CommunityCaution />}
       title="Tree Trimming in Jacksonville, NC"
       /**
        * Ship I. H1 unchanged. The old description ("Expert tree trimming and
