@@ -265,9 +265,8 @@ export default function ServicesPage() {
               is the call when the structure itself is the problem: a dead or dying tree, a lean
               that appeared after a storm, a lifted root plate, or a species that simply can't be
               pruned out of trouble. Pines and sweetgums land here most often — long, heavy limbs
-              and few safe pruning options. What it costs depends far more on position than size,
-              and the{' '}
-              <Link to="/tree-removal-cost-north-carolina" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>full price bands are here</Link>.
+              and few safe pruning options. What it costs depends far more on position than size —{' '}
+              <Link to="/tree-removal-cost-north-carolina" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>see our full tree removal price bands for Jacksonville</Link>.
             </p>
             <p className="text-base leading-relaxed mb-4" style={{ color: "#C8C8C2" }}>
               <Link to="/stump-grinding-jacksonville-nc" className="font-semibold underline underline-offset-2" style={{ color: "var(--red-text)" }}>Stump grinding</Link>{' '}

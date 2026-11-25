@@ -262,7 +262,7 @@ A storm-damaged tree that is NOT on a structure is ordinary removal work and pri
          Kept in sync by hand — if a section is added or removed above,
          re-check these. */
       sectionLinks={{
-        3: { href: "/tree-removal-cost-north-carolina", label: "Full tree removal cost breakdown for North Carolina" },
+        3: { href: "/tree-removal-cost-north-carolina", label: "Full tree removal cost breakdown for Jacksonville, NC" },
         4: { href: "/resistograph-tree-testing-jacksonville-nc", label: "Resistograph testing — measuring a trunk instead of guessing" },
         7: {
           href: "/neighbor-tree-problems-jacksonville-nc",
@@ -336,7 +336,7 @@ A storm-damaged tree that is NOT on a structure is ordinary removal work and pri
           },
           {
             href: "/tree-removal-cost-north-carolina",
-            label: "How much tree removal costs in North Carolina",
+            label: "How much tree removal costs in Jacksonville, NC",
             blurb: "What an emergency removal runs, and what drives the number up."
           },
           {

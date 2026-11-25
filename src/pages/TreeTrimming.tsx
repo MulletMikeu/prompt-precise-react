@@ -319,7 +319,7 @@ export default function TreeTrimming() {
           // the distinction now has its own section on this page.
           {
             href: "/tree-removal-cost-north-carolina",
-            label: "How much tree removal costs in North Carolina",
+            label: "How much tree removal costs in Jacksonville, NC",
             blurb: "For when trimming isn't enough and the tree has to come out."
           },
           {

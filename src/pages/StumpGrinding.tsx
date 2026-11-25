@@ -103,7 +103,7 @@ export default function StumpGrinding() {
         links: [
           {
             href: "/tree-removal-cost-north-carolina",
-            label: "How much tree removal costs in North Carolina",
+            label: "How much tree removal costs in Jacksonville, NC",
             blurb: "If the tree is still standing, this is what taking it down runs before the stump."
           },
           {

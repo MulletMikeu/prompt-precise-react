@@ -19,35 +19,53 @@ import pine720Avif from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonvil
 import pine720Webp from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-720.webp';
 import pine720Jpg from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-720.jpg';
 
-/* Ship S job photos — same pipeline, ~590px sources (see FIGURES in
-   scripts/gen-hero-images.mjs). */
+/* Job photos (Ship S, higher-resolution masters in Ship R) — same pipeline, see
+   FIGURES in scripts/gen-hero-images.mjs. */
 import spar360Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-360.avif';
 import spar360Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-360.webp';
 import spar360Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-360.jpg';
-import spar480Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-480.avif';
-import spar480Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-480.webp';
-import spar480Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-480.jpg';
-import spar591Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-591.avif';
-import spar591Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-591.webp';
-import spar591Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-591.jpg';
+import spar540Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-540.avif';
+import spar540Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-540.webp';
+import spar540Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-540.jpg';
+import spar720Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-720.avif';
+import spar720Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-720.webp';
+import spar720Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-720.jpg';
+import spar1080Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-1080.avif';
+import spar1080Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-1080.webp';
+import spar1080Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-1080.jpg';
+import spar1280Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-1280.avif';
+import spar1280Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-1280.webp';
+import spar1280Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-1280.jpg';
 import lift360Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-360.avif';
 import lift360Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-360.webp';
 import lift360Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-360.jpg';
-import lift480Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-480.avif';
-import lift480Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-480.webp';
-import lift480Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-480.jpg';
-import lift590Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-590.avif';
-import lift590Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-590.webp';
-import lift590Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-590.jpg';
+import lift540Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-540.avif';
+import lift540Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-540.webp';
+import lift540Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-540.jpg';
+import lift720Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-720.avif';
+import lift720Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-720.webp';
+import lift720Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-720.jpg';
+import lift1080Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-1080.avif';
+import lift1080Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-1080.webp';
+import lift1080Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-1080.jpg';
+import lift1280Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-1280.avif';
+import lift1280Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-1280.webp';
+import lift1280Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-1280.jpg';
 import stump360Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-360.avif';
 import stump360Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-360.webp';
 import stump360Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-360.jpg';
-import stump480Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-480.avif';
-import stump480Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-480.webp';
-import stump480Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-480.jpg';
-import stump590Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-590.avif';
-import stump590Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-590.webp';
-import stump590Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-590.jpg';
+import stump540Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-540.avif';
+import stump540Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-540.webp';
+import stump540Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-540.jpg';
+import stump720Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-720.avif';
+import stump720Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-720.webp';
+import stump720Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-720.jpg';
+import stump1080Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-1080.avif';
+import stump1080Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-1080.webp';
+import stump1080Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-1080.jpg';
+import stump1280Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-1280.avif';
+import stump1280Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-1280.webp';
+import stump1280Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-1280.jpg';
 
 const PINE_AVIF = `${pine360Avif} 360w, ${pine540Avif} 540w, ${pine720Avif} 720w`;
 const PINE_WEBP = `${pine360Webp} 360w, ${pine540Webp} 540w, ${pine720Webp} 720w`;
@@ -177,35 +195,31 @@ interface JobPhoto {
   webp: string;
   jpg: string;
   src: string;
-  width: number;
   alt: string;
   caption: string;
 }
 
 const SPAR: JobPhoto = {
-  avif: `${spar360Avif} 360w, ${spar480Avif} 480w, ${spar591Avif} 591w`,
-  webp: `${spar360Webp} 360w, ${spar480Webp} 480w, ${spar591Webp} 591w`,
-  jpg: `${spar360Jpg} 360w, ${spar480Jpg} 480w, ${spar591Jpg} 591w`,
-  src: spar591Jpg,
-  width: 591,
+  avif: [`${spar360Avif} 360w`, `${spar540Avif} 540w`, `${spar720Avif} 720w`, `${spar1080Avif} 1080w`, `${spar1280Avif} 1280w`].join(', '),
+  webp: [`${spar360Webp} 360w`, `${spar540Webp} 540w`, `${spar720Webp} 720w`, `${spar1080Webp} 1080w`, `${spar1280Webp} 1280w`].join(', '),
+  jpg: [`${spar360Jpg} 360w`, `${spar540Jpg} 540w`, `${spar720Jpg} 720w`, `${spar1080Jpg} 1080w`, `${spar1280Jpg} 1280w`].join(', '),
+  src: spar1280Jpg,
   alt: 'Sectioned pine spar rigged for lowering during a difficult tree removal in Jacksonville, NC',
   caption: 'A massive pine in a terrible spot in Jacksonville, NC. A tough removal, and the price landed at the upper end of our range.',
 };
 const LIFT: JobPhoto = {
-  avif: `${lift360Avif} 360w, ${lift480Avif} 480w, ${lift590Avif} 590w`,
-  webp: `${lift360Webp} 360w, ${lift480Webp} 480w, ${lift590Webp} 590w`,
-  jpg: `${lift360Jpg} 360w, ${lift480Jpg} 480w, ${lift590Jpg} 590w`,
-  src: lift590Jpg,
-  width: 590,
+  avif: [`${lift360Avif} 360w`, `${lift540Avif} 540w`, `${lift720Avif} 720w`, `${lift1080Avif} 1080w`, `${lift1280Avif} 1280w`].join(', '),
+  webp: [`${lift360Webp} 360w`, `${lift540Webp} 540w`, `${lift720Webp} 720w`, `${lift1080Webp} 1080w`, `${lift1280Webp} 1280w`].join(', '),
+  jpg: [`${lift360Jpg} 360w`, `${lift540Jpg} 540w`, `${lift720Jpg} 720w`, `${lift1080Jpg} 1080w`, `${lift1280Jpg} 1280w`].join(', '),
+  src: lift1280Jpg,
   alt: 'Red spider lift with its outriggers extended beside a chain-link fence and a wooden deck in Jacksonville, NC',
   caption: 'Our spider lift on its outriggers beside a chain-link fence in Jacksonville, NC.',
 };
 const STUMP: JobPhoto = {
-  avif: `${stump360Avif} 360w, ${stump480Avif} 480w, ${stump590Avif} 590w`,
-  webp: `${stump360Webp} 360w, ${stump480Webp} 480w, ${stump590Webp} 590w`,
-  jpg: `${stump360Jpg} 360w, ${stump480Jpg} 480w, ${stump590Jpg} 590w`,
-  src: stump590Jpg,
-  width: 590,
+  avif: [`${stump360Avif} 360w`, `${stump540Avif} 540w`, `${stump720Avif} 720w`, `${stump1080Avif} 1080w`, `${stump1280Avif} 1280w`].join(', '),
+  webp: [`${stump360Webp} 360w`, `${stump540Webp} 540w`, `${stump720Webp} 720w`, `${stump1080Webp} 1080w`, `${stump1280Webp} 1280w`].join(', '),
+  jpg: [`${stump360Jpg} 360w`, `${stump540Jpg} 540w`, `${stump720Jpg} 720w`, `${stump1080Jpg} 1080w`, `${stump1280Jpg} 1280w`].join(', '),
+  src: stump1280Jpg,
   alt: 'Operator in a red helmet and face shield running a yellow stump grinder with a handheld control in Jacksonville, NC',
   caption: 'Grinding a stump with a handheld control in Jacksonville, NC.',
 };
@@ -223,8 +237,8 @@ function JobFigure({ photo }: { photo: JobPhoto }) {
           srcSet={photo.jpg}
           sizes={PINE_SIZES}
           alt={photo.alt}
-          width={photo.width}
-          height={442}
+          width={1280}
+          height={960}
           loading="lazy"
           decoding="async"
           className="w-full h-auto rounded-lg border-2 border-gray-800"

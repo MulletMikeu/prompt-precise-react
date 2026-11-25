@@ -98,7 +98,7 @@ export default function DebrisHauling() {
         heading: 'Before You Book',
         links: [
           { href: '/', label: 'What an estimate should include', blurb: 'The checklist that stops "who hauls the wood?" from becoming an argument.' },
-          { href: '/tree-removal-cost-north-carolina', label: 'Tree removal cost in North Carolina', blurb: 'Where hauling sits inside the price of a full removal.' },
+          { href: '/tree-removal-cost-north-carolina', label: 'Tree removal cost in Jacksonville, NC', blurb: 'Where hauling sits inside the price of a full removal.' },
         ],
       }}
       finalCta={{
