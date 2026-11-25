@@ -57,6 +57,16 @@ export default function TreeTalkPage() {
                   </Link>
                 </article>
               ))}
+              {/* Ship S: one featured card for the cost guide, after the
+                  articles so nothing sits above the Tree Talk list. */}
+              <article className="p-8 flex flex-col gap-3" style={{ background: "#0A0A0A" }}>
+                <p className="text-sm" style={{ color: "#888888" }}>Featured guide</p>
+                <h2 className="text-xl font-bold">
+                  <Link to="/tree-removal-cost-north-carolina" className="text-white hover:text-red-500 transition-colors">
+                    Tree removal cost in Jacksonville, NC
+                  </Link>
+                </h2>
+              </article>
             </div>
           </div>
         </section>

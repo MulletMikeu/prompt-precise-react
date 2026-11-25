@@ -102,9 +102,9 @@ export default function ServicesSection() {
             Jacksonville" is the commercial card's and is not reused here.
             Four anchors in one sentence is the limit; if a fifth is ever
             wanted it belongs in its own sentence, not appended to this list.
-            No link to /tree-removal-cost-north-carolina here: the homepage
-            carries no prices (owner ruling, Ship L), and the cost page is
-            reached from the service pages. */}
+            Ship S (2026-11-24, owner-approved): the cost page is linked from
+            its own closing sentence. The homepage still carries no prices
+            (owner ruling, Ship L). */}
         <p className="font-body text-base leading-relaxed mt-8" style={{ color: "#888888" }}>
           Most calls are one of three jobs:{' '}
           <Link to="/tree-removal-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
@@ -118,7 +118,11 @@ export default function ServicesSection() {
           <Link to="/emergency-tree-service-jacksonville-nc" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
             24/7 emergency tree service and storm cleanup
           </Link>
-          {' '}when something is already on the house or the wind has just passed.
+          {' '}when something is already on the house or the wind has just passed. If price is your first question, see{' '}
+          <Link to="/tree-removal-cost-north-carolina" className="underline underline-offset-2" style={{ color: "var(--red-text)" }}>
+            tree removal cost in Jacksonville
+          </Link>
+          .
         </p>
 
         {/* Ship M: the commercial/residential sentence that sat here is gone.

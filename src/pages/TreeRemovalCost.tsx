@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ServicePage from './ServicePage';
 import CompletedJobsTable from '@/components/sections/CompletedJobsTable';
 import PriceReconciliation from '@/components/sections/PriceReconciliation';
@@ -17,6 +18,36 @@ import pine540Jpg from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonvill
 import pine720Avif from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-720.avif';
 import pine720Webp from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-720.webp';
 import pine720Jpg from '@/assets/loblolly-pine-90ft-38in-behind-home-jacksonville-nc-720.jpg';
+
+/* Ship S job photos — same pipeline, ~590px sources (see FIGURES in
+   scripts/gen-hero-images.mjs). */
+import spar360Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-360.avif';
+import spar360Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-360.webp';
+import spar360Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-360.jpg';
+import spar480Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-480.avif';
+import spar480Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-480.webp';
+import spar480Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-480.jpg';
+import spar591Avif from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-591.avif';
+import spar591Webp from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-591.webp';
+import spar591Jpg from '@/assets/pine-spar-difficult-tree-removal-jacksonville-nc-591.jpg';
+import lift360Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-360.avif';
+import lift360Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-360.webp';
+import lift360Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-360.jpg';
+import lift480Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-480.avif';
+import lift480Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-480.webp';
+import lift480Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-480.jpg';
+import lift590Avif from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-590.avif';
+import lift590Webp from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-590.webp';
+import lift590Jpg from '@/assets/spider-lift-outriggers-chain-link-fence-jacksonville-nc-590.jpg';
+import stump360Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-360.avif';
+import stump360Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-360.webp';
+import stump360Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-360.jpg';
+import stump480Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-480.avif';
+import stump480Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-480.webp';
+import stump480Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-480.jpg';
+import stump590Avif from '@/assets/stump-grinder-handheld-control-jacksonville-nc-590.avif';
+import stump590Webp from '@/assets/stump-grinder-handheld-control-jacksonville-nc-590.webp';
+import stump590Jpg from '@/assets/stump-grinder-handheld-control-jacksonville-nc-590.jpg';
 
 const PINE_AVIF = `${pine360Avif} 360w, ${pine540Avif} 540w, ${pine720Avif} 720w`;
 const PINE_WEBP = `${pine360Webp} 360w, ${pine540Webp} 540w, ${pine720Webp} 720w`;
@@ -40,16 +71,21 @@ const PINE_SIZES = '(min-width: 768px) 320px, (min-width: 640px) calc(100vw - 3r
  * a placeholder. If this page is substantially revised again, move it then and
  * not otherwise: a byline that restamps itself on every deploy is a freshness
  * claim we did not earn.
+ *
+ * Ship S (2026-11-24, owner-approved) supersedes the 2026-10-10 ruling that
+ * held this at October 5: the visible line reads "Updated November 2026" and
+ * this is also the Article dateModified.
  */
-const SHIP_DATE = '2026-10-05';
+const SHIP_DATE = '2026-11-24';
 
 /** Shorthands — the pine ladder is referenced constantly below. */
 const PINE = PRICING.largePine.ladder;
 const WHY = PRICING.largePine.whyDouble;
 
 /**
- * /tree-removal-cost-north-carolina — the TREATMENT arm of the A/B test against
- * /stump-grinding-jacksonville-nc.
+ * /tree-removal-cost-north-carolina. Formerly the treatment arm of the A/B test
+ * against /stump-grinding-jacksonville-nc, which ended 2026-11-21 (Ship M).
+ * Retitled for Jacksonville in Ship S; the URL keeps "north-carolina" on purpose.
  *
  * Three rules this page lives under:
  *
@@ -134,15 +170,184 @@ function PineLadderFigure() {
   );
 }
 
+/** One of the three Ship S job photos. Facts in alt/caption are limited to what
+ *  Michael gave on 2026-11-24 plus what is visible: no street, size or figure. */
+interface JobPhoto {
+  avif: string;
+  webp: string;
+  jpg: string;
+  src: string;
+  width: number;
+  alt: string;
+  caption: string;
+}
+
+const SPAR: JobPhoto = {
+  avif: `${spar360Avif} 360w, ${spar480Avif} 480w, ${spar591Avif} 591w`,
+  webp: `${spar360Webp} 360w, ${spar480Webp} 480w, ${spar591Webp} 591w`,
+  jpg: `${spar360Jpg} 360w, ${spar480Jpg} 480w, ${spar591Jpg} 591w`,
+  src: spar591Jpg,
+  width: 591,
+  alt: 'Sectioned pine spar rigged for lowering during a difficult tree removal in Jacksonville, NC',
+  caption: 'A massive pine in a terrible spot in Jacksonville, NC. A tough removal, and the price landed at the upper end of our range.',
+};
+const LIFT: JobPhoto = {
+  avif: `${lift360Avif} 360w, ${lift480Avif} 480w, ${lift590Avif} 590w`,
+  webp: `${lift360Webp} 360w, ${lift480Webp} 480w, ${lift590Webp} 590w`,
+  jpg: `${lift360Jpg} 360w, ${lift480Jpg} 480w, ${lift590Jpg} 590w`,
+  src: lift590Jpg,
+  width: 590,
+  alt: 'Red spider lift with its outriggers extended beside a chain-link fence and a wooden deck in Jacksonville, NC',
+  caption: 'Our spider lift on its outriggers beside a chain-link fence in Jacksonville, NC.',
+};
+const STUMP: JobPhoto = {
+  avif: `${stump360Avif} 360w, ${stump480Avif} 480w, ${stump590Avif} 590w`,
+  webp: `${stump360Webp} 360w, ${stump480Webp} 480w, ${stump590Webp} 590w`,
+  jpg: `${stump360Jpg} 360w, ${stump480Jpg} 480w, ${stump590Jpg} 590w`,
+  src: stump590Jpg,
+  width: 590,
+  alt: 'Operator in a red helmet and face shield running a yellow stump grinder with a handheld control in Jacksonville, NC',
+  caption: 'Grinding a stump with a handheld control in Jacksonville, NC.',
+};
+
+/** Same box and rules as PineLadderFigure: floats from `md`, stacks on a phone.
+ *  clear-right keeps two figures in one section from sitting side by side. */
+function JobFigure({ photo }: { photo: JobPhoto }) {
+  return (
+    <figure className="mb-6 md:float-right md:clear-right md:mb-4 md:ml-8 md:w-80">
+      <picture>
+        <source type="image/avif" srcSet={photo.avif} sizes={PINE_SIZES} />
+        <source type="image/webp" srcSet={photo.webp} sizes={PINE_SIZES} />
+        <img
+          src={photo.src}
+          srcSet={photo.jpg}
+          sizes={PINE_SIZES}
+          alt={photo.alt}
+          width={photo.width}
+          height={442}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-auto rounded-lg border-2 border-gray-800"
+        />
+      </picture>
+      <figcaption className="mt-3 text-base leading-relaxed text-gray-400 whitespace-normal">
+        {photo.caption}
+      </figcaption>
+    </figure>
+  );
+}
+
+const PROSE_LINK = 'text-red-500 hover:text-red-400 underline underline-offset-2 transition-colors';
+
+/**
+ * Rich versions of the section texts that carry a link or an inline photo.
+ * Each anchor/figure is dropped into the section's own string at a marker, so
+ * the copy below stays the single source and cannot drift from `text`.
+ */
+function splitAt(text: string, marker: string): [string, string] {
+  const at = text.indexOf(marker);
+  if (at === -1) throw new Error(`cost page: marker not found: ${marker}`);
+  return [text.slice(0, at), text.slice(at + marker.length)];
+}
+
+function withLink(text: string, anchor: string, href: string) {
+  const [before, after] = splitAt(text, anchor);
+  return <>{before}<Link to={href} className={PROSE_LINK}>{anchor}</Link>{after}</>;
+}
+
+function ladderBody(text: string) {
+  const SPAR_AT = 'LEANING OVER THE HOUSE WITH OBSTACLES';
+  const LIFT_AT = 'What pushes a job into that top tier here is usually access.';
+  const [top, rest] = splitAt(text, SPAR_AT);
+  const [mid, end] = splitAt(rest, LIFT_AT);
+  return (
+    <>
+      {withLink(top, 'stump grinding', '/stump-grinding-jacksonville-nc')}
+      <JobFigure photo={SPAR} />
+      {SPAR_AT + mid}
+      <JobFigure photo={LIFT} />
+      {LIFT_AT + end}
+    </>
+  );
+}
+
+function estimateBody(text: string) {
+  const STUMP_AT = '6. STUMP HANDLING';
+  const [top, rest] = splitAt(text, STUMP_AT);
+  return (
+    <>
+      {top}
+      <JobFigure photo={STUMP} />
+      {STUMP_AT + rest}
+    </>
+  );
+}
+
+/** Module-level so `sectionBodies` can build its linked versions from the same strings. */
+const SECTIONS = [
+  /* --- q-011: How much does tree removal cost in Jacksonville, NC? --- */
+  {
+    heading: `${PRICING.removal.minimum} minimum, ${PRICING.removal.most} for most removals in Jacksonville, NC`,
+    text: `That is the direct answer. Tree removal in Jacksonville and the rest of Onslow County starts at an ${PRICING.removal.minimum} minimum, and most removals we do land between ${PRICING.removal.most}. The table above is every band we quote. These are our numbers for our crew in this county — not a state or national average.\n\nThe ${PRICING.removal.minimum} is a floor rather than a starting tier. ${PRICING.stories.mobilization}`,
+  },
+
+  /* ------- q-012: Average cost to remove a large pine tree in NC ------
+     Ship C (2026-10-10) added `stories.geneCircle` as the fourth
+     paragraph, after the three tiers and before the access paragraph.
+     It sits there because it is the proof of the claim the tiers make
+     and the setup for the access point that follows — the job it
+     describes was priced by its rigging, not its height. It restates
+     this section's opening "diameter, not height" line, which is
+     accepted: the wording is a fixed owner ruling and trimming the
+     opening to suit it would mean a second, unmandated content change
+     to a live A/B arm. */
+  {
+    heading: `${PINE.tier1.price}, about ${PINE.tier2.price}, ${PINE.tier3.price}: the three pines we actually remove`,
+    text: `Loblolly pine is the tree we remove most in Onslow County, so it prices on its own rather than disappearing into a general range. There are three tiers, and it is diameter — not height on its own — that decides which one you are in.\n\nOPEN YARD — ${PINE.tier1.size}, ${PINE.tier1.site}: ${PINE.tier1.price}. ${PINE.tier1.note}\n\nBEHIND THE HOUSE — ${PINE.tier2.size}, ${PINE.tier2.site}: about ${PINE.tier2.price}, stump grinding included. Bring that same size closer in and it sits in the ${PRICING.nearHouse.besideStructure} beside-the-structure band instead.\n\nLEANING OVER THE HOUSE WITH OBSTACLES — ${PINE.tier3.size}, ${PINE.tier3.site}: ${PINE.tier3.price}. ${PINE.tier3.note}\n\n${PRICING.stories.geneCircle}\n\nWhat pushes a job into that top tier here is usually access. Base-adjacent lots around Camp Lejeune are dense, the setbacks are narrow and the backyards are fenced, so the tree leaves through a gate or it does not leave — which rules out a crane on a large share of jobs and rules in the spider lift, which collapses to about 36 inches and crosses a lawn on rubber tracks without rutting it. Coastal ground adds to it: sandy soil holds water at depth, and after a wet week it will not carry a loaded truck, so the crew mats the ground or works from the street with more rigging. A storm-weakened pine cannot be climbed at all, because the structure a climber would tie into is the part that failed.\n\nIf you have the flexibility, booking in a calm stretch rather than the week after a named storm, or against a fixed PCS date, is straightforwardly cheaper for the same tree.`,
+  },
+
+  /* ------------- Why tier 2 costs almost double tier 1 ---------------- */
+  {
+    heading: `${PINE.tier1.price} to ${PRICING.nearHouse.besideStructure}: why a 90 foot pine costs almost double an 80 foot pine`,
+    text: `From a photo you cannot tell a 75–80 foot, 30 inch pine from a 90 foot, 38 inch pine. In person the difference is significant. Here is what actually changes between them:\n\nTHE SAW. Past ${WHY.sawThreshold} in diameter we bring out a ${WHY.sawBig} saw to cut across the trunk. A 30 inch tree can be done with ${WHY.sawSmall} saw.\n\nTHE LOGS. A 70 foot, 28 inch pine gives ${WHY.tier1Logs}, ${WHY.tier1Loads} on our single-axle log truck. A 90 foot, 36–38 inch pine is ${WHY.tier2Logs}, and the heavy bottom half almost always needs a second log-truck run.\n\nTHE DEBRIS. A bigger tree carries more limb structure, and all of it has to be processed and hauled.\n\nTHE REACH. Most bucket trucks reach only ${WHY.bucketReach}. We run a ${WHY.ourLift} lift. Across the whole market a 70–80 foot tree is a different ball game than a 90–100 foot tree.\n\nThe most common surprise is exactly this one: someone hoping for a ${PINE.tier1.price} tree, which turns out to be a 90 footer 10 to 12 inches bigger around, and that pushes it to ${PRICING.nearHouse.besideStructure} — almost double. It is not the news anybody wants, but we try to be fair with our prices.`,
+  },
+
+  /* --- q-018: How much to remove a tree close to a house? ------------- */
+  {
+    heading: `${PRICING.nearHouse.typical} to ${PRICING.nearHouse.besideStructure} when the tree is close to the house`,
+    text: `"Close to the house" is three different jobs, and the gap between them is wide enough that one number would be useless.\n\nSMALL TREE NEAR THE HOUSE — ${PRICING.nearHouse.typical} typical, stump included. Close enough that it cannot be dropped, small enough that the pieces are hand-liftable and the whole thing is over well inside a day.\n\nMATURE TREE NEAR THE HOUSE — ${PRICING.nearHouse.mature}. Now the sections are heavy enough to need rigging rather than hands, and the day fills up.\n\nHARD AGAINST, OR LEANING OVER, THE HOUSE — ${PRICING.nearHouse.besideStructure}. This is the band where position has taken over from size completely.\n\n${PRICING.stories.position}`,
+  },
+
+  /* --- q-029: What should be included in a tree removal estimate? ---- */
+  {
+    heading: '7 line items a real estimate itemizes — and a written quote before work starts',
+    text: `Ask for the estimate in writing and ask for it itemized. This is how ours are actually built, line by line, straight off the invoice structure:\n\n1. MOBILIZATION AND DEMOBILIZATION — getting the crew and the machines to you and away again, as its own line. This is the biggest fixed cost on any job and it is why there is a minimum at all.\n\n2. EQUIPMENT BY THE HOUR — the lift, the crane, the loader, each at its own hourly rate for the hours it is actually running.\n\n3. CREW LABOUR BY ROLE AND HOURS — lead arborist, safety supervisor, equipment operator, ground crew, each at their own rate for their own hours. Not "labor: one lump".\n\n4. DEBRIS HAULING BY THE LOAD — counted in loads, priced per load.\n\n5. DISPOSAL FEES — what the landfill or the yard charges to take it, separately from what it costs us to haul it there.\n\n6. STUMP HANDLING — the stump is its own decision and its own line, whether that is grinding it, cutting it flush, or leaving it.\n\n7. ON INSURANCE JOBS, THE SPLIT — emergency mitigation on one side, debris removal on the other. That split is not bookkeeping: the small tree-debris sublimit on a homeowner's policy generally applies to the debris side and generally does not apply to the mitigation side, and an estimate that lumps them together makes it impossible for your adjuster to see which is which.\n\nAnd the part that matters more than any single line: a written quote before any work starts. If a number was only ever said out loud, it is not a quote.`,
+  },
+
+  /* ---------------- Photo ballpark + the honest limit ---------------- */
+  {
+    heading: `${PRICING.photoEstimate.smallPine} from a photo for a small pine — above that we come and look`,
+    text: `People send us photos and ask for a ballpark, and for the small end we will give one. A pine that is ${PRICING.photoEstimate.smallPineSize} runs roughly ${PRICING.photoEstimate.smallPine}.\n\nIf it is big and anywhere near a structure, the honest ballpark is ${PRICING.photoEstimate.nearStructureFloor} — and we need to come look. ${PRICING.stories.photoLimit}`,
+  },
+
+  /* ----------------------------- Emergency ----------------------------- */
+  {
+    heading: `${PRICING.emergency.structure} when the tree is already on the structure`,
+    text: `A tree already on a house — an emergency tree service call — prices separately from everything above, and the reason is in the table: almost none of the cost is the tree. Our first job is stopping the damage — getting the tree off and tarping the opening, because water getting in is what turns a bad day into a major repair.\n\nWe bill your insurance directly and work with your adjuster, so you are not paying the whole job up front and waiting for reimbursement. This is where the mitigation-versus-debris split in an itemized estimate stops being paperwork and starts being money.`,
+  },
+];
+
 export default function TreeRemovalCost() {
   return (
     <ServicePage
-      title="How Much Does Tree Removal Cost in North Carolina? (2026 Guide)"
-      metaTitle="Tree Removal Cost in North Carolina (2026 Guide)"
+      title="How Much Does Tree Removal Cost in Jacksonville, NC? (2026 Prices)"
+      metaTitle="Tree Removal Cost in Jacksonville, NC (2026 Prices from a Local Crew)"
       slug="tree-removal-cost-north-carolina"
       description={`Tree removal in Jacksonville, NC starts at an ${PRICING.removal.minimum} minimum; most jobs run ${PRICING.removal.most} and large or hazardous trees ${PRICING.removal.large}. Real price bands.`}
       quickAnswer={PRICING.removal.summary}
       authorUpdated={SHIP_DATE}
+      bylineVariant="month"
+      articleImages={[SPAR.src, LIFT.src, STUMP.src]}
       datePublished="2026-04-06"
       priceBlock={<RemovalPriceTable />}
       /* Positional key, same indexing as sectionLinks below: 1 is the pine
@@ -164,58 +369,13 @@ export default function TreeRemovalCost() {
           label: 'Tree removal near a house: what changes when position sets the price',
         },
       }}
-      sections={[
-        /* --- q-011: How much does tree removal cost in Jacksonville, NC? --- */
-        {
-          heading: `${PRICING.removal.minimum} minimum, ${PRICING.removal.most} for most removals in Jacksonville, NC`,
-          text: `That is the direct answer. Tree removal in Jacksonville and the rest of Onslow County starts at an ${PRICING.removal.minimum} minimum, and most removals we do land between ${PRICING.removal.most}. The table above is every band we quote. These are our numbers for our crew in this county — not a state or national average.\n\nThe ${PRICING.removal.minimum} is a floor rather than a starting tier. ${PRICING.stories.mobilization}`,
-        },
-
-        /* ------- q-012: Average cost to remove a large pine tree in NC ------
-           Ship C (2026-10-10) added `stories.geneCircle` as the fourth
-           paragraph, after the three tiers and before the access paragraph.
-           It sits there because it is the proof of the claim the tiers make
-           and the setup for the access point that follows — the job it
-           describes was priced by its rigging, not its height. It restates
-           this section's opening "diameter, not height" line, which is
-           accepted: the wording is a fixed owner ruling and trimming the
-           opening to suit it would mean a second, unmandated content change
-           to a live A/B arm. */
-        {
-          heading: `${PINE.tier1.price}, about ${PINE.tier2.price}, ${PINE.tier3.price}: the three pines we actually remove`,
-          text: `Loblolly pine is the tree we remove most in Onslow County, so it prices on its own rather than disappearing into a general range. There are three tiers, and it is diameter — not height on its own — that decides which one you are in.\n\nOPEN YARD — ${PINE.tier1.size}, ${PINE.tier1.site}: ${PINE.tier1.price}. ${PINE.tier1.note}\n\nBEHIND THE HOUSE — ${PINE.tier2.size}, ${PINE.tier2.site}: about ${PINE.tier2.price}, stump grinding included. Bring that same size closer in and it sits in the ${PRICING.nearHouse.besideStructure} beside-the-structure band instead.\n\nLEANING OVER THE HOUSE WITH OBSTACLES — ${PINE.tier3.size}, ${PINE.tier3.site}: ${PINE.tier3.price}. ${PINE.tier3.note}\n\n${PRICING.stories.geneCircle}\n\nWhat pushes a job into that top tier here is usually access. Base-adjacent lots around Camp Lejeune are dense, the setbacks are narrow and the backyards are fenced, so the tree leaves through a gate or it does not leave — which rules out a crane on a large share of jobs and rules in the spider lift, which collapses to about 36 inches and crosses a lawn on rubber tracks without rutting it. Coastal ground adds to it: sandy soil holds water at depth, and after a wet week it will not carry a loaded truck, so the crew mats the ground or works from the street with more rigging. A storm-weakened pine cannot be climbed at all, because the structure a climber would tie into is the part that failed.\n\nIf you have the flexibility, booking in a calm stretch rather than the week after a named storm, or against a fixed PCS date, is straightforwardly cheaper for the same tree.`,
-        },
-
-        /* ------------- Why tier 2 costs almost double tier 1 ---------------- */
-        {
-          heading: `${PINE.tier1.price} to ${PRICING.nearHouse.besideStructure}: why a 90 foot pine costs almost double an 80 foot pine`,
-          text: `From a photo you cannot tell a 75–80 foot, 30 inch pine from a 90 foot, 38 inch pine. In person the difference is significant. Here is what actually changes between them:\n\nTHE SAW. Past ${WHY.sawThreshold} in diameter we bring out a ${WHY.sawBig} saw to cut across the trunk. A 30 inch tree can be done with ${WHY.sawSmall} saw.\n\nTHE LOGS. A 70 foot, 28 inch pine gives ${WHY.tier1Logs}, ${WHY.tier1Loads} on our single-axle log truck. A 90 foot, 36–38 inch pine is ${WHY.tier2Logs}, and the heavy bottom half almost always needs a second log-truck run.\n\nTHE DEBRIS. A bigger tree carries more limb structure, and all of it has to be processed and hauled.\n\nTHE REACH. Most bucket trucks reach only ${WHY.bucketReach}. We run a ${WHY.ourLift} lift. Across the whole market a 70–80 foot tree is a different ball game than a 90–100 foot tree.\n\nThe most common surprise is exactly this one: someone hoping for a ${PINE.tier1.price} tree, which turns out to be a 90 footer 10 to 12 inches bigger around, and that pushes it to ${PRICING.nearHouse.besideStructure} — almost double. It is not the news anybody wants, but we try to be fair with our prices.`,
-        },
-
-        /* --- q-018: How much to remove a tree close to a house? ------------- */
-        {
-          heading: `${PRICING.nearHouse.typical} to ${PRICING.nearHouse.besideStructure} when the tree is close to the house`,
-          text: `"Close to the house" is three different jobs, and the gap between them is wide enough that one number would be useless.\n\nSMALL TREE NEAR THE HOUSE — ${PRICING.nearHouse.typical} typical, stump included. Close enough that it cannot be dropped, small enough that the pieces are hand-liftable and the whole thing is over well inside a day.\n\nMATURE TREE NEAR THE HOUSE — ${PRICING.nearHouse.mature}. Now the sections are heavy enough to need rigging rather than hands, and the day fills up.\n\nHARD AGAINST, OR LEANING OVER, THE HOUSE — ${PRICING.nearHouse.besideStructure}. This is the band where position has taken over from size completely.\n\n${PRICING.stories.position}`,
-        },
-
-        /* --- q-029: What should be included in a tree removal estimate? ---- */
-        {
-          heading: '7 line items a real estimate itemizes — and a written quote before work starts',
-          text: `Ask for the estimate in writing and ask for it itemized. This is how ours are actually built, line by line, straight off the invoice structure:\n\n1. MOBILIZATION AND DEMOBILIZATION — getting the crew and the machines to you and away again, as its own line. This is the biggest fixed cost on any job and it is why there is a minimum at all.\n\n2. EQUIPMENT BY THE HOUR — the lift, the crane, the loader, each at its own hourly rate for the hours it is actually running.\n\n3. CREW LABOUR BY ROLE AND HOURS — lead arborist, safety supervisor, equipment operator, ground crew, each at their own rate for their own hours. Not "labor: one lump".\n\n4. DEBRIS HAULING BY THE LOAD — counted in loads, priced per load.\n\n5. DISPOSAL FEES — what the landfill or the yard charges to take it, separately from what it costs us to haul it there.\n\n6. STUMP HANDLING — the stump is its own decision and its own line, whether that is grinding it, cutting it flush, or leaving it.\n\n7. ON INSURANCE JOBS, THE SPLIT — emergency mitigation on one side, debris removal on the other. That split is not bookkeeping: the small tree-debris sublimit on a homeowner's policy generally applies to the debris side and generally does not apply to the mitigation side, and an estimate that lumps them together makes it impossible for your adjuster to see which is which.\n\nAnd the part that matters more than any single line: a written quote before any work starts. If a number was only ever said out loud, it is not a quote.`,
-        },
-
-        /* ---------------- Photo ballpark + the honest limit ---------------- */
-        {
-          heading: `${PRICING.photoEstimate.smallPine} from a photo for a small pine — above that we come and look`,
-          text: `People send us photos and ask for a ballpark, and for the small end we will give one. A pine that is ${PRICING.photoEstimate.smallPineSize} runs roughly ${PRICING.photoEstimate.smallPine}.\n\nIf it is big and anywhere near a structure, the honest ballpark is ${PRICING.photoEstimate.nearStructureFloor} — and we need to come look. ${PRICING.stories.photoLimit}`,
-        },
-
-        /* ----------------------------- Emergency ----------------------------- */
-        {
-          heading: `${PRICING.emergency.structure} when the tree is already on the structure`,
-          text: `A tree already on a house prices separately from everything above, and the reason is in the table: almost none of the cost is the tree. Our first job is stopping the damage — getting the tree off and tarping the opening, because water getting in is what turns a bad day into a major repair.\n\nWe bill your insurance directly and work with your adjuster, so you are not paying the whole job up front and waiting for reimbursement. This is where the mitigation-versus-debris split in an itemized estimate stops being paperwork and starts being money.`,
-        },
-      ]}
+      sections={SECTIONS}
+      sectionBodies={{
+        0: withLink(SECTIONS[0].text, 'Tree removal in Jacksonville', '/tree-removal-jacksonville-nc'),
+        1: ladderBody(SECTIONS[1].text),
+        4: estimateBody(SECTIONS[4].text),
+        6: withLink(SECTIONS[6].text, 'emergency tree service', '/emergency-tree-service-jacksonville-nc'),
+      }}
       caseStudy={
         <>
           <PriceReconciliation />

@@ -113,6 +113,18 @@ interface ServicePageProps {
    */
   datePublished?: string;
   /**
+   * Which byline `authorUpdated` renders, and where. Default: the full-date line
+   * under the description. 'month': "Updated November 2026 · By …, owner",
+   * directly under the H1 (Ship S, cost page only).
+   */
+  bylineVariant?: 'full' | 'month';
+  /**
+   * Extra site-relative image paths for the Article node. When passed, `image`
+   * becomes an array: the page's usual image first, then these. Undefined on
+   * every other page, whose schema is unchanged.
+   */
+  articleImages?: string[];
+  /**
    * Rich content rendered between the quick answer and the first section.
    *
    * Exists for the one case where a block has to sit ABOVE the prose rather
@@ -261,7 +273,7 @@ function getBreadcrumbCategory(slug: string): { name: string; slug: string } | n
   return null;
 }
 
-export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, datePublished, priceBlock, sections, sectionFigures, sectionBodies, sectionLinks, faqs, faqPosition = 'late', caseStudy, notice, credentialBlock, credentialDamageNoun, finalCta, guides, heroImage, gallery }: ServicePageProps) {
+export default function ServicePage({ title, metaTitle, subtitle, slug, description, ctaText, leadBlock, quickAnswer, authorUpdated, datePublished, bylineVariant = 'full', articleImages, priceBlock, sections, sectionFigures, sectionBodies, sectionLinks, faqs, faqPosition = 'late', caseStudy, notice, credentialBlock, credentialDamageNoun, finalCta, guides, heroImage, gallery }: ServicePageProps) {
   const canonical = `${SITE_URL}/${slug}`;
   const breadcrumbCategory = getBreadcrumbCategory(slug);
   const pageTitle = metaTitle ?? `${title} | ${BUSINESS_INFO.name}`;
@@ -281,6 +293,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
    * BusinessSchema stubs and /about fills in; publisher is the LocalBusiness
    * @id. Image is the page hero when there is one, else the site OG image.
    */
+  const primaryImage = heroImage?.src ? `${SITE_URL}${heroImage.src}` : `${SITE_URL}/og-image-v2.jpg`;
   const articleSchema = datePublished && authorUpdated ? {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -290,7 +303,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
     "dateModified": authorUpdated,
     "author": { "@type": "Person", "@id": AUTHOR.personId, "name": AUTHOR.name, "url": `${SITE_URL}/about` },
     "publisher": { "@id": BUSINESS_ID },
-    "image": heroImage?.src ? `${SITE_URL}${heroImage.src}` : `${SITE_URL}/og-image-v2.jpg`,
+    "image": articleImages ? [primaryImage, ...articleImages.map((src) => `${SITE_URL}${src}`)] : primaryImage,
     "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
   } : null;
 
@@ -387,6 +400,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                 {title}
               </h1>
+              {authorUpdated && bylineVariant === 'month' && <AuthorByline updated={authorUpdated} variant="month" />}
               {subtitle && (
                 <p className="text-red-500 font-semibold text-lg sm:text-xl mb-2">{subtitle}</p>
               )}
@@ -395,7 +409,7 @@ export default function ServicePage({ title, metaTitle, subtitle, slug, descript
               </p>
               {/* Byline sits directly under the H1 block, where a reader looks
                   for "who wrote this" — not buried at the foot of the page. */}
-              {authorUpdated && <AuthorByline updated={authorUpdated} />}
+              {authorUpdated && bylineVariant === 'full' && <AuthorByline updated={authorUpdated} />}
               <div className="mt-8">
                 <a
                   href={`tel:${BUSINESS_INFO.phone.tel}`}
