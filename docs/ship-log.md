@@ -20,6 +20,27 @@ is the narrative one.
 
 ---
 
+## 2026-11-24 — Ship S, cost page targets Jacksonville, NC
+
+**Merged** 2026-11-25 04:03:21 UTC · **production deploy succeeded** 04:09:51 UTC ·
+**confirmed serving** 04:10:25 UTC
+**Commits:** `f3d9c71`, `65c4ec5` → `6e9fb76` (merge, PR #21)
+**Shared record:** `ships/2026-11-24-ship-s.md`
+
+- `/tree-removal-cost-north-carolina`: title, H1, Article headline and og/twitter
+  titles now say Jacksonville, NC. URL, meta description and prices unchanged.
+- "Updated November 2026 · By Michael Godbersen, owner" under the H1, matching
+  dateModified 2026-11-24 (supersedes the 2026-10-10 "stays October 5" ruling).
+- Three owner-approved job photos; Article `image` is now an array. ServicePage
+  gains `bylineVariant` and `articleImages`, both opt-in; other pages unchanged.
+- Links out to the removal, stump grinding and emergency pages; links in from `/`
+  and `/tree-talk`. The requested link on `/tree-service-jacksonville-nc` was not
+  possible: that URL has 301'd to `/` since Ship M.
+
+**IndexNow** at 04:10 UTC: HTTP 200, 3 URLs accepted.
+
+---
+
 ## 2026-11-23 — Ship Q, Camp Lejeune discount wording
 
 **Merged** 2026-11-24 01:53:47 UTC · **production deploy succeeded** 02:00:30 UTC ·
