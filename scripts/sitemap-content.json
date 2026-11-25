@@ -1,9 +1,9 @@
 {
-  "generated": "2026-11-23",
+  "generated": "2026-11-24",
   "pages": {
     "/": {
-      "fingerprint": "6f66f1a590c6a79151195b69d2a362b75f2d8a906156e0558766155028d902d7",
-      "lastmod": "2026-11-23"
+      "fingerprint": "33f3ca9324d53ad924740acb6f63d087c87ad961dc32c2c7ecad8aab2db98c28",
+      "lastmod": "2026-11-24"
     },
     "/services": {
       "fingerprint": "0eca227b735eac0db2868b905bfa93ddbc30bff821d6b2df112fed8d59be61db",
@@ -30,8 +30,8 @@
       "lastmod": "2026-11-23"
     },
     "/tree-talk": {
-      "fingerprint": "426fd89a6da4269d2dfcad00c74d78a660316f8b5aad67a2f44ea894fd978e90",
-      "lastmod": "2026-11-23"
+      "fingerprint": "fee0c64a96a58f370171a00507bb04a6397e5a6b1ee9fbf26055958b6ceb1989",
+      "lastmod": "2026-11-24"
     },
     "/tree-talk/summer-storms-not-hurricanes": {
       "fingerprint": "3309c18bae6b531f963da920c5d30021dff8c1b76abf200d918351a7071fb192",
@@ -94,8 +94,8 @@
       "lastmod": "2026-11-23"
     },
     "/tree-removal-cost-north-carolina": {
-      "fingerprint": "4330188ff17498f8568b349101d9fe17a1437990d5d921d3eb419faecf9c7816",
-      "lastmod": "2026-11-23"
+      "fingerprint": "55b6e6eb8af7ec6f56937c58950d53ad48f3ba868ee0d5abcd460ec3f602df99",
+      "lastmod": "2026-11-24"
     },
     "/tree-removal-near-house-jacksonville-nc": {
       "fingerprint": "836e12a9804d2a1547b4f6b0d77449a1ef6a55cc02b1ec74113a353ae9edba3c",
@@ -145,6 +145,5 @@
       "fingerprint": "9e9a73f727ac20bffa7242106e3e41ba18a35b131cdb07115fc5ff5cbb2ce02d",
       "lastmod": "2026-11-23"
     }
-  },
-  "uniformAllowedFor": "2026-11-23"
+  }
 }
