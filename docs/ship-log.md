@@ -20,6 +20,23 @@ is the narrative one.
 
 ---
 
+## 2026-11-24 — Ship R v2, llms.txt, cost-page anchors, sharper cost-page photos
+
+**Merged** 2026-11-25 04:41:36 UTC · **production deploy succeeded** 04:46:24 UTC ·
+**confirmed serving** 04:46:50 UTC
+**Commits:** `176b6be`, `ec548f1` → `ccd865a` (merge, PR #22)
+**Shared record:** `ships/2026-11-24-ship-r.md`
+
+- `llms.txt`: 10% wording, free annual tree inspection, cost page labelled Jacksonville.
+- 10 anchors to the cost page on 8 pages (incl. /404): "North Carolina" → "Jacksonville, NC";
+  `/services` anchor made descriptive. Blog card summary "in NC" → "in Jacksonville, NC".
+- Cost-page photos rebuilt from the homepage originals at up to 1280x960; alt and
+  captions unchanged. The ~590px variants from Ship S are gone.
+
+**IndexNow:** HTTP 200, 9 URLs accepted. llms.txt is not in the URL set.
+
+---
+
 ## 2026-11-24 — Ship S, cost page targets Jacksonville, NC
 
 **Merged** 2026-11-25 04:03:21 UTC · **production deploy succeeded** 04:09:51 UTC ·
