@@ -34,6 +34,13 @@ export interface AuthorBylineProps {
    * ten pages with one date asserts they were all revised together.
    */
   updated: string;
+  /**
+   * 'full' (default): "By Michael Godbersen, Owner · Updated September 28, 2026".
+   * 'month': "Updated November 2026 · By Michael Godbersen, owner" — the owner's
+   * wording for the cost page (Ship S). Both read the same `updated` date, which
+   * is also the Article dateModified, so neither can disagree with the schema.
+   */
+  variant?: 'full' | 'month';
 }
 
 /**
@@ -54,7 +61,22 @@ export interface AuthorBylineProps {
  * the header of src/pages/TreeRemovalCost.tsx. Not rendered on
  * /stump-grinding-jacksonville-nc, which is a service page, not a signed guide.
  */
-export default function AuthorByline({ updated }: AuthorBylineProps) {
+export default function AuthorByline({ updated, variant = 'full' }: AuthorBylineProps) {
+  if (variant === 'month') {
+    return (
+      <p className="mb-4 text-sm text-gray-400">
+        Updated <time dateTime={updated}>{formatUpdated(updated).replace(/ \d+,/, '')}</time>
+        {' · By '}
+        <Link
+          to="/about"
+          className="text-gray-200 hover:text-red-500 underline underline-offset-2 transition-colors font-medium"
+        >
+          {AUTHOR.name}
+        </Link>
+        , {AUTHOR.role.toLowerCase()}
+      </p>
+    );
+  }
   return (
     <p className="mt-4 text-sm text-gray-400">
       By{' '}
