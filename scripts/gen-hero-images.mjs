@@ -72,14 +72,15 @@ const FIGURES = [
     // accident, so do NOT add it as a top step. See `nativeTop` below.
     nativeTop: false,
   },
-  // Ship S (2026-11-24): three job photos on the cost page, same float slot as
-  // the pine above. The sources are only ~590px wide, so the native width IS the
-  // honest top step.
+  // Cost-page job photos (Ship S, sharpened in Ship R), same float slot as the
+  // pine above. Masters are the homepage row's originals — scripts/image-src
+  // IMG_2150, IMG_2205, IMG_1730 with gen-images.mjs's crops — at 1280x960. The
+  // steps above 720 are for DPR 3 phones and for the Article `image`.
   ...[
     'pine-spar-difficult-tree-removal-jacksonville-nc.jpg',
     'spider-lift-outriggers-chain-link-fence-jacksonville-nc.jpg',
     'stump-grinder-handheld-control-jacksonville-nc.jpg',
-  ].map((file) => ({ file, widths: [360, 480], nativeTop: true })),
+  ].map((file) => ({ file, widths: [360, 540, 720, 1080, 1280], nativeTop: false })),
 ];
 
 /**

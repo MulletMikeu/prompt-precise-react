@@ -740,7 +740,7 @@ export default function TreeRemoval() {
         links: [
           {
             href: "/tree-removal-cost-north-carolina",
-            label: "How much tree removal costs in North Carolina",
+            label: "How much tree removal costs in Jacksonville, NC",
             blurb: "Full price ranges, what drives them, and why the same tree can cost double."
           },
           {

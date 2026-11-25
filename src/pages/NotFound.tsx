@@ -9,7 +9,7 @@ const NOT_FOUND_LINKS = [
   },
   {
     href: "/tree-removal-cost-north-carolina",
-    label: "Tree removal cost in North Carolina",
+    label: "Tree removal cost in Jacksonville, NC",
     blurb: "Every price band we quote, and what moves a job between them.",
   },
   {

@@ -29,7 +29,7 @@ export default function TreeRemovalNearHouse() {
            everything from the old 2 down by one. Re-check if a section moves. */
         sectionLinks={{
           0: { href: "/leaning-tree-dangerous-after-storm", label: "When a tree leaning toward the house is an emergency" },
-          1: { href: "/tree-removal-cost-north-carolina", label: "Full tree removal cost breakdown for North Carolina" },
+          1: { href: "/tree-removal-cost-north-carolina", label: "Full tree removal cost breakdown for Jacksonville, NC" },
           3: { href: "/spider-lift-tree-removal-jacksonville-nc", label: "How the spider lift reaches trunks a truck cannot" },
         }}
         sections={[
@@ -68,7 +68,7 @@ export default function TreeRemovalNearHouse() {
           }
         ]}
         faqs={[
-          { question: "How much does it cost to remove a tree next to a house?", answer: `Position matters more than size. A straightforward near-house removal with room to work typically runs about ${PRICING.nearHouse.typical} including the stump; a mature tree of 40 to 65 feet close to the house runs ${PRICING.nearHouse.mature}; and a tree hard against the structure or tangled with the service drop runs ${PRICING.nearHouse.besideStructure}. What moves a job between bands is whether we can get a lift or loader to the trunk, and what is directly underneath it.`, link: { href: "/tree-removal-cost-north-carolina", label: "Full cost breakdown for North Carolina" } },
+          { question: "How much does it cost to remove a tree next to a house?", answer: `Position matters more than size. A straightforward near-house removal with room to work typically runs about ${PRICING.nearHouse.typical} including the stump; a mature tree of 40 to 65 feet close to the house runs ${PRICING.nearHouse.mature}; and a tree hard against the structure or tangled with the service drop runs ${PRICING.nearHouse.besideStructure}. What moves a job between bands is whether we can get a lift or loader to the trunk, and what is directly underneath it.`, link: { href: "/tree-removal-cost-north-carolina", label: "Full cost breakdown for Jacksonville, NC" } },
           { question: "Can you remove a tree leaning toward my house?", answer: "Yes. A leaning tree near a structure is one of the most common calls we get. We use rigging and a spider lift to take it down piece by piece, against the lean if necessary. Free on-site estimate." },
           { question: "Are you insured if something goes wrong?", answer: "Fully. We carry general liability and workers' comp, and we'll provide a current certificate of insurance on request before any work starts." },
           { question: "What if a tree is already on my house?", answer: `Call ${BUSINESS.phone} anytime — we offer 24/7 emergency response for trees on homes, garages, and vehicles in Jacksonville and surrounding areas.` },

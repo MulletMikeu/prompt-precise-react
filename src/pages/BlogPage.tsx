@@ -9,9 +9,9 @@ const CANONICAL = "https://godhans.com/blog";
 
 const GUIDES = [
   {
-    title: "How Much Does Tree Removal Cost in North Carolina?",
+    title: "How Much Does Tree Removal Cost in Jacksonville, NC?",
     href: "/tree-removal-cost-north-carolina",
-    desc: "A breakdown of what affects tree removal pricing in NC — size, location, complexity, and what to expect from a free estimate.",
+    desc: "A breakdown of what affects tree removal pricing in Jacksonville, NC — size, location, complexity, and what to expect from a free estimate.",
   },
   {
     title: "What to Do After Storm Damage to Your Trees",
